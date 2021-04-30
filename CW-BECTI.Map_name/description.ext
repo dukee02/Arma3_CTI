@@ -1,0 +1,39 @@
+/*
+	BECTI: By Benny (benny_boy66@hotmail.fr)
+	  "Praise the bugs!"
+*/
+
+#include "Rsc\Game.hpp"
+#include "Rsc\Resources.hpp"
+#include "Rsc\Dialogs.hpp"
+#include "Rsc\Notifications.hpp"
+#include "Rsc\Sounds.hpp"
+#include "Rsc\Debriefing.hpp"
+#include "Rsc\Parameters.hpp"
+#include "Rsc\titles.hpp"
+
+enableDebugConsole = 1;
+
+//Config for Pylon Manager
+class CfgPylonManager
+{
+//Blacklisted Magazines
+//blacklistedMagazines[] = {"PylonMissile_Missile_AMRAAM_D_INT_x1","PylonRack_Bomb_SDB_x4"};
+
+//Nothing is rearm everywhere
+rearmObjects[] = {
+	"gm_ge_army_kat1_451_reammo",
+	"gm_gc_army_ural4320_reammo",
+	"BW_LKW_Munition_Winter",
+	"BW_LKW_Munition_Tropen",
+	"BW_LKW_Munition_Fleck",
+	"rnt_lkw_7t_mil_gl_kat_i_mun_winter",
+	"rnt_lkw_7t_mil_gl_kat_i_mun_trope",
+	"rnt_lkw_7t_mil_gl_kat_i_mun_fleck",
+	"CUP_O_Ural_Reammo_RU",
+	"rhs_gaz66_ammo_vdv"
+	};
+
+//Distance needed from rearmObjects[]
+rearmRange = 50;
+};

@@ -1,0 +1,122 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, update_garbage_collector.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-75.000000,0.000000,25.000000,50.000000,0.000000,"Start FSM"};
+item1[] = {"Loop",4,218,-75.000000,-100.000000,25.000000,-50.000000,1.000000,"Loop"};
+item2[] = {"Garbage_Collecto",2,4346,75.000000,-100.000000,175.000000,-50.000000,0.000000,"Garbage" \n "Collector"};
+item3[] = {"Gameover",4,218,75.000000,-200.000000,175.000000,-150.000000,0.000000,"Gameover"};
+item4[] = {"End_FSM",1,250,225.000000,-200.000000,325.000000,-150.000000,0.000000,"End FSM"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,3};
+link4[] = {3,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-184.744537,372.878876,591.521484,-440.675018,477,884,1};
+window[] = {2,-1,-1,-1,-1,859,78,1445,78,3,495};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "update_garbage_collector.fsm";
+        class States
+        {
+                /*%FSM<STATE "Start_FSM">*/
+                class Start_FSM
+                {
+                        name = "Start_FSM";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"_ncycle = time + 15;" \n
+                         "" \n
+                         "CTI_GarbageCollector = [];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Loop">*/
+                                class Loop
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="Garbage_Collecto";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Garbage_Collecto">*/
+                class Garbage_Collecto
+                {
+                        name = "Garbage_Collecto";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"CTI_GarbageCollector = CTI_GarbageCollector - [objNull];" \n
+                         "" \n
+                         "{" \n
+                         "	if (!(_x in CTI_GarbageCollector) && isNil {_x getVariable ""cti_gc_noremove""}) then {" \n
+                         "		CTI_GarbageCollector pushBack _x;" \n
+                         "		[_x] spawn CTI_SE_FNC_TrashObject;" \n
+                         "	};" \n
+                         "} forEach allDead;" \n
+                         "" \n
+                         "//{ //--- Extra group cleansing  (1.42 not cleaning groups properly?)" \n
+                         "//	if (!(_x call CTI_CO_FNC_IsGroupPlayable) &&  isNil {_x getVariable ""cti_gc_noremove""} && count (units _x) <= 0) then {" \n
+                         "//		deleteGroup _x; " \n
+                         "//	};" \n
+                         "//} forEach allGroups;" \n
+                         "" \n
+                         "//--- Extract from MDCCLXXVI's Recurring cleaup script" \n
+                         "{" \n
+                         "    if ((_x distance [0,0,0]) < 1) then {" \n
+                         "			[_x] spawn CTI_SE_FNC_TrashObject;" \n
+                         "        //deleteVehicle _x;   };" \n
+                         "} count (allMissionObjects ""EmptyDetector"");" \n
+                         "" \n
+                         "_ncycle = time + 15;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Loop">*/
+                                class Loop
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="Garbage_Collecto";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Gameover">*/
+                                class Gameover
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="End_FSM";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End_FSM">*/
+                class End_FSM
+                {
+                        name = "End_FSM";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start_FSM";
+        finalStates[] =
+        {
+                "End_FSM",
+        };
+};
+/*%FSM</COMPILE>*/

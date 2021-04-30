@@ -1,0 +1,10 @@
+[V2.0] Changelog:
+Changed: Switch the units from WW2 to 
+Fixed: 
+Added: 
+
+
+Known issues:
+[]AI don't take command if commander disconnects
+[]AI teams occasionally respawn at the default respawn area.
+[]Message: "ERROR: Switch uniform! Uniform is not supported by soldier" would not be fixed!

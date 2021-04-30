@@ -1,0 +1,44 @@
+/*
+  # HEADER #
+	Script: 		Common\Functions\Common_GetSideGroups.sqf
+	Alias:			CTI_CO_FNC_GetSideGroups
+	Description:	Return all CTI Groups of a side
+	Author: 		Benny
+	Creation Date:	18-09-2013
+	Revision Date:	06-05-2015 (sari)
+	
+  # PARAMETERS #
+    0	[Side]: The side
+	
+  # RETURNED VALUE #
+	[Array]: The current CTI Groups
+	
+  # SYNTAX #
+	(SIDE) call CTI_CO_FNC_GetSideGroups
+	
+  # DEPENDENCIES #
+	Common Function: CTI_CO_FNC_GetSideLogic
+	
+  # EXAMPLE #
+    _groups = (West) call CTI_CO_FNC_GetSideGroups
+	  -> Return the west CTI Groups
+*/
+
+private ["_logic", "_teams"];
+
+if (typeName _this != "SIDE") exitWith {[]};
+
+_logic = (_this) call CTI_CO_FNC_GetSideLogic;
+
+_teams = [];
+if !(isNull _logic) then {
+	{
+		if !(isNil '_x') then {
+			if (!isNull _x && (!isNil {_x getVariable "cti_ai_active"} || isPlayer leader _x)) then {
+				_teams pushBack _x;
+			};
+		};
+	} forEach (_logic getVariable "cti_teams");
+};
+
+_teams
