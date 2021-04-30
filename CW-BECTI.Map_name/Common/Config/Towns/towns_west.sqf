@@ -26,25 +26,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 INFANTRY = [];
 INFANTRY_MG = [];
 INFANTRY_AT = [];
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
-	case 1: {
-		INFANTRY = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		INFANTRY_MG = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_support_AMG_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_support_MG_F", _sid],1],[format["%1B_support_MG_F", _sid],1]];
-		INFANTRY_AT = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		};
-	case 2: {
-		INFANTRY = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		INFANTRY_MG = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_support_AMG_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_support_MG_F", _sid],1],[format["%1B_support_MG_F", _sid],1]];
-		INFANTRY_AT = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_soldier_AAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_AT_F", _sid],1],[format["%1B_soldier_AT_F", _sid],1]];
-		};
-	default {
-		INFANTRY = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		INFANTRY_MG = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1]];
-		INFANTRY_AT = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		};
-	};
-} else {
+if(CTI_CAMO_ACTIVATION == 1) then {
 	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
 	case 1: {
 		INFANTRY = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_AR_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1]];
@@ -60,6 +42,24 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		INFANTRY = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_AR_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1]];
 		INFANTRY_MG = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Soldier_AR_F", _sid],1],[format["%1B_T_Soldier_AR_F", _sid],1]];
 		INFANTRY_AT = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1]];
+		};
+	};
+} else {
+	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
+	case 1: {
+		INFANTRY = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
+		INFANTRY_MG = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_support_AMG_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_support_MG_F", _sid],1],[format["%1B_support_MG_F", _sid],1]];
+		INFANTRY_AT = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
+		};
+	case 2: {
+		INFANTRY = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
+		INFANTRY_MG = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_support_AMG_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_support_MG_F", _sid],1],[format["%1B_support_MG_F", _sid],1]];
+		INFANTRY_AT = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_soldier_AAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_AT_F", _sid],1],[format["%1B_soldier_AT_F", _sid],1]];
+		};
+	default {
+		INFANTRY = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
+		INFANTRY_MG = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1]];
+		INFANTRY_AT = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
 		};
 	};
 	
@@ -82,22 +82,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 //Town Wheeled setup
 WHEELED_LIGHT = [];
 WHEELED_HEAVY = [];
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
-	case 1: {
-			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1],[format["%1B_MRAP_01_hmg_F", _sid],1],[format["%1B_MRAP_01_gmg_F", _sid],1]];
-			WHEELED_HEAVY = [[format["%1B_APC_Wheeled_01_cannon_F", _sid],1],[format["%1B_APC_Wheeled_01_cannon_F", _sid],1]];
-		};
-	case 2: {
-			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1],[format["%1B_MRAP_01_hmg_F", _sid],1],[format["%1B_MRAP_01_gmg_F", _sid],1]];
-			WHEELED_HEAVY = [[format["%1B_APC_Wheeled_01_cannon_F", _sid],1],[format["%1B_APC_Wheeled_01_cannon_F", _sid],1],[format["%1B_AFV_Wheeled_01_cannon_F", _sid],1],[format["%1B_AFV_Wheeled_01_up_cannon_F", _sid],1]];
-		};
-	default {
-			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1]];
-			WHEELED_HEAVY = [[format["%1B_MRAP_01_hmg_F", _sid],1],[format["%1B_MRAP_01_gmg_F", _sid],1]];
-		};
-	};
-} else {
+if(CTI_CAMO_ACTIVATION == 1) then {
 	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 	case 1: {
 			WHEELED_LIGHT = [[format["%1B_T_LSV_01_armed_F", _sid],1],[format["%1B_T_LSV_01_AT_F", _sid],1],[format["%1B_T_MRAP_01_hmg_F", _sid],1],[format["%1B_T_MRAP_01_gmg_F", _sid],1]];
@@ -110,6 +95,21 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	default {
 			WHEELED_LIGHT = [[format["%1B_T_LSV_01_armed_F", _sid],1],[format["%1B_T_LSV_01_AT_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1B_T_MRAP_01_hmg_F", _sid],1],[format["%1B_T_MRAP_01_gmg_F", _sid],1]];
+		};
+	};
+} else {
+	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
+	case 1: {
+			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1],[format["%1B_MRAP_01_hmg_F", _sid],1],[format["%1B_MRAP_01_gmg_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1B_APC_Wheeled_01_cannon_F", _sid],1],[format["%1B_APC_Wheeled_01_cannon_F", _sid],1]];
+		};
+	case 2: {
+			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1],[format["%1B_MRAP_01_hmg_F", _sid],1],[format["%1B_MRAP_01_gmg_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1B_APC_Wheeled_01_cannon_F", _sid],1],[format["%1B_APC_Wheeled_01_cannon_F", _sid],1],[format["%1B_AFV_Wheeled_01_cannon_F", _sid],1],[format["%1B_AFV_Wheeled_01_up_cannon_F", _sid],1]];
+		};
+	default {
+			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1B_MRAP_01_hmg_F", _sid],1],[format["%1B_MRAP_01_gmg_F", _sid],1]];
 		};
 	};
 };
@@ -130,25 +130,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 TRACKED_LIGHT = [];
 TRACKED_MEDIUM = [];
 TRACKED_HEAVY = [];
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
-	case 1: {
-		TRACKED_LIGHT = [[format["%1B_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1B_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
-		TRACKED_HEAVY = [[format["%1B_MBT_01_cannon_F", _sid],1],[format["%1B_MBT_01_cannon_F", _sid],1]];
-		};
-	case 2: {
-		TRACKED_LIGHT = [[format["%1B_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1B_MBT_01_cannon_F", _sid],1],[format["%1B_MBT_01_cannon_F", _sid],1]];
-		TRACKED_HEAVY = [[format["%1B_MBT_01_TUSK_F", _sid],1],[format["%1B_MBT_01_TUSK_F", _sid],1]];
-		};
-	default {
-		TRACKED_LIGHT = [[format["%1B_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_APC_Tracked_01_CRV_F", _sid],1]];
-		TRACKED_MEDIUM = [[format["%1B_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
-		TRACKED_HEAVY = [[format["%1B_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
-		};
-	};
-} else {
+if(CTI_CAMO_ACTIVATION == 1) then {
 	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
 	case 1: {
 		TRACKED_LIGHT = [[format["%1B_T_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_T_APC_Tracked_01_rcws_F", _sid],1]];
@@ -164,6 +146,24 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		TRACKED_LIGHT = [[format["%1B_T_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_T_APC_Tracked_01_CRV_F", _sid],1]];
 		TRACKED_MEDIUM = [[format["%1B_T_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_T_APC_Tracked_01_rcws_F", _sid],1]];
 		TRACKED_HEAVY = [[format["%1B_T_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_T_APC_Tracked_01_rcws_F", _sid],1]];
+		};
+	};
+} else {
+	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
+	case 1: {
+		TRACKED_LIGHT = [[format["%1B_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
+		TRACKED_MEDIUM = [[format["%1B_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
+		TRACKED_HEAVY = [[format["%1B_MBT_01_cannon_F", _sid],1],[format["%1B_MBT_01_cannon_F", _sid],1]];
+		};
+	case 2: {
+		TRACKED_LIGHT = [[format["%1B_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
+		TRACKED_MEDIUM = [[format["%1B_MBT_01_cannon_F", _sid],1],[format["%1B_MBT_01_cannon_F", _sid],1]];
+		TRACKED_HEAVY = [[format["%1B_MBT_01_TUSK_F", _sid],1],[format["%1B_MBT_01_TUSK_F", _sid],1]];
+		};
+	default {
+		TRACKED_LIGHT = [[format["%1B_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_APC_Tracked_01_CRV_F", _sid],1]];
+		TRACKED_MEDIUM = [[format["%1B_APC_Tracked_01_CRV_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
+		TRACKED_HEAVY = [[format["%1B_APC_Tracked_01_rcws_F", _sid],1],[format["%1B_APC_Tracked_01_rcws_F", _sid],1]];
 		};
 	};
 };
@@ -218,11 +218,11 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 
 //Town Anti-Air setup
 ANTI_AIR = [];
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+if(CTI_CAMO_ACTIVATION == 1) then {
 	switch (CTI_ECONOMY_LEVEL_TRACKED) do {
 	case 1;
 	case 2: {
-			ANTI_AIR = [[format["%1B_APC_Tracked_01_AA_F", _sid],1],[format["%1B_APC_Tracked_01_AA_F", _sid],1]];
+			ANTI_AIR = [[format["%1B_T_APC_Tracked_01_AA_F", _sid],1],[format["%1B_T_APC_Tracked_01_AA_F", _sid],1]];
 		};
 	default {
 		};
@@ -231,7 +231,7 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	switch (CTI_ECONOMY_LEVEL_TRACKED) do {
 	case 1;
 	case 2: {
-			ANTI_AIR = [[format["%1B_T_APC_Tracked_01_AA_F", _sid],1],[format["%1B_T_APC_Tracked_01_AA_F", _sid],1]];
+			ANTI_AIR = [[format["%1B_APC_Tracked_01_AA_F", _sid],1],[format["%1B_APC_Tracked_01_AA_F", _sid],1]];
 		};
 	default {
 		};

@@ -39,19 +39,7 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air"]];
 //Infantry setup for the AI groups
 units_infantry = [];
 
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
-	case 1: {
-		units_infantry = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1]];
-		};
-	case 2: {
-		units_infantry = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_AAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_Soldier_AT_F", _sid],1]];
-		};
-	default {
-		units_infantry = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
-		};
-	};
-} else {
+if(CTI_CAMO_ACTIVATION == 1) then {
 	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
 	case 1: {
 		units_infantry = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1],[format["%1O_T_Soldier_HAT_F", _sid],1]];
@@ -61,6 +49,18 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		};
 	default {
 		units_infantry = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
+		};
+	};
+} else {
+	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
+	case 1: {
+		units_infantry = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1]];
+		};
+	case 2: {
+		units_infantry = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_AAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_Soldier_AT_F", _sid],1]];
+		};
+	default {
+		units_infantry = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
 		};
 	};
 };
@@ -80,24 +80,24 @@ units_to_add = [];
 
 //Level start
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		units_wheeled pushBack [format["%1O_LSV_02_armed_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_LSV_02_AT_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_MRAP_02_hmg_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_MRAP_02_gmg_F", _sid], 1, 50];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		units_wheeled pushBack [format["%1O_T_LSV_02_armed_F", _sid], 1, 50];
 		units_wheeled pushBack [format["%1O_T_LSV_02_AT_F", _sid], 1, 50];
 		units_wheeled pushBack [format["%1O_T_MRAP_02_hmg_ghex_F", _sid], 1, 50];
 		units_wheeled pushBack [format["%1O_T_MRAP_02_gmg_ghex_F", _sid], 1, 50];
+	} else {
+		units_wheeled pushBack [format["%1O_LSV_02_armed_F", _sid], 1, 50];
+		units_wheeled pushBack [format["%1O_LSV_02_AT_F", _sid], 1, 50];
+		units_wheeled pushBack [format["%1O_MRAP_02_hmg_F", _sid], 1, 50];
+		units_wheeled pushBack [format["%1O_MRAP_02_gmg_F", _sid], 1, 50];
 	};
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-	if(CTI_APEX_ADDON == 0) then {
-		units_wheeled pushBack [format["%1O_APC_Wheeled_02_rcws_v2_F", _sid], 1, 50];	
+	if(CTI_CAMO_ACTIVATION == 1) then {
+		units_wheeled pushBack [format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid], 1, 50];
 	} else {
-		units_wheeled pushBack [format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid], 1, 50];	
+		units_wheeled pushBack [format["%1O_APC_Wheeled_02_rcws_v2_F", _sid], 1, 50];	
 	};
 };
 
@@ -116,28 +116,28 @@ units_tracked = [];
 
 //Start
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		units_tracked pushBack [format["%1O_APC_Tracked_02_cannon_F", _sid], 1, 50];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		units_tracked pushBack [format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid], 1, 50];
+	} else {
+		units_tracked pushBack [format["%1O_APC_Tracked_02_cannon_F", _sid], 1, 50];
 	};
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		units_tracked pushBack [format["%1O_MBT_02_cannon_F", _sid], 1, 50];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		units_tracked pushBack [format["%1O_T_MBT_02_cannon_ghex_F", _sid], 1, 50];
+	} else {
+		units_tracked pushBack [format["%1O_MBT_02_cannon_F", _sid], 1, 50];
 	};
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 2) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		units_tracked pushBack [format["%1O_MBT_04_cannon_F", _sid], 1, 70];
-		units_tracked pushBack [format["%1O_MBT_04_command_F", _sid], 1, 30];
-		units_tracked pushBack [format["%1O_MBT_02_arty_F", _sid], 1, 30];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		units_tracked pushBack [format["%1O_T_MBT_04_cannon_F", _sid], 1, 70];
 		units_tracked pushBack [format["%1O_T_MBT_04_command_F", _sid], 1, 30];
 		units_tracked pushBack [format["%1O_T_MBT_02_arty_ghex_F", _sid], 1, 30];
+	} else {
+		units_tracked pushBack [format["%1O_MBT_04_cannon_F", _sid], 1, 70];
+		units_tracked pushBack [format["%1O_MBT_04_command_F", _sid], 1, 30];
+		units_tracked pushBack [format["%1O_MBT_02_arty_F", _sid], 1, 30];
 	};
 };
 
@@ -154,10 +154,10 @@ _s pushBack [];
 units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		units_antiair pushBack [format["%1O_APC_Tracked_02_AA_F", _sid], 1, 50];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		units_antiair pushBack [format["%1O_T_APC_Tracked_02_AA_ghex_F", _sid], 1, 50];
+	} else {
+		units_antiair pushBack [format["%1O_APC_Tracked_02_AA_F", _sid], 1, 50];
 	};
 };
 
