@@ -105,7 +105,7 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
 	};
 	
-	if(_reconstruct) then {
+	/*if(_reconstruct) then {
 		//--- Replace with ruins
 		_structure = ((_var select 1) select 1) createVehicle _position;
 		_structure setPos _position;
@@ -121,7 +121,15 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 || _sell == false) then {
 		[_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 
 		_logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull], true];
+	};*/
+	private _enemy = "civil";
+	if(_sideID == 0) then {
+		_enemy = (1) call CTI_CO_FNC_GetSideFromID;
+	} else {
+		_enemy = (0) call CTI_CO_FNC_GetSideFromID;
 	};
+	[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
+	[["CLIENT", _enemy], "Client_OnEnemyStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
 } else {
 	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
 }; 
@@ -157,16 +165,6 @@ if (_need_update) then {
 };
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets destroyed <selled? %2>", _variable, _sell]] call CTI_CO_FNC_Log;};
-
-private _enemy = "civil";
-if(_sideID == 0) then {
-	_enemy = (1) call CTI_CO_FNC_GetSideFromID;
-} else {
-	_enemy = (0) call CTI_CO_FNC_GetSideFromID;
-};
-
-[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
-[["CLIENT", _enemy], "Client_OnEnemyStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
 
 //[["CLIENT", _side], "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;
 //["CLIENT", "Client_OnStructureKilled", [_position, _variable, _sell]] call CTI_CO_FNC_NetSend;

@@ -32,22 +32,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\fa
 _priorUnits = missionNamespace getVariable format ["CTI_%1_Commander", _side];
 if (isNil "_priorUnits" || _ai == 0) then { 
 	
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1B_Soldier_TL_F", _sid]];
-		missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1B_Soldier_unarmed_F", _sid]];
-
-		missionNamespace setVariable [format["CTI_%1_Diver", _side], format["%1B_Soldier_F", _sid]];
-		missionNamespace setVariable [format["CTI_%1_Soldier", _side], format["%1B_Soldier_F", _sid]];
-		missionNamespace setVariable [format["CTI_%1_Crew", _side], format["%1B_crew_F", _sid]];
-		missionNamespace setVariable [format["CTI_%1_Pilot", _side], format["%1B_Pilot_F", _sid]];
-		missionNamespace setVariable [format["CTI_%1_Static", _side], format["%1B_Soldier_F", _sid]];
-
-		//Set starting vehicles
-		missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
-			[format["%1B_LSV_01_unarmed_F", _sid], []], 
-			[format["%1B_MRAP_01_F", _sid], []]
-		]];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1B_T_Soldier_TL_F", _sid]];
 		missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1B_T_Soldier_unarmed_F", _sid]];
 
@@ -61,6 +46,21 @@ if (isNil "_priorUnits" || _ai == 0) then {
 		missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
 			[format["%1B_T_LSV_01_unarmed_F", _sid], []], 
 			[format["%1B_T_MRAP_01_F", _sid], []]
+		]];
+	} else {
+		missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1B_Soldier_TL_F", _sid]];
+		missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1B_Soldier_unarmed_F", _sid]];
+
+		missionNamespace setVariable [format["CTI_%1_Diver", _side], format["%1B_Soldier_F", _sid]];
+		missionNamespace setVariable [format["CTI_%1_Soldier", _side], format["%1B_Soldier_F", _sid]];
+		missionNamespace setVariable [format["CTI_%1_Crew", _side], format["%1B_crew_F", _sid]];
+		missionNamespace setVariable [format["CTI_%1_Pilot", _side], format["%1B_Pilot_F", _sid]];
+		missionNamespace setVariable [format["CTI_%1_Static", _side], format["%1B_Soldier_F", _sid]];
+
+		//Set starting vehicles
+		missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
+			[format["%1B_LSV_01_unarmed_F", _sid], []], 
+			[format["%1B_MRAP_01_F", _sid], []]
 		]];
 	};
 	if (CTI_Log_Level >= CTI_Log_Debug) then {

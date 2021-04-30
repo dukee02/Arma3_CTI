@@ -3,19 +3,19 @@ _sid = "";
 
 if(_side == west) then {
 	//_sid = "VIOC_B_";
-	if(CTI_APEX_ADDON == 0) then {
-		missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_APC_Wheeled_01_cannon_F"];
-	} else {
+	if(CTI_CAMO_ACTIVATION == 1) then {
 		missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_T_APC_Wheeled_01_cannon_F"];
+	} else {
+		missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_APC_Wheeled_01_cannon_F"];
 	};
 } 
 else {
 	if(_side == east) then {
 		//_sid = "VIOC_O_";
-		if(CTI_APEX_ADDON == 0) then {
-			missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_v2_F"];
-		} else {
+		if(CTI_CAMO_ACTIVATION == 1) then {
 			missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_T_APC_Wheeled_02_rcws_v2_ghex_F"];
+		} else {
+			missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_v2_F"];
 		};
 	} 
 	else {
@@ -598,7 +598,7 @@ _prices pushBack 		20;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Walls";
 
-_headers pushBack 		"Camo net";
+/*_headers pushBack 		"Camo net";
 _classes pushBack 		"CamoNet_BLUFOR_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
@@ -614,7 +614,7 @@ _headers pushBack 		"Camo net vehicle";
 _classes pushBack 		"CamoNet_BLUFOR_big_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
-_categories pushBack 	"Camo";
+_categories pushBack 	"Camo";*/
 
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";

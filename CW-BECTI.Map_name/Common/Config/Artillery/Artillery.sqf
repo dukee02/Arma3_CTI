@@ -28,7 +28,7 @@ _m pushBack ["12Rnd_230mm_rockets"];
 _b pushBack [1, 2, 3, 6, 12];
 _r pushBack [[800,4500], [800,7500], [800,10500], [800,20500]];
 
-if(CTI_APEX_ADDON == 1) then {
+//if(CTI_CAMO_ACTIVATION == 1) then {
 	_c pushBack "B_T_Mortar_01_F";
 	_m pushBack ["8Rnd_82mm_Mo_shells", "8Rnd_82mm_Mo_Smoke_white", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_LG"];
 	_b pushBack [1, 2, 4, 8];
@@ -48,7 +48,7 @@ if(CTI_APEX_ADDON == 1) then {
 	_m pushBack ["12Rnd_230mm_rockets"];
 	_b pushBack [1, 2, 3, 6, 12];
 	_r pushBack [[800,4500], [800,7500], [800,10500], [800,20500]];
-};
+//};
 
 
 
