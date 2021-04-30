@@ -228,7 +228,7 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((30*762*54)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 //Sniper
-_tech_level = 0;
+_tech_level = 1;
 _i pushBack "srifle_DMR_07_blk_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
@@ -245,7 +245,7 @@ _i pushBack "20Rnd_650x39_Cased_Mag_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((20*650*39)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
-_tech_level = 1;
+//_tech_level = 1;
 _i pushBack "srifle_DMR_05_blk_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));

@@ -38,7 +38,6 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air"]];
 
 //Infantry setup for the AI groups
 units_infantry = [];
-
 if(CTI_CAMO_ACTIVATION == 1) then {
 	switch (CTI_ECONOMY_LEVEL_INFANTRY) do {
 	case 1: {
@@ -177,7 +176,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 	units_air pushBack [format["%1O_Heli_Light_02_unarmed_F", _sid], 1, 50];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 1) then {
-	units_air = [format["%1O_Heli_Light_02_dynamicLoadout_F", _sid], 1, 70];
+	units_air pushBack [format["%1O_Heli_Light_02_dynamicLoadout_F", _sid], 1, 70];
 	units_air pushBack [format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid], 1, 30];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 2) then {

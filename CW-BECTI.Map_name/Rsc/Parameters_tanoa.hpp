@@ -103,20 +103,20 @@ class Params {
 	};*/
 	class CTI_WEST_FLAG {
 		title = "FLAG: Flagtexture of the West-Side";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Standard Blue","West Germany (GM)","East Germany (GM)","Denmark (GM)","Poland (GM)","USSR (GM)","Germany (CUP)","Russia (CUP)","NATO","USA","UNO"};
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
 		default = 0; //0
 	};
 	class CTI_EAST_FLAG {
 		title = "FLAG: Flagtexture of the East-Side";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Standard Red","West Germany (GM)","East Germany (GM)","Denmark (GM)","Poland (GM)","USSR (GM)","Germany (CUP)","Russia (CUP)","NATO","USA","UNO"};
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Standard Red","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
 		default = 0; //0
 	};
 	class CTI_GUER_FLAG {
 		title = "FLAG: Flagtexture of the Independent-Side";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Standard Green","West Germany (GM)","East Germany (GM)","Denmark (GM)","Poland (GM)","USSR (GM)","Germany (CUP)","Russia (CUP)","NATO","USA","UNO"};
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Standard Green","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
 		default = 0; //0
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {

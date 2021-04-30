@@ -270,6 +270,7 @@ _p pushBack round ((20*762*51)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+
 
 
 //Marksman rifle
+_tech_level = 1;
 _i pushBack "arifle_MXM_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
@@ -324,23 +325,6 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((100*650*39)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 //MG
-_tech_level = 0;
-_i pushBack "MMG_02_camo_F";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-
-_i pushBack "MMG_02_black_F";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-
-_i pushBack "MMG_02_sand_F";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-
-_i pushBack "130Rnd_338_Mag";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round ((130*946*93)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
-
 _tech_level = 1;
 _i pushBack "LMG_Mk200_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
@@ -362,8 +346,25 @@ _i pushBack "200Rnd_65x39_cased_Box_Tracer_Red";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((200*650*39)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
+_tech_level = 2;
+_i pushBack "MMG_02_camo_F";
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+
+_i pushBack "MMG_02_black_F";
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+
+_i pushBack "MMG_02_sand_F";
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
+
+_i pushBack "130Rnd_338_Mag";
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_p pushBack round ((130*946*93)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
+
 //---------Sniper--------------
-_tech_level = 0;
+_tech_level = 1;
 _i pushBack "srifle_EBR_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
@@ -394,7 +395,7 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
 
-_tech_level = 1;
+//_tech_level = 1;
 _i pushBack "srifle_DMR_02_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
@@ -770,7 +771,6 @@ _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEV
 _i pushBack "U_B_T_FullGhillie_tna_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-
 
 
 //--- Vests

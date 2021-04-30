@@ -148,12 +148,12 @@ if ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 1) then {
 };
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
-if(CTI_APEX_ADDON==0) then {
+if(CTI_CAMO_ACTIVATION == 0) then {
 	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 		[["arifle_SDAR_F",["","","",""],["20Rnd_556x45_UW_mag"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_PlateCarrier1_rgr",["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag"]],
+		["V_Chestrig_rgr",["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag"]],
 		["B_AssaultPack_mcamo",[]]],
 		["H_HelmetB",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 			
@@ -161,7 +161,7 @@ if(CTI_APEX_ADDON==0) then {
 		[["arifle_SDAR_F",["","","",""],["20Rnd_556x45_UW_mag"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_HarnessO_brn",["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag"]],
+		["V_Chestrig_khk",["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag"]],
 		["B_AssaultPack_ocamo",[]]],
 		["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 } else {
@@ -169,7 +169,7 @@ if(CTI_APEX_ADDON==0) then {
 		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_PlateCarrier1_tna_F",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+		["V_Chestrig_rgr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
 		["B_AssaultPack_tna_F",[]]],
 		["H_HelmetB_tna_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 		
@@ -177,7 +177,7 @@ if(CTI_APEX_ADDON==0) then {
 		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_F"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_O_T_Soldier_F",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_HarnessO_ghex_F",["30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F"]],
+		["V_TacVest_oli",["30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F"]],
 		["B_FieldPack_ghex_F",[]]],
 		["H_HelmetO_ghex_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 };

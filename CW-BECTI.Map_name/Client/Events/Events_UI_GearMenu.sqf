@@ -331,11 +331,11 @@ switch (_action) do {
 		_seed = round(time + random 10000 - random 500 + diag_frameno);
 		missionNamespace getVariable "cti_gear_list_templates" pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
 		
-		//_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-		_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+		_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+		//_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
 		_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
-		//profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
-		profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		//profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 				
 		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
