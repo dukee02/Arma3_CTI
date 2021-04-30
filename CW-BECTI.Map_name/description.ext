@@ -22,16 +22,12 @@ class CfgPylonManager
 
 //Nothing is rearm everywhere
 rearmObjects[] = {
-	"gm_ge_army_kat1_451_reammo",
-	"gm_gc_army_ural4320_reammo",
-	"BW_LKW_Munition_Winter",
-	"BW_LKW_Munition_Tropen",
-	"BW_LKW_Munition_Fleck",
-	"rnt_lkw_7t_mil_gl_kat_i_mun_winter",
-	"rnt_lkw_7t_mil_gl_kat_i_mun_trope",
-	"rnt_lkw_7t_mil_gl_kat_i_mun_fleck",
-	"CUP_O_Ural_Reammo_RU",
-	"rhs_gaz66_ammo_vdv"
+	"B_Truck_01_ammo_F",
+	"B_T_Truck_01_ammo_F",
+	"O_Truck_02_Ammo_F",
+	"O_T_Truck_02_Ammo_F",
+	"O_Truck_03_ammo_F",
+	"I_Truck_02_ammo_F"
 	};
 
 //Distance needed from rearmObjects[]

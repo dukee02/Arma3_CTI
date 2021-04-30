@@ -1,11 +1,12 @@
-player createDiarySubject ["Sari's WF","Sari's WF"];
+player createDiarySubject ["VIO-BECTI","VIO-BECTI"];
 
-player createDiaryRecord["Sari's WF", ["Contact us", "
-To join our growing community, find our steam group - search for 'vio-community V_I_O_C' https://steamcommunity.com/groups/vio-community <br/><br/>
-To report a bug or request a feature in the mission, use the steam-workshop
+player createDiaryRecord["VIO-BECTI", ["Contact us", "
+To join our growing community, find our steam group - search for 'vio-community V_I_O_C' https://steamcommunity.com/groups/vio-community <br/>
+or join our discord: https://discord.gg/KsGGBvJ <br/><br/>
+To report a bug or request a feature in the mission, use the steam-workshop or our discord!
 "]];
 
-player createDiaryRecord ["Sari's WF",["Rules","
+player createDiaryRecord ["VIO-BECTI",["Rules","
 1. No scripting, hacking or exploiting of the mission file.<br/>
 2. No racism / homophobia / sexism / etc. <br/>
 3. No intentional teamkilling. This includes revenge teamkilling. <br/>
@@ -25,11 +26,11 @@ Breaking the rules will result in a kick. Repeated breaking of the rules will re
 
 If in doubt, ask an admin!"]];
 
-player createDiaryRecord ["Sari's WF",["Changelog","
-Changes made to the 'BECTI IFA3 Sahrani BTB CUP' mission: <br/><br/>
+player createDiaryRecord ["VIO-BECTI",["Changelog","
+Changes made to the 'VIO-BECTI' mission: <br/><br/>
 
 [V2.0] Changelog:<br/>
-Changed: Switch the units from WW2 to <br/>
+Changed: Setup our CTI back to Vanilla units <br/>
 Fixed: <br/>
 Added: <br/>
 
@@ -37,7 +38,7 @@ Added: <br/>
 - Known Issue: AI teams occasionally respawn at the default respawn area. <br/><br/>
 "]];
 
-player createDiaryRecord ["Sari's WF",["About our changes","
+player createDiaryRecord ["VIO-BECTI",["About our changes","
 As seasoned Arma 2 Warfare Benny Edition veterans, we loved the depth and gameplay that the CTI gamemode can offer. Whilst Benny has made a tremendous effort so far in Arma 3 with BECTI, the mission still lacks a lot of the features and depth we enjoyed in Arma 2. So we decided, with permission from Benny, to bring some of these features over and integrate them into BECTI. So far, most of our work has focused existing systems, making these systems more fleshed out and a little less frustrating. The main features over the stock 0.97 BECTI mission includes: <br/><br/>
 
 Town Supply Value: The town value is now  based on a secondary 'supply' currency and will generate more and more of both supply and money for the longer that team hold the town. Friendly towns on the map will display 2 values. This first is the amount of supply per cycle that the town will generate for its team and the second is the maximum possible value it can generate per cycle. <br/><br/>
