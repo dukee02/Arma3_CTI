@@ -69,7 +69,7 @@ clearItemCargo _vehicle;
 if (_special != "FLY") then {
 	//place on a save Pos on the ground
 	//_save_pos = [_position, 0, 50, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-	_save_pos = [_position, 0, 5, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+	_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
 	_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
 	//_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1]; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	_vehicle setVelocity [0,0,1];

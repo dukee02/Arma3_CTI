@@ -146,26 +146,26 @@ _placements pushBack 	[270, 35];
 _helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
 _specials pushBack 		[["DMG_Reduce", 25]];
 
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	_headers pushBack		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
-	//_classes pushBack		["CDF_WarfareBLightFactory", "Land_Scaffolding_New_F"];
-	_classes pushBack		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
-	_prices pushBack 		4000;
-	_times pushBack 		80;
-	_placements pushBack 	[180, 30];
-	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
-	_specials pushBack 		[["DMG_Reduce", 25]];
-};
-
 _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
 //_classes pushBack 		["GUE_WarfareBUAVterminal", "Land_PowGen_Big_ruins"];	
-_classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F", ["Land_Research_HQ_F"]];							  
+_classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"];							  
 _prices pushBack 		4000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
 _helper pushBack		[""];
 _specials pushBack 		[["DMG_Reduce", 25]];
 
+if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+	_headers pushBack		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
+	//_classes pushBack		["CDF_WarfareBLightFactory", "Land_Scaffolding_New_F"];
+	//_classes pushBack		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
+	_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];
+	_prices pushBack 		4000;
+	_times pushBack 		80;
+	_placements pushBack 	[180, 30];
+	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
+	_specials pushBack 		[["DMG_Reduce", 25]];
+};
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	_headers pushBack 		[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"];
@@ -181,7 +181,8 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 	_headers pushBack 		[CTI_AIR, "Aircraft Factory", "Air"];
 	//_classes pushBack 		["RU_WarfareBAircraftFactory", "Land_Scaffolding_New_F"];
-	_classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];
+	//_classes pushBack 		["Land_Airport_Tower_F", "Land_Airport_Tower_ruins_F"];		//cant destroy ruins
+	_classes pushBack 		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
 	_prices pushBack 		8000;
 	_times pushBack 		140;
 	_placements pushBack 	[180, 40];
@@ -191,7 +192,8 @@ if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 
 _headers pushBack 		[CTI_AMMO, "Ammo Depot", "Ammo"];
 //_classes pushBack 		["RU_WarfareBVehicleServicePoint", "Land_PowGen_Big_ruins"];
-_classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];
+//_classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];
+_classes pushBack 		["Land_Medevac_house_V1_F", "Land_Medevac_house_V1_ruins_F"];
 _prices pushBack 		2000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
@@ -200,7 +202,8 @@ _specials pushBack 		[["DMG_Reduce", 25]];
 
 _headers pushBack 		[CTI_REPAIR, "Repair Depot", "Repair"];
 //_classes pushBack 		["TK_GUE_WarfareBContructionSite_Base_EP1", "Land_PowGen_Big_ruins"];
-_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];
+//_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];
+_classes pushBack 		["Land_Cargo_House_V3_F", "Land_Cargo_House_V3_ruins_F"];
 _prices pushBack 		4000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
@@ -210,7 +213,7 @@ _specials pushBack 		[["DMG_Reduce", 25]];
 if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 	_headers pushBack 		[CTI_NAVAL, "Naval Yard", "Naval"];
 	//_classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];
-	_classes pushBack 		["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"];
+	_classes pushBack 		["Land_Cargo_House_V2_F", "Land_Cargo_House_V2_ruins_F"];
 	_prices pushBack 		3000;
 	_times pushBack 		80;
 	_placements pushBack 	[180, 60];

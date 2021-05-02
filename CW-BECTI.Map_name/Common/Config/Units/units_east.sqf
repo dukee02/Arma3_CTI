@@ -1592,7 +1592,7 @@ _building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}
 
 
 if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-	_c pushBack format["%1O_Truck_02_fuel_F", _sid];					//Ammotruck
+	_c pushBack format["%1O_Truck_02_Ammo_F", _sid];					//Ammotruck
 	_p pushBack '';
 	_n pushBack 'Ammo Truck';
 	_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
@@ -1602,7 +1602,7 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	_s pushBack "service-ammotruck";
 	_d pushBack 0;	
 
-	_c pushBack format["%1O_Truck_02_Ammo_F", _sid];					//Fueltruck
+	_c pushBack format["%1O_Truck_02_fuel_F", _sid];					//Fueltruck
 	_p pushBack '';
 	_n pushBack 'Fuel Truck';
 	_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
@@ -1613,7 +1613,7 @@ if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	_d pushBack 0;
 	};
 if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];					//Ammotruck
+	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];					//Ammotruck
 	_p pushBack '';
 	_n pushBack 'Ammo Truck';
 	_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
@@ -1623,7 +1623,7 @@ if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 	_s pushBack "service-ammotruck";
 	_d pushBack 0;	
 
-	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];					//Fueltruck
+	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];					//Fueltruck
 	_p pushBack '';
 	_n pushBack 'Fuel Truck';
 	_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
@@ -1638,7 +1638,7 @@ _tech_level = 2;
 _time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
 _building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
-	_c pushBack format["%1O_Truck_03_fuel_F", _sid];					//Ammotruck
+	_c pushBack format["%1O_Truck_03_ammo_F", _sid];					//Ammotruck
 	_p pushBack '';
 	_n pushBack 'Ammo Truck';
 	_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
@@ -1648,7 +1648,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 	_s pushBack "service-ammotruck";
 	_d pushBack 0;	
 
-	_c pushBack format["%1O_Truck_03_ammo_F", _sid];					//Fueltruck
+	_c pushBack format["%1O_Truck_03_fuel_F", _sid];					//Fueltruck
 	_p pushBack '';
 	_n pushBack 'Fuel Truck';
 	_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));

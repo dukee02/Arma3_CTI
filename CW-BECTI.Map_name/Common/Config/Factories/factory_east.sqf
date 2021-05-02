@@ -288,7 +288,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	};
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 2) then {
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_MBT_02_arty_F", _sid];
 		_c pushBack format["%1O_MBT_04_cannon_F", _sid];
 		_c pushBack format["%1O_MBT_04_command_F", _sid];
