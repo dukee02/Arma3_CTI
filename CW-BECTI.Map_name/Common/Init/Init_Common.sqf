@@ -150,34 +150,34 @@ if ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 1) then {
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
 if(CTI_CAMO_ACTIVATION == 0) then {
 	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-		[["arifle_SDAR_F",["","","",""],["20Rnd_556x45_UW_mag"]],["",["","","",""],[]],
+		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_Chestrig_rgr",["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag"]],
+		["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
 		["B_AssaultPack_mcamo",[]]],
 		["H_HelmetB",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 			
 	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
-		[["arifle_SDAR_F",["","","",""],["20Rnd_556x45_UW_mag"]],["",["","","",""],[]],
+		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_Chestrig_khk",["20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag","20Rnd_556x45_UW_mag"]],
+		["V_Chestrig_khk",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
 		["B_AssaultPack_ocamo",[]]],
 		["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 } else {
 	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[]],
+		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_Chestrig_rgr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+		["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
 		["B_AssaultPack_tna_F",[]]],
 		["H_HelmetB_tna_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 		
 	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
-		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_F"]],["",["","","",""],[]],
+		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
 		[["U_O_T_Soldier_F",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
-		["V_TacVest_oli",["30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F","30Rnd_580x42_Mag_F"]],
+		["V_TacVest_oli",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
 		["B_FieldPack_ghex_F",[]]],
 		["H_HelmetO_ghex_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 };
