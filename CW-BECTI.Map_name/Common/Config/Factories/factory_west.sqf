@@ -374,6 +374,8 @@ if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1B_T_Truck_01_Repair_F", _sid];
 };
 _c pushBack format["CTI_Salvager_%1", _side];
+_c pushBack format["%1B_Slingload_01_Medevac_F", _sid];
+_c pushBack format["%1B_Slingload_01_Repair_F", _sid];
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_REPAIR];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
@@ -396,6 +398,8 @@ if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1B_T_Truck_01_ammo_F", _sid];
 	_c pushBack format["%1B_T_Truck_01_fuel_F", _sid];
 };
+_c pushBack format["%1B_Slingload_01_Ammo_F", _sid];
+_c pushBack format["%1B_Slingload_01_Fuel_F", _sid];
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AMMO];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 

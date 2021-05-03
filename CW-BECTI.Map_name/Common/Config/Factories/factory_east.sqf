@@ -358,6 +358,8 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _c];
 _c = [];
 _c pushBack format["%1O_Truck_03_repair_F", _sid];
 _c pushBack format["CTI_Salvager_%1", _side];
+_c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];
+_c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_REPAIR];
 if (isNil "_priorUnits") then { 
@@ -385,6 +387,8 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 	_c pushBack format["%1O_Truck_03_fuel_F", _sid];
 	_c pushBack format["%1O_Truck_03_ammo_F", _sid];
 };
+_c pushBack format["%1Land_Pod_Heli_Transport_04_ammo_F", _sid];
+_c pushBack format["%1Land_Pod_Heli_Transport_04_fuel_F", _sid];
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AMMO];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 

@@ -1581,6 +1581,26 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _f pushBack CTI_FACTORY_REPAIR;
 _s pushBack [format["%1O_T_Truck_02_Box_F", _sid],"salvager-independent"];
 _d pushBack 0;
+	
+_c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];							//medic
+_p pushBack '';
+_n pushBack (format ["Mobile Respawn Box - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
+_t pushBack _building_time;
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_f pushBack CTI_FACTORY_LIGHT;
+_s pushBack "service-medic";
+_d pushBack 0;
+
+_c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];					//Repairtruck
+_p pushBack '';
+_n pushBack 'Repair Box';
+_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
+_t pushBack _building_time;
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_f pushBack CTI_FACTORY_REPAIR;
+_s pushBack "service-repairtruck";
+_d pushBack 0;
 
 //*********************************************************************************************************************************************
 //											 Ammo Factory units																			  	  *
@@ -1658,6 +1678,25 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 	_s pushBack "service-fueltruck";
 	_d pushBack 0;
 };
+_c pushBack format["%1Land_Pod_Heli_Transport_04_ammo_F", _sid];					//Ammotruck
+_p pushBack '';
+_n pushBack 'Ammo Box';
+_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
+_t pushBack _building_time;
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_f pushBack CTI_FACTORY_AMMO;
+_s pushBack "service-ammotruck";
+_d pushBack 0;
+
+_c pushBack format["%1Land_Pod_Heli_Transport_04_fuel_F", _sid];					//Fueltruck
+_p pushBack '';
+_n pushBack 'Fuel Box';
+_o pushBack ((CTI_ECONOMY_PRIZE_WHEELED*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))+(CTI_ECONOMY_PRIZE_ARMED*(_tech_level+1)));
+_t pushBack _building_time;
+_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+_f pushBack CTI_FACTORY_AMMO;
+_s pushBack "service-fueltruck";
+_d pushBack 0;
 //*********************************************************************************************************************************************
 //											 Naval Factory units																		  	  *
 //*********************************************************************************************************************************************
