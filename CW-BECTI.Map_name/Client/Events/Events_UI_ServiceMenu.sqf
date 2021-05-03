@@ -193,7 +193,8 @@ switch (_action) do {
 								};
 							};
 						};
-						((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl (_x select 3)) ctrlSetStructuredText parseText format["<t align='right' color='#F56363'>$%1</t>", _price];
+						//((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl (_x select 3)) ctrlSetStructuredText parseText format["<t align='right' color='#F56363'>$%1</t>", _price];
+						((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl (_x select 3)) ctrlSetStructuredText parseText format["<t align='right' color='#F56363'>$%1</t>", if(_price>0) then {_price}else{"free"}];
 					} else {
 						((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl (_x select 3)) ctrlSetStructuredText parseText "";
 					};

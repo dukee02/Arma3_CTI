@@ -862,7 +862,9 @@ _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))*2)+((CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))*4);
 
 //--- Glasses
-
+_i pushBack "g_goggles_vr";
+_u pushBack 0;
+_p pushBack 1;
 
 
 //--- Attachments

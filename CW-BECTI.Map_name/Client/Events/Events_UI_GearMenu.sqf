@@ -292,6 +292,7 @@ switch (_action) do {
 		_upgrade = 0;
 		_has_nil = false;
 		_dontbelong = false;
+		_maxUGgear = [];
 		
 		_side_gear = missionNamespace getVariable "cti_gear_all";
 		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
@@ -301,20 +302,29 @@ switch (_action) do {
 			_var = missionNamespace getVariable _x;
 			if !(isNil '_var') then {
 				_cost = _cost + ((_var select 0) select 1);
-				if (((_var select 0) select 0) > _upgrade) then {_upgrade = (_var select 0) select 0};
+				if (((_var select 0) select 0) > _upgrade) then {
+					_upgrade = (_var select 0) select 0;
+					_maxUGgear = _x;
+				};
 			} else {
 				_has_nil = true;
 			};
-			//if !(_x in _side_gear) then {_dontbelong = true};
+			if !(_x in _side_gear) then {
+				_dontbelong = true;
+				_maxUGgear = _x;
+			};
 			if (_has_nil || _dontbelong) exitWith {};
 		} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 		
 		if (_upgrade > _upgrade_gear) exitWith {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items does not meet the current <t color='#F5D363'>Gear</t> upgrade level</t>";
+			//hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items does not meet the current <t color='#F5D363'>Gear</t> upgrade level</t>";
+			hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items does not meet the current <t color='#F5D363'>Gear:[%1]</t> upgrade level</t>", _maxUGgear];
+			
 		};
 		
 		if (_dontbelong) exitWith {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items do not belong to the side's equipment</t>";
+			//hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items do not belong to the side's equipment</t>";
+			hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items do not belong to the side's equipment [%1]</t>", _maxUGgear];
 		};
 		//todo: items belong to side gear?
 		
