@@ -139,7 +139,7 @@ _specials pushBack 		[["DMG_Reduce", 40]];
 
 _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
 //_classes pushBack		["CDF_WarfareBBarracks", "Land_Scaffolding_New_F"];
-_classes pushBack		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];
+_classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];
 _prices pushBack		2000;
 _times pushBack			60;
 _placements pushBack 	[270, 35];
@@ -193,7 +193,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 _headers pushBack 		[CTI_AMMO, "Ammo Depot", "Ammo"];
 //_classes pushBack 		["RU_WarfareBVehicleServicePoint", "Land_PowGen_Big_ruins"];
 //_classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];
-_classes pushBack 		["Land_Medevac_house_V1_F", "Land_Medevac_house_V1_ruins_F"];
+_classes pushBack		["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"];
 _prices pushBack 		2000;
 _times pushBack 		90;
 _placements pushBack 	[90, 25];
@@ -230,9 +230,9 @@ _prices = [];
 _placements = [];  
 _categories = [];
 
-
-_headers pushBack 			["FOB",[["RuinOnDestroyed", "Land_Shed_M01_ruins_EP1"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
-_classes pushBack 			"INS_WarfareBFieldhHospital";
+//_headers pushBack 			["FOB",[["RuinOnDestroyed", "Land_Shed_M01_ruins_EP1"],["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
+_headers pushBack 			["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"],["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX)}]]];
+_classes pushBack 			"Land_Medevac_house_V1_F";
 _prices pushBack 			5000;
 _placements pushBack 		[180, 15];
 _categories pushBack 		"Fortification";
