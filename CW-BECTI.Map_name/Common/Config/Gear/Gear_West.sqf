@@ -264,9 +264,9 @@ _i pushBack "arifle_SPAR_03_snd_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
 
-_i pushBack "20Rnd_762x51_Mag";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round ((20*762*51)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
+//_i pushBack "20Rnd_762x51_Mag";
+//_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+//_p pushBack round ((20*762*51)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 
 //Marksman rifle
