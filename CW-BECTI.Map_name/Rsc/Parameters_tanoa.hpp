@@ -191,6 +191,12 @@ class Params {
 		texts[] = {"2","4","6","8","10","12","14","16","18","20","22","24","26","28","30","35","40","45","50","60","70","80","90","100"};
 		default = 20;
 	};
+	class CTI_AI_SKILL_BASE {
+		title = "AI: Skill (all AI units)";
+		values[] = {0.05,0.25,0.45,0.65,0.80};
+		texts[] = {"Novice","Rookie","Recruit","Veteran","Expert"};
+		default = 0.25;
+	};
 	class SEPERATOR_BASE {
 		title = "============ Base ============";
 		values[] = {0,1};

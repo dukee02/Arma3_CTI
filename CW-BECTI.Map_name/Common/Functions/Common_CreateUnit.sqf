@@ -62,10 +62,11 @@ _unit addRating 1000;*/
 _side = side _team;
 _dummyGroup = createGroup _side;
 _unit = _dummyGroup createUnit [_classname, _position, [], 0, _special];
-_unit setSkill (0.5 + (random 0.3));//tbd tweak
+//_unit setSkill (0.5 + (random 0.3));//tbd tweak
+_unit setSkill (CTI_AI_SKILL_BASE + (random CTI_AI_SKILL_SPAN));//tbd tweak
 [_unit] joinSilent _team;
 _unit addRating 1000;
-//{player reveal _unit} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+{player reveal _unit} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 deleteGroup _dummyGroup;
 
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};

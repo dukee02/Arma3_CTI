@@ -106,14 +106,24 @@ CTI_AI_TEAMS_OBSERVATION_MARKER_LIFESPAN = 1; //--- Time a reporting marker may 
 //--- AI Teams: Units
 CTI_AI_TEAMS_UNITS_MIN = 1; //--- Amount of units an AI leader need to have to be able to perform it's duty (It will resupply @base if it's lower)
 CTI_AI_PLAYERS_TEAMS_SOLDIER_GROUPSIZE = 6; //--- Skill (Soldiers), have more units than the others.
+//CTI_AI_SKILL_BASE = 0.4; //--- sets the min skil of all units
+CTI_AI_SKILL_SPAN = 0.2; //--- stes the span of additional skill - real skil = CTI_AI_SKILL_BASE + (random CTI_AI_SKILL_SPAN)
 
 //--- AI Teams: Parameters
 with missionNamespace do {
 	if (isNil 'CTI_AI_PLAYER_TEAMS_GROUPSIZE') then {CTI_AI_PLAYER_TEAMS_GROUPSIZE = 12}; //--- Player Teams may get up to x units
 	if (isNil 'CTI_AI_TEAMS_GROUPSIZE') then {CTI_AI_TEAMS_GROUPSIZE = 12}; //--- AI Teams may get up to x units
 	if (isNil 'CTI_AI_TEAMS_JIP_PRESERVE') then {CTI_AI_TEAMS_JIP_PRESERVE = 0}; //--- Keep the AI Teams units on JIP
-	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 1}; //--- Determine whether AI Teams are enabled or not
+	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 0}; //--- Determine whether AI Teams are enabled or not
 	if (isNil 'CTI_AI_COMMANDER_ENABLED') then {CTI_AI_COMMANDER_ENABLED = 1}; //--- Determine whether AI Commander is enabled or not
+	if (isNil 'CTI_AI_SKILL_BASE') then {
+		/*Novice < 0.25
+		Rookie >= 0.25 and <= 0.45
+		Recruit > 0.45 and <= 0.65
+		Veteran > 0.65 and <= 0.85
+		Expert > 0.85*/
+		CTI_AI_SKILL_BASE = 0.45;
+	};	//--- sets the min skil of all units
 };
 //-----------------------------------------------------------------------------------------------------------------------//
 
