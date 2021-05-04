@@ -293,6 +293,7 @@ switch (_action) do {
 		_has_nil = false;
 		_dontbelong = false;
 		_maxUGgear = [];
+		_templates = [];
 		
 		_side_gear = missionNamespace getVariable "cti_gear_all";
 		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
@@ -317,13 +318,11 @@ switch (_action) do {
 		} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 		
 		if (_upgrade > _upgrade_gear) exitWith {
-			//hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items does not meet the current <t color='#F5D363'>Gear</t> upgrade level</t>";
 			hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items does not meet the current <t color='#F5D363'>Gear:[%1]</t> upgrade level</t>", _maxUGgear];
 			
 		};
 		
 		if (_dontbelong) exitWith {
-			//hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items do not belong to the side's equipment</t>";
 			hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items do not belong to the side's equipment [%1]</t>", _maxUGgear];
 		};
 		//todo: items belong to side gear?
@@ -341,13 +340,15 @@ switch (_action) do {
 		_seed = round(time + random 10000 - random 500 + diag_frameno);
 		missionNamespace getVariable "cti_gear_list_templates" pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
 		
-		_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-		//_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+		//_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+		_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
 		_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
-		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
-		//profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		//profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
-				
+		if (CTI_Log_Level >= CTI_Log_Debug) then {
+			["VIOC-DEBUG", "File: Client\Events\Events_UI_GearMenu.sqf", format["Client saves template: <%1>", _templates]] call CTI_CO_FNC_Log;
+		};
 		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
 			(CTI_GEAR_TAB_TEMPLATES) call CTI_UI_Gear_DisplayShoppingItems;
 		};

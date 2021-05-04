@@ -1,3 +1,16 @@
+/*
+Gear saves like:
+[[[""arifle_spar_01_blk_f"",["""","""","""",""""],[""30rnd_556x45_stanag_tracer_green""]],
+[""launch_nlaw_f"",["""","""","""",""""],[]],
+["""",["""","""","""",""""],[]]],
+[[""u_b_combatuniform_mcam"",
+[""firstaidkit"",""firstaidkit"",""handgrenade"",""handgrenade""]],
+[""v_chestrig_rgr"",[""30rnd_556x45_stanag_tracer_green"",""30rnd_556x45_stanag_tracer_green"",""30rnd_556x45_stanag_tracer_green""]],
+[""b_assaultpack_mcamo"",[]]],
+[""h_helmetb_light"",""g_goggles_vr""],
+[["""",""binocular""],
+[""itemmap"","""",""itemradio"",""itemcompass"",""itemwatch""]]],0,151707]]
+*/
 private ["_faction", "_templates"];
 
 _faction = _this select 0;

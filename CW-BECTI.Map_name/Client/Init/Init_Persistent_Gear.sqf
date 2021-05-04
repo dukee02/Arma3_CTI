@@ -1,5 +1,5 @@
-_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
-//_templates = profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
+//_templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
+_templates = profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
 
 _side_gear = missionNamespace getVariable "cti_gear_all";
 
@@ -221,7 +221,9 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 									
 									_list pushBack _x;
 								} else {
-									//todo diaglog error
+									if (CTI_Log_Level >= CTI_Log_Debug) then {
+										["VIOC-DEBUG", "File: Client\Init\Init_Persistent_Gear.sqf", format["Client loaded templates: <%1>", _x]] call CTI_CO_FNC_Log;
+									};
 								};
 							};
 						};
@@ -232,6 +234,9 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 	} forEach _templates;
 };
 
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["VIOC-DEBUG", "File: Client\Init\Init_Persistent_Gear.sqf", format["Client loaded templates List: <%1>", _list]] call CTI_CO_FNC_Log;
+};
 if (count _list > 0) then { //--- If we have more than one template then we overwrite the existing one
 	missionNamespace setVariable ["cti_gear_list_templates", _list];
 };
