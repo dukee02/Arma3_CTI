@@ -1221,7 +1221,7 @@ _i pushBack "ItemGPS";
 _u pushBack 0;
 _p pushBack 100;
 
-_i pushBack "B_UavTerminal";
+_i pushBack "O_UavTerminal";
 _u pushBack 1;
 _p pushBack 1500;
 

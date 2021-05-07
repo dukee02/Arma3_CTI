@@ -136,10 +136,26 @@ switch (_action) do {
 					_artillery_piece = _x select 0;
 					if (alive _artillery_piece) then { //--- The artillery piece is alive and kicking
 						if ([_artillery_piece, _artillery_magazine, _target, _artillery_range select 0, _artillery_range select 1] call CTI_UI_Artillery_CanFire) then { //--- Ultimate check about ranges
-							["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artytest: <%1|%2|%3>", _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;
+							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artillerie shoots: <%1|%2|%3|%4>",_artillery_piece, _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;
 							//_artillery_piece doArtilleryFire [_target, _artillery_magazine, _artillery_burst];
 							_artillery_piece commandArtilleryFire [_target, _artillery_magazine, _artillery_burst];
+						} else {
+							_isInRange = false;
+							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
+							//ETA = Estimated Time of Arrival
+							_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
+							//_isInRange = _target inRangeOfArtillery [[_artillery_piece], _artillery_magazine];
+							//_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
+							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;
+							if(_isInRange) then {
+								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[ETA=%1]</t>";
+							} else {
+								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, Unit not in range!</t>";
+							};
 						};
+					} else {
+						["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", "can not shoot artillerie not responding, is it still alive?>"] call CTI_CO_FNC_Log;
+						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, artillerie not responding, is it still alive?.</t>";
 					};
 				} forEach _artillery;
 				

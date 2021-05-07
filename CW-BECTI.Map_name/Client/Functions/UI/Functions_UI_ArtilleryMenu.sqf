@@ -60,7 +60,7 @@ CTI_UI_Artillery_CanFire = {
 	//--- Make sure that the artillery can fire with the engine (min-max) and that it's within the allowed CTI defined range.
 	//_isInRange = _target inRangeOfArtillery [[_artillery], _magazine];
 	//_isETA = _artillery getArtilleryETA [_target, _magazine];					
-	//["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;
+	//["TEST", "FILE: Functions_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;
 	if (_target inRangeOfArtillery [[_artillery], _magazine] && _target distance _artillery >= _range_min && _target distance _artillery <= _range_max) then {true} else {false}
 	//if (_target distance _artillery >= _range_min && _target distance _artillery <= _range_max) then {true} else {false}
 };
