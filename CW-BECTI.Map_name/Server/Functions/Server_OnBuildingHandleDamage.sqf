@@ -52,6 +52,9 @@ _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02 && alive _damaged) then {
 	_logic setVariable ["cti_structures_lasthit", time];
 	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position]]] call CTI_CO_FNC_NetSend;
+	if (CTI_Log_Level >= CTI_Log_Debug || CTI_DEBUG) then {
+		["VIOC-DEBUG", "File: Server\Functions\Server_OnBuildingHandleDamage.sqf", format["Building %1 gets damage: <%2><%3><%4>", _damaged, _damage, getDammage _damaged, _reduce_damages]] call CTI_CO_FNC_Log;
+	};
 };
 
 _damage
