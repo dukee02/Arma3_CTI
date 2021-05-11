@@ -152,7 +152,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
-		[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
+		[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
 		["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
 		["B_AssaultPack_mcamo",[]]],
 		["H_HelmetB_light",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
@@ -160,7 +160,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
 		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
-		[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
+		[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
 		["V_BandollierB_cbr",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
 		["B_AssaultPack_ocamo",[]]],
 		["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
@@ -168,7 +168,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
-		[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
+		[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
 		["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
 		["B_AssaultPack_tna_F",[]]],
 		["H_HelmetB_Light_tna_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
@@ -176,7 +176,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
 		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[]],
 		["",["","","",""],[""]]],
-		[["U_O_T_Soldier_F",["HandGrenade","HandGrenade","FirstAidKit","FirstAidKit"]],
+		[["U_O_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
 		["V_BandollierB_ghex_F",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
 		["B_FieldPack_ghex_F",[]]],
 		["H_HelmetO_ghex_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];

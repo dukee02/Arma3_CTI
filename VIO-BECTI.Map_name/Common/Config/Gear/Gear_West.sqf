@@ -1645,17 +1645,17 @@ _i pushBack "itemwatch";
 _u pushBack 0;
 _p pushBack 1;
 
-_i pushBack "Toolkit";
-_u pushBack 0;
-_p pushBack 750;
-
 _i pushBack "FirstAidKit";
 _u pushBack 0;
 _p pushBack 150;
 
+_i pushBack "Toolkit";
+_u pushBack 0;
+_p pushBack round 3000;
+
 _i pushBack "Medikit";
 _u pushBack 0;
-_p pushBack 400;
+_p pushBack round 1500;
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
