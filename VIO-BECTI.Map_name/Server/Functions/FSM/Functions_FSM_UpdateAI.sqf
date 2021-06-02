@@ -516,7 +516,8 @@ CTI_FSM_UpdateAI_Order_HoldTownsBase = {
 		if !(isNil {_defend getVariable "cti_town_sideID"}) then {
 				_lastSV = _defend getVariable 'cti_town_SV';
 				_currentSV = _defend getVariable 'cti_town_SV';
-				if ((_currentSV < _lastSV && CTI_P_SideID == (_defend getVariable 'cti_town_sideID')) || CTI_P_SideID != (_defend getVariable 'cti_town_sideID')) then {
+				//if ((_currentSV < _lastSV && CTI_P_SideID == (_defend getVariable 'cti_town_sideID')) || CTI_P_SideID != (_defend getVariable 'cti_town_sideID')) then {
+				if ((_currentSV < _lastSV && _sideID == (_defend getVariable 'cti_town_sideID')) || _sideID != (_defend getVariable 'cti_town_sideID')) then {
 					_action = "defense";if (_action != _last_action) then {_move_defend_last = -120};
 			} else {
 				_action = "patrol";if (_action != _last_action) then {_move_patrol_reload = true};
