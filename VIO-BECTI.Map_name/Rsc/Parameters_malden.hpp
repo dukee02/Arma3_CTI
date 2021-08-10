@@ -435,7 +435,7 @@ class Params {
 		title = "GAMEPLAY: Kick Team Stackers";
 		values[] = {0,1,2,3,4,5};
 		texts[] = {"Disabled","+1 Player Advantage","+2 Player Advantage","+3 Player Advantage","+4 Player Advantage","+5 Player Advantage"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_GAMEPLAY_TEAMSWAP_DISABLE {
 		title = "GAMEPLAY: Kick Team Swappers";
@@ -565,10 +565,8 @@ class Params {
 	};
 	class CTI_TOWNS_STARTING_MODE {
 		title = "TOWNS: Starting Mode";
-		//values[] = {-1,0,1,2,3,4,5};
-		//texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
-		values[] = {-1,1,4,5};
-		texts[] = {"pre defined","50% East, 50% West", "Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
+		values[] = {-1,0,1,2,3,4,5};
+		texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
 		default = -1;
 	};
 	class CTI_TOWNS_VEHICLES_LOCK {
@@ -662,7 +660,7 @@ class Params {
 		default = 0;
 	};
 	class SEPARATOR_LOG {
-		title = "=========================== LOG ============================";
+		title = "=========================== DEBUG ============================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -677,7 +675,7 @@ class Params {
 		title = "AI: Teams";
 		values[] = {0,1,2,3,4};
 		texts[] = {"Disabled", "1/4 Slots", "1/2 Slots", "3/4 Slots", "All Slots"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_AI_TEAMS_GROUPSIZE {
 		title = "AI: Team Size (AI)";

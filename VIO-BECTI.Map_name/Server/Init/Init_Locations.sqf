@@ -6,14 +6,16 @@ waitUntil {!isNil 'CTI_InitTowns'};
 switch (missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") do {
 	//All resistance
 	case 0: {
+		_allTowns = CTI_Towns;
 		{
 			_x setVariable ['cti_town_sideID',CTI_RESISTANCE_ID,true];
+			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Locations.sqf", Format ["Switch Town: [%1] to side [%2].", _x getVariable "cti_town_name", CTI_WEST_ID]] Call CTI_CO_FNC_Log};
 			_camps = _x getVariable "cti_town_camps";
 			{
 				_x setVariable ['cti_camp_sideID',CTI_RESISTANCE_ID,true];
 				_x setVariable ["cti_camp_lastSideID", CTI_RESISTANCE_ID, true];
 			} forEach _camps;
-		} forEach CTI_Towns;
+		} forEach _allTowns;
 	};
 	//--- 50-50.
 	case 1: {

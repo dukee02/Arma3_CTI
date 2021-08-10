@@ -287,7 +287,7 @@ execVM "Server\Functions\Server_Weather_Hook.sqf";
 CTI_Init_Server = true;
 
 //--- Town starting mode.
-if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") > 0 || (missionNamespace getVariable "CTI_TOWNS_PATROLS") > 0) then {[] Call Compile preprocessFile "Server\Init\Init_Locations.sqf"} else {CTI_Init_TownMode = true};
+if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") >= 0 || (missionNamespace getVariable "CTI_TOWNS_PATROLS") > 0) then {[] Call Compile preprocessFile "Server\Init\Init_Locations.sqf"} else {CTI_Init_TownMode = true};
 
 //--- Towns init thread
 0 spawn {

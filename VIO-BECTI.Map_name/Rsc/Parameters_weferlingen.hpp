@@ -5,7 +5,7 @@ class Params {
 		texts[] = {""};
 		default = 1;
 	};
-	class CTI_BW_SIDE {
+	/*class CTI_BW_SIDE {
 		title = "Bundeswehr (West Germany) Side";
 		values[] = {-1,0};
 		texts[] = {"deactivated","BLUFOR (West)"};
@@ -92,32 +92,32 @@ class Params {
 		//values[] = {-1,0,1,2,3,4,5,6,7};
 		//texts[] = {"no changes","Bundeswehr (West Germany)","NVA (East Germany)","Denmark","Polish","USA (CUP Mod)","Soviet (CUP Mod)","USA (RHS Mod)","Soviet (RHS Mod)"};
 		default = -1;
-	};
+	};*/
 	class CTI_CAMO_ACTIVATION {
 		title = "Main Camo";
-		values[] = {0,1,2,3};
-		texts[] = {"Standard", "Winter", "Desert", "All active (Main = Standard)"};
-		//values[] = {0,1,2,3,4};
-		//texts[] = {"Standard", "Winter", "Desert", "Autumn (Brown)", "All active (Main = Standard)"};
+		//values[] = {0,1,2,3};
+		//texts[] = {"Standard", "Winter", "Desert", "All active (Main = Standard)"};
+		values[] = {0,1,4};
+		texts[] = {"Standard", "APEX", "both (Main = Standard)"};
 		default = 0;
 	};
 	class CTI_WEST_FLAG {
 		title = "FLAG: Flagtexture of the West-Side";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Standard Blue","West Germany (GM)","East Germany (GM)","Denmark (GM)","Poland (GM)","USSR (GM)","Germany (CUP)","Russia (CUP)","NATO","USA","UNO"};
-		default = 0; //0
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
+		default = 1; //0
 	};
 	class CTI_EAST_FLAG {
 		title = "FLAG: Flagtexture of the East-Side";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Standard Red","West Germany (GM)","East Germany (GM)","Denmark (GM)","Poland (GM)","USSR (GM)","Germany (CUP)","Russia (CUP)","NATO","USA","UNO"};
-		default = 0; //0
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
+		default = 2; //0
 	};
 	class CTI_GUER_FLAG {
 		title = "FLAG: Flagtexture of the Independent-Side";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Standard Green","West Germany (GM)","East Germany (GM)","Denmark (GM)","Poland (GM)","USSR (GM)","Germany (CUP)","Russia (CUP)","NATO","USA","UNO"};
-		default = 0; //0
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
+		default = 3; //0
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {
 		title = "UPGRADE: Max Level Gear";
@@ -135,13 +135,13 @@ class Params {
 		title = "UPGRADE: Max Level Wheeled";
 		values[] = {-1,0,1,2,3,4,5};
 		texts[] = {"Disable all gear","0","1","2","3","4","5"};
-		default = 3; //3
+		default = 2; //2
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
 		title = "UPGRADE: Max Level Tracked";
 		values[] = {-1,0,1,2,3,4,5};
 		texts[] = {"Disable all gear","0","1","2","3","4","5"};
-		default = 3; //3
+		default = 2; //2
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
 		title = "UPGRADE: Max Level Naval";
@@ -435,7 +435,7 @@ class Params {
 		title = "GAMEPLAY: Kick Team Stackers";
 		values[] = {0,1,2,3,4,5};
 		texts[] = {"Disabled","+1 Player Advantage","+2 Player Advantage","+3 Player Advantage","+4 Player Advantage","+5 Player Advantage"};
-		default = 2;
+		default = 1;
 	};
 	class CTI_GAMEPLAY_TEAMSWAP_DISABLE {
 		title = "GAMEPLAY: Kick Team Swappers";
@@ -464,7 +464,7 @@ class Params {
 	class CTI_RESPAWN_CAMPS_RULE_MODE {
 		title = "RESPAWN: Enemy near";
 		values[] = {0,1,2};
-		texts[] = {"Disabled","West | East","West | East | Resistance"};
+		texts[] = {"Disabled","West | East","West | East | Independent"};
 		default = 2;
 	};
 	class CTI_RESPAWN_TIMER {
@@ -565,16 +565,14 @@ class Params {
 	};
 	class CTI_TOWNS_STARTING_MODE {
 		title = "TOWNS: Starting Mode";
-		//values[] = {-1,0,1,2,3,4,5};
-		//texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
-		values[] = {-1,1,4,5};
-		texts[] = {"pre defined","50% East, 50% West", "Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
+		values[] = {-1,0,1,2,3,4,5};
+		texts[] = {"pre defined","Independent","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
 		default = -1;
 	};
 	class CTI_TOWNS_VEHICLES_LOCK {
 		title = "TOWNS: Vehicle Lock";
 		values[] = {0,1,2,3};
-		texts[] = {"Unlocked","Locked (Resistance)","Locked (Occupation)","Locked (Resistance and Occupation)"};
+		texts[] = {"Unlocked","Locked (Independent)","Locked (Occupation)","Locked (Independent and Occupation)"};
 		default = 0;
 	};
 	/*class SEPERATOR_VEHICLES {
@@ -649,56 +647,20 @@ class Params {
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","4.5 KM","5 KM"};
 		default = 5000;
 	};
-	class SEPARATOR_ADDONS {
+	/*class SEPARATOR_ADDONS {
 		title = "=========================== ADDONS ============================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
 	};
-	class CTI_MAIN_ADDON {
-		title = "ADDON: Main BW untis (80s or modern)";
+	class CTI_APEX_ADDON {
+		title = "ADDON: Apex";
 		values[] = {0,1};
-		texts[] = {"Global Mobilization - Cold War","BW-Mod & BW add"};
+		texts[] = {"deactivate","activate"};
 		default = 0;
-	};
-	class CTI_CUP_ADDON {
-		title = "ADDON: CUP Support - Vehicles west + east";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_BW_ADDON {
-		title = "ADDON: BWA3 Support - Vehicles west";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_REDD_ADDON {
-		title = "ADDON: Redd-Tank Support - Vehicles west";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_RHS_ADDON {
-		title = "ADDON: RHS AFRF Support - Vehicles east";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_LEN_ADDON {
-		title = "ADDON: LEN Support - Vehicles west+east";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
-	class CTI_EF_TORNADO_ADDON {
-		title = "ADDON: Eurofighter + Tornado - Air west";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-	};
+	};*/
 	class SEPARATOR_LOG {
-		title = "=========================== LOG ============================";
+		title = "=========================== DEBUG ============================";
 		values[] = {1};
 		texts[] = {""};
 		default = 1;
@@ -713,7 +675,7 @@ class Params {
 		title = "AI: Teams";
 		values[] = {0,1,2,3,4};
 		texts[] = {"Disabled", "1/4 Slots", "1/2 Slots", "3/4 Slots", "All Slots"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_AI_TEAMS_GROUPSIZE {
 		title = "AI: Team Size (AI)";
