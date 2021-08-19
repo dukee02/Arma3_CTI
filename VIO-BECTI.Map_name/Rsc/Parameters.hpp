@@ -5,98 +5,8 @@ class Params {
 		texts[] = {""};
 		default = 1;
 	};
-	/*class CTI_BW_SIDE {
-		title = "Bundeswehr (West Germany) Side";
-		values[] = {-1,0};
-		texts[] = {"deactivated","BLUFOR (West)"};
-		//values[] = {-1,0,1,2};
-		//texts[] = {"deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"};
-		default = 0; //0
-	};
-	class CTI_NVA_SIDE {
-		title = "NVA (East Germany) Side";
-		values[] = {-1,1};
-		texts[] = {"deactivated", "OPFOR (East)"};
-		//values[] = {-1,0,1,2};
-		//texts[] = {"deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"};
-		default = 1;
-	};
-	class CTI_DK_SIDE {
-		title = "Denmark Side";
-		values[] = {-1,0};
-		texts[] = {"deactivated","BLUFOR (West)"};
-		//values[] = {-1,0,1,2};
-		//texts[] = {"deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"};
-		default = 0; //0
-	};
-	class CTI_POL_SIDE {
-		title = "Polish Side";
-		values[] = {-1,1};
-		texts[] = {"deactivated", "OPFOR (East)"};
-		//values[] = {-1,0,1,2};
-		//texts[] = {"deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"};
-		default = 1;
-	};
-	class CTI_SOV_CUP_SIDE {
-		title = "Soviet Side (CUP Mod)";
-		values[] = {-1,1};
-		texts[] = {"deactivated", "OPFOR (East)"};
-		//values[] = {-1,0,1,2};
-		//texts[] = {"deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"};
-		default = -1; //-1
-	};
-	class CTI_SOV_RHS_SIDE {
-		title = "Soviet Side (RHS Mod)";
-		values[] = {-1,1};
-		texts[] = {"deactivated", "OPFOR (East)"};
-		//values[] = {-1,0,1,2};
-		//texts[] = {"deactivated","BLUFOR (West)", "OPFOR (East)", "GUER (Independent)"};
-		default = -1; //-1
-	};
-	class CTI_GUER_TOWNS {
-		title = "INDEPENDENT Town Nation (change for easyer town defending or all nations are seperated into EAST and WEST)";
-		values[] = {-1};
-		texts[] = {"disabled for the moment"};
-		//values[] = {0,1,2};
-		//texts[] = {"FFI (Infantry with unarmed cars - difficulty very easy)","Polish Units (Infantry with armed trucks - difficulty easy)","3rd Party (needs one Side on GUER - difficulty normal)"};
-		default = -1;
-	};
-	class CTI_WEST_TOWNS {
-		title = "BLUFOR (West) Town Nation (change the defending Town Units | only needed if 2 nations at one side)";
-		values[] = {-1,0};
-		texts[] = {"no changes","Bundeswehr (West Germany)"};
-		//values[] = {-1,0,1,2,3,4,5,6,7};
-		//texts[] = {"no changes","Bundeswehr (West Germany)","NVA (East Germany)","Denmark","Polish","USA (CUP Mod)","Soviet (CUP Mod)","USA (RHS Mod)","Soviet (RHS Mod)"};
-		default = -1;
-	};
-	class CTI_EAST_TOWNS {
-		title = "OPFOR (East) Town Nation (change the defending Town Units | only needed if 2 nations at one side)";
-		values[] = {-1,1,5,7};
-		texts[] = {"no changes","NVA (East Germany)", "Soviet (CUP Mod)", "Soviet (RHS Mod)"};
-		//values[] = {-1,0,1,2,3,4,5,6,7};
-		//texts[] = {"no changes","Bundeswehr (West Germany)","NVA (East Germany)","Denmark","Polish","USA (CUP Mod)","Soviet (CUP Mod)","USA (RHS Mod)","Soviet (RHS Mod)"};
-		default = -1;
-	};
-	class CTI_WEST_AI {
-		title = "BLUFOR (West) Player+AI Nation (change the startup Loadout and AI Units | only needed if 2 nations at one side)";
-		values[] = {-1,0};
-		texts[] = {"no changes","Bundeswehr (West Germany)"};
-		//values[] = {-1,0,1,2,3,4,5,6,7};
-		//texts[] = {"no changes","Bundeswehr (West Germany)","NVA (East Germany)","Denmark","Polish","USA (CUP Mod)","Soviet (CUP Mod)","USA (RHS Mod)","Soviet (RHS Mod)"};
-		default = -1;
-	};
-	class CTI_EAST_AI {
-		title = "OPFOR (East) Player+AI Nation (change the startup Loadout and AI Units | only needed if 2 nations at one side)";
-		values[] = {-1,1,5,7};
-		texts[] = {"no changes","NVA (East Germany)", "Soviet (CUP Mod)", "Soviet (RHS Mod)"};
-		//values[] = {-1,0,1,2,3,4,5,6,7};
-		//texts[] = {"no changes","Bundeswehr (West Germany)","NVA (East Germany)","Denmark","Polish","USA (CUP Mod)","Soviet (CUP Mod)","USA (RHS Mod)","Soviet (RHS Mod)"};
-		default = -1;
-	};*/
 	class CTI_CAMO_ACTIVATION {
 		title = "Main Camo";
-		//values[] = {0,1,2,3};
-		//texts[] = {"Standard", "Winter", "Desert", "All active (Main = Standard)"};
 		values[] = {0,1,4};
 		texts[] = {"Standard", "APEX", "both (Main = Standard)"};
 		default = 0;
@@ -105,19 +15,19 @@ class Params {
 		title = "FLAG: Flagtexture of the West-Side";
 		values[] = {0,1,2,3,4,5,6,7,8};
 		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
-		default = 1; //0
+		default = 0; //0
 	};
 	class CTI_EAST_FLAG {
 		title = "FLAG: Flagtexture of the East-Side";
 		values[] = {0,1,2,3,4,5,6,7,8};
-		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
-		default = 2; //0
+		texts[] = {"Standard Red","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
+		default = 0; //0
 	};
 	class CTI_GUER_FLAG {
 		title = "FLAG: Flagtexture of the Independent-Side";
 		values[] = {0,1,2,3,4,5,6,7,8};
-		texts[] = {"Standard Blue","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
-		default = 3; //0
+		texts[] = {"Standard Green","NATO","CSAT","AAF","CTRG","FIA","US","UK","UNO"};
+		default = 0; //0
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {
 		title = "UPGRADE: Max Level Gear";
