@@ -450,17 +450,11 @@ class Params {
 		default = 3;
 	};
 	class CTI_TOWNS_RESISTANCE {
-		title = "TOWNS: Resistance";
+		title = "TOWNS: Independent";
 		values[] = {0,1,2,3,4};
 		texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
 		default = 2;
 	};
-	/*class CTI_TOWNS_RESISTANCE_UNITS {
-		title = "TOWNS: Resistance Units";
-		values[] = {0,1,2};
-		texts[] = {"Poland","France","3rd Nation"};
-		default = 0;
-	};*/
 	class CTI_UNITS_TOWN_PURCHASE {
 		title = "TOWNS: Purchase Infantry";
 		values[] = {0,1};
@@ -476,13 +470,13 @@ class Params {
 	class CTI_TOWNS_STARTING_MODE {
 		title = "TOWNS: Starting Mode";
 		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
+		texts[] = {"pre defined","Independent","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
 		default = -1;
 	};
 	class CTI_TOWNS_VEHICLES_LOCK {
 		title = "TOWNS: Vehicle Lock";
 		values[] = {0,1,2,3};
-		texts[] = {"Unlocked","Locked (Resistance)","Locked (Occupation)","Locked (Resistance and Occupation)"};
+		texts[] = {"Unlocked","Locked (Independent)","Locked (Occupation)","Locked (Independent and Occupation)"};
 		default = 0;
 	};
 	/*class SEPERATOR_VEHICLES {

@@ -450,17 +450,11 @@ class Params {
 		default = 3;
 	};
 	class CTI_TOWNS_RESISTANCE {
-		title = "TOWNS: Resistance";
+		title = "TOWNS: Independent";
 		values[] = {0,1,2,3,4};
 		texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
 		default = 2;
 	};
-	/*class CTI_TOWNS_RESISTANCE_UNITS {
-		title = "TOWNS: Resistance Units";
-		values[] = {0,1,2};
-		texts[] = {"Poland","France","3rd Nation"};
-		default = 0;
-	};*/
 	class CTI_UNITS_TOWN_PURCHASE {
 		title = "TOWNS: Purchase Infantry";
 		values[] = {0,1};
