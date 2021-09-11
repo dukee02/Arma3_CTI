@@ -142,7 +142,7 @@ _pool = [];
 	if(count (_units select 0) > 1) then {
 		_cleanup = [];
 		{
-			_cleanup pushBack ((_units select 0) select 0);
+			_cleanup pushBack (_x select 0);
 		} forEach _units;
 		_units = _cleanup;
 	};
