@@ -5,6 +5,13 @@
 	Author: 		Benny (ported from WFBE by Sari)
 	Creation Date:	26-05-2014
 	Revision Date:	26-05-2014
+	
+	BI traits:
+	https://community.bistudio.com/wiki/setUnitTrait
+	https://community.bistudio.com/wiki/getAllUnitTraits
+	
+	
+	https://community.bistudio.com/wiki/addRating
 */
 
 //--- Functions 

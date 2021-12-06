@@ -12,6 +12,28 @@
 #include "Rsc\Parameters.hpp"
 #include "Rsc\titles.hpp"
 
+//--- Global Garbage Collection Settings
+MinPlayerDistance = 0;					//The minimum distance from any player. Set the value to 0 to remove the min. distance. 
+CorpseManagerMode = 1;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
+CorpseLimit = 200;						//Maximum allowed number of dead bodies in the scenario. 
+CorpseRemovalMinTime = 60;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
+CorpseRemovalMaxTime = 600;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
+WreckManagerMode = 1;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
+WreckLimit = 50;						//Maximum allowed number of destroyed vehicles in the scenario. 
+WreckRemovalMinTime = 300;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
+WreckRemovalMaxTime	= 3000;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
+
+//--- Global Revive Settings
+//ReviveMode = 0;                         //0: disabled, 1: enabled, 2: controlled by player attributes
+//ReviveUnconsciousStateMode = 0;         //0: basic, 1: advanced, 2: realistic
+ReviveRequiredTrait = 0;                //0: none, 1: medic trait is required
+ReviveRequiredItems = 2;                //0: none, 1: medkit, 2: medkit or first aid kit
+ReviveRequiredItemsFakConsumed = 1;     //0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+ReviveDelay = 18;                       //time needed to revive someone (in secs)
+ReviveMedicSpeedMultiplier = 3;         //speed multiplier for revive performed by medic
+ReviveForceRespawnDelay = 5;			//time needed to perform force respawn (in secs)
+ReviveBleedOutDelay = 120;              //unconscious state duration (in secs)
+
 enableDebugConsole = 1;
 
 loadScreen = "VIO_BECTI.jpg";

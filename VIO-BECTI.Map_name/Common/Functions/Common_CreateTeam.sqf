@@ -16,8 +16,7 @@ _created_vehicles = [];
 _crews = [];
 _no_crew_types = ["B_UGV_01_F","B_UGV_01_rcws_F","O_UGV_01_F","O_UGV_01_rcws_F","I_UGV_01_F","I_UGV_01_rcws_F","B_T_UGV_01_olive_F","B_T_UGV_01_rcws_olive_F","O_T_UGV_01_ghex_F","O_T_UGV_01_rcws_ghex_F","B_UAV_02_dynamicLoadout_F","O_UAV_02_dynamicLoadout_F","I_UAV_02_dynamicLoadout_F","B_T_UAV_03_dynamicLoadout_F","O_T_UAV_04_CAS_F"];
 
-
-if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Units: <%1>",  _units]] call CTI_CO_FNC_Log;};
+//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Units: <%1>",  _units]] call CTI_CO_FNC_Log;};
 
 {
 	//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateTeam.sqf", format ["Unit: <%1>",  _x]] call CTI_CO_FNC_Log;};
@@ -41,7 +40,6 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions
 			_vehicle = [_x, [_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty, "FORM"] call CTI_CO_FNC_CreateVehicle;
 		};
 		//_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty] call CTI_CO_FNC_CreateVehicle;
-		
 		_created_vehicles pushBack _vehicle;
 		if(_x in _no_crew_types) then {
 			//if the vehicle is an drone, we need no crew for it!
@@ -50,6 +48,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions
 			_crews = _crews + _vehicle_crew;
 		};
 	};
+	
 } forEach _units;
 
 {_group addVehicle _x} forEach _created_vehicles;

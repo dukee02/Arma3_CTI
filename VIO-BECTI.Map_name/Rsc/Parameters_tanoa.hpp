@@ -413,6 +413,22 @@ class Params {
 		texts[] = {"",""};
 		default = 0;
 	};
+	class REVIVE_MODE {
+		title = $STR_A3_ReviveMode;
+		isGlobal = 1;
+		values[] = {0,1};
+		texts[] = {$STR_A3_Disabled,$STR_A3_EnabledForAllPlayers};
+		default = 0;
+		function = "bis_fnc_paramReviveMode";
+	};
+	class UNCONSCIOUS_STATE_MODE {
+		title = $STR_A3_IncapacitationMode;
+		isGlobal = 1;
+		values[] = {0,1};
+		texts[] = {$STR_A3_Basic,$STR_A3_Advanced};
+		default = 0;
+		function = "bis_fnc_paramReviveUnconsciousStateMode";
+	};
 	class CTI_TOWNS_AMOUNT {
 		title = "TOWNS: Amount";
 		//values[] = {0,1,2,3,4,5,6};

@@ -52,7 +52,6 @@ call compile preprocessFileLineNumbers "Server\Functions\Server_TownMortars.sqf"
 
 execVM "Server\Init\Init_Prison.sqf";
 
-
 //--- Get the starting locations.
 _startup_locations_west = [];
 for '_i' from 0 to 30 step +2 do {
@@ -105,21 +104,21 @@ if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
 _range = missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
 
 _westLocation = getMarkerPos "cti-spawn0";
-_eastLocation = getMarkerPos "cti-spawn0";
+_eastLocation = getMarkerPos "cti-spawn1";
 
 _attempts = 0;
 _total_west = count _startup_locations_west;
 _total_east = count _startup_locations_east;
-while {_eastLocation distance _westLocation < _range &&_attempts <= 500} do {
-	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
+while {_eastLocation distance _westLocation < _range &&_attempts <= 300} do {
+	//if (CTI_Log_Level >= CTI_Log_Debug) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
 	_westLocation = _startup_locations_west select floor(random _total_west);
 	_eastLocation = _startup_locations_east select floor(random _total_east);
 	_attempts = _attempts + 1;
 };
 
-if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: <West:%1> / <East:%2> attempts: %3", _westLocation, _eastLocation, _attempts]] call CTI_CO_FNC_Log;};
 
-if (_attempts >= 500) then {
+if (_attempts >= 300) then {
 	_westLocation = getMarkerPos "cti-spawn0";//W
 	_eastLocation = getMarkerPos "cti-spawn1";//E
 };
@@ -137,6 +136,7 @@ if (_attempts >= 500) then {
 	if (CTI_BASE_NOOBPROTECTION == 1) then {
 		_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
 	};
+	if (CTI_Log_Level >= CTI_Log_Debug) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["HQ of %1: [%2]", _side, _hq]] call CTI_CO_FNC_Log;};
 	
 	//--- Generic per-logic variables
 	_logic setVariable ["cti_hq", _hq, true];
@@ -186,6 +186,7 @@ if (_attempts >= 500) then {
 	
 	//--- Startup vehicles
 	{
+		//if((_x select 0) isEqualType []) then {_x = _x select 0;};
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Init\Init_Server.sqf", format["starting vehicles: side: [%1] | unit: [%2]", _side, _x]] call CTI_CO_FNC_Log};
 		_model = _x select 0;
 		_equipment = _x select 1;

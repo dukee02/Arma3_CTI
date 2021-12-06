@@ -143,6 +143,12 @@ switch (true) do {
 //--- Parse properly the pool.
 _pool = [];
 {
+	//check if there units in, if not set infantry as default
+	if(count _x == 0) then {
+		_x = ["GUER_INFANTRY_SQ_LIGHT", 4, 20];
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Pool is empty, replaced with: <%1>",  _x]] call CTI_CO_FNC_Log;};
+	};
+	
 	_unit = _x select 0;
 	_presence = _x select 1;
 	if !(isNil {missionNamespace getVariable format["%1_%2",_side, _unit]}) then {
@@ -216,6 +222,10 @@ for '_i' from 1 to _totalGroups do {
 		_can_use = true;
 		if (_probability != 100) then {
 			if (random 100 > _probability) then { _can_use = false };
+		};
+		
+		if (CTI_Log_Level >= CTI_Log_Debug) then { 
+			["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;
 		};
 		
 		if (_can_use) then {

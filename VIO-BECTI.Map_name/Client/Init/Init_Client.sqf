@@ -32,6 +32,7 @@ CTI_CL_FNC_OnExplosivePlaced = compileFinal preprocessFile "Client\Functions\Cli
 CTI_CL_FNC_OnHQDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnHQDestroyed.sqf";
 CTI_CL_FNC_OnFriendlyStructureDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnFriendlyStructureDestroyed.sqf";
 
+CTI_CL_FNC_OnArtilleryShotDetected = compileFinal preprocessFile "Client\Functions\Client_OnArtilleryShotDetected.sqf";
 CTI_CL_FNC_OnEnemyStructureDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnEnemyStructureDestroyed.sqf";
 
 CTI_CL_FNC_OnJailed = compileFinal preprocessFile "Client\Functions\Client_OnJailed.sqf";

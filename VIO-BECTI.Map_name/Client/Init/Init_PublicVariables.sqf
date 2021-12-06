@@ -1,5 +1,6 @@
 //--- PVF Are store within the mission namespace
 with missionNamespace do {
+	CTI_PVF_Client_OnArtilleryShotDetected = { _this spawn CTI_CL_FNC_OnArtilleryShotDetected };
 	CTI_PVF_Client_AddHQActions = {	_this spawn CTI_CL_FNC_AddHQActions };
 	CTI_PVF_Client_CommanderVote = { _this spawn CTI_CL_FNC_Commander_VoteEnd };
 	CTI_PVF_Client_CommanderVoteStart = { _this spawn CTI_CL_FNC_Commander_VoteStart };

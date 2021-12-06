@@ -37,13 +37,22 @@ switch (_action) do {
 		
 		_mortars = if !(isNil {_town getVariable "cti_mortars_spawned"}) then {(_town getVariable "cti_mortars_spawned") select 0} else {[]};
 		
+		//--- Check if the defense group exists, if not create one!
+		_defenseTeam = missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side];
+		if(_defenseTeam isEqualTo grpNull) then {
+			missionNamespace setVariable [Format ["CTI_%1_DefenseTeam", _side], createGroup _side];
+			_defenseTeam = missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side];
+			if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FILE: Server\Functions\Server_OperateTownDefensesUnits.sqf", Format ["new Defense Team created [%1]", _defenseTeam]] Call CTI_CO_FNC_Log};
+		};
+		
 		//--- Man the mortars.
 		_units = [];
 		
 		{
 			if !(alive gunner _x) then {
 				if ((locked _x) == 2) then {_x lock false};
-				_unit = [missionNamespace getVariable Format ["CTI_%1_Soldier", _side],missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
+				//_unit = [missionNamespace getVariable Format ["CTI_%1_Soldier", _side],missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
+				_unit = [missionNamespace getVariable Format ["CTI_%1_Soldier", _side],_defenseTeam, getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
 				_unit assignAsGunner _x;
 				[_unit] orderGetIn true;
 				_unit moveInGunner _x;
@@ -63,7 +72,8 @@ switch (_action) do {
 					
 			if !(isNil '_defense') then {
 				if !(alive gunner _defense) then { //--- Make sure that the defense gunner is null or dead.
-					_unit = [missionNamespace getVariable Format ["CTI_%1_SOLDIER", _side],missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
+					//_unit = [missionNamespace getVariable Format ["CTI_%1_SOLDIER", _side],missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
+					_unit = [missionNamespace getVariable Format ["CTI_%1_SOLDIER", _side],_defenseTeam, getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
 					_unit assignAsGunner _defense;
 					[_unit] orderGetIn true;
 					_unit moveInGunner _defense;
@@ -75,7 +85,8 @@ switch (_action) do {
 		
 		//--- Reveal the town area to the statics.
 		if (count (_town getVariable "CTI_town_defenses") > 0) then {
-			[missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], _town getVariable "cti_town_range", _town] Call CTI_CO_FNC_RevealArea;
+			//[missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], _town getVariable "cti_town_range", _town] Call CTI_CO_FNC_RevealArea;
+			[_defenseTeam, _town getVariable "cti_town_range", _town] Call CTI_CO_FNC_RevealArea;
 		};
 		
 		//--- If we have more mortars, we spawn a targeting thread.

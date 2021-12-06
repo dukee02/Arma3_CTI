@@ -39,7 +39,7 @@ _vehicle setVehicleAmmo 1;
 {
 	_vehicle removeMagazineTurret [_x, [-1]];
 	_vehicle addMagazineTurret [_x, [-1]];
-	["DEBUG", "FILE: RearmVehicle.sqf", format["Reloading magazine [%1]", _x]] call CTI_CO_FNC_Log;
+	//["DEBUG", "FILE: RearmVehicle.sqf", format["Reloading magazine [%1]", _x]] call CTI_CO_FNC_Log;
 } forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));
 
 //--- Turrets

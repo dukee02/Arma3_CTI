@@ -23,7 +23,7 @@
     _has_occupation2 = [west, CTI_UPGRADE_TOWNS, 2] call CTI_CO_FNC_HasUpgrade;
 */
 
-private ["_side", "_upgrade", "_upgrade_level", "_upgrades"];
+private ["_side", "_upgrade", "_upgrade_level", "_upgrades", "_existing"];
 
 _side = _this select 0;
 _upgrade = _this select 1;

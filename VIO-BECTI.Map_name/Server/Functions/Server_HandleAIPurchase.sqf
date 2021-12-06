@@ -52,6 +52,15 @@ _veh_infos = _this select 6;
 //--- First of all, make sure that we don't go "softly" above the AI group size
 _process = true;
 if (typeName _req_target != "SIDE") then { if ((count units _req_target)+1 > CTI_AI_TEAMS_GROUPSIZE) then {_process = false} };
+if (_req_classname == format["CTI_Salvager_Independent_%1", _req_side]) then {
+} else {
+	if !(isClass(configFile >> "CfgVehicles" >> _req_classname)) then {
+		if (CTI_Log_Level >= CTI_Log_Error) then {["Error", "FILE: Server\Functions\Server_HandleAIPurchasePurchase.sqf", format ["invallid classname: <%1>",  _req_classname]] call CTI_CO_FNC_Log;};
+		_process = false;
+	};
+};
+
+
 if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
 
 _sideID = (_req_side) call CTI_CO_FNC_GetSideID;

@@ -137,6 +137,10 @@ _pool = [];
 	_unit = _x select 0;
 	_presence = _x select 1;
 	_units = missionNamespace getVariable _unit;
+	//check if there units in, if not set infantry as default
+	if(count _units == 0) then {
+		_units = missionNamespace getVariable "GUER_INFANTRY_SQ_LIGHT";
+	};
 	_u_one = _units select 0;
 	
 	if(count (_units select 0) > 1) then {
@@ -175,19 +179,18 @@ for '_i' from 1 to _totalGroups do {
 	_pool_group_size_current = _pool_group_size-1;
 	while {_pool_group_size_current > 0} do {
 		_picked = _pool select floor(random count _pool);
-		
 		_unit = _picked select 0;
 		_probability = _picked select 1;
+		if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
 		
 		_can_use = true;
 		if (_probability != 100) then {
 			if (random 100 > _probability) then { _can_use = false };
 		};
+		//if(isNil _unit) then { _can_use = false };
 		
 		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
 			_units pushBack _unit;
-			
 			_pool_group_size_current = _pool_group_size_current - 1;
 		};
 	};

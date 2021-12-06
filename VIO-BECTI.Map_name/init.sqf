@@ -1,12 +1,3 @@
-//--- Optional Mod Stuff
-if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then 
-{  
-//Start other 'plugins' if ACE is not running
- [] execVM "Client\Module\zlt\zlt_fieldrepair.sqf"; 
- [] execVM "Client\Module\zlt\zlt_fastrope.sqf";
- //[player] execVM "Client\Module\earplugs\simpleEP.sqf";
-}; 
-
 if (isClass(configFile >> "CfgPatches" >> "task_force_radio")) then 
 { 
 //TFAR mod is enabled
@@ -14,6 +5,8 @@ TF_give_personal_radio_to_regular_soldier = true;
 tf_no_auto_long_range_radio = true;
 TF_give_microdagr_to_soldier = false;
 }; 
+
+//[]spawn compileFinal(preprocessFile"AFAR\init.sqf");
 
 //--- Initial View Distance and Object View Distance for both clients and server
 setViewDistance 3000;
@@ -32,7 +25,7 @@ CTI_Log_Warning = 1;
 CTI_Log_Error = 0;
 
 //--- Log level to use
-CTI_Log_Level = CTI_Log_Error;
+CTI_Log_Level = CTI_Log_Debug;
 
 //--- We define the log function early so that we can use it
 CTI_CO_FNC_Log = compile preprocessFileLineNumbers "Common\Functions\Common_Log.sqf";
@@ -77,8 +70,6 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf
 call compile preprocessFileLineNumbers "Common\Init\Init_CommonConstants.sqf";
 call compile preprocessFileLineNumbers "Common\Init\Init_Common.sqf";
 
-
-
 //--- JIP Part is over
 CTI_Init_JIP = true;
 
@@ -116,5 +107,15 @@ if (CTI_IsHeadless) then {
 //--- Set the group ID
 execVM "Common\Init\Init_GroupsID.sqf";
 
-//--- Earplug script to reduce sound level when required
-execVM "Scripts\nre_earplugs.sqf";
+//--- Optional Mod Stuff
+if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then 
+{  
+//Start other 'plugins' if ACE is not running
+	if(CTI_FIELDREPAIR_ENABLED > 0) then {
+		[] execVM "Client\Module\zlt\zlt_fieldrepair.sqf"; 
+		//[] execVM "Client\Module\zlt\zlt_fastrope.sqf";
+	};
+	[player] execVM "Client\Module\earplugs\simpleEP.sqf";
+}; 
+
+_igiload = execVM "IgiLoad\IgiLoadInit.sqf";

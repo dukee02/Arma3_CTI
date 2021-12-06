@@ -139,6 +139,21 @@ switch (_action) do {
 							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artillerie shoots: <%1|%2|%3|%4>",_artillery_piece, _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;
 							//_artillery_piece doArtilleryFire [_target, _artillery_magazine, _artillery_burst];
 							_artillery_piece commandArtilleryFire [_target, _artillery_magazine, _artillery_burst];
+							
+							//arty fired, we inform the enemy to make Arty not so IMBA
+							_artyside = side _artillery_piece;
+							_enemy = "civil";
+							if(_artyside == west) then {
+								_enemy = east;
+							} else {
+								_enemy = west;
+							};
+							_sideHQ = (_enemy) call CTI_CO_FNC_GetSideHQ;
+							//_detected_dir = _target getRelDir _artillery_piece;
+							//_detected_dir = player getRelDir _artillery_piece;
+							_detected_dir = _sideHQ getRelDir _artillery_piece;
+							//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
+							[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
 						} else {
 							_isInRange = false;
 							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
@@ -148,7 +163,7 @@ switch (_action) do {
 							//_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
 							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;
 							if(_isInRange) then {
-								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[ETA=%1]</t>";
+								hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[inRange=%1|ETA=%2]</t>", _isInRange, _isETA];
 							} else {
 								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, Unit not in range!</t>";
 							};

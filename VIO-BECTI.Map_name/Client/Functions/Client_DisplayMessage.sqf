@@ -39,6 +39,7 @@ _message_var = _this select 0;
 _parameters = if (count _this > 1) then {_this select 1} else {[]};
 
 switch (_message_var) do {
+	case "artillery-shooting": {CTI_P_ChatID commandChat format ["An enemy Artillery shot detected, HQ direction %1", _parameters select 0]};
 	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};
 	case "build-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
