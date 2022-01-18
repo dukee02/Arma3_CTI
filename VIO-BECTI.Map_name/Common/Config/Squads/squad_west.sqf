@@ -75,38 +75,41 @@ _s pushBack [];
 
 //Wheeled setup for the AI groups
 units_wheeled = [];
-units_to_add = [];
+mot_to_add = [];
 //Level start
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_wheeled pushBack [format["%1B_T_LSV_01_armed_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_T_LSV_01_AT_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_T_MRAP_01_hmg_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_T_MRAP_01_gmg_F", _sid], 1, 50];
+		mot_to_add = [[format["%1B_T_LSV_01_armed_F", _sid], 1, 50]];
+		mot_to_add pushBack [format["%1B_T_LSV_01_AT_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1B_T_MRAP_01_hmg_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1B_T_MRAP_01_gmg_F", _sid], 1, 50];
 	} else {
-		units_wheeled pushBack [format["%1B_LSV_01_armed_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_LSV_01_AT_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_MRAP_01_hmg_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_MRAP_01_gmg_F", _sid], 1, 50];
+		mot_to_add = [[format["%1B_LSV_01_armed_F", _sid], 1, 50]];
+		mot_to_add pushBack [format["%1B_LSV_01_AT_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1B_MRAP_01_hmg_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1B_MRAP_01_gmg_F", _sid], 1, 50];
 	};
+	units_wheeled = mot_to_add;
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_wheeled pushBack [format["%1B_T_APC_Wheeled_01_cannon_F", _sid], 1, 50];
+		mot_to_add = [[format["%1B_T_APC_Wheeled_01_cannon_F", _sid], 1, 50]];
 	} else {
-		units_wheeled pushBack [format["%1B_APC_Wheeled_01_cannon_F", _sid], 1, 50];
+		mot_to_add = [[format["%1B_APC_Wheeled_01_cannon_F", _sid], 1, 50]];
 	};
+	units_wheeled = mot_to_add;
 };
 //Level 2
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_wheeled pushBack [format["%1B_T_AFV_Wheeled_01_cannon_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_T_AFV_Wheeled_01_up_cannon_F", _sid], 1, 50];
+		mot_to_add = [[format["%1B_T_AFV_Wheeled_01_cannon_F", _sid], 1, 50]];
+		mot_to_add pushBack [format["%1B_T_AFV_Wheeled_01_up_cannon_F", _sid], 1, 50];
 	} else {
-		units_wheeled pushBack [format["%1B_AFV_Wheeled_01_cannon_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1B_AFV_Wheeled_01_up_cannon_F", _sid], 1, 50];
+		mot_to_add = [[format["%1B_AFV_Wheeled_01_cannon_F", _sid], 1, 50]];
+		mot_to_add pushBack [format["%1B_AFV_Wheeled_01_up_cannon_F", _sid], 1, 50];
 	};
+	units_wheeled = mot_to_add;
 };
 _v pushBack "Motorized";
 _t pushBack "Motorized";
@@ -120,34 +123,38 @@ _s pushBack [];
 
 //Tracked setup for the AI groups
 units_tracked = [];
+arm_to_add = [];
 
 //Start
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_tracked pushBack [format["%1B_T_APC_Tracked_01_CRV_F", _sid], 1, 50];
-		units_tracked pushBack [format["%1B_T_APC_Tracked_01_rcws_F", _sid], 1, 50];
+		arm_to_add = [[format["%1B_T_APC_Tracked_01_CRV_F", _sid], 1, 50]];
+		arm_to_add pushBack [format["%1B_T_APC_Tracked_01_rcws_F", _sid], 1, 50];
 	} else {
-		units_tracked pushBack [format["%1B_APC_Tracked_01_CRV_F", _sid], 1, 50];
-		units_tracked pushBack [format["%1B_APC_Tracked_01_rcws_F", _sid], 1, 50];
+		arm_to_add = [[format["%1B_APC_Tracked_01_CRV_F", _sid], 1, 50]];
+		arm_to_add pushBack [format["%1B_APC_Tracked_01_rcws_F", _sid], 1, 50];
 	};
+	units_tracked = arm_to_add;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_tracked pushBack [format["%1B_T_MBT_01_cannon_F", _sid], 1, 50];
+		arm_to_add = [[format["%1B_T_MBT_01_cannon_F", _sid], 1, 50]];
 	} else {
-		units_tracked pushBack [format["%1B_MBT_01_cannon_F", _sid], 1, 50];
+		arm_to_add = [[format["%1B_MBT_01_cannon_F", _sid], 1, 50]];
 	};
+	units_tracked = arm_to_add;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 2) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_tracked pushBack [format["%1B_T_MBT_01_TUSK_F", _sid], 1, 70];
-		units_tracked pushBack [format["%1B_T_MBT_01_arty_F", _sid], 1, 30];
-		units_tracked pushBack [format["%1B_T_MBT_01_mlrs_F", _sid], 1, 30];
+		arm_to_add = [[format["%1B_T_MBT_01_TUSK_F", _sid], 1, 70]];
+		arm_to_add pushBack [format["%1B_T_MBT_01_arty_F", _sid], 1, 30];
+		arm_to_add pushBack [format["%1B_T_MBT_01_mlrs_F", _sid], 1, 30];
 	} else {
-		units_tracked pushBack [format["%1B_MBT_01_TUSK_F", _sid], 1, 70];
-		units_tracked pushBack [format["%1B_MBT_01_arty_F", _sid], 1, 30];
-		units_tracked pushBack [format["%1B_MBT_01_mlrs_F", _sid], 1, 30];
+		arm_to_add = [[format["%1B_MBT_01_TUSK_F", _sid], 1, 70]];
+		arm_to_add pushBack [format["%1B_MBT_01_arty_F", _sid], 1, 30];
+		arm_to_add pushBack [format["%1B_MBT_01_mlrs_F", _sid], 1, 30];
 	};
+	units_tracked = arm_to_add;
 };
 
 _v pushBack "ArmoredMBT";
@@ -164,9 +171,9 @@ units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_antiair pushBack [format["%1B_T_APC_Tracked_01_AA_F", _sid], 1, 50];
+		units_antiair = [[format["%1B_T_APC_Tracked_01_AA_F", _sid], 1, 50]];
 	} else {
-		units_antiair pushBack [format["%1B_APC_Tracked_01_AA_F", _sid], 1, 50];
+		units_antiair = [[format["%1B_APC_Tracked_01_AA_F", _sid], 1, 50]];
 	};
 };
 
@@ -183,10 +190,10 @@ _s pushBack [];
 units_air = [];
 
 if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
-	units_air pushBack [format["%1B_Heli_Transport_01_F", _sid], 1, 50];
+	units_air = [[format["%1B_Heli_Transport_01_F", _sid], 1, 50]];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 1) then {
-	units_air pushBack [format["%1B_Heli_Light_01_dynamicLoadout_F", _sid], 1, 70];
+	units_air = [[format["%1B_Heli_Light_01_dynamicLoadout_F", _sid], 1, 70]];
 	units_air pushBack [format["%1B_Plane_CAS_01_dynamicLoadout_F", _sid], 1, 30];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 2) then {

@@ -26,7 +26,7 @@
 
 */
 
-Private ["_action","_defense","_mortars","_side","_spawn","_town","_units"];
+Private ["_action","_defense","_mortars","_side","_spawn","_town","_units","_defenseTeam"];
 
 _town = _this select 0;
 _action = _this select 1;

@@ -2,7 +2,7 @@ player createDiarySubject ["VIO-BECTI","VIO-BECTI"];
 
 player createDiaryRecord["VIO-BECTI", ["Contact us", "
 To join our growing community, find our steam group - search for 'vio-community V_I_O_C' https://steamcommunity.com/groups/vio-community <br/>
-or join our discord: https://discord.gg/KsGGBvJ <br/><br/>
+or join our discord: https://discord.gg/sJw2Nynh7s <br/><br/>
 To report a bug or request a feature in the mission, use the steam-workshop or our discord!
 "]];
 

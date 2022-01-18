@@ -630,24 +630,30 @@ _categories pushBack 	"Camo";*/
 _classes_town = [];
 _categories_town = [];
 if(_side == west) then {
-		_classes_town pushBack 		format["%1B_HMG_01_high_F", _sid];
-		_categories_town pushBack 	"MG";
-		
-		_classes_town pushBack 		format["%1B_GMG_01_high_F", _sid];
-		_categories_town pushBack 	"Artillery";
+	_classes_town pushBack 		format["%1B_HMG_01_high_F", _sid];
+	_categories_town pushBack 	"MG";
 	
-		_classes_town pushBack 		format["%1B_Mortar_01_F", _sid];
-		_categories_town pushBack 	"Mortar";
+	_classes_town pushBack 		format["%1B_HMG_01_high_F", _sid];
+	_categories_town pushBack 	"HMG";
+	
+	_classes_town pushBack 		format["%1B_GMG_01_high_F", _sid];
+	_categories_town pushBack 	"Artillery";
+	
+	_classes_town pushBack 		format["%1B_Mortar_01_F", _sid];
+	_categories_town pushBack 	"Mortar";
 		
-		_classes_town pushBack 		format["%1B_static_AT_F", _sid];
-		_categories_town pushBack 	"AT";
+	_classes_town pushBack 		format["%1B_static_AT_F", _sid];
+	_categories_town pushBack 	"AT";
 		
-		_classes_town pushBack 		format["%1B_static_AA_F", _sid];
-		_categories_town pushBack 	"AA";
-};
-if(_side == east) then {
+	_classes_town pushBack 		format["%1B_static_AA_F", _sid];
+	_categories_town pushBack 	"AA";
+} else {
+	if(_side == east) then {
 		_classes_town pushBack 		format["%1O_HMG_01_high_F", _sid];
 		_categories_town pushBack 	"MG";
+	
+		_classes_town pushBack 		format["%1O_HMG_01_high_F", _sid];
+		_categories_town pushBack 	"HMG";
 		
 		_classes_town pushBack 		format["%1O_GMG_01_high_F", _sid];
 		_categories_town pushBack 	"Artillery";
@@ -660,10 +666,12 @@ if(_side == east) then {
 		
 		_classes_town pushBack 		format["%1O_static_AA_F", _sid];
 		_categories_town pushBack 	"AA";
-};
-if(_side == east) then {
+	} else {
 		_classes_town pushBack 		format["%1I_HMG_02_high_F", _sid];
 		_categories_town pushBack 	"MG";
+	
+		_classes_town pushBack 		format["%1I_HMG_02_high_F", _sid];
+		_categories_town pushBack 	"HMG";
 		
 		_classes_town pushBack 		format["%1I_HMG_01_high_F", _sid];
 		_categories_town pushBack 	"Artillery";
@@ -676,7 +684,9 @@ if(_side == east) then {
 		
 		_classes_town pushBack 		format["%1I_static_AA_F", _sid];
 		_categories_town pushBack 	"AA";
+	};	
 };
+
 
 //--- Defenses management for towns.
 if (isServer) then {[_side, _classes_town, _categories_town] Call Compile preprocessFileLineNumbers "Common\Config\Config_Defenses_Towns.sqf"};

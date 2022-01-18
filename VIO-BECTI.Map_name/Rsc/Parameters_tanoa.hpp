@@ -353,6 +353,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 0;
 	};
+	class CTI_FIELDREPAIR_ENABLED {
+		title = "GAMEPLAY: Fieldrepair";
+		values[] = {0,1};
+		texts[] = {"Disabled", "Enabled"};
+		default = 0;
+	};
 	class SEPERATOR_RESPAWN {
 		title = "============ Respawn ============";
 		values[] = {0,1};

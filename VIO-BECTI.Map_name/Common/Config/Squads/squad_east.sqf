@@ -75,29 +75,31 @@ _s pushBack [];
 
 //Wheeled setup for the AI groups
 units_wheeled = [];
-units_to_add = [];
+mot_to_add = [];
 
 //Level start
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_wheeled pushBack [format["%1O_T_LSV_02_armed_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_T_LSV_02_AT_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_T_MRAP_02_hmg_ghex_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_T_MRAP_02_gmg_ghex_F", _sid], 1, 50];
+		mot_to_add = [[format["%1O_T_LSV_02_armed_F", _sid], 1, 50]];
+		mot_to_add pushBack [format["%1O_T_LSV_02_AT_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1O_T_MRAP_02_hmg_ghex_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1O_T_MRAP_02_gmg_ghex_F", _sid], 1, 50];
 	} else {
-		units_wheeled pushBack [format["%1O_LSV_02_armed_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_LSV_02_AT_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_MRAP_02_hmg_F", _sid], 1, 50];
-		units_wheeled pushBack [format["%1O_MRAP_02_gmg_F", _sid], 1, 50];
+		mot_to_add = [[format["%1O_LSV_02_armed_F", _sid], 1, 50]];
+		mot_to_add pushBack [format["%1O_LSV_02_AT_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1O_MRAP_02_hmg_F", _sid], 1, 50];
+		mot_to_add pushBack [format["%1O_MRAP_02_gmg_F", _sid], 1, 50];
 	};
+	units_wheeled = mot_to_add;
 };
 //Level 1
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_wheeled pushBack [format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid], 1, 50];
+		mot_to_add = [[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid], 1, 50]];
 	} else {
-		units_wheeled pushBack [format["%1O_APC_Wheeled_02_rcws_v2_F", _sid], 1, 50];	
+		mot_to_add = [[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid], 1, 50]];	
 	};
+	units_wheeled = mot_to_add;
 };
 
 _v pushBack "Motorized";
@@ -112,32 +114,36 @@ _s pushBack [];
 
 //Tracked setup for the AI groups
 units_tracked = [];
+arm_to_add = [];
 
 //Start
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_tracked pushBack [format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid], 1, 50];
+		arm_to_add = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid], 1, 50]];
 	} else {
-		units_tracked pushBack [format["%1O_APC_Tracked_02_cannon_F", _sid], 1, 50];
+		arm_to_add = [[format["%1O_APC_Tracked_02_cannon_F", _sid], 1, 50]];
 	};
+	units_tracked = arm_to_add;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_tracked pushBack [format["%1O_T_MBT_02_cannon_ghex_F", _sid], 1, 50];
+		arm_to_add = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid], 1, 50]];
 	} else {
-		units_tracked pushBack [format["%1O_MBT_02_cannon_F", _sid], 1, 50];
+		arm_to_add = [[format["%1O_MBT_02_cannon_F", _sid], 1, 50]];
 	};
+	units_tracked = arm_to_add;
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 2) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_tracked pushBack [format["%1O_T_MBT_04_cannon_F", _sid], 1, 70];
-		units_tracked pushBack [format["%1O_T_MBT_04_command_F", _sid], 1, 30];
-		units_tracked pushBack [format["%1O_T_MBT_02_arty_ghex_F", _sid], 1, 30];
+		arm_to_add = [[format["%1O_T_MBT_04_cannon_F", _sid], 1, 70]];
+		arm_to_add pushBack [format["%1O_T_MBT_04_command_F", _sid], 1, 30];
+		arm_to_add pushBack [format["%1O_T_MBT_02_arty_ghex_F", _sid], 1, 30];
 	} else {
-		units_tracked pushBack [format["%1O_MBT_04_cannon_F", _sid], 1, 70];
-		units_tracked pushBack [format["%1O_MBT_04_command_F", _sid], 1, 30];
-		units_tracked pushBack [format["%1O_MBT_02_arty_F", _sid], 1, 30];
+		arm_to_add = [[format["%1O_MBT_04_cannon_F", _sid], 1, 70]];
+		arm_to_add pushBack [format["%1O_MBT_04_command_F", _sid], 1, 30];
+		arm_to_add pushBack [format["%1O_MBT_02_arty_F", _sid], 1, 30];
 	};
+	units_tracked = arm_to_add;
 };
 
 _v pushBack "ArmoredMBT";
@@ -154,9 +160,9 @@ units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		units_antiair pushBack [format["%1O_T_APC_Tracked_02_AA_ghex_F", _sid], 1, 50];
+		units_antiair = [[format["%1O_T_APC_Tracked_02_AA_ghex_F", _sid], 1, 50]];
 	} else {
-		units_antiair pushBack [format["%1O_APC_Tracked_02_AA_F", _sid], 1, 50];
+		units_antiair = [[format["%1O_APC_Tracked_02_AA_F", _sid], 1, 50]];
 	};
 };
 
@@ -173,10 +179,10 @@ _s pushBack [];
 units_air = [];
 
 if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
-	units_air pushBack [format["%1O_Heli_Light_02_unarmed_F", _sid], 1, 50];
+	units_air = [[format["%1O_Heli_Light_02_unarmed_F", _sid], 1, 50]];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 1) then {
-	units_air pushBack [format["%1O_Heli_Light_02_dynamicLoadout_F", _sid], 1, 70];
+	units_air = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid], 1, 70]];
 	units_air pushBack [format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid], 1, 30];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 2) then {

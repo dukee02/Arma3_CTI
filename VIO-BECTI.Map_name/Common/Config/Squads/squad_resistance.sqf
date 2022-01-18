@@ -61,11 +61,10 @@ _s pushBack [];
 
 //Wheeled setup for the AI groups
 units_wheeled = [];
-units_to_add = [];
 
 //Level start
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	units_wheeled pushBack [format["%1I_MRAP_03_hmg_F", _sid], 1, 50];
+	units_wheeled = [[format["%1I_MRAP_03_hmg_F", _sid], 1, 50]];
 	units_wheeled pushBack [format["%1I_MRAP_03_gmg_F", _sid], 1, 50];
 };
 //Level 1
@@ -92,7 +91,7 @@ units_tracked = [];
 
 //Start
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
-	units_tracked pushBack [format["%1I_LT_01_cannon_F", _sid], 1, 50];
+	units_tracked = [[format["%1I_LT_01_cannon_F", _sid], 1, 50]];
 	units_tracked pushBack [format["%1I_APC_tracked_03_cannon_F", _sid], 1, 50];
 };
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
@@ -115,7 +114,7 @@ _s pushBack [];
 units_antiair = [];
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
-	units_antiair pushBack [format["%1I_LT_01_AA_F", _sid], 1, 50];
+	units_antiair = [[format["%1I_LT_01_AA_F", _sid], 1, 50]];
 };
 
 _v pushBack "AntiAir";
@@ -131,10 +130,10 @@ _s pushBack [];
 units_air = [];
 
 if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
-	units_air pushBack [format["%1I_Heli_Transport_02_F", _sid], 1, 50];
+	units_air = [[format["%1I_Heli_Transport_02_F", _sid], 1, 50]];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 1) then {
-	units_air pushBack [format["%1I_Heli_light_03_dynamicLoadout_F", _sid], 1, 70];
+	units_air = [[format["%1I_Heli_light_03_dynamicLoadout_F", _sid], 1, 70]];
 	units_air pushBack [format["%1I_Plane_Fighter_03_dynamicLoadout_F", _sid], 1, 30];
 };
 if(CTI_ECONOMY_LEVEL_AIR >= 2) then {
