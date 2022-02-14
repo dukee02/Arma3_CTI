@@ -137,9 +137,13 @@ switch (_action) do {
 					if (alive _artillery_piece) then { //--- The artillery piece is alive and kicking
 						if ([_artillery_piece, _artillery_magazine, _target, _artillery_range select 0, _artillery_range select 1] call CTI_UI_Artillery_CanFire) then { //--- Ultimate check about ranges
 							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artillerie shoots: <%1|%2|%3|%4>",_artillery_piece, _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;
-							//_artillery_piece doArtilleryFire [_target, _artillery_magazine, _artillery_burst];
-							_artillery_piece commandArtilleryFire [_target, _artillery_magazine, _artillery_burst];
-							
+							_artillery_piece doArtilleryFire [_target, _artillery_magazine, _artillery_burst];
+							//_artillery_piece commandArtilleryFire [_target, _artillery_magazine, _artillery_burst];
+							_isInRange = false;
+							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
+							//ETA = Estimated Time of Arrival
+							_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
+							hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie shot, target in range %1 | ETA = %2s</t>", _isInRange, _isETA];
 							//arty fired, we inform the enemy to make Arty not so IMBA
 							_artyside = side _artillery_piece;
 							_enemy = "civil";
@@ -149,8 +153,6 @@ switch (_action) do {
 								_enemy = west;
 							};
 							_sideHQ = (_enemy) call CTI_CO_FNC_GetSideHQ;
-							//_detected_dir = _target getRelDir _artillery_piece;
-							//_detected_dir = player getRelDir _artillery_piece;
 							_detected_dir = _sideHQ getRelDir _artillery_piece;
 							//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
 							[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
@@ -159,8 +161,6 @@ switch (_action) do {
 							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
 							//ETA = Estimated Time of Arrival
 							_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
-							//_isInRange = _target inRangeOfArtillery [[_artillery_piece], _artillery_magazine];
-							//_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
 							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;
 							if(_isInRange) then {
 								hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[inRange=%1|ETA=%2]</t>", _isInRange, _isETA];

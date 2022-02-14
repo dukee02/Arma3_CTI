@@ -36,7 +36,7 @@
 	  -> Create a "B_Soldier_F" at the player's position, initialize it over the network and ignore the formation on creation
 */
 
-private ["_net", "_position", "_sideID", "_special", "_team", "_type", "_unit", "_classname"];
+private ["_net", "_position", "_sideID", "_special", "_team", "_type", "_unit", "_classname", "_spawn_unit", "_error"];
 
 _classname = _this select 0;
 _team = _this select 1;
@@ -44,27 +44,26 @@ _position = _this select 2;
 _sideID = _this select 3;
 _net = if (count _this > 4) then {_this select 4} else {false};
 _special = if (count _this > 5) then {_this select 5} else {"FORM"};
+_error = "";
 
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 
 _spawn_unit = true;
 
-if(isNull _team) then {_spawn_unit = false};
-if(isNil _classname) then {_spawn_unit = false};
-if(_classname == "") then {_spawn_unit = false};
+if(isNull _team) then {
+	_spawn_unit = false;
+	_error = "team is NULL ";
+};
+if(isNil "_classname") then {
+	_spawn_unit = false;
+	_error = "no classname";
+};
 
 if(_spawn_unit == true) then {
 	if (CTI_Log_Level >= CTI_Log_Debug) then {
 		["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Attempting to create a [%1] unit on team [%2] at [%3] on side [%4], net? [%5] special? [%6]", _classname, _team, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
 	};
-	/*_unit = _team createUnit [_classname, _position, [], 0, _special];
-	_unit setSkill (0.5 + (random 0.3));//tbd tweak
-	[_unit] joinSilent _team;
-	//{player reveal _unit} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
-	_unit addRating 1000;*/
-
-	//Testing
 	_side = side _team;
 	_dummyGroup = createGroup _side;
 	_unit = _dummyGroup createUnit [_classname, _position, [], 0, _special];
@@ -76,7 +75,10 @@ if(_spawn_unit == true) then {
 	_unit setSkill (CTI_AI_SKILL_BASE + (random CTI_AI_SKILL_SPAN));
 	[_unit] joinSilent _team;
 	_unit addRating 1000;
-	//{player reveal _unit} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+	{//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+		player reveal [_unit, 4];
+	} forEach allUnits; 
+	
 	deleteGroup _dummyGroup;
 
 	if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
@@ -86,5 +88,5 @@ if(_spawn_unit == true) then {
 	
 	_unit
 } else {
-	["ERROR", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Can't create unit [%1] on team [%2] at [%3] on side [%4], net? [%5] special? [%6]", _classname, _team, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
+	["ERROR", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Can't create unit because [%1] at [%2] on side [%3], net? [%4] special? [%5]", _error, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;
 };
