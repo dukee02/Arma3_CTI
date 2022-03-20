@@ -40,6 +40,8 @@ private ["_gear", "_item", "_magazine", "_unit"];
 _unit = _this select 0;
 _gear = _this select 1;
 
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_EquipUnit.sqf", format ["Units <%1> gear <%2>", _unit, _gear]] call CTI_CO_FNC_Log };
+
 //--- [Equipment check-in]
 _new = _gear select 1;
 

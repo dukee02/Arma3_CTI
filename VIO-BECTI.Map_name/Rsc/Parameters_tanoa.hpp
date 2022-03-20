@@ -31,39 +31,39 @@ class Params {
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {
 		title = "UPGRADE: Max Level Gear";
-		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"Disable all gear","0","1","2","3","4","5"};
-		default = 2; //2
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {
 		title = "UPGRADE: Max Level Infantry";
-		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"Disable all gear","0","1","2","3","4","5"};
-		default = 2; //2
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_WHEELED {
 		title = "UPGRADE: Max Level Wheeled";
-		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"Disable all gear","0","1","2","3","4","5"};
-		default = 2; //2
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
 		title = "UPGRADE: Max Level Tracked";
-		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"Disable all gear","0","1","2","3","4","5"};
-		default = 2; //2
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
 		title = "UPGRADE: Max Level Naval";
-		values[] = {-1,0,1};
-		texts[] = {"Disable this units","0","1"};
-		default = 1; //1
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
 		title = "UPGRADE: Max Level Air";
-		values[] = {-1,0,1,2,3,4};
-		texts[] = {"Disable this units","0","1","2","3","4"};
-		default = 2; //2
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
 	};
 	class CTI_ECONOMY_UPGRADE_TIMECAP {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
@@ -103,9 +103,9 @@ class Params {
 	};
 	class CTI_AI_SKILL_BASE {
 		title = "AI: Skill (all AI units)";
-		values[] = {0.05,0.25,0.45,0.65,0.80};
+		values[] = {0,1,2,3,4};
 		texts[] = {"Novice","Rookie","Recruit","Veteran","Expert"};
-		default = 0.25;
+		default = 2;
 	};
 	class SEPERATOR_BASE {
 		title = "============ Base ============";
@@ -319,8 +319,8 @@ class Params {
 	};
   	class CTI_WEATHER_CHANGES {
 		title = "WEATHER: Simple presets";
-		values[] = {0,1,2};
-		texts[] = {"Sunny start, random normal weather","Sunny", "complete random"};
+		values[] = {0,1,2,3};
+		texts[] = {"Sunny start, random normal weather", "Sunny", "normal light weather", "complete random"};
 		default = 0;
 	};
 	class SEPERATOR_GAMEPLAY {
@@ -575,7 +575,7 @@ class Params {
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","4.5 KM","5 KM"};
 		default = 5000;
 	};
-	class SEPARATOR_ADDONS {
+	/*class SEPARATOR_ADDONS {
 		title = "=========================== ADDONS ============================";
 		values[] = {1};
 		texts[] = {""};
@@ -586,7 +586,7 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"deactivate","activate"};
 		default = 1;
-	};
+	};*/
 	class SEPARATOR_LOG {
 		title = "=========================== DEBUG ============================";
 		values[] = {1};

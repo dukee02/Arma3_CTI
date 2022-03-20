@@ -16,29 +16,30 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2862;
+		nextID=2877;
 	};
 	class Camera
 	{
-		pos[]={3029.9893,495.06699,4323.0664};
-		dir[]={-0.14121982,-0.39234772,0.90891331};
-		up[]={-0.060237341,0.91981661,0.38769674};
-		aside[]={0.98814672,-1.20599e-008,0.15353058};
+		pos[]={2978.7715,187.6926,3702.1553};
+		dir[]={-0.58788419,-0.59305465,0.55018163};
+		up[]={-0.43301284,0.80515927,0.40524226};
+		aside[]={0.68331385,-1.5620026e-007,0.73013997};
 	};
 };
 binarizationWanted=0;
-sourceName="CW-BECTI";
+sourceName="VIO-BECTI-Vanilla";
 addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
+	"WW2_Core_c_IF_Gui_c",
 	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -55,6 +56,11 @@ class AddonsMetaData
 		};
 		class Item2
 		{
+			className="WW2_Core_c_IF_Gui_c";
+			name="WW2_Core_c_IF_Gui_c";
+		};
+		class Item3
+		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
@@ -66,9 +72,9 @@ randomSeed=7728140;
 class ScenarioData
 {
 	author="Benny,dukee";
-	overviewText="VIO-CTI Cold-War";
-	overviewTextLocked="VIO-CTI Cold-War";
-	onLoadMission="VIO-CTI Cold-War";
+	overviewText="VIO-BECTI-Vanilla V2.0";
+	overviewTextLocked="VIO-BECTI-Vanilla V2.0";
+	onLoadMission="VIO-BECTI-Vanilla V2.0";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -79,9 +85,10 @@ class ScenarioData
 	};
 	wreckManagerMode=1;
 	wreckLimit=20;
-	wreckRemovalMaxTime=3600;
+	wreckRemovalMaxTime=1800;
 	corpseManagerMode=1;
-	corpseLimit=10;
+	corpseLimit=50;
+	corpseRemovalMaxTime=1200;
 };
 class CustomAttributes
 {
@@ -138,8 +145,8 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-CTI Cold-War";
-		overviewText="VIO-CTI Cold-War";
+		briefingName="VIO-BECTI-Vanilla V2.0";
+		overviewText="VIO-BECTI-Vanilla V2.0";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -1906,7 +1913,7 @@ class Mission
 						};
 					};
 					id=1370;
-					atlOffset=0.05519104;
+					atlOffset=0.055252075;
 				};
 				class Item5
 				{
@@ -2239,7 +2246,7 @@ class Mission
 								angles[]={0.014992379,0.72907639,0.0049916417};
 							};
 							name="Town7";
-							init="call{nullReturn = [this, ""Kamino Firing Range"", resistance, 30, 120, 1200] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Kamino Firing Range"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
 							id=1325;
 							type="LocationArea_F";
 						};
@@ -2431,7 +2438,7 @@ class Mission
 								angles[]={0.0024958209,0.54937726,0.079831354};
 							};
 							name="Town0";
-							init="call{nullReturn = [this, ""Agia Marina"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Agia Marina"", resistance, 30, 120, 1200] execVM ""Common\Init\Init_Location.sqf""}";
 							id=1309;
 							type="LocationArea_F";
 						};

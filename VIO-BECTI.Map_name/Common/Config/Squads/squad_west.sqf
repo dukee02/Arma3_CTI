@@ -1,6 +1,6 @@
 _side = _this;
 _sid = "";
-_adds = 0;
+_level = -1;
 
 /*if(_side == west) then {
 	_sid = "VIOC_B_";
@@ -38,30 +38,81 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air"]];
 
 //Infantry setup for the AI groups
 units_infantry = [];
-if(CTI_CAMO_ACTIVATION == 1) then {
-	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
-	case 1: {
-		units_infantry = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Support_MG_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1]];
-		};
-	case 2: {
-		units_infantry = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_AAT_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Support_MG_F", _sid],1],[format["%1B_T_Soldier_AT_F", _sid],1]];
-		};
-	default {
-		units_infantry = [[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1]];
-		};
+inf_to_add = [];
+_matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		inf_to_add = [[format["%1B_Soldier_A_F", _sid], 1, 60]];	
+		inf_to_add pushBack [format["%1B_soldier_AAR_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_AR_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_medic_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_engineer_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_exp_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_Soldier_GL_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_mine_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_PG_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_repair_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_Soldier_F", _sid], 1, 60];
+		inf_to_add pushBack [format["%1B_soldier_LAT_F", _sid], 1, 40];
+		inf_to_add pushBack [format["%1B_Soldier_lite_F", _sid], 1, 20];
 	};
-} else {
-	switch (CTI_ECONOMY_LEVEL_WHEELED) do {
-	case 1: {
-		units_infantry = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_support_MG_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		};
-	case 2: {
-		units_infantry = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_soldier_AAT_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_support_MG_F", _sid],1],[format["%1B_soldier_AT_F", _sid],1]];
-		};
-	default {
-		units_infantry = [[format["%1B_medic_F", _sid],1],[format["%1B_Soldier_F", _sid],1],[format["%1B_Soldier_GL_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1],[format["%1B_soldier_AR_F", _sid],1],[format["%1B_soldier_LAT_F", _sid],1]];
-		};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		inf_to_add = [[format["%1B_T_Soldier_A_F", _sid], 1, 60]];	
+		inf_to_add pushBack [format["%1B_T_Soldier_AAR_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_AR_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Medic_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Engineer_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_Exp_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_GL_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_soldier_mine_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_PG_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_Repair_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_F", _sid], 1, 60];
+		inf_to_add pushBack [format["%1B_T_Soldier_LAT_F", _sid], 1, 40];
 	};
+	units_infantry append inf_to_add;
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		inf_to_add = [[format["%1B_support_AMG_F", _sid], 1, 30]];	
+		inf_to_add pushBack [format["%1B_HeavyGunner_F", _sid], 1, 30];
+		inf_to_add pushBack [format["%1B_soldier_LAT2_F", _sid], 1, 30];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		inf_to_add = [[format["%1B_T_Support_AMG_F", _sid], 1, 30]];	
+		inf_to_add pushBack [format["%1B_T_Soldier_LAT2_F", _sid], 1, 30];
+	};
+	units_infantry append inf_to_add;
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		inf_to_add = [[format["%1B_soldier_AAA_F", _sid], 1, 60]];	
+		inf_to_add pushBack [format["%1B_soldier_AAT_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_M_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_AA_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_soldier_AT_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_Sharpshooter_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_officer_F", _sid], 1, 10];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		inf_to_add = [[format["%1B_T_Soldier_AAA_F", _sid], 1, 60]];	
+		inf_to_add pushBack [format["%1B_T_Soldier_AAT_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_soldier_M_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_AA_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Soldier_AT_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1B_T_Officer_F", _sid], 1, 10];
+	};
+	units_infantry append inf_to_add;
 };
 
 _v pushBack "Infantry";
@@ -72,12 +123,18 @@ _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
 
-
+//***************************************************************************************************************************************
+//														Motorized Troops																*
+//***************************************************************************************************************************************
 //Wheeled setup for the AI groups
 units_wheeled = [];
 mot_to_add = [];
-//Level start
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+_matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		mot_to_add = [[format["%1B_T_LSV_01_armed_F", _sid], 1, 50]];
 		mot_to_add pushBack [format["%1B_T_LSV_01_AT_F", _sid], 1, 50];
@@ -91,8 +148,10 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	};
 	units_wheeled = mot_to_add;
 };
-//Level 1
-if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		mot_to_add = [[format["%1B_T_APC_Wheeled_01_cannon_F", _sid], 1, 50]];
 	} else {
@@ -100,8 +159,10 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
 	};
 	units_wheeled = mot_to_add;
 };
-//Level 2
-if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		mot_to_add = [[format["%1B_T_AFV_Wheeled_01_cannon_F", _sid], 1, 50]];
 		mot_to_add pushBack [format["%1B_T_AFV_Wheeled_01_up_cannon_F", _sid], 1, 50];
@@ -119,14 +180,18 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 
-
-
+//***************************************************************************************************************************************
+//														Armored Troops																	*
+//***************************************************************************************************************************************
 //Tracked setup for the AI groups
 units_tracked = [];
 arm_to_add = [];
+_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
-//Start
-if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		arm_to_add = [[format["%1B_T_APC_Tracked_01_CRV_F", _sid], 1, 50]];
 		arm_to_add pushBack [format["%1B_T_APC_Tracked_01_rcws_F", _sid], 1, 50];
@@ -136,7 +201,10 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	};
 	units_tracked = arm_to_add;
 };
-if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		arm_to_add = [[format["%1B_T_MBT_01_cannon_F", _sid], 1, 50]];
 	} else {
@@ -144,7 +212,10 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	};
 	units_tracked = arm_to_add;
 };
-if(CTI_ECONOMY_LEVEL_TRACKED >= 2) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		arm_to_add = [[format["%1B_T_MBT_01_TUSK_F", _sid], 1, 70]];
 		arm_to_add pushBack [format["%1B_T_MBT_01_arty_F", _sid], 1, 30];
@@ -165,10 +236,17 @@ _m pushBack 500;
 _c pushBack "Armored";
 _s pushBack [];
 
-
+//***************************************************************************************************************************************
+//														AntiAir Troops																	*
+//***************************************************************************************************************************************
 //AntiAir setup for the AI groups
 units_antiair = [];
+antiair_to_add = [];
 
+_matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_cnt = [1, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= 1) then {
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		units_antiair = [[format["%1B_T_APC_Tracked_01_AA_F", _sid], 1, 50]];
@@ -185,18 +263,31 @@ _m pushBack 300;
 _c pushBack "AntiAir";
 _s pushBack [];
 
-
+//***************************************************************************************************************************************
+//														Air Troops																		*
+//***************************************************************************************************************************************
 //Air setup for the AI groups
 units_air = [];
+air_to_add = [];
+_matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
-if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air = [[format["%1B_Heli_Transport_01_F", _sid], 1, 50]];
 };
-if(CTI_ECONOMY_LEVEL_AIR >= 1) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air = [[format["%1B_Heli_Light_01_dynamicLoadout_F", _sid], 1, 70]];
 	units_air pushBack [format["%1B_Plane_CAS_01_dynamicLoadout_F", _sid], 1, 30];
 };
-if(CTI_ECONOMY_LEVEL_AIR >= 2) then {
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air pushBack [format["%1B_Heli_Attack_01_dynamicLoadout_F", _sid], 1, 70];
 	units_air pushBack [format["%1B_Plane_Fighter_01_F", _sid], 1, 30];
 };

@@ -53,7 +53,7 @@ link25[] = {20,18};
 link26[] = {21,8};
 link27[] = {22,1};
 globals[] = {0.000000,0,0,0,0,640,480,1,160,6316128,1,-532.068176,527.441589,566.059692,-456.436584,916,884,1};
-window[] = {2,-1,-1,-1,-1,963,182,1437,182,3,934};
+window[] = {2,-1,-1,-1,-1,833,52,1307,52,3,934};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -196,7 +196,9 @@ class FSM
                          "	" \n
                          "	if (_lives >= CTI_TOWNS_RESISTANCE_MIN_ACTIVE) then { //--- There's still some units fighting! it's not that inactive!" \n
                          "		_town setVariable [""cti_town_resistance_activeTime"", time];" \n
-                         "		{ _town hideObjectGlobal true } foreach (nearestTerrainObjects [getPos _town, [""Tree"", ""Bush""], 600]);" \n
+                         "		{" \n
+                         "			if (damage _x ==1) then {_x hideObjectGlobal true;};" \n
+                         "		} foreach (nearestTerrainObjects [_town,CTI_GC_TOWN_OBJECTS,CTI_GC_RANGE_TOWN]);" \n
                          "	};" \n
                          "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

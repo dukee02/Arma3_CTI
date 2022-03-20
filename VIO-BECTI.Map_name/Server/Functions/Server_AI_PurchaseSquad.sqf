@@ -52,52 +52,41 @@ while {_need > 0} do {
 	if (_probability != 100) then {
 		if (random 100 > _probability) then {_can_use = false};
 	};
-	
-	/*
-	_var = missionNameSpace getVariable _picked;	//massively spams errors in the log, we need a later fix for AI purchase is plausible (upgrade done or not).
-	_upgrades = _side call CTI_CO_FNC_GetSideUpgrades;
-	_upgrade = switch (_var select 5) do {
-		case CTI_FACTORY_BARRACKS: {CTI_UPGRADE_BARRACKS};
-		case CTI_FACTORY_LIGHT: {CTI_UPGRADE_LIGHT};
-		case CTI_FACTORY_HEAVY: {CTI_UPGRADE_HEAVY};
-		case CTI_FACTORY_AIR: {CTI_UPGRADE_AIR};
-		default {-1};
-	};
-
-	if (_upgrade > -1) then {
-		if (_upgrades select _upgrade < _var select CTI_UNIT_UPGRADE) then {_can_use = false; _need = _need - 1};
-	};
-	*/
-	
+		
 	_picked_unit_name = _picked select 0;
 	_picked_unit_data = missionNameSpace getVariable _picked_unit_name;
-	///check if the group has enough funds to pay the bill
-	_cost = _picked_unit_data select 2;
-	_funds = [_group, _side] call CTI_CO_FNC_GetFunds;
-	if(_funds < _cost) then {_can_use = false; _need = _need - 1};
-	
-	//if the group hasn't the funds to pay, skip the upgradecheck
-	if(_can_use) then {
-		_upgrades = _side call CTI_CO_FNC_GetSideUpgrades;
-		_upgrade = switch (_picked_unit_data select 5) do {
-			case CTI_FACTORY_BARRACKS: {CTI_UPGRADE_BARRACKS};
-			case CTI_FACTORY_LIGHT: {CTI_UPGRADE_LIGHT};
-			case CTI_FACTORY_HEAVY: {CTI_UPGRADE_HEAVY};
-			case CTI_FACTORY_AIR: {CTI_UPGRADE_AIR};
-			default {-1};
-		};
+	//check if picked unit is declared correctly, if not skip it and log an error
+	if(isNIL "_picked_unit_data") then {
+		if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_AIPurchaseSquad.sqf", format["Can't build unit! side: %1 - Team: %2 - classname: <%3> ", _side, _group, _picked_unit_name]] call CTI_CO_FNC_Log;};
+	} else {
+		//check if the group has enough funds to pay the bill
+		_cost = _picked_unit_data select 2;
+		_funds = [_group, _side] call CTI_CO_FNC_GetFunds;
+		//if the group hasn't the funds to pay, skip the upgradecheck
+		if(_funds < _cost) then {_can_use = false; _need = _need - 1};
+		//check if the upgrade for selected unit has done, if not skip it
+		if(_can_use) then {
+			_upgrades = _side call CTI_CO_FNC_GetSideUpgrades;
+			_upgrade = switch (_picked_unit_data select 5) do {
+				case CTI_FACTORY_BARRACKS: {CTI_UPGRADE_BARRACKS};
+				case CTI_FACTORY_LIGHT: {CTI_UPGRADE_LIGHT};
+				case CTI_FACTORY_HEAVY: {CTI_UPGRADE_HEAVY};
+				case CTI_FACTORY_AIR: {CTI_UPGRADE_AIR};
+				default {-1};
+			};
 
-		if (_upgrade > -1) then {
-			if (_upgrades select _upgrade < _picked_unit_data select CTI_UNIT_UPGRADE) then {_can_use = false; _need = _need - 1};
-		};	
-	};
-	
-	if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Server\Functions\Server_AI_PurchaseSquad.sqf", format["Received a purchase request from _group [%1] for a [%2] witch can be used? -> [%3] tries: [%4] cost: [%5/%6]", _group, _picked_unit_name, _can_use, _loop_count, _funds, _cost]] call CTI_CO_FNC_Log };
-	_loop_count = _loop_count + 1;
-	
-	if (_can_use) then {
-		_compose pushBack (_picked select 0);
-		_need = _need - 1;
+			if (_upgrade > -1) then {
+				if (_upgrades select _upgrade < _picked_unit_data select CTI_UNIT_UPGRADE) then {_can_use = false; _need = _need - 1};
+			};	
+		};
+		
+		if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Server\Functions\Server_AI_PurchaseSquad.sqf", format["Received a purchase request from _group [%1] for a [%2] witch can be used? -> [%3] tries: [%4] cost: [%5/%6]", _group, _picked_unit_name, _can_use, _loop_count, _funds, _cost]] call CTI_CO_FNC_Log };
+		_loop_count = _loop_count + 1;
+		
+		if (_can_use) then {
+			_compose pushBack (_picked select 0);
+			_need = _need - 1;
+		};
 	};
 };
 

@@ -102,13 +102,15 @@ if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
 
 //--- Place both sides.
 _range = missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
-
-_westLocation = getMarkerPos "cti-spawn0";
-_eastLocation = getMarkerPos "cti-spawn1";
-
 _attempts = 0;
 _total_west = count _startup_locations_west;
 _total_east = count _startup_locations_east;
+
+_westLocation = getMarkerPos "cti-spawn0";
+_eastLocation = getMarkerPos "cti-spawn0";
+//_westLocation = _startup_locations_west select floor(random _total_west);
+//_eastLocation = _startup_locations_east select floor(random _total_east);
+
 while {_eastLocation distance _westLocation < _range &&_attempts <= 300} do {
 	//if (CTI_Log_Level >= CTI_Log_Debug) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
 	_westLocation = _startup_locations_west select floor(random _total_west);
@@ -206,6 +208,7 @@ if (_attempts >= 300) then {
 	_teams = [];
 	_totalTeams = count synchronizedObjects _logic;
 	_processed = 0;
+		
 	switch (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") do {
 		case 1: {_totalTeams = round(_totalTeams * 0.25)};
 		case 2: {_totalTeams = round(_totalTeams * 0.5)};
@@ -224,7 +227,16 @@ if (_attempts >= 300) then {
 				
 				[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
 				
-				if (!isPlayer leader _group && _processed < _totalTeams) then {
+				//if coop is enabled, th AI only for enemy side!
+				_ai_teams_enabled = true;
+				if(CTI_TOWNS_STARTING_MODE == 4 && _side == east) then {
+					_ai_teams_enabled = false;
+				};
+				if(CTI_TOWNS_STARTING_MODE == 5 && _side == west) then {
+					_ai_teams_enabled = false;
+				};
+				
+				if (!isPlayer leader _group && _processed < _totalTeams && _ai_teams_enabled == true) then {
 					_processed = _processed + 1;
 					if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"
 						_group setVariable ["cti_ai_active", true, true];

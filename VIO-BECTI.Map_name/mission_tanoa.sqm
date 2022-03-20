@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3275;
+		nextID=3647;
 	};
 	class Camera
 	{
@@ -27,7 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="VIO-BECTI";
+sourceName="VIO-BECTI-Vanilla";
 addons[]=
 {
 	"A3_Characters_F",
@@ -74,9 +74,9 @@ randomSeed=7728140;
 class ScenarioData
 {
 	author="Benny,dukee";
-	overviewText="VIO-BECTI Vanilla";
-	overviewTextLocked="VIO-BECTI Vanilla";
-	onLoadMission="VIO-BECTI Vanilla";
+	overviewText="VIO-BECTI-Vanilla V2.0";
+	overviewTextLocked="VIO-BECTI-Vanilla V2.0";
+	onLoadMission="VIO-BECTI-Vanilla V2.0";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -87,9 +87,10 @@ class ScenarioData
 	};
 	wreckManagerMode=1;
 	wreckLimit=20;
-	wreckRemovalMaxTime=3600;
+	wreckRemovalMaxTime=1800;
 	corpseManagerMode=1;
-	corpseLimit=10;
+	corpseLimit=50;
+	corpseRemovalMaxTime=1200;
 };
 class CustomAttributes
 {
@@ -146,8 +147,8 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI Vanilla";
-		overviewText="VIO-BECTI Vanilla";
+		briefingName="VIO-BECTI-Vanilla V2.0";
+		overviewText="VIO-BECTI-Vanilla V2.0";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -5104,7 +5105,7 @@ class Mission
 						};
 					};
 					id=1935;
-					atlOffset=-0.18110657;
+					atlOffset=-0.23890305;
 				};
 				class Item49
 				{
@@ -5910,7 +5911,7 @@ class Mission
 				};
 			};
 			id=308;
-			atlOffset=-22.037704;
+			atlOffset=-22.038239;
 		};
 		class Item18
 		{

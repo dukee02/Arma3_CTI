@@ -29,7 +29,7 @@
 	  -> Town0 is now captured by West
 */
 
-private ["_award_teams", "_currentSideID", "_last_capture", "_newSide", "_newSideID", "_town"];
+private ["_award_teams", "_currentSideID", "_last_capture", "_newSide", "_newSideID", "_town", "_flag"];
 
 _town = _this select 0;
 _newSide = _this select 1;
@@ -40,6 +40,11 @@ _camps = _town getVariable "cti_town_camps";
 
 _town setVariable ["cti_town_sideID", _newSideID, true];
 _town setVariable ["cti_town_lastSideID", _currentSideID, true];
+
+for '_i' from 0 to 3 do {
+	_flag = _town getVariable format ["CTI_flag%1", _i];
+	_flag setFlagTexture (missionNamespace getVariable Format["CTI_%1FLAG", _newSide]);
+};
 
 {
 	_x setVariable ["cti_camp_sideID", _newSideID, true];

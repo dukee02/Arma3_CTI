@@ -1,0 +1,84 @@
+[h1]Info about our Vanilla BECTIS: [/h1] 
+
+BECTI basic version without mod support, just start ArmA3 and go, no extra download necessary.
+Also no CDLC support, only Arma3 DLC like APEX are supported!
+
+[h1]CTI features: [/h1] 
+[list]
+    [*]Classic Team vs Team (TvT) max. 16vs16
+    [*]Warfare on all levels (on foot, in the vehicle, in the air).
+    [*]Free choice of units, put your team together yourself.
+    [*]Free base construction, several bases also possible.
+    [*]Researchable  technology tree. Research for better units, thus earlier Tankrush not possible.
+    [*]No fixed script, every game can run differently.
+[/list]
+
+[h1]VIO-BECTI special features: [/h1] 
+[list]
+    [*]Mission designed for PvP, but also Coop possible.
+    [*]New start modes for Coop, where the own side holds an adjustable small radius to start.
+    [*]Maximum possible technology level is calculated automatically based on the activated mods
+    [*]Maximum technology level can restricted.
+    [*]Research cost and time can be set.
+    [*]Free choice of depot flags.
+    [*]Freely adjustable costs for the units, equipment and weapons.
+    [*]Adjustable skill of the AI.
+    [*]Adjustable damage system for base building.
+    [*]New weather script.
+    [*]Optional field repair for players.
+    [*]Adjustable cool-down for CTI artillery strikes.
+	[*]HQ gives artillery warning with rough direction (ballance).
+[/list]
+
+[h1]Other missions: [/h1] 
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2484775180] VIO-BECTI Vanilla Collection [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2564772956] VIO BECTI [IFA3 only] Collection [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2754192763] VIO BECTI WW2 Collection [/url]
+
+[h1]Help and player search: [/h1]
+If you want to know more about the mission, find servers on which the mission is running or find other players to play together/against each other, our [url=https://discord.gg/sJw2Nynh7s]discord[/url] is a good address.
+
+--------------------------------German part--------------------------
+
+[h1]Infos zu unseren Vanilla BECTIS: [/h1] 
+
+BECTI Grundversion ohne Mod-Support, einfach ArmA3 starten und loslegen, kein extra download notwendig.
+Auch keine CDLC Unterstützung, lediglich Arma3 DLC wie APEX werden unterstützt!
+
+[h1]CTI features: [/h1] 
+[list]
+    [*]Klassisches Team gegen Team (TvT) max. 16vs16
+    [*]Warfare auf allen Ebenen (zu Fuß, im Fahrzeug, in der Luft).
+    [*]Freie Einheitenwahl, stelle dir dein Team selbst zusammen.
+    [*]Freier Basisbau, auch mehere Basen möglich.
+    [*]Erforschbarer Technologiebaum. Forschung für bessere Einheiten, somit früher Tankrush nicht möglich.
+    [*]Kein festes Script, jede Partie kann anders verlaufen.
+[/list]
+
+[h1]VIO-BECTI special features: [/h1] 
+[list]
+    [*]Mission zwar für PvP ausgelegt, aber auch Coop möglich.
+    [*]Neue Startmodis für Coop, bei der die eigene Seite einen einstellbaren kleinen Radius hällt zum Start.
+    [*]Maximal mögliche Technologiestufe wird anhand der aktivierten Mods automatisch berechnet.
+    [*]Maximale Technologiestufe kann begrenzt werden.
+    [*]Forschungskosten und Zeit kann eingestellt werden.
+    [*]Freie Auswahl der Depot-Flaggen.
+    [*]Frei einstellbare Kosten für die Einheiten, Equipment und Waffen.
+    [*]Einstellbarer Skill der AI.
+    [*]Einstellbares Schadenssystem für Basisgebäude.
+    [*]Neues Wetter-skript.
+    [*]Optionale Feldreparatur für Spieler.
+    [*]Einstellbarer Cool-Down für CTI-Artillerieschläge.
+    [*]HQ gibt Artillerie-Warnung mit grober Richtung an (ballance).
+[/list]
+
+[h1]Weitere Missionen: [/h1] 
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2484775180] VIO-BECTI Vanilla Collection [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2564772956] VIO BECTI [IFA3 only] Collection [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2754192763] VIO BECTI WW2 Collection [/url]
+
+[h1]Hilfe und Spielersuche: [/h1]
+Willst du mehr über die Mission wissen, Server finden auf denen die Mission läuft oder andere Spieler finden fürs gemeinsame miteinander/gegeneinander ist unser [url=https://discord.gg/sJw2Nynh7s] discord [/url] eine gute Adresse.
+
+Happy fighting
+dukee

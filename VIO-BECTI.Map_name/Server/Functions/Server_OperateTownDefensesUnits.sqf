@@ -26,7 +26,7 @@
 
 */
 
-Private ["_action","_defense","_mortars","_side","_spawn","_town","_units","_defenseTeam"];
+Private ["_action","_defense","_mortars","_side","_spawn","_town","_units"];
 
 _town = _this select 0;
 _action = _this select 1;
@@ -51,7 +51,6 @@ switch (_action) do {
 		{
 			if !(alive gunner _x) then {
 				if ((locked _x) == 2) then {_x lock false};
-				//_unit = [missionNamespace getVariable Format ["CTI_%1_Soldier", _side],missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
 				_unit = [missionNamespace getVariable Format ["CTI_%1_Soldier", _side],_defenseTeam, getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
 				_unit assignAsGunner _x;
 				[_unit] orderGetIn true;
@@ -72,7 +71,6 @@ switch (_action) do {
 					
 			if !(isNil '_defense') then {
 				if !(alive gunner _defense) then { //--- Make sure that the defense gunner is null or dead.
-					//_unit = [missionNamespace getVariable Format ["CTI_%1_SOLDIER", _side],missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _side], getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
 					_unit = [missionNamespace getVariable Format ["CTI_%1_SOLDIER", _side],_defenseTeam, getPos _x, _side] Call CTI_CO_FNC_CreateUnit;
 					_unit assignAsGunner _defense;
 					[_unit] orderGetIn true;

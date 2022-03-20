@@ -72,7 +72,7 @@ if (CTI_IsServer) then {
 	_town setVariable ["cti_town_value", _town_value, true];
 	
 	[_town, _town_side, _town_startSV, _town_range] spawn {
-		Private ["_camps","_defenses","_marker","_size","_town","_townModel"];
+		Private ["_camps","_defenses","_marker","_size","_town","_townModel","_flag","_pos"];
 		_town = _this select 0;
 		_town_side = _this select 1;
 		_town_startSV = _this select 2;
@@ -92,7 +92,7 @@ if (CTI_IsServer) then {
 		_townModel setDir ((getDir _town) + (missionNamespace getVariable "CTI_CO_DEPOT_RDIR"));
 		_townModel setPos (getPos _town);
 		_townModel addEventHandler ["handleDamage", {false}];
-
+		
 		//if (isNil {_town getVariable "cti_town_sideID"}) then {_town setVariable ["cti_town_sideID", _sideID, true]};
 		if (isNil {_town getVariable "cti_town_lastSideID"}) then {_town setVariable ["cti_town_lastSideID", _sideID, true]};
 		_town setVariable ["cti_town_SV", _town_startSV, true];
@@ -100,7 +100,19 @@ if (CTI_IsServer) then {
 		sleep (random 1);
 		
 		waitUntil {!isNil 'CTI_Init_Server'};
-	
+		
+		//--- Create a flag near the camp location & position it.
+		for '_i' from 0 to 3 do {
+			_flag = createVehicle [missionNamespace getVariable "CTI_CO_CAMP_FLAG", getPos _town, [], 0, "NONE"];
+			_flag setFlagTexture (missionNamespace getVariable Format["CTI_%1FLAG", _town_side]);
+			_pos = _town modelToWorld (missionNamespace getVariable format ["CTI_CO_DEPOT_FLAG_POS%1", _i]);
+			//_pos set [2, 0];
+			_flag setPos _pos;
+				
+			_town setVariable [format ["CTI_flag%1", _i], _flag];
+		};
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Init\Init_Location.sqf", format ["For Town [%1] side: [%2] set Flag to: [%3].", _town getVariable "cti_town_name", _town_side, missionNamespace getVariable Format["CTI_%1FLAG", _town_side]]] call CTI_CO_FNC_Log};
+			
 		{
 			Private ["_camp_health","_flag","_pos","_campmodel"];
 			//--- Create the camp model.

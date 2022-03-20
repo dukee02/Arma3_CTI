@@ -67,15 +67,24 @@ clearItemCargo _vehicle;
 
 //if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
 if (_special != "FLY") then {
-	_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-	_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
+	if(_type isKindOf "ship") then {
+		//placeing onto the water but near the shore
+		_save_pos = [_position, 0, 100, 1, 2, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
+	} else {
+		//place on a save Pos on the ground
+		_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];//--- Make the vehicle spawn above the ground level to prevent any bisteries
+	};
 	_vehicle setVelocity [0,0,1];
 } else {
 	_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 200]; //--- Make the vehicle spawn in the sky
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
 };
 
-//{player reveal _vehicle} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+{//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
+	player reveal [_vehicle, 4];
+} forEach allUnits;
 
 if (_locked) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};

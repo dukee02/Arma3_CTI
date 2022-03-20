@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=2.1999998;
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=4097;
+		nextID=4205;
 	};
 	class Camera
 	{
@@ -27,6 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
+sourceName="VIO-BECTI-Vanilla";
 addons[]=
 {
 	"A3_Characters_F",
@@ -73,8 +74,9 @@ randomSeed=7728140;
 class ScenarioData
 {
 	author="Benny,dukee";
-	overviewText="Cold-War CTI - Global Mobilization";
-	onLoadMission="Cold-War CTI - Global Mobilization";
+	overviewText="VIO-BECTI-Vanilla V2.0";
+	overviewTextLocked="VIO-BECTI-Vanilla V2.0";
+	onLoadMission="VIO-BECTI-Vanilla V2.0";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -85,9 +87,10 @@ class ScenarioData
 	};
 	wreckManagerMode=1;
 	wreckLimit=20;
-	wreckRemovalMaxTime=3600;
+	wreckRemovalMaxTime=1800;
 	corpseManagerMode=1;
-	corpseLimit=10;
+	corpseLimit=50;
+	corpseRemovalMaxTime=1200;
 };
 class CustomAttributes
 {
@@ -143,9 +146,10 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Cold-War CTI - Global Mobilization";
-		overviewText="Cold-War CTI - Global Mobilization";
+		briefingName="VIO-BECTI-Vanilla V2.0";
+		overviewText="VIO-BECTI-Vanilla V2.0";
 		resistanceWest=0;
+		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
 		startWind=0.1;

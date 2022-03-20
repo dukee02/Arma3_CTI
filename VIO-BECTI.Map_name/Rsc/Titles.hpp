@@ -40,4 +40,5 @@ class RscTitles {
 			};
 		};
 	};
+	//#include "..\AFAR\ui\titles.hpp"
 };

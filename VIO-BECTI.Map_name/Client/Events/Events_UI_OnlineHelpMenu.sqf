@@ -16,6 +16,7 @@ Each side are led by a <t color='#e8bd12'>Commander</t> which may construct a ba
 As soon as the base is available, you may decide to reinforce your team by purchasing additional units and vehicles.<br /><br />
 Keep in mind that the <t color='#e8bd12'>Commander</t> may assign assign different tasks to your team.<br /><br />
 The mission may be won by destroying the opposite side's base assets (<t color='#eaff96'>Barracks</t>, <t color='#eaff96'>Light Vehicle Factory</t>, <t color='#eaff96'>Heavy Vehicle Factory</t>, <t color='#eaff96'>Aircraft Factory</t> and the <t color='#eaff96'>MHQ</t>).<br /><br />
+<a href='https://discord.gg/sJw2Nynh7s'>More Infos you can find on our Discord.</a> <br /><br />
 ",
 "<t size='1.4' color='#2394ef'>The Basics</t><br /><br />
 Each side's teams are led by a <t color='#e8bd12'>Team Leader</t> which will respawn after it's death (you are a Team Leader). Your character's location can be seen on the map as it will always be tracked by a marker like those below.<br /><br />
@@ -26,9 +27,9 @@ Each player team has it's own <t color='#e8bd12'>Income</t>, the income can be v
 ",
 "<t size='1.4' color='#2394ef'>The Map</t><br /><br />
 The <t color='#e8bd12'>Map</t> contains all of the information that you need. First of all, you need to be aware of the colors<br /><br />
-- <t color='#e8bd12'>West</t> is identified by the <t color='#eaff96'>Green</t> color.<br />
-- <t color='#e8bd12'>East</t> is identified by the <t color='#eaff96'>Red</t> color.<br />
-- <t color='#e8bd12'>Resistance</t> (or unknowns) is identified by the <t color='#eaff96'>Blue</t> color.<br /><br />
+- <t color='#e8bd12'>West</t> is identified by the <t color='#2980b9'>Blue</t> color.<br />
+- <t color='#e8bd12'>East</t> is identified by the <t color='#a93226'>Red</t> color.<br />
+- <t color='#e8bd12'>Resistance</t> (or unknowns) is identified by the <t color='#27ae60'>Green</t> color.<br /><br />
 The <t color='#e8bd12'>Towns</t> are identified by a Flag marker as follow (a circle may appear around it which signify that the town is occupied):<br /><br />
 <t align='center'><img image='\A3\ui_f\data\map\Markers\Military\flag_ca.paa' size='2'/></t><br /><br />
 While the <t color='#e8bd12'>MHQ</t> is identified by a specific marker labeled 'HQ' the <t color='#e8bd12'>Base Structures</t> are identified by an installation marker as follow:<br /><br />

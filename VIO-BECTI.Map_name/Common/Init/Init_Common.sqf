@@ -87,12 +87,13 @@ CTI_CO_FNC_SanitizeAircraftFFAR = compileFinal preprocessFileLineNumbers "Common
 CTI_CO_FNC_SanitizeArtillery = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 CTI_CO_FNC_SetCommanderVotes = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetCommanderVotes.sqf";
 
+CTI_CO_FNC_GetTechmatrix = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTechmatrix.sqf";
+CTI_CO_FNC_MergeMatrixArray = compileFinal preprocessFileLineNumbers "Common\Functions\Common_MergeMatrixArray.sqf";
+CTI_CO_FNC_CheckCountUp = compileFinal preprocessFileLineNumbers "Common\Functions\Common_CheckCountUp.sqf";
+
 CTI_CO_CustomIterator = 0;
 
 call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
-
-(west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
-(east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
@@ -112,6 +113,11 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_east.sqf";
 
+(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_west.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_east.sqf";
+
+(west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 
 //--- Network communication handler
 "CTI_NetCom" addPublicVariableEventHandler {(_this select 1) Spawn CTI_CO_FNC_OnPVFReceived};

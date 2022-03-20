@@ -2,3 +2,11 @@
 [Fixed] Independent start don't work
 [Added] image on loadscreen
 
+V2.0.2
+[Added]	Discord linkt to Online-help
+[Added]	Flags to the main bunker in towns
+[Added] atomatic tier calculation like other CTIs
+[Added] tree hide script in towns
+[Fixed] some issues with unit and vehicle spawn
+[Fixed] random spawns now works correctly
+[Changed] weatherscript, now option for less harsh weather ant total sunny
