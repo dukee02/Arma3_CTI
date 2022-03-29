@@ -55,8 +55,9 @@ waituntil {isNull _oldHQ};
 
 if (_deployed) then {
 	_logic setVariable ["cti_structures", (_logic getVariable "cti_structures") - [_oldHQ, objNull], true];
-	_newHQ = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _direction, _side, true, false] call CTI_CO_FNC_CreateVehicle;
-	[_newHQ, _position, 10, 25, false, false, true] call CTI_CO_FNC_PlaceNear;
+	_newHQ = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _direction, _side, true, false, false, "NONE"] call CTI_CO_FNC_CreateVehicle;
+	//[_newHQ, _position, 10, 25, false, false, true] call CTI_CO_FNC_PlaceNear;
+    [_newHQ, _position, 30] call CTI_CO_FNC_PlaceSafe;
 	_newHQ setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 	_newHQ addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
 	_logic setVariable ["cti_hq_deployed", false, true];
@@ -81,10 +82,12 @@ if (_deployed) then {
 	_logic setVariable ["cti_hq_deployed", true, true];
 };
 
+/* What the f***** why set this so, its already set above
 _newHQ setDir _direction;
 _newHQ setPos _position;
 _newHQ setDir _direction;
 _newHQ setVectorUp [0,0,0];
+*/
 
 _newHQ setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 if (CTI_BASE_NOOBPROTECTION == 1) then {
