@@ -38,8 +38,10 @@ _crews = [];
 		if (_x isKindOf "Air") then {
 			_vehicle = [_x, [_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty, "FLY"] call CTI_CO_FNC_CreateVehicle;
 		} else {
-			_vehicle = [_x, [_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty, "FORM"] call CTI_CO_FNC_CreateVehicle;
+			//_vehicle = [_x, [_position, 2, 15, 50] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty, "FORM"] call CTI_CO_FNC_CreateVehicle;
+			_vehicle = [_x, [_position, 30] call CTI_CO_FNC_GetEmptyPosition, random 360, _sideID, _locked, _net, _bounty, "NONE"] call CTI_CO_FNC_CreateVehicle;
 		};
+		//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 		//_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty] call CTI_CO_FNC_CreateVehicle;
 		_created_vehicles pushBack _vehicle;
 		_vehicle_crew = [_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;

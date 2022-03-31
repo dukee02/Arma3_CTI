@@ -156,15 +156,13 @@ _pool = [];
 			_probability = if (count _x > 2) then {_x select 2} else {100};
 					
 			_pool pushBack ([_units, _probability]);
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Resistance Pool: <%1,%2>",  _units, _probability]] call CTI_CO_FNC_Log;};
 		};
 	};
 } forEach _pool_units;
 
 if (CTI_Log_Level >= CTI_Log_Information) then { 
 	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Retrieved an Resistance Pool count of [%1] for town [%2]. Total group is set to [%3]", count _pool, _town getVariable "cti_town_name", _totalGroups]] call CTI_CO_FNC_Log;
-};
-if (CTI_Log_Level >= CTI_Log_Debug) then { 
-	["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Resistance Pool: <%1>",  _pool]] call CTI_CO_FNC_Log;
 };
 
 //--- Shuffle!
@@ -203,26 +201,47 @@ diag_log format ["POOL Composer for %1 (value %2)", _town getVariable "cti_town_
 
 // _vehicles = [];
 _camps = +(_town getVariable "cti_town_camps");
+_spawns = _town getVariable "cti_town_spawns";
 _groups = [];
 _positions = [];
 
 {
-	//Create teams around the camps first. If there are no more camps then pick a random positon.
+	/*//Create teams around the camps first. If there are no more camps then pick a random positon.
 	if (count _camps > 0 && random 100 > 50) then {
 		_camp = _camps select floor (random count _camps);
 		_camps = _camps - [_camp];
 		_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
-		//_position = [_position, 50] call WFBE_CO_FNC_GetEmptyPosition;
+		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 		_positions pushBack _position;
 	} else {
 		_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
 		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 		_positions pushback _position;
 	};	
-	
 	//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition; // for some reason putting these here instead of inside the argument causes massive error spam and no ai
 	//_positions pushBack _position; // yet this is how its layed out in wfbe and it works just fine there.
-
+	*/
+	
+	//check if spawnpoints are set
+	if (count _spawns > 0) then {
+		_spawn = _spawns select floor (random count _spawns);
+		_spawns = _spawns - [_spawn];
+		_position = [getPos _spawn, 20] call CTI_CO_FNC_GetEmptyPosition;
+		_positions pushBack _position;
+	} else {
+		if (count _camps > 0 && random 100 > 50) then {
+			_camp = _camps select floor (random count _camps);
+			_camps = _camps - [_camp];
+			_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
+			_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
+			_positions pushBack _position;
+		} else {
+			_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+			_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
+			_positions pushback _position;
+		};	
+	};
+	
 	_group = createGroup resistance;
 	_groups pushback _group;
 	

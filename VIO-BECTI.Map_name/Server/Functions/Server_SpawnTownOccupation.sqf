@@ -187,7 +187,10 @@ _pool = [];
 		};
 		
 		if (_load) then { //--- Finally load if available
-			for '_i' from 1 to _presence do { _pool pushback [_content, _probability] };
+			for '_i' from 1 to _presence do {
+				_pool pushback [_content, _probability];
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation Pool: <%1,%2>",  _content, _probability]] call CTI_CO_FNC_Log;};
+			};
 		};
 	};
 } forEach _pool_units;
@@ -197,9 +200,6 @@ if (count _pool < 1) exitWith {[[],[],[]]};
 
 if (CTI_Log_Level >= CTI_Log_Information) then { 
 	["INFORMATION", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Retrieved an Occupation Pool count of [%1] for town [%2] on side [%3]. Total group is set to [%4]", count _pool, _town getVariable "cti_town_name", _side, _totalGroups]] call CTI_CO_FNC_Log;
-};
-if (CTI_Log_Level >= CTI_Log_Debug) then { 
-	["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation Pool: <%1>",  _pool]] call CTI_CO_FNC_Log;
 };
 
 //--- Shuffle!
@@ -243,26 +243,46 @@ diag_log format ["OCCUPATION POOL Composer for %1 (value %2)", _town getVariable
 
 // _vehicles = [];
 _camps = +(_town getVariable "cti_town_camps");
+_spawns = _town getVariable "cti_town_spawns";
 _groups = [];
 _positions = [];
 
 {
-	//Create teams around the camps first. If there are no more camps then pick a random positon.
+	/*//Create teams around the camps first. If there are no more camps then pick a random positon.
 	if (count _camps > 0 && random 100 > 50) then {
 		_camp = _camps select floor (random count _camps);
 		_camps = _camps - [_camp];
 		_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
-		//_position = [_position, 50] call WFBE_CO_FNC_GetEmptyPosition;
+		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 		_positions pushBack _position;
 	} else {
 		_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
 		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 		_positions pushBack _position;
 	};	
-	
 	//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition; // for some reason putting these here instead of inside the argument causes massive error spam and no ai
 	//_positions pushBack _position; // yet this is how its layed out in wfbe and it works just fine there.
-
+	*/
+	
+	//check if spawnpoints are set and use them until we haven't anymore
+	if (count _spawns > 0) then {
+		_spawn = _spawns select floor (random count _spawns);
+		_spawns = _spawns - [_spawn];
+		_position = [getPos _spawn, 20] call CTI_CO_FNC_GetEmptyPosition;
+		_positions pushBack _position;
+	} else {
+		if (count _camps > 0 && random 100 > 50) then {
+			_camp = _camps select floor (random count _camps);
+			_camps = _camps - [_camp];
+			_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
+			_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
+			_positions pushBack _position;
+		} else {
+			_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+			_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
+			_positions pushback _position;
+		};	
+	};
 	
 	_group = createGroup _side;
 	_groups pushBack _group;

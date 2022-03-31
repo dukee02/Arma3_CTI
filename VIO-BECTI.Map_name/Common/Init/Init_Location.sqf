@@ -30,6 +30,7 @@ if (CTI_IsServer) then {
 	Private ["_camps", "_synced"];
 	//--- Get the camps and defenses, note that synchronizedObjects only work for the server.
 	_camps = [];
+	_spawns = [];		//new spawns for towns
 	_defenses = [];
 	_mortars = [];
 	_docks = [];		
@@ -39,7 +40,10 @@ if (CTI_IsServer) then {
 			_camps pushBack _synced;
 			_synced setVariable ["town", _town];
 		};
-				
+		if (typeOf _synced == "LocationRespawnPoint_F") then {
+			_spawns pushBack _synced;
+			_synced setVariable ["town", _town];
+		};
 		if (!isNil {_synced getVariable "cti_defense_kind"}) then {_defenses pushBack _synced};
 		if (!isNil {_synced getVariable "cti_mortar"}) then {_mortars pushBack _synced};
 		if (!isNil {_synced getVariable "cti_dock"}) then {_docks pushBack _synced};
@@ -57,6 +61,7 @@ if (CTI_IsServer) then {
 	if (count _docks > 0) then {_town setVariable ["cti_docks", _docks]};
 	
 	_town setVariable ["cti_town_camps", _camps, true];
+	_town setVariable ["cti_town_spawns", _spawns];
 	_town setVariable ["cti_town_defenses", _defenses];
 	
 	/* --- to be done at a later date
@@ -79,6 +84,7 @@ if (CTI_IsServer) then {
 		_town_range = _this select 3;
 		_sideID = _town_side call CTI_CO_FNC_GetSideID;
 		_camps = _town getVariable "cti_town_camps";
+		_spawns = _town getVariable "cti_town_spawns";
 		
 		waitUntil {!isNil 'CTI_Init_TownMode'};
 		
