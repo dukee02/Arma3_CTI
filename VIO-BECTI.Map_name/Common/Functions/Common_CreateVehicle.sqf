@@ -60,6 +60,7 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _vehicle setDir _direction;
+VIOC_ZEUS addCuratorEditableObjects [[_vehicle], true];
 
 clearMagazineCargo _vehicle;
 clearWeaponCargo _vehicle;
@@ -68,9 +69,19 @@ clearItemCargo _vehicle;
 //if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
 if (_special != "FLY") then {
 	if(_type isKindOf "ship") then {
-		//placeing onto the water but near the shore
-		_save_pos = [_position, 0, 100, 1, 2, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];
+		//get the distance set mainly for ships
+		_var = missionNamespace getVariable _type;
+		_distance_to_factory = _var select CTI_UNIT_DISTANCE;		
+		//[center, minDist, maxDist, objDist, waterMode, maxGrad, shoreMode, blacklistPos, defaultPos] call BIS_fnc_findSafePos
+		if(_distance_to_factory > 50) then {
+			//placeing onto the water
+			_save_pos = [_position, 0, _distance_to_factory, 10, 2, 0, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+		} else {
+			//placeing onto the water but near the shore
+			_save_pos = [_position, 0, _distance_to_factory, 5, 2, 0, 1, [], [_position, _position]] call BIS_fnc_findSafePos;
+		};
+		
+		_vehicle setPos [_save_pos select 0, _save_pos select 1, 0];//--- Make the vehicle spawn above the ground level to prevent any bisteries
 	} else {
 		//place on a save Pos on the ground
 		_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;

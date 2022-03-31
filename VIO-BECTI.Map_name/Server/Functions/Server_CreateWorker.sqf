@@ -60,6 +60,7 @@ _worker addRating 1000;*/
 _dummyGroup = createGroup _side;
 _worker = _dummyGroup createUnit [_model, [_hq, 5, 20] call CTI_CO_FNC_GetRandomPosition, [], 0, "FORM"];
 [_worker] joinSilent _group;
+VIOC_ZEUS addCuratorEditableObjects [[_worker], false];
 _worker addRating 1000;
 //{player reveal _unit} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 deleteGroup _dummyGroup;

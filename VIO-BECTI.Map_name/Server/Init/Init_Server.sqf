@@ -196,6 +196,9 @@ if (_attempts >= 300) then {
 		_script = _var select CTI_UNIT_SCRIPTS;
 		
 		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
+		clearMagazineCargo _vehicle;
+		clearWeaponCargo _vehicle;
+		clearItemCargo _vehicle;
 		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
