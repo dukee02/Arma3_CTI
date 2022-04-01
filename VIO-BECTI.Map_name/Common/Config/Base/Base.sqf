@@ -242,116 +242,149 @@ _placements pushBack 		[180, 15];
 _categories pushBack 		"Fortification";
 
 
-//******************************BASE GUN DEFENSE 1******************************
+// ****************************** BASE GUN DEFENSE 1 ******************************
 if(_side == west) then {
+
 	_headers pushBack 		"Static Designator";
 	_classes pushBack 		"B_Static_Designator_01_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 
-	_headers pushBack 		"HMG";
-	_classes pushBack 		"B_HMG_01_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-
-	_headers pushBack 		"HMG high";
+	_headers pushBack 		"Mk30 HMG .50 (Raised)";
 	_classes pushBack 		"B_HMG_01_high_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 
-	_headers pushBack 		"HMG";
+	_headers pushBack 		"Mk30A HMG .50";
 	_classes pushBack 		"B_HMG_01_A_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 	
-	
-	_headers pushBack 		"GMG";
-	_classes pushBack 		"B_GMG_01_F";
-	_prices pushBack 		3000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"GMG high";
+	_headers pushBack 		"Mk32 GMG 20 mm (Raised)";
 	_classes pushBack 		"B_GMG_01_high_F";
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 	
-	_headers pushBack 		"GMG";
+	_headers pushBack 		"Mk32A GMG 20 mm";
 	_classes pushBack 		"B_GMG_01_A_F";
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 	
-	
-	_headers pushBack 		"Mortar";
-	_classes pushBack 		"B_Mortar_01_F";
-	_prices pushBack 		5000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"AT";
-	_classes pushBack 		"B_static_AT_F";
-	_prices pushBack 		8000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"AA";
-	_classes pushBack 		"B_static_AA_F";
-	_prices pushBack 		8000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 
+		_headers pushBack 		"Mk30 HMG .50";
+		_classes pushBack 		"B_HMG_01_F";
+		_prices pushBack 		1500;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
 
-	if(CTI_APEX_ADDON == 0) then {
-		_headers pushBack 		"HMG tanoa";
+		_headers pushBack 		"Mk32 GMG 20mm";
+		_classes pushBack 		"B_GMG_01_F";
+		_prices pushBack 		3000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+
+		_headers pushBack 		"Mortar";
+		_classes pushBack 		"B_Mortar_01_F";
+		_prices pushBack 		5000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+
+		_headers pushBack 		"Static Titan Launcher (AT)";
+		_classes pushBack 		"B_static_AT_F";
+		_prices pushBack 		8000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+
+		_headers pushBack 		"Static Titan Launcher (AA)";
+		_classes pushBack 		"B_static_AA_F";
+		_prices pushBack 		8000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+
+		_headers pushBack 		"Mk30 HMG .50";
 		_classes pushBack 		"B_T_HMG_01_F";
 		_prices pushBack 		1500;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		
-		_headers pushBack 		"GMG tanoa";
+
+		_headers pushBack 		"Mk32 GMG 20 mm";
 		_classes pushBack 		"B_T_GMG_01_F";
 		_prices pushBack 		3000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		
+
 		_headers pushBack 		"Mortar";
 		_classes pushBack 		"B_T_Mortar_01_F";
 		_prices pushBack 		5000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		
-		_headers pushBack 		"AT";
+	
+		_headers pushBack 		"Static Titan Launcher (AT)";
 		_classes pushBack 		"B_T_Static_AT_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
 		
-		_headers pushBack 		"AA";
+		_headers pushBack 		"Static Titan Launcher (AA)";
 		_classes pushBack 		"B_T_Static_AA_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
 	};
-	
-	if(CTI_BASE_SPECIAL >= 1) then {
-		_headers pushBack 		"Radar System";
-		_classes pushBack 		"B_Radar_System_01_F";
-		_prices pushBack 		1000;
+
+
+	_headers pushBack 		"AN/MPQ-105 Radar";
+	_classes pushBack 		"B_Radar_System_01_F";
+	_prices pushBack 		1000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+		
+	_headers pushBack 		"MIM-145 Defender SAM";
+	_classes pushBack 		"B_SAM_System_03_F";
+	_prices pushBack 		25000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+
+	_headers pushBack 		"Praetorian 1C (AAA)";
+	_classes pushBack 		"B_AAA_System_01_F";
+	_prices pushBack 		35000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+
+	_headers pushBack 		"Mk41 VLS (Vertical Launch System)";
+	_classes pushBack 		"B_Ship_MRLS_01_F";
+	_prices pushBack 		200000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+
+/*
+	if(CTI_CAMO_ACTIVATION == 4) then {		
+		_headers pushBack 		"Mk49 Spartan AAA";
+		_classes pushBack 		"B_SAM_System_01_F";
+		_prices pushBack 		50000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		
-		_headers pushBack 		"SAM System";
-		_classes pushBack 		"B_SAM_System_03_F";
-		_prices pushBack 		25000;
+
+		_headers pushBack 		"Mk21 Centurion SAM";
+		_classes pushBack 		"B_SAM_System_02_F";
+		_prices pushBack 		75000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_headers pushBack 		"Mk45 Hammer 120mm";
+		_classes pushBack 		"B_Ship_Gun_01_F";
+		_prices pushBack 		35000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
 	};
+*/
 };
 
 if(_side == east) then {
@@ -417,48 +450,22 @@ if(_side == east) then {
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 	
-	if(CTI_BASE_SPECIAL >= 1) then {
-		_headers pushBack 		"Radar System";
-		_classes pushBack 		"O_Radar_System_02_F";
-		_prices pushBack 		1000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-		
-		_headers pushBack 		"SAM System";
-		_classes pushBack 		"O_SAM_System_04_F";
-		_prices pushBack 		25000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-	};
-};
-
-if(CTI_BASE_SPECIAL >= 2) then {
-	_headers pushBack 		"Ship Gun";
-	_classes pushBack 		"B_Ship_Gun_01_F";
-	_prices pushBack 		1000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"AAA System";
-	_classes pushBack 		"B_AAA_System_01_F";
+	_headers pushBack 		"Radar System";
+	_classes pushBack 		"O_Radar_System_02_F";
 	_prices pushBack 		1000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 	
 	_headers pushBack 		"SAM System";
-	_classes pushBack 		"B_SAM_System_01_F";
-	_prices pushBack 		1000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	
-	_headers pushBack 		"MRLS";
-	_classes pushBack 		"B_Ship_MRLS_01_F";
-	_prices pushBack 		1000;
+	_classes pushBack 		"O_SAM_System_04_F";
+	_prices pushBack 		25000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
 };
 
-//******************************Ammoboxes*******************************************************************************************************
+
+
+// ***************************** Ammoboxes *****************************
 /*if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 	_headers pushBack 		"81mm Ammo HE";
 	_classes pushBack 		"LIB_Box_81mm_Mo_HE";
@@ -483,19 +490,39 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 };*/
 
-//******************************BASE DEFENSE 0*******************************************************************************************************
+// ***************************** BASE DEFENSE *****************************
 
 _headers pushBack 		"Bunker (Small)";
 _classes pushBack 		"Land_BagBunker_Small_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Misc";
+
+_headers pushBack 		"Bunker (Large)";
+_classes pushBack 		"Land_BagBunker_Large_F";
+_prices pushBack 		150;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"Bunker (Tower)";
+_classes pushBack 		"Land_BagBunker_Tower_F";
+_prices pushBack 		150;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"H-barrier Watchtower";
+_classes pushBack 		"Land_HBarrierTower_F";
+_prices pushBack 		150;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Misc";
+
 //Tall Roof
 _headers pushBack  		"Shed (Roof)";
 _classes pushBack  		"Land_Shed_Big_F";
 _prices pushBack 		2000;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Sheds";
+
 // Short roof with one wall side
 _headers pushBack 		"Shed (Land)";
 _classes pushBack 		"Land_Shed_Small_F";
@@ -581,8 +608,38 @@ _prices pushBack 		500;
 _placements pushBack 	[180, 10];
 _categories pushBack 	"Misc";
 
+_headers pushBack 		"Dirt Hump (Small)";
+_classes pushBack 		"Dirthump_1_F";
+_prices pushBack 		250;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"Dirt Hump";
+_classes pushBack 		"Dirthump_2_F";
+_prices pushBack 		500;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"Dirt Hump (Big)";
+_classes pushBack 		"Dirthump_3_F";
+_prices pushBack 		700;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"Dirt Hump (Long)";
+_classes pushBack 		"Dirthump_4_F";
+_prices pushBack 		500;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
 _headers pushBack 		"Concrete ramp";
 _classes pushBack 		"Land_RampConcrete_F";
+_prices pushBack 		2000;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"Concrete Block";
+_classes pushBack 		"BlockConcrete_F";
 _prices pushBack 		2000;
 _placements pushBack 	[180, 10];
 _categories pushBack 	"Misc";
@@ -599,13 +656,134 @@ _prices pushBack 		5000;
 _placements pushBack 	[180, 10];
 _categories pushBack 	"Misc";
 
-_headers pushBack 		["High Wall (Mil)",[["CanAutoAlign", 3.8, 0]]];
-_classes pushBack 		"Land_Mil_WallBig_4m_F";
+_headers pushBack 		"Czech Hedgehog";
+_classes pushBack 		"Land_CzechHedgehog_01_new_F";
+_prices pushBack 		20;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		"Concrete Hedgehog";
+_classes pushBack 		"Land_ConcreteHedgehog_01_F";
+_prices pushBack 		20;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+
+_headers pushBack 		["Sandbag Wall (Corner)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_BagFence_Corner_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Walls";
 
-/*_headers pushBack 		"Camo net";
+_headers pushBack 		["Sandbag Wall (End)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_BagFence_End_F";
+_prices pushBack 		20;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Sandbag Wall (Short)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_BagFence_Short_F";
+_prices pushBack 		20;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Sandbag Wall (Long)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_BagFence_Long_F";
+_prices pushBack 		20;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Sandbag Wall (Round)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_BagFence_Round_F";
+_prices pushBack 		20;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Military Base Wall (High Wall)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WallBig_4m_F";
+_prices pushBack 		200;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Military Base Wall Corner (High Wall)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WallBig_Corner_F";
+_prices pushBack 		200;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Military Base Wall Gate (High Wall)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WallBig_Gate_F";
+_prices pushBack 		200;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Razor Fence",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WiredFence_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["Razor Fence (Gate)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WiredFence_Gate_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+
+_headers pushBack 		["Razorwire Barrier",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Razorwire_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier (Block)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrier_1_F";
+_prices pushBack 		20;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier (3 Blocks)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrier_3_F";
+_prices pushBack 		60;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier (5 Blocks)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrier_5_F";
+_prices pushBack 		100;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier (Big, 4 Blocks)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrier_Big_F";
+_prices pushBack 		100;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier Wall (Corner)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrierWall_corner_F";
+_prices pushBack 		60;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier Corridor",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrierWall_corridor_F";
+_prices pushBack 		200;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier Wall (Short)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrierWall4_F";
+_prices pushBack 		60;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+
+_headers pushBack 		["H-barrier Wall (Long)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_HBarrierWall6_F";
+_prices pushBack 		100;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+/*
+_headers pushBack 		"Camo net";
 _classes pushBack 		"CamoNet_BLUFOR_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
@@ -621,7 +799,8 @@ _headers pushBack 		"Camo net vehicle";
 _classes pushBack 		"CamoNet_BLUFOR_big_F";
 _prices pushBack 		50;
 _placements pushBack 	[0, 15];
-_categories pushBack 	"Camo";*/
+_categories pushBack 	"Camo";
+*/
 
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";

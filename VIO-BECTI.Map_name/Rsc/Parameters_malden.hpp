@@ -249,7 +249,8 @@ class Params {
 		title = "COST: Infantry";
 		values[] = {50,75,100,150,200,250,300,350,400,500,750,1000,1250,1500,1750,2000};
 		texts[] = {"$50","$75","$100","$150","$200","$250","$300","$350","$400","$500","$750","$1000","$1250","$1500","$1750","$2000"};
-		default = 100;
+//		default = 100;
+		default = 75;
 	};
 	class CTI_ECONOMY_PRIZE_WHEELED {
 		title = "COST: Wheeled";
@@ -261,7 +262,8 @@ class Params {
 		title = "COST: Tracked";
 		values[] = {500,1000,1500,2000,3000,4000,5000,7500,10000,12500,15000,17500,20000,25000};
 		texts[] = {"$500","$1000","$1500","$2000","$3000","$4000","$5000","$7500","$10000","$12500","$15000","$17500","$20000","$25000"};
-		default = 5000;
+//		default = 5000;
+		default = 1500;
 	};
 	class CTI_ECONOMY_PRIZE_AIR {
 		title = "COST: Air";
@@ -279,19 +281,24 @@ class Params {
 		title = "COST: Level Multiplier";
 		values[] = {50,100,200,300,400,500,600,700,800,900,1000};
 		texts[] = {"half","normal","double","tripled","4x","5x","6x","7x","8x","9x","10x"};
-		default = 400;
+//		default = 400;
+		default = 200;
 	};
 	class CTI_ECONOMY_RESEARCH_MULTI {
 		title = "COST: Research Multiplier";
-		values[] = {50,100,200,300,400,500,600,700,800,900,1000,1500,2000};
-		texts[] = {"half","normal","double","tripled","4x","5x","6x","7x","8x","9x","10x","15x","20x"};
-		default = 1000;
+		values[] = {100,125,150,200,300,400,500,600,700,800,900,1000,1500,2000};
+		texts[] = {"no modifier", "1.25x","1.5x","double","tripled","4x","5x","6x","7x","8x","9x","10x","15x","20x"};
+		default = 125;
+//		values[] = {50,100,200,300,400,500,600,700,800,900,1000,1500,2000};
+//		texts[] = {"half","normal","double","tripled","4x","5x","6x","7x","8x","9x","10x","15x","20x"};
+//		default = 1000;
 	};
 	class CTI_ECONOMY_PRIZE_ARMED {
-		title = "COST: Additional Prize for armed units (adds prize*level)";
+		title = "COST: Additional Price for armed units (adds price*level)";
 		values[] = {100,200,300,500,1000,1250,1500,1750,2000,3000,5000,7500,10000};
 		texts[] = {"$100","$200","$300","$500","$1000","$1250","$1500","$1750","$2000","$3000","$5000","$7500","$10000"};
-		default = 5000;
+//		default = 5000;
+		default = 500;
 	};
 	class SEPERATOR_ENVIRONMENT {
 		title = "============ Environment ============";
