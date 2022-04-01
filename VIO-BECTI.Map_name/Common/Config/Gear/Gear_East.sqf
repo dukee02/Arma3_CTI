@@ -603,107 +603,107 @@ _tech_level = 0;
 
 _i pushBack "1Rnd_HE_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (30)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (30)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_HE_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*30)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*30)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_Smoke_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_SmokeRed_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_SmokeGreen_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_SmokeYellow_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_SmokePurple_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_SmokeBlue_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "1Rnd_SmokeOrange_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_Smoke_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_SmokeRed_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_SmokeGreen_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_SmokeYellow_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_SmokePurple_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_SmokeBlue_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_SmokeOrange_Grenade_shell";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*20)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "UGL_FlareWhite_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "UGL_FlareGreen_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "UGL_FlareRed_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "UGL_FlareYellow_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "UGL_FlareCIR_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_UGL_FlareWhite_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_UGL_FlareGreen_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_UGL_FlareRed_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_UGL_FlareYellow_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 _i pushBack "3Rnd_UGL_FlareCIR_F";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/1000);
+_p pushBack round (3*10)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
 
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
