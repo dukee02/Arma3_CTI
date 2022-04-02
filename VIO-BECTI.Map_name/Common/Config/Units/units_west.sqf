@@ -577,9 +577,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	// upgraded units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_CTRG_LSV_01_light_F", _sid];
+		_c pushBack format["%1B_LSV_01_unarmed_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_T_LSV_01_unarmed_F", _sid];
+		_c pushBack format["%1B_T_LSV_01_unarmed_CTRG_F", _sid];
 	};
 	
 	//set all other vars in a slope

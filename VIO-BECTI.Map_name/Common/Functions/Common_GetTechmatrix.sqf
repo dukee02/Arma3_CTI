@@ -54,17 +54,17 @@ _tech_matrix =
 		//NATO
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true]
 		],
 		//CSAT
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true]
 		],
 		//AAF
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true]
 		]
 	],
 	//CTI_UPGRADE_LIGHT
@@ -72,17 +72,17 @@ _tech_matrix =
 		//NATO
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//CSAT
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//AAF
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		]
 	],
 	//CTI_UPGRADE_HEAVY
@@ -90,17 +90,17 @@ _tech_matrix =
 		//NATO
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//CSAT
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//AAF
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		]
 	],
 	//CTI_UPGRADE_AIR
@@ -108,17 +108,17 @@ _tech_matrix =
 		//NATO
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//CSAT
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//AAF
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		]
 	],
 	//CTI_UPGRADE_NAVAL
@@ -126,17 +126,17 @@ _tech_matrix =
 		//NATO
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//CSAT
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		],
 		//AAF
 		[
 			//VAN
-			[true,true,true]
+			[true,true,true,true,true,true,true,true,true]
 		]
 	],
 	[],[],[],[],[],[],[],
@@ -145,17 +145,17 @@ _tech_matrix =
 		//NATO
 		[
 			//VAN
-			[true]
+			[true,true,true,true,true,true,true]
 		],
 		//CSAT
 		[
 			//VAN
-			[true]
+			[true,true,true,true,true,true,true]
 		],
 		//AAF
 		[
 			//VAN
-			[true]
+			[true,true,true,true,true,true,true]
 		]
 	]
 ];

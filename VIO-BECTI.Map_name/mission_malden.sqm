@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1519;
+		nextID=1520;
 	};
 	class MarkerIDProvider
 	{
@@ -16,24 +16,24 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3165;
+		nextID=3253;
 	};
 	class Camera
 	{
 		pos[]={818.98846,41.251129,11930.112};
-		dir[]={-0.25070351,-0.51185602,0.82169163};
-		up[]={-0.14937013,0.85907549,0.48956573};
-		aside[]={0.95648247,4.2276224e-007,0.29182887};
+		dir[]={-0.25070018,-0.51184934,0.82168102};
+		up[]={-0.14937076,0.85907525,0.48956934};
+		aside[]={0.95647156,0,0.29182565};
 	};
 };
 binarizationWanted=0;
-sourceName="VIO-BECTI-Vanilla";
+sourceName="VIO-BECTI";
 addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
 	"A3_Modules_F",
-	"A3_Structures_F_Mil_Fortification"
+	"A3_Modules_F_Curator_Curator"
 };
 class AddonsMetaData
 {
@@ -63,8 +63,8 @@ class AddonsMetaData
 		};
 		class Item3
 		{
-			className="A3_Structures_F_Mil";
-			name="Arma 3 - Military Buildings and Structures";
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -170,7 +170,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=35;
+		items=36;
 		class Item0
 		{
 			dataType="Group";
@@ -183,8 +183,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10032.847,2.3373792,2140.0305};
-						angles[]={6.2256484,0,6.2631865};
+						position[]={10032.847,2.3373463,2140.03};
+						angles[]={6.2256417,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -192,7 +192,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Alpha, Team Leader";
 						isPlayer=1;
 						isPlayable=1;
@@ -216,7 +216,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -261,14 +261,14 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9504.7803,2.4500816,6934.7397};
-						angles[]={0.010398259,1.0833782,0.0207968};
+						angles[]={0.010402163,1.0833782,0.020804325};
 					};
 					side="East";
 					flags=6;
 					class Attributes
 					{
 						rank="CAPTAIN";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Alpha, Team Leader";
 						isPlayable=1;
 					};
@@ -292,7 +292,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -338,7 +338,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9505.0283,2.4840572,6932.0728};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -346,7 +346,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Bravo, Team Leader";
 						isPlayable=1;
 					};
@@ -369,7 +369,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -413,8 +413,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9505.1582,2.5119169,6930.0835};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9505.1582,2.5119169,6930.084};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -422,7 +422,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Charlie, Team Leader";
 						isPlayable=1;
 					};
@@ -445,7 +445,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -489,8 +489,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9505.332,2.5431545,6927.8931};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9505.332,2.5431643,6927.8926};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -498,7 +498,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Delta, Team Leader";
 						isPlayable=1;
 					};
@@ -521,7 +521,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -565,8 +565,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9507.0527,2.496753,6934.7983};
-						angles[]={0.010398259,1.0907086,0.0207968};
+						position[]={9507.0527,2.4967451,6934.7988};
+						angles[]={0.010402163,1.0907086,0.020804325};
 					};
 					side="East";
 					flags=6;
@@ -574,7 +574,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Echo, Team Leader";
 						isPlayable=1;
 					};
@@ -598,7 +598,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -643,8 +643,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9507.1641,2.5229766,6932.4995};
-						angles[]={0.010398259,1.0907086,0.0207968};
+						position[]={9507.1641,2.5229685,6932.5};
+						angles[]={0.010402163,1.0907086,0.020804325};
 					};
 					side="East";
 					flags=6;
@@ -652,13 +652,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Foxtrot, Team Leader";
 						isPlayable=1;
 					};
 					id=1175;
 					type="O_Protagonist_VR_F";
-					atlOffset=-2.3841858e-007;
+					atlOffset=-4.7683716e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -676,7 +676,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -707,7 +707,7 @@ class Mission
 			{
 			};
 			id=237;
-			atlOffset=-2.3841858e-007;
+			atlOffset=-4.7683716e-007;
 		};
 		class Item7
 		{
@@ -721,8 +721,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9507.248,2.5486875,6930.2153};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9507.248,2.5486777,6930.2158};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -730,7 +730,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Golf, Team Leader";
 						isPlayable=1;
 					};
@@ -798,7 +798,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9507.1641,2.5718892,6928.2817};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -806,7 +806,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Hotel, Team Leader";
 						isPlayable=1;
 					};
@@ -829,7 +829,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -873,8 +873,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10034.353,2.3091085,2140.0625};
-						angles[]={6.2256484,0,6.2631865};
+						position[]={10034.353,2.3090866,2140.062};
+						angles[]={6.2256417,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -882,7 +882,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Bravo, Team Leader";
 						isPlayable=1;
 					};
@@ -905,7 +905,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -949,8 +949,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10035.923,2.2998059,2139.9985};
-						angles[]={6.1962056,0,0.0095994528};
+						position[]={10035.923,2.2997561,2139.998};
+						angles[]={6.196198,0,0.0095993113};
 					};
 					side="West";
 					flags=6;
@@ -958,7 +958,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Charlie, Team Leader";
 						isPlayable=1;
 					};
@@ -982,7 +982,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -1027,8 +1027,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10037.43,2.3114772,2139.9666};
-						angles[]={6.1962056,0,0.0095994528};
+						position[]={10037.43,2.311527,2139.967};
+						angles[]={6.196198,0,0.0095993113};
 					};
 					side="West";
 					flags=6;
@@ -1036,7 +1036,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Delta, Team Leader";
 						isPlayable=1;
 					};
@@ -1060,7 +1060,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -1105,8 +1105,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10032.635,2.1489348,2135.9536};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10032.635,2.1489468,2135.9541};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -1114,7 +1114,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Echo, Team Leader";
 						isPlayable=1;
 					};
@@ -1137,7 +1137,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -1181,8 +1181,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10033.875,2.1212351,2135.8606};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10033.875,2.121253,2135.8611};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -1190,7 +1190,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Foxtrot, Team Leader";
 						isPlayable=1;
 					};
@@ -1213,7 +1213,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -1257,8 +1257,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10035.161,2.0998113,2135.9985};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10035.161,2.0997994,2135.998};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -1266,7 +1266,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Golf, Team Leader";
 						isPlayable=1;
 					};
@@ -1289,7 +1289,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -1333,8 +1333,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10036.355,2.0759161,2135.9985};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10036.355,2.0759041,2135.998};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -1342,7 +1342,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Hotel, Team Leader";
 						isPlayable=1;
 					};
@@ -1365,7 +1365,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3296,8 +3296,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10032.782,2.2149482,2137.8826};
-						angles[]={6.2256484,0,6.2631865};
+						position[]={10032.782,2.2149813,2137.8831};
+						angles[]={6.2256417,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3305,7 +3305,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="India, Team Leader";
 						isPlayable=1;
 					};
@@ -3328,7 +3328,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3372,8 +3372,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10034.353,2.1872261,2137.9465};
-						angles[]={6.2256484,0,6.2631865};
+						position[]={10034.353,2.1872041,2137.946};
+						angles[]={6.2256417,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3381,7 +3381,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Juilett, Team Leader";
 						isPlayable=1;
 					};
@@ -3404,7 +3404,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3448,8 +3448,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10035.827,2.1540504,2137.8826};
-						angles[]={6.2256484,0,6.2631865};
+						position[]={10035.827,2.1540835,2137.8831};
+						angles[]={6.2256417,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3457,7 +3457,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Kilo, Team Leader";
 						isPlayable=1;
 					};
@@ -3480,7 +3480,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3524,8 +3524,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10037.261,2.1338837,2137.9485};
-						angles[]={6.1962056,0,0.0095994528};
+						position[]={10037.261,2.1338336,2137.948};
+						angles[]={6.196198,0,0.0095993113};
 					};
 					side="West";
 					flags=6;
@@ -3533,7 +3533,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Lima, Team Leader";
 						isPlayable=1;
 					};
@@ -3557,7 +3557,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3602,8 +3602,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10032.572,2.0805423,2133.7214};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10032.572,2.0805244,2133.7209};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3611,7 +3611,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Mike, Team Leader";
 						isPlayable=1;
 					};
@@ -3634,7 +3634,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3678,8 +3678,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10033.813,2.0571868,2133.7676};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10033.813,2.0571682,2133.7681};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3687,13 +3687,12 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="November, Team Leader";
 						isPlayable=1;
 					};
 					id=1167;
 					type="B_Protagonist_VR_F";
-					atlOffset=3.0517578e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -3711,7 +3710,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3742,7 +3741,6 @@ class Mission
 			{
 			};
 			id=569;
-			atlOffset=3.0517578e-005;
 		};
 		class Item25
 		{
@@ -3756,8 +3754,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10035.1,2.0336592,2133.8386};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10035.1,2.0336769,2133.8391};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3765,7 +3763,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Oscar, Team Leader";
 						isPlayable=1;
 					};
@@ -3788,7 +3786,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3832,8 +3830,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10036.431,2.0048187,2133.7676};
-						angles[]={6.2519951,0,6.2631865};
+						position[]={10036.431,2.0048306,2133.7681};
+						angles[]={6.2519965,0,6.2631841};
 					};
 					side="West";
 					flags=6;
@@ -3841,7 +3839,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Papa, Team Leader";
 						isPlayable=1;
 					};
@@ -3864,7 +3862,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01Ger";
+									value="";
 								};
 							};
 						};
@@ -3908,8 +3906,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9502.7402,2.4155214,6934.1382};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9502.7402,2.4155312,6934.1377};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -3917,7 +3915,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="India, Team Leader";
 						isPlayable=1;
 					};
@@ -3940,7 +3938,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -3985,7 +3983,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9502.9834,2.4529488,6931.564};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -3993,7 +3991,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Juliett, Team Leader";
 						isPlayable=1;
 					};
@@ -4016,7 +4014,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4060,8 +4058,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9503.2813,2.4858596,6929.4214};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9503.2813,2.4858596,6929.4219};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -4069,7 +4067,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Kilo, Team Leader";
 						isPlayable=1;
 					};
@@ -4092,7 +4090,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4137,7 +4135,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9503.5146,2.5153072,6927.4556};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -4145,7 +4143,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Lima, Team Leader";
 						isPlayable=1;
 					};
@@ -4168,7 +4166,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4213,7 +4211,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9501.0234,2.3905568,6933.6206};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -4221,7 +4219,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Mike, Team Leader";
 						isPlayable=1;
 					};
@@ -4244,7 +4242,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4288,8 +4286,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9501.1621,2.4227505,6931.3052};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9501.1621,2.4227602,6931.3047};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -4297,7 +4295,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="November, Team Leader";
 						isPlayable=1;
 					};
@@ -4320,7 +4318,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4364,8 +4362,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9501.46,2.4538014,6929.3071};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9501.46,2.4538112,6929.3066};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -4373,7 +4371,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Oscar, Team Leader";
 						isPlayable=1;
 					};
@@ -4396,7 +4394,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4440,8 +4438,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9501.5967,2.4794533,6927.5005};
-						angles[]={0.012798273,1.0907086,0.018396867};
+						position[]={9501.5967,2.4794436,6927.501};
+						angles[]={0.012793263,1.0907086,0.01839577};
 					};
 					side="East";
 					flags=6;
@@ -4449,7 +4447,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="this setUnitTrait [""UAVHacker"",true];";
+						init="this setUnitTrait [""UAVHacker"",true]; " \n "VIOC_ZEUS addCuratorEditableObjects [[this], false];";
 						description="Papa, Team Leader";
 						isPlayable=1;
 					};
@@ -4472,7 +4470,7 @@ class Mission
 											"STRING"
 										};
 									};
-									value="Male01SU";
+									value="";
 								};
 							};
 						};
@@ -4503,6 +4501,98 @@ class Mission
 			{
 			};
 			id=589;
+		};
+		class Item35
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-251.04825,0,261.18546};
+			};
+			name="VIOC_ZEUS";
+			id=1519;
+			type="ModuleCurator_F";
+			atlOffset=99.124672;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#adminlogged";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=2;
+						};
+					};
+				};
+				nAttributes=4;
+			};
 		};
 	};
 	class Connections
