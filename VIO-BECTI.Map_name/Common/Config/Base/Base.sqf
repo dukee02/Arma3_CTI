@@ -554,12 +554,6 @@ _prices pushBack 		2000;
 _placements pushBack 	[90, 15];
 _categories pushBack 	"Airport";
 
-_headers pushBack 		"Heli Pad (Civilian)";
-_classes pushBack 		"Land_HelipadCivil_F";
-_prices pushBack 		100;
-_placements pushBack 	[0, 7];
-_categories pushBack 	"Airport";
-
 _headers pushBack 		"Heli Pad (Square)";
 _classes pushBack 		"Land_HelipadSquare_F";
 _prices pushBack 		100;
@@ -574,6 +568,12 @@ _categories pushBack 	"Airport";
 
 _headers pushBack 		"Heli Pad (Rescue)";
 _classes pushBack 		"Land_HelipadRescue_F";
+_prices pushBack 		100;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Airport";
+
+_headers pushBack 		"Heli Pad (Civilian)";
+_classes pushBack 		"Land_HelipadCivil_F";
 _prices pushBack 		100;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Airport";
