@@ -114,7 +114,7 @@ class Params {
 		default = 0;
 	};
 	class CTI_BASE_AREA_MAX {
-		title = "BASE: Areas Limit";
+		title = "BASE: Maximum Size (Area)";
 		values[] = {0,1,2,3,4,5,6,7,8};
 		texts[] = {"Disabled","1","2","3","4","5","6","7","8"};
 		default = 4;

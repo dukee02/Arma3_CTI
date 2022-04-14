@@ -114,7 +114,7 @@ class Params {
 		default = 0;
 	};
 	class CTI_BASE_AREA_MAX {
-		title = "BASE: Areas Limit";
+		title = "BASE: Maximum Size (Area)";
 		values[] = {0,1,2,3,4,5,6,7,8};
 		texts[] = {"Disabled","1","2","3","4","5","6","7","8"};
 		default = 4;
@@ -288,7 +288,7 @@ class Params {
 		default = 1000;
 	};
 	class CTI_ECONOMY_PRIZE_ARMED {
-		title = "COST: Additional Prize for armed units (adds prize*level)";
+		title = "COST: Additional Price for armed units (adds prize*level)";
 		values[] = {100,200,300,500,1000,1250,1500,1750,2000,3000,5000,7500,10000};
 		texts[] = {"$100","$200","$300","$500","$1000","$1250","$1500","$1750","$2000","$3000","$5000","$7500","$10000"};
 		default = 5000;
