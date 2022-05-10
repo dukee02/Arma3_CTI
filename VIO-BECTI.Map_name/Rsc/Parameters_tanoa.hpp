@@ -627,6 +627,12 @@ class Params {
 		texts[] = {"Disabled - needed if you want to transport AI Teams","Enabled (default)"};
 		default = 1;
 	};
+	class CTI_SALVAGE_SPECIAL {
+		title = "SPECIAL: Enable Rescue Vehicle as Salvager";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 1;
+	};
 	class CTI_Log_Level {
 		title = "LOG: Set level of Logging";
 		values[] = {0,1,2,3};

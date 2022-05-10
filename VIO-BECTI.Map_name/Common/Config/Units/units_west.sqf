@@ -1735,26 +1735,6 @@ if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 	_s pushBack "service-repairtruck";
 	_d pushBack 0;
 };
-
-_c pushBack format["CTI_Salvager_%1", _faction];
-_p pushBack '';
-_n pushBack 'Salvager Truck';
-_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-_t pushBack _building_time;
-_u pushBack _tech_level;
-_f pushBack CTI_FACTORY_REPAIR;
-_s pushBack [format["%1B_Truck_01_mover_F", _sid],"salvager"];
-_d pushBack 0;
-	
-_c pushBack format["CTI_Salvager_Independent_%1", _faction];
-_p pushBack '';
-_n pushBack 'Salvager Truck';
-_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
-_t pushBack _building_time;
-_u pushBack _tech_level;
-_f pushBack CTI_FACTORY_REPAIR;
-_s pushBack [format["%1B_Truck_01_mover_F", _sid],"salvager-independent"];
-_d pushBack 0;
 	
 _c pushBack format["%1B_Slingload_01_Medevac_F", _sid];					//medic
 _p pushBack '';
@@ -1775,6 +1755,70 @@ _u pushBack _tech_level;
 _f pushBack CTI_FACTORY_REPAIR;
 _s pushBack "service-repairtruck";
 _d pushBack 0;
+
+if(CTI_ADDON_CHARLIECO == 1 ) then {
+	_c pushBack format["CTI_Salvager_%1", _side];
+	_p pushBack '';
+	_n pushBack 'Salvager Truck';
+	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_REPAIR;
+	_s pushBack [format["%1EPA", _sid],"salvager"];
+	_d pushBack 0;
+		
+	_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+	_p pushBack '';
+	_n pushBack 'Salvager Truck';
+	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_REPAIR;
+	_s pushBack [format["%1FPT_MAN", _sid],"salvager-independent"];
+	_d pushBack 0;
+} else {
+	if(CTI_SALVAGE_SPECIAL == 1 ) then {
+		_c pushBack format["CTI_Salvager_%1", _side];
+		_p pushBack '';
+		_n pushBack 'Salvager Truck';
+		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_REPAIR;
+		_s pushBack [format["%1C_Van_02_medevac_F", _sid],"salvager"];
+		_d pushBack 0;
+			
+		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+		_p pushBack '';
+		_n pushBack 'Salvager Truck';
+		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_REPAIR;
+		_s pushBack [format["%1C_Van_02_medevac_F", _sid],"salvager-independent"];
+		_d pushBack 0;
+	} else {
+		_c pushBack format["CTI_Salvager_%1", _faction];
+		_p pushBack '';
+		_n pushBack 'Salvager Truck';
+		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_REPAIR;
+		_s pushBack [format["%1B_Truck_01_mover_F", _sid],"salvager"];
+		_d pushBack 0;
+			
+		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+		_p pushBack '';
+		_n pushBack 'Salvager Truck';
+		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_REPAIR;
+		_s pushBack [format["%1B_Truck_01_mover_F", _sid],"salvager-independent"];
+		_d pushBack 0;
+	};	
+};
 
 
 // AMMO FACTORY UNITS (Repair Units)

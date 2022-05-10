@@ -44,6 +44,10 @@ CTI_SE_FNC_StartUpgrade = compileFinal preprocessFileLineNumbers "Server\Functio
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Functions\Server_VoteForCommander.sqf";
 
+CTI_SE_FNC_SAVE = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SaveToProfile.sqf";
+CTI_SE_FNC_LOAD = compileFinal preprocessFileLineNumbers "Server\Functions\Server_LoadFromProfile.sqf";
+CTI_SE_FNC_HandleSalvagerSpecial = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleSalvagerSpecial.sqf";
+
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateAI.sqf";
