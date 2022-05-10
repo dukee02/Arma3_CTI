@@ -22,7 +22,10 @@ switch (missionNamespace getVariable "CTI_TOWNS_AMOUNT") do {
 	case 3: {TownTemplate = CTI_Logic getVariable "Towns_RemovedLarge"};
 	case 4: {TownTemplate = CTI_Logic getVariable "Towns_RemovedWest"};
 	case 5: {TownTemplate = CTI_Logic getVariable "Towns_RemovedEast"};
-	//--- case 4 = full. useless.
+	case 6: {TownTemplate = CTI_Logic getVariable "Towns_RemovedSouth"};
+	case 7: {TownTemplate = CTI_Logic getVariable "Towns_RemovedNorth"};
+	case 8: {TownTemplate = CTI_Logic getVariable "CTI_TOWNS_REMOVEDPARAM"};
+	//--- case 9 = full. useless.
 	/* Adding custom templates
 		Custom templates can be added, just follow these steps:
 			1) In the editor or the mission.sqm, find the gamelogic called "CTI_Logic". Add the following to the init field (modify the towns to the ones you want REMOVED: 

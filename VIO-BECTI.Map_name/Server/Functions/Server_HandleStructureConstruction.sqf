@@ -69,12 +69,12 @@ _time_build = _var select 3;
 };*/
 //switch (missionNamespace getVariable "CTI_BASE_CONSTRUCTION_MODE") do {
 	//case 0: { //--- Timed Based
-	
+	/*
 		sleep (if (CTI_DEBUG) then {0} else {_time_build}); //--- This timer determines how long it takes for the structure to pop up.
 		
 		//--- Upon destruction, a structure is no longer valid in a timed-based situation
 		_completion = if (_isDestroyed) then {0} else {100};
-	/*};
+	};
 	case 1: { //--- Worker Based
 		_lasttouch = time;
 		
@@ -90,6 +90,12 @@ _time_build = _var select 3;
 		}; 
 	};
 };*/
+
+if(_completion < 100) then {
+	sleep (if (CTI_DEBUG) then {0} else {_time_build}); //--- This timer determines how long it takes for the structure to pop up.
+};
+//--- Upon destruction, a structure is no longer valid in a timed-based situation
+_completion = if (_isDestroyed) then {0} else {100};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull], true];

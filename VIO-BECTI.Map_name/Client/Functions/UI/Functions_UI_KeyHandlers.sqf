@@ -6,6 +6,8 @@ CTI_UI_KeyHandler_BuildMenu_KeyDown = {
 		case (42): {CTI_P_StructureRotateMulti = 10};
 		case (29): {CTI_P_StructureRotate = 0.5};
 		case (56): {CTI_P_StructureRotate = -0.5};
+		case (54): {CTI_P_StructureElevation = 0.1};
+		case (157): {CTI_P_StructureElevation = -0.1};
 	};
 };
 
@@ -17,6 +19,8 @@ CTI_UI_KeyHandler_BuildMenu_KeyUp = {
 		case (42): {CTI_P_StructureRotateMulti = 1};
 		case (29): {CTI_P_StructureRotate = 0};
 		case (56): {CTI_P_StructureRotate = 0};
+		case (54): {CTI_P_StructureElevation = 0};
+		case (157): {CTI_P_StructureElevation = 0};
 	};
 };
 

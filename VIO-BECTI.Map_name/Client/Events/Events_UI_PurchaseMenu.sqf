@@ -22,8 +22,12 @@ switch (_action) do {
 		
 		(_factory_type) call CTI_UI_Purchase_LoadFactories;
 		
-		if (_factory_type != CTI_REPAIR || !(call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow false};
-		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.535), SafeZoneY + (SafeZoneH * 0.825), SafeZoneW * 0.275, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlCommit 0;
+		_ctrSalvager = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016);
+		if (_factory_type != CTI_REPAIR || !(call CTI_CL_FNC_IsPlayerCommander)) then {_ctrSalvager ctrlShow false};
+		_ctrSalvager ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.535), SafeZoneY + (SafeZoneH * 0.825), SafeZoneW * 0.275, SafeZoneH * 0.04]; 
+		_textSalvager = format["Buy Independent Salvager (%1/%2) $%3", count(CTI_P_SideLogic getVariable "cti_salvagers"), CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX, CTI_VEHICLES_SALVAGER_PRICE];
+		_ctrSalvager ctrlSetText _textSalvager;
+		_ctrSalvager ctrlCommit 0;
 		
 		_groups = [group player];
 		if (call CTI_CL_FNC_IsPlayerCommander) then {
@@ -87,7 +91,10 @@ switch (_action) do {
 			call CTI_UI_Purchase_OnUnitListLoad;
 			 
 			(_factory_type) call CTI_UI_Purchase_LoadFactories;
-			if (call CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type == CTI_REPAIR) then {true} else {false})};
+			
+			if (call CTI_CL_FNC_IsPlayerCommander) then {
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type == CTI_REPAIR) then {true} else {false});
+			};
 		};
 	};
 	case "onVehicleIconClicked": {

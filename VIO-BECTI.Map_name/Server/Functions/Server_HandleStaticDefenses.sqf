@@ -34,10 +34,13 @@ _side = _this select 1;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
-_defense_team = _logic getVariable "cti_defensive_team";
+//_defense_team = _logic getVariable "cti_defensive_team";
+_defense_team = _logic getVariable ["cti_defensive_team", grpNull];
 //check if team exists, if not create a new one
-if(isNull _defense_team) then {
+if (typeName _defense_team == "grpNull") then {
 	_defense_team = createGroup _side;
+	_defense_team setGroupID ["Defense Team"];
+	_defense_team setVariable ["cti_gc_noremove", true];
 	_logic setVariable ["cti_defensive_team", _defense_team];
 };
 _var = missionNamespace getVariable format ["CTI_%1_%2", _side, _structure getVariable "cti_structure_type"];

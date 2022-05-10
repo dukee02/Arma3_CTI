@@ -13,3 +13,5 @@ _m = count _milalpha;
 		if (CTI_IsClient) then {_x setVariable ["cti_alias", _milalpha select _forEachIndex]};
 	} forEach (_x getVariable "cti_teams");
 } forEach [CTI_WEST, CTI_EAST];
+
+missionNamespace setVariable ["CTI_Teams_Loaded", true, true];

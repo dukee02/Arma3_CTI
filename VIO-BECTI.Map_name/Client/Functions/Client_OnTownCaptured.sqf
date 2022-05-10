@@ -37,7 +37,7 @@ _town = _this select 0;
 _sideID_new = _this select 1;
 _sideID_old = _this select 2;
 
-if !(CTI_P_SideID in [_sideID_new, _sideID_old]) exitWith {}; //--- Make sure that the client need an update
+//if !(CTI_P_SideID in [_sideID_new, _sideID_old]) exitWith {}; //--- Make sure that the client need an update
 
 _side_new = (_sideID_new) call CTI_CO_FNC_GetSideFromID;
 
@@ -62,7 +62,9 @@ if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured i
 	
 	_town setVariable ["cti_town_lastcap", time];
 } else { //--- The player's side has lost it
-	["town-lost", [_town]] call CTI_CL_FNC_DisplayMessage;
+	if !(_sideID_old == 2) then {		//2 = independent (resistance)
+		["town-lost", [_town]] call CTI_CL_FNC_DisplayMessage;
+	};
 };
 
 //--- Paint it

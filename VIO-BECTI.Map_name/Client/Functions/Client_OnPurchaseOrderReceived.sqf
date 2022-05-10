@@ -137,7 +137,10 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\F
 
 //--- Creation.
 _direction = 360 - ((_var select 4) select 0);
+_vehicle_info = missionNamespace getVariable _model;
+_distance_to_factory = _vehicle_info select CTI_UNIT_DISTANCE;	
 _distance = (_var select 4) select 1;
+_distance = _distance + _distance_to_factory;
 
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { true } else { false };

@@ -34,9 +34,7 @@ _side = _this select 1;
 _script = _this select 2;
 _texture = _this select 3;
 
-if (CTI_Log_Level >= CTI_Log_Debug) then {
-	["DEBUG", "FILE: Common\Functions\Common_InitializeCustomVehicle.sqf", format["Attempting to perform custom initialization of vehicle [%1] on side [%2] with script [%3]", typeOf _vehicle, _side, _script]] call CTI_CO_FNC_Log;
-};
+if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_InitializeCustomVehicle.sqf", format["Attempting to perform custom initialization of vehicle [%1] on side [%2] with script [%3]", typeOf _vehicle, _side, _script]] call CTI_CO_FNC_Log;};
 
 switch (_script) do {
 	case "salvager": {if (CTI_IsServer) then {(_vehicle) execFSM "Server\FSM\update_salvager.fsm"} else {["SERVER", "Request_HandleAction", ["salvager", _vehicle]] call CTI_CO_FNC_NetSend}};
@@ -45,6 +43,7 @@ switch (_script) do {
 	case "service-ammotruck": {_vehicle setVariable ["cti_spec", CTI_SPECIAL_AMMOTRUCK, true]};
 	case "service-fueltruck": {_vehicle setVariable ["cti_spec", CTI_SPECIAL_FUELTRUCK, true]};
 	case "service-medic": {_vehicle setVariable ["cti_spec", CTI_SPECIAL_MEDICALVEHICLE, true]; if ((missionNamespace getVariable "CTI_RESPAWN_MOBILE") > 0) then {_vehicle setVariable ["cti_spec", CTI_SPECIAL_MEDICALVEHICLE, true]}};
+	case "service-multi": {_vehicle setVariable ["cti_spec", CTI_SPECIAL_ALLPURPOSETRUCK, true]; if (CTI_IsServer) then {(_vehicle) execFSM "Server\FSM\update_salvager.fsm"} else {["SERVER", "Request_HandleAction", ["salvager", _vehicle]] call CTI_CO_FNC_NetSend}};
 };
 
 if (_texture != "") then {

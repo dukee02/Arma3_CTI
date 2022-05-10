@@ -55,75 +55,56 @@ execVM "Server\Init\Init_Prison.sqf";
 //--- Get the starting locations.
 _startup_locations_west = [];
 for '_i' from 0 to 30 step +2 do {
-	_location = getMarkerPos format ["cti-spawn%1", _i];
+	_location = getMarkerPos format ["cti-spawn-west%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	_startup_locations_west pushBack _location;
 };
+if(count _startup_locations_west < 1) then {
+	for '_i' from 0 to 30 step +2 do {
+		_location = getMarkerPos format ["cti-spawn%1", _i];
+		if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
+		_startup_locations_west pushBack _location;
+	};	
+};
 _startup_locations_east = [];
-for '_i' from 1 to 30 step +2 do {
-	_location = getMarkerPos format ["cti-spawn%1", _i];
+for '_i' from 0 to 30 step +2 do {
+	_location = getMarkerPos format ["cti-spawn-east%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	_startup_locations_east pushBack _location;
 };
-
-//--- Select whether the spawn restriction is enabled or not.
-/*if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
-	waitUntil {!isNil 'CTI_InitTowns'};
-	_adjusted_positions = [];
-	{
-		_town = _x;
-		{ 
-			_range = _x distance _town;
-			if (_range <= 2500 && !(_x in _adjusted_positions)) then {
-				_adjusted_positions = _adjusted_positions + [_x];
-			};
-		} forEach _startup_locations_west;
-
-	} forEach CTI_Towns;
-	if (count _adjusted_positions >= 2) then {_startup_locations_west = _adjusted_positions};
-	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Spawn locations west were refined [%1].", count _startup_locations_west]] Call CTI_CO_FNC_Log};
+if(count _startup_locations_east < 1) then {
+	for '_i' from 1 to 30 step +2 do {
+		_location = getMarkerPos format ["cti-spawn%1", _i];
+		if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
+		_startup_locations_east pushBack _location;
+	};
 };
-if ((missionNamespace getVariable "CTI_BASE_START_TOWN") > 0) then {
-	waitUntil {!isNil 'CTI_InitTowns'};
-	_adjusted_positions = [];
-	{
-		_town = _x;
-		{ 
-			_range = _x distance _town;
-			if (_range <= 2500 && !(_x in _adjusted_positions)) then {
-				_adjusted_positions = _adjusted_positions + [_x];
-			};
-		} forEach _startup_locations_east;
-
-	} forEach CTI_Towns;
-	if (count _adjusted_positions >= 2) then {_startup_locations_east = _adjusted_positions};
-	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Spawn locations east were refined [%1].", count _startup_locations_east]] Call CTI_CO_FNC_Log};
-};*/
 
 //--- Place both sides.
 _range = missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
 _attempts = 0;
 _total_west = count _startup_locations_west;
 _total_east = count _startup_locations_east;
-
 _westLocation = getMarkerPos "cti-spawn0";
 _eastLocation = getMarkerPos "cti-spawn0";
-//_westLocation = _startup_locations_west select floor(random _total_west);
-//_eastLocation = _startup_locations_east select floor(random _total_east);
 
 while {_eastLocation distance _westLocation < _range &&_attempts <= 300} do {
-	//if (CTI_Log_Level >= CTI_Log_Debug) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: [%1] / [%2] ", _westLocation, _eastLocation]] call CTI_CO_FNC_Log;};
-	_westLocation = _startup_locations_west select floor(random _total_west);
-	_eastLocation = _startup_locations_east select floor(random _total_east);
+	
+	_westLocation = selectRandom _startup_locations_west;	
+	_eastLocation = selectRandom _startup_locations_east;	
+	
+	//_westLocation = _startup_locations_west select floor(random _total_west);
+	//_eastLocation = _startup_locations_east select floor(random _total_east);
 	_attempts = _attempts + 1;
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: <%1 West:%2> / <%3 East:%4> attempts: %5", _total_west, _westLocation, _total_east, _eastLocation, _attempts]] call CTI_CO_FNC_Log;};
+
 };
-
-if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: <West:%1> / <East:%2> attempts: %3", _westLocation, _eastLocation, _attempts]] call CTI_CO_FNC_Log;};
-
 if (_attempts >= 300) then {
 	_westLocation = getMarkerPos "cti-spawn0";//W
 	_eastLocation = getMarkerPos "cti-spawn1";//E
 };
+
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", format["Initializing Startlocations: <%1 West:%2> / <%3 East:%4> attempts: %5", _total_west, _westLocation, _total_east, _eastLocation, _attempts]] call CTI_CO_FNC_Log;};
 
 {
 	_side = _x select 0;
@@ -161,6 +142,12 @@ if (_attempts >= 300) then {
 	_logic setVariable ["cti_spotted_structures", []];
 	_logic setVariable ["cti_votetime", missionNamespace getVariable "CTI_GAMEPLAY_VOTE_TIME", true];
 
+	//Set the loaded HQ positions if loading is active
+	if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
+		["hq", _side] call CTI_SE_FNC_LOAD;
+		_startPos = (getposATL ((_side) call CTI_CO_FNC_GetSideHQ));
+	};
+	
 	//--- Parameters specific.
 	if ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 0) then {_logic setVariable ["cti_supply", missionNamespace getVariable Format ["CTI_ECONOMY_STARTUP_SUPPLY_%1", _side], true]};
 	
@@ -232,10 +219,10 @@ if (_attempts >= 300) then {
 				
 				//if coop is enabled, th AI only for enemy side!
 				_ai_teams_enabled = true;
-				if(CTI_TOWNS_STARTING_MODE == 4 && _side == east) then {
+				if((CTI_TOWNS_STARTING_MODE >= 4 && CTI_TOWNS_STARTING_MODE <= 6) && _side == east) then {
 					_ai_teams_enabled = false;
 				};
-				if(CTI_TOWNS_STARTING_MODE == 5 && _side == west) then {
+				if((CTI_TOWNS_STARTING_MODE >= 7 && CTI_TOWNS_STARTING_MODE <= 9) && _side == west) then {
 					_ai_teams_enabled = false;
 				};
 				
@@ -319,6 +306,58 @@ if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") >= 0 || (missionNam
 		(missionNamespace getVariable Format ["CTI_%1_DefenseTeam", _x]) setVariable ["cti_gc_noremove", true];
 	} forEach [west,east,resistance];
 
+};
+
+//Check if Persistence is active
+if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
+	if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
+		//load the data or start from new
+		waitUntil {!isNil 'CTI_InitTowns'};
+		sleep 10; // prenvent loading without all town FSM stable
+		["upgrades"] call CTI_SE_FNC_LOAD;
+		["buildings"] call CTI_SE_FNC_LOAD;
+		0 spawn {
+			waitUntil {!isNil 'CTI_Teams_Loaded'};
+			["funds"] call CTI_SE_FNC_LOAD;
+		};
+	};
+	missionNamespace setVariable ["CTI_Server_Loaded", true, true];
+	0 spawn {
+		while {!CTi_GameOver} do {
+			sleep (CTI_SAVE_PERIODE-60);
+			["towns"] call CTI_SE_FNC_SAVE;
+			["hq"] call CTI_SE_FNC_SAVE;
+			["upgrades"] call CTI_SE_FNC_SAVE;
+			["buildings"] call CTI_SE_FNC_SAVE;
+			["funds"] call CTI_SE_FNC_SAVE;
+			
+			if(CTI_LOG_INFO > 0) then {
+				//count units
+				_blue = west countSide allUnits;
+				sleep 10;
+				_red = east countSide allUnits;
+				sleep 10;
+				_green = independent countSide allUnits;
+				sleep 10;
+				_blue_g = -1;
+				_red_g = -1;
+				_green_g = -1;
+				if(CTI_LOG_INFO > 1) then {
+					//count groups
+					_blue_g = west countSide allGroups;
+					sleep 10;
+					_red_g = east countSide allGroups;
+					sleep 10;
+					_green_g = independent countSide allGroups;
+					sleep 10;
+				};
+				
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server statistic test <blue: %1(%2) | red: %3(%4) | green: %5(%6)>", _blue, _blue_g, _red, _red_g, _green, _green_g]] Call CTI_CO_FNC_Log;
+			};
+		};
+	};
+} else {
+	missionNamespace setVariable ["CTI_Server_Loaded", true, true];
 };
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server initialization ended at [%1]", time]] Call CTI_CO_FNC_Log};

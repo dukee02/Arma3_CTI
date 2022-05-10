@@ -187,14 +187,14 @@ switch (_action) do {
 						};
 					};
 					case (_order == CTI_ORDER_MOVE): {
-						if !(surfaceIsWater _mappos) then {
+						//if !(surfaceIsWater _mappos) then {			//we can have ships, so we need sometimes moving on water
 							if (_all) then {
 								{[_x, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
 							} else {
 								_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
 								[_who, _order, _mappos] call CTI_UI_MapCommanding_TrySetOrder;
 							};
-						};
+						//};
 					};
 				};
 			};

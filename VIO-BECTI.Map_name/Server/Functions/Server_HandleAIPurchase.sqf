@@ -97,7 +97,10 @@ if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory
 
 _var = missionNamespace getVariable format ["CTI_%1_%2", _req_side, _factory getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
+_vehicle_info = missionNamespace getVariable _model;
+_distance_to_factory = _vehicle_info select CTI_UNIT_DISTANCE;	
 _distance = (_var select 4) select 1;
+_distance = _distance + _distance_to_factory;
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 }; //--- Construction...
@@ -124,11 +127,11 @@ if (_model isKindOf "Man") then {
 	_vehicle = [_model, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 } else {
 	private ["_crew", "_unit"];
-	
+		
 	//lets start a AI purchased planes, planes of AI-Squads starts in the air
 	_form_air = "FORM";
 	if (_model isKindOf "Air") then {_form_air ="FLY"};
-	_vehicle = [_model, _position, _direction + getDir _factory, _sideID, true, true, true, _form_air] call CTI_CO_FNC_CreateVehicle;
+	_vehicle = [_model, _position, _direction + getDir _factory, _sideID, CTI_AI_VEHICLE_LOCKED, true, true, _form_air] call CTI_CO_FNC_CreateVehicle;
 	//{player reveal _vehicle} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 	
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};

@@ -252,8 +252,14 @@ switch (_action) do {
 			};
 			
 			if (_unflip) then {
-				_who_vehicle setPos [getPos _who_vehicle select 0, getPos _who_vehicle select 1, 1];
-				_who_vehicle setVelocity [0,0,1];
+				if(_who_vehicle isKindOf "Ship") then {
+					_who_vehicle setDir ((getDir _who_vehicle) + 180);
+					_who_vehicle setPos [getPos _who_vehicle select 0, getPos _who_vehicle select 1, -1];
+					_who_vehicle setVelocity [0,0,1];
+				} else {
+					_who_vehicle setPos [getPos _who_vehicle select 0, getPos _who_vehicle select 1, 1];
+					_who_vehicle setVelocity [0,0,1];
+				};
 			};
 		};
 	};

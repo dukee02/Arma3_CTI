@@ -137,6 +137,8 @@ switch (_action) do {
 					if (alive _artillery_piece) then { //--- The artillery piece is alive and kicking
 						if ([_artillery_piece, _artillery_magazine, _target, _artillery_range select 0, _artillery_range select 1] call CTI_UI_Artillery_CanFire) then { //--- Ultimate check about ranges
 							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artillerie shoots: <%1|%2|%3|%4>",_artillery_piece, _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;
+							//lets reveal the target by the gunner ... maybe it fixed some cant shoot issues
+							gunner _artillery_piece reveal [_target,2];
 							_artillery_piece doArtilleryFire [_target, _artillery_magazine, _artillery_burst];
 							//_artillery_piece commandArtilleryFire [_target, _artillery_magazine, _artillery_burst];
 							_isInRange = false;
@@ -156,6 +158,7 @@ switch (_action) do {
 							_detected_dir = _sideHQ getRelDir _artillery_piece;
 							//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
 							[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
+							CTI_P_LastFireMission = time;
 						} else {
 							_isInRange = false;
 							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
@@ -173,8 +176,6 @@ switch (_action) do {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, artillerie not responding, is it still alive?.</t>";
 					};
 				} forEach _artillery;
-				
-				CTI_P_LastFireMission = time;
 			};
 		};
 	};

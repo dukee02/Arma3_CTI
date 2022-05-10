@@ -58,6 +58,14 @@ _special = if (count _this > 7) then {_this select 7} else {"FORM"};
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
+if(_type isKindOf "ship") then {
+	//placeing onto the water with 40m searchrange
+	_save_pos = [_position, 0, 40, 10, 2, 0, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+} else {
+		//place on a save Pos on the ground with 20m searchrange
+	_save_pos = [_position, 0, 20, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
+};
+
 _vehicle = createVehicle [_type, _position, [], 7, _special];
 _vehicle setDir _direction;
 VIOC_ZEUS addCuratorEditableObjects [[_vehicle], true];
@@ -66,32 +74,14 @@ clearMagazineCargo _vehicle;
 clearWeaponCargo _vehicle;
 clearItemCargo _vehicle;
 
-//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
-if (_special != "FLY") then {
-	if(_type isKindOf "ship") then {
-		//get the distance set mainly for ships
-		_var = missionNamespace getVariable _type;
-		_distance_to_factory = _var select CTI_UNIT_DISTANCE;		
-		//[center, minDist, maxDist, objDist, waterMode, maxGrad, shoreMode, blacklistPos, defaultPos] call BIS_fnc_findSafePos
-		if(_distance_to_factory > 50) then {
-			//placeing onto the water
-			_save_pos = [_position, 0, _distance_to_factory, 10, 2, 0, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-		} else {
-			//placeing onto the water but near the shore
-			_save_pos = [_position, 0, _distance_to_factory, 5, 2, 0, 1, [], [_position, _position]] call BIS_fnc_findSafePos;
-		};
-		
-		_vehicle setPos [_save_pos select 0, _save_pos select 1, 0];//--- Make the vehicle spawn above the ground level to prevent any bisteries
-	} else {
-		//place on a save Pos on the ground
-		_save_pos = [_position, 0, 10, 1, 0, 0.7, 0, [], [_position, _position]] call BIS_fnc_findSafePos;
-		_vehicle setPos [_save_pos select 0, _save_pos select 1, 1];//--- Make the vehicle spawn above the ground level to prevent any bisteries
-	};
-	_vehicle setVelocity [0,0,1];
-} else {
-	_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 200]; //--- Make the vehicle spawn in the sky
+if (_special == "FLY") then {
+	//planes with a pilot gets movet to the air
+	_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 500]; //--- Make the vehicle spawn in the sky
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
+} else {
+	_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 0.3]; //--- Make the vehicle spawn in the sky
 };
+//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
 
 {//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 	player reveal [_vehicle, 4];

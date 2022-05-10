@@ -66,6 +66,9 @@ CTI_UI_Purchase_FillUnitsList = {
 		case CTI_LIGHT: {CTI_UPGRADE_LIGHT};
 		case CTI_HEAVY: {CTI_UPGRADE_HEAVY};
 		case CTI_AIR: {CTI_UPGRADE_AIR};
+		case CTI_NAVAL: {CTI_UPGRADE_NAVAL};
+		case CTI_REPAIR: {CTI_UPGRADE_LIGHT};
+		case CTI_AMMO: {CTI_UPGRADE_LIGHT};
 		default {-1};
 	};
 	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
@@ -151,8 +154,9 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 				if !(_displayName in _removedTextures) then {_displayNames pushBack _displayName};
 				
 			};
-
+			
 			lbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104);
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) lbAdd "default";
 			
 			{
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) lbAdd Format ["%1", _x];

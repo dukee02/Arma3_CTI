@@ -63,7 +63,7 @@ CTI_SPECIAL_REPAIRTRUCK = 0;
 CTI_SPECIAL_AMMOTRUCK = 1;
 CTI_SPECIAL_MEDICALVEHICLE = 2;
 CTI_SPECIAL_FUELTRUCK = 3;
-// CTI_SPECIAL_ALLPURPOSETRUCK = 3;
+CTI_SPECIAL_ALLPURPOSETRUCK = 4;
 
 CTI_AI_COMMANDER_BUYTO_INFANTRY = 20;
 CTI_AI_COMMANDER_BUYTO_LIGHT = 13;
@@ -124,6 +124,7 @@ with missionNamespace do {
 	if (isNil 'CTI_AI_TEAMS_JIP_PRESERVE') then {CTI_AI_TEAMS_JIP_PRESERVE = 0}; //--- Keep the AI Teams units on JIP
 	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 0}; //--- Determine whether AI Teams are enabled or not
 	if (isNil 'CTI_AI_COMMANDER_ENABLED') then {CTI_AI_COMMANDER_ENABLED = 1}; //--- Determine whether AI Commander is enabled or not
+	if (isNil 'CTI_AI_VEHICLE_LOCK') then {CTI_AI_VEHICLE_LOCKED = true;} else {if(CTI_AI_VEHICLE_LOCK == 1) then {CTI_AI_VEHICLE_LOCKED = true}else{CTI_AI_VEHICLE_LOCKED = false};}; //--- AI Teams lock the vehicles
 	if (isNil 'CTI_AI_SKILL_BASE') then {
 		/*Novice < 0.25
 		Rookie >= 0.25 and <= 0.45
@@ -403,6 +404,7 @@ CTI_TOWNS_MORTARS_RANGE_MIN = 125; //--- AI Mortars may not fire at targets with
 
 //--- Towns: Parameters
 with missionNamespace do {
+	if (isNil "CTI_TOWNS_REMOVEDPARAM") then {Towns_RemovedParam = []}; //--- Array with towns the should get removed
 	if (isNil "CTI_TOWNS_AMOUNT") then {CTI_TOWNS_AMOUNT = 6}; //--- Amount of towns (0: Very small, 1: Small, 2: Medium, 3: Large, 4: West, 5: East, 6: Full).
 	if (isNil "CTI_TOWNS_BUILD_PROTECTION_RANGE") then {CTI_TOWNS_BUILD_PROTECTION_RANGE = 300};	
 	if (isNil "CTI_TOWNS_CAMPS_CREATE") then {CTI_TOWNS_CAMPS_CREATE = 1}; //--- Create the camp models.
@@ -700,6 +702,7 @@ CTI_SERVICE_FUEL_TRUCK_RANGE = 35;
 CTI_SERVICE_FUEL_TRUCK_Time = 60;
 CTI_SERVICE_MEDICAL_VEHICLE_RANGE = 35;
 CTI_SERVICE_MEDICAL_VEHICLE_TIME = 60;
+CTI_SPECIAL_ALLPURPOSE_RANGE = 400;
 
 CTI_SCORE_BUILD_VALUE_PERPOINT = 1500; //--- Structure value / x
 CTI_SCORE_SALVAGE_VALUE_PERPOINT = 2000; //--- Unit value / x
@@ -707,6 +710,9 @@ CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
 CTI_SCORE_CAMP_VALUE = 2; //--- Camp value
 
 with missionNamespace do {
+	if (isNil 'CTI_LOG_INFO') then {CTI_LOG_INFO = 0};
+	if (isNil 'CTI_PERSISTANT') then {CTI_PERSISTANT = 0};
+	if (isNil 'CTI_SAVE_PERIODE') then {CTI_SAVE_PERIODE = 900};		//900
 	
 	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 0};
 			

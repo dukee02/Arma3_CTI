@@ -13,6 +13,7 @@
     2	[Array]: The position of the defense
     3	[Number]: The direction of the defense
     4	{Optionnal} [Object]: The person which requested it (send it back for undo)
+    4	{Optionnal} [Number]: grade of completition 100 for finished
 	
   # RETURNED VALUE #
 	[Object]: The ruins
@@ -20,6 +21,7 @@
   # SYNTAX #
 	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION] call CTI_SE_FNC_BuildStructure
 	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION, SOURCE] call CTI_SE_FNC_BuildStructure
+	[STRUCTURE VARIABLE, SIDE, POSITION, DIRECTION, SOURCE, COMPLETITION] call CTI_SE_FNC_BuildStructure
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -28,6 +30,7 @@
 	
   # EXAMPLE #
     _placed = [_placed, CTI_CL_VAR_SideJoined, getPos _preview, getDir _preview] call CTI_SE_FNC_BuildStructure;
+    _placed = [_placed, CTI_CL_VAR_SideJoined, getPos _preview, getDir _preview, objNull, 100] call CTI_SE_FNC_BuildStructure;
 */
 
 _var = missionNamespace getVariable (_this select 0);
@@ -35,6 +38,7 @@ _side = _this select 1;
 _position = _this select 2;
 _direction = _this select 3;
 _origin = if (count _this > 4) then {_this select 4} else {objNull};
+_completion = if (count _this > 5) then {_this select 5} else {10};
 
 _position set [2, 0];
 
@@ -44,7 +48,7 @@ _structure setPos _position;
 _structure setDir _direction;
 _structure setVectorUp [0,0,0];
 
-_structure setVariable ["cti_completion", 10];
+_structure setVariable ["cti_completion", _completion];
 _structure setVariable ["cti_completion_ratio", CTI_BASE_CONSTRUCTION_RATIO_INIT];
 // _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];
 _structure setVariable ["cti_structures_iteration", (_var select 3)/100];

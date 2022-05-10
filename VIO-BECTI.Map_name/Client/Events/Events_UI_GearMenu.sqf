@@ -341,10 +341,10 @@ switch (_action) do {
 		missionNamespace getVariable "cti_gear_list_templates" pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
 		
 		//_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-		_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+		_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOWW2_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOWW2_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
 		_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
 		//profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
-		profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		profileNamespace setVariable [format["CTI_VIOWW2_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 		if (CTI_Log_Level >= CTI_Log_Debug) then {
 			["VIOC-DEBUG", "File: Client\Events\Events_UI_GearMenu.sqf", format["Client saves template: <%1>", _templates]] call CTI_CO_FNC_Log;
