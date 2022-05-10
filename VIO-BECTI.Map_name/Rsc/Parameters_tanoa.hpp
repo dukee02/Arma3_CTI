@@ -1,5 +1,23 @@
 class Params {
-		class SEPARATOR_STARTUP {
+	class SEPARATOR_PERSISTENCE {
+		title = "=========================== Persistence ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
+	class CTI_PERSISTANT {
+		title = "PERSIST: Mode";
+		values[] = {-3,-2,-1,0,1,2,3};
+		texts[] = {"Reset (1 Save for each mission)","Reset (1 Save for each era VIO-BECTI-WW2)","Reset (1 Save for all VIO-BECTIs)","Disabled","Enabled (1 Save for all VIO-BECTIs)","Enabled (1 Save for each era VIO-BECTI-WW2)","Enabled (1 Save for each mission)"};
+		default = 0;
+	};
+	class CTI_SAVE_PERIODE {
+		title = "PERSIST: Save periode in seconds";
+		values[] = {300,600,900,1200,1500,1800,2700,3600};
+		texts[] = {"5min","10 min","15 min","20 min","25 min","30 min","45 min","60 min"};
+		default = 900;
+	};
+	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
 		values[] = {1};
 		texts[] = {""};
@@ -8,7 +26,7 @@ class Params {
 	class CTI_CAMO_ACTIVATION {
 		title = "Main Camo";
 		values[] = {0,1,4};
-		texts[] = {"Standard", "APEX", "both (Main = Standard)"};
+		texts[] = {"Standard", "Jungle (APEX)", "both (Main = Standard)"};
 		default = 0;
 	};
 	class CTI_WEST_FLAG {
@@ -69,13 +87,13 @@ class Params {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
 		values[] = {300,400,500,600,700,800,900,1000,1100,1200};
 		texts[] = {"300s","400s","500s","600s","700s","800s","900s","1000s","1100s","1200s"};
-		default = 600; //600
+		default = 600;
 	};
 	class CTI_ECONOMY_TIME_MULTI {
-		title = "BASE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
+		title = "UPGRADE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
 		values[] = {1,2,3,4,5,6,8,10};
 		texts[] = {"1","2","3","4","5","6","8","10"};
-		default = 2; //5
+		default = 2;
 	};
 	class SEPERATOR_AI {
 		title = "============ AI ============";
@@ -321,7 +339,7 @@ class Params {
 		title = "WEATHER: Simple presets";
 		values[] = {0,1,2,3};
 		texts[] = {"Sunny start, random normal weather", "Sunny", "normal light weather", "complete random"};
-		default = 0;
+		default = 1;
 	};
 	class SEPERATOR_GAMEPLAY {
 		title = "============ Gameplay ============";
@@ -364,6 +382,22 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"",""};
 		default = 0;
+	};
+	class REVIVE_MODE {
+		title = $STR_A3_ReviveMode;
+		isGlobal = 1;
+		values[] = {0,1};
+		texts[] = {$STR_A3_Disabled,$STR_A3_EnabledForAllPlayers};
+		default = 0;
+		function = "bis_fnc_paramReviveMode";
+	};
+	class UNCONSCIOUS_STATE_MODE {
+		title = $STR_A3_IncapacitationMode;
+		isGlobal = 1;
+		values[] = {0,1};
+		texts[] = {$STR_A3_Basic,$STR_A3_Advanced};
+		default = 0;
+		function = "bis_fnc_paramReviveUnconsciousStateMode";
 	};
 	class CTI_RESPAWN_AI {
 		title = "RESPAWN: AI Members";
@@ -419,29 +453,11 @@ class Params {
 		texts[] = {"",""};
 		default = 0;
 	};
-	class REVIVE_MODE {
-		title = $STR_A3_ReviveMode;
-		isGlobal = 1;
-		values[] = {0,1};
-		texts[] = {$STR_A3_Disabled,$STR_A3_EnabledForAllPlayers};
-		default = 0;
-		function = "bis_fnc_paramReviveMode";
-	};
-	class UNCONSCIOUS_STATE_MODE {
-		title = $STR_A3_IncapacitationMode;
-		isGlobal = 1;
-		values[] = {0,1};
-		texts[] = {$STR_A3_Basic,$STR_A3_Advanced};
-		default = 0;
-		function = "bis_fnc_paramReviveUnconsciousStateMode";
-	};
 	class CTI_TOWNS_AMOUNT {
 		title = "TOWNS: Amount";
-		//values[] = {0,1,2,3,4,5,6};
-		//texts[] = {"Extra Small","Small","Medium","Large","East","West","Full"};
-		values[] = {0,1,2,3,6};
-		texts[] = {"Extra Small","Small","Medium","Large","Full"};
-		default = 3;
+		values[] = {0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"Extra Small","Small","Medium","Large","SpecialMode 1 (Full if no setup defined)","SpecialMode 2 (Full if no setup defined)","SpecialMode 3 (Full if no setup defined)","SpecialMode 4 (Full if no setup defined)","Parameter (Full if no param set)","Full"};
+		default = 9;
 	};
 	class CTI_TOWNS_CAMPS_CREATE {
 		title = "TOWNS: Camps";
@@ -486,16 +502,16 @@ class Params {
 		default = 1;
 	};
 	class CTI_TOWNS_CAPTURED_DISTANCE {
-		title = "TOWNS: Distance of precaptured Towns";
+		title = "TOWNS: Distance of precaptured Towns (applies on Startingmodes with [Border] tag)";
 		values[] = {0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000};
-		texts[] = {"only the next town","1000","2000","3000","4000","5000","6000","7000","8000","9000","10000","12000","15000"};
+		texts[] = {"0 or if needed, the next town","1000","2000","3000","4000","5000","6000","7000","8000","9000","10000","12000","15000"};
 		default = 2000;
 	};
 	class CTI_TOWNS_STARTING_MODE {
 		title = "TOWNS: Starting Mode";
-		values[] = {-1,0,1,2,3,4,5};
-		texts[] = {"pre defined","Independent","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side, 'Distance' affects starting border","Coop at West side, 'Distance' affects starting border"};
-		default = -1;
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"pre defined","Resistance","50% East, 50% West", "Nearby Towns", "Random Towns (25% East, 25% West, 50% Res)","Coop at East side [Border]","Coop at East side, rest 50:50 [Border]","Coop at East side, rest 50:50 shuffled [Border]","Coop at West side [Border]","Coop at West side, rest 50:50 [Border]","Coop at West side, rest 50:50 shuffled [Border]"};
+		default = 0;
 	};
 	class CTI_TOWNS_VEHICLES_LOCK {
 		title = "TOWNS: Vehicle Lock";
@@ -593,12 +609,6 @@ class Params {
 		texts[] = {""};
 		default = 1;
 	};
-	class CTI_Log_Level {
-		title = "LOG: Set level of Logging";
-		values[] = {0,1,2,3};
-		texts[] = {"Error","Warning","Information","Debug"};
-		default = 0;
-	};	
 	class CTI_AI_TEAMS_ENABLED {
 		title = "AI: Teams";
 		values[] = {0,1,2,3,4};
@@ -610,5 +620,17 @@ class Params {
 		values[] = {2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,35,40,45,50,60,70,80,90,100};
 		texts[] = {"2","4","6","8","10","12","14","16","18","20","22","24","26","28","30","35","40","45","50","60","70","80","90","100"};
 		default = 10;
+	};
+	class CTI_AI_VEHICLE_LOCK {
+		title = "AI Vehicles locked?";
+		values[] = {0,1};
+		texts[] = {"Disabled - needed if you want to transport AI Teams","Enabled (default)"};
+		default = 1;
+	};
+	class CTI_Log_Level {
+		title = "LOG: Set level of Logging";
+		values[] = {0,1,2,3};
+		texts[] = {"Error","Warning","Information","Debug"};
+		default = 0;
 	};
 };
