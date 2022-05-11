@@ -55,7 +55,7 @@ if (typeName _req_target != "SIDE") then { if ((count units _req_target)+1 > CTI
 if (_req_classname == format["CTI_Salvager_Independent_%1", _req_side]) then {
 } else {
 	if !(isClass(configFile >> "CfgVehicles" >> _req_classname)) then {
-		if (CTI_Log_Level >= CTI_Log_Error) then {["Error", "FILE: Server\Functions\Server_HandleAIPurchasePurchase.sqf", format ["invallid classname: <%1>",  _req_classname]] call CTI_CO_FNC_Log;};
+		if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_HandleAIPurchasePurchase.sqf", format ["invallid classname: <%1>",  _req_classname]] call CTI_CO_FNC_Log;};
 		_process = false;
 	};
 };
@@ -97,8 +97,7 @@ if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory
 
 _var = missionNamespace getVariable format ["CTI_%1_%2", _req_side, _factory getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
-_vehicle_info = missionNamespace getVariable _model;
-_distance_to_factory = _vehicle_info select CTI_UNIT_DISTANCE;	
+_distance_to_factory = _var_classname select CTI_UNIT_DISTANCE;	
 _distance = (_var select 4) select 1;
 _distance = _distance + _distance_to_factory;
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];

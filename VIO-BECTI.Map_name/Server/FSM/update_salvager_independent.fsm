@@ -47,7 +47,7 @@ link21[] = {18,16};
 link22[] = {19,20};
 link23[] = {20,18};
 globals[] = {0.000000,0,0,0,0,640,480,1,196,6316128,1,-555.809814,609.651367,630.043701,-455.164551,973,884,1};
-window[] = {2,-1,-1,-32000,-32000,963,182,1437,182,3,991};
+window[] = {2,-1,-1,-32000,-32000,913,-1651,-396,132,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -189,12 +189,18 @@ class FSM
                          "_list = [];" \n
                          "{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {_list pushBack _x}} forEach vehicles;" \n
                          "" \n
-                         "if (count _list > 0) then { _last_targetcheck = time; _goto = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity; _action = ""goto-target""; _salvager commandMove (position _goto) };" \n
+                         "if (count _list > 0) then {" \n
+                         "	_last_targetcheck = time; " \n
+                         "	_goto = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity; " \n
+                         "	_action = ""goto-target""; " \n
+                         "	_salvager commandMove (position _goto);" \n
+                         "	[_salvager, true] call CTI_SE_FNC_HandleSalvagerSpecial;" \n
+                         "};" \n
                          "" \n
                          "if (isNull _goto) then {" \n
                          "	_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
                          "	_factory_repair = [CTI_REPAIR, _salvager, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
-                         "	" \n
+                         "	[_salvager, false] call CTI_SE_FNC_HandleSalvagerSpecial;" \n
                          "	if !(isNull _factory_repair) then {" \n
                          "		if (_salvager distance _factory_repair > 75) then {" \n
                          "			_action = ""goto-repair"";" \n
@@ -356,6 +362,7 @@ class FSM
                          "			_player_get = _return select 1;	_commander_get = _return select 2;" \n
                          "			[[""CLIENT"", _side], ""Client_OnMessageReceived"", [""salvage"", [_var_name, _player_get, _commander_get]]] call CTI_CO_FNC_NetSend;" \n
                          "		};" \n
+                         "		" \n
                          "		deleteVehicle _goto;" \n
                          "		//--- destroyed objects" \n
                          "		{" \n

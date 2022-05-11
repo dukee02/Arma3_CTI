@@ -44,14 +44,15 @@ CTI_GEAR_TAB_MISC = 5;
 CTI_GEAR_TAB_EQUIPMENT = 6;
 CTI_GEAR_TAB_TEMPLATES = 7;
 
-CTI_UNIT_LABEL = 0;
-CTI_UNIT_PICTURE = 1;
-CTI_UNIT_PRICE = 2;
-CTI_UNIT_TIME = 3;
-CTI_UNIT_UPGRADE = 4;
-CTI_UNIT_FACTORY = 5;
-CTI_UNIT_TURRETS = 6;
-CTI_UNIT_SCRIPTS = 7;
+CTI_UNIT_LABEL = 0;		//--- Classname.
+CTI_UNIT_PICTURE = 1;	//--- Picture. 
+CTI_UNIT_PRICE = 2;		//--- Price.
+CTI_UNIT_TIME = 3;		//--- Build time.
+CTI_UNIT_UPGRADE = 4;	//--- Upgrade level needed.    0 1 2 3...
+CTI_UNIT_FACTORY = 5;	//--- Built from Factory.
+CTI_UNIT_TURRETS = 6;	//--- Turrets.
+CTI_UNIT_SCRIPTS = 7;	//--- Script.
+CTI_UNIT_DISTANCE = 8;	//--- Extra Distance. (From Factory)
 
 CTI_WEST_ID = 0;
 CTI_EAST_ID = 1;
@@ -579,6 +580,7 @@ CTI_VEHICLES_SALVAGE_RANGE = 25; //--- This is the distance required between a W
 CTI_SALVAGE_SPECIALUNITS = ["C_IDAP_Van_02_medevac_F","C_Van_02_medevac_F"];		//unitswith lights and sirens
 CTI_SALVAGE_SPECIAL_ACTIONOFF = [[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]],[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]]];		//handle for turning lights and sirens off
 CTI_SALVAGE_SPECIAL_ACTIONON = [[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]],[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]]];		//handle for turning lights and sirens on
+CTI_ADDON_CHARLIECO = 0;
 
 //--- Vehicles: Parameter
 with missionNamespace do {
