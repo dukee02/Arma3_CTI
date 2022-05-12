@@ -67,7 +67,6 @@ if(_spawn_unit == true) then {
 	_side = side _team;
 	_dummyGroup = createGroup _side;
 	_unit = _dummyGroup createUnit [_classname, _position, [], 0, _special];
-	VIOC_ZEUS addCuratorEditableObjects [[_unit], false];
 	if(speaker _unit == "") then {
 		_unit setSpeaker "Male01ENG";
 		//if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_CreateUnit.sqf", format["units speaker is [%1]", speaker _unit]] call CTI_CO_FNC_Log;};
@@ -76,6 +75,7 @@ if(_spawn_unit == true) then {
 	_unit setSkill (CTI_AI_SKILL_BASE + (random CTI_AI_SKILL_SPAN));
 	[_unit] joinSilent _team;
 	_unit addRating 1000;
+	VIOC_ZEUS addCuratorEditableObjects [[_unit], true];
 	{//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 		player reveal [_unit, 4];
 	} forEach allUnits; 
