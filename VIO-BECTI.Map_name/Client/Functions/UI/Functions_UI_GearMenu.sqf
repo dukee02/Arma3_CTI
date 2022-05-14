@@ -521,10 +521,10 @@ CTI_UI_Gear_CheckAccessories = {
 		((_gear select 0) select _index) set [1, []];
 		_defaults_process = [0,1,2];
 	} else {
-		_config_properties = ["MuzzleSlot","PointerSlot","CowsSlot"];
-		
+		//_config_properties = ["MuzzleSlot","PointerSlot","CowsSlot"];
+		_config_properties = ["muzzle","pointer","optic"];
 		for '_i' from 0 to 2 do {
-			if !(toLower((((_gear select 0) select _index) select 1) select _i) in ((getArray(configFile >> "CfgWeapons" >> _item >> "WeaponSlotsInfo" >> _config_properties select _i >> "compatibleItems")) call CTI_CO_FNC_ArrayToLower)) then {
+			if !(toLower((((_gear select 0) select _index) select 1) select _i) in (([_item, (_config_properties select _i)] Call CTI_CL_FNC_GetCompatibleItems) call CTI_CO_FNC_ArrayToLower)) then {
 				(((_gear select 0) select _index) select 1) set [_i, ""];
 				_defaults_process = _defaults_process + [_i];
 			};
@@ -892,7 +892,6 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 	_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 	_tab = uiNamespace getVariable "cti_dialog_ui_gear_items_tab";
 	_idcs = [];
-	
 	_translated = [[CTI_SUBTYPE_UNIFORM, 77001, ((_gear select 1) select 0) select 0],[CTI_SUBTYPE_VEST, 77002, ((_gear select 1) select 1) select 0],[CTI_SUBTYPE_BACKPACK, 77003, ((_gear select 1) select 2) select 0]];
 	
 	//--- Determine where the item may be parked.
@@ -936,7 +935,6 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 					if (_x == ((_translated select _i) select 0) && ((_translated select _i) select 2) != "") then {_idcs = _idcs + [(_translated select _i) select 1]; if (_tab == _i) then {_idcs = _idcs + [77109]}};
 				};
 			} forEach _slots;
-			
 			//--- Specific to item
 			switch (true) do {
 				//todo, rifle & rifle2h separation > secondary unavailable
@@ -953,7 +951,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if (_item in (([(_x select 0), "muzzle"] Call CTI_CL_FNC_GetCompatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -962,7 +960,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if (_item in (([(_x select 0), "pointer"] Call CTI_CL_FNC_GetCompatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -971,7 +969,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if (_item in (([(_x select 0), "optic"] Call CTI_CL_FNC_GetCompatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -980,7 +978,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'UnderBarrelSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if (_item in (([(_x select 0), "bipod"] Call CTI_CL_FNC_GetCompatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1137,7 +1135,6 @@ CTI_UI_Gear_UpdateLinkedItems = {
 	if ((lnbSize 70601) select 0 > 0) then {lnbClear 70601};
 	
 	if (_config_type == "CfgWeapons") then {
-		// _magazines = (getArray(configFile >> 'CfgWeapons' >> _item >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
 		_magazines = [];
 		{
 			if (_x == "this") then {
@@ -1250,21 +1247,21 @@ CTI_UI_Gear_InitializeProfileTemplates = {
 		_x set [5, round(time + random 10000 - random 5000 + diag_frameno)];
 	} forEach _templates;
 	
-	profileNamespace setVariable [format["CTI_VIOIFA3_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+	profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 	saveProfileNamespace;
 };
 
 CTI_UI_Gear_RemoveProfileTemplate = {
 	_seed = _this;
 	
-	_templates = profileNamespace getVariable format["CTI_VIOIFA3_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
+	_templates = profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
 	_index = -1;
 	{if ((_x select 5) == _seed) exitWith {_index = _forEachIndex}} forEach _templates;
 	
 	if (_index > -1) then {
 		_templates set [_index, "!nil!"];
 		_templates = _templates - ["!nil!"];
-		profileNamespace setVariable [format["CTI_VIOIFA3_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 	};
 };

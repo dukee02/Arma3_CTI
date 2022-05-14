@@ -34,6 +34,7 @@ CTI_CL_FNC_OnFriendlyStructureDestroyed = compileFinal preprocessFile "Client\Fu
 
 CTI_CL_FNC_OnArtilleryShotDetected = compileFinal preprocessFile "Client\Functions\Client_OnArtilleryShotDetected.sqf";
 CTI_CL_FNC_OnEnemyStructureDestroyed = compileFinal preprocessFile "Client\Functions\Client_OnEnemyStructureDestroyed.sqf";
+CTI_CL_FNC_GetCompatibleItems = compileFinal preprocessFile "Client\Functions\Client_GetCompatibleItems.sqf";
 
 CTI_CL_FNC_OnJailed = compileFinal preprocessFile "Client\Functions\Client_OnJailed.sqf";
 CTI_CL_FNC_OnMissionEnding = compileFinal preprocessFile "Client\Functions\Client_OnMissionEnding.sqf";
