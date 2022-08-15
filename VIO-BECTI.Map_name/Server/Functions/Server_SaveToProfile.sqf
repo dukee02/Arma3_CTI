@@ -152,25 +152,36 @@ if(_savemode > 0) then {
 			_groupnamefull = format ["%1", _group];
 			_groupnamecut = _groupnamefull splitString " ";
 			_groupname = _groupnamecut select 1;
-			profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _groupname], (_group) call CTI_CO_FNC_GetFundsTeam, true];
+			profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _groupname], (_group) call CTI_CO_FNC_GetFundsTeam];
 			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _groupname, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
 		};
 		case "delete": {
-			profileNamespace setVariable [Format ["SAVE_%1_TOWNS", _savename], nil, true];
+			profileNamespace setVariable [Format ["SAVE_%1_TOWNS", _savename], nil];
+			if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["TOWNS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_TOWNS", _savename],[]])]] call CTI_CO_FNC_Log;};
 			{
-				profileNamespace setVariable [Format ["SAVE_%1_%2_HQ", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_UPGRADES", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_AREAS", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_FOBS", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_DEFENSES", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _x], nil, true];
-				profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x], nil, true];
-				
+				profileNamespace setVariable [Format ["SAVE_%1_%2_HQ", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["HQ DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_HQ", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_UPGRADES", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["UPGRADES DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_UPGRADES", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_AREAS", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["AREAS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_AREAS", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["FABRICS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_FOBS", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["FOBS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_FOBS", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_DEFENSES", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["DEFENSES DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_DEFENSES", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["SUPPLY DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _x],0])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["SUPPLY DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x],0])]] call CTI_CO_FNC_Log;};
+		
 				_logic= (_x) call CTI_CO_FNC_GetSideLogic;
+				_side_group = _x;
 				_groups = _logic getVariable "cti_teams";
 				{
-					profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _x, _groupname], nil, true];
+					profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side_group, _x], nil];
+					if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["FUNDS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side_group, _x],0])]] call CTI_CO_FNC_Log;};
 				} forEach (_groups);
 			} forEach [east,west];
 		};
