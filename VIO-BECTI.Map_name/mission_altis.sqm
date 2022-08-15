@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3831;
+		nextID=3833;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=5879;
+		nextID=5937;
 	};
 	class Camera
 	{
@@ -27,7 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="VIO-BECTI-CW";
+sourceName="VIO-BECTI";
 addons[]=
 {
 	"A3_Characters_F",
@@ -82,9 +82,9 @@ randomSeed=7728140;
 class ScenarioData
 {
 	author="Benny,dukee";
-	overviewText="VIO-BECTI-Vanilla V2.0";
-	overviewTextLocked="VIO-BECTI-Vanilla V2.0";
-	onLoadMission="VIO-BECTI-Vanilla V2.0";
+	overviewText="VIO-BECTI V2.0";
+	overviewTextLocked="VIO-BECTI V2.0";
+	onLoadMission="VIO-BECTI V2.0";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -155,8 +155,8 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI-Vanilla V2.0";
-		overviewText="VIO-BECTI-Vanilla V2.0";
+		briefingName="VIO-BECTI V2.0";
+		overviewText="VIO-BECTI V2.0";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -178,7 +178,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=461;
+		items=463;
 		class Item0
 		{
 			dataType="Group";
@@ -1793,7 +1793,7 @@ class Mission
 				};
 			};
 			id=289;
-			atlOffset=-66.250336;
+			atlOffset=-66.247047;
 		};
 		class Item17
 		{
@@ -4041,7 +4041,7 @@ class Mission
 						};
 					};
 					id=600;
-					atlOffset=1.0529466;
+					atlOffset=1.2027652;
 				};
 				class Item26
 				{
@@ -6720,12 +6720,14 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={34.349602,7.2983685,36.134033};
-				angles[]={6.2818484,0,0.025327841};
+				position[]={34.349998,7.2980042,36.133999};
+				angles[]={6.2818413,0,0.025324726};
 			};
+			name="HC_1";
+			isPlayable=1;
 			id=409;
 			type="HeadlessClient_F";
-			atlOffset=193.26837;
+			atlOffset=193.26801;
 		};
 		class Item19
 		{
@@ -10591,6 +10593,7 @@ class Mission
 			};
 			id=3462;
 			type="LocationRespawnPoint_F";
+			atlOffset=-5.7220459e-006;
 		};
 		class Item262
 		{
@@ -11687,6 +11690,7 @@ class Mission
 			};
 			id=3644;
 			type="LocationRespawnPoint_F";
+			atlOffset=-4.7683716e-005;
 		};
 		class Item369
 		{
@@ -12032,6 +12036,7 @@ class Mission
 			};
 			id=3749;
 			type="LocationRespawnPoint_F";
+			atlOffset=9.5367432e-007;
 		};
 		class Item403
 		{
@@ -12300,6 +12305,7 @@ class Mission
 			};
 			id=3775;
 			type="LocationRespawnPoint_F";
+			atlOffset=1.1444092e-005;
 		};
 		class Item429
 		{
@@ -12537,6 +12543,7 @@ class Mission
 			};
 			id=3798;
 			type="LocationRespawnPoint_F";
+			atlOffset=0.0042953491;
 		};
 		class Item452
 		{
@@ -12631,6 +12638,34 @@ class Mission
 			id=3807;
 			type="LocationRespawnPoint_F";
 			atlOffset=3.8146973e-006;
+		};
+		class Item461
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={34.60022,7.2980042,33.396606};
+				angles[]={6.2818413,0,0.025324726};
+			};
+			name="HC_2";
+			isPlayable=1;
+			id=3831;
+			type="HeadlessClient_F";
+			atlOffset=193.26801;
+		};
+		class Item462
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={33.848232,7.2980042,30.390015};
+				angles[]={6.2818413,0,0.025324726};
+			};
+			name="HC_3";
+			isPlayable=1;
+			id=3832;
+			type="HeadlessClient_F";
+			atlOffset=193.26801;
 		};
 	};
 	class Connections

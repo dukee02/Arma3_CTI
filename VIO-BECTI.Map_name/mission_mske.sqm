@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3546;
+		nextID=3548;
 	};
 	class MarkerIDProvider
 	{
@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3756;
+		nextID=3822;
 	};
 	class Camera
 	{
-		pos[]={19709.244,530.62317,6741.4639};
+		pos[]={19695.545,595.34619,6714.9824};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710671,0.70710683};
 	};
@@ -32,13 +32,14 @@ addons[]=
 	"A3_Characters_F",
 	"A3_Ui_F",
 	"A3_Modules_F",
+	"A3_Structures_F_Mil_Fortification",
 	"A3_Modules_F_Curator_Curator"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=5;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -62,6 +63,13 @@ class AddonsMetaData
 		};
 		class Item3
 		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item4
+		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
@@ -73,9 +81,9 @@ randomSeed=7728140;
 class ScenarioData
 {
 	author="Benny,dukee";
-	overviewText="VIO-BECTI-Vanilla V2.0";
-	overviewTextLocked="VIO-BECTI-Vanilla V2.0";
-	onLoadMission="VIO-BECTI-Vanilla V2.0";
+	overviewText="VIO-BECTI V2.0";
+	overviewTextLocked="VIO-BECTI V2.0";
+	onLoadMission="VIO-BECTI V2.0";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -146,8 +154,8 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI-Vanilla V2.0";
-		overviewText="VIO-BECTI-Vanilla V2.0";
+		briefingName="VIO-BECTI V2.0";
+		overviewText="VIO-BECTI V2.0";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -169,7 +177,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=36;
+		items=38;
 		class Item0
 		{
 			dataType="Group";
@@ -2005,7 +2013,7 @@ class Mission
 					type="Empty";
 					colorName="ColorEAST";
 					id=3536;
-					atlOffset=157.25699;
+					atlOffset=157.35899;
 				};
 				class Item62
 				{
@@ -11527,11 +11535,13 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={19.411751,6.2155032,17.75589};
+				position[]={19.412001,6.2152214,17.756001};
 			};
+			name="HC_1";
+			isPlayable=1;
 			id=409;
 			type="HeadlessClient_F";
-			atlOffset=53.91124;
+			atlOffset=53.910999;
 		};
 		class Item19
 		{
@@ -12864,6 +12874,32 @@ class Mission
 				};
 				nAttributes=4;
 			};
+		};
+		class Item36
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={19.377623,6.4660034,15.982056};
+			};
+			name="HC_2";
+			isPlayable=1;
+			id=3546;
+			type="HeadlessClient_F";
+			atlOffset=53.910999;
+		};
+		class Item37
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={19.476212,6.71558,14.109802};
+			};
+			name="HC_3";
+			isPlayable=1;
+			id=3547;
+			type="HeadlessClient_F";
+			atlOffset=53.910999;
 		};
 	};
 	class Connections
