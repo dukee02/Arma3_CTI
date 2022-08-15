@@ -381,6 +381,16 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_LSV_02_AT_F", _sid];
 	};
+
+	// SPECIAL CASES - Vehicles that need scripting
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_Truck_02_medical_F", _sid];		//medic
+		_c pushBack format["%1O_Truck_03_medical_F", _sid];		//medic
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_T_Truck_02_Medical_F", _sid];	//medic
+		_c pushBack format["%1O_T_Truck_03_medical_ghex_F", _sid];	//medic
+	};
 };
 
 // Tech Level 2
@@ -400,16 +410,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
 		_c pushBack format["%1O_T_MRAP_02_gmg_ghex_F", _sid];
 		_c pushBack format["%1O_T_MRAP_02_hmg_ghex_F", _sid];
-	};
-
-	// SPECIAL CASES - Vehicles that need scripting
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_02_medical_F", _sid];		//medic
-		_c pushBack format["%1O_Truck_03_medical_F", _sid];		//medic
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Truck_02_Medical_F", _sid];	//medic
-		_c pushBack format["%1O_T_Truck_03_medical_ghex_F", _sid];	//medic
 	};
 };
 
@@ -858,4 +858,3 @@ if (isNil "_priorUnits") then {
 
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\factories\factory_east.sqf", format["units in factory %1: [%2] ", CTI_DEPOT, count _c]] call CTI_CO_FNC_Log;};
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_DEPOT], _c];
-
