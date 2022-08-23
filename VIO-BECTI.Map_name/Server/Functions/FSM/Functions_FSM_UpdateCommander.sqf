@@ -130,10 +130,10 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 	_position = getPos _hq;
 	_position = [(_position select 0) + ((_template select 2) select 0), (_position select 1) + ((_template select 2) select 1), 0];
 	_distance = (_var select 4) select 1;
-	_direction = 0;//todo template defines it.
+	_direction = _template select 1;//0;//todo template defines it.
 	
 	_i = 0;
-	_radius = 70;
+	_radius = 50; //70;
 	_done = false;
 	while {_i < 1000 && !_done} do {
 		_tpos = [(_position select 0)+(_radius - (random (_radius * 2))),(_position select 1)+(_radius - (random (_radius * 2)))];
