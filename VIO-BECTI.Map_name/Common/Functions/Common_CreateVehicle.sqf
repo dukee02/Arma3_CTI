@@ -13,7 +13,7 @@
   # PARAMETERS #
     0	[String]: The type of vehicle to create
     1	[Array/Object]: The 2D/3D position where the vehicle should be created at
-    2	[Integer]: The Azimuth direction (0-360°) of the vehicle
+    2	[Integer]: The Azimuth direction (0-360ï¿½) of the vehicle
     3	[Side/Integer]: The Side or Side ID of the vehicle
     4	{Optionnal} [Boolean]: Determine if the vehicle should be created locked or not
     5	{Optionnal} [Boolean]: Determine if the vehicle should be "public" or not
@@ -70,9 +70,10 @@ _vehicle = createVehicle [_type, _position, [], 7, _special];
 _vehicle setDir _direction;
 VIOC_ZEUS addCuratorEditableObjects [[_vehicle], true];
 
-clearMagazineCargo _vehicle;
-clearWeaponCargo _vehicle;
-clearItemCargo _vehicle;
+clearItemCargoGlobal _vehicle;
+clearMagazineCargoGlobal _vehicle;
+clearWeaponCargoGlobal _vehicle;
+clearBackpackCargoGlobal _vehicle;
 
 if (_special == "FLY") then {
 	//planes with a pilot gets movet to the air

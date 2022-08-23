@@ -36,14 +36,14 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			INFANTRY = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
-			INFANTRY_MG = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1]];
-			INFANTRY_AT = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
+			INFANTRY = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_Soldier_lite_F", _sid],1],[format["%1O_Soldier_lite_F", _sid],1],[format["%1O_Soldier_lite_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_Survivor_F", _sid],1],[format["%1O_Survivor_F", _sid],1],[format["%1O_Survivor_F", _sid],1]];
 		};
 		default {
-			INFANTRY = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
-			INFANTRY_MG = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1]];
-			INFANTRY_AT = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
+			INFANTRY = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_lite_F", _sid],1],[format["%1O_Soldier_lite_F", _sid],1],[format["%1O_Soldier_lite_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Survivor_F", _sid],1],[format["%1O_Survivor_F", _sid],1],[format["%1O_Survivor_F", _sid],1]];
 		};
 	};
 };
@@ -53,14 +53,14 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			INFANTRY = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
-			INFANTRY_MG = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Support_AMG_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1]];
-			INFANTRY_AT = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_HAT_F", _sid],1],[format["%1O_T_Soldier_HAT_F", _sid],1]];
+			INFANTRY = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
 		};
 		default {
-			INFANTRY = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
-			INFANTRY_MG = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_support_AMG_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_support_MG_F", _sid],1]];
-			INFANTRY_AT = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1]];
+			INFANTRY = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
 		};
 	};
 };
@@ -70,14 +70,65 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			INFANTRY = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
-			INFANTRY_MG = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Support_AMG_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1]];
-			INFANTRY_AT = [[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_AAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_AT_F", _sid],1],[format["%1O_T_Soldier_AT_F", _sid],1]];
+			INFANTRY = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_M_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_V_Soldier_LAT_ghex_F", _sid],1]];
 		};
 		default {
-			INFANTRY = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
-			INFANTRY_MG = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_support_AMG_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_support_MG_F", _sid],1]];
-			INFANTRY_AT = [[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_AAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_AT_F", _sid],1],[format["%1O_Soldier_AT_F", _sid],1]];
+			INFANTRY = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_soldier_M_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_V_Soldier_LAT_hex_F", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			INFANTRY = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_M_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_HAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1]];
+		};
+		default {
+			INFANTRY = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_soldier_M_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_support_MG_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			INFANTRY = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_Soldier_M_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_HAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_AT_F", _sid],1]];
+		};
+		default {
+			INFANTRY = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_soldier_M_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_support_MG_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_AT_F", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			INFANTRY = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_F", _sid],1],[format["%1O_T_spotter_F", _sid],1],[format["%1O_T_Sniper_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_AR_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1],[format["%1O_T_Support_MG_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_T_Soldier_SL_F", _sid],1],[format["%1O_T_Medic_F", _sid],1],[format["%1O_T_Soldier_GL_F", _sid],1],[format["%1O_T_Soldier_HAT_F", _sid],1],[format["%1O_T_Soldier_LAT_F", _sid],1],[format["%1O_T_Soldier_AT_F", _sid],1]];
+		};
+		default {
+			INFANTRY = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_F", _sid],1],[format["%1O_spotter_F", _sid],1],[format["%1O_sniper_F", _sid],1]];
+			INFANTRY_MG = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_AR_F", _sid],1],[format["%1O_support_MG_F", _sid],1],[format["%1O_support_MG_F", _sid],1]];
+			INFANTRY_AT = [[format["%1O_Soldier_SL_F", _sid],1],[format["%1O_medic_F", _sid],1],[format["%1O_Soldier_GL_F", _sid],1],[format["%1O_Soldier_HAT_F", _sid],1],[format["%1O_Soldier_LAT_F", _sid],1],[format["%1O_Soldier_AT_F", _sid],1]];
 		};
 	};
 };
@@ -110,11 +161,41 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			WHEELED_LIGHT = [[format["%1O_T_LSV_02_armed_F", _sid],1],[format["%1O_T_LSV_02_AT_F", _sid],1]];
+			WHEELED_LIGHT = [[format["%1O_T_Quadbike_01_F", _sid],1],[format["%1O_T_Quadbike_01_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1O_T_LSV_02_unarmed_F", _sid],1],[format["%1O_T_LSV_02_unarmed_viper_F", _sid],1]];
+		};
+		default {
+			WHEELED_LIGHT = [[format["%1O_Quadbike_01_F", _sid],1],[format["%1O_Quadbike_01_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1O_LSV_02_unarmed_F", _sid],1],[format["%1O_LSV_02_unarmed_viper_F", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			WHEELED_LIGHT = [[format["%1O_T_LSV_02_armed_viper_F", _sid],1],[format["%1O_T_LSV_02_armed_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1O_T_LSV_02_AT_F", _sid],1],[format["%1O_T_LSV_02_AT_F", _sid],1]];
+		};
+		default {
+			WHEELED_LIGHT = [[format["%1O_LSV_02_armed_viper_F", _sid],1],[format["%1O_LSV_02_armed_F", _sid],1]];
+			WHEELED_HEAVY = [[format["%1O_LSV_02_AT_F", _sid],1],[format["%1O_LSV_02_AT_F", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+	switch (CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			WHEELED_LIGHT = [[format["%1O_T_LSV_02_AT_F", _sid],1],[format["%1O_T_LSV_02_armed_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1O_T_MRAP_02_hmg_ghex_F", _sid],1],[format["%1O_T_MRAP_02_gmg_ghex_F", _sid],1]];
 		};
 		default {
-			WHEELED_LIGHT = [[format["%1O_LSV_02_armed_F", _sid],1],[format["%1O_LSV_02_AT_F", _sid],1]];
+			WHEELED_LIGHT = [[format["%1O_LSV_02_AT_F", _sid],1],[format["%1O_LSV_02_armed_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1O_MRAP_02_hmg_F", _sid],1],[format["%1O_MRAP_02_gmg_F", _sid],1]];
 		};
 	};
@@ -125,27 +206,12 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			WHEELED_LIGHT = [[format["%1O_T_LSV_02_armed_F", _sid],1],[format["%1O_T_LSV_02_AT_F", _sid],1],[format["%1O_T_MRAP_02_hmg_ghex_F", _sid],1],[format["%1O_T_MRAP_02_gmg_ghex_F", _sid],1]];
+			WHEELED_LIGHT = [[format["%1O_T_LSV_02_AT_F", _sid],1],[format["%1O_T_LSV_02_armed_F", _sid],1],[format["%1O_T_MRAP_02_hmg_ghex_F", _sid],1],[format["%1O_T_MRAP_02_gmg_ghex_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid],1],[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid],1]];
 		};
 		default {
-			WHEELED_LIGHT = [[format["%1O_LSV_02_armed_F", _sid],1],[format["%1O_LSV_02_AT_F", _sid],1],[format["%1O_MRAP_02_hmg_F", _sid],1],[format["%1O_MRAP_02_gmg_F", _sid],1]];
+			WHEELED_LIGHT = [[format["%1O_LSV_02_AT_F", _sid],1],[format["%1O_LSV_02_armed_F", _sid],1],[format["%1O_MRAP_02_hmg_F", _sid],1],[format["%1O_MRAP_02_gmg_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid],1],[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid],1]];
-		};
-	};
-};
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	switch (CTI_CAMO_ACTIVATION) do {
-		case 1: {
-			WHEELED_LIGHT = [[format["%1O_T_LSV_02_armed_F", _sid],1],[format["%1O_T_LSV_02_AT_F", _sid],1],[format["%1O_T_MRAP_02_hmg_ghex_F", _sid],1],[format["%1O_T_MRAP_02_gmg_ghex_F", _sid],1]];
-			WHEELED_HEAVY = [[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid],1],[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid],1],[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid],1],[format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid],1]];
-		};
-		default {
-			WHEELED_LIGHT = [[format["%1O_LSV_02_armed_F", _sid],1],[format["%1O_LSV_02_AT_F", _sid],1],[format["%1O_MRAP_02_hmg_F", _sid],1],[format["%1O_MRAP_02_gmg_F", _sid],1]];
-			WHEELED_HEAVY = [[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid],1],[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid],1],[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid],1],[format["%1O_APC_Wheeled_02_rcws_v2_F", _sid],1]];
 		};
 	};
 };
@@ -194,12 +260,29 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	switch(CTI_CAMO_ACTIVATION) do {
 		case 1: {
 			TRACKED_LIGHT = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_arty_ghex_F", _sid],1]];
+			TRACKED_HEAVY = [[format["%1O_T_MBT_02_arty_ghex_F", _sid],1],[format["%1O_T_MBT_02_arty_ghex_F", _sid],1]];
+		};
+		default {
+			TRACKED_LIGHT = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_APC_Tracked_02_cannon_F", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_MBT_02_arty_F", _sid],1]];
+			TRACKED_HEAVY = [[format["%1O_MBT_02_arty_F", _sid],1],[format["%1O_MBT_02_arty_F", _sid],1]];
+		};
+	};
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	switch(CTI_CAMO_ACTIVATION) do {
+		case 1: {
+			TRACKED_LIGHT = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_arty_ghex_F", _sid],1]];
 			TRACKED_HEAVY = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1]];
 		};
 		default {
 			TRACKED_LIGHT = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_APC_Tracked_02_cannon_F", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_MBT_02_cannon_F", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_MBT_02_arty_F", _sid],1]];
 			TRACKED_HEAVY = [[format["%1O_MBT_02_cannon_F", _sid],1],[format["%1O_MBT_02_cannon_F", _sid],1]];
 		};
 	};
@@ -211,13 +294,13 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	switch(CTI_CAMO_ACTIVATION) do {
 		case 1: {
 			TRACKED_LIGHT = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1]];
-			TRACKED_HEAVY = [[format["%1O_T_MBT_04_cannon_F", _sid],1],[format["%1O_T_MBT_04_cannon_F", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_arty_ghex_F", _sid],1]];
+			TRACKED_HEAVY = [[format["%1O_T_MBT_04_cannon_F", _sid],1],[format["%1O_T_MBT_04_command_F", _sid],1]];
 		};
 		default {
 			TRACKED_LIGHT = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_APC_Tracked_02_cannon_F", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1O_MBT_02_cannon_F", _sid],1],[format["%1O_MBT_02_cannon_F", _sid],1]];
-			TRACKED_HEAVY = [[format["%1O_MBT_04_cannon_F", _sid],1],[format["%1O_MBT_04_cannon_F", _sid],1]];
+			TRACKED_MEDIUM = [[format["%1O_MBT_02_cannon_F", _sid],1],[format["%1O_MBT_02_arty_F", _sid],1]];
+			TRACKED_HEAVY = [[format["%1O_MBT_04_cannon_F", _sid],1],[format["%1O_MBT_04_command_F", _sid],1]];
 		};
 	};
 };
@@ -238,49 +321,8 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 };
 
 //***************************************************************************************************************************************
-//														Town Air setup																	*
+//														Town Anti-Air setup																*
 //***************************************************************************************************************************************
-AIR_FIGHTER = [];
-AIR_BOMBER = [];
-_matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
-
-_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
-		AIR_FIGHTER = [[format["%O_Heli_Light_02_unarmed_F", _sid],1]];
-		AIR_BOMBER = [[format["%O_Heli_Light_02_unarmed_F", _sid],1]];
-};
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
-		AIR_FIGHTER = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid],1]];
-		AIR_BOMBER = [[format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid],1]];
-};
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
-		AIR_FIGHTER = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid],1],[format["%1O_Heli_Attack_02_dynamicLoadout_F", _sid],1],[format["%1O_Heli_Attack_02_dynamicLoadout_F", _sid],1]];
-		AIR_BOMBER = [[format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid],1],[format["%1O_Plane_Fighter_02_F", _sid],1]];
-};
-
-if(count AIR_FIGHTER == 0) then {AIR_FIGHTER = +AIR_BOMBER;};
-
-if (isNil {missionNamespace getVariable format["%1AIR_SQ_FIGHTER", _tag]}) then {
-	missionNamespace setVariable [format["%1AIR_SQ_FIGHTER", _tag], AIR_FIGHTER];
-	missionNamespace setVariable [format["%1AIR_SQ_BOMBER", _tag], AIR_BOMBER];
-} else {
-	missionNamespace setVariable [format["%1AIR_SQ_FIGHTER", _tag], (missionNamespace getVariable format["%1AIR_SQ_FIGHTER", _tag]) + AIR_FIGHTER];
-	missionNamespace setVariable [format["%1AIR_SQ_BOMBER", _tag], (missionNamespace getVariable format["%1AIR_SQ_BOMBER", _tag]) + AIR_BOMBER];
-};
-if (CTI_Log_Level >= CTI_Log_Debug) then {
-	["VIOC_DEBUG", "FILE: common\config\Towns_east.sqf", format["Town Squad <%1> with units <%2> ", format["%1AIR_SQ_FIGHTER", _tag], missionNamespace getVariable format["%1AIR_SQ_FIGHTER", _tag]]] call CTI_CO_FNC_Log;
-	["VIOC_DEBUG", "FILE: common\config\Towns_east.sqf", format["Town Squad <%1> with units <%2> ", format["%1AIR_SQ_BOMBER", _tag], missionNamespace getVariable format["%1AIR_SQ_BOMBER", _tag]]] call CTI_CO_FNC_Log;
-};
-
-//Town Anti-Air setup
 ANTI_AIR = [];
 
 if(CTI_CAMO_ACTIVATION == 1) then {
@@ -309,4 +351,54 @@ if (isNil {missionNamespace getVariable format["%1SQ_ANTI_AIR", _tag]}) then {
 };
 if (CTI_Log_Level >= CTI_Log_Debug) then {
 	["VIOC_DEBUG", "FILE: common\config\Towns_east.sqf", format["Town Squad <%1> with units <%2> ", format["%1SQ_ANTI_AIR", _tag], missionNamespace getVariable format["%1SQ_ANTI_AIR", _tag]]] call CTI_CO_FNC_Log;
+};
+
+//***************************************************************************************************************************************
+//														Town Air setup																	*
+//***************************************************************************************************************************************
+AIR_FIGHTER = [];
+AIR_BOMBER = [];
+_matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
+		AIR_FIGHTER = [[format["%O_Heli_Light_02_unarmed_F", _sid],1]];
+		AIR_BOMBER = [[format["%O_Heli_Light_02_unarmed_F", _sid],1]];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
+		AIR_FIGHTER = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid],1]];
+		AIR_BOMBER = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid],1]];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
+		AIR_FIGHTER = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid],1],[format["%1O_Heli_Attack_02_dynamicLoadout_F", _sid],1]];
+		AIR_BOMBER = [[format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid],1],[format["%1O_Plane_Fighter_02_F", _sid],1]];
+};
+
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
+		AIR_FIGHTER = [[format["%1O_Heli_Light_02_dynamicLoadout_F", _sid],1],[format["%1O_Heli_Attack_02_dynamicLoadout_F", _sid],1]];
+		AIR_BOMBER = [[format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid],1],[format["%1O_Plane_Fighter_02_F", _sid],1],[format["%1O_Plane_Fighter_02_Stealth_F", _sid],1]];
+};
+
+if(count AIR_FIGHTER == 0) then {AIR_FIGHTER = +AIR_BOMBER;};
+
+if (isNil {missionNamespace getVariable format["%1AIR_SQ_FIGHTER", _tag]}) then {
+	missionNamespace setVariable [format["%1AIR_SQ_FIGHTER", _tag], AIR_FIGHTER];
+	missionNamespace setVariable [format["%1AIR_SQ_BOMBER", _tag], AIR_BOMBER];
+} else {
+	missionNamespace setVariable [format["%1AIR_SQ_FIGHTER", _tag], (missionNamespace getVariable format["%1AIR_SQ_FIGHTER", _tag]) + AIR_FIGHTER];
+	missionNamespace setVariable [format["%1AIR_SQ_BOMBER", _tag], (missionNamespace getVariable format["%1AIR_SQ_BOMBER", _tag]) + AIR_BOMBER];
+};
+if (CTI_Log_Level >= CTI_Log_Debug) then {
+	["VIOC_DEBUG", "FILE: common\config\Towns_east.sqf", format["Town Squad <%1> with units <%2> ", format["%1AIR_SQ_FIGHTER", _tag], missionNamespace getVariable format["%1AIR_SQ_FIGHTER", _tag]]] call CTI_CO_FNC_Log;
+	["VIOC_DEBUG", "FILE: common\config\Towns_east.sqf", format["Town Squad <%1> with units <%2> ", format["%1AIR_SQ_BOMBER", _tag], missionNamespace getVariable format["%1AIR_SQ_BOMBER", _tag]]] call CTI_CO_FNC_Log;
 };

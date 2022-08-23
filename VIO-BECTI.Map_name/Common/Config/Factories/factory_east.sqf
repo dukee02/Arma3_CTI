@@ -312,9 +312,9 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 
+if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	// List of units
 	// light units
-	if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_Quadbike_01_F", _sid];
 	};
@@ -348,7 +348,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	// List of units
 	// unarmed units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_02_box_F", _sid];
 		_c pushBack format["%1O_Truck_02_covered_F", _sid];
 		_c pushBack format["%1O_Truck_02_transport_F", _sid];
 		_c pushBack format["%1O_Truck_03_covered_F", _sid];
@@ -356,7 +355,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		_c pushBack format["%1O_Truck_03_device_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
 		_c pushBack format["%1O_T_Truck_02_F", _sid];
 		_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
@@ -385,11 +383,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	// SPECIAL CASES - Vehicles that need scripting
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_Truck_02_medical_F", _sid];		//medic
-		_c pushBack format["%1O_Truck_03_medical_F", _sid];		//medic
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_Truck_02_Medical_F", _sid];	//medic
-		_c pushBack format["%1O_T_Truck_03_medical_ghex_F", _sid];	//medic
 	};
 };
 
@@ -410,6 +406,14 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
 		_c pushBack format["%1O_T_MRAP_02_gmg_ghex_F", _sid];
 		_c pushBack format["%1O_T_MRAP_02_hmg_ghex_F", _sid];
+	};
+
+	// SPECIAL CASES - Vehicles that need scripting
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_Truck_03_medical_F", _sid];		//medic
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_T_Truck_03_medical_ghex_F", _sid];	//medic
 	};
 };
 
@@ -457,7 +461,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		_c pushBack format["%1O_UGV_01_rcws_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid];
+		_c pushBack format["%1O_T_UGV_01_rcws_ghex_F", _sid];
 	};
 };
 
@@ -486,26 +490,16 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
 	// List of units
-	// none
-};
-
-// Tech Level 1
-// ------------
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-
-	// List of units
 	// armed units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_APC_Tracked_02_cannon_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_APC_Tracked_02_cannon_F", _sid];
+		_c pushBack format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid];
 	};
 };
 
-// Tech Level 2
+// Tech Level 1
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -523,7 +517,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	};
 };
 
-// Tech Level 3
+// Tech Level 2
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -539,7 +533,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	};
 };
 
-// Tech Level 4
+// Tech Level 3
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -746,10 +740,24 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _c];
 //*********************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Reapir Factory.
 _c = [];
-_c pushBack format["%1O_Truck_03_repair_F", _sid];
 _c pushBack format["CTI_Salvager_%1", _side];
 _c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];
 _c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];
+if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+	_c pushBack format["%1O_Truck_02_box_F", _sid];
+};
+if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
+};
+
+if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_Truck_03_repair_F", _sid];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_T_Truck_03_repair_ghex_F", _sid];
+	};
+};
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_REPAIR];
 if (isNil "_priorUnits") then { 
@@ -773,12 +781,19 @@ if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
 	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
 };
-if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
-	_c pushBack format["%1O_Truck_03_fuel_F", _sid];
-	_c pushBack format["%1O_Truck_03_ammo_F", _sid];
-};
 _c pushBack format["%1Land_Pod_Heli_Transport_04_ammo_F", _sid];
 _c pushBack format["%1Land_Pod_Heli_Transport_04_fuel_F", _sid];
+
+if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_Truck_03_fuel_F", _sid];
+		_c pushBack format["%1O_Truck_03_ammo_F", _sid];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_T_Truck_03_fuel_ghex_F", _sid];
+		_c pushBack format["%1O_T_Truck_03_ammo_ghex_F", _sid];
+	};
+};
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AMMO];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
@@ -843,11 +858,11 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 			_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
 		};
 	};
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+	/*if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 		_c pushBack format["%1O_Truck_03_repair_F", _sid];
 		_c pushBack format["%1O_Truck_03_fuel_F", _sid];
 		_c pushBack format["%1O_Truck_03_ammo_F", _sid];
-	};
+	};*/
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 

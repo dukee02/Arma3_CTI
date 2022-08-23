@@ -7,7 +7,11 @@ _faction = "West";
 _t = [];
 
 // Vanilla templates
-_t = _t 	+ [[[["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Yellow"]]],[["U_B_T_Soldier_F",["firstaidkit","firstaidkit"]],["V_BandollierB_rgr",["HandGrenade","HandGrenade"]],["B_AssaultPack_mcamo",["30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow"]]],["H_HelmetB_light",""],[[],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
+if(CTI_CAMO_ACTIVATION == 0) then {
+	_t = _t 	+ [[[["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Green"]],["",[],[""]],["",[],[""]]],[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],["V_BandollierB_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["",[]]],["H_HelmetB_light",""],[["", "binocular"],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
+} else {
+	_t = _t 	+ [[[["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Green"]],["",[],[""]],["",[],[""]]],[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],["V_BandollierB_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["",[]]],["H_HelmetB_Light_tna_F",""],[["", "binocular"],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
+};
 
 /*
 _t = _t 	+ [

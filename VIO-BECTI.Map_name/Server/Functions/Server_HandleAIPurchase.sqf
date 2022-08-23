@@ -96,10 +96,11 @@ if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory
 
 _var = missionNamespace getVariable format ["CTI_%1_%2", _req_side, _factory getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
-_vehicle_info = missionNamespace getVariable _model;
+_vehicle_info = missionNamespace getVariable _req_classname;
+/*_vehicle_info = missionNamespace getVariable _model;
 if !(_req_classname == format["CTI_Salvager_Independent_%1", _req_side] || _req_classname == format["CTI_Salvager_%1", _req_side]) then {
 	_vehicle_info = missionNamespace getVariable _req_classname;
-};
+};*/
 _distance_to_factory = _vehicle_info select CTI_UNIT_DISTANCE;
 _distance = (_var select 4) select 1;
 _distance = _distance + _distance_to_factory;
@@ -135,14 +136,13 @@ if (_model isKindOf "Man") then {
 	if (_model isKindOf "Air") then {_form_air ="FLY"};
 	_vehicle = [_model, _position, _direction + getDir _factory, _sideID, CTI_AI_VEHICLE_LOCKED, true, true, _form_air] call CTI_CO_FNC_CreateVehicle;
 	//{player reveal _vehicle} forEach allUnits; // unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
-
+	
 	//First we setup the driver/Pilot
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
-
 	_unit = [_crew, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 	_unit moveInDriver _vehicle;
-
+	
 	//Then we setup the other units (normal soldiers if its an air unit)
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];

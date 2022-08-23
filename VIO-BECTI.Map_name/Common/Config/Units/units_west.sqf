@@ -59,16 +59,14 @@ _matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_NATO_ID, CTI_VAN_ID] call CTI
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
-	_time = (5*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<5): {5}; case (_time>50): {50}; default {_time}};
+	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
-	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_INFANTRY+(CTI_ECONOMY_PRIZE_INFANTRY*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	// base unit value for this tech BIS_fnc_key_getLeaveControlPoint
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	//_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-	_armedUnitValue=_baseUnitValue;
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
 	_researchedUnitValue=_baseUnitValue*CTI_ECONOMY_RESEARCH_MULTI/100;
@@ -137,14 +135,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
+	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_INFANTRY+(CTI_ECONOMY_PRIZE_INFANTRY*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	//_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-	_armedUnitValue=_baseUnitValue;
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
 	_researchedUnitValue=_baseUnitValue*CTI_ECONOMY_RESEARCH_MULTI/100;
@@ -220,14 +218,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
+	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_INFANTRY+(CTI_ECONOMY_PRIZE_INFANTRY*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	//_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-	_armedUnitValue=_baseUnitValue;
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
 	_researchedUnitValue=_baseUnitValue*CTI_ECONOMY_RESEARCH_MULTI/100;
@@ -280,16 +278,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
-	_time = (5*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<5): {5}; case (_time>50): {50}; default {_time}};
+	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_INFANTRY+(CTI_ECONOMY_PRIZE_INFANTRY*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	//_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-	_armedUnitValue=_baseUnitValue;
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
 	_researchedUnitValue=_baseUnitValue*CTI_ECONOMY_RESEARCH_MULTI/100;
@@ -341,16 +337,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
-	_time = (5*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<5): {5}; case (_time>50): {50}; default {_time}};
+	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_INFANTRY+(CTI_ECONOMY_PRIZE_INFANTRY*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	//_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-	_armedUnitValue=_baseUnitValue;
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
 	_researchedUnitValue=_baseUnitValue*CTI_ECONOMY_RESEARCH_MULTI/100;
@@ -402,16 +396,14 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
-	_time = (5*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<5): {5}; case (_time>50): {50}; default {_time}};
+	_building_time = [CTI_FACTORY_BARRACKS,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_INFANTRY+(CTI_ECONOMY_PRIZE_INFANTRY*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	//_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-	_armedUnitValue=_baseUnitValue;
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_INFANTRY,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	
 	// base unit value researched/upgraded unit in this tech level
 	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
@@ -510,24 +502,23 @@ _matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for light units
-	_lightUnitValue=(CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100))/4;
+	_lightUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,0.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	
 	// List of units
 	// light units
@@ -606,21 +597,20 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// unarmed units
@@ -655,11 +645,12 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 
 	// armed units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1B_T_LSV_01_armed_CTRG_F", _sid];
+		_c pushBack format["%1B_LSV_01_armed_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1B_T_LSV_01_armed_CTRG_F", _sid];
+		_c pushBack format["%1B_T_LSV_01_armed_F", _sid];
 	};
+	_c pushBack format["%1B_T_LSV_01_armed_CTRG_F", _sid];
 
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -677,11 +668,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	
 	// upgraded armed units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1B_LSV_01_armed_F", _sid];
 		_c pushBack format["%1B_LSV_01_AT_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1B_T_LSV_01_armed_F", _sid];
 		_c pushBack format["%1B_T_LSV_01_AT_F", _sid];
 	};
 
@@ -730,31 +719,50 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 	// List of units
 	// armed units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_MRAP_01_F", _sid];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1B_T_MRAP_01_F", _sid];
+	};
+
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack _baseUnitValue;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 0;
+	};
+
+	// List of units
+	// armed units
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_MRAP_01_gmg_F", _sid];
 		_c pushBack format["%1B_MRAP_01_hmg_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1B_T_MRAP_01_F", _sid];
 		_c pushBack format["%1B_T_MRAP_01_gmg_F", _sid];
 		_c pushBack format["%1B_T_MRAP_01_hmg_F", _sid];
 	};
@@ -804,21 +812,20 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -850,21 +857,20 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -918,21 +924,20 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_LIGHT,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -996,75 +1001,27 @@ _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO
 // Heavy Factory Upgrade Level 0
 // -----------------------------
 
-_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
-
-	// Calculate Unit Values
-	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_TRACKED+(CTI_ECONOMY_PRIZE_TRACKED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
-
-	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-
-	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
-
-	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-
-	// List of units
-	// There are no level 0 units
-	/*
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-	};
-
-	//set all other vars in a slope
-	_cntstart = count _c;
-	_cntend = count _p;
-	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack _armedUnitValue;
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-	*/
-};
-
-// Heavy Factory Upgrade Level 1
-// -----------------------------
-
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
 _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+_matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_TRACKED+(CTI_ECONOMY_PRIZE_TRACKED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1092,7 +1049,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	};
 };
 
-// Heavy Factory Upgrade Level 2
+// Heavy Factory Upgrade Level 1
 // -----------------------------
 
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
@@ -1102,21 +1059,20 @@ _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_TRACKED+(CTI_ECONOMY_PRIZE_TRACKED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1144,7 +1100,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	};
 };
 
-// Heavy Factory Upgrade Level 3
+// Heavy Factory Upgrade Level 2
 // -----------------------------
 
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
@@ -1154,21 +1110,20 @@ _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_TRACKED+(CTI_ECONOMY_PRIZE_TRACKED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// upgraded armed units
@@ -1185,7 +1140,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack _researchedArmedUnitValue;
+		_o pushBack _armedUnitValue;
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
@@ -1194,7 +1149,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	};
 };
 
-// Heavy Factory Upgrade Level 4
+// Heavy Factory Upgrade Level 3
 // -----------------------------
 
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
@@ -1204,21 +1159,20 @@ _matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_TRACKED+(CTI_ECONOMY_PRIZE_TRACKED*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1265,21 +1219,20 @@ _matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_F
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_AIR+(CTI_ECONOMY_PRIZE_AIR*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// unarmed units
@@ -1306,21 +1259,20 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_AIR+(CTI_ECONOMY_PRIZE_AIR*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1332,7 +1284,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack _researchedArmedUnitValue;
+		_o pushBack _armedUnitValue;
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
@@ -1347,21 +1299,20 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_AIR+(CTI_ECONOMY_PRIZE_AIR*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1390,21 +1341,20 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_AIR+(CTI_ECONOMY_PRIZE_AIR*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// unarmed units
@@ -1451,21 +1401,20 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_AIR+(CTI_ECONOMY_PRIZE_AIR*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1477,7 +1426,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack _armedUnitValue;
+		_o pushBack _baseUnitValue;
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
@@ -1493,7 +1442,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack _researchedArmedUnitValue;
+		_o pushBack _armedUnitValue;
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
@@ -1508,21 +1457,20 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
-	_time = (20*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<20): {20}; case (_time>600): {600}; default {_time}};
+	_building_time = [CTI_FACTORY_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_AIR+(CTI_ECONOMY_PRIZE_AIR*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// unarmed units
@@ -1582,21 +1530,20 @@ _matrix_nation = [_side, CTI_UPGRADE_NAVAL, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_NAVAL+(CTI_ECONOMY_PRIZE_NAVAL*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// unarmed units
@@ -1630,21 +1577,20 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_NAVAL+(CTI_ECONOMY_PRIZE_NAVAL*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// armed units
@@ -1676,21 +1622,20 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_NAVAL >= _tech_level) then {
-	_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-	_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+	_building_time = [CTI_FACTORY_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 	// Calculate Unit Values
 	// base unit value for this tech level
-	_baseUnitValue=CTI_ECONOMY_PRIZE_NAVAL+(CTI_ECONOMY_PRIZE_NAVAL*_tech_level*CTI_ECONOMY_LEVEL_MULTI/100);
+	_baseUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an armed unit in this tech level
-	_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_armedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=_baseUnitValue*(CTI_ECONOMY_RESEARCH_MULTI/100);
+	_researchedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=_researchedUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_NAVAL,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 	// List of units
 	// unarmed units
@@ -1720,22 +1665,16 @@ if((_tech_level) > _upgrade_levels select CTI_UPGRADE_NAVAL) then {
 // REPAIR FACTORY UNITS (Repair Units)
 // ===================================
 
+//--- Below is classnames for Units and AI avaiable to puchase from Repair Factory.
+_tech_level = 0;
+_building_time = [CTI_FACTORY_REPAIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
+
 // Calculate Unit Values
 // base unit value for this tech level
-_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI/100);
+_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 // base unit value of an armed unit in this tech level
-_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
-
-//--- Below is classnames for Units and AI avaiable to puchase from Repair Factory.
-_tech_level = 0;
-_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
-
-//--- Below is classnames for Units and AI avaiable to puchase from Repair Factory.
-_tech_level = 0;
-_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1B_Truck_01_Repair_F", _sid];					//Repairtruck
@@ -1850,15 +1789,14 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 
 //--- Below is classnames for Units and AI avaiable to puchase from Ammo Factory.
 _tech_level = 0;
-_time = (10*CTI_ECONOMY_TIME_MULTI*(_tech_level+1));
-_building_time = switch(true) do {case (_time<10): {10}; case (_time>300): {300}; default {_time};};
+_building_time = [CTI_FACTORY_REPAIR,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
 
 // Calculate Unit Values
 // base unit value for this tech level
-_baseUnitValue=CTI_ECONOMY_PRIZE_WHEELED+(CTI_ECONOMY_PRIZE_WHEELED*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI/100);
+_baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 // base unit value of an armed unit in this tech level
-_armedUnitValue=_baseUnitValue+(CTI_ECONOMY_PRIZE_ARMED*_tech_level);
+_armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1B_Truck_01_ammo_F", _sid];					//Ammotruck

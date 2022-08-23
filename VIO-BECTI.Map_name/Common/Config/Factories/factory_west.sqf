@@ -437,22 +437,6 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
 	// List of units
-	// No level 0 units
-	/*
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-	};
-	*/
-};
-
-// Tech Level 1
-// ------------
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-
-	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_APC_Tracked_01_rcws_F", _sid];
 		_c pushBack format["%1B_APC_Tracked_01_CRV_F", _sid];
@@ -463,7 +447,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	};	
 };
 
-// Tech Level 2
+// Tech Level 1
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -480,7 +464,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	};
 };
 
-// Tech Level 3
+// Tech Level 2
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -495,7 +479,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	};
 };
 
-// Tech Level 4
+// Tech Level 3
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -510,7 +494,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	};
 };
 
-// Tech Level 5
+// Tech Level 4
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -524,7 +508,6 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 		_c pushBack format["%1B_T_MBT_01_TUSK_F", _sid];
 	};
 };
-
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_HEAVY];
 if (isNil "_priorUnits") then { 
@@ -759,14 +742,6 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 			_c pushBack format["%1B_T_Medic_F", _sid];
 			_c pushBack format["%1B_T_Crew_F", _sid];
 			_c pushBack format["%1B_T_Soldier_F", _sid];
-		};
-	};
-	if(CTI_ECONOMY_LEVEL_INFANTRY >= 1) then {
-		if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-			_c pushBack format["%1B_soldier_LAT_F", _sid];
-		};
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-			_c pushBack format["%1B_T_soldier_LAT_F", _sid];
 		};
 	};
 };

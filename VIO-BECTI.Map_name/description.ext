@@ -46,6 +46,9 @@ class CfgPylonManager
 
 //Nothing is rearm everywhere
 rearmObjects[] = {
+	"RU_WarfareBVehicleServicePoint",		//Ammo building
+	"Land_Cargo_House_V1_F",				//Ammo building
+	
 	"B_Truck_01_ammo_F",
 	"B_T_Truck_01_ammo_F",
 	"O_Truck_02_Ammo_F",

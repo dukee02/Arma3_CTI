@@ -85,9 +85,9 @@ if(_savemode > 0) then {
 				_structures=(_side_building) call CTI_CO_FNC_GetSideStructures;
 				{
 					_structure_type = if (isNil{_x getVariable "cti_structure_type"}) then {""} else {_x getVariable "cti_structure_type"};
-					//profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _side_building], [_structure_type, getPosATL _x, getDir _x, getDammage _x]];
-					_structures_prepaired pushback [_structure_type, getPosATL _x, getDir _x, getDammage _x];
-					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Building saved to profile:<SAVE_%1_FABRICS> Building: <%2><%3,%4-%5>", _savename, _structure_type, getposATL _x, getDir _x, getDammage _x]] call CTI_CO_FNC_Log;};
+					//profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _side_building], [_structure_type, getPosATL _x, getDir _x, damage _x]];
+					_structures_prepaired pushback [_structure_type, getPosATL _x, getDir _x, damage _x];
+					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Building saved to profile:<SAVE_%1_FABRICS> Building: <%2><%3,%4-%5>", _savename, _structure_type, getposATL _x, getDir _x, damage _x]] call CTI_CO_FNC_Log;};
 				} forEach _structures;
 				//profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _side_building], _structures_prepaired];		//not needed
 				
@@ -95,8 +95,8 @@ if(_savemode > 0) then {
 				//_structures_prepaired = [];																					//not needed
 				{
 					_structure_type = if (isNil{_x getVariable "cti_structure_type"}) then {""} else {_x getVariable "cti_structure_type"};
-					_structures_prepaired pushback [_structure_type, getPosATL _x, getDir _x, getDammage _x];
-					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["WIP saved to profile:<SAVE_%1_FABRICSWIP> WIP: <%2><%3,%4-%5>", _savename, _structure_type, getposATL _x, getDir _x, getDammage _x]] call CTI_CO_FNC_Log;};
+					_structures_prepaired pushback [_structure_type, getPosATL _x, getDir _x, damage _x];
+					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["WIP saved to profile:<SAVE_%1_FABRICSWIP> WIP: <%2><%3,%4-%5>", _savename, _structure_type, getposATL _x, getDir _x, damage _x]] call CTI_CO_FNC_Log;};
 				} forEach (_logic getVariable "cti_structures_wip");
 				//profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICSWIP", _savename, _side_building], _structures_prepaired];
 				profileNamespace setVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _side_building], _structures_prepaired];

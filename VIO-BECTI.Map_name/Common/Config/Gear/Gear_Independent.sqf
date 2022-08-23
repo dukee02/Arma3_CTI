@@ -1081,9 +1081,9 @@ _i pushBack "H_Shemag_olive";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);
 _p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/4);
 
-_i pushBack "H_Beret_blk";
-_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
-_p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/4);
+//_i pushBack "H_Beret_blk";
+//_u pushBack (_tech_level*_tech_level_no_upgrade_inv);
+//_p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/4);
 
 _i pushBack "H_Watchcap_blk";
 _u pushBack (_tech_level*_tech_level_no_upgrade_inv);

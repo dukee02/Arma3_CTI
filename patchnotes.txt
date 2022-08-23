@@ -1,12 +1,12 @@
-[Changed] Some default parameters
-[Fixed] Independent start don't work
-[Added] image on loadscreen
+V2.0_220804
+Changed: Whole Techtree!
+Added: Complete Persistence Update!
 
-V2.0.2
-[Added]	Discord linkt to Online-help
-[Added]	Flags to the main bunker in towns
-[Added] atomatic tier calculation like other CTIs
-[Added] tree hide script in towns
-[Fixed] some issues with unit and vehicle spawn
-[Fixed] random spawns now works correctly
-[Changed] weatherscript, now option for less harsh weather ant total sunny
+Fixed: Error when building salvagers
+Changed: HCs now visible in lobby but fixed to 3
+Added: funny beacon and siren usage of salvager now possible
+Added: Zeus implementation
+Changed: Spawn logic for town units
+Added: better HQ mobilisation logic
+Added: Field repair param
+Fixed: Attachmentslots not highlightet on drag item

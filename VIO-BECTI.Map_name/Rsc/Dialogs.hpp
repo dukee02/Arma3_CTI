@@ -4896,3 +4896,504 @@ class CTI_RscVoteMenu {
 		};
 	};
 };
+
+/*
+//--- Phylon Management (by dukee).
+class CTI_RscVoteMenu {
+	movingEnable = 1;
+	idd = 400000;
+
+	//onLoad = "uiNamespace setVariable ['cti_dialog_ui_votemenu', _this select 0]; ['onLoad'] execVM 'Client\Events\Events_UI_VoteMenu.sqf'";
+	//onUnload = "uiNamespace setVariable ['cti_dialog_ui_votemenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_VoteMenu.sqf'";
+	
+	
+	class controlsBackground {
+		class CTI_Background : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.155)";
+			w = "SafeZoneW * 0.3";
+			h = "SafeZoneH * 0.7";
+			colorBackground[] = {0, 0, 0, 0.7};
+			moving = 1;
+		};
+		class CTI_Background_Header : CTI_Background {
+			x = "SafeZoneX + (SafeZoneW * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.155)";
+			w = "SafeZoneW * 0.3";
+			h = "SafeZoneH * 0.05";
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+		class CTI_Background_Footer : CTI_Background {
+			x = "SafeZoneX + (SafeZoneW * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.805)";
+			w = "SafeZoneW * 0.3";
+			h = "SafeZoneH * 0.05"; 
+			colorBackground[] = {0, 0, 0, 0.4};
+		};
+		class CTI_Menu_Title : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.33)";
+			y = "SafeZoneY + (SafezoneH * 0.16)";
+			w = "SafeZoneW * 0.595";
+			text = "Commander Vote :";
+			colorText[] = {1,1,1,1};
+		};
+	};
+	class controls {
+		class CTI_Vote_List : RscListnBox {
+			idc = 500100;
+			x = "SafeZoneX + (SafeZoneW * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.205)";
+			w = "SafeZoneW * 0.3";
+			h = "SafeZoneH * 0.6";
+			
+			rowHeight = "1.3 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			
+			colorBackground[] = {0,0,0,0};
+			colorSelectBackground2[] = {0.258823529, 0.713725490, 1, 1};
+			
+			columns[] = {0.01, 0.75};
+			
+			onLBSelChanged = "['onUnitsLBSelChanged'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_VoteMenu.sqf'";
+		};
+		class RscListbox_1500: RscListbox
+		{
+			idc = 1500;
+			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 1 * GUI_GRID_H + GUI_GRID_Y;
+			w = 13 * GUI_GRID_W;
+			h = 20 * GUI_GRID_H;
+		};
+		//-------------------------------------------
+		//info stuff
+		class RscText_1000: RscText
+		{
+			idc = 1000;
+			text = "PhylonLoadout"; //--- ToDo: Localize;
+			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 0 * GUI_GRID_H + GUI_GRID_Y;
+			w = 5.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscText_1001: RscText
+		{
+			idc = 1001;
+			text = "PlaneName"; //--- ToDo: Localize;
+			x = 14.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 9.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscText_1002: RscText
+		{
+			idc = 1002;
+			text = "Preset"; //--- ToDo: Localize;
+			x = 14.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 9.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		//-------------------------------------------
+		//Filter for Phylons
+		class RscText_1003: RscText
+		{
+			idc = 1003;
+			text = "Filter"; //--- ToDo: Localize;
+			x = 32 * GUI_GRID_W + GUI_GRID_X;
+			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 7 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCombo_2117: RscCombo
+		{
+			idc = 2117;
+			x = 32 * GUI_GRID_W + GUI_GRID_X;
+			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 7 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		//-------------------------------------------
+		//Phylon frame
+		class RscFrame_1800: RscFrame
+		{
+			idc = 1800;
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 1 * GUI_GRID_H + GUI_GRID_Y;
+			w = 25.5 * GUI_GRID_W;
+			h = 20 * GUI_GRID_H;
+		};
+		//Phylons
+		class RscCombo_2107: RscCombo
+		{
+			idc = 2107;
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 17 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2800: RscCheckbox
+		{
+			idc = 2800;
+			x = 22.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 17 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2105: RscCombo
+		{
+			idc = 2105;
+			x = 14.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 15 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2808: RscCheckbox
+		{
+			idc = 2808;
+			x = 23 * GUI_GRID_W + GUI_GRID_X;
+			y = 15 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2103: RscCombo
+		{
+			idc = 2103;
+			x = 15 * GUI_GRID_W + GUI_GRID_X;
+			y = 13 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2809: RscCheckbox
+		{
+			idc = 2809;
+			x = 23.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 13 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2101: RscCombo
+		{
+			idc = 2101;
+			x = 15.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 11 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2810: RscCheckbox
+		{
+			idc = 2810;
+			x = 24 * GUI_GRID_W + GUI_GRID_X;
+			y = 11 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2109: RscCombo
+		{
+			idc = 2109;
+			x = 16 * GUI_GRID_W + GUI_GRID_X;
+			y = 9 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2811: RscCheckbox
+		{
+			idc = 2811;
+			x = 24.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 9 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2111: RscCombo
+		{
+			idc = 2111;
+			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 7 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2812: RscCheckbox
+		{
+			idc = 2812;
+			x = 25 * GUI_GRID_W + GUI_GRID_X;
+			y = 7 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		//middle
+		class RscCombo_2100: RscCombo
+		{
+			idc = 2100;
+			x = 23 * GUI_GRID_W + GUI_GRID_X;
+			y = 6 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2813: RscCheckbox
+		{
+			idc = 2813;
+			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 6 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2113: RscCombo
+		{
+			idc = 2113;
+			x = 23 * GUI_GRID_W + GUI_GRID_X;
+			y = 10 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2814: RscCheckbox
+		{
+			idc = 2814;
+			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 10 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2114: RscCombo
+		{
+			idc = 2114;
+			x = 23 * GUI_GRID_W + GUI_GRID_X;
+			y = 12 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2815: RscCheckbox
+		{
+			idc = 2815;
+			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 12 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2115: RscCombo
+		{
+			idc = 2115;
+			x = 23 * GUI_GRID_W + GUI_GRID_X;
+			y = 14 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2816: RscCheckbox
+		{
+			idc = 2816;
+			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 14 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2116: RscCombo
+		{
+			idc = 2116;
+			x = 23 * GUI_GRID_W + GUI_GRID_X;
+			y = 16 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2802: RscCheckbox
+		{
+			idc = 2802;
+			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 16 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		//right side
+		class RscCombo_2112: RscCombo
+		{
+			idc = 2112;
+			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 7 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2807: RscCheckbox
+		{
+			idc = 2807;
+			x = 36 * GUI_GRID_W + GUI_GRID_X;
+			y = 7 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2110: RscCombo
+		{
+			idc = 2110;
+			x = 28 * GUI_GRID_W + GUI_GRID_X;
+			y = 9 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2806: RscCheckbox
+		{
+			idc = 2806;
+			x = 36.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 9 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2102: RscCombo
+		{
+			idc = 2102;
+			x = 28.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 11 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2805: RscCheckbox
+		{
+			idc = 2805;
+			x = 37 * GUI_GRID_W + GUI_GRID_X;
+			y = 11 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2104: RscCombo
+		{
+			idc = 2104;
+			x = 29 * GUI_GRID_W + GUI_GRID_X;
+			y = 13 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2804: RscCheckbox
+		{
+			idc = 2804;
+			x = 37.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 13 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2106: RscCombo
+		{
+			idc = 2106;
+			x = 29.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 15 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2803: RscCheckbox
+		{
+			idc = 2803;
+			x = 38 * GUI_GRID_W + GUI_GRID_X;
+			y = 15 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		class RscCombo_2108: RscCombo
+		{
+			idc = 2108;
+			x = 30 * GUI_GRID_W + GUI_GRID_X;
+			y = 17 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscCheckbox_2801: RscCheckbox
+		{
+			idc = 2801;
+			x = 38.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 17 * GUI_GRID_H + GUI_GRID_Y;
+			w = 1 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+		};
+		//-------------------------------------------
+		//Save/Load Function
+		class CTI_Menu_Elected : RscText {
+			idc = 500101;
+			x = "SafeZoneX + (SafeZoneW * 0.33)";
+			y = "SafeZoneY + (SafezoneH * 0.81)";
+			w = 0.23;
+			
+			sizeEx = 0.03;
+			
+			text = "";
+			colorText[] = {1,1,1,1};
+			shadow = 2;
+		};
+		class RscButtonMenu_2400: RscButtonMenu
+		{
+			idc = 2400;
+			text = "Load"; //--- ToDo: Localize;
+			x = 10.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 21 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscEdit_1401: RscEdit
+		{
+			idc = 1401;
+			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 22.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 15.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class RscButtonMenu_2401: RscButtonMenu
+		{
+			idc = 2401;
+			text = "Save"; //--- ToDo: Localize;
+			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 22.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 3.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		//class CTI_Menu_TimeLeft : CTI_Menu_Elected {
+		//	idc = 500102;
+		//	x = "SafeZoneX + (SafeZoneW * 0.47)";
+		//	
+		//	style = ST_RIGHT;
+		//	text = "";
+		//};
+		//class CTI_Menu_Time_Static : CTI_Menu_Elected {
+		//	idc = 500103;
+		//	x = "SafeZoneX + (SafeZoneW * 0.45)";
+		//
+		//	style = ST_RIGHT;
+		//	text = "Time :";
+		//};
+		//------------------------------------
+		//Basic controls
+		class CTI_Control_Exit : RscButton {
+			idc = 500104;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.58)";
+			y = "SafeZoneY + (SafezoneH * 0.16)";
+			w = "SafeZoneW * 0.04";
+			h = "SafeZoneH * 0.04";
+			
+			text = "X";
+			action = "closeDialog 0";
+		};
+		class RscButtonMenuOK_2600: RscButtonMenuOK
+		{
+			x = 31 * GUI_GRID_W + GUI_GRID_X;
+			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.5 * GUI_GRID_H;
+		};
+		class RscButtonMenuCancel_2700: RscButtonMenuCancel
+		{
+			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.5 * GUI_GRID_H;
+		};
+	};
+};*/
