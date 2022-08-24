@@ -28,20 +28,6 @@ if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: Common\Config\B
 missionNamespace setVariable [format["CTI_%1_Factories", _side], ["Barracks","Light","Heavy","Air"]];
 
 missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
-	/*[CTI_BARRACKS, 180, [-23,33]],
-	[CTI_LIGHT, 180, [23,33]],
-	[CTI_CONTROLCENTER, 0, [30,-40]],
-	[CTI_HEAVY, 0, [-30,-40]],
-	[CTI_AIR, 180, [-60,37]],
-	[CTI_REPAIR, 180, [60,37]],
-	[CTI_AMMO, 180, [80,37]]*/
-	/*[CTI_BARRACKS, 270, [-23,33]],
-	[CTI_LIGHT, 270, [23,33]],
-	[CTI_CONTROLCENTER, 90, [30,-40]],
-	[CTI_HEAVY, 90, [-30,-40]],
-	[CTI_AIR, 270, [-60,37]],
-	[CTI_REPAIR, 0, [60,37]],
-	[CTI_AMMO, 0, [80,37]]*/
 	[CTI_BARRACKS, 0, [-23,33]],
 	[CTI_LIGHT, 0, [23,33]],
 	[CTI_CONTROLCENTER, 180, [30,-40]],
@@ -156,7 +142,7 @@ _headers pushBack		[CTI_BARRACKS, "Barracks", "Barracks"];
 _classes pushBack 		["Land_Cargo_HQ_V2_F", "Land_Cargo_HQ_V2_ruins_F"];
 _prices pushBack		2000;
 _times pushBack			60;
-_placements pushBack 	[0, 35];
+_placements pushBack 	[90, 35];
 _helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
 _specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
@@ -165,7 +151,7 @@ _headers pushBack 		[CTI_CONTROLCENTER, "Control Center", "CC"];
 _classes pushBack 		["Land_Research_HQ_F", "Land_Research_HQ_ruins_F"];							  
 _prices pushBack 		4000;
 _times pushBack 		90;
-_placements pushBack 	[0, 25];
+_placements pushBack 	[90, 25];
 _helper pushBack		[""];
 _specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
@@ -176,7 +162,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];
 	_prices pushBack 		4000;
 	_times pushBack 		80;
-	_placements pushBack 	[0, 30];
+	_placements pushBack 	[90, 30];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
 	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 };
@@ -187,7 +173,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
 	_classes pushBack 		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];
 	_prices pushBack 		6000;
 	_times pushBack 		120;
-	_placements pushBack 	[0, 25];
+	_placements pushBack 	[90, 25];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
 	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 };
@@ -199,7 +185,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= 0) then {
 	_classes pushBack 		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
 	_prices pushBack 		8000;
 	_times pushBack 		140;
-	_placements pushBack 	[0, 40];
+	_placements pushBack 	[90, 40];
 	_helper pushBack		["Sign_Arrow_Large_Blue_F", 0];
 	_specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]]; 
 };

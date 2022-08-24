@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,3};
 link4[] = {3,4};
 globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-184.744537,372.878876,591.521484,-440.675018,477,884,1};
-window[] = {2,-1,-1,-1,-1,859,78,1445,78,3,495};
+window[] = {2,-1,-1,-1,-1,885,104,1471,104,3,495};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -66,9 +66,10 @@ class FSM
                          "" \n
                          "//--- Extract from MDCCLXXVI's Recurring cleaup script" \n
                          "{" \n
-                         "    if ((_x distance [0,0,0]) < 1) then {" \n
-                         "			[_x] spawn CTI_SE_FNC_TrashObject;" \n
-                         "        //deleteVehicle _x;   };" \n
+                         "   if ((_x distance [0,0,0]) < 1) then {" \n
+                         "		[_x] spawn CTI_SE_FNC_TrashObject;" \n
+                         "      //deleteVehicle _x;   " \n
+                         "	};" \n
                          "} count (allMissionObjects ""EmptyDetector"");" \n
                          "" \n
                          "_ncycle = time + 15;"/*%FSM</STATEINIT""">*/;
