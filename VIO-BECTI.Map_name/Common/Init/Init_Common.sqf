@@ -94,6 +94,7 @@ CTI_CO_FNC_GetSideDefenses = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetCalculatedUnitsPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedUnitsPrize.sqf";
 CTI_CO_FNC_GetCalculatedBuildtime = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedBuildtime.sqf";
 CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedItemPrize.sqf";
+CTI_CO_FNC_SetFOBheader = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetFOBheader.sqf";
 
 CTI_CO_CustomIterator = 0;
 

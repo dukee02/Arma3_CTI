@@ -90,3 +90,4 @@ if !(isPlayer leader _commander) then {
 	if (_logic getVariable "cti_ai_commander") then {_logic setVariable ["cti_ai_commander", false]};
 	[(_side) call CTI_CO_FNC_GetSideHQ, leader _commander] spawn CTI_PVF_Request_VehicleLocality;
 };
+[_side,"","",true] call CTI_CO_FNC_SetFOBheader;
