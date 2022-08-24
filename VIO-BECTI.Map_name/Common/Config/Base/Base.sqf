@@ -352,39 +352,6 @@ if(_side == west) then {
 	_prices pushBack 		25000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-
-	_headers pushBack 		"Praetorian 1C (AAA)";
-	_classes pushBack 		"B_AAA_System_01_F";
-	_prices pushBack 		35000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-
-	_headers pushBack 		"Mk41 VLS (Vertical Launch System)";
-	_classes pushBack 		"B_Ship_MRLS_01_F";
-	_prices pushBack 		200000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-
-/*
-	if(CTI_CAMO_ACTIVATION == 4) then {		
-		_headers pushBack 		"Mk49 Spartan AAA";
-		_classes pushBack 		"B_SAM_System_01_F";
-		_prices pushBack 		50000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-
-		_headers pushBack 		"Mk21 Centurion SAM";
-		_classes pushBack 		"B_SAM_System_02_F";
-		_prices pushBack 		75000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-		_headers pushBack 		"Mk45 Hammer 120mm";
-		_classes pushBack 		"B_Ship_Gun_01_F";
-		_prices pushBack 		35000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-	};
-*/
 };
 
 if(_side == east) then {
@@ -463,6 +430,39 @@ if(_side == east) then {
 	_categories pushBack 	"Defense";
 };
 
+//Heavy weaponry for all (balancing)
+_headers pushBack 		"Praetorian 1C (AAA)";
+_classes pushBack 		"B_AAA_System_01_F";
+_prices pushBack 		35000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+
+_headers pushBack 		"Mk41 VLS (Vertical Launch System)";
+_classes pushBack 		"B_Ship_MRLS_01_F";
+_prices pushBack 		200000;
+_placements pushBack 	[180, 5];
+_categories pushBack 	"Defense";
+	
+/*
+if(CTI_CAMO_ACTIVATION == 4) then {		
+	_headers pushBack 		"Mk49 Spartan AAA";
+	_classes pushBack 		"B_SAM_System_01_F";
+	_prices pushBack 		50000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+
+	_headers pushBack 		"Mk21 Centurion SAM";
+	_classes pushBack 		"B_SAM_System_02_F";
+	_prices pushBack 		75000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+	_headers pushBack 		"Mk45 Hammer 120mm";
+	_classes pushBack 		"B_Ship_Gun_01_F";
+	_prices pushBack 		35000;
+	_placements pushBack 	[180, 5];
+	_categories pushBack 	"Defense";
+};
+*/
 
 
 // ***************************** Ammoboxes *****************************
