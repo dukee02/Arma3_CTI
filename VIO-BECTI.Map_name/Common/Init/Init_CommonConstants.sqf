@@ -476,7 +476,6 @@ CTI_BASE_HQ_REPAIR_TIME = 15; //--- The time needed to repair the HQ
 
 //--- Base: Misc
 CTI_BASE_NOOBPROTECTION = 1; //--- Make structures invulnerable to friendly fire
-CTI_BASE_STRUCTURE_RESELL_RATIO = 0.85; //--- Ratio of building cost to be refunded when sold
 
 //--- Base: Purchase range
 CTI_BASE_GEAR_FOB_RANGE = 4; //--- Determine how far a player has to be from a FOB to access the Gear Menu
@@ -509,6 +508,7 @@ with missionNamespace do {
 	//if (isNil 'CTI_BASE_START_TOWN') then {CTI_BASE_START_TOWN = 1}; //--- Remove the spawn locations which are too far away from the towns.
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 4000}; //--- Each side need to be further than x meters
 	if (isNil 'CTI_BASE_WORKERS_LIMIT') then {CTI_BASE_WORKERS_LIMIT = 10}; //--- Maximum amount of workers which may be purchased by a side
+	if (isNil 'CTI_BASE_STRUCTURE_RESELL_RATIO') then {CTI_BASE_STRUCTURE_RESELL_RATIO = 0};	//--- Ratio of building cost to be refunded when sold
 	if (isNil 'CTI_FIELDREPAIR_ENABLED') then {CTI_FIELDREPAIR_ENABLED = 0};
 };
 //-----------------------------------------------------------------------------------------------------------------------//

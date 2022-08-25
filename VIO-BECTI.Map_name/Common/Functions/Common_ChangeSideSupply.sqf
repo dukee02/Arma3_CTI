@@ -15,14 +15,14 @@
 	None
 	
   # SYNTAX #
-	[SIDE, AMOUNT] call CTI_CO_FNC_ChangeFunds
+	[SIDE, AMOUNT] call CTI_CO_FNC_ChangeSideSupply
 	
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideLogic
 	Common Function: CTI_CO_FNC_GetSideSupply
 	
   # EXAMPLE #
-	[west, 500] call CTI_CO_FNC_ChangeFunds; 
+	[west, 500] call CTI_CO_FNC_ChangeSideSupply; 
 	  -> Assuming the side had 5000 supply before: 5500
 */
 

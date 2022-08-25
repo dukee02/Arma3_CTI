@@ -90,7 +90,7 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 && _sell == false) then {
 		
 		_supplyActive = if (missionNameSpace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM" == 0) then {true} else {false};
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
-		_supply = if (_supplyActive) then { (CTI_P_SideJoined) call CTI_CO_FNC_GetSideSupply} else {-1};
+		_supply = if (_supplyActive) then { (_side) call CTI_CO_FNC_GetSideSupply} else {-1};
 		//_cost = _var select 2;
 		_cost = if (CTI_BASE_BUILDING_DAMAGE_SYSTEM < 3) then {_var select 2} else {(_var select 2)/2};
 		_currency = if (_supplyActive) then {_supply} else {_funds};
@@ -126,6 +126,17 @@ if(CTI_BASE_BUILDING_DAMAGE_SYSTEM > 0 && _sell == false) then {
 	};
 } else {
 	if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["1)Building %1 gets destroyed <reconstruct? %2>", _variable, _reconstruct]] call CTI_CO_FNC_Log;};
+	if(_sell == true && CTI_BASE_STRUCTURE_RESELL_RATIO > 0) then {
+		_supplyActive = if (missionNameSpace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM" == 0) then {true} else {false};
+		_cost = if (CTI_BASE_BUILDING_DAMAGE_SYSTEM < 3) then {_var select 2} else {(_var select 2)/2};
+		_cost = round ((_cost * CTI_BASE_STRUCTURE_RESELL_RATIO)/100);
+		if(_supplyActive) then {
+			[_side, _cost] call CTI_CO_FNC_ChangeSideSupply; 
+		} else {
+			[_side, _cost] call CTI_CO_FNC_ChangeFundsCommander;
+		};
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: server\functions\Server_OnBuildingDestroyed.sqf", format["Building %1 gets sold for <%2> supply active? %3", _variable, _cost, _supplyActive]] call CTI_CO_FNC_Log;};
+	};
 }; 
  
 sleep 5;

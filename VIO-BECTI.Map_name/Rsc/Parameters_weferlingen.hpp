@@ -161,6 +161,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
+	class CTI_BASE_STRUCTURE_RESELL_RATIO {
+		title = "BASE: Structure resell ratio";
+		values[] = {0,10,20,30,40,50,60,70,80,90,100};
+		texts[] = {"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+		default = 0;
+	};
 	class CTI_BASE_BUILDING_DAMAGE_SYSTEM {
 		title = "BASE: Handle Building destruction";
 		values[] = {0,1,2,3};
