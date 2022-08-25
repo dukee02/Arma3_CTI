@@ -2,11 +2,15 @@ V2.0_220804
 Changed: Whole Techtree!
 Added: Complete Persistence Update!
 
-Fixed: Error when building salvagers
-Changed: HCs now visible in lobby but fixed to 3
-Added: funny beacon and siren usage of salvager now possible
-Added: Zeus implementation
-Changed: Spawn logic for town units
+Added: Param for Structure resell ratio
 Added: better HQ mobilisation logic
 Added: Field repair param
+Added: funny beacon and siren usage of salvager now possible
+Added: Zeus implementation
+Changed: HCs now visible in lobby but fixed to 3
+Changed: AI Base placement a bit
+Changed: Spawn logic for town units
+Changed: Heavy weaponry for all (balancing)
+Fixed: Error when building salvagers
 Fixed: Attachmentslots not highlightet on drag item
+Fixed: can't build FOB with active AI commander

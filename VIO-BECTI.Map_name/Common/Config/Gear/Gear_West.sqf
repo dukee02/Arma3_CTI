@@ -2224,9 +2224,9 @@ _i pushBack "H_Beret_gen_F";
 _u pushBack _tech_level;
 _p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/4);
 
-_i pushBack "Beret_blk";
-_u pushBack _tech_level;
-_p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/4);
+//_i pushBack "Beret_blk";
+//_u pushBack _tech_level;
+//_p pushBack round ((CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100))/4);
 
 //_i pushBack "Beret_02";			->>	does not belong to any known classnames
 //_u pushBack _tech_level;
