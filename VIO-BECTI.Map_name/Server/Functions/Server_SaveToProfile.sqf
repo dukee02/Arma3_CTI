@@ -47,6 +47,7 @@ switch(_savemode) do {
 };
 
 if(_savemode > 0) then {
+	profileNamespace setVariable [Format ["SAVE_%1_WORLD", _savename],worldName];
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Start saving :<SAVE_%1> mode(%2) Part: %3", _savename, _savemode, _part]] call CTI_CO_FNC_Log;};
 	switch(_part) do {
 		case "towns": {
@@ -159,6 +160,8 @@ if(_savemode > 0) then {
 			profileNamespace setVariable [Format ["SAVE_%1_TOWNS", _savename], nil];
 			if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["TOWNS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_TOWNS", _savename],[]])]] call CTI_CO_FNC_Log;};
 			{
+				
+				profileNamespace setVariable [Format ["SAVE_%1_WORLD", _savename],nil];
 				profileNamespace setVariable [Format ["SAVE_%1_%2_HQ", _savename, _x], nil];
 				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["HQ DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_HQ", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
 				profileNamespace setVariable [Format ["SAVE_%1_%2_UPGRADES", _savename, _x], nil];
