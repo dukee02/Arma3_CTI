@@ -137,7 +137,12 @@ if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\F
 
 //--- Creation.
 _direction = 360 - ((_var select 4) select 0);
-_vehicle_info = missionNamespace getVariable _model;
+_vehicle_info = []; //missionNamespace getVariable _model;
+if (_req_classname == format["CTI_Salvager_Independent_%1", CTI_P_SideJoined] || _req_classname == format["CTI_Salvager_%1", CTI_P_SideJoined]) then {
+	_vehicle_info = missionNamespace getVariable _req_classname;
+} else {
+	_vehicle_info = missionNamespace getVariable _model;
+};
 _distance_to_factory = _vehicle_info select CTI_UNIT_DISTANCE;	
 _distance = (_var select 4) select 1;
 _distance = _distance + _distance_to_factory;

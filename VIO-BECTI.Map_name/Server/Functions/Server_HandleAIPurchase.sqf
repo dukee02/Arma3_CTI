@@ -39,7 +39,7 @@
     [_req_seed, _req_classname, _req_buyer, _req_target, _factory, _req_side] spawn CTI_SE_FNC_HandleAIPurchase;
 */
 
-private ["_can_afford", "_cost", "_direction", "_distance", "_factory", "_funds", "_model", "_net", "_position", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_target", "_req_time_out", "_script", "_sideID", "_var", "_var_classname", "_vehicle", "_veh_infos"];
+private ["_can_afford", "_cost", "_direction", "_distance", "_factory", "_funds", "_model", "_net", "_position", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_target", "_req_time_out", "_script", "_sideID", "_var", "_var_classname", "_vehicle", "_veh_infos", "_vehicle_data"];
 
 _req_seed = _this select 0;
 _req_classname = _this select 1;
@@ -96,12 +96,8 @@ if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory
 
 _var = missionNamespace getVariable format ["CTI_%1_%2", _req_side, _factory getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
-_vehicle_info = missionNamespace getVariable _req_classname;
-/*_vehicle_info = missionNamespace getVariable _model;
-if !(_req_classname == format["CTI_Salvager_Independent_%1", _req_side] || _req_classname == format["CTI_Salvager_%1", _req_side]) then {
-	_vehicle_info = missionNamespace getVariable _req_classname;
-};*/
-_distance_to_factory = _vehicle_info select CTI_UNIT_DISTANCE;
+_vehicle_data = missionNamespace getVariable _req_classname;
+_distance_to_factory = _vehicle_data select CTI_UNIT_DISTANCE;
 _distance = (_var select 4) select 1;
 _distance = _distance + _distance_to_factory;
 _position = _factory modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
