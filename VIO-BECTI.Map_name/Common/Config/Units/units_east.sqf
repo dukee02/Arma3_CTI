@@ -570,7 +570,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	// List of units
 	// unarmed units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_02_box_F", _sid];
 		_c pushBack format["%1O_Truck_02_covered_F", _sid];
 		_c pushBack format["%1O_Truck_02_transport_F", _sid];
 		_c pushBack format["%1O_Truck_03_covered_F", _sid];
@@ -578,7 +577,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_c pushBack format["%1O_Truck_03_device_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
 		_c pushBack format["%1O_T_Truck_02_F", _sid];
 		_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
@@ -1878,6 +1876,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 	};
 };
 
-if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\units\units_east.sqf", format["units declared: [%1] ", count _c]] call CTI_CO_FNC_Log};
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\units\units_east.sqf", format["units declared: [%1] %2", count _c, count _u]] call CTI_CO_FNC_Log};
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s, _d] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

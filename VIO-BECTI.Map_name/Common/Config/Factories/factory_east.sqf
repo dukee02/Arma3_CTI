@@ -740,15 +740,15 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _c];
 //*********************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Reapir Factory.
 _c = [];
-_c pushBack format["CTI_Salvager_%1", _side];
-_c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];
-_c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];
 if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1O_Truck_02_box_F", _sid];
 };
 if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 	_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
 };
+_c pushBack format["CTI_Salvager_%1", _side];
+_c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];
+_c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];
 
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
