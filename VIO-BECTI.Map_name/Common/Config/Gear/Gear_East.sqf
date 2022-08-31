@@ -1033,8 +1033,8 @@ if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
 };
 
 // -------------- Backpacks --------------
-// -- Tech Level 1
-_tech_level = 1;
+// -- Tech Level 0
+_tech_level = 0;
 
 _i pushBack "B_AssaultPack_blk";
 _u pushBack _tech_level;
@@ -1060,10 +1060,6 @@ _i pushBack "B_AssaultPack_khk";
 _u pushBack _tech_level;
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100)*2);
 
-_i pushBack "B_AssaultPack_mcamo";
-_u pushBack _tech_level;
-_p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100)*2);
-
 _i pushBack "B_AssaultPack_ocamo";
 _u pushBack _tech_level;
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100)*2);
@@ -1079,6 +1075,9 @@ _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEV
 _i pushBack "B_AssaultPack_wdl_F";
 _u pushBack _tech_level;
 _p pushBack round (CTI_ECONOMY_PRIZE_EQUIPMENT*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100)*2);
+
+// -- Tech Level 1
+_tech_level = 1;
 
 _i pushBack "B_FieldPack_blk";
 _u pushBack _tech_level;
