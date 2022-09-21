@@ -64,160 +64,19 @@ Want to know more about the mission, find servers running the mission or find ot
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2484775180] VIO-BECTI Vanilla Collection [/url]
 
 
-
-
-
-
--------------------------------------------------------------------------------
-
-
-[hr][/hr]
-
-[h1]Unser Projekt: [/h1] 
-Unser Ziel ist es auf der Basis von Bennys Arbeit (die eine frühe Portierung der Arma2 Version ist), diese CTI zu vervollständigen und in einigen 
-Teilen weiter zu entwickeln. Jedoch ohne den Grundgedanken der kombinierten Kriegsführung all zu sehr außer Acht zu lassen.
-Diese Mission benötigt grundlegend nur einen der Haupt-WW2-Mods (IFA3/Faces of War/CSA38/Northern Fronts) um zu funktionieren. Switchen der Nationen auf andere Seiten funktioniert auch ohne Side-Patch, kann 
-aber zu Anzeigefehlern und anderem Fehlverhalten führen. Wir raten jedem, die jeweils passenden Side-Patches zusammen mit der Mission zu nutzen.
-
-[h1]CTI features: [/h1] 
-[list]
-    [*]Klassisches Team gegen Team (TvT) max. 16vs16
-    [*]Warfare auf allen Ebenen (zu Fuß, im Fahrzeug, in der Luft).
-    [*]Freie Einheitenwahl, stelle dir dein Team selbst zusammen.
-    [*]Freier Basisbau, auch mehere Basen möglich.
-    [*]Erforschbarer Technologiebaum. Forschung für bessere Einheiten, somit früher Tankrush nicht möglich.
-    [*]Kein festes Script, jede Partie kann anders verlaufen.
-[/list]
-
-[h1]BECTI special features: [/h1] 
-[list]
-    [*]Große WW2 Mod-Unterstützung: IFA3, CSA38, Northern Fronts, Faces of War, Bystrokhodny BT7, SAB secret weapons, Flying Legends, Naval Legends
-    [*]Mission zwar für PvP ausgelegt, aber auch Coop möglich.
-    [*]Neue Startmodis für Coop, bei der die eigene Seite einen einstellbaren kleinen Radius hällt zum Start.
-    [*]Nation der KI-Gruppenführer einstellbar.
-    [*]Die Seite der Nationen kann geändert werden.
-    [*]Verteidiger Nation für Städte einstellbar.
-    [*]Maximal mögliche Technologiestufe wird anhand der aktivierten Mods automatisch berechnet.
-    [*]Maximale Technologiestufe kann begrenzt werden.
-    [*]Forschungskosten und Zeit kann eingestellt werden.
-    [*]Freie Auswahl der Depot-Flaggen.
-    [*]Frei einstellbare Kosten für die Einheiten, Equipment und Waffen.
-    [*]Einstellbarer Skill der AI.
-    [*]Einstellbares Schadenssystem für Basisgebäude.
-    [*]Neues Wetter-skript.
-    [*]Optionale Feldreparatur für Spieler.
-    [*]igiload für die meisten WW2 Fahrzeuge und Geschütze umgeschrieben.
-    [*]Einstellbarer Cool-Down für CTI-Artillerieschläge.
-    [*]HQ gibt Artillerie-Warnung mit grober Richtung an (ballance).
-[/list]
-
-[h1]Mod Übersicht: [/h1] 
-[list]
-    [*]IFA3_____________: Hauptmod und dient wenn geladen als Absicherung
-    [*]CSA38____________: Funktioniert alleine
-    [*]Northern Fronts__: Funktioniert alleine mit Einschränkung, da keine Logistictruppen
-    [*]Faces of War_____: Funktioniert alleine
-    [*]
-    [*]Bystrokhodny BT7_: Einheiten werden automatisch hinzugefügt
-    [*]Flying Legends___: Einheiten werden automatisch hinzugefügt
-    [*]Naval Legends____: Einheiten werden automatisch hinzugefügt
-    [*]SAB sec. weap.___: Einheiten werden automatisch hinzugefügt mod soll aber ggf. gelöscht werden.
-[/list]
-Alle Mods können miteinander kombiniert werden. CSA, Northern Fronts und Faces of War können explizit IFA3 als Haupt-mod ersetzen, was den spawn der Grundeinheiten verändert. 
-Die kleineren automatischen Mods fügen ihre Einheiten den jeweils aktivierten Nationen hinzu ohne explizit gesetzt werden zu müssen.
-
-[h1]CTI Beschreibung: [/h1] 
-CTI (Conquer The Island) ist eine Mission, die es bereits in ArmA2 unter dem Namen Warfare gegeben hat. Dabei stehen sich 2 Fraktionen gegenüber und 
-kämpfen um die Vorherschaft über die Karte. Je nach Karte und Einstellung kann auch eine 3. Unabhängige Fraktion mit einbezogen sein, sie nimmt 
-jedoch nicht aktiv am Geschehen teil. Ziel ist es die gegnerische Basis zufinden und zu vernichten oder alternativ alle Städte/Dörfer einzunehmen. Diese Städte/Dörfer 
-dienen auch dazu "Nachschub" zu erwirtschaften mit dem die "Forschung" vorangetrieben werden kann, die eigene Basis ausgebaut und weitere Basen errichtet werden können. 
-Um eine Stadt/ein Dorf einzunehmen genügt es, sich in einem geringen Umkreis um den Hauptbunker zu sein, ohne das sich gegnerische Kräfte
-ebenfalls in dieser Zone befinden.
-
-Als Spieler übernimmt man die Rolle eines Gruppenführers, und befehligt eine Gruppe von KI-Einheiten. Zur Auswahl stehen dem Spieler dazu verschiedene 
-Infanterie-Einheiten, als auch diverse Fahr- und Flugzeuge, je nach Forschungs und Ausbaustufe der Basis.
-Es gibt grundlegend in ArmA kein Klassensystem (was ich sehr beführworte), womit es dem Spieler selbst überlassen ist welche Ausrüstung er nutzen möchte.
-Zu beginn bekommt jeder eine minimal Ausrüstung (wird auch vergeben wenn man pleite sein sollte), diese kann unter anderem in der Basis angepasst werden.
-Alle Waffen, Einheiten und Fahrzeuge müssen mit $ bezahlt werden. Diese $ erwitschaften sich eimal über Städte/Dörfer die eingenommen werden und dann auf 
-Zeit das Einkommen generieren, als auch über erfolgreiche Abschüsse von Gegnern(je teurer die Einheit, je mehr $ bekommt man für den Abschuss). 
-
-Dabei ist es immer besser koordiniert vorzugehen, da Einzelgänge meist mit dem virtuellen Tod des Spielers, wie auch der 
-KI-Kameraden endet und somit oft auch eine erneute längere Anfahrt zur Front mit sich bringt.
-
-Das respawn System unterscheidet sich teils von anderen Spielmodi, da es sein sein Augenmerk auf den coordinierten Angriff gemischter Gruppenverbände setzt. 
-Daher wird jeder Spieler, der während des Angriffs stirbt wieder in einer der Basen spawnen (wobei Arten eines Feldlazarettes möglich sind). Ein spawn in nächster Nähe der Front
-funktioniert jedoch nur für die Spieler, AI Kammeraden und Fahrzeuge müssen in der Basis geordert werden. Da somit nicht gleich wieder ein neuer Angriff stattfinden kann, 
-ist es dem Verteidiger somit möglich die Verteidigung zu stärken und ebenfalls einen Angriff in der Zeit zu planen.
-
-Jede Fraktion wird von einem Kommandanten angeführt, der zu Beginn von allen Mitspielern je Seite gewählt wird. Der Kommandant bestimmt den
-Basisbau, die "Forschung" als auch die Grundlegende Taktik, seinen Anweisungen sollte Folge geleistet werden. Es ist ratsam immer den 
-erfahrensten Spieler als Kommandant auszuwählen, da man als Kommandant nicht nur seinen eigenen Trupp führt sondern auch für die anderen Gruppen 
-zuständig ist. Der Kommandant kann diese Anweisungen über VON-Ingame/ VON-Tools mitteilen, oder über interne Tools auf der Karte ersichtlich machen.
-
-[h1]ABOUT REUPLOADS: [/h1]
-Statt einfach kleine Änderungen vor zu nehmen und dann selbst eine neue Version hochzuladen, [url=https://discord.gg/sJw2Nynh7s] kontaktiere uns einfach [/url]. Oft sind gewünschte Features
-bereits in Planung und du kannst uns vieleicht helfen. Viele sehr ähnliche/gleiche Missionen machen es nur schwerer den durchblick zu behalten.
-
-[h1]Hilfe und Spielersuche: [/h1]
-Willst du mehr über die Mission wissen, Server finden auf denen die Mission läuft oder andere Spieler finden fürs gemeinsame miteinander/gegeneinander, 
-unsere [url=https://steamcommunity.com/groups/vio-community] Steam-Community [/url] und unser [url=https://discord.gg/sJw2Nynh7s] discord [/url] sind 
-hierfür eine gute Adresse.
-
-
-[h1]CREDITS[/h1]
-[h1]Authors:[/h1]
-[list]
-    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=192891753] Benny's BECTI [/url]
-    [*][b]dukee: Projectlead and main developer[/b]
-[/list]
-[h1]Danke an:[/h1]
-[list]
-    [*][b]VIO-Community, for bugfi[strike]nd[/strike]...xing[/b]
-    [*][b]alle Tester[/b]
-[/list]
-
-
 -------------------------------------------------------------------------------
 
 More infos:
 [url=https://discord.gg/sJw2Nynh7s] Discord [/url]
 
 
-
-
-List of all supported mods:
-https://steamcommunity.com/groups/vio-community/discussions/0/1740012252800579933/
-
-
-
-
-
-
 -------------------MAPS----------------------------
-Altis								https://steamcommunity.com/sharedfiles/filedetails/?id=2760869829
-Baranow								https://steamcommunity.com/sharedfiles/filedetails/?id=2763574128
-Baranow Winter						https://steamcommunity.com/sharedfiles/filedetails/?id=2763576184
-Henderson Airfield (FoW)
-Merderet							https://steamcommunity.com/sharedfiles/filedetails/?id=2761787393
-Merderet koth						https://steamcommunity.com/sharedfiles/filedetails/?id=2761789779
-Merderet V2							https://steamcommunity.com/sharedfiles/filedetails/?id=2761791065
-Merderet V3							https://steamcommunity.com/sharedfiles/filedetails/?id=2761792525
-Merderet Winter						https://steamcommunity.com/sharedfiles/filedetails/?id=2761793897
-Tobruk								https://steamcommunity.com/sharedfiles/filedetails/?id=2763571066
-Malden								https://steamcommunity.com/sharedfiles/filedetails/?id=2760873063
-Marenice (CSA)
-Neaville							https://steamcommunity.com/sharedfiles/filedetails/?id=2763562933
-Neaville Winter						https://steamcommunity.com/sharedfiles/filedetails/?id=2763564340
-Staszow								https://steamcommunity.com/sharedfiles/filedetails/?id=2763567387
-Staszow Winter						https://steamcommunity.com/sharedfiles/filedetails/?id=2763568939
-Stratis								https://steamcommunity.com/sharedfiles/filedetails/?id=2760866946
-El Alamein							https://steamcommunity.com/sharedfiles/filedetails/?id=2763572663
-Kokoda (FoW)
-Tanoa								https://steamcommunity.com/sharedfiles/filedetails/?id=2760871194
-Rosche Germany
-Svartmarka
-Svartmarka Winter
-Svartmarka Post War
+Altis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0_220831
+Malden			https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0_220831
+MSKE			https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0_220831
+Rosche			https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0_220831
+Stratis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0_220831	
+Tanoa			https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0_220831	
 
 
 --------------------------------------------------

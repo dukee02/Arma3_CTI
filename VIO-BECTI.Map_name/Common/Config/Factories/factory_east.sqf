@@ -82,7 +82,7 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\fa
 _c = [];
 _level = 0;
 _matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Tech Level 0
 // ------------

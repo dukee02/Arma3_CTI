@@ -314,7 +314,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_LSV_01_armed_F", _sid];
-		_c pushBack format["%1B_T_LSV_01_armed_CTRG_F", _sid];
 		_c pushBack format["%1B_LSV_01_AT_F", _sid];
 		_c pushBack format["%1B_Truck_01_box_F", _sid];
 		_c pushBack format["%1B_Truck_01_cargo_F", _sid];
@@ -324,7 +323,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_T_LSV_01_armed_F", _sid];
-		_c pushBack format["%1B_T_LSV_01_armed_CTRG_F", _sid];
 		_c pushBack format["%1B_T_LSV_01_AT_F", _sid];
 		_c pushBack format["%1B_T_Truck_01_box_F", _sid];
 		_c pushBack format["%1B_T_Truck_01_cargo_F", _sid];

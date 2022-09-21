@@ -297,11 +297,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 1) then {
 		mot_to_add = [[format["%1B_T_LSV_01_armed_F", _sid], 1, 50]];
-		mot_to_add pushBack [format["%1B_T_LSV_01_armed_CTRG_F", _sid], 1, 50];
 		mot_to_add pushBack [format["%1B_T_LSV_01_AT_F", _sid], 1, 50];
 	} else {
 		mot_to_add = [[format["%1B_LSV_01_armed_F", _sid], 1, 50]];
-		mot_to_add pushBack [format["%1B_T_LSV_01_armed_CTRG_F", _sid], 1, 50];
 		mot_to_add pushBack [format["%1B_LSV_01_AT_F", _sid], 1, 50];
 	};
 	units_wheeled = mot_to_add;

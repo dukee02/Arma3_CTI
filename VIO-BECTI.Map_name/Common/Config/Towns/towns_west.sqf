@@ -176,11 +176,11 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			WHEELED_LIGHT = [[format["%1B_T_LSV_01_armed_F", _sid],1],[format["%1B_T_LSV_01_armed_CTRG_F", _sid],1]];
+			WHEELED_LIGHT = [[format["%1B_T_LSV_01_armed_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1B_T_LSV_01_AT_F", _sid],1],[format["%1B_T_LSV_01_AT_F", _sid],1]];
 		};
 		default {
-			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1],[format["%1B_T_LSV_01_armed_CTRG_F", _sid],1]];
+			WHEELED_LIGHT = [[format["%1B_LSV_01_armed_F", _sid],1]];
 			WHEELED_HEAVY = [[format["%1B_LSV_01_AT_F", _sid],1],[format["%1B_LSV_01_AT_F", _sid],1]];
 		};
 	};

@@ -2,13 +2,12 @@
 format["%1<vanilla_unitname>", _sid] gets used later 4 the upcomming sidepatch
 format["%1", _sid]; - 4 copy paste
 */
-private ["_side", "_faction", "_sid", "_time", "_building_time", "_tech_level", "_upgrade_levels", "_tech_level_no_upgrade_inv", "_cntstart", "_cntend", "_matrix_cnt", "_matrix_full", "_matrix_nation"];
+private ["_side", "_faction", "_sid", "_time", "_building_time", "_tech_level", "_upgrade_levels", "_cntstart", "_cntend", "_matrix_cnt", "_matrix_full", "_matrix_nation"];
 
 _side = _this;
 _faction = "";
 _sid = "";
 _building_time = 10;
-_tech_level_no_upgrade_inv = 1;
 
 if(_side == west) then {
 	//_sid = "VIOC_B_";
@@ -21,10 +20,6 @@ if(_side == west) then {
 		//_sid = "VIOC_I_";
 		_faction = "Resistance";
 	};
-};
-
-if(CTI_NO_UPGRADE_MODE == 1) then {	
-	_tech_level_no_upgrade_inv = 0;
 };
 
 //We get the upgrade setup at this point, if this is null, something went wrong and we set it to the default.
@@ -360,7 +355,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 	_c pushBack format["%1O_Pathfinder_F", _sid];
 	_c pushBack format["%1O_Sharpshooter_F", _sid];
 	_c pushBack format["%1O_Urban_Sharpshooter_F", _sid];
-	_c pushBack format["%1B_HeavyGunner_F", _sid];
+	//_c pushBack format["%1B_HeavyGunner_F", _sid];
 	_c pushBack format["%1O_Urban_HeavyGunner_F", _sid];
 	
 	//set all other vars in a slope

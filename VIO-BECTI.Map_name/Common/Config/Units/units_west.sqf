@@ -650,7 +650,6 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1B_T_LSV_01_armed_F", _sid];
 	};
-	_c pushBack format["%1B_T_LSV_01_armed_CTRG_F", _sid];
 
 	//set all other vars in a slope
 	_cntstart = count _c;
