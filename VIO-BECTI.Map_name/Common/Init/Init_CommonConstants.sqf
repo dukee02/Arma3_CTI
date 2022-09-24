@@ -421,6 +421,10 @@ with missionNamespace do {
 	if (isNil 'CTI_GUER_TOWNS') then {CTI_GUER_TOWNS = 1};	//--- "FFI (Infantry with unarmed cars - difficulty very easy)","Polish Units (Infantry with armed trucks - difficulty easy)","3rd Party (needs one Side on GUER - difficulty normal)"
 	if (isNil 'CTI_WEST_TOWNS') then {CTI_WEST_TOWNS = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_EAST_TOWNS') then {CTI_EAST_TOWNS = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
+	if !(isNil 'CTI_TOWNS_ACTIVE_TIME') then {
+		CTI_TOWNS_OCCUPATION_INACTIVE_MAX = CTI_TOWNS_ACTIVE_TIME;
+		CTI_TOWNS_RESISTANCE_INACTIVE_MAX = CTI_TOWNS_ACTIVE_TIME;
+	};
 };
 
 //--- Towns: Misc.

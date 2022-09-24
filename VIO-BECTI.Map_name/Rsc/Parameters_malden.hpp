@@ -496,6 +496,12 @@ class Params {
 		texts[] = {"0m","50m","100m","150m","200m","250m","300m","350m","400m","450m","500m"};
 		default = 0;
 	};
+	class CTI_TOWNS_ACTIVE_TIME {
+		title = "TOWNS: Max Time before town units despawn";
+		values[] = {300,600,900,1200,1500,1800};
+		texts[] = {"5min","10min","15min","20min","25min","30min"};
+		default = 300;
+	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
 		values[] = {0,1,2,3,4};
