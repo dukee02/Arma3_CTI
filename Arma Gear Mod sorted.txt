@@ -246,6 +246,23 @@ this addItemToBackpack "Titan_AP";
 
 
 
+this addItemToBackpack "1Rnd_HE_Grenade_shell";
+this addItemToBackpack "UGL_FlareWhite_F";
+this addItemToBackpack "UGL_FlareGreen_F";
+this addItemToBackpack "UGL_FlareRed_F";
+this addItemToBackpack "UGL_FlareYellow_F";
+this addItemToBackpack "UGL_FlareCIR_F";
+this addItemToBackpack "1Rnd_Smoke_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeRed_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeGreen_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeYellow_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokePurple_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeOrange_Grenade_shell";
+
+
+
+
 //NATO
 this forceAddUniform "U_B_CombatUniform_mcam";
 this forceAddUniform "U_B_CombatUniform_mcam_tshirt";
@@ -329,6 +346,8 @@ this linkItem "NVGoggles";
 
 this linkItem "B_UavTerminal";
 
+this addItemToBackpack "B_IR_Grenade";
+
 
 //CSAT
 this forceAddUniform "U_O_CombatUniform_ocamo";
@@ -385,6 +404,9 @@ this linkItem "NVGoggles_OPFOR";
 
 this linkItem "O_UavTerminal";
 
+this addItemToBackpack "O_IR_Grenade";
+this addItemToBackpack "O_R_IR_Grenade";
+
 
 //AAF
 this forceAddUniform "U_I_CombatUniform";
@@ -437,6 +459,8 @@ this linkItem "NVGoggles_INDEP";
 
 this linkItem "I_UavTerminal";
 
+this addItemToBackpack "I_IR_Grenade";
+
 //CTRG
 this forceAddUniform "U_B_CTRG_1";
 this forceAddUniform "U_B_CTRG_3";
@@ -467,6 +491,10 @@ this addBackpack "I_G_HMG_02_high_weapon_F";
 this addBackpack "I_G_HMG_02_weapon_F";
 this addBackpack "I_G_HMG_02_support_high_F";
 this addBackpack "I_C_HMG_02_support_F";
+
+
+//LDF
+this addItemToBackpack "I_E_IR_Grenade";
 
 
 //Others
@@ -672,6 +700,74 @@ this linkItem "ItemWatch";
 
 
 
+this addPrimaryWeaponItem "optic_ACO_grn";
+this addPrimaryWeaponItem "optic_Aco";
+this addPrimaryWeaponItem "optic_ACO_grn_smg";
+this addPrimaryWeaponItem "optic_Aco_smg";
+this addPrimaryWeaponItem "optic_Arco";
+this addPrimaryWeaponItem "optic_DMS";
+this addPrimaryWeaponItem "optic_LRPS";
+this addPrimaryWeaponItem "optic_Holosight";
+this addPrimaryWeaponItem "optic_Holosight_smg";
+this addPrimaryWeaponItem "optic_SOS";
+this addPrimaryWeaponItem "optic_MRCO";
+this addPrimaryWeaponItem "optic_Nightstalker";
+this addPrimaryWeaponItem "optic_NVS";
+this addPrimaryWeaponItem "optic_Hamr";
+this addPrimaryWeaponItem "optic_tws";
+this addPrimaryWeaponItem "optic_tws_mg";
+
+
+this addPrimaryWeaponItem "acc_flashlight";
+this addPrimaryWeaponItem "acc_pointer_IR";
+
+
+this addPrimaryWeaponItem "muzzle_snds_570";
+this addPrimaryWeaponItem "muzzle_snds_H";
+this addPrimaryWeaponItem "muzzle_snds_B";
+this addPrimaryWeaponItem "muzzle_snds_M";
+this addPrimaryWeaponItem "muzzle_snds_L";
+this addPrimaryWeaponItem "muzzle_snds_acp";
+
+
+
+this addItemToBackpack "Chemlight_blue";
+this addItemToBackpack "Chemlight_green";
+this addItemToBackpack "Chemlight_red";
+this addItemToBackpack "Chemlight_yellow";
+this addItemToBackpack "MiniGrenade";
+this addItemToBackpack "HandGrenade";
+this addItemToBackpack "SmokeShellBlue";
+this addItemToBackpack "SmokeShellGreen";
+this addItemToBackpack "SmokeShellOrange";
+this addItemToBackpack "SmokeShellPurple";
+this addItemToBackpack "SmokeShellRed";
+this addItemToBackpack "SmokeShell";
+this addItemToBackpack "SmokeShellYellow";
+
+
+this addItemToBackpack "APERSBoundingMine_Range_Mag";
+this addItemToBackpack "APERSMine_Range_Mag";
+this addItemToBackpack "APERSMineDispenser_Mag";
+this addItemToBackpack "APERSTripMine_Wire_Mag";
+this addItemToBackpack "ATMine_Range_Mag";
+this addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag";
+this addItemToBackpack "DemoCharge_Remote_Mag";
+this addItemToBackpack "SatchelCharge_Remote_Mag";
+this addItemToBackpack "IEDLandBig_Remote_Mag";
+this addItemToBackpack "IEDUrbanBig_Remote_Mag";
+this addItemToBackpack "SLAMDirectionalMine_Wire_Mag";
+this addItemToBackpack "IEDLandSmall_Remote_Mag";
+this addItemToBackpack "IEDUrbanSmall_Remote_Mag";
+this addItemToBackpack "TrainingMine_Mag";
+
+
+this addItemToBackpack "FirstAidKit";
+this addItemToBackpack "Medikit";
+this addItemToBackpack "MineDetector";
+this addItemToBackpack "ToolKit";
+
+
 //---------------------------------------------------------------------------------------------------------------------
 //Zeus
 
@@ -752,11 +848,47 @@ this addBackpack "O_Static_Designator_02_weapon_F";
 
 this addWeapon "Laserdesignator_02";
 
+this addPrimaryWeaponItem "bipod_02_F_blk";
+this addPrimaryWeaponItem "bipod_02_F_hex";
+this addPrimaryWeaponItem "bipod_02_F_tan";
+
 
 //NATO
 this addBackpack "B_Static_Designator_01_weapon_F";
 
 this addWeapon "Laserdesignator_03";
+
+this addPrimaryWeaponItem "bipod_01_F_blk";
+this addPrimaryWeaponItem "bipod_01_F_mtp";
+this addPrimaryWeaponItem "bipod_01_F_snd";
+this addPrimaryWeaponItem "bipod_01_F_khk";
+
+
+//AAF
+this addPrimaryWeaponItem "bipod_03_F_blk";
+this addPrimaryWeaponItem "bipod_03_F_oli";
+
+
+
+
+
+this addPrimaryWeaponItem "optic_AMS";
+this addPrimaryWeaponItem "optic_AMS_khk";
+this addPrimaryWeaponItem "optic_AMS_snd";
+this addPrimaryWeaponItem "optic_KHS_blk";
+this addPrimaryWeaponItem "optic_KHS_hex";
+this addPrimaryWeaponItem "optic_KHS_old";
+this addPrimaryWeaponItem "optic_KHS_tan";
+
+
+this addPrimaryWeaponItem "muzzle_snds_93mmg";
+this addPrimaryWeaponItem "muzzle_snds_93mmg_tan";
+this addPrimaryWeaponItem "muzzle_snds_338_black";
+this addPrimaryWeaponItem "muzzle_snds_338_green";
+this addPrimaryWeaponItem "muzzle_snds_338_sand";
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -1075,6 +1207,39 @@ this addGoggles "G_Balaclava_TI_G_blk_F";
 
 
 
+this addPrimaryWeaponItem "optic_Arco_blk_F";
+this addPrimaryWeaponItem "optic_Arco_ghex_F";
+this addPrimaryWeaponItem "optic_DMS_ghex_F";
+this addPrimaryWeaponItem "optic_ERCO_blk_F";
+this addPrimaryWeaponItem "optic_ERCO_khk_F";
+this addPrimaryWeaponItem "optic_ERCO_snd_F";
+this addPrimaryWeaponItem "optic_LRPS_ghex_F";
+this addPrimaryWeaponItem "optic_LRPS_tna_F";
+this addPrimaryWeaponItem "optic_Holosight_blk_F";
+this addPrimaryWeaponItem "optic_Holosight_khk_F";
+this addPrimaryWeaponItem "optic_Holosight_smg_blk_F";
+this addPrimaryWeaponItem "optic_Holosight_smg_khk_F";
+this addPrimaryWeaponItem "optic_SOS_khk_F";
+this addPrimaryWeaponItem "optic_Hamr_khk_F";
+
+
+
+//APEX
+this addPrimaryWeaponItem "muzzle_snds_H_khk_F";
+this addPrimaryWeaponItem "muzzle_snds_H_snd_F";
+this addPrimaryWeaponItem "muzzle_snds_65_TI_blk_F";
+this addPrimaryWeaponItem "muzzle_snds_65_TI_ghex_F";
+this addPrimaryWeaponItem "muzzle_snds_65_TI_hex_F";
+this addPrimaryWeaponItem "muzzle_snds_B_khk_F";
+this addPrimaryWeaponItem "muzzle_snds_B_snd_F";
+this addPrimaryWeaponItem "muzzle_snds_m_khk_F";
+this addPrimaryWeaponItem "muzzle_snds_m_snd_F";
+this addPrimaryWeaponItem "muzzle_snds_58_blk_F";
+this addPrimaryWeaponItem "muzzle_snds_58_ghex_F";
+this addPrimaryWeaponItem "muzzle_snds_58_hex_F";
+
+
+
 //---------------------------------------------------------------------------------------------------------------------
 //Contact
 
@@ -1218,6 +1383,10 @@ this addGoggles "G_AirPurifyingRespirator_02_sand_F";
 
 this linkItem "O_NVGoggles_grn_F";
 
+
+this addPrimaryWeaponItem "bipod_02_F_arid";
+this addPrimaryWeaponItem "bipod_02_F_lush";
+
 //LDF
 this forceAddUniform "U_I_E_CBRN_Suit_01_EAF_F";
 this forceAddUniform "U_I_E_Uniform_01_officer_F";
@@ -1328,6 +1497,24 @@ this addGoggles "G_RegulatorMask_F";
 
 this linkItem "ChemicalDetector_01_watch_F";
 this linkItem "ChemicalDetector_01_watch_broken_F";
+
+
+this addPrimaryWeaponItem "optic_Arco_arid_F";
+this addPrimaryWeaponItem "optic_Arco_lush_F";
+this addPrimaryWeaponItem "optic_Arco_AK_arid_F";
+this addPrimaryWeaponItem "optic_Arco_AK_blk_F";
+this addPrimaryWeaponItem "optic_Arco_AK_lush_F";
+this addPrimaryWeaponItem "optic_DMS_weathered_F";
+this addPrimaryWeaponItem "optic_DMS_weathered_Kir_F";
+this addPrimaryWeaponItem "optic_Holosight_arid_F";
+this addPrimaryWeaponItem "optic_Holosight_lush_F";
+
+
+//Contact
+this addPrimaryWeaponItem "muzzle_tma_65";
+this addPrimaryWeaponItem "muzzle_snds_B_arid_F";
+this addPrimaryWeaponItem "muzzle_snds_B_lush_F";
+
 
 
 
