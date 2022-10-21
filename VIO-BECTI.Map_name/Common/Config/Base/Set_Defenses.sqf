@@ -1,4 +1,4 @@
-private ["_categories", "_classes", "_defenses", "_headers", "_placements", "_prices", "_side", "_stored"];
+private ["_categories", "_classes", "_defenses", "_headers", "_placements", "_prices", "_side", "_tiers","_stored"];
 
 _side = _this select 0;
 _headers = _this select 1;
@@ -6,6 +6,7 @@ _classes = _this select 2;
 _prices = _this select 3;
 _placements = _this select 4;
 _categories = _this select 5;
+_tiers = _this select 6;
 
 _defenses = [];
 for '_i' from 0 to (count _headers) -1 do {
@@ -29,7 +30,8 @@ for '_i' from 0 to (count _headers) -1 do {
 			if (CTI_DEBUG) then {1} else {_prices select _i},
 			_categories select _i,
 			_placements select _i,
-			_special
+			_special,
+			_tiers select _i
 		];
 	
 		missionNamespace setVariable [format["CTI_%1_%2",_side,_classname], _stored];

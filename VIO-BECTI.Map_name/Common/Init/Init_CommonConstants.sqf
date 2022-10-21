@@ -255,6 +255,7 @@ CTI_UPGRADE_AIR_CM = 9;
 CTI_UPGRADE_TOWNS = 10;
 CTI_UPGRADE_SUPPLY = 11;
 CTI_UPGRADE_GEAR = 12;
+CTI_UPGRADE_DEFENSE = 13;
 
 with missionNamespace do {	
 	//Global max levels and multiplicators
@@ -271,8 +272,12 @@ with missionNamespace do {
 	
 	//setup the default values for the tech tree
 	//It gets changed in the factory.sqf and used in Upgrades.sqf
-	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", west], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
-	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", east], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+	//missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", west], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+	//missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", east], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+	{
+		// Current result is saved in variable _x
+		missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _x], [0,0,0,0,0,1,1,1,1,1,3,4,0,0]];
+	} forEach [west,east];
 };
 
 //-----------------------------------------------------------------------------------------------------------------------//
