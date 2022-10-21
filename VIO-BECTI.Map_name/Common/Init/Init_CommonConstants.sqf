@@ -295,9 +295,6 @@ CTI_REQUEST_FOB_DISMANTLE = 1;
 
 //--- Requests: Parameters
 CTI_REQUESTS_TIMEOUT = 300; //---160 A request will vanish after x seconds if left unattended
-with missionNamespace do {
-	if (isNil 'CTI_FOB_BUILD_EVERYONE') then {CTI_FOB_BUILD_EVERYONE = 1};
-};
 //-----------------------------------------------------------------------------------------------------------------------//
 
 

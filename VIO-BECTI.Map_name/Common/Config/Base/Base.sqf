@@ -231,7 +231,7 @@ _placements = [];
 _categories = [];
 
 //FOB
-_headers pushBack			([_side,"Land_Medevac_house_V1_F","Land_Medevac_house_V1_ruins_F",false] call CTI_CO_FNC_SetFOBheader);
+_headers pushBack 			["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"],["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0))}]]];
 _classes pushBack 			"Land_Medevac_house_V1_F";
 _prices pushBack 			([CTI_ECONOMY_PRIZE_WHEELED,1,true,2.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 _placements pushBack 		[0, 15];
