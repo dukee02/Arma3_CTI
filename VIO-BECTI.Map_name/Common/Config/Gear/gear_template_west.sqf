@@ -1,38 +1,54 @@
-private ["_faction", "_side"];
+private ["_faction", "_side", "_ownedDLCs", "_weapon", "_weapon_ammo", "_uniform", "_vest", "_helmet"/*, "_grenades", "_healing"*/];
 
 _side = _this;
-_faction = "West";
+_faction = "East";
+_ownedDLCs = getDLCs 1;
+
+_weapon = "";
+_weapon_ammo = "";
+_uniform = "";
+_vest = "";
+_helmet = "";
+_grenades = "";
+_healing = "";
 
 //--- Templates (Those lines can be generated in the RPT on purchase by uncommenting the diag_log in Events_UI_GearMenu.sqf >> "onPurchase").
 _t = [];
 
 // Vanilla templates
+//default loadout
+_weapon = ["arifle_Mk20_plain_F"];
+_weapon_ammo = ["30Rnd_556x45_Stanag"];
+_uniform = ["U_B_CombatUniform_mcam"];
+_vest = ["V_BandollierB_rgr"];
+_helmet = ["H_HelmetB_light"];
+//_grenades = ["HandGrenade"];
+//_healing = ["firstaidkit"];
+
 if(CTI_CAMO_ACTIVATION == 0) then {
-	_t = _t 	+ [[[["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Green"]],["",[],[""]],["",[],[""]]],[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],["V_BandollierB_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["",[]]],["H_HelmetB_light",""],[["", "binocular"],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
+	if(395180 in _ownedDLCs) then {		//APEX
+		_weapon pushBack "arifle_SPAR_01_blk_F";
+		_weapon_ammo pushBack "30Rnd_556x45_Stanag";
+		_uniform pushBack "U_B_CombatUniform_mcam";
+		_vest pushBack "V_BandollierB_cbr";
+		_helmet pushBack "H_HelmetB_light";
+	};
 } else {
-	_t = _t 	+ [[[["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Green"]],["",[],[""]],["",[],[""]]],[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],["V_BandollierB_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],["",[]]],["H_HelmetB_Light_tna_F",""],[["", "binocular"],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
+	if(395180 in _ownedDLCs) then {		//APEX
+		_weapon pushBack "arifle_SPAR_01_blk_F";
+		_weapon_ammo pushBack "30Rnd_556x45_Stanag";
+		_uniform pushBack "U_B_T_Soldier_F";
+		_vest pushBack "V_BandollierB_rgr";
+		_helmet pushBack "H_HelmetB_Light_tna_F";
+	};
 };
 
-/*
-_t = _t 	+ [
-	[
-		[
-			["arifle_SPAR_01_blk_F",[],["30Rnd_556x45_Stanag_Tracer_Yellow"]],
-			["",[],[""]],
-			["",[],[""]]
-		],
-		[
-			["U_B_T_Soldier_F",["firstaidkit","firstaidkit"]],
-			["V_BandollierB_rgr",["MiniGrenade","HandGrenade"]],
-			["B_AssaultPack_mcamo",["30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow","30Rnd_556x45_Stanag_Tracer_Yellow"]]
-		],
-		["H_HelmetB_light",""],
-		[
-			["", "binocular"],
-			["itemmap","","itemradio","ItemCompass","ItemWatch"]
-		]
-	]
-];
-*/
+for [{ _i = 0 }, { _i < count _weapon }, { _i = _i + 1 }] do {
+	_t = _t 	+ [[[[(_weapon select _i),[],[(_weapon_ammo select _i)]],["",[],[""]],["",[],[""]]],
+					[[(_uniform select _i),["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+					[(_vest select _i), [(_weapon_ammo select _i),(_weapon_ammo select _i),(_weapon_ammo select _i),(_weapon_ammo select _i)]],
+					["", []]],[(_helmet select _i),""],
+					[["", "binocular"],["itemmap","","itemradio","ItemCompass","ItemWatch"]]]];
+};
 
 [_faction, _t] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Template_Set.sqf"; 	

@@ -48,6 +48,8 @@ class CfgPylonManager
 rearmObjects[] = {
 	"RU_WarfareBVehicleServicePoint",		//Ammo building
 	"Land_Cargo_House_V1_F",				//Ammo building
+	"Land_Pod_Heli_Transport_04_ammo_F",
+	"B_Slingload_01_Ammo_F",
 	
 	"B_Truck_01_ammo_F",
 	"B_T_Truck_01_ammo_F",
