@@ -1,17 +1,17 @@
 
 
-//4-five .45 ACP
-this addWeapon "hgun_Pistol_heavy_01_F";
+//4-five .45 ACP		BLUFOR
+/*this addWeapon "hgun_Pistol_heavy_01_F";
 this addHandgunItem "11Rnd_45ACP_Mag";
+*/
+
+//ACP-C2 .45 ACP		IND
+/*this addWeapon "hgun_ACPC2_F";
+this addHandgunItem "9Rnd_45ACP_Mag";*/
 
 
-//ACP-C2 .45 ACP
-this addWeapon "hgun_ACPC2_F";
-this addHandgunItem "9Rnd_45ACP_Mag";
-
-
-//P07 9mm 
-this addWeapon "hgun_P07_F";
+//P07 9mm  					BLUFOR
+/*this addWeapon "hgun_P07_F";
 this addHandgunItem "16Rnd_9x21_Mag";
 this addItemToBackpack "16Rnd_9x21_red_Mag";
 this addItemToBackpack "16Rnd_9x21_green_Mag";
@@ -20,10 +20,10 @@ this addItemToBackpack "30Rnd_9x21_Mag";
 this addItemToBackpack "30Rnd_9x21_Red_Mag";
 this addItemToBackpack "30Rnd_9x21_Yellow_Mag";
 this addItemToBackpack "30Rnd_9x21_Green_Mag";
+*/
 
-
-//Rook-40 9mm 
-this addWeapon "hgun_Rook40_F";
+//Rook-40 9mm 				OPFOR
+/*this addWeapon "hgun_Rook40_F";
 this addHandgunItem "16Rnd_9x21_Mag";
 this addItemToBackpack "16Rnd_9x21_red_Mag";
 this addItemToBackpack "16Rnd_9x21_green_Mag";
@@ -31,16 +31,16 @@ this addItemToBackpack "16Rnd_9x21_yellow_Mag";
 this addItemToBackpack "30Rnd_9x21_Mag";
 this addItemToBackpack "30Rnd_9x21_Red_Mag";
 this addItemToBackpack "30Rnd_9x21_Yellow_Mag";
-this addItemToBackpack "30Rnd_9x21_Green_Mag";
+this addItemToBackpack "30Rnd_9x21_Green_Mag";*/
 
 
-//Zubr .45 ACP
-this addWeapon "hgun_Pistol_heavy_02_F";
-this addHandgunItem "6Rnd_45ACP_Cylinder";
+//Zubr .45 ACP				OPFOR
+/*this addWeapon "hgun_Pistol_heavy_02_F";
+this addHandgunItem "6Rnd_45ACP_Cylinder";*/
 
 
-//PDW2000 9mm
-this addWeapon "hgun_PDW2000_F";
+//PDW2000 9mm				IND
+/*this addWeapon "hgun_PDW2000_F";
 this addPrimaryWeaponItem "30Rnd_9x21_Mag";
 this addItemToBackpack "30Rnd_9x21_Red_Mag";
 this addItemToBackpack "30Rnd_9x21_Yellow_Mag";
@@ -48,11 +48,11 @@ this addItemToBackpack "30Rnd_9x21_Green_Mag";
 this addItemToBackpack "16Rnd_9x21_Mag";
 this addItemToBackpack "16Rnd_9x21_red_Mag";
 this addItemToBackpack "16Rnd_9x21_green_Mag";
-this addItemToBackpack "16Rnd_9x21_yellow_Mag";
+this addItemToBackpack "16Rnd_9x21_yellow_Mag";*/
 
 
-//Sting 9mm
-this addWeapon "SMG_02_F";
+//Sting 9mm				OPFOR
+/*this addWeapon "SMG_02_F";
 this addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
 this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Red";
 this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Yellow";
@@ -60,21 +60,21 @@ this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Green";
 this addItemToBackpack "30Rnd_9x21_Mag";
 this addItemToBackpack "30Rnd_9x21_Red_Mag";
 this addItemToBackpack "30Rnd_9x21_Yellow_Mag";
-this addItemToBackpack "30Rnd_9x21_Green_Mag";
+this addItemToBackpack "30Rnd_9x21_Green_Mag";*/
 
 
-//Vermin SMG .45 ACP
-this addWeapon "SMG_01_F";
+//Vermin SMG .45 ACP					BLUFOR
+/*this addWeapon "SMG_01_F";
 this addPrimaryWeaponItem "30Rnd_45ACP_Mag_SMG_01";
 this addItemToBackpack "30Rnd_45ACP_Mag_SMG_01_Tracer_Green";
 this addItemToBackpack "30Rnd_45ACP_Mag_SMG_01_Tracer_Red";
 this addItemToBackpack "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow";
+*/
 
 
 
-
-//MK20 5.56mm
-this addWeapon "arifle_Mk20_plain_F";
+//MK20 5.56mm			//BLUFOR low tier
+/*this addWeapon "arifle_Mk20_plain_F";
 this addWeapon "arifle_Mk20_F";
 this addWeapon "arifle_Mk20_GL_plain_F";
 this addWeapon "arifle_Mk20_GL_F";
@@ -92,11 +92,11 @@ this addItemToBackpack "30Rnd_556x45_Stanag_Sand_red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Green";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Yellow";
+*/
 
-
-//SDAR 5.56 (Divers weapon)
-this addWeapon "arifle_SDAR_F";
-this addPrimaryWeaponItem "20Rnd_556x45_UW_mag";
+//SDAR 5.56 (Divers weapon)					BLUFOR
+/*this addWeapon "arifle_SDAR_F";
+this addPrimaryWeaponItem "20Rnd_556x45_UW_mag";*/
 /*this addItemToBackpack "30Rnd_556x45_Stanag";
 this addItemToBackpack "30Rnd_556x45_Stanag_Tracer_Red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Tracer_Green";
@@ -110,8 +110,8 @@ this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Green";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Yellow";*/
 
-//TRG-20/21 5.56mm
-this addWeapon "arifle_TRG20_F";
+//TRG-20/21 5.56mm		OPFOR low tier
+/*this addWeapon "arifle_TRG20_F";
 this addWeapon "arifle_TRG21_F";
 this addWeapon "arifle_TRG21_GL_F";
 this addPrimaryWeaponItem "30Rnd_556x45_Stanag";
@@ -125,14 +125,14 @@ this addItemToBackpack "30Rnd_556x45_Stanag_Sand_green";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Green";
-this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Yellow";
+this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Yellow";*/
 
 
 
 
 
 //ADR-97 5.7mm
-this addWeapon "SMG_03_black";
+/*this addWeapon "SMG_03_black";
 this addWeapon "SMG_03_camo";
 this addWeapon "SMG_03_hex";
 this addWeapon "SMG_03_khaki";
@@ -148,28 +148,28 @@ this addWeapon "SMG_03C_TR_black";
 this addWeapon "SMG_03C_TR_camo";
 this addWeapon "SMG_03C_TR_hex";
 this addWeapon "SMG_03C_TR_khaki";
-this addPrimaryWeaponItem "50Rnd_570x28_SMG_03";
+this addPrimaryWeaponItem "50Rnd_570x28_SMG_03";*/
 
 
-//Katiba 6.5mm
-this addWeapon "arifle_Katiba_F";
+//Katiba 6.5mm				OPFOR
+/*this addWeapon "arifle_Katiba_F";
 this addWeapon "arifle_Katiba_C_F";
 this addWeapon "arifle_Katiba_GL_F";
 this addPrimaryWeaponItem "30Rnd_65x39_caseless_green";
-this addItemToBackpack "30Rnd_65x39_caseless_green_mag_Tracer";
+this addItemToBackpack "30Rnd_65x39_caseless_green_mag_Tracer";*/
 
 
 
-//Mk200 6.5mm LMG
-this addWeapon "LMG_Mk200_F";
+//Mk200 6.5mm LMG			BLUFOR
+/*this addWeapon "LMG_Mk200_F";
 this addPrimaryWeaponItem "200Rnd_65x39_cased_Box";
 this addItemToBackpack "200Rnd_65x39_cased_Box_Tracer";
 this addItemToBackpack "200Rnd_65x39_cased_Box_Red";
 this addItemToBackpack "200Rnd_65x39_cased_Box_Tracer_Red";
+*/
 
-
-//MX 6.5mm
-this addWeapon "arifle_MX_GL_F";
+//MX 6.5mm					BLUFOR
+/*this addWeapon "arifle_MX_GL_F";
 this addWeapon "arifle_MX_Black_F";
 this addWeapon "arifle_MX_F";
 this addWeapon "arifle_MXC_Black_F";
@@ -190,64 +190,65 @@ this addItemToBackpack "100Rnd_65x39_caseless_black_mag";
 this addItemToBackpack "100Rnd_65x39_caseless_mag_Tracer";
 this addItemToBackpack "100Rnd_65x39_caseless_khaki_mag_tracer";
 this addItemToBackpack "100Rnd_65x39_caseless_black_mag_tracer";
+*/
 
-
-//Mk18 ABR 7.62mm
-this addWeapon "srifle_EBR_F";
+//Mk18 ABR 7.62mm				BLUFOR
+/*this addWeapon "srifle_EBR_F";
 this addPrimaryWeaponItem "20Rnd_762x51_Mag";
+*/
 
-//Rahim 7.62mm
-this addWeapon "srifle_DMR_01_F";
-this addPrimaryWeaponItem "10Rnd_762x54_Mag";
+//Rahim 7.62mm					OPFOR
+/*this addWeapon "srifle_DMR_01_F";
+this addPrimaryWeaponItem "10Rnd_762x54_Mag";*/
 
-//Zafir LMG 7.62mm
-this addWeapon "LMG_Zafir_F";
+//Zafir LMG 7.62mm				OPFOR
+/*this addWeapon "LMG_Zafir_F";
 this addPrimaryWeaponItem "150Rnd_762x54_Box";
-this addItemToBackpack "150Rnd_762x54_Box_Tracer";
+this addItemToBackpack "150Rnd_762x54_Box_Tracer";*/
 
 
 //Lynx 12.7mm
-this addWeapon "srifle_GM6_F";
+/*this addWeapon "srifle_GM6_F";
 this addWeapon "srifle_GM6_camo_F";
 this addPrimaryWeaponItem "5Rnd_127x108_Mag";
-this addItemToBackpack "5Rnd_127x108_APDS_Mag";
+this addItemToBackpack "5Rnd_127x108_APDS_Mag";*/
 
 
-M320 LRR .408 (12.7mm NATO)
-this addWeapon "srifle_LRR_F";
+//M320 LRR .408 (12.7mm NATO)			BLUFOR
+/*this addWeapon "srifle_LRR_F";
 this addWeapon "srifle_LRR_camo_F";
-this addPrimaryWeaponItem "7Rnd_408_Mag";
+this addPrimaryWeaponItem "7Rnd_408_Mag";*/
 
 
-//PCML
-this addWeapon "launch_NLAW_F";
+//PCML					BLUFOR
+/*this addWeapon "launch_NLAW_F";
 this addSecondaryWeaponItem "NLAW_F";
+*/
 
-
-//RPG-42 Alamut
-this addWeapon "launch_RPG32_F";
+//RPG-42 Alamut			OPFOR
+/*this addWeapon "launch_RPG32_F";
 this addSecondaryWeaponItem "RPG32_F";
-this addItemToBackpack "RPG32_HE_F";
+this addItemToBackpack "RPG32_HE_F";*/
 
 
 //Titan MPRL
-this addWeapon "launch_I_Titan_F";
-this addWeapon "launch_O_Titan_F";
-this addWeapon "launch_B_Titan_F";
-this addSecondaryWeaponItem "Titan_AA";
+//this addWeapon "launch_I_Titan_F";
+//this addWeapon "launch_O_Titan_F";
+//this addWeapon "launch_B_Titan_F";
+//this addSecondaryWeaponItem "Titan_AA";
 
 
 //Titan MPRL Compact
-this addWeapon "launch_O_Titan_short_F";
-this addWeapon "launch_I_Titan_short_F";
-this addWeapon "launch_B_Titan_short_F";
-this addSecondaryWeaponItem "Titan_AT";
-this addItemToBackpack "Titan_AP";
+//this addWeapon "launch_O_Titan_short_F";
+//this addWeapon "launch_I_Titan_short_F";
+//this addWeapon "launch_B_Titan_short_F";
+//this addSecondaryWeaponItem "Titan_AT";
+//this addItemToBackpack "Titan_AP";
 
 
 
 //NATO
-this forceAddUniform "U_B_CombatUniform_mcam";
+/*this forceAddUniform "U_B_CombatUniform_mcam";
 this forceAddUniform "U_B_CombatUniform_mcam_tshirt";
 this forceAddUniform "U_B_FullGhillie_ard";
 this forceAddUniform "U_B_FullGhillie_lsh";
@@ -259,8 +260,13 @@ this forceAddUniform "U_B_CombatUniform_mcam_vest";
 this forceAddUniform "U_B_survival_uniform";
 this forceAddUniform "U_B_Protagonist_VR";
 this forceAddUniform "U_B_Wetsuit";
-this forceAddUniform "U_B_CombatUniform_mcam_worn";
+this forceAddUniform "U_B_CombatUniform_mcam_worn";*/
 
+/*
+this addVest "V_PlateCarrier1_blk";
+this addVest "V_PlateCarrier2_blk";
+this addVest "V_PlateCarrier1_rgr";
+this addVest "V_PlateCarrier2_rgr";
 this addVest "V_PlateCarrierGL_blk";
 this addVest "V_PlateCarrierGL_rgr";
 this addVest "V_PlateCarrierGL_mtp";
@@ -268,9 +274,9 @@ this addVest "V_PlateCarrierSpec_blk";
 this addVest "V_PlateCarrierSpec_rgr";
 this addVest "V_PlateCarrierSpec_mtp";
 this addVest "V_RebreatherB";
-this addVest "V_PlateCarrier_Kerry";
+this addVest "V_PlateCarrier_Kerry";*/
 
-this addBackpack "B_AssaultPack_mcamo";
+/*this addBackpack "B_AssaultPack_mcamo";
 this addBackpack "B_AssaultPack_mcamo_Ammo";			//looks like a Carryall ???
 this addBackpack "B_Carryall_mcamo";
 this addBackpack "B_Kitbag_mcamo";
@@ -289,9 +295,9 @@ this addBackpack "B_HMG_01_support_high_F";
 this addBackpack "B_HMG_01_support_F";
 this addBackpack "B_AA_01_weapon_F";
 this addBackpack "B_AT_01_weapon_F";
-this addBackpack "B_UAV_01_backpack_F";
+this addBackpack "B_UAV_01_backpack_F";*/
 
-this addHeadgear "H_Bandanna_mcamo";
+/*this addHeadgear "H_Bandanna_mcamo";
 this addHeadgear "H_Bandanna_camo";
 this addHeadgear "H_Beret_02";
 this addHeadgear "H_Beret_Colonel";
@@ -321,17 +327,19 @@ this addHeadgear "H_HelmetB_light_grass";
 this addHeadgear "H_HelmetB_light_sand";
 this addHeadgear "H_HelmetB_light_snakeskin";
 this addHeadgear "H_MilCap_mcamo";
-this addHeadgear "H_PilotHelmetFighter_B";
+this addHeadgear "H_PilotHelmetFighter_B";*/
 
-this addGoggles "G_B_Diving";
+//this addGoggles "G_B_Diving";
 
-this linkItem "NVGoggles";
+//this linkItem "NVGoggles";
 
-this linkItem "B_UavTerminal";
+//this linkItem "B_UavTerminal";
+
+//this addItemToBackpack "B_IR_Grenade";
 
 
 //CSAT
-this forceAddUniform "U_O_CombatUniform_ocamo";
+/*this forceAddUniform "U_O_CombatUniform_ocamo";
 this forceAddUniform "U_O_CombatUniform_oucamo";
 this forceAddUniform "U_O_FullGhillie_ard";
 this forceAddUniform "U_O_FullGhillie_lsh";
@@ -341,11 +349,15 @@ this forceAddUniform "U_O_OfficerUniform_ocamo";
 this forceAddUniform "U_O_PilotCoveralls";
 this forceAddUniform "U_O_SpecopsUniform_ocamo";
 this forceAddUniform "U_O_Protagonist_VR";
-this forceAddUniform "U_O_Wetsuit";
+this forceAddUniform "U_O_Wetsuit";*/
+/*
+this addVest "V_HarnessOGL_brn";
+this addVest "V_HarnessOGL_gry";
+this addVest "V_HarnessO_brn";
+this addVest "V_HarnessO_gry";
+this addVest "V_RebreatherIR";*/
 
-this addVest "V_RebreatherIR";
-
-this addBackpack "B_AssaultPack_ocamo";
+/*this addBackpack "B_AssaultPack_ocamo";
 this addBackpack "B_Carryall_ocamo";
 this addBackpack "B_Carryall_oucamo";
 this addBackpack "B_FieldPack_ocamo";
@@ -364,9 +376,9 @@ this addBackpack "O_HMG_01_support_high_F";
 this addBackpack "O_HMG_01_support_F";
 this addBackpack "O_AA_01_weapon_F";
 this addBackpack "O_AT_01_weapon_F";
-this addBackpack "O_UAV_01_backpack_F";
+this addBackpack "O_UAV_01_backpack_F";*/
 
-this addHeadgear "H_HelmetSpecO_blk";
+/*this addHeadgear "H_HelmetSpecO_blk";
 this addHeadgear "H_HelmetSpecO_ocamo";
 this addHeadgear "H_Cap_brn_SPECOPS";
 this addHeadgear "H_HelmetCrew_O";
@@ -377,17 +389,17 @@ this addHeadgear "H_PilotHelmetHeli_O";
 this addHeadgear "H_MilCap_ocamo";
 this addHeadgear "H_PilotHelmetFighter_O";
 this addHeadgear "H_HelmetO_ocamo";
-this addHeadgear "H_HelmetO_oucamo";
+this addHeadgear "H_HelmetO_oucamo";*/
 
-this addGoggles "G_O_Diving";
+//this addGoggles "G_O_Diving";
 
-this linkItem "NVGoggles_OPFOR";
+//this linkItem "NVGoggles_OPFOR";
 
-this linkItem "O_UavTerminal";
+//this linkItem "O_UavTerminal";
 
 
 //AAF
-this forceAddUniform "U_I_CombatUniform";
+/*this forceAddUniform "U_I_CombatUniform";
 this forceAddUniform "U_I_OfficerUniform";
 this forceAddUniform "U_I_CombatUniform_shortsleeve";
 this forceAddUniform "U_I_FullGhillie_ard";
@@ -397,16 +409,16 @@ this forceAddUniform "U_I_GhillieSuit";
 this forceAddUniform "U_I_HeliPilotCoveralls";
 this forceAddUniform "U_I_pilotCoveralls";
 this forceAddUniform "U_I_Protagonist_VR";
-this forceAddUniform "U_I_Wetsuit";
+this forceAddUniform "U_I_Wetsuit";*/
 
-this addVest "V_PlateCarrierIAGL_dgtl";
+/*this addVest "V_PlateCarrierIAGL_dgtl";
 this addVest "V_PlateCarrierIA1_dgtl";
 this addVest "V_PlateCarrierIA2_dgtl";
-this addVest "V_RebreatherIA";
+this addVest "V_RebreatherIA";*/
 
-this addBackpack "B_AssaultPack_dgtl";
+//this addBackpack "B_AssaultPack_dgtl";
 
-this addBackpack "I_GMG_01_A_weapon_F";
+/*this addBackpack "I_GMG_01_A_weapon_F";
 this addBackpack "I_HMG_01_A_weapon_F";
 this addBackpack "I_HMG_02_high_weapon_F";
 this addBackpack "I_HMG_02_weapon_F";
@@ -422,36 +434,36 @@ this addBackpack "I_HMG_02_support_high_F";
 this addBackpack "I_HMG_02_support_F";
 this addBackpack "I_AA_01_weapon_F";
 this addBackpack "I_AT_01_weapon_F";
-this addBackpack "I_UAV_01_backpack_F";
+this addBackpack "I_UAV_01_backpack_F";*/
 
-this addHeadgear "H_Booniehat_dgtl";
+/*this addHeadgear "H_Booniehat_dgtl";
 this addHeadgear "H_Cap_blk_Raven";
 this addHeadgear "H_HelmetCrew_I";
 this addHeadgear "H_CrewHelmetHeli_I";
 this addHeadgear "H_PilotHelmetHeli_I";
 this addHeadgear "H_MilCap_dgtl";
 this addHeadgear "H_HelmetIA";
-this addHeadgear "H_PilotHelmetFighter_I";
+this addHeadgear "H_PilotHelmetFighter_I";*/
 
-this linkItem "NVGoggles_INDEP";
+//this linkItem "NVGoggles_INDEP";
 
-this linkItem "I_UavTerminal";
+//this linkItem "I_UavTerminal";
 
 //CTRG
-this forceAddUniform "U_B_CTRG_1";
+/*this forceAddUniform "U_B_CTRG_1";
 this forceAddUniform "U_B_CTRG_3";
-this forceAddUniform "U_B_CTRG_2";
+this forceAddUniform "U_B_CTRG_2";*/
 
-this addVest "V_PlateCarrierL_CTRG";
-this addVest "V_PlateCarrierH_CTRG";
+/*this addVest "V_PlateCarrierL_CTRG";
+this addVest "V_PlateCarrierH_CTRG";*/
 
-this addHeadgear "H_Cap_khaki_specops_UK";
+//this addHeadgear "H_Cap_khaki_specops_UK";
 
-this addGoggles "G_I_Diving";
+//this addGoggles "G_I_Diving";
 
 
 //GUER
-this forceAddUniform "U_I_G_resistanceLeader_F";
+/*this forceAddUniform "U_I_G_resistanceLeader_F";
 this forceAddUniform "U_BG_Guerrilla_6_1";
 this forceAddUniform "U_BG_Guerilla1_1";
 this forceAddUniform "U_BG_Guerilla2_2";
@@ -459,18 +471,26 @@ this forceAddUniform "U_BG_Guerilla2_1";
 this forceAddUniform "U_BG_Guerilla2_3";
 this forceAddUniform "U_BG_Guerilla3_1";
 this forceAddUniform "U_BG_leader";
-this forceAddUniform "U_I_G_Story_Protagonist_F";
+this forceAddUniform "U_I_G_Story_Protagonist_F";*/
 
-this addVest "V_I_G_resistanceLeader_F";
+//this addVest "V_I_G_resistanceLeader_F";
 
-this addBackpack "I_G_HMG_02_high_weapon_F";
+/*this addBackpack "I_G_HMG_02_high_weapon_F";
 this addBackpack "I_G_HMG_02_weapon_F";
 this addBackpack "I_G_HMG_02_support_high_F";
 this addBackpack "I_C_HMG_02_support_F";
+this addBackpack "I_E_HMG_02_high_weapon_F";
+this addBackpack "I_C_HMG_02_high_weapon_F";
+this addBackpack "I_E_HMG_02_weapon_F";
+this addBackpack "I_C_HMG_02_weapon_F";
+this addBackpack "I_E_HMG_02_support_high_F";
+this addBackpack "I_C_HMG_02_support_high_F";
+this addBackpack "I_E_HMG_02_support_F";
+this addBackpack "I_G_HMG_02_support_F";*/
 
 
 //Others
-this forceAddUniform "U_C_Driver_1_black";
+/*this forceAddUniform "U_C_Driver_1_black";
 this forceAddUniform "U_C_Driver_1_blue";
 this forceAddUniform "U_C_Driver_2";
 this forceAddUniform "U_C_Driver_1";
@@ -480,21 +500,13 @@ this forceAddUniform "U_C_Driver_1_red";
 this forceAddUniform "U_C_Driver_3";
 this forceAddUniform "U_C_Driver_4";
 this forceAddUniform "U_C_Driver_1_white";
-this forceAddUniform "U_C_Driver_1_yellow";
+this forceAddUniform "U_C_Driver_1_yellow";*/
 
-this addVest "V_PlateCarrier1_blk";
-this addVest "V_PlateCarrier1_rgr";
-this addVest "V_PlateCarrier2_blk";
-this addVest "V_PlateCarrier2_rgr";
-this addVest "V_Chestrig_blk";
+/*this addVest "V_Chestrig_blk";
 this addVest "V_Chestrig_rgr";
 this addVest "V_Chestrig_khk";
 this addVest "V_Chestrig_oli";
 this addVest "V_PlateCarrierIAGL_oli";
-this addVest "V_HarnessOGL_brn";
-this addVest "V_HarnessOGL_gry";
-this addVest "V_HarnessO_brn";
-this addVest "V_HarnessO_gry";
 this addVest "V_Rangemaster_belt";
 this addVest "V_TacVestIR_blk";
 this addVest "V_BandollierB_blk";
@@ -506,21 +518,11 @@ this addVest "V_TacVest_blk";
 this addVest "V_TacVest_brn";
 this addVest "V_TacVest_camo";
 this addVest "V_TacVest_khk";
-this addVest "V_TacVest_oli";
-this addVest "V_TacVest_blk_POLICE";
-this addVest "V_Press_F";
+this addVest "V_TacVest_oli";*/
 
-this addBackpack "I_E_HMG_02_high_weapon_F";
-this addBackpack "I_C_HMG_02_high_weapon_F";
-this addBackpack "I_E_HMG_02_weapon_F";
-this addBackpack "I_C_HMG_02_weapon_F";
-this addBackpack "I_E_HMG_02_support_high_F";
-this addBackpack "I_C_HMG_02_support_high_F";
-this addBackpack "I_E_HMG_02_support_F";
-this addBackpack "I_G_HMG_02_support_F";
 
 //Civilian
-this forceAddUniform "U_C_Poloshirt_blue";
+/*this forceAddUniform "U_C_Poloshirt_blue";
 this forceAddUniform "U_C_Poloshirt_burgundy";
 this forceAddUniform "U_C_Poloshirt_redwhite";
 this forceAddUniform "U_C_Poloshirt_salmon";
@@ -535,9 +537,14 @@ this forceAddUniform "U_Rangemaster";
 this forceAddUniform "U_C_Scientist";
 this forceAddUniform "U_C_Protagonist_VR";
 this forceAddUniform "U_C_WorkerCoveralls";
-this forceAddUniform "U_C_Poor_1";
+this forceAddUniform "U_C_Poor_1";*/
 
-this addBackpack "B_AssaultPack_blk";
+/*this addVest "V_TacVest_blk_POLICE";
+this addVest "V_Press_F";*/
+
+
+//this addBackpack "B_Parachute";
+/*this addBackpack "B_AssaultPack_blk";
 this addBackpack "B_AssaultPack_cbr";
 this addBackpack "B_AssaultPack_rgr";
 this addBackpack "B_AssaultPack_khk";
@@ -555,27 +562,34 @@ this addBackpack "B_Kitbag_sgg";
 this addBackpack "B_Kitbag_tan";
 this addBackpack "B_TacticalPack_blk";
 this addBackpack "B_TacticalPack_rgr";
-this addBackpack "B_TacticalPack_oli";
+this addBackpack "B_TacticalPack_oli";*/
 
-this addHeadgear "H_Bandanna_gry";
+
+/*this addHeadgear "H_Bandanna_gry";
 this addHeadgear "H_Bandanna_blu";
 this addHeadgear "H_Bandanna_cbr";
 this addHeadgear "H_Bandanna_khk_hs";
 this addHeadgear "H_Bandanna_khk";
 this addHeadgear "H_Bandanna_sgg";
 this addHeadgear "H_Bandanna_sand";
-this addHeadgear "H_Bandanna_surfer";
-this addHeadgear "H_Bandanna_surfer_blk";
-this addHeadgear "H_Bandanna_surfer_grn";
-this addHeadgear "H_Watchcap_blk";
-this addHeadgear "H_Watchcap_cbr";
-this addHeadgear "H_Watchcap_camo";
-this addHeadgear "H_Watchcap_khk";
+this addHeadgear "H_Cap_headphones";
+this addHeadgear "H_Shemag_olive";
+this addHeadgear "H_Shemag_olive_hs";
+this addHeadgear "H_ShemagOpen_tan";
+this addHeadgear "H_ShemagOpen_khk";
 this addHeadgear "H_Beret_blk";
 this addHeadgear "H_Booniehat_khk_hs";
 this addHeadgear "H_Booniehat_khk";
 this addHeadgear "H_Booniehat_oli";
-this addHeadgear "H_Booniehat_tan";
+this addHeadgear "H_Booniehat_tan";*/
+
+/*this addHeadgear "H_Watchcap_blk";
+this addHeadgear "H_Watchcap_cbr";
+this addHeadgear "H_Watchcap_camo";
+this addHeadgear "H_Watchcap_khk";
+this addHeadgear "H_Bandanna_surfer";
+this addHeadgear "H_Bandanna_surfer_blk";
+this addHeadgear "H_Bandanna_surfer_grn";
 this addHeadgear "H_Cap_grn_BI";
 this addHeadgear "H_Cap_blk";
 this addHeadgear "H_Cap_blu";
@@ -609,20 +623,14 @@ this addHeadgear "H_RacingHelmet_3_F";
 this addHeadgear "H_RacingHelmet_4_F";
 this addHeadgear "H_RacingHelmet_1_white_F";
 this addHeadgear "H_RacingHelmet_1_yellow_F";
-this addHeadgear "H_Cap_headphones";
-this addHeadgear "H_Shemag_olive";
-this addHeadgear "H_Shemag_olive_hs";
-this addHeadgear "H_ShemagOpen_tan";
-this addHeadgear "H_ShemagOpen_khk";
 this addHeadgear "H_StrawHat";
-this addHeadgear "H_StrawHat_dark";
-
-
-this addBackpack "B_Parachute";
+this addHeadgear "H_StrawHat_dark";*/
 
 
 
 
+
+/*
 this addGoggles "G_Aviator";
 this addGoggles "G_Balaclava_blk";
 this addGoggles "G_Balaclava_combat";
@@ -656,10 +664,10 @@ this addGoggles "G_Squares";
 this addGoggles "G_Tactical_Clear";
 this addGoggles "G_Tactical_Black";
 this addGoggles "G_Spectacles_Tinted";
-this addGoggles "G_Goggles_VR";
+this addGoggles "G_Goggles_VR";*/
 
 
-this addWeapon "Binocular";
+/*this addWeapon "Binocular";
 this addWeapon "Laserdesignator";
 this addWeapon "Rangefinder";
 
@@ -668,151 +676,281 @@ this linkItem "ItemMap";
 this linkItem "ItemGPS";
 this linkItem "ItemRadio";
 this linkItem "ItemCompass";
-this linkItem "ItemWatch";
+this linkItem "ItemWatch";*/
+
+/*this addItemToBackpack "FirstAidKit";
+this addItemToBackpack "Medikit";
+this addItemToBackpack "MineDetector";
+this addItemToBackpack "ToolKit";
+this addItemToBackpack "Laserbatteries";*/
+
+/*
+this addItemToBackpack "Chemlight_blue";
+this addItemToBackpack "Chemlight_green";
+this addItemToBackpack "Chemlight_red";
+this addItemToBackpack "Chemlight_yellow";
+
+
+this addItemToBackpack "FlareGreen_F";
+this addItemToBackpack "FlareRed_F";
+this addItemToBackpack "FlareWhite_F";
+this addItemToBackpack "FlareYellow_F";
+this addItemToBackpack "UGL_FlareGreen_F";
+this addItemToBackpack "UGL_FlareCIR_F";
+this addItemToBackpack "UGL_FlareRed_F";
+this addItemToBackpack "UGL_FlareWhite_F";
+this addItemToBackpack "UGL_FlareYellow_F";
+this addItemToBackpack "3Rnd_UGL_FlareGreen_F";
+this addItemToBackpack "3Rnd_UGL_FlareCIR_F";
+this addItemToBackpack "3Rnd_UGL_FlareRed_F";
+this addItemToBackpack "3Rnd_UGL_FlareWhite_F";
+this addItemToBackpack "3Rnd_UGL_FlareYellow_F";
+
+
+this addItemToBackpack "MiniGrenade";
+this addItemToBackpack "HandGrenade";
+
+
+
+this addItemToBackpack "3Rnd_SmokeBlue_Grenade_shell";
+this addItemToBackpack "3Rnd_SmokeGreen_Grenade_shell";
+this addItemToBackpack "3Rnd_SmokeOrange_Grenade_shell";
+this addItemToBackpack "3Rnd_SmokePurple_Grenade_shell";
+this addItemToBackpack "3Rnd_SmokeRed_Grenade_shell";
+this addItemToBackpack "3Rnd_Smoke_Grenade_shell";
+this addItemToBackpack "3Rnd_SmokeYellow_Grenade_shell";
+this addItemToBackpack "SmokeShellBlue";
+this addItemToBackpack "SmokeShellGreen";
+this addItemToBackpack "SmokeShellOrange";
+this addItemToBackpack "SmokeShellPurple";
+this addItemToBackpack "SmokeShellRed";
+this addItemToBackpack "SmokeShell";
+this addItemToBackpack "SmokeShellYellow";
+this addItemToBackpack "1Rnd_SmokeBlue_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeGreen_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeOrange_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokePurple_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeRed_Grenade_shell";
+this addItemToBackpack "1Rnd_Smoke_Grenade_shell";
+this addItemToBackpack "1Rnd_SmokeYellow_Grenade_shell";
+
+this addItemToBackpack "3Rnd_HE_Grenade_shell";
+this addItemToBackpack "1Rnd_HE_Grenade_shell";*/
+
+
+/*
+this addItemToBackpack "APERSBoundingMine_Range_Mag";
+this addItemToBackpack "APERSMine_Range_Mag";
+this addItemToBackpack "APERSMineDispenser_Mag";
+this addItemToBackpack "APERSTripMine_Wire_Mag";
+this addItemToBackpack "ATMine_Range_Mag";
+this addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag";
+this addItemToBackpack "DemoCharge_Remote_Mag";
+this addItemToBackpack "SatchelCharge_Remote_Mag";
+this addItemToBackpack "IEDLandBig_Remote_Mag";
+this addItemToBackpack "IEDUrbanBig_Remote_Mag";
+this addItemToBackpack "SLAMDirectionalMine_Wire_Mag";
+this addItemToBackpack "IEDLandSmall_Remote_Mag";
+this addItemToBackpack "IEDUrbanSmall_Remote_Mag";
+this addItemToBackpack "TrainingMine_Mag";*/
+
+
+
+/*
+this addPrimaryWeaponItem "optic_ACO_grn";
+this addPrimaryWeaponItem "optic_Aco";
+this addPrimaryWeaponItem "optic_ACO_grn_smg";
+this addPrimaryWeaponItem "optic_Aco_smg";
+this addPrimaryWeaponItem "optic_Arco";
+this addPrimaryWeaponItem "optic_DMS";
+this addPrimaryWeaponItem "optic_LRPS";
+this addPrimaryWeaponItem "optic_Holosight";
+this addPrimaryWeaponItem "optic_Holosight_smg";
+this addPrimaryWeaponItem "optic_SOS";
+this addPrimaryWeaponItem "optic_MRCO";
+this addPrimaryWeaponItem "optic_Nightstalker";
+this addPrimaryWeaponItem "optic_NVS";
+this addPrimaryWeaponItem "optic_Hamr";
+this addPrimaryWeaponItem "optic_tws";
+this addPrimaryWeaponItem "optic_tws_mg";
+
+
+this addPrimaryWeaponItem "muzzle_snds_H";		//6.5
+this addPrimaryWeaponItem "muzzle_snds_570";
+this addPrimaryWeaponItem "muzzle_snds_B";		//7.62
+this addPrimaryWeaponItem "muzzle_snds_M";		//5.56
+this addPrimaryWeaponItem "muzzle_snds_L";		//9mm
+this addPrimaryWeaponItem "muzzle_snds_acp";	//.45 ACP
+*/
+
+
 
 
 
 //---------------------------------------------------------------------------------------------------------------------
 //Zeus
 
-this addBackpack "B_Respawn_Sleeping_bag_blue_F";
+/*this addBackpack "B_Respawn_Sleeping_bag_blue_F";
 this addBackpack "B_Respawn_Sleeping_bag_brown_F";
 this addBackpack "B_Respawn_TentDome_F";
 this addBackpack "B_Respawn_Sleeping_bag_F";
-this addBackpack "B_Respawn_TentA_F";
+this addBackpack "B_Respawn_TentA_F";*/
 
 
 
 
 //---------------------------------------------------------------------------------------------------------------------
-//Carts
+//Karts
 
 
 //Starter Pistol
-this addWeapon "hgun_Pistol_Signal_F";
+/*this addWeapon "hgun_Pistol_Signal_F";
 this addHandgunItem "6Rnd_GreenSignal_F";
-this addItemToBackpack "6Rnd_RedSignal_F";
+this addItemToBackpack "6Rnd_RedSignal_F";*/
 
 
 //---------------------------------------------------------------------------------------------------------------------
 //Marksman
 
 
-//Mk.I EMR 7.62mm 
-this addWeapon "srifle_DMR_03_F";
+//Mk.I EMR 7.62mm 				BLUFOR
+/*this addWeapon "srifle_DMR_03_F";
 this addWeapon "srifle_DMR_03_multicam_F";
 this addWeapon "srifle_DMR_03_khaki_F";
 this addWeapon "srifle_DMR_03_tan_F";
 this addWeapon "srifle_DMR_03_woodland_F";
 this addPrimaryWeaponItem "20Rnd_762x51_Mag";
 this addItemToBackpack "10Rnd_Mk14_762x51_Mag";
+*/
 
-
-//Mk14 7.62mm 
-this addWeapon "srifle_DMR_06_camo_F";
+//Mk14 7.62mm 				OPFOR
+/*this addWeapon "srifle_DMR_06_camo_F";
 this addWeapon "srifle_DMR_06_olive_F";
-this addPrimaryWeaponItem "20Rnd_762x51_Mag";
+this addPrimaryWeaponItem "20Rnd_762x51_Mag";*/
 
 
-//Cyrus 9.3mm 
-this addWeapon "srifle_DMR_05_blk_F";
+//Cyrus 9.3mm 					OPFOR
+/*this addWeapon "srifle_DMR_05_blk_F";
 this addWeapon "srifle_DMR_05_hex_F";
 this addWeapon "srifle_DMR_05_tan_f";
-this addPrimaryWeaponItem "10Rnd_93x64_DMR_05_Mag";
+this addPrimaryWeaponItem "10Rnd_93x64_DMR_05_Mag";*/
 
 
-//MAR-10 .338 (9.3mm NATO)
-this addWeapon "srifle_DMR_02_F";
+//MAR-10 .338 (9.3mm NATO)				BLUFOR
+/*this addWeapon "srifle_DMR_02_F";
 this addWeapon "srifle_DMR_02_camo_F";
 this addWeapon "srifle_DMR_02_sniper_F";
 this addPrimaryWeaponItem "10Rnd_338_Mag";
+*/
 
-
-//Navis 9.3mm 
-this addWeapon "MMG_01_hex_F";
+//Navis 9.3mm 					OPFOR
+/*this addWeapon "MMG_01_hex_F";
 this addWeapon "MMG_01_tan_F";
-this addPrimaryWeaponItem "150Rnd_93x64_Mag";
+this addPrimaryWeaponItem "150Rnd_93x64_Mag";*/
 
 
-//SPMG .338 (9.3mm NATO)
-this addWeapon "MMG_02_black_F";
+//SPMG .338 (9.3mm NATO)			BLUFOR
+/*this addWeapon "MMG_02_black_F";
 this addWeapon "MMG_02_camo_F";
 this addWeapon "MMG_02_sand_F";
 this addPrimaryWeaponItem "130Rnd_338_Mag";
-
+*/
 
 //ASP-1 Kir 12.7mm 
-this addWeapon "srifle_DMR_04_F";
+/*this addWeapon "srifle_DMR_04_F";
 this addWeapon "srifle_DMR_04_Tan_F";
-this addPrimaryWeaponItem "10Rnd_127x54_Mag";
+this addPrimaryWeaponItem "10Rnd_127x54_Mag";*/
 
 
 //CSAT
-this addBackpack "O_Static_Designator_02_weapon_F";
+//this addBackpack "O_Static_Designator_02_weapon_F";
 
-this addWeapon "Laserdesignator_02";
+//this addWeapon "Laserdesignator_02";
+
+/*this addPrimaryWeaponItem "bipod_02_F_blk";
+this addPrimaryWeaponItem "bipod_02_F_hex";
+this addPrimaryWeaponItem "bipod_02_F_tan";*/
 
 
 //NATO
-this addBackpack "B_Static_Designator_01_weapon_F";
+//this addBackpack "B_Static_Designator_01_weapon_F";
 
-this addWeapon "Laserdesignator_03";
+//this addWeapon "Laserdesignator_03";
+
+/*this addPrimaryWeaponItem "bipod_01_F_blk";
+this addPrimaryWeaponItem "bipod_01_F_mtp";
+this addPrimaryWeaponItem "bipod_01_F_snd";
+this addPrimaryWeaponItem "bipod_01_F_khk";*/
+
+
+//AAF
+/*this addPrimaryWeaponItem "bipod_03_F_blk";
+this addPrimaryWeaponItem "bipod_03_F_oli";*/
+
+
+
+/*this addPrimaryWeaponItem "optic_AMS";
+this addPrimaryWeaponItem "optic_AMS_khk";
+this addPrimaryWeaponItem "optic_AMS_snd";
+this addPrimaryWeaponItem "optic_KHS_blk";
+this addPrimaryWeaponItem "optic_KHS_hex";
+this addPrimaryWeaponItem "optic_KHS_old";
+this addPrimaryWeaponItem "optic_KHS_tan";
+
+
+this addPrimaryWeaponItem "muzzle_snds_93mmg";
+this addPrimaryWeaponItem "muzzle_snds_93mmg_tan";
+this addPrimaryWeaponItem "muzzle_snds_338_black";
+this addPrimaryWeaponItem "muzzle_snds_338_green";
+this addPrimaryWeaponItem "muzzle_snds_338_sand";*/
+
 
 
 //---------------------------------------------------------------------------------------------------------------------
 //APEX
 
 //P07 9mm 		(other camo)
-this addWeapon "hgun_P07_blk_F";
+/*this addWeapon "hgun_P07_blk_F";
 this addWeapon "hgun_P07_khk_F";
-
+*/
 
 //PM 9mm 
-this addWeapon "hgun_Pistol_01_F";
-this addHandgunItem "10Rnd_9x21_Mag";
+/*this addWeapon "hgun_Pistol_01_F";
+this addHandgunItem "10Rnd_9x21_Mag";*/
 
 
 //Protector 9mm 
-this addWeapon "SMG_05_F";
+/*this addWeapon "SMG_05_F";
 this addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02";
 this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Red";
 this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Yellow";
-this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Green";
+this addItemToBackpack "30Rnd_9x21_Mag_SMG_02_Tracer_Green";*/
 
 
 //AK 74 5.45mm 
-this addWeapon "arifle_AKS_F";
+/*this addWeapon "arifle_AKS_F";
 this addPrimaryWeaponItem "30Rnd_545x39_Mag_F";
 this addItemToBackpack "30Rnd_545x39_Mag_Green_F";
 this addItemToBackpack "30Rnd_545x39_Mag_Tracer_F";
-this addItemToBackpack "30Rnd_545x39_Mag_Tracer_Green_F";
+this addItemToBackpack "30Rnd_545x39_Mag_Tracer_Green_F";*/
 
 
 //LIM-85 5.56mm LMG
-this addWeapon "LMG_03_F";
+/*this addWeapon "LMG_03_F";
 this addPrimaryWeaponItem "200Rnd_556x45_Box_F";
 this addItemToBackpack "200Rnd_556x45_Box_Red_F";
 this addItemToBackpack "200Rnd_556x45_Box_Tracer_F";
-this addItemToBackpack "200Rnd_556x45_Box_Tracer_Red_F";
+this addItemToBackpack "200Rnd_556x45_Box_Tracer_Red_F";*/
 
 
-//SPAR-16 5.56mm 
-this addWeapon "arifle_SPAR_01_blk_F";
+//SPAR-16 5.56mm 			BLUFOR
+/*this addWeapon "arifle_SPAR_01_blk_F";
 this addWeapon "arifle_SPAR_01_khk_F";
 this addWeapon "arifle_SPAR_01_snd_F";
 this addWeapon "arifle_SPAR_01_GL_blk_F";
 this addWeapon "arifle_SPAR_01_GL_khk_F";
 this addWeapon "arifle_SPAR_01_GL_snd_F";
-this addWeapon "arifle_SPAR_02_blk_F";
-this addWeapon "arifle_SPAR_02_khk_F";
-this addWeapon "arifle_SPAR_02_snd_F";
 this addPrimaryWeaponItem "30Rnd_556x45_Stanag";
-this addItemToBackpack "150Rnd_556x45_Drum_Mag_F";
-this addItemToBackpack "150Rnd_556x45_Drum_Mag_Tracer_F";
-this addItemToBackpack "150Rnd_556x45_Drum_Sand_Mag_F";
-this addItemToBackpack "150Rnd_556x45_Drum_Sand_Mag_Tracer_F";
-this addItemToBackpack "150Rnd_556x45_Drum_Green_Mag_F";
-this addItemToBackpack "150Rnd_556x45_Drum_Green_Mag_Tracer_F";
 this addItemToBackpack "30Rnd_556x45_Stanag_green";
 this addItemToBackpack "30Rnd_556x45_Stanag_red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Tracer_Red";
@@ -825,10 +963,19 @@ this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Red";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Green";
 this addItemToBackpack "30Rnd_556x45_Stanag_Sand_Tracer_Yellow";
 
+this addWeapon "arifle_SPAR_02_blk_F";
+this addWeapon "arifle_SPAR_02_khk_F";
+this addWeapon "arifle_SPAR_02_snd_F";
+this addItemToBackpack "150Rnd_556x45_Drum_Mag_F";
+this addItemToBackpack "150Rnd_556x45_Drum_Mag_Tracer_F";
+this addItemToBackpack "150Rnd_556x45_Drum_Sand_Mag_F";
+this addItemToBackpack "150Rnd_556x45_Drum_Sand_Mag_Tracer_F";
+this addItemToBackpack "150Rnd_556x45_Drum_Green_Mag_F";
+this addItemToBackpack "150Rnd_556x45_Drum_Green_Mag_Tracer_F";
+*/
 
-
-//CAR-95-1 5.8mm
-this addWeapon "arifle_CTARS_blk_F";
+//CAR-95-1 5.8mm			OPFOR
+/*this addWeapon "arifle_CTARS_blk_F";
 this addWeapon "arifle_CTARS_ghex_F";
 this addWeapon "arifle_CTARS_hex_F";
 this addWeapon "arifle_CTAR_blk_F";
@@ -844,35 +991,36 @@ this addItemToBackpack "30Rnd_580x42_Mag_Tracer_F";
 this addItemToBackpack "100Rnd_580x42_hex_Mag_F";
 this addItemToBackpack "100Rnd_580x42_hex_Mag_Tracer_F";
 this addItemToBackpack "100Rnd_580x42_ghex_Mag_F";
-this addItemToBackpack "100Rnd_580x42_ghex_Mag_Tracer_F";
+this addItemToBackpack "100Rnd_580x42_ghex_Mag_Tracer_F";*/
 
 
-//CMR-76 6.5mm 
-this addWeapon "srifle_DMR_07_blk_F";
+//CMR-76 6.5mm 			OPFOR
+/*this addWeapon "srifle_DMR_07_blk_F";
 this addWeapon "srifle_DMR_07_ghex_F";
 this addWeapon "srifle_DMR_07_hex_F";
-this addPrimaryWeaponItem "20Rnd_650x39_Cased_Mag_F";
+this addPrimaryWeaponItem "20Rnd_650x39_Cased_Mag_F";*/
 
 
 //MX 6.5mm		(other camos)
-this addWeapon "arifle_MX_GL_khk_F";
+/*this addWeapon "arifle_MX_GL_khk_F";
 this addWeapon "arifle_MX_khk_F";
 this addWeapon "arifle_MX_SW_khk_F";
 this addWeapon "arifle_MXC_khk_F";
 this addWeapon "arifle_MXM_khk_F";
+*/
 
-
-//Type 115 6.5mm 
-this addWeapon "arifle_ARX_blk_F";
+//Type 115 6.5mm 			OPFOR
+/*this addWeapon "arifle_ARX_blk_F";
 this addWeapon "arifle_ARX_ghex_F";
 this addWeapon "arifle_ARX_hex_F";
 this addPrimaryWeaponItem "30Rnd_65x39_caseless_green";
-this addPrimaryWeaponItem "10Rnd_50BW_Mag_F";
-this addItemToBackpack "30Rnd_65x39_caseless_green_mag_Tracer";
+this addItemToBackpack "30Rnd_65x39_caseless_green_mag_Tracer";*/
+//12,7 × 99 mm NATO (also .50 BMG, Browning Machine Gun)
+//this addPrimaryWeaponItem "10Rnd_50BW_Mag_F";
 
 
 //AK-12 7.62mm 
-this addWeapon "arifle_AK12_F";
+/*this addWeapon "arifle_AK12_F";
 this addWeapon "arifle_AK12_GL_F";
 this addWeapon "arifle_AKM_F";
 this addPrimaryWeaponItem "30Rnd_762x39_AK12_Mag_F";
@@ -892,95 +1040,96 @@ this addItemToBackpack "75rnd_762x39_AK12_Mag_Tracer_F";
 this addItemToBackpack "75rnd_762x39_AK12_Lush_Mag_F";
 this addItemToBackpack "75rnd_762x39_AK12_Lush_Mag_Tracer_F";
 this addItemToBackpack "75rnd_762x39_AK12_Arid_Mag_F";
-this addItemToBackpack "75rnd_762x39_AK12_Arid_Mag_Tracer_F";
+this addItemToBackpack "75rnd_762x39_AK12_Arid_Mag_Tracer_F";*/
 
 
 //SPAR-17 7.62mm 
-this addWeapon "arifle_SPAR_03_blk_F";
+/*this addWeapon "arifle_SPAR_03_blk_F";
 this addWeapon "arifle_SPAR_03_khk_F";
 this addWeapon "arifle_SPAR_03_snd_F";
-this addPrimaryWeaponItem "20Rnd_762x51_Mag";
+this addPrimaryWeaponItem "20Rnd_762x51_Mag";*/
 
 
 //Lynx 12.7mm		(other camos)
-this addWeapon "srifle_GM6_ghex_F";
+//this addWeapon "srifle_GM6_ghex_F";
 
 
 //M320 LRR .408 (12.7mm NATO)		(other camos)
-this addWeapon "srifle_LRR_tna_F";
-
+/*this addWeapon "srifle_LRR_tna_F";
+*/
 
 //RPG-42 Alamut			(other camos)
-this addWeapon "launch_RPG32_ghex_F";
+//this addWeapon "launch_RPG32_ghex_F";
 
 
 //RPG-7
-this addWeapon "launch_RPG7_F";
-this addSecondaryWeaponItem "RPG7_F";
+/*this addWeapon "launch_RPG7_F";
+this addSecondaryWeaponItem "RPG7_F";*/
 
 
 //Titan MPRL			(other camos)
-this addWeapon "launch_O_Titan_ghex_F";
-this addWeapon "launch_B_Titan_tna_F";
+//this addWeapon "launch_O_Titan_ghex_F";
+//this addWeapon "launch_B_Titan_tna_F";
 
 
 //Titan MPRL Compact			(other camos)
-this addWeapon "launch_O_Titan_short_ghex_F";
-this addWeapon "launch_B_Titan_short_tna_F";
+//this addWeapon "launch_O_Titan_short_ghex_F";
+//this addWeapon "launch_B_Titan_short_tna_F";
 
 
 
 //NATO
-this forceAddUniform "U_B_T_Soldier_F";
+/*this forceAddUniform "U_B_T_Soldier_F";
 this forceAddUniform "U_B_T_Soldier_AR_F";
 this forceAddUniform "U_B_T_FullGhillie_tna_F";
 this forceAddUniform "U_B_T_Sniper_F";
-this forceAddUniform "U_B_T_Soldier_SL_F";
+this forceAddUniform "U_B_T_Soldier_SL_F";*/
 
-this addVest "V_PlateCarrierGL_tna_F";
+/*this addVest "V_PlateCarrierGL_tna_F";
 this addVest "V_PlateCarrier1_tna_F";
 this addVest "V_PlateCarrier2_tna_F";
-this addVest "V_PlateCarrierSpec_tna_F";
+this addVest "V_PlateCarrierSpec_tna_F";*/
 
-this addBackpack "B_AssaultPack_tna_F";
+/*this addBackpack "B_AssaultPack_tna_F";
 this addBackpack "B_Bergen_mcamo_F";
-this addBackpack "B_Bergen_tna_F";
+this addBackpack "B_Bergen_tna_F";*/
 
-this addHeadgear "H_Booniehat_tna_F";
+/*this addHeadgear "H_Booniehat_tna_F";
 this addHeadgear "H_HelmetB_tna_F";
 this addHeadgear "H_HelmetB_Enh_tna_F";
 this addHeadgear "H_HelmetB_Light_tna_F";
-this addHeadgear "H_MilCap_tna_F";
+this addHeadgear "H_MilCap_tna_F";*/
 
-this linkItem "NVGogglesB_blk_F";
+/*this linkItem "NVGogglesB_blk_F";
 this linkItem "NVGogglesB_grn_F";
 this linkItem "NVGogglesB_gry_F";
-this linkItem "NVGoggles_tna_F";
+this linkItem "NVGoggles_tna_F";*/
 
-this addWeapon "Laserdesignator_01_khk_F";
+//this addWeapon "Laserdesignator_01_khk_F";
 
+//this addPrimaryWeaponItem "bipod_01_F_khk";
 
 //CSAT
-this forceAddUniform "U_O_T_Soldier_F";
+/*this forceAddUniform "U_O_T_Soldier_F";
 this forceAddUniform "U_O_T_FullGhillie_tna_F";
 this forceAddUniform "U_O_T_Sniper_F";
 this forceAddUniform "U_O_T_Officer_F";
 this forceAddUniform "U_O_V_Soldier_Viper_F";
-this forceAddUniform "U_O_V_Soldier_Viper_hex_F";
+this forceAddUniform "U_O_V_Soldier_Viper_hex_F";*/
 
-this addVest "V_HarnessOGL_ghex_F";
+/*this addVest "V_HarnessOGL_ghex_F";
 this addVest "V_HarnessO_ghex_F";
-this addVest "V_BandollierB_ghex_F";
+this addVest "V_BandollierB_ghex_F";*/
 
-this addBackpack "B_Bergen_hex_F";
+/*this addBackpack "B_Bergen_hex_F";
 this addBackpack "B_Carryall_ghex_F";
 this addBackpack "B_FieldPack_ghex_F";
 this addBackpack "B_ViperHarness_ghex_F";
 this addBackpack "B_ViperHarness_hex_F";
 this addBackpack "B_ViperLightHarness_ghex_F";
-this addBackpack "B_ViperLightHarness_hex_F";
+this addBackpack "B_ViperLightHarness_hex_F";*/
 
-this addHeadgear "H_HelmetSpecO_ghex_F";
+/*this addHeadgear "H_HelmetSpecO_ghex_F";
 this addHeadgear "H_Beret_CSAT_01_F";
 
 this addHeadgear "H_HelmetCrew_O_ghex_F";
@@ -988,21 +1137,21 @@ this addHeadgear "H_HelmetLeaderO_ghex_F";
 this addHeadgear "H_MilCap_ghex_F";
 this addHeadgear "H_HelmetO_ghex_F";
 this addHeadgear "H_HelmetO_ViperSP_ghex_F";
-this addHeadgear "H_HelmetO_ViperSP_hex_F";
+this addHeadgear "H_HelmetO_ViperSP_hex_F";*/
 
-this linkItem "O_NVGoggles_ghex_F";
+/*this linkItem "O_NVGoggles_ghex_F";
 this linkItem "O_NVGoggles_hex_F";
-this linkItem "O_NVGoggles_urb_F";
+this linkItem "O_NVGoggles_urb_F";*/
 
-this addWeapon "Laserdesignator_02_ghex_F";
+//this addWeapon "Laserdesignator_02_ghex_F";
 
 
 //AAF
-this addBackpack "B_Bergen_dgtl_F";
+//this addBackpack "B_Bergen_dgtl_F";
 
 
 //CTRG
-this forceAddUniform "U_B_CTRG_Soldier_F";
+/*this forceAddUniform "U_B_CTRG_Soldier_F";
 this forceAddUniform "U_B_CTRG_Soldier_Arid_F";
 this forceAddUniform "U_B_CTRG_Soldier_3_F";
 this forceAddUniform "U_B_CTRG_Soldier_3_Arid_F";
@@ -1010,35 +1159,35 @@ this forceAddUniform "U_B_CTRG_Soldier_2_F";
 this forceAddUniform "U_B_CTRG_Soldier_2_Arid_F";
 this forceAddUniform "U_B_CTRG_Soldier_urb_1_F";
 this forceAddUniform "U_B_CTRG_Soldier_urb_3_F";
-this forceAddUniform "U_B_CTRG_Soldier_urb_2_F";
+this forceAddUniform "U_B_CTRG_Soldier_urb_2_F";*/
 
-this addHeadgear "H_HelmetB_TI_tna_F";
-this addHeadgear "H_HelmetB_TI_arid_F";
+/*this addHeadgear "H_HelmetB_TI_tna_F";
+this addHeadgear "H_HelmetB_TI_arid_F";*/
 
-this addGoggles "G_Balaclava_TI_tna_F";
-this addGoggles "G_Balaclava_TI_G_tna_F";
+/*this addGoggles "G_Balaclava_TI_tna_F";
+this addGoggles "G_Balaclava_TI_G_tna_F";*/
 
 //Bandit
-this forceAddUniform "U_I_C_Soldier_Bandit_4_F";
+/*this forceAddUniform "U_I_C_Soldier_Bandit_4_F";
 this forceAddUniform "U_I_C_Soldier_Bandit_1_F";
 this forceAddUniform "U_I_C_Soldier_Bandit_2_F";
 this forceAddUniform "U_I_C_Soldier_Bandit_5_F";
-this forceAddUniform "U_I_C_Soldier_Bandit_3_F";
+this forceAddUniform "U_I_C_Soldier_Bandit_3_F";*/
 
 
 //Syndicate
-this forceAddUniform "U_I_C_Soldier_Para_2_F";
+/*this forceAddUniform "U_I_C_Soldier_Para_2_F";
 this forceAddUniform "U_I_C_Soldier_Para_3_F";
 this forceAddUniform "U_I_C_Soldier_Para_5_F";
 this forceAddUniform "U_I_C_Soldier_Para_4_F";
 this forceAddUniform "U_I_C_Soldier_Para_1_F";
-this forceAddUniform "U_I_C_Soldier_Camo_F";
+this forceAddUniform "U_I_C_Soldier_Camo_F";*/
 
-this addVest "V_PlateCarrier1_rgr_noflag_F";
-this addVest "V_PlateCarrier2_rgr_noflag_F";
+/*this addVest "V_PlateCarrier1_rgr_noflag_F";
+this addVest "V_PlateCarrier2_rgr_noflag_F";*/
 
 //Civilian
-this forceAddUniform "U_C_Man_casual_2_F";
+/*this forceAddUniform "U_C_Man_casual_2_F";
 this forceAddUniform "U_C_Man_casual_3_F";
 this forceAddUniform "U_C_Man_casual_1_F";
 this forceAddUniform "U_B_GEN_Commander_F";
@@ -1048,57 +1197,86 @@ this forceAddUniform "U_C_man_sport_3_F";
 this forceAddUniform "U_C_man_sport_2_F";
 this forceAddUniform "U_C_Man_casual_6_F";
 this forceAddUniform "U_C_Man_casual_4_F";
-this forceAddUniform "U_C_Man_casual_5_F";
+this forceAddUniform "U_C_Man_casual_5_F";*/
 
-this addVest "V_TacVest_gen_F";
+/*this addVest "V_TacVest_gen_F";
 this addVest "V_TacChestrig_cbr_F";
 this addVest "V_TacChestrig_grn_F";
-this addVest "V_TacChestrig_oli_F";
+this addVest "V_TacChestrig_oli_F";*/
 
-this addBackpack "B_ViperHarness_blk_F";
+/*this addBackpack "B_ViperHarness_blk_F";
 this addBackpack "B_ViperHarness_khk_F";
 this addBackpack "B_ViperHarness_oli_F";
 this addBackpack "B_ViperLightHarness_blk_F";
 this addBackpack "B_ViperLightHarness_khk_F";
-this addBackpack "B_ViperLightHarness_oli_F";
+this addBackpack "B_ViperLightHarness_oli_F";*/
 
-this addHeadgear "H_Beret_gen_F";
-this addHeadgear "H_MilCap_gen_F";
-this addHeadgear "H_Helmet_Skate";
+/*this addHeadgear "H_Beret_gen_F";
+this addHeadgear "H_MilCap_gen_F";*/
+
+//this addHeadgear "";
 
 
-
-
-this addGoggles "G_Combat_Goggles_tna_F";
+/*this addGoggles "G_Combat_Goggles_tna_F";
 this addGoggles "G_Balaclava_TI_blk_F";
-this addGoggles "G_Balaclava_TI_G_blk_F";
+this addGoggles "G_Balaclava_TI_G_blk_F";*/
 
+
+
+/*this addPrimaryWeaponItem "optic_Arco_blk_F";
+this addPrimaryWeaponItem "optic_Arco_ghex_F";
+this addPrimaryWeaponItem "optic_DMS_ghex_F";
+this addPrimaryWeaponItem "optic_ERCO_blk_F";
+this addPrimaryWeaponItem "optic_ERCO_khk_F";
+this addPrimaryWeaponItem "optic_ERCO_snd_F";
+this addPrimaryWeaponItem "optic_LRPS_ghex_F";
+this addPrimaryWeaponItem "optic_LRPS_tna_F";
+this addPrimaryWeaponItem "optic_Holosight_blk_F";
+this addPrimaryWeaponItem "optic_Holosight_khk_F";
+this addPrimaryWeaponItem "optic_Holosight_smg_blk_F";
+this addPrimaryWeaponItem "optic_Holosight_smg_khk_F";
+this addPrimaryWeaponItem "optic_SOS_khk_F";
+this addPrimaryWeaponItem "optic_Hamr_khk_F";
+
+
+this addPrimaryWeaponItem "muzzle_snds_H_khk_F";
+this addPrimaryWeaponItem "muzzle_snds_H_snd_F";
+this addPrimaryWeaponItem "muzzle_snds_65_TI_blk_F";
+this addPrimaryWeaponItem "muzzle_snds_65_TI_ghex_F";
+this addPrimaryWeaponItem "muzzle_snds_65_TI_hex_F";
+this addPrimaryWeaponItem "muzzle_snds_B_khk_F";
+this addPrimaryWeaponItem "muzzle_snds_B_snd_F";
+this addPrimaryWeaponItem "muzzle_snds_m_khk_F";
+this addPrimaryWeaponItem "muzzle_snds_m_snd_F";
+this addPrimaryWeaponItem "muzzle_snds_58_blk_F";
+this addPrimaryWeaponItem "muzzle_snds_58_ghex_F";
+this addPrimaryWeaponItem "muzzle_snds_58_hex_F";*/
 
 
 //---------------------------------------------------------------------------------------------------------------------
 //Contact
 
-//4-five .45 ACP			(other camo)
-this addWeapon "hgun_Pistol_heavy_01_green_F";
-
+//4-five .45 ACP			(other camo)		BLUFOR
+/*this addWeapon "hgun_Pistol_heavy_01_green_F";
+*/
 
 //Spectrum Device
-this addWeapon "hgun_esd_01_F";
+//this addWeapon "hgun_esd_01_F";
 
 
 //Kozlice 12G (Shotgun)
-this addWeapon "sgun_HunterShotgun_01_F";
+/*this addWeapon "sgun_HunterShotgun_01_F";
 this addWeapon "sgun_HunterShotgun_01_sawedoff_F";
 this addPrimaryWeaponItem "2Rnd_12Gauge_Pellets";
-this addItemToBackpack "2Rnd_12Gauge_Slug";
+this addItemToBackpack "2Rnd_12Gauge_Slug";*/
 
 
-//Mk200 6.5mm LMG  		(other camos)
-this addWeapon "LMG_Mk200_black_F";
+//Mk200 6.5mm LMG  		(other camos)			BLUFOR
+//this addWeapon "LMG_Mk200_black_F";
 
 
 //Promet 6.5mm 
-this addWeapon "arifle_MSBS65_F";
+/*this addWeapon "arifle_MSBS65_F";
 this addWeapon "arifle_MSBS65_black_F";
 this addWeapon "arifle_MSBS65_camo_F";
 this addWeapon "arifle_MSBS65_sand_F";
@@ -1118,25 +1296,25 @@ this addPrimaryWeaponItem "30Rnd_65x39_caseless_msbs_mag";
 this addItemToBackpack "30Rnd_65x39_caseless_msbs_mag_Tracer";
 //for UBS variant
 this addPrimaryWeaponItem "2Rnd_12Gauge_Pellets";
-this addItemToBackpack "2Rnd_12Gauge_Slug";
+this addItemToBackpack "2Rnd_12Gauge_Slug";*/
 
 
 //AK-12 7.62mm 		(other camos)
-this addWeapon "arifle_AK12_arid_F";
+/*this addWeapon "arifle_AK12_arid_F";
 this addWeapon "arifle_AK12_lush_F";
 this addWeapon "arifle_AK12_GL_arid_F";
 this addWeapon "arifle_AK12_GL_lush_F";
 this addWeapon "arifle_AK12U_F";
 this addWeapon "arifle_AK12U_arid_F";
-this addWeapon "arifle_AK12U_lush_F";
+this addWeapon "arifle_AK12U_lush_F";*/
 
 
 //Mk14 7.62mm  		(other camos)
-this addWeapon "srifle_DMR_06_hunter_F";
+//this addWeapon "srifle_DMR_06_hunter_F";
 
 
 //RPK-12 7.62mm 
-this addWeapon "arifle_RPK12_F";
+/*this addWeapon "arifle_RPK12_F";
 this addWeapon "arifle_RPK12_arid_F";
 this addWeapon "arifle_RPK12_lush_F";
 this addPrimaryWeaponItem "75rnd_762x39_AK12_Mag_F";
@@ -1156,43 +1334,45 @@ this addItemToBackpack "75rnd_762x39_AK12_Mag_Tracer_F";
 this addItemToBackpack "75rnd_762x39_AK12_Lush_Mag_F";
 this addItemToBackpack "75rnd_762x39_AK12_Lush_Mag_Tracer_F";
 this addItemToBackpack "75rnd_762x39_AK12_Arid_Mag_F";
-this addItemToBackpack "75rnd_762x39_AK12_Arid_Mag_Tracer_F";
+this addItemToBackpack "75rnd_762x39_AK12_Arid_Mag_Tracer_F";*/
 
 
 
 //RPG-42 Alamut			(other camos)
-this addWeapon "launch_RPG32_green_F";
+//this addWeapon "launch_RPG32_green_F";
 
 
 //Titan MPRL			(other camos)
-this addWeapon "launch_I_Titan_eaf_F";
-this addWeapon "launch_B_Titan_olive_F";
+//this addWeapon "launch_I_Titan_eaf_F";
+//this addWeapon "launch_B_Titan_olive_F";
 
 
 
 //NATO
-this forceAddUniform "U_B_CBRN_Suit_01_MTP_F";
+/*this forceAddUniform "U_B_CBRN_Suit_01_MTP_F";
 this forceAddUniform "U_B_CBRN_Suit_01_Tropic_F";
 this forceAddUniform "U_B_CBRN_Suit_01_Wdl_F";
 this forceAddUniform "U_B_CombatUniform_mcam_wdl_f";
 this forceAddUniform "U_B_CombatUniform_tshirt_mcam_wdL_f";
 this forceAddUniform "U_B_CombatUniform_vest_mcam_wdl_f";
+this forceAddUniform "U_C_CBRN_Suit_01_Blue_F";
+this forceAddUniform "U_C_CBRN_Suit_01_White_F";*/
 
-this addVest "V_PlateCarrierGL_wdl";
+/*this addVest "V_PlateCarrierGL_wdl";
 this addVest "V_PlateCarrier1_wdl";
 this addVest "V_PlateCarrier2_wdl";
-this addVest "V_PlateCarrierSpec_wdl";
+this addVest "V_PlateCarrierSpec_wdl";*/
 
-this addBackpack "B_AssaultPack_wdl_F";
+/*this addBackpack "B_AssaultPack_wdl_F";
 this addBackpack "B_Carryall_wdl_F";
 this addBackpack "B_RadioBag_01_mtp_F";
 this addBackpack "B_RadioBag_01_tropic_F";
 this addBackpack "B_RadioBag_01_wdl_F";
 this addBackpack "B_W_Static_Designator_01_weapon_F";
 this addBackpack "B_UGV_02_Demining_backpack_F";
-this addBackpack "B_UGV_02_Science_backpack_F";
+this addBackpack "B_UGV_02_Science_backpack_F";*/
 
-this addHeadgear "H_HelmetHBK_headset_F";
+/*this addHeadgear "H_HelmetHBK_headset_F";
 this addHeadgear "H_HelmetHBK_chops_F";
 this addHeadgear "H_HelmetHBK_ear_F";
 this addHeadgear "H_HelmetHBK_F";
@@ -1200,26 +1380,26 @@ this addHeadgear "H_Booniehat_wdl";
 this addHeadgear "H_HelmetB_plain_wdl";
 this addHeadgear "H_HelmetSpecB_wdl";
 this addHeadgear "H_HelmetB_light_wdl";
-this addHeadgear "H_MilCap_wdl";
+this addHeadgear "H_MilCap_wdl";*/
 
-this addGoggles "G_AirPurifyingRespirator_01_F";
+//this addGoggles "G_AirPurifyingRespirator_01_F";
 
 
 //CSAT
-this addBackpack "B_RadioBag_01_ghex_F";
+/*this addBackpack "B_RadioBag_01_ghex_F";
 this addBackpack "B_RadioBag_01_hex_F";
 this addBackpack "B_RadioBag_01_oucamo_F";
 this addBackpack "O_UGV_02_Demining_backpack_F";
-this addBackpack "O_UGV_02_Science_backpack_F";
+this addBackpack "O_UGV_02_Science_backpack_F";*/
 
-this addGoggles "G_AirPurifyingRespirator_02_black_F";
+/*this addGoggles "G_AirPurifyingRespirator_02_black_F";
 this addGoggles "G_AirPurifyingRespirator_02_olive_F";
-this addGoggles "G_AirPurifyingRespirator_02_sand_F";
+this addGoggles "G_AirPurifyingRespirator_02_sand_F";*/
 
-this linkItem "O_NVGoggles_grn_F";
+//this linkItem "O_NVGoggles_grn_F";
 
 //LDF
-this forceAddUniform "U_I_E_CBRN_Suit_01_EAF_F";
+/*this forceAddUniform "U_I_E_CBRN_Suit_01_EAF_F";
 this forceAddUniform "U_I_E_Uniform_01_officer_F";
 this forceAddUniform "U_I_E_Uniform_01_shortsleeve_F";
 this forceAddUniform "U_I_E_Uniform_01_sweater_F";
@@ -1227,20 +1407,20 @@ this forceAddUniform "U_I_E_Uniform_01_tanktop_F";
 this forceAddUniform "U_I_E_Uniform_01_F";
 this forceAddUniform "U_I_L_Uniform_01_camo_F";
 this forceAddUniform "U_I_L_Uniform_01_deserter_F";
-this forceAddUniform "U_I_E_Uniform_01_coveralls_F";
+this forceAddUniform "U_I_E_Uniform_01_coveralls_F";*/
 
-this addVest "V_CarrierRigKBT_01_heavy_EAF_F";
+/*this addVest "V_CarrierRigKBT_01_heavy_EAF_F";
 this addVest "V_CarrierRigKBT_01_heavy_Olive_F";
 this addVest "V_CarrierRigKBT_01_light_EAF_F";
 this addVest "V_CarrierRigKBT_01_light_Olive_F";
 this addVest "V_CarrierRigKBT_01_EAF_F";
-this addVest "V_CarrierRigKBT_01_Olive_F";
+this addVest "V_CarrierRigKBT_01_Olive_F";*/
 
-this addBackpack "B_AssaultPack_eaf_F";
+/*this addBackpack "B_AssaultPack_eaf_F";
 this addBackpack "B_Carryall_eaf_F";
-this addBackpack "B_RadioBag_01_eaf_F";
+this addBackpack "B_RadioBag_01_eaf_F";*/
 
-this addBackpack "I_E_GMG_01_A_Weapon_F";
+/*this addBackpack "I_E_GMG_01_A_Weapon_F";
 this addBackpack "I_E_HMG_01_A_Weapon_F";
 this addBackpack "I_E_HMG_01_high_Weapon_F";
 this addBackpack "I_E_HMG_01_Weapon_F";
@@ -1256,36 +1436,36 @@ this addBackpack "I_E_UAV_06_backpack_F";
 this addBackpack "I_E_UAV_06_medical_backpack_F";
 this addBackpack "I_E_UAV_01_backpack_F";
 this addBackpack "I_E_UGV_02_Demining_backpack_F";
-this addBackpack "I_E_UGV_02_Science_backpack_F";
+this addBackpack "I_E_UGV_02_Science_backpack_F";*/
 
-this addHeadgear "H_Beret_EAF_01_F";
+/*this addHeadgear "H_Beret_EAF_01_F";
 this addHeadgear "H_Booniehat_eaf";
 this addHeadgear "H_Tank_eaf_F";
 this addHeadgear "H_HelmetCrew_I_E";
 this addHeadgear "H_CrewHelmetHeli_I_E";
 this addHeadgear "H_PilotHelmetHeli_I_E";
 this addHeadgear "H_MilCap_eaf";
-this addHeadgear "H_PilotHelmetFighter_I_E";
+this addHeadgear "H_PilotHelmetFighter_I_E";*/
 
-this linkItem "I_E_UavTerminal";
+//this linkItem "I_E_UavTerminal";
 
+//this addPrimaryWeaponItem "bipod_02_F_arid";
+//this addPrimaryWeaponItem "bipod_02_F_lush";
 
 //AAF
-this forceAddUniform "U_I_CBRN_Suit_01_AAF_F";
+//this forceAddUniform "U_I_CBRN_Suit_01_AAF_F";
 
-this addBackpack "B_RadioBag_01_digi_F";
+/*this addBackpack "B_RadioBag_01_digi_F";
 this addBackpack "I_UGV_02_Demining_backpack_F";
-this addBackpack "I_UGV_02_Science_backpack_F";
+this addBackpack "I_UGV_02_Science_backpack_F";*/
 
 
 //IDAP
-this addBackpack "C_IDAP_UGV_02_Demining_backpack_F";
+//this addBackpack "C_IDAP_UGV_02_Demining_backpack_F";
 
 
 //Others
-this forceAddUniform "U_C_CBRN_Suit_01_Blue_F";
-this forceAddUniform "U_C_CBRN_Suit_01_White_F";
-this forceAddUniform "U_C_Uniform_Farmer_01_F";
+/*this forceAddUniform "U_C_Uniform_Farmer_01_F";
 this forceAddUniform "U_O_R_Gorka_01_F";
 this forceAddUniform "U_O_R_Gorka_01_brown_F";
 this forceAddUniform "U_O_R_Gorka_01_camo_F";
@@ -1298,36 +1478,53 @@ this forceAddUniform "U_C_Uniform_Scientist_01_formal_F";
 this forceAddUniform "U_C_Uniform_Scientist_01_F";
 this forceAddUniform "U_C_Uniform_Scientist_02_F";
 this forceAddUniform "U_C_Uniform_Scientist_02_formal_F";
-this forceAddUniform "U_O_R_Gorka_01_black_F";
+this forceAddUniform "U_O_R_Gorka_01_black_F";*/
 
-this addVest "V_SmershVest_01_F";
-this addVest "V_SmershVest_01_radio_F";
+/*this addVest "V_SmershVest_01_F";
+this addVest "V_SmershVest_01_radio_F";*/
 
-this addBackpack "B_Carryall_green_F";
+/*this addBackpack "B_Carryall_green_F";
 this addBackpack "B_Carryall_taiga_F";
 this addBackpack "B_CombinationUnitRespirator_01_F";
 this addBackpack "B_FieldPack_green_F";
 this addBackpack "B_FieldPack_taiga_F";
 this addBackpack "B_RadioBag_01_black_F";
-this addBackpack "B_SCBA_01_F";
+this addBackpack "B_SCBA_01_F";*/
 
-this addHeadgear "H_HelmetAggressor_F";
+/*this addHeadgear "H_HelmetAggressor_F";
 this addHeadgear "H_HelmetAggressor_cover_F";
 this addHeadgear "H_HelmetAggressor_cover_taiga_F";
 this addHeadgear "H_Booniehat_mgrn";
 this addHeadgear "H_Booniehat_taiga";
 this addHeadgear "H_MilCap_grn";
-this addHeadgear "H_MilCap_taiga";
-this addHeadgear "H_Hat_Tinfoil_F";
+this addHeadgear "H_MilCap_taiga";*/
+
+//this addHeadgear "H_Hat_Tinfoil_F";
 
 
-this addGoggles "G_Blindfold_01_black_F";
+/*this addGoggles "G_Blindfold_01_black_F";
 this addGoggles "G_Blindfold_01_white_F";
-this addGoggles "G_RegulatorMask_F";
+this addGoggles "G_RegulatorMask_F";*/
 
 
-this linkItem "ChemicalDetector_01_watch_F";
-this linkItem "ChemicalDetector_01_watch_broken_F";
+/*this linkItem "ChemicalDetector_01_watch_F";
+this linkItem "ChemicalDetector_01_watch_broken_F";*/
+
+
+/*this addPrimaryWeaponItem "optic_Arco_arid_F";
+this addPrimaryWeaponItem "optic_Arco_lush_F";
+this addPrimaryWeaponItem "optic_Arco_AK_arid_F";
+this addPrimaryWeaponItem "optic_Arco_AK_blk_F";
+this addPrimaryWeaponItem "optic_Arco_AK_lush_F";
+this addPrimaryWeaponItem "optic_DMS_weathered_F";
+this addPrimaryWeaponItem "optic_DMS_weathered_Kir_F";
+this addPrimaryWeaponItem "optic_Holosight_arid_F";
+this addPrimaryWeaponItem "optic_Holosight_lush_F";
+
+
+this addPrimaryWeaponItem "muzzle_tma_65";
+this addPrimaryWeaponItem "muzzle_snds_B_arid_F";
+this addPrimaryWeaponItem "muzzle_snds_B_lush_F";*/
 
 
 
@@ -1335,31 +1532,32 @@ this linkItem "ChemicalDetector_01_watch_broken_F";
 //Tanks
 
 
-//9M135 Vorona
-this addWeapon "launch_O_Vorona_brown_F";
+//9M135 Vorona				OPFOR
+/*this addWeapon "launch_O_Vorona_brown_F";
 this addWeapon "launch_O_Vorona_green_F";
 this addSecondaryWeaponItem "Vorona_HEAT";
-this addItemToBackpack "Vorona_HE";
+this addItemToBackpack "Vorona_HE";*/
 
 
-//MAAWS Mk4
-this addWeapon "launch_MRAWS_green_rail_F";
+//MAAWS Mk4					BLUFOR
+/*this addWeapon "launch_MRAWS_green_rail_F";
 this addWeapon "launch_MRAWS_olive_rail_F";
+this addWeapon "launch_MRAWS_sand_rail_F";
 this addWeapon "launch_MRAWS_sand_rail_F";
 this addWeapon "launch_MRAWS_green_F";
 this addWeapon "launch_MRAWS_olive_F";
 this addWeapon "launch_MRAWS_sand_F";
 this addSecondaryWeaponItem "MRAWS_HEAT_F";
 this addItemToBackpack "MRAWS_HEAT55_F";
-this addItemToBackpack "MRAWS_HE_F";
+this addItemToBackpack "MRAWS_HE_F";*/
 
 
 //AAF
-this forceAddUniform "U_Tank_green_F";
+//this forceAddUniform "U_Tank_green_F";
 
 
 //CSAT
-this addHeadgear "H_Tank_black_F";
+//this addHeadgear "H_Tank_black_F";
 
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -1367,63 +1565,63 @@ this addHeadgear "H_Tank_black_F";
 
 
 //AAF
-this addBackpack "I_UAV_06_backpack_F";
-this addBackpack "I_UAV_06_medical_backpack_F";
+/*this addBackpack "I_UAV_06_backpack_F";
+this addBackpack "I_UAV_06_medical_backpack_F";*/
 
 
 //CSAT
-this addBackpack "O_UAV_06_backpack_F";
-this addBackpack "O_UAV_06_medical_backpack_F";
+/*this addBackpack "O_UAV_06_backpack_F";
+this addBackpack "O_UAV_06_medical_backpack_F";*/
 
 
 //NATO
-this addBackpack "B_UAV_06_backpack_F";
-this addBackpack "B_UAV_06_medical_backpack_F";
+//this addBackpack "B_UAV_06_backpack_F";
+//this addBackpack "B_UAV_06_medical_backpack_F";
 
 
 //IDAP
-this forceAddUniform "U_C_IDAP_Man_cargo_F";
+/*this forceAddUniform "U_C_IDAP_Man_cargo_F";
 this forceAddUniform "U_C_IDAP_Man_Jeans_F";
 this forceAddUniform "U_C_IDAP_Man_casual_F";
 this forceAddUniform "U_C_IDAP_Man_shorts_F";
 this forceAddUniform "U_C_IDAP_Man_Tee_F";
-this forceAddUniform "U_C_IDAP_Man_TeeShorts_F";
+this forceAddUniform "U_C_IDAP_Man_TeeShorts_F";*/
 
-this addVest "V_EOD_blue_F";
+/*this addVest "V_EOD_blue_F";
 this addVest "V_EOD_IDAP_blue_F";
 this addVest "V_EOD_coyote_F";
 this addVest "V_EOD_olive_F";
 this addVest "V_Plain_crystal_F";
-this addVest "V_Plain_medical_F";
+this addVest "V_Plain_medical_F";*/
 
-this addBackpack "B_Messenger_IDAP_F";
+/*this addBackpack "B_Messenger_IDAP_F";
 this addBackpack "C_IDAP_UAV_06_medical_backpack_F";
 this addBackpack "C_IDAP_UAV_06_antimine_backpack_F";
 this addBackpack "C_IDAP_UAV_06_backpack_F";
-this addBackpack "C_IDAP_UAV_01_backpack_F";
+this addBackpack "C_IDAP_UAV_01_backpack_F";*/
 
-this addHeadgear "H_PASGT_basic_black_F";
+/*this addHeadgear "H_PASGT_basic_black_F";
 this addHeadgear "H_PASGT_basic_blue_F";
 this addHeadgear "H_PASGT_basic_olive_F";
 this addHeadgear "H_PASGT_basic_white_F";
 this addHeadgear "H_Cap_Black_IDAP_F";
 this addHeadgear "H_Cap_Orange_IDAP_F";
-this addHeadgear "H_Cap_White_IDAP_F";
+this addHeadgear "H_Cap_White_IDAP_F";*/
 
 
 //GUER
-this forceAddUniform "U_BG_Guerilla1_2_F";
+//this forceAddUniform "U_BG_Guerilla1_2_F";
 
 
 //Civilian
-this forceAddUniform "U_C_ConstructionCoverall_Black_F";
+/*this forceAddUniform "U_C_ConstructionCoverall_Black_F";
 this forceAddUniform "U_C_ConstructionCoverall_Blue_F";
 this forceAddUniform "U_C_ConstructionCoverall_Red_F";
 this forceAddUniform "U_C_ConstructionCoverall_Vrana_F";
 this forceAddUniform "U_C_Mechanic_01_F";
-this forceAddUniform "U_C_Paramedic_01_F";
+this forceAddUniform "U_C_Paramedic_01_F";*/
 
-this addVest "V_LegStrapBag_black_F";
+/*this addVest "V_LegStrapBag_black_F";
 this addVest "V_LegStrapBag_coyote_F";
 this addVest "V_LegStrapBag_olive_F";
 this addVest "V_Pocketed_black_F";
@@ -1431,21 +1629,20 @@ this addVest "V_Pocketed_coyote_F";
 this addVest "V_Pocketed_olive_F";
 this addVest "V_Safety_blue_F";
 this addVest "V_Safety_orange_F";
-this addVest "V_Safety_yellow_F";
+this addVest "V_Safety_yellow_F";*/
 
-this addBackpack "B_LegStrapBag_black_F";
-
+/*this addBackpack "B_LegStrapBag_black_F";
 this addBackpack "B_LegStrapBag_coyote_F";
 this addBackpack "B_LegStrapBag_olive_F";
 this addBackpack "B_Messenger_Black_F";
 this addBackpack "B_Messenger_Coyote_F";
 this addBackpack "B_Messenger_Gray_F";
-this addBackpack "B_Messenger_Olive_F";
+this addBackpack "B_Messenger_Olive_F";*/
 
-this addBackpack "C_UAV_06_backpack_F";
-this addBackpack "C_UAV_06_medical_backpack_F";
+/*this addBackpack "C_UAV_06_backpack_F";
+this addBackpack "C_UAV_06_medical_backpack_F";*/
 
-this addHeadgear "H_EarProtectors_black_F";
+/*this addHeadgear "H_EarProtectors_black_F";
 this addHeadgear "H_EarProtectors_orange_F";
 this addHeadgear "H_EarProtectors_red_F";
 this addHeadgear "H_EarProtectors_white_F";
@@ -1480,18 +1677,18 @@ this addHeadgear "H_PASGT_basic_blue_press_F";
 this addHeadgear "H_PASGT_neckprot_blue_press_F";
 this addHeadgear "H_Hat_Safari_olive_F";
 this addHeadgear "H_Hat_Safari_sand_F";
-this addHeadgear "H_WirelessEarpiece_F";
+this addHeadgear "H_WirelessEarpiece_F";*/
 
 
-this addGoggles "G_Respirator_blue_F";
+/*this addGoggles "G_Respirator_blue_F";
 this addGoggles "G_Respirator_white_F";
 this addGoggles "G_Respirator_yellow_F";
 this addGoggles "G_EyeProtectors_F";
 this addGoggles "G_EyeProtectors_Earpiece_F";
-this addGoggles "G_WirelessEarpiece_F";
+this addGoggles "G_WirelessEarpiece_F";*/
 
 
-this linkItem "C_UavTerminal";
+//this linkItem "C_UavTerminal";
 
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -1499,7 +1696,7 @@ this linkItem "C_UavTerminal";
 
 
 //CSAT
-this forceAddUniform "U_O_officer_noInsignia_hex_F";
+//this forceAddUniform "U_O_officer_noInsignia_hex_F";
 
 
 
@@ -1510,21 +1707,21 @@ this forceAddUniform "U_O_officer_noInsignia_hex_F";
 
 
 //Parade uniforms
-this forceAddUniform "U_I_ParadeUniform_01_AAF_decorated_F";
-this forceAddUniform "U_I_ParadeUniform_01_AAF_F";
+/*this forceAddUniform "U_I_ParadeUniform_01_AAF_decorated_F";
+this forceAddUniform "U_I_ParadeUniform_01_AAF_F";*/
 
-this forceAddUniform "U_O_ParadeUniform_01_CSAT_decorated_F";
-this forceAddUniform "U_O_ParadeUniform_01_CSAT_F";
+//this forceAddUniform "U_O_ParadeUniform_01_CSAT_decorated_F";
+//this forceAddUniform "U_O_ParadeUniform_01_CSAT_F";
 
-this forceAddUniform "U_I_E_ParadeUniform_01_LDF_decorated_F";
-this forceAddUniform "U_I_E_ParadeUniform_01_LDF_F";
+/*this forceAddUniform "U_I_E_ParadeUniform_01_LDF_decorated_F";
+this forceAddUniform "U_I_E_ParadeUniform_01_LDF_F";*/
 
-this forceAddUniform "U_B_ParadeUniform_01_US_decorated_F";
-this forceAddUniform "U_B_ParadeUniform_01_US_F";
+//this forceAddUniform "U_B_ParadeUniform_01_US_decorated_F";
+//this forceAddUniform "U_B_ParadeUniform_01_US_F";
 
 
 //Civilian
-this forceAddUniform "U_C_ArtTShirt_01_v6_F";
+/*this forceAddUniform "U_C_ArtTShirt_01_v6_F";
 this forceAddUniform "U_C_ArtTShirt_01_v1_F";
 this forceAddUniform "U_C_ArtTShirt_01_v2_F";
 this forceAddUniform "U_C_ArtTShirt_01_v4_F";
@@ -1535,34 +1732,34 @@ this forceAddUniform "U_C_FormalSuit_01_blue_F";
 this forceAddUniform "U_C_FormalSuit_01_gray_F";
 this forceAddUniform "U_C_FormalSuit_01_khaki_F";
 this forceAddUniform "U_C_FormalSuit_01_tshirt_black_F";
-this forceAddUniform "U_C_FormalSuit_01_tshirt_gray_F";
+this forceAddUniform "U_C_FormalSuit_01_tshirt_gray_F";*/
 
-this addBackpack "B_CivilianBackpack_01_Everyday_Astra_F";
+/*this addBackpack "B_CivilianBackpack_01_Everyday_Astra_F";
 this addBackpack "B_CivilianBackpack_01_Everyday_Black_F";
 this addBackpack "B_CivilianBackpack_01_Everyday_Vrana_F";
 this addBackpack "B_CivilianBackpack_01_Everyday_IDAP_F";
 this addBackpack "B_CivilianBackpack_01_Sport_Blue_F";
 this addBackpack "B_CivilianBackpack_01_Sport_Green_F";
-this addBackpack "B_CivilianBackpack_01_Sport_Red_F";
+this addBackpack "B_CivilianBackpack_01_Sport_Red_F";*/
 
 
-this addHeadgear "H_ParadeDressCap_01_AAF_F";
-this addHeadgear "H_ParadeDressCap_01_CSAT_F";
-this addHeadgear "H_ParadeDressCap_01_LDF_F";
-this addHeadgear "H_ParadeDressCap_01_US_F";
+//this addHeadgear "H_ParadeDressCap_01_AAF_F";
+//this addHeadgear "H_ParadeDressCap_01_CSAT_F";
+//this addHeadgear "H_ParadeDressCap_01_LDF_F";
+//this addHeadgear "H_ParadeDressCap_01_US_F";
 
 
 //---------------------------------------------------------------------------------------------------------------------
 //Jets
 
 
-this addVest "V_DeckCrew_blue_F";
+/*this addVest "V_DeckCrew_blue_F";
 this addVest "V_DeckCrew_brown_F";
 this addVest "V_DeckCrew_green_F";
 this addVest "V_DeckCrew_red_F";
 this addVest "V_DeckCrew_violet_F";
 this addVest "V_DeckCrew_white_F";
-this addVest "V_DeckCrew_yellow_F";
+this addVest "V_DeckCrew_yellow_F";*/
 
 
 
@@ -1570,7 +1767,7 @@ this addVest "V_DeckCrew_yellow_F";
 //A3 Malden
 
 
-this addBackpack "B_Patrol_Respawn_bag_F";
+//this addBackpack "B_Patrol_Respawn_bag_F";
 
 
 

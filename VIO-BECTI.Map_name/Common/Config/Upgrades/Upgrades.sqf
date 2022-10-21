@@ -12,7 +12,7 @@ _cost = 1;
 //_upgrade_levels = [];
 _upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 if (isNil "_upgrade_levels") then { 
-	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,1,1,1,1,3,4,CTI_ECONOMY_LEVEL_GEAR]; 
+	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,1,1,1,1,3,4,CTI_ECONOMY_LEVEL_GEAR,3]; 
 } else {
 	if(_upgrade_levels select CTI_UPGRADE_BARRACKS > CTI_ECONOMY_LEVEL_INFANTRY) then {_upgrade_levels set [CTI_UPGRADE_BARRACKS, CTI_ECONOMY_LEVEL_INFANTRY]};		//--- Barracks
 	if(_upgrade_levels select CTI_UPGRADE_LIGHT > CTI_ECONOMY_LEVEL_WHEELED) then {_upgrade_levels set [CTI_UPGRADE_LIGHT, CTI_ECONOMY_LEVEL_WHEELED]};				//--- Light
@@ -27,6 +27,7 @@ if (isNil "_upgrade_levels") then {
 	_upgrade_levels set [CTI_UPGRADE_TOWNS, 3];																														//--- Towns Occupation
 	_upgrade_levels set [CTI_UPGRADE_SUPPLY, 4];																													//--- Supply
 	if(_upgrade_levels select CTI_UPGRADE_GEAR > CTI_ECONOMY_LEVEL_GEAR) then {_upgrade_levels set [CTI_UPGRADE_GEAR, CTI_ECONOMY_LEVEL_GEAR]};						//--- Gear
+	_upgrade_levels set [CTI_UPGRADE_DEFENSE, 3];																													//--- Defenses
 };
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], _upgrade_levels];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade levels for %1: <%2>", _upgrade_levels]] call CTI_CO_FNC_Log;};
@@ -49,6 +50,7 @@ _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_VEHICLES_AIR_CM")
 _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0); 		//--- Towns Occupation
 _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 0);  	//--- Supply
 _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Gear
+_upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Defenses
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_ENABLED", _side], _upgrades_enabled];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrades enabled for %1: <%2>", _upgrades_enabled]] call CTI_CO_FNC_Log;};
 
@@ -108,6 +110,7 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _
 	_cost pushBack [_cost_level*(_i+1),(_cost_level*(_i+1))/2];
 }; 
 _upgrade_cost pushBack _cost;															//--- Gear
+_upgrade_cost pushBack [[round((500*CTI_ECONOMY_RESEARCH_MULTI)/100),round((200*CTI_ECONOMY_RESEARCH_MULTI)/100)],[round((1000*CTI_ECONOMY_RESEARCH_MULTI)/100),round((500*CTI_ECONOMY_RESEARCH_MULTI)/100)],[round((3000*CTI_ECONOMY_RESEARCH_MULTI)/100),round((1500*CTI_ECONOMY_RESEARCH_MULTI)/100)]]; 			//--- Defenses
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], _upgrade_cost];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade costs for %1: <%2>", _upgrade_cost]] call CTI_CO_FNC_Log;};
 
@@ -153,6 +156,7 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _
 	_links pushBack [];
 };
 _upgrade_links pushBack _links;				//--- Gear
+_upgrade_links pushBack [[],[CTI_UPGRADE_SUPPLY,1],[CTI_UPGRADE_AIR, (_upgrade_levels select CTI_UPGRADE_AIR)]]; 		//--- Defenses
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], _upgrade_links];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade links for %1: <%2>", _upgrade_links]] call CTI_CO_FNC_Log;};
 
@@ -215,6 +219,7 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Gear
+_upgrade_time pushBack [60,180]; 										//--- Defenses
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], _upgrade_time];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade times for %1: <%2>", _upgrade_time]] call CTI_CO_FNC_Log;};
 
@@ -243,6 +248,7 @@ if (CTI_IsClient) then {
 	_upgrade_labels pushBack ["Towns Occupation", "Allows the spawning of occupation forces which will defend friendly towns against any attackers.<br />It will also improve the income generation in non-occupied towns"]; //--- Towns Occupation
 	_upgrade_labels pushBack ["Supply", "Increases the rate at which towns increase their SV"]; 					//---Supply
 	_upgrade_labels pushBack ["Gear", "<t>Unlock better gear</t>"];													//--- Gear
+	_upgrade_labels pushBack ["Defenses", "<t>Unlock better defenses</t>"]; 										//---Defenses
 	missionNamespace setVariable [Format["CTI_%1_UPGRADES_LABELS", _side], _upgrade_labels];
 };
 

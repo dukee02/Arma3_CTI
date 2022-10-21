@@ -27,12 +27,18 @@ _formated = [];
 	_nils = [];
 	
 	{
-		_var = missionNamespace getVariable _x;
-		if !(isNil '_var') then {
-			_cost = _cost + ((_var select 0) select 1);
-			if (((_var select 0) select 0) > _upgrade) then {_upgrade = (_var select 0) select 0};
-		} else {
-			_nils pushBack _x;
+		if!(_x == "") then {
+			_var = missionNamespace getVariable _x;
+			if !(isNil '_var') then {
+				_cost = _cost + ((_var select 0) select 1);
+				if (((_var select 0) select 0) > _upgrade) then {_upgrade = (_var select 0) select 0};
+			} else {
+				if(_x == "binocular" || _x == "Binocular" ) then {
+					_cost = _cost + ([CTI_ECONOMY_PRIZE_WEAPONS,0,0.25] call CTI_CO_FNC_GetCalculatedItemPrize);
+				} else {
+					_nils pushBack _x;
+				};
+			};
 		};
 	} forEach (_x call CTI_CO_FNC_ConvertGearToFlat);
 	
