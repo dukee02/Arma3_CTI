@@ -40,7 +40,7 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air","A
 units_infantry = [];
 inf_to_add = [];
 _matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Tech Level 0
 // ------------
@@ -136,7 +136,7 @@ _s pushBack [];
 units_wheeled = [];
 mot_to_add = [];
 _matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Tech Level 0
 // ------------
@@ -205,7 +205,7 @@ _s pushBack [];
 units_tracked = [];
 arm_to_add = [];
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Tech Level 0
 // ------------
@@ -275,7 +275,7 @@ units_antiair = [];
 antiair_to_add = [];
 
 _matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 _matrix_cnt = [1, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
@@ -297,7 +297,7 @@ _s pushBack [];
 units_air = [];
 air_to_add = [];
 _matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_CSAT_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Tech Level 0
 // ------------

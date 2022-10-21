@@ -42,8 +42,9 @@ _d = []; //--- Extra Distance (From Factory)
 //*********************************************************************************************************************************************
 //											Infantry units																					  *
 //*********************************************************************************************************************************************
-//--- Below is classnames for Units and AI avaiable to puchase from Barracks Factory._matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+//--- Below is classnames for Units and AI avaiable to puchase from Barracks Factory.
+_matrix_full = [_side, CTI_UPGRADE_BARRACKS] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_BARRACKS, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Barracks Upgrade Level 0
 // ------------------------
@@ -241,7 +242,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _tech_level) then {
 //*********************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Light Factory.
 _matrix_full = [_side, CTI_UPGRADE_LIGHT] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_LIGHT, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 // Light Factory Upgrade Level 0
 // -----------------------------
@@ -395,7 +396,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 //*********************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -457,7 +458,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
@@ -502,7 +503,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 
 //--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
 _matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
+_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_AAF_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
 
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};

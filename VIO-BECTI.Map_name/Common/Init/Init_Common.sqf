@@ -94,7 +94,6 @@ CTI_CO_FNC_GetSideDefenses = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetCalculatedUnitsPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedUnitsPrize.sqf";
 CTI_CO_FNC_GetCalculatedBuildtime = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedBuildtime.sqf";
 CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedItemPrize.sqf";
-CTI_CO_FNC_SetFOBheader = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetFOBheader.sqf";
 
 CTI_CO_CustomIterator = 0;
 
@@ -118,6 +117,10 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_east.sqf";
 
+(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Basic.sqf";
+(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Basic.sqf";
+//(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Civilian.sqf";
+//(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Civilian.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_east.sqf";
 
@@ -160,35 +163,71 @@ if ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 1) then {
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
 if(CTI_CAMO_ACTIVATION == 0) then {
-	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[""]],
-		["",["","","",""],[""]]],
-		[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
-		["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
-		["",[]]],
-		["H_HelmetB_light",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
-			
-	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
-		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[""]],
-		["",["","","",""],[""]]],
-		[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
-		["V_BandollierB_cbr",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
-		["",[]]],
-		["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+	if(395180 in (getDLCs 1)) then {		//APEX
+		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+			[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_cbr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+			["",[]]],
+			["H_HelmetB_light",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+				
+		missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+			[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_cbr",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
+			["",[]]],
+			["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+	} else {
+		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+			[["arifle_Mk20_plain_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_cbr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+			["",[]]],
+			["H_HelmetB_light",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+				
+		missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+			[["arifle_TRG20_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_cbr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+			["",[]]],
+			["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+	};
 } else {
-	missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
-		[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[""]],
-		["",["","","",""],[""]]],
-		[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
-		["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
-		["",[]]],
-		["H_HelmetB_Light_tna_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
-		
-	missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
-		[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[""]],
-		["",["","","",""],[""]]],
-		[["U_O_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
-		["V_BandollierB_ghex_F",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
-		["",[]]],
-		["H_HelmetO_ghex_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+	if(395180 in (getDLCs 1)) then {		//APEX
+		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+			[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_B_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_Chestrig_rgr",["30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green","30Rnd_556x45_Stanag_Tracer_Green"]],
+			["",[]]],
+			["H_HelmetB_Light_tna_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+			
+		missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+			[["arifle_CTAR_blk_F",["","","",""],["30Rnd_580x42_Mag_Tracer_F"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_O_T_Soldier_F",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_ghex_F",["30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F","30Rnd_580x42_Mag_Tracer_F"]],
+			["",[]]],
+			["H_HelmetO_ghex_F",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+	} else {
+		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
+			[["arifle_Mk20_plain_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_B_CombatUniform_mcam",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_cbr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+			["",[]]],
+			["H_HelmetB_light",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+				
+		missionNamespace setVariable ["CTI_AI_EAST_DEFAULT_GEAR", [
+			[["arifle_TRG20_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
+			["",["","","",""],[""]]],
+			[["U_O_CombatUniform_ocamo",["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
+			["V_BandollierB_cbr",["30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_Stanag"]],
+			["",[]]],
+			["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
+	};
 };
