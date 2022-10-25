@@ -337,6 +337,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_LSV_02_unarmed_viper_F", _sid];
 	};
+	_c pushBack format["%1C_Van_02_medevac_F", _sid];
 };
 
 // Tech Level 1

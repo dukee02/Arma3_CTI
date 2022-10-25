@@ -303,6 +303,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		_c pushBack format["%1B_T_LSV_01_unarmed_CTRG_F", _sid];
 		_c pushBack format["%1B_T_Truck_01_mover_F", _sid];
 	};
+	_c pushBack format["%1C_IDAP_Van_02_medevac_F", _sid];
 };
 
 // Tech Level 1

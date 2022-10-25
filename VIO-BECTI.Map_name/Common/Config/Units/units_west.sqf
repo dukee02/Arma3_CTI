@@ -589,6 +589,16 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_d pushBack 0;
 	};
 
+	// SPECIAL CASES - Vehicles that need scripting
+	_c pushBack format["%1C_IDAP_Van_02_medevac_F", _sid];		//medic
+	_p pushBack '';
+	_n pushBack (format ["Civil Ambulance Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+	_o pushBack _armedUnitValue;
+	_t pushBack _building_time;
+	_u pushBack _tech_level;
+	_f pushBack CTI_FACTORY_LIGHT;
+	_s pushBack "service-medic";
+	_d pushBack 0;
 };
 
 // Light Factory Upgrade Level 1
