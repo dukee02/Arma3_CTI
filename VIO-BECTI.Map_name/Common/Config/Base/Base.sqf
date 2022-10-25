@@ -554,35 +554,35 @@ _headers pushBack 		"Airport Control Tower";
 _classes pushBack 		"Land_Airport_Tower_F";
 _prices pushBack 		5000;
 _placements pushBack 	[90, 15];
-_categories pushBack 	"Airport";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Hangar";
 _classes pushBack 		"Land_Hangar_F";
 _prices pushBack 		3000;
 _placements pushBack 	[90, 15];
-_categories pushBack 	"Airport";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Tent Hangar";
 _classes pushBack 		"Land_TentHangar_V1_F";
 _prices pushBack 		2000;
 _placements pushBack 	[90, 15];
-_categories pushBack 	"Airport";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Civilian Hangar (Small)";
 _classes pushBack 		"Land_Airport_01_hangar_F";
 _prices pushBack 		2000;
 _placements pushBack 	[0, 15];
-_categories pushBack 	"Airport";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Civilian Hangar (Large)";
 _classes pushBack 		"Land_Airport_02_hangar_left_F";
 _prices pushBack 		2000;
 _placements pushBack 	[90, 15];
-_categories pushBack 	"Airport";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Heli Pad (Square)";
@@ -842,21 +842,21 @@ _headers pushBack 		"Bunker (Small)";
 _classes pushBack 		"Land_BagBunker_Small_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Bunker";
+_categories pushBack 	"Walls";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Bunker (Large)";
 _classes pushBack 		"Land_BagBunker_Large_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Bunker";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Bunker (Tower)";
 _classes pushBack 		"Land_BagBunker_Tower_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Bunker";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		1;
 
 _headers pushBack 		["Sandbag Wall (Corner)",[["CanAutoAlign", 3.8, 0]]];
@@ -940,7 +940,7 @@ _headers pushBack 		"H-barrier Watchtower";
 _classes pushBack 		"Land_HBarrierTower_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"HBarrier";
+_categories pushBack 	"Buildings";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier (Block)",[["CanAutoAlign", 3.8, 0]]];
