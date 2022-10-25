@@ -8,6 +8,7 @@ _placements = _this select 4;
 _categories = _this select 5;
 _tiers = _this select 6;
 
+_uniqe_categories = [];
 _defenses = [];
 for '_i' from 0 to (count _headers) -1 do {
 	_header = _headers select _i;
@@ -36,6 +37,7 @@ for '_i' from 0 to (count _headers) -1 do {
 	
 		missionNamespace setVariable [format["CTI_%1_%2",_side,_classname], _stored];
 		_defenses pushBack (format["CTI_%1_%2",_side,_classname]);
+		_uniqe_categories pushBackUnique (_categories select _i);
 		
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Config\Base\Set_Defense.sqf", Format ["Side [%1] defenses found: [%2]", _side, format["CTI_%1_%2",_side,_classname]]] Call CTI_CO_FNC_Log};
 		
@@ -47,3 +49,4 @@ for '_i' from 0 to (count _headers) -1 do {
 };
 
 missionNamespace setVariable [format ["CTI_%1_DEFENSES", _side], _defenses];
+missionNamespace setVariable [format ["CTI_%1_DEFENSECATEGORIES", _side], _uniqe_categories];

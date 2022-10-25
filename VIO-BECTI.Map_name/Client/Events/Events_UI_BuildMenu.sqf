@@ -9,6 +9,7 @@ switch (_action) do {
 		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, "Defenses Auto-Manning: On"] } else { ctrlSetText [100011, "Defenses Auto-Manning: Off"] };
 		_hq = CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ;
 		_supplyActive = if (missionNameSpace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM" == 0) then {true} else {false};
+		call CTI_UI_Load_DefenseCategories;
 		
 		if (isNil 'CTI_ConstructionCamera') then {[_hq, CTI_BASE_CONSTRUCTION_RANGE, 50] call CTI_CL_FNC_CreateCamera};
 		
@@ -32,18 +33,7 @@ switch (_action) do {
 		
 			if !(isNil {uiNamespace getVariable "cti_dialog_ui_buildmenu_lastbsel"}) then {((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100006) lnbSetCurSelRow (uiNamespace getVariable "cti_dialog_ui_buildmenu_lastbsel")};
 		
-			/*{
-				_var = missionNamespace getVariable _x;
-			
-				_condition = {true};
-				{if (_x select 0 == "Condition") exitWith {_condition = _x select 1}} forEach (_var select 6);
-			
-				if (call _condition) then {
-					_row = ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100007) lnbAddRow [format ["$%1", _var select 2], _var select 0];
-					((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100007) lnbSetData [[_row, 0], _x];
-				};
-			} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);*/
-			call CTI_UI_Build_FillDefenseList;
+			[0] call CTI_UI_Build_FillDefenseList;
 		
 			if !(isNil {uiNamespace getVariable "cti_dialog_ui_buildmenu_lastdsel"}) then {((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100007) lnbSetCurSelRow (uiNamespace getVariable "cti_dialog_ui_buildmenu_lastdsel")};
 		} else { 
@@ -69,6 +59,11 @@ switch (_action) do {
 		
 		// CTI_BASE_WORKERS_LIMIT
 		// 100005
+	};
+	case "onDefenseLBSelChanged": { //--- The defens category combo was changed
+		_changedto = _this select 1;
+
+		[_changedto] call CTI_UI_Build_FillDefenseList;
 	};
 	case "onBuildStructure": {
 		_selected = _this select 1;

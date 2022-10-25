@@ -242,7 +242,7 @@ _headers pushBack 			["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"
 _classes pushBack 			"Land_Medevac_house_V1_F";
 _prices pushBack 			([CTI_ECONOMY_PRIZE_WHEELED,1,true,2.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 _placements pushBack 		[0, 15];
-_categories pushBack 		"Fortification";
+_categories pushBack 		"All";
 _tiers pushBack 			1;
 
 
@@ -666,56 +666,56 @@ _headers pushBack 		"Camping Lantern";
 _classes pushBack 		"Land_Camping_Light_F";
 _prices pushBack 		50;
 _placements pushBack 	[90, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Double Portable Light";
 _classes pushBack 		"Land_PortableLight_double_F";
 _prices pushBack 		50;
 _placements pushBack 	[90, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 	
 _headers pushBack 		"Rugged Portable Lamp (Quad, Olive)";
 _classes pushBack 		"Land_PortableLight_02_quad_olive_F";
 _prices pushBack 		50;
 _placements pushBack 	[90, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Rugged Portable Lamp (Quad, Yellow)";
 _classes pushBack 		"Land_PortableLight_02_quad_yellow_F";
 _prices pushBack 		50;
 _placements pushBack 	[90, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Rugged Portable Lamp (Quad, Black)";
 _classes pushBack 		"Land_PortableLight_02_quad_black_F";
 _prices pushBack 		50;
 _placements pushBack 	[90, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Rugged Portable Lamp (Quad, Sand)";
 _classes pushBack 		"Land_PortableLight_02_quad_sand_F";
 _prices pushBack 		50;
 _placements pushBack 	[90, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Floodlight";
 _classes pushBack 		"Land_FloodLight_F";
 _prices pushBack 		5;
 _placements pushBack 	[90, 15];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Lamp";
 _classes pushBack 		"Land_LampHalogen_F";
 _prices pushBack 		5;
 _placements pushBack 	[90, 15];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
 
@@ -723,35 +723,35 @@ _headers pushBack 		"Runway Light (White)";
 _classes pushBack 		"Land_runway_edgelight";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Runway Light (Red)";
 _classes pushBack 		"Land_Flush_Light_red_F";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Runway Light (Green)";
 _classes pushBack 		"Land_Flush_Light_green_F";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Runway Light (Blue)";
 _classes pushBack 		"Land_runway_edgelight_blue_F";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		2;
 
 _headers pushBack 		"Runway Light (Yellow)";
 _classes pushBack 		"Land_Flush_Light_yellow_F";
 _prices pushBack 		1;
 _placements pushBack 	[0, 5];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Lights";
 _tiers pushBack 		2;
 
 _headers pushBack 		"WindSock";
@@ -765,63 +765,63 @@ _headers pushBack 		"Dirt ramp";
 _classes pushBack 		"Land_Rampart_F";
 _prices pushBack 		500;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Dirt";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Dirt Hump (Small)";
 _classes pushBack 		"Dirthump_1_F";
 _prices pushBack 		250;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Dirt";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Dirt Hump";
 _classes pushBack 		"Dirthump_2_F";
 _prices pushBack 		500;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Dirt";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Dirt Hump (Big)";
 _classes pushBack 		"Dirthump_3_F";
 _prices pushBack 		700;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Dirt";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Dirt Hump (Long)";
 _classes pushBack 		"Dirthump_4_F";
 _prices pushBack 		500;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Dirt";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Concrete ramp";
 _classes pushBack 		"Land_RampConcrete_F";
 _prices pushBack 		2000;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Concrete";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Concrete Block";
 _classes pushBack 		"BlockConcrete_F";
 _prices pushBack 		2000;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Concrete";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Wooden pier";
 _classes pushBack 		"Land_PierWooden_02_16m_F";
 _prices pushBack 		1000;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Wood";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Concrete pier";
 _classes pushBack 		"Land_PierConcrete_01_16m_F";
 _prices pushBack 		5000;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Concrete";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Czech Hedgehog";
@@ -835,28 +835,28 @@ _headers pushBack 		"Concrete Hedgehog";
 _classes pushBack 		"Land_ConcreteHedgehog_01_F";
 _prices pushBack 		20;
 _placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Concrete";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Bunker (Small)";
 _classes pushBack 		"Land_BagBunker_Small_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Bunker";
 _tiers pushBack 		0;
 
 _headers pushBack 		"Bunker (Large)";
 _classes pushBack 		"Land_BagBunker_Large_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Bunker";
 _tiers pushBack 		1;
 
 _headers pushBack 		"Bunker (Tower)";
 _classes pushBack 		"Land_BagBunker_Tower_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"Bunker";
 _tiers pushBack 		1;
 
 _headers pushBack 		["Sandbag Wall (Corner)",[["CanAutoAlign", 3.8, 0]]];
@@ -940,63 +940,63 @@ _headers pushBack 		"H-barrier Watchtower";
 _classes pushBack 		"Land_HBarrierTower_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Misc";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier (Block)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrier_1_F";
 _prices pushBack 		20;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier (3 Blocks)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrier_3_F";
 _prices pushBack 		60;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier (5 Blocks)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrier_5_F";
 _prices pushBack 		100;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier (Big, 4 Blocks)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrier_Big_F";
 _prices pushBack 		100;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier Wall (Corner)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrierWall_corner_F";
 _prices pushBack 		60;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier Corridor",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrierWall_corridor_F";
 _prices pushBack 		200;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier Wall (Short)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrierWall4_F";
 _prices pushBack 		60;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 
 _headers pushBack 		["H-barrier Wall (Long)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_HBarrierWall6_F";
 _prices pushBack 		100;
 _placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
+_categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
 /*
 _headers pushBack 		"IR Masking Tent (Small)";
