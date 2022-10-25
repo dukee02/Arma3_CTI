@@ -1747,7 +1747,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_REPAIR;
-		_s pushBack [format["%1C_Van_02_medevac_F", _sid],"salvager"];
+		_s pushBack [format["%1B_GEN_Van_02_transport_F", _sid],"salvager"];
 		_d pushBack 0;
 			
 		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
@@ -1757,7 +1757,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_REPAIR;
-		_s pushBack [format["%1C_Van_02_medevac_F", _sid],"salvager-independent"];
+		_s pushBack [format["%1B_GEN_Van_02_transport_F", _sid],"salvager-independent"];
 		_d pushBack 0;
 	} else {
 		_c pushBack format["CTI_Salvager_%1", _faction];
