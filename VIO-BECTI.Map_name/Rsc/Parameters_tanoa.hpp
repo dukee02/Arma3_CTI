@@ -89,6 +89,18 @@ class Params {
 		texts[] = {"0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
+	class CTI_ECONOMY_LEVEL_PRESET {
+		title = "UPGRADE: Pre researched level";
+		values[] = {0,1,2,3,4,5};
+		texts[] = {"start with 0","pre researched up to level 1 (or max)","pre researched up to level 2 (or max)","pre researched up to level 3 (or max)","pre researched up to level 4 (or max)","pre researched up to level 5 (or max)"};
+		default = "0";
+	};
+	class CTI_ECONOMY_LEVEL_PRESET {
+		title = "UPGRADE: Pre researched level";
+		values[] = {[0],[1],[2],[3],[4],[5]};
+		texts[] = {"0","1","2","3","4","5"};
+		default = [0];
+	};
 	class CTI_ECONOMY_UPGRADE_TIMECAP {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
 		values[] = {300,400,500,600,700,800,900,1000,1100,1200};
