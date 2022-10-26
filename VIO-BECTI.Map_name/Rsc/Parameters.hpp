@@ -55,32 +55,32 @@ class Params {
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {
 		title = "UPGRADE: Max Level Infantry";
-		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_WHEELED {
 		title = "UPGRADE: Max Level Wheeled";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all wheeled units","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
 		title = "UPGRADE: Max Level Tracked";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all tracked units","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
 		title = "UPGRADE: Max Level Naval";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all naval units","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
 		title = "UPGRADE: Max Level Air";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all air units","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	class CTI_ECONOMY_UPGRADE_TIMECAP {
