@@ -83,6 +83,12 @@ class Params {
 		texts[] = {"Disable all air units","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
+	class CTI_ECONOMY_LEVEL_DEFENSE {
+		title = "UPGRADE: Max Level Defense";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 10;
+	};
 	class CTI_ECONOMY_UPGRADE_TIMECAP {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
 		values[] = {300,400,500,600,700,800,900,1000,1100,1200};
