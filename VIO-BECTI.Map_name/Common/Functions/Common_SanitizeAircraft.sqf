@@ -6,6 +6,7 @@
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	30-09-2014 (Sari)
+	Revision Date:	15-11-2022 (dukee)
 	
   # PARAMETERS #
     0	[Object]: The vehicle
@@ -37,22 +38,27 @@ _side = _this select 1;
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 
 //--- We check the FFAR loadout 
-
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") do {
-	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};//--- Remove
-	case 1: {if (_upgrades select CTI_UPGRADE_AIR_FFAR < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR}};//--- Remove if not yet ugpraded
+	//case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};//--- Remove
+	//case 1: {if (_upgrades select CTI_UPGRADE_AIR_FFAR < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR}};//--- Remove if not yet ugpraded
+	case -1: {};	//--- Ignore restrictions
+	default {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};
 };
 
 //--- We check the AT Loadout
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_AT") do {
-	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftAT};//--- Remove
-	case 1: {if (_upgrades select CTI_UPGRADE_AIR_AT < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftAT}};//--- Remove if not yet ugpraded
+	//case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftAT};//--- Remove
+	//case 1: {if (_upgrades select CTI_UPGRADE_AIR_AT < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftAT}};//--- Remove if not yet ugpraded
+	case -1: {};	//--- Ignore restrictions
+	default {_vehicle call CTI_CO_FNC_SanitizeAircraftAT};
 };
 
 //--- We check the AA Loadout
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_AA") do {
-	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftAA};//--- Remove
-	case 1: {if (_upgrades select CTI_UPGRADE_AIR_AA < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftAA}};//--- Remove if not yet ugpraded
+	//case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftAA};//--- Remove
+	//case 1: {if (_upgrades select CTI_UPGRADE_AIR_AA < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftAA}};//--- Remove if not yet ugpraded
+	case -1: {};	//--- Ignore restrictions
+	default {_vehicle call CTI_CO_FNC_SanitizeAircraftAA};
 };
 
 //--- We check the CM Loadout
@@ -60,3 +66,22 @@ switch (missionNamespace getVariable "CTI_VEHICLES_AIR_CM") do {
 	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftCM};//--- Remove
 	case 1: {if (_upgrades select CTI_UPGRADE_AIR_CM < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftCM}};//--- Remove if not yet ugpraded
 };
+
+_phylon_cnt = 1;
+_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
+{
+	// Current result is saved in variable _x
+	_get = missionNamespace getVariable _x;
+	if !(isNil "_get") then {
+		if (CTI_Log_Level >= CTI_Log_Debug) then { 
+			["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get phylon %1 magazine <%2> with data <%3> magazine tech <%1/%2>", _phylon_cnt, _x, _get, (_upgrades select CTI_UPGRADE_AIR_FFAR), (_get select 2)]] call CTI_CO_FNC_Log};
+		if ((_upgrades select CTI_UPGRADE_AIR_FFAR) < (_get select 2)) then {
+			//_vehicle setAmmoOnPylon [_phylon_cnt, 0];
+			_vehicle setPylonLoadout [_phylon_cnt, ""];
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Phylon <%1> cleared", _phylon_cnt]] call CTI_CO_FNC_Log};
+		};
+	} else {
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get magazine <%1> with no data", _x]] call CTI_CO_FNC_Log};
+	};
+	_phylon_cnt = _phylon_cnt + 1;
+} forEach getPylonMagazines _vehicle;

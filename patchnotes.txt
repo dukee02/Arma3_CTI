@@ -14,3 +14,22 @@ Changed: Heavy weaponry for all (balancing)
 Fixed: Error when building salvagers
 Fixed: Attachmentslots not highlightet on drag item
 Fixed: can't build FOB with active AI commander
+
+
+
+
+[ToDo]
+check respawn function to implement jump into teamAI
+check Client/Events/Events_UI_OptionsMenue (unflip vehicle) if we can make it saver
+add time to reseach window
+add time to fire misson of artys
+add buildtime of units in list
+
+apply upgrade check to the phylons (needs test)
+apply max ammo check to phylons (needs test)
+save load loadout (needs test)
+add filter functionality (needs test)
+add phylon control functionality (needs test)
+send  loadout to the server (skipped)
+load server loadouts (skipped)
+take a look to the upgrade preset in init_server

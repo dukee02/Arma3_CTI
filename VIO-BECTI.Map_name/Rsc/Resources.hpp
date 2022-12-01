@@ -14,6 +14,11 @@
 #define CT_LISTNBOX 102
  
 #include "Styles.hpp"
+
+//import RscButtonMenu;
+//import RscButtonMenuOK;
+//import RscButtonMenuCancel;
+import RscCheckBox;
  
 class ScrollBar;
 class BeScrollBar : ScrollBar {
@@ -113,6 +118,7 @@ idc = -1;
 style = ST_PICTURE;
 shadow = 0;
 colorText[] = {1,1,1,1};
+colorBackground[] = {0,0,0,1};
 x = 0;
 y = 0;
 w = 0.2;

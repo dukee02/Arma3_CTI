@@ -44,8 +44,9 @@ switch (_action) do {
 			} forEach (player nearEntities[["Car","Motorcycle","Ship","Tank"],10]);
 		};
 	};
-	case "onMusicPressed": { //--- Play some music
-		player sidechat "lalalalaaaaaaaaaa lalalalaaaaaaaa laaaa";
+	case "onPhylonPressed": { //--- Open Phylon Management window
+		closeDialog 0;
+		createDialog "CTI_RscPhylonMenu";
 	};
 	case "onServicePressed": {
 		closeDialog 0;

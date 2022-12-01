@@ -1685,13 +1685,13 @@ class CTI_RscOptionsMenu {
 			text = "Video Settings";
 			action = "['onVideoSettingsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
-		class CTI_Menu_Options_Music : CTI_Menu_Options_OnlineHelp {
+		class CTI_Menu_Options_PhylonLoadout : CTI_Menu_Options_OnlineHelp {
 			idc = 130008;
 			
 			y = "SafeZoneY + (SafezoneH * 0.545)";
 			
-			text = "Play Music: Off";
-			action = "['onMusicPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
+			text = "Phylon Manager";
+			action = "['onPhylonPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
 		class CTI_Menu_Options_TransferFunds : CTI_Menu_Options_OnlineHelp {
 			idc = 130009;
@@ -4905,503 +4905,468 @@ class CTI_RscVoteMenu {
 		};
 	};
 };
-
-/*
 //--- Phylon Management (by dukee).
-class CTI_RscVoteMenu {
+class CTI_RscPhylonMenu {
 	movingEnable = 1;
 	idd = 400000;
-	//onLoad = "uiNamespace setVariable ['cti_dialog_ui_votemenu', _this select 0]; ['onLoad'] execVM 'Client\Events\Events_UI_VoteMenu.sqf'";
-	//onUnload = "uiNamespace setVariable ['cti_dialog_ui_votemenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_VoteMenu.sqf'";
-	
-	
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_phylonmenu', _this select 0]; ['onLoad'] execVM 'Client\Events\Events_UI_PhylonMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_phylonmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+
 	class controlsBackground {
 		class CTI_Background : RscText {
-			x = "SafeZoneX + (SafeZoneW * 0.325)";
-			y = "SafeZoneY + (SafezoneH * 0.155)";
-			w = "SafeZoneW * 0.3";
-			h = "SafeZoneH * 0.7";
+			x = "SafeZoneX + (SafeZoneW * 0.21)";
+			y = "SafeZoneY + (SafezoneH * 0.175)";
+			w = "SafeZoneW * 0.615";
+			h = "SafeZoneH * 0.705";
 			colorBackground[] = {0, 0, 0, 0.7};
 			moving = 1;
 		};
 		class CTI_Background_Header : CTI_Background {
-			x = "SafeZoneX + (SafeZoneW * 0.325)";
-			y = "SafeZoneY + (SafezoneH * 0.155)";
-			w = "SafeZoneW * 0.3";
-			h = "SafeZoneH * 0.05";
-			colorBackground[] = {0, 0, 0, 0.4};
-		};
-		class CTI_Background_Footer : CTI_Background {
-			x = "SafeZoneX + (SafeZoneW * 0.325)";
-			y = "SafeZoneY + (SafezoneH * 0.805)";
-			w = "SafeZoneW * 0.3";
-			h = "SafeZoneH * 0.05"; 
+			x = "SafeZoneX + (SafeZoneW * 0.21)";
+			y = "SafeZoneY + (SafezoneH * 0.175)";
+			w = "SafeZoneW * 0.615";
+			h = "SafeZoneH * 0.05"; //0.06 stock
 			colorBackground[] = {0, 0, 0, 0.4};
 		};
 		class CTI_Menu_Title : RscText {
-			x = "SafeZoneX + (SafeZoneW * 0.33)";
-			y = "SafeZoneY + (SafezoneH * 0.16)";
+			style = ST_LEFT;
+			x = "SafeZoneX + (SafeZoneW * 0.23)";
+			y = "SafeZoneY + (SafezoneH * 0.180)";
 			w = "SafeZoneW * 0.595";
-			text = "Commander Vote :";
-			colorText[] = {1,1,1,1};
+			h = "SafeZoneH * 0.037";
+			
+			text = "Phylon Management Menu";
+			colorText[] = {0.258823529, 0.713725490, 1, 1};
+			
+			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+		};
+		
+		class CTI_Menu_PresetListFrame : RscFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafezoneH * 0.245)";
+			w = "SafeZoneW * 0.200";
+			h = "SafeZoneH * 0.570";
+		};
+		class CTI_Menu_ConfigInfoFrame : CTI_Menu_PresetListFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.430)";
+			y = "SafeZoneY + (SafezoneH * 0.245)";
+			h = "SafeZoneH * 0.1";
+			w = "SafeZoneW * 0.385";
+		};
+
+		class CTI_Menu_PhylonFrame : CTI_Menu_ConfigInfoFrame {
+			x = "SafeZoneX + (SafeZoneW * 0.430)";
+			y = "SafeZoneY + (SafezoneH * 0.355)";
+			h = "SafeZoneH * 0.460";
 		};
 	};
+	
 	class controls {
-		class CTI_Vote_List : RscListnBox {
-			idc = 500100;
-			x = "SafeZoneX + (SafeZoneW * 0.325)";
-			y = "SafeZoneY + (SafezoneH * 0.205)";
-			w = "SafeZoneW * 0.3";
-			h = "SafeZoneH * 0.6";
+		
+		class CTI_Menu_Control_PresetList : RscListNBox {
+			idc = 450018;
 			
-			rowHeight = "1.3 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafezoneH * 0.245)";
+			w = "SafeZoneW * 0.200";
+			h = "SafeZoneH * 0.570";
+			
+			rowHeight = "1.35 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			
-			colorBackground[] = {0,0,0,0};
-			colorSelectBackground2[] = {0.258823529, 0.713725490, 1, 1};
-			
-			columns[] = {0.01, 0.75};
-			
-			onLBSelChanged = "['onUnitsLBSelChanged'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_VoteMenu.sqf'";
-		};
-		class RscListbox_1500: RscListbox
-		{
-			idc = 1500;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 13 * GUI_GRID_W;
-			h = 20 * GUI_GRID_H;
-		};
-		//-------------------------------------------
-		//info stuff
-		class RscText_1000: RscText
-		{
-			idc = 1000;
-			text = "PhylonLoadout"; //--- ToDo: Localize;
-			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscText_1001: RscText
-		{
-			idc = 1001;
-			text = "PlaneName"; //--- ToDo: Localize;
-			x = 14.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscText_1002: RscText
-		{
-			idc = 1002;
-			text = "Preset"; //--- ToDo: Localize;
-			x = 14.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		//-------------------------------------------
-		//Filter for Phylons
-		class RscText_1003: RscText
-		{
-			idc = 1003;
-			text = "Filter"; //--- ToDo: Localize;
-			x = 32 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 7 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCombo_2117: RscCombo
-		{
-			idc = 2117;
-			x = 32 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 7 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		//-------------------------------------------
-		//Phylon frame
-		class RscFrame_1800: RscFrame
-		{
-			idc = 1800;
-			x = 14 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 25.5 * GUI_GRID_W;
-			h = 20 * GUI_GRID_H;
-		};
-		//Phylons
-		class RscCombo_2107: RscCombo
-		{
-			idc = 2107;
-			x = 14 * GUI_GRID_W + GUI_GRID_X;
-			y = 17 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2800: RscCheckbox
-		{
-			idc = 2800;
-			x = 22.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2105: RscCombo
-		{
-			idc = 2105;
-			x = 14.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2808: RscCheckbox
-		{
-			idc = 2808;
-			x = 23 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2103: RscCombo
-		{
-			idc = 2103;
-			x = 15 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2809: RscCheckbox
-		{
-			idc = 2809;
-			x = 23.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2101: RscCombo
-		{
-			idc = 2101;
-			x = 15.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 11 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2810: RscCheckbox
-		{
-			idc = 2810;
-			x = 24 * GUI_GRID_W + GUI_GRID_X;
-			y = 11 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2109: RscCombo
-		{
-			idc = 2109;
-			x = 16 * GUI_GRID_W + GUI_GRID_X;
-			y = 9 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2811: RscCheckbox
-		{
-			idc = 2811;
-			x = 24.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 9 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2111: RscCombo
-		{
-			idc = 2111;
-			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 7 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2812: RscCheckbox
-		{
-			idc = 2812;
-			x = 25 * GUI_GRID_W + GUI_GRID_X;
-			y = 7 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		//middle
-		class RscCombo_2100: RscCombo
-		{
-			idc = 2100;
-			x = 23 * GUI_GRID_W + GUI_GRID_X;
-			y = 6 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2813: RscCheckbox
-		{
-			idc = 2813;
-			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 6 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2113: RscCombo
-		{
-			idc = 2113;
-			x = 23 * GUI_GRID_W + GUI_GRID_X;
-			y = 10 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2814: RscCheckbox
-		{
-			idc = 2814;
-			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 10 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2114: RscCombo
-		{
-			idc = 2114;
-			x = 23 * GUI_GRID_W + GUI_GRID_X;
-			y = 12 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2815: RscCheckbox
-		{
-			idc = 2815;
-			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 12 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2115: RscCombo
-		{
-			idc = 2115;
-			x = 23 * GUI_GRID_W + GUI_GRID_X;
-			y = 14 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2816: RscCheckbox
-		{
-			idc = 2816;
-			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2116: RscCombo
-		{
-			idc = 2116;
-			x = 23 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2802: RscCheckbox
-		{
-			idc = 2802;
-			x = 31.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		//right side
-		class RscCombo_2112: RscCombo
-		{
-			idc = 2112;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 7 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2807: RscCheckbox
-		{
-			idc = 2807;
-			x = 36 * GUI_GRID_W + GUI_GRID_X;
-			y = 7 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2110: RscCombo
-		{
-			idc = 2110;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 9 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2806: RscCheckbox
-		{
-			idc = 2806;
-			x = 36.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 9 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2102: RscCombo
-		{
-			idc = 2102;
-			x = 28.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 11 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2805: RscCheckbox
-		{
-			idc = 2805;
-			x = 37 * GUI_GRID_W + GUI_GRID_X;
-			y = 11 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2104: RscCombo
-		{
-			idc = 2104;
-			x = 29 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2804: RscCheckbox
-		{
-			idc = 2804;
-			x = 37.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2106: RscCombo
-		{
-			idc = 2106;
-			x = 29.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2803: RscCheckbox
-		{
-			idc = 2803;
-			x = 38 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		class RscCombo_2108: RscCombo
-		{
-			idc = 2108;
-			x = 30 * GUI_GRID_W + GUI_GRID_X;
-			y = 17 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscCheckbox_2801: RscCheckbox
-		{
-			idc = 2801;
-			x = 38.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17 * GUI_GRID_H + GUI_GRID_Y;
-			w = 1 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-		};
-		//-------------------------------------------
-		//Save/Load Function
-		class CTI_Menu_Elected : RscText {
-			idc = 500101;
-			x = "SafeZoneX + (SafeZoneW * 0.33)";
-			y = "SafeZoneY + (SafezoneH * 0.81)";
-			w = 0.23;
-			
-			sizeEx = 0.03;
-			
-			text = "";
 			colorText[] = {1,1,1,1};
-			shadow = 2;
-		};
-		class RscButtonMenu_2400: RscButtonMenu
-		{
-			idc = 2400;
-			text = "Load"; //--- ToDo: Localize;
-			x = 10.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 21 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscEdit_1401: RscEdit
-		{
-			idc = 1401;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 22.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 15.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class RscButtonMenu_2401: RscButtonMenu
-		{
-			idc = 2401;
-			text = "Save"; //--- ToDo: Localize;
-			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 22.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		//class CTI_Menu_TimeLeft : CTI_Menu_Elected {
-		//	idc = 500102;
-		//	x = "SafeZoneX + (SafeZoneW * 0.47)";
-		//	
-		//	style = ST_RIGHT;
-		//	text = "";
-		//};
-		//class CTI_Menu_Time_Static : CTI_Menu_Elected {
-		//	idc = 500103;
-		//	x = "SafeZoneX + (SafeZoneW * 0.45)";
-		//
-		//	style = ST_RIGHT;
-		//	text = "Time :";
-		//};
-		//------------------------------------
-		//Basic controls
-		class CTI_Control_Exit : RscButton {
-			idc = 500104;
+			colorBackground[] = {0,0,0,0};
+			colorPicture[] = {1, 1, 1, 1};
+			itemBackground[] = {1,1,1,0.1};
+			columns[] = {0.001, 0.35};
 			
-			x = "SafeZoneX + (SafeZoneW * 0.58)";
-			y = "SafeZoneY + (SafezoneH * 0.16)";
+			onLBDblClick = "['onLoadPreset', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_Control_LoadSetup : RscButton {
+			idc = 450021;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.345)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			h = "SafeZoneH * 0.04";
+			
+			text = "Load Setup";
+			action = "['onLoadPreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_Control_DeleteSetup : RscButton {
+			idc = 450029;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			h = "SafeZoneH * 0.04";
+			
+			text = "Delete Preset";
+			action = "['onDeletePreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_Control_ApplySetup : CTI_Menu_Control_LoadSetup {
+			idc = 450022;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.690)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			
+			text = "Apply Setup";
+			action = "['onApplyLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		/*class CTI_Menu_Control_SendSetup : CTI_Menu_Control_LoadSetup {
+			idc = 450023;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.500)";
+			y = "SafeZoneY + (SafeZoneH * 0.825)";
+			w = "SafeZoneW * 0.080";
+			
+			text = "Send to Server";
+			action = "['onSendLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};*/
+		class CTI_Control_Exit : RscButton {
+			idc = 450027;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.77)";
+			y = "SafeZoneY + (SafezoneH * 0.18)";
 			w = "SafeZoneW * 0.04";
 			h = "SafeZoneH * 0.04";
 			
 			text = "X";
 			action = "closeDialog 0";
 		};
-		class RscButtonMenuOK_2600: RscButtonMenuOK
-		{
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
+		//-------------------------------------------
+		class CTI_Menu_TeamComboLabel : RscText {
+			x = "SafeZoneX + (SafeZoneW * 0.440)";
+			y = "SafeZoneY + (SafezoneH * 0.300)";
+			w = "SafeZoneW * 0.1";
+			h = "SafeZoneH * 0.035";
+			
+			text = "Preset Name :";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
-		class RscButtonMenuCancel_2700: RscButtonMenuCancel
+		//Edit field for rename the stored loadout
+		class CTI_Menu_PhylonStoreName : RscEdit {
+			idc = 450101;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.495)";
+			y = "SafeZoneY + (SafezoneH * 0.300)";
+			w = "SafeZoneW * 0.150";
+			h = "SafeZoneH * 0.03";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			text = "";
+		};
+		class CTI_Menu_Control_SaveSetup : CTI_Menu_Control_LoadSetup {
+			idc = 450028;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.680)";
+			y = "SafeZoneY + (SafeZoneH * 0.300)";
+			w = "SafeZoneW * 0.080";
+			h = "SafeZoneH * 0.035";
+			
+			text = "Save Setup";
+			action = "['onSaveLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		//Filter for Phylons
+		class CTI_Menu_ComboPhylonFilter : RscCombo {
+			idc = 450100;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.680)";
+			y = "SafeZoneY + (SafezoneH * 0.360)";
+			w = "SafeZoneW * 0.120";
+			h = "SafeZoneH * 0.020";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			onLBSelChanged = "['onLBSelChangedFilter', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		//-------------------------------------------
+		//Phylon frame
+		//class CTI_Menu_PhylonBackground : RscPictureKeepAspect {
+		class CTI_Menu_PhylonBackground : RscPicture {
+		//class CTI_Menu_PhylonBackground : RscText {
+			idc = 450030;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.440)";
+			y = "SafeZoneY + (SafezoneH * 0.355)";
+			w = "SafeZoneW * 0.300";
+			h = "SafeZoneH * 0.300";
+			
+			text = "\A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter_01_3DEN_CA.paa";
+			//text = "\A3\Air_F_EPC\Plane_CAS_01\Data\UI\Plane_CAS_01_3DEN_CA.paa";
+			//action = "['onIconSet', 0, CTI_BARRACKS] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		//Phylons
+		class CTI_Menu_ComboPhylonLeft : RscCombo {
+			idc = 420010;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.470)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+			w = "SafeZoneW * 0.090";
+			h = "SafeZoneH * 0.020";
+			
+			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft: RscCheckbox
 		{
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
+			idc = 420011;
+
+			x = "SafeZoneX + (SafeZoneW * 0.580)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+			w = "SafeZoneW * 0.016";
+			h = "SafeZoneH * 0.020";
+			
+			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
+			onCheckedChanged = "['onChangedControl', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonLeft1 : CTI_Menu_ComboPhylonLeft {
+			idc = 420020;
+			
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft1: CTI_Menu_CheckControlLeft
+		{
+			idc = 420021;
+
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonLeft2 : CTI_Menu_ComboPhylonLeft {
+			idc = 420030;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft2: CTI_Menu_CheckControlLeft
+		{
+			idc = 420031;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonLeft3 : CTI_Menu_ComboPhylonLeft {
+			idc = 420040;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft3: CTI_Menu_CheckControlLeft
+		{
+			idc = 420041;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonLeft4 : CTI_Menu_ComboPhylonLeft {
+			idc = 420050;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft4: CTI_Menu_CheckControlLeft
+		{
+			idc = 420051;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonLeft5 : CTI_Menu_ComboPhylonLeft {
+			idc = 420060;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlLeft5: CTI_Menu_CheckControlLeft
+		{
+			idc = 420061;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		//--------------middle----------------------------------------------------------
+		class CTI_Menu_ComboPhylonMid : CTI_Menu_ComboPhylonLeft {
+			idc = 420070;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.570)";
+			y = "SafeZoneY + (SafezoneH * 0.450)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid: CTI_Menu_CheckControlLeft
+		{
+			idc = 420071;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.680)";
+			y = "SafeZoneY + (SafezoneH * 0.450)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonMid1 : CTI_Menu_ComboPhylonMid {
+			idc = 420080;
+			
+			y = "SafeZoneY + (SafezoneH * 0.510)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid1: CTI_Menu_CheckControlMid
+		{
+			idc = 420081;
+			
+			y = "SafeZoneY + (SafezoneH * 0.510)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonMid2 : CTI_Menu_ComboPhylonMid {
+			idc = 420090;
+			
+			y = "SafeZoneY + (SafezoneH * 0.570)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid2: CTI_Menu_CheckControlMid
+		{
+			idc = 420091;
+			
+			y = "SafeZoneY + (SafezoneH * 0.570)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonMid3 : CTI_Menu_ComboPhylonMid {
+			idc = 420100;
+			
+			y = "SafeZoneY + (SafezoneH * 0.630)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid3: CTI_Menu_CheckControlMid
+		{
+			idc = 420101;
+			
+			y = "SafeZoneY + (SafezoneH * 0.630)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonMid4 : CTI_Menu_ComboPhylonMid {
+			idc = 420110;
+
+			y = "SafeZoneY + (SafezoneH * 0.800)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlMid4: CTI_Menu_CheckControlMid
+		{
+			idc = 420111;
+			
+			y = "SafeZoneY + (SafezoneH * 0.800)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		//------------------------------------right side----------------------------------------------------------------
+		class CTI_Menu_ComboPhylonRight : CTI_Menu_ComboPhylonLeft {
+			idc = 420120;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.670)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight: CTI_Menu_CheckControlLeft
+		{
+			idc = 420121;
+
+			x = "SafeZoneX + (SafeZoneW * 0.780)";
+			y = "SafeZoneY + (SafezoneH * 0.420)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonRight1 : CTI_Menu_ComboPhylonRight {
+			idc = 420130;
+			
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight1: CTI_Menu_CheckControlRight
+		{
+			idc = 420131;
+
+			y = "SafeZoneY + (SafezoneH * 0.480)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonRight2 : CTI_Menu_ComboPhylonRight {
+			idc = 420140;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight2: CTI_Menu_CheckControlRight
+		{
+			idc = 420141;
+			
+			y = "SafeZoneY + (SafezoneH * 0.540)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonRight3 : CTI_Menu_ComboPhylonRight {
+			idc = 420150;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight3: CTI_Menu_CheckControlRight
+		{
+			idc = 420151;
+			
+			y = "SafeZoneY + (SafezoneH * 0.600)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonRight4 : CTI_Menu_ComboPhylonRight {
+			idc = 420160;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight4: CTI_Menu_CheckControlRight
+		{
+			idc = 420161;
+			
+			y = "SafeZoneY + (SafezoneH * 0.660)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_ComboPhylonRight5 : CTI_Menu_ComboPhylonRight {
+			idc = 420170;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+			
+			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+		};
+		class CTI_Menu_CheckControlRight5: CTI_Menu_CheckControlRight
+		{
+			idc = 420171;
+			
+			y = "SafeZoneY + (SafezoneH * 0.720)";
+
+			onCheckedChanged = "['onChangedControl', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
 		};
 	};
-};*/
+};
+

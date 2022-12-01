@@ -10,8 +10,6 @@ CTI_UI_Load_DefenseCategories = {
 		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100017) lbAdd Format[" %1 ", _x];
 	} forEach (_uniqe_categories);
 	
-	["VIOCDEBUG", "FILE: Functions_UI_BuildMenu_@Load_DefenseCategories.sqf", format["defense category list <%1>", _list]] call CTI_CO_FNC_Log;
-	
 	uiNamespace setVariable ["cti_dialog_ui_defense_categories", _list];
 	
 	((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100017) lbSetCurSel 0;
@@ -25,7 +23,6 @@ CTI_UI_Build_FillDefenseList = {
 	} else {
 		_category = ((missionNamespace getVariable format ["CTI_%1_DEFENSECATEGORIES", CTI_P_SideJoined]) select _index);
 	};
-	["VIOCDEBUG", "FILE: Functions_UI_BuildMenu_@Build_FillDefenseList.sqf", format["category is <%1>", _category]] call CTI_CO_FNC_Log;
 
 	lnbClear ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100007);
 	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;

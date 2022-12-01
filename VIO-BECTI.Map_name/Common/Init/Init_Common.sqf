@@ -124,6 +124,8 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_east.sqf";
 
+call compile preprocessFileLineNumbers "Common\Config\Phylons\phylons.sqf";
+
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 

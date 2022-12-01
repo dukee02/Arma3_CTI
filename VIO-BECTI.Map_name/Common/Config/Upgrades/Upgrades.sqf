@@ -20,9 +20,9 @@ if (isNil "_upgrade_levels") then {
 	if(_upgrade_levels select CTI_UPGRADE_AIR > CTI_ECONOMY_LEVEL_AIR) then {_upgrade_levels set [CTI_UPGRADE_AIR, CTI_ECONOMY_LEVEL_AIR]};							//--- Air
 	if(_upgrade_levels select CTI_UPGRADE_NAVAL > CTI_ECONOMY_LEVEL_NAVAL) then {_upgrade_levels set [CTI_UPGRADE_NAVAL, CTI_ECONOMY_LEVEL_NAVAL]};					//--- Naval
 	_upgrade_levels set [CTI_UPGRADE_SATELLITE, 1];																													//--- Satellite
-	_upgrade_levels set [CTI_UPGRADE_AIR_FFAR, 1];																													//--- Air FFAR
-	_upgrade_levels set [CTI_UPGRADE_AIR_AT, 1];																													//--- Air AT
-	_upgrade_levels set [CTI_UPGRADE_AIR_AA, 1];																													//--- Air AA
+	_upgrade_levels set [CTI_UPGRADE_AIR_FFAR, 3];																													//--- Air FFAR
+	_upgrade_levels set [CTI_UPGRADE_AIR_AT, 3];																													//--- Air AT
+	_upgrade_levels set [CTI_UPGRADE_AIR_AA, 3];																													//--- Air AA
 	_upgrade_levels set [CTI_UPGRADE_AIR_CM, 1];																													//--- Air CM
 	_upgrade_levels set [CTI_UPGRADE_TOWNS, 3];																														//--- Towns Occupation
 	_upgrade_levels set [CTI_UPGRADE_SUPPLY, 4];																													//--- Supply
@@ -30,7 +30,7 @@ if (isNil "_upgrade_levels") then {
 	_upgrade_levels set [CTI_UPGRADE_DEFENSE, 3];																													//--- Defenses
 };
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], _upgrade_levels];
-if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade levels for %1: <%2>", _upgrade_levels]] call CTI_CO_FNC_Log;};
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade levels for %1: <%2>", _upgrade_levels]] call CTI_CO_FNC_Log};
 
 /************************************************************************************************************************************************
  *															UPGRADES_ENABLED																	*
@@ -43,9 +43,9 @@ _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Heavy
 _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Air
 _upgrades_enabled pushBack true; //(CTI_NO_UPGRADE_MODE == 0); 	//--- Naval
 _upgrades_enabled pushBack false; 	//--- Satellite
-_upgrades_enabled pushBack ((missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") == 1); 	//--- Air FFAR
-_upgrades_enabled pushBack ((missionNamespace getVariable "CTI_VEHICLES_AIR_AT") == 1);		//--- Air AT
-_upgrades_enabled pushBack ((missionNamespace getVariable "CTI_VEHICLES_AIR_AA") == 1); 		//--- Air AA
+_upgrades_enabled pushBack true; ((missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") == 1); 	//--- Air FFAR
+_upgrades_enabled pushBack true; ((missionNamespace getVariable "CTI_VEHICLES_AIR_AT") == 1);		//--- Air AT
+_upgrades_enabled pushBack true; ((missionNamespace getVariable "CTI_VEHICLES_AIR_AA") == 1); 		//--- Air AA
 _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_VEHICLES_AIR_CM") == 1); 		//--- Air CM
 _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_TOWNS_OCCUPATION") > 0); 		//--- Towns Occupation
 _upgrades_enabled pushBack ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 0);  	//--- Supply
