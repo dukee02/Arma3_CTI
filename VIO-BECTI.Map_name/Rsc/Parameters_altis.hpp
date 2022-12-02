@@ -89,17 +89,17 @@ class Params {
 		texts[] = {"0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
-	class CTI_ECONOMY_LEVEL_PRESET {
-		title = "UPGRADE: Pre researched level";
-		values[] = {0,1,2,3,4,5};
-		texts[] = {"start with 0","pre researched up to level 1 (or max)","pre researched up to level 2 (or max)","pre researched up to level 3 (or max)","pre researched up to level 4 (or max)","pre researched up to level 5 (or max)"};
+	class CTI_FACTORY_LEVEL_PRESET {
+		title = "UPGRADE: Pre researched Factory level (Barracks,Light,Heavy,Air,Naval,Gear)";
+		values[] = {0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"start with 0","start with level 1 (or max)","start with level 2 (or max)","start with level 3 (or max)","start with level 4 (or max)","start with level 5 (or max)","start with level 6 (or max)","start with level 7 (or max)","start with level 8 (or max)","start with level 9 (or max)"};
 		default = "0";
 	};
 	class CTI_ECONOMY_LEVEL_PRESET {
-		title = "UPGRADE: Pre researched level";
-		values[] = {[0],[1],[2],[3],[4],[5]};
-		texts[] = {"0","1","2","3","4","5"};
-		default = [0];
+		title = "UPGRADE: Pre researched level (Air FFAR,Air AT,Air AA,Towns,Supply,Defense)";
+		values[] = {0,1,2,3,4,5,6,7,8,9};
+		texts[] = {"start with 0","start with level 1 (or max)","start with level 2 (or max)","start with level 3 (or max)","start with level 4 (or max)","start with level 5 (or max)","start with level 6 (or max)","start with level 7 (or max)","start with level 8 (or max)","start with level 9 (or max)"};
+		default = "0";
 	};
 	class CTI_ECONOMY_UPGRADE_TIMECAP {
 		title = "UPGRADE: Max Time needed for upgrades (concerns higher tier upgrades)";
@@ -365,6 +365,30 @@ class Params {
 		texts[] = {"Sunny start, random normal weather", "Sunny", "normal light weather", "complete random"};
 		default = 1;
 	};
+	class CTI_VEHICLES_AIR_FFAR {
+		title = "UNITS_UPGRADE: Aircraft FFAR Rockets";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"No FFAR Rockets","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 0;
+	};
+	class CTI_VEHICLES_AIR_AA {
+		title = "UNITS_UPGRADE: Aircraft AA Missiles";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 0;
+	};
+	class CTI_VEHICLES_AIR_AT {
+		title = "UNITS_UPGRADE: Aircraft AT Missiles";
+		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"No AT Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		default = 0;
+	};
+	/*class CTI_VEHICLES_AIR_CM {
+		title = "UNITS: Aircraft Countermeasures";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
+		default = 2;
+	};*/
 	class SEPERATOR_GAMEPLAY {
 		title = "============ Gameplay ============";
 		values[] = {0,1};
@@ -549,36 +573,6 @@ class Params {
 		texts[] = {"Unlocked","Locked (Independent)","Locked (Occupation)","Locked (Independent and Occupation)"};
 		default = 0;
 	};
-	/*class SEPERATOR_VEHICLES {
-		title = "============ Vehicles ============";
-		values[] = {0,1};
-		texts[] = {"",""};
-		default = 0;
-	};
-	class CTI_VEHICLES_AIR_FFAR {
-		title = "UNITS: Aircraft FFAR Rockets";
-		values[] = {0,1,2};
-		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
-	};
-	class CTI_VEHICLES_AIR_AA {
-		title = "UNITS: Aircraft AA Missiles";
-		values[] = {0,1,2};
-		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
-	};
-	class CTI_VEHICLES_AIR_AT {
-		title = "UNITS: Aircraft AT Missiles";
-		values[] = {0,1,2};
-		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 0;
-	};
-	class CTI_VEHICLES_AIR_CM {
-		title = "UNITS: Aircraft Countermeasures";
-		values[] = {0,1,2};
-		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
-		default = 2;
-	};*/
 	class SEPERATOR_OTHER {
 		title = "============ Other ============";
 		values[] = {0,1};

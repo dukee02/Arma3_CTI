@@ -30,6 +30,7 @@ apply max ammo check to phylons (needs test)
 save load loadout (needs test)
 add filter functionality (needs test)
 add phylon control functionality (needs test)
+take a look to the upgrade preset in init_server(needs test)
+
 send  loadout to the server (skipped)
 load server loadouts (skipped)
-take a look to the upgrade preset in init_server

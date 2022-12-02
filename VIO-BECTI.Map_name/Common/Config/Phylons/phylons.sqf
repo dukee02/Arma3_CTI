@@ -1,10 +1,14 @@
-private ["_c", "_d", "_m", "_u", "_upgrade_levels", "_cntstart", "_cntend"];
+private ["_c", "_d", "_m", "_u", "_upgrade_levels_east", "_upgrade_levels_west", "_cntstart", "_cntend"];
 
 //We get the upgrade setup at this point, if this is null, something went wrong and we set it to the default.
-/*_upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
-if (isNil "_upgrade_levels") then { 
-	_upgrade_levels = [0,0,0,0,0,1,1,1,1,1,3,4,0]; 
-};*/
+_upgrade_levels_east = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", east];
+if (isNil "_upgrade_levels_east") then { 
+	_upgrade_levels_east = [0,0,0,0,0,1,0,0,0,1,3,4,0]; 
+};
+_upgrade_levels_west = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", west];
+if (isNil "_upgrade_levels_west") then { 
+	_upgrade_levels_west = [0,0,0,0,0,1,0,0,0,1,3,4,0]; 
+};
 
 _c = []; //--- Classname
 _d = []; //--- Cathegory
@@ -14,6 +18,8 @@ _u = []; //--- Upgrade level needed.    0 1 2 3...
 //*********************************************************************************************************************************************
 //														air-to-air missile																	  *
 //*********************************************************************************************************************************************
+//*****************************************************LEVEL*0****************************************************************************
+_tech_level = 0;
 
 _c pushBack "PylonMissile_1Rnd_Missile_AA_04_F";		//Falchion-22 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonRack_1Rnd_Missile_AA_04_F";			//Falchion-22 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
@@ -32,8 +38,11 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "air-to-air";
 	_m pushBack 100;
-	_u pushBack 0;
+	_u pushBack _tech_level;
 };
+
+//*****************************************************LEVEL*1****************************************************************************
+_tech_level = 1;
 
 _c pushBack "PylonMissile_1Rnd_GAA_missiles";			//Zephyr 			<Medium-range, radar-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonRack_1Rnd_GAA_missiles";				//Zephyr 			<Medium-range, radar-guided, air-to-air missile with high-explosive warhead>
@@ -53,12 +62,22 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "air-to-air";
 	_m pushBack 100;
-	_u pushBack 1;
+	_u pushBack _tech_level;
+};
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels_east select CTI_UPGRADE_AIR_AA) then {
+	_upgrade_levels_east set [CTI_UPGRADE_AIR_AA, (_tech_level)];
+};
+if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_AA) then {
+	_upgrade_levels_west set [CTI_UPGRADE_AIR_AA, (_tech_level)];
 };
 
 //*********************************************************************************************************************************************
 //														air-to-surface missile																  *
 //*********************************************************************************************************************************************
+//*****************************************************LEVEL*0****************************************************************************
+_tech_level = 0;
 
 _c pushBack "PylonRack_12Rnd_PG_missiles";				//DAGR 				<Short-range, laser/infrared-guided, air-to-surface missile with high-explosive anti-tank warhead>
 _c pushBack "PylonMissile_1Rnd_LG_scalpel";				//Scalpel 			<Short-range, laser/infrared-guided, air-to-surface missile with tandem high-explosive anti-tank warhead>
@@ -72,8 +91,11 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "air-to-surface";
 	_m pushBack 100;
-	_u pushBack 0;
+	_u pushBack _tech_level;
 };
+
+//*****************************************************LEVEL*1****************************************************************************
+_tech_level = 1;
 
 _c pushBack "PylonRack_1Rnd_Missile_AGM_02_F";			//Macer 			<Short-range, infrared-guided, air-to-surface missile with high-explosive anti-tank warhead>
 _c pushBack "PylonRack_3Rnd_Missile_AGM_02_F";			//Macer 3x 			<Short-range, infrared-guided, air-to-surface missile with high-explosive anti-tank warhead>
@@ -91,8 +113,11 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "air-to-surface";
 	_m pushBack 100;
-	_u pushBack 1;
+	_u pushBack _tech_level;
 };
+
+//*****************************************************LEVEL*2****************************************************************************
+_tech_level = 2;
 
 _c pushBack "PylonMissile_Missile_KH58_x1";				//KH58 ARM x1 		<Medium-range, anti-radiation, air-to-surface missile with high-explosive warhead>
 _c pushBack "PylonMissile_Missile_KH58_INT_x1";			//KH58 ARM x1 		<Medium-range, anti-radiation, air-to-surface missile with high-explosive warhead>
@@ -106,12 +131,22 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "air-to-surface";
 	_m pushBack 100;
-	_u pushBack 2;
+	_u pushBack _tech_level;
+};
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels_east select CTI_UPGRADE_AIR_AT) then {
+	_upgrade_levels_east set [CTI_UPGRADE_AIR_AT, (_tech_level)];
+};
+if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_AT) then {
+	_upgrade_levels_west set [CTI_UPGRADE_AIR_AT, (_tech_level)];
 };
 
 //*********************************************************************************************************************************************
 //														Unguided rockets																	  *
 //*********************************************************************************************************************************************
+//*****************************************************LEVEL*0****************************************************************************
+_tech_level = 0;
 
 _c pushBack "PylonRack_7Rnd_Rocket_04_HE_F";			//Shrieker 7x HE 	<Unguided rockets with high-explosive warhead>
 _c pushBack "PylonRack_7Rnd_Rocket_04_AP_F";			//Shrieker 7x AP 	<Unguided rockets with high-explosive anti-tank warhead>
@@ -126,7 +161,15 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "air-to-surface";
 	_m pushBack 100;
-	_u pushBack 0;
+	_u pushBack _tech_level;
+};
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels_east select CTI_UPGRADE_AIR_FFAR) then {
+	_upgrade_levels_east set [CTI_UPGRADE_AIR_FFAR, (_tech_level)];
+};
+if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
+	_upgrade_levels_west set [CTI_UPGRADE_AIR_FFAR, (_tech_level)];
 };
 
 //*********************************************************************************************************************************************
@@ -156,7 +199,15 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "bomb";
 	_m pushBack 100;
-	_u pushBack 0;
+	_u pushBack _tech_level;
+};
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels_east select CTI_UPGRADE_AIR_FFAR) then {
+	_upgrade_levels_east set [CTI_UPGRADE_AIR_FFAR, (_tech_level)];
+};
+if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
+	_upgrade_levels_west set [CTI_UPGRADE_AIR_FFAR, (_tech_level)];
 };
 
 //*********************************************************************************************************************************************
@@ -172,7 +223,7 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "weapon pod";
 	_m pushBack 100;
-	_u pushBack 0;
+	_u pushBack _tech_level;
 };
 
 //*********************************************************************************************************************************************
@@ -200,9 +251,15 @@ _cntend = count _d;
 for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 	_d pushBack "special-purpose";
 	_m pushBack 100;
-	_u pushBack 0;
+	_u pushBack _tech_level;
 };
 */
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\phylons\phylons.sqf", format["phylons declared: [%1] ", count _c]] call CTI_CO_FNC_Log};
 
 [_c, _d, _m, _u] call compile preprocessFileLineNumbers "Common\Config\phylons\Set_Phylons.sqf";
+
+//all units are declared, we update the possible upgrades
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", east], _upgrade_levels_east];
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\phylons\phylons.sqf", format["calculated upgrade levels for %1: [%2] ", east, _upgrade_levels_east]] call CTI_CO_FNC_Log};
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", west], _upgrade_levels_west];
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\phylons\phylons.sqf", format["calculated upgrade levels for %1: [%2] ", west, _upgrade_levels_west]] call CTI_CO_FNC_Log};

@@ -47,6 +47,7 @@ CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Fun
 CTI_SE_FNC_SAVE = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SaveToProfile.sqf";
 CTI_SE_FNC_LOAD = compileFinal preprocessFileLineNumbers "Server\Functions\Server_LoadFromProfile.sqf";
 CTI_SE_FNC_HandleSalvagerSpecial = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleSalvagerSpecial.sqf";
+CTI_SE_FNC_PresetUpgrades = compileFinal preprocessFileLineNumbers "Server\Functions\Server_PresetUpgrades.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
@@ -159,7 +160,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 	for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
 	
 	//To setup the pre researched levels, we must cheat ab bit ... because params only accept integers
-	if(CTI_ECONOMY_LEVEL_PRESET > 0) then {
+	/*if(CTI_ECONOMY_LEVEL_PRESET > 0) then {
 		_upgrade_levels = [];
 		_upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 		switch(true) do {
@@ -193,7 +194,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 			default {
 			};
 		};
-	};
+	};*/
 	_logic setVariable ["cti_upgrades", _upgrades, true];
 	_logic setVariable ["cti_upgrade", -1, true];
 	
@@ -345,6 +346,12 @@ if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") >= 0 || (missionNam
 	} forEach [west,east,resistance];
 
 };
+
+//To setup the pre researched levels, we must cheat ab bit ... because params only accept integers
+//if(CTI_FACTORY_LEVEL_PRESET > 0) then {[CTI_FACTORY_LEVEL_PRESET,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;};
+//if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[CTI_ECONOMY_LEVEL_PRESET,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
+if(CTI_FACTORY_LEVEL_PRESET > 0) then {[444444,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;};
+if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[222222,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
 
 //Check if Persistence is active
 if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
