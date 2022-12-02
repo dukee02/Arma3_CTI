@@ -45,11 +45,14 @@ while { true } do {
 	};
 	
 	_running = CTI_P_SideLogic getVariable "cti_upgrade";
-	if (_running != _last_running) then {
+	CTI_P_SideLogic getVariable "cti_upgrade";
+	_upgrade_time = CTI_P_SideLogic getVariable ["cti_upgrade_time", 0];
+	_time_end = round((serverTime - _upgrade_time)*-1);
+	if (_running != _last_running || serverTime < _upgrade_time) then {
 		_last_running = _running;
 		_html = "";
 		if (_running > -1) then {
-			_html = format ["Running: <t color='#F5D363'>%1</t>", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0];
+			_html = format ["Running: <t color='#F5D363'>%1 (%2s)</t>", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0, _time_end];
 		};
 		((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250009) ctrlSetStructuredText parseText _html;
 	};
