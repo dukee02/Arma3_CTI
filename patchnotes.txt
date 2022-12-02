@@ -23,7 +23,7 @@ check respawn function to implement jump into teamAI
 check Client/Events/Events_UI_OptionsMenue (unflip vehicle) if we can make it saver
 add time to reseach window
 add time to fire misson of artys
-add buildtime of units in list
+add buildtime of units in list (done)
 
 apply upgrade check to the phylons (needs test)
 apply max ammo check to phylons (needs test)

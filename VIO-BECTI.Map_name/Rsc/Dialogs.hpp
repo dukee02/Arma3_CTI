@@ -494,8 +494,8 @@ class CTI_RscPurchaseMenu {
 			colorBackground[] = {0,0,0,0};
 			colorPicture[] = {1, 1, 1, 1};
 			itemBackground[] = {1,1,1,0.1};
-			// columns[] = {0.001, 0.26};
-			columns[] = {0.001, 0.35};
+			//columns[] = {0.001, 0.35};
+			columns[] = {0.001, 0.27, 0.35};
 			
 			onLBSelChanged = "['onUnitsLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 			onLBDblClick = "['onPurchase', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";

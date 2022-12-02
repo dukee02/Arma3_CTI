@@ -82,8 +82,8 @@ CTI_UI_Purchase_FillUnitsList = {
 				if (_upgrades select _upgrade < _var select CTI_UNIT_UPGRADE) then {_load = false};
 			};
 			
-			if (_load) then {
-				_row = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbAddRow [format ["$%1", _var select CTI_UNIT_PRICE], _var select CTI_UNIT_LABEL];
+			if (_load) then { 
+				_row = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbAddRow [format ["$%1", _var select CTI_UNIT_PRICE],format ["%1s", _var select CTI_UNIT_TIME], _var select CTI_UNIT_LABEL];
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetData [[_row, 0], _x];
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPicture [[_row, 0], _var select CTI_UNIT_PICTURE];
 			};
