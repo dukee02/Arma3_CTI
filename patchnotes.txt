@@ -21,8 +21,8 @@ Fixed: can't build FOB with active AI commander
 [ToDo]
 check respawn function to implement jump into teamAI
 check Client/Events/Events_UI_OptionsMenue (unflip vehicle) if we can make it saver
-add time to reseach window
 add time to fire misson of artys
+add time to reseach window (done)
 add buildtime of units in list (done)
 
 apply upgrade check to the phylons (needs test)
