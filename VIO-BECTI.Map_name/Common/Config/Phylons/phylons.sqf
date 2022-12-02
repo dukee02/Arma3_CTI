@@ -3,11 +3,11 @@ private ["_c", "_d", "_m", "_u", "_upgrade_levels_east", "_upgrade_levels_west",
 //We get the upgrade setup at this point, if this is null, something went wrong and we set it to the default.
 _upgrade_levels_east = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", east];
 if (isNil "_upgrade_levels_east") then { 
-	_upgrade_levels_east = [0,0,0,0,0,1,0,0,0,1,3,4,0]; 
+	_upgrade_levels_east = [0,0,0,0,0,1,-1,-1,-1,1,3,4,0,-1]; 
 };
 _upgrade_levels_west = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", west];
 if (isNil "_upgrade_levels_west") then { 
-	_upgrade_levels_west = [0,0,0,0,0,1,0,0,0,1,3,4,0]; 
+	_upgrade_levels_west = [0,0,0,0,0,1,-1,-1,-1,1,3,4,0,-1]; 
 };
 
 _c = []; //--- Classname

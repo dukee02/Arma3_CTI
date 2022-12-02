@@ -12,7 +12,7 @@ _cost = 1;
 //_upgrade_levels = [];
 _upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 if (isNil "_upgrade_levels") then { 
-	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,1,1,1,1,3,4,CTI_ECONOMY_LEVEL_GEAR,3]; 
+	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,0,0,0,0,3,4,CTI_ECONOMY_LEVEL_GEAR,3]; 
 } else {
 	if(_upgrade_levels select CTI_UPGRADE_BARRACKS > CTI_ECONOMY_LEVEL_INFANTRY) then {_upgrade_levels set [CTI_UPGRADE_BARRACKS, CTI_ECONOMY_LEVEL_INFANTRY]};		//--- Barracks
 	if(_upgrade_levels select CTI_UPGRADE_LIGHT > CTI_ECONOMY_LEVEL_WHEELED) then {_upgrade_levels set [CTI_UPGRADE_LIGHT, CTI_ECONOMY_LEVEL_WHEELED]};				//--- Light
@@ -20,14 +20,14 @@ if (isNil "_upgrade_levels") then {
 	if(_upgrade_levels select CTI_UPGRADE_AIR > CTI_ECONOMY_LEVEL_AIR) then {_upgrade_levels set [CTI_UPGRADE_AIR, CTI_ECONOMY_LEVEL_AIR]};							//--- Air
 	if(_upgrade_levels select CTI_UPGRADE_NAVAL > CTI_ECONOMY_LEVEL_NAVAL) then {_upgrade_levels set [CTI_UPGRADE_NAVAL, CTI_ECONOMY_LEVEL_NAVAL]};					//--- Naval
 	_upgrade_levels set [CTI_UPGRADE_SATELLITE, 1];																													//--- Satellite
-	_upgrade_levels set [CTI_UPGRADE_AIR_FFAR, 3];																													//--- Air FFAR
-	_upgrade_levels set [CTI_UPGRADE_AIR_AT, 3];																													//--- Air AT
-	_upgrade_levels set [CTI_UPGRADE_AIR_AA, 3];																													//--- Air AA
+	if(_upgrade_levels select CTI_UPGRADE_AIR_FFAR == -1) then {_upgrade_levels set [CTI_UPGRADE_AIR_FFAR, 0]};														//--- Air FFAR
+	if(_upgrade_levels select CTI_UPGRADE_AIR_AT == -1) then {_upgrade_levels set [CTI_UPGRADE_AIR_AT, 0]};															//--- Air AT
+	if(_upgrade_levels select CTI_UPGRADE_AIR_AA == -1) then {_upgrade_levels set [CTI_UPGRADE_AIR_AA, 0]};															//--- Air AA
 	_upgrade_levels set [CTI_UPGRADE_AIR_CM, 1];																													//--- Air CM
 	_upgrade_levels set [CTI_UPGRADE_TOWNS, 3];																														//--- Towns Occupation
 	_upgrade_levels set [CTI_UPGRADE_SUPPLY, 4];																													//--- Supply
 	if(_upgrade_levels select CTI_UPGRADE_GEAR > CTI_ECONOMY_LEVEL_GEAR) then {_upgrade_levels set [CTI_UPGRADE_GEAR, CTI_ECONOMY_LEVEL_GEAR]};						//--- Gear
-	_upgrade_levels set [CTI_UPGRADE_DEFENSE, 3];																													//--- Defenses
+	if(_upgrade_levels select CTI_UPGRADE_DEFENSE == -1) then {_upgrade_levels set [CTI_UPGRADE_DEFENSE, 0]};														//--- Defenses
 };
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], _upgrade_levels];
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade levels for %1: <%2>", _upgrade_levels]] call CTI_CO_FNC_Log};

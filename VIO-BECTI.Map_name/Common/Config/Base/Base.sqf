@@ -247,42 +247,51 @@ _tiers pushBack 			1;
 
 
 // ****************************** BASE GUN DEFENSE 1 ******************************
+
+//We get the upgrade setup at this point, if this is null, something went wrong and we set it to the default.
+_upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
+if (isNil "_upgrade_levels_east") then { 
+	_upgrade_levels = [0,0,0,0,0,1,-1,-1,-1,1,3,4,0,-1]; 
+};
+
 if(_side == west) then {
+	// ****************************** BASE GUN DEFENSE 0 ******************************
+	_tech_level = 0;
 
 	_headers pushBack 		"Static Designator";
 	_classes pushBack 		"B_Static_Designator_01_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 
 	_headers pushBack 		"Mk30 HMG .50 (Raised)";
 	_classes pushBack 		"B_HMG_01_high_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 
 	_headers pushBack 		"Mk30A HMG .50";
 	_classes pushBack 		"B_HMG_01_A_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	_headers pushBack 		"Mk32 GMG 20 mm (Raised)";
 	_classes pushBack 		"B_GMG_01_high_F";
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	_headers pushBack 		"Mk32A GMG 20 mm";
 	_classes pushBack 		"B_GMG_01_A_F";
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 
@@ -291,35 +300,21 @@ if(_side == west) then {
 		_prices pushBack 		1500;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		0;
+		_tiers pushBack 		_tech_level;
 
 		_headers pushBack 		"Mk32 GMG 20mm";
 		_classes pushBack 		"B_GMG_01_F";
 		_prices pushBack 		3000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		0;
+		_tiers pushBack 		_tech_level;
 
 		_headers pushBack 		"Mortar";
 		_classes pushBack 		"B_Mortar_01_F";
 		_prices pushBack 		5000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		0;
-
-		_headers pushBack 		"Static Titan Launcher (AT)";
-		_classes pushBack 		"B_static_AT_F";
-		_prices pushBack 		8000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-		_tiers pushBack 		1;
-
-		_headers pushBack 		"Static Titan Launcher (AA)";
-		_classes pushBack 		"B_static_AA_F";
-		_prices pushBack 		8000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-		_tiers pushBack 		2;
+		_tiers pushBack 		_tech_level;
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 
@@ -328,81 +323,126 @@ if(_side == west) then {
 		_prices pushBack 		1500;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		0;
+		_tiers pushBack 		_tech_level;
 
 		_headers pushBack 		"Mk32 GMG 20 mm";
 		_classes pushBack 		"B_T_GMG_01_F";
 		_prices pushBack 		3000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		0;
+		_tiers pushBack 		_tech_level;
 
 		_headers pushBack 		"Mortar";
 		_classes pushBack 		"B_T_Mortar_01_F";
 		_prices pushBack 		5000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		0;
-	
+		_tiers pushBack 		_tech_level;
+	};
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
+
+	// ****************************** BASE GUN DEFENSE 1 ******************************
+	_tech_level = 1;
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_headers pushBack 		"Static Titan Launcher (AT)";
+		_classes pushBack 		"B_static_AT_F";
+		_prices pushBack 		8000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_headers pushBack 		"Static Titan Launcher (AT)";
 		_classes pushBack 		"B_T_Static_AT_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		1;
-		
+		_tiers pushBack 		_tech_level;
+	};
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
+
+	// ****************************** BASE GUN DEFENSE 2 ******************************
+	_tech_level = 2;
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_headers pushBack 		"Static Titan Launcher (AA)";
+		_classes pushBack 		"B_static_AA_F";
+		_prices pushBack 		8000;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_headers pushBack 		"Static Titan Launcher (AA)";
 		_classes pushBack 		"B_T_Static_AA_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
-		_tiers pushBack 		2;
+		_tiers pushBack 		_tech_level;
+	};
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
 	};
 
+	// ****************************** BASE GUN DEFENSE 3 ******************************
+	_tech_level = 3;
 
 	_headers pushBack 		"AN/MPQ-105 Radar";
 	_classes pushBack 		"B_Radar_System_01_F";
 	_prices pushBack 		1000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		3;
+	_tiers pushBack 		_tech_level;
 		
 	_headers pushBack 		"MIM-145 Defender SAM";
 	_classes pushBack 		"B_SAM_System_03_F";
 	_prices pushBack 		25000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		3;
+	_tiers pushBack 		_tech_level;
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
 };
 
 if(_side == east) then {
+	// ****************************** BASE GUN DEFENSE 0 ******************************
+	_tech_level = 0;
+
 	_headers pushBack 		"Static Designator";
 	_classes pushBack 		"O_Static_Designator_02_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 
 	_headers pushBack 		"HMG";
 	_classes pushBack 		"O_HMG_01_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 
 	_headers pushBack 		"HMG high";
 	_classes pushBack 		"O_HMG_01_high_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 
 	_headers pushBack 		"HMG";
 	_classes pushBack 		"O_HMG_01_A_F";
 	_prices pushBack 		1500;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	
 	_headers pushBack 		"GMG";
@@ -410,21 +450,21 @@ if(_side == east) then {
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	_headers pushBack 		"GMG high";
 	_classes pushBack 		"O_GMG_01_high_F";
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	_headers pushBack 		"GMG";
 	_classes pushBack 		"O_GMG_01_A_F";
 	_prices pushBack 		3000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
 	
 	_headers pushBack 		"Mortar";
@@ -432,51 +472,84 @@ if(_side == east) then {
 	_prices pushBack 		5000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		0;
+	_tiers pushBack 		_tech_level;
 	
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
+	
+	// ****************************** BASE GUN DEFENSE 1 ******************************
+	_tech_level = 1;
+
 	_headers pushBack 		"AT";
 	_classes pushBack 		"O_static_AT_F";
 	_prices pushBack 		8000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		1;
+	_tiers pushBack 		_tech_level;
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
 	
+	// ****************************** BASE GUN DEFENSE 2 ******************************
+	_tech_level = 2;
+
 	_headers pushBack 		"AA";
 	_classes pushBack 		"O_static_AA_F";
 	_prices pushBack 		8000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		2;
+	_tiers pushBack 		_tech_level;
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
 	
+	// ****************************** BASE GUN DEFENSE 3 ******************************
+	_tech_level = 3;
+
 	_headers pushBack 		"Radar System";
 	_classes pushBack 		"O_Radar_System_02_F";
 	_prices pushBack 		1000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		3;
+	_tiers pushBack 		_tech_level;
 	
 	_headers pushBack 		"SAM System";
 	_classes pushBack 		"O_SAM_System_04_F";
 	_prices pushBack 		25000;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-	_tiers pushBack 		3;
+	_tiers pushBack 		_tech_level;
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
 };
 
+// ****************************** BASE GUN DEFENSE 3 ******************************
+_tech_level = 3;
 //Heavy weaponry for all (balancing)
 _headers pushBack 		"Praetorian 1C (AAA)";
 _classes pushBack 		"B_AAA_System_01_F";
 _prices pushBack 		35000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-_tiers pushBack 		3;
+_tiers pushBack 		_tech_level;
 
 _headers pushBack 		"Mk41 VLS (Vertical Launch System)";
 _classes pushBack 		"B_Ship_MRLS_01_F";
 _prices pushBack 		200000;
 _placements pushBack 	[180, 5];
 _categories pushBack 	"Defense";
-_tiers pushBack 		3;
+_tiers pushBack 		_tech_level;
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+};
 	
 /*
 if(CTI_CAMO_ACTIVATION == 4) then {		
@@ -525,65 +598,8 @@ if(CTI_US_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 if(CTI_UK_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
 };*/
 
-// ***************************** BASE DEFENSE *****************************
-
-//Tall Roof
-_headers pushBack  		"Shed (Roof)";
-_classes pushBack  		"Land_Shed_Big_F";
-_prices pushBack 		1500;
-_placements pushBack 	[0, 15];
-_categories pushBack 	"Sheds";
-_tiers pushBack 		1;
-
-// Short roof with one wall side
-_headers pushBack 		"Shed (Land)";
-_classes pushBack 		"Land_Shed_Small_F";
-_prices pushBack 		2000;
-_placements pushBack 	[90, 15];
-_categories pushBack 	"Sheds";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Airport Control Tower (Metal)";
-_classes pushBack 		"Land_Airport_01_controlTower_F";
-_prices pushBack 		4000;
-_placements pushBack 	[90, 15];
-_categories pushBack 	"Airport";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Airport Control Tower";
-_classes pushBack 		"Land_Airport_Tower_F";
-_prices pushBack 		5000;
-_placements pushBack 	[90, 15];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Hangar";
-_classes pushBack 		"Land_Hangar_F";
-_prices pushBack 		3000;
-_placements pushBack 	[90, 15];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Tent Hangar";
-_classes pushBack 		"Land_TentHangar_V1_F";
-_prices pushBack 		2000;
-_placements pushBack 	[90, 15];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Civilian Hangar (Small)";
-_classes pushBack 		"Land_Airport_01_hangar_F";
-_prices pushBack 		2000;
-_placements pushBack 	[0, 15];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Civilian Hangar (Large)";
-_classes pushBack 		"Land_Airport_02_hangar_left_F";
-_prices pushBack 		2000;
-_placements pushBack 	[90, 15];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		2;
+// ***************************** BASE DEFENSE 0 *****************************
+_tech_level = 0;
 
 _headers pushBack 		"Heli Pad (Square)";
 _classes pushBack 		"Land_HelipadSquare_F";
@@ -718,42 +734,6 @@ _placements pushBack 	[90, 15];
 _categories pushBack 	"Lights";
 _tiers pushBack 		0;
 
-
-_headers pushBack 		"Runway Light (White)";
-_classes pushBack 		"Land_runway_edgelight";
-_prices pushBack 		1;
-_placements pushBack 	[0, 5];
-_categories pushBack 	"Lights";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Runway Light (Red)";
-_classes pushBack 		"Land_Flush_Light_red_F";
-_prices pushBack 		1;
-_placements pushBack 	[0, 5];
-_categories pushBack 	"Lights";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Runway Light (Green)";
-_classes pushBack 		"Land_Flush_Light_green_F";
-_prices pushBack 		1;
-_placements pushBack 	[0, 5];
-_categories pushBack 	"Lights";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Runway Light (Blue)";
-_classes pushBack 		"Land_runway_edgelight_blue_F";
-_prices pushBack 		1;
-_placements pushBack 	[0, 5];
-_categories pushBack 	"Lights";
-_tiers pushBack 		2;
-
-_headers pushBack 		"Runway Light (Yellow)";
-_classes pushBack 		"Land_Flush_Light_yellow_F";
-_prices pushBack 		1;
-_placements pushBack 	[0, 5];
-_categories pushBack 	"Lights";
-_tiers pushBack 		2;
-
 _headers pushBack 		"WindSock";
 _classes pushBack 		"Windsock_01_F";
 _prices pushBack 		1;
@@ -796,20 +776,6 @@ _placements pushBack 	[180, 10];
 _categories pushBack 	"Dirt";
 _tiers pushBack 		0;
 
-_headers pushBack 		"Concrete ramp";
-_classes pushBack 		"Land_RampConcrete_F";
-_prices pushBack 		2000;
-_placements pushBack 	[180, 10];
-_categories pushBack 	"Concrete";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Concrete Block";
-_classes pushBack 		"BlockConcrete_F";
-_prices pushBack 		2000;
-_placements pushBack 	[180, 10];
-_categories pushBack 	"Concrete";
-_tiers pushBack 		1;
-
 _headers pushBack 		"Wooden pier";
 _classes pushBack 		"Land_PierWooden_02_16m_F";
 _prices pushBack 		1000;
@@ -817,47 +783,12 @@ _placements pushBack 	[180, 10];
 _categories pushBack 	"Wood";
 _tiers pushBack 		0;
 
-_headers pushBack 		"Concrete pier";
-_classes pushBack 		"Land_PierConcrete_01_16m_F";
-_prices pushBack 		5000;
-_placements pushBack 	[180, 10];
-_categories pushBack 	"Concrete";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Czech Hedgehog";
-_classes pushBack 		"Land_CzechHedgehog_01_new_F";
-_prices pushBack 		20;
-_placements pushBack 	[180, 10];
-_categories pushBack 	"Misc";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Concrete Hedgehog";
-_classes pushBack 		"Land_ConcreteHedgehog_01_F";
-_prices pushBack 		20;
-_placements pushBack 	[180, 10];
-_categories pushBack 	"Concrete";
-_tiers pushBack 		1;
-
 _headers pushBack 		"Bunker (Small)";
 _classes pushBack 		"Land_BagBunker_Small_F";
 _prices pushBack 		150;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"Walls";
 _tiers pushBack 		0;
-
-_headers pushBack 		"Bunker (Large)";
-_classes pushBack 		"Land_BagBunker_Large_F";
-_prices pushBack 		150;
-_placements pushBack 	[0, 7];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		1;
-
-_headers pushBack 		"Bunker (Tower)";
-_classes pushBack 		"Land_BagBunker_Tower_F";
-_prices pushBack 		150;
-_placements pushBack 	[0, 7];
-_categories pushBack 	"Buildings";
-_tiers pushBack 		1;
 
 _headers pushBack 		["Sandbag Wall (Corner)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_BagFence_Corner_F";
@@ -894,6 +825,120 @@ _placements pushBack 	[0, 7];
 _categories pushBack 	"Walls";
 _tiers pushBack 		0;
 
+_headers pushBack 		["Razor Fence",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WiredFence_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+_tiers pushBack 		0;
+
+_headers pushBack 		["Razor Fence (Gate)",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Mil_WiredFence_Gate_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+_tiers pushBack 		0;
+
+_headers pushBack 		["Razorwire Barrier",[["CanAutoAlign", 3.8, 0]]];
+_classes pushBack 		"Land_Razorwire_F";
+_prices pushBack 		50;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Walls";
+_tiers pushBack 		0;
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+};
+
+// ***************************** BASE DEFENSE 1 *****************************
+_tech_level = 1;
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+};
+
+//Tall Roof
+_headers pushBack  		"Shed (Roof)";
+_classes pushBack  		"Land_Shed_Big_F";
+_prices pushBack 		1500;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Sheds";
+_tiers pushBack 		1;
+
+// Short roof with one wall side
+_headers pushBack 		"Shed (Land)";
+_classes pushBack 		"Land_Shed_Small_F";
+_prices pushBack 		2000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Sheds";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Airport Control Tower (Metal)";
+_classes pushBack 		"Land_Airport_01_controlTower_F";
+_prices pushBack 		4000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Airport";
+_tiers pushBack 		1;
+
+
+_headers pushBack 		"Tent Hangar";
+_classes pushBack 		"Land_TentHangar_V1_F";
+_prices pushBack 		2000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Concrete ramp";
+_classes pushBack 		"Land_RampConcrete_F";
+_prices pushBack 		2000;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Concrete";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Concrete Block";
+_classes pushBack 		"BlockConcrete_F";
+_prices pushBack 		2000;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Concrete";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Concrete pier";
+_classes pushBack 		"Land_PierConcrete_01_16m_F";
+_prices pushBack 		5000;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Concrete";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Czech Hedgehog";
+_classes pushBack 		"Land_CzechHedgehog_01_new_F";
+_prices pushBack 		20;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Misc";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Concrete Hedgehog";
+_classes pushBack 		"Land_ConcreteHedgehog_01_F";
+_prices pushBack 		20;
+_placements pushBack 	[180, 10];
+_categories pushBack 	"Concrete";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Bunker (Large)";
+_classes pushBack 		"Land_BagBunker_Large_F";
+_prices pushBack 		150;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		1;
+
+_headers pushBack 		"Bunker (Tower)";
+_classes pushBack 		"Land_BagBunker_Tower_F";
+_prices pushBack 		150;
+_placements pushBack 	[0, 7];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		1;
+
 _headers pushBack 		["Military Base Wall (High Wall)",[["CanAutoAlign", 3.8, 0]]];
 _classes pushBack 		"Land_Mil_WallBig_4m_F";
 _prices pushBack 		200;
@@ -915,26 +960,72 @@ _placements pushBack 	[0, 7];
 _categories pushBack 	"Walls";
 _tiers pushBack 		1;
 
-_headers pushBack 		["Razor Fence",[["CanAutoAlign", 3.8, 0]]];
-_classes pushBack 		"Land_Mil_WiredFence_F";
-_prices pushBack 		50;
-_placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
-_tiers pushBack 		0;
 
-_headers pushBack 		["Razor Fence (Gate)",[["CanAutoAlign", 3.8, 0]]];
-_classes pushBack 		"Land_Mil_WiredFence_Gate_F";
-_prices pushBack 		50;
-_placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
-_tiers pushBack 		0;
+// ***************************** BASE DEFENSE 2 *****************************
+_tech_level = 2;
 
-_headers pushBack 		["Razorwire Barrier",[["CanAutoAlign", 3.8, 0]]];
-_classes pushBack 		"Land_Razorwire_F";
-_prices pushBack 		50;
-_placements pushBack 	[0, 7];
-_categories pushBack 	"Walls";
-_tiers pushBack 		0;
+_headers pushBack 		"Airport Control Tower";
+_classes pushBack 		"Land_Airport_Tower_F";
+_prices pushBack 		5000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Hangar";
+_classes pushBack 		"Land_Hangar_F";
+_prices pushBack 		3000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Civilian Hangar (Small)";
+_classes pushBack 		"Land_Airport_01_hangar_F";
+_prices pushBack 		2000;
+_placements pushBack 	[0, 15];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Civilian Hangar (Large)";
+_classes pushBack 		"Land_Airport_02_hangar_left_F";
+_prices pushBack 		2000;
+_placements pushBack 	[90, 15];
+_categories pushBack 	"Buildings";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Runway Light (White)";
+_classes pushBack 		"Land_runway_edgelight";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Lights";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Runway Light (Red)";
+_classes pushBack 		"Land_Flush_Light_red_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Lights";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Runway Light (Green)";
+_classes pushBack 		"Land_Flush_Light_green_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Lights";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Runway Light (Blue)";
+_classes pushBack 		"Land_runway_edgelight_blue_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Lights";
+_tiers pushBack 		2;
+
+_headers pushBack 		"Runway Light (Yellow)";
+_classes pushBack 		"Land_Flush_Light_yellow_F";
+_prices pushBack 		1;
+_placements pushBack 	[0, 5];
+_categories pushBack 	"Lights";
+_tiers pushBack 		2;
 
 _headers pushBack 		"H-barrier Watchtower";
 _classes pushBack 		"Land_HBarrierTower_F";
@@ -998,7 +1089,16 @@ _prices pushBack 		100;
 _placements pushBack 	[0, 7];
 _categories pushBack 	"HBarrier";
 _tiers pushBack 		2;
-/*
+
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+};
+
+
+// ***************************** BASE DEFENSE 3 *****************************
+/*_tech_level = 3;
+
 _headers pushBack 		"IR Masking Tent (Small)";
 _classes pushBack 		"Land_IRMaskingCover_02_F";
 _prices pushBack 		1500;
@@ -1033,9 +1133,17 @@ _prices pushBack 		50;
 _placements pushBack 	[0, 15];
 _categories pushBack 	"Camo";
 _tiers pushBack 		0;
-*/
 
+//Update the calculated max upgrade level
+if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+};
+*/
 [_side, _headers, _classes, _prices, _placements, _categories, _tiers] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";
+
+//all units are declared, we update the possible upgrades
+missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _side], _upgrade_levels];
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\Base\Base.sqf", format["calculated upgrade levels for %1: [%2] ", _side, _upgrade_levels]] call CTI_CO_FNC_Log};
 
 //Defense Guns for Towns
 _classes_town = [];

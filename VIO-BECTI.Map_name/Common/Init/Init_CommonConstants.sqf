@@ -274,12 +274,10 @@ with missionNamespace do {
 	if (isNil 'CTI_ECONOMY_LEVEL_PRESET') then {CTI_ECONOMY_LEVEL_PRESET = 0};
 		
 	//setup the default values for the tech tree
-	//It gets changed in the factory.sqf and used in Upgrades.sqf
-	//missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", west], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
-	//missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", east], [0,0,0,0,0,1,1,1,1,1,3,4,0]];
+	//It gets changed in the factory gear and phylon configs and used in Upgrades.sqf
 	{
 		// Current result is saved in variable _x
-		missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _x], [0,0,0,0,0,1,1,1,1,1,3,4,0,0]];
+		missionNamespace setVariable [Format["CTI_%1_UPGRADES_LEVELS", _x], [0,0,0,0,0,1,-1,-1,-1,1,3,4,0,-1]];
 	} forEach [west,east];
 };
 
