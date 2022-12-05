@@ -30,7 +30,14 @@ while { true } do {
 		} forEach _artillery;
 	};
 	
-	((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlEnable (if (time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {true} else {false});
+	if (time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {
+		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlEnable (true);
+		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlSetText "Call Fire Mission";
+	} else {
+		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlEnable (false);
+		_nextMission = rount (CTI_ARTILLERY_TIMEOUT - (time - CTI_P_LastFireMission));
+		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlSetText format ["Next Mission in %1s", _nextMission];
+	};
 	
 	sleep .1;
 };
