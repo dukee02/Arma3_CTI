@@ -236,7 +236,7 @@ switch (_action) do {
 		
 		if (alive _who && call CTI_CL_FNC_IsPlayerCommander) then {
 			if !(isPlayer leader _who) then {
-				_who setDammage 1;
+				_who setDamage 1;
 			};
 		};
 	};
@@ -250,16 +250,24 @@ switch (_action) do {
 			} else {
 				if (_who in units player) then {_unflip = true};
 			};
-			
 			if (_unflip) then {
+				_veh_pos = getPos _who_vehicle;
+				_unflipStuck = uiNamespace getVariable ["cti_dialog_ui_unflip_unit", 0];
 				if(_who_vehicle isKindOf "Ship") then {
+					if(serverTime < (_unflipStuck + 120)) then {
+						_veh_pos = [_veh_pos, 0, 40, 10, 2, 0, 0, [], [_veh_pos, _veh_pos]] call BIS_fnc_findSafePos;
+					};
 					_who_vehicle setDir ((getDir _who_vehicle) + 180);
-					_who_vehicle setPos [getPos _who_vehicle select 0, getPos _who_vehicle select 1, -1];
+					_who_vehicle setPos [_veh_pos select 0, _veh_pos select 1, -1];
 					_who_vehicle setVelocity [0,0,1];
 				} else {
-					_who_vehicle setPos [getPos _who_vehicle select 0, getPos _who_vehicle select 1, 1];
+					if(serverTime < (_unflipStuck + 120)) then {
+						_veh_pos = [_veh_pos, 0, 20, 1, 0, 0.7, 0, [], [_veh_pos, _veh_pos]] call BIS_fnc_findSafePos;
+					};
+					_who_vehicle setPos [_veh_pos select 0, _veh_pos select 1, 1];
 					_who_vehicle setVelocity [0,0,1];
 				};
+				uiNamespace setVariable ["cti_dialog_ui_unflip_unit", serverTime];
 			};
 		};
 	};
