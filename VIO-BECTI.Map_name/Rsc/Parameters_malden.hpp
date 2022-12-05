@@ -485,9 +485,9 @@ class Params {
 		default = 2;
 	};
 	class CTI_RESPAWN_FOB_RANGE {
-		title = "RESPAWN: FOB Range";
-		values[] = {500,750,1000,1250,1500,1750,2000,4000};
-		texts[] = {"0.50 KM","0.75 KM","1 KM","1.25 KM","1.5 KM","1.75 KM","2 KM","4 KM"};
+		title = "RESPAWN: Structure Range (FOB/Town camps)";
+		values[] = {500,750,1000,1500,2000,2500,3000,4000};
+		texts[] = {"0.50 KM","0.75 KM","1 KM","1.5 KM","2 KM","2.5 KM","3 KM","4 KM"};
 		default = 1000;
 	};
 	class CTI_RESPAWN_MOBILE {
@@ -496,11 +496,11 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_RESPAWN_CAMPS_RANGE {
-		title = "RESPAWN: Towns Range";
-		values[] = {50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1500,2000,2500,3000,3500,4000};
-		texts[] = {"50m","100m","150m","200m","250m","300m","350m","400m","450m","500m","550m","600m","650m","700m","750m","800m","850m","900m","950m","1000m","1500m","2000m","2500m","3000m","3500m","4000m"};
-		default = 1000;
+	class CTI_RESPAWN_MOBILE_RANGE {
+		title = "RESPAWN: Mobile Range (AI/Medical vehicles)";
+		values[] = {50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1500,2000};
+		texts[] = {"50m","100m","150m","200m","250m","300m","350m","400m","450m","500m","550m","600m","650m","700m","750m","800m","850m","900m","950m","1000m","1500m","2000m"};
+		default = 600;
 	};
 	class SEPERATOR_TOWNS {
 		title = "============ Towns ============";
