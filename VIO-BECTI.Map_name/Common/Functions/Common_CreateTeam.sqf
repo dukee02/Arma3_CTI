@@ -44,6 +44,7 @@ _crews = [];
 		//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 		//_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, _locked, _net, _bounty] call CTI_CO_FNC_CreateVehicle;
 		_created_vehicles pushBack _vehicle;
+
 		_vehicle_crew = [_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
 		_crews = _crews + _vehicle_crew;
 	};

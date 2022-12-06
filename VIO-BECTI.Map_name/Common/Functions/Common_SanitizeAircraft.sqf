@@ -36,6 +36,7 @@ _vehicle = _this select 0;
 _side = _this select 1;
 
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
+if(count _upgrades == 0) then {_upgrades = [10,10,10,10,10,10,10,10,10,10,10,10,10,10]};
 
 //--- We check the FFAR loadout 
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") do {
@@ -68,14 +69,10 @@ switch (missionNamespace getVariable "CTI_VEHICLES_AIR_CM") do {
 };
 
 _phylon_cnt = 1;
-_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 {
-	// Current result is saved in variable _x
-	_get = missionNamespace getVariable _x;
-	if !(isNil "_get") then {
-		if (CTI_Log_Level >= CTI_Log_Debug) then { 
-			["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get phylon %1 magazine <%2> with data <%3> magazine tech <%1/%2>", _phylon_cnt, _x, _get, (_upgrades select CTI_UPGRADE_AIR_FFAR), (_get select 2)]] call CTI_CO_FNC_Log};
-		if ((_upgrades select CTI_UPGRADE_AIR_FFAR) < (_get select 2)) then {
+	_var_data = missionNamespace getVariable _x;
+	if !(isNil "_var_data") then {
+		if ((_upgrades select CTI_UPGRADE_AIR_FFAR) < (_var_data select 2)) then {
 			//_vehicle setAmmoOnPylon [_phylon_cnt, 0];
 			_vehicle setPylonLoadout [_phylon_cnt, ""];
 			if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Phylon <%1> cleared", _phylon_cnt]] call CTI_CO_FNC_Log};

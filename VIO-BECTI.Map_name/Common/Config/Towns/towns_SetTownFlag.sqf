@@ -39,13 +39,19 @@ switch (missionNamespace getVariable format["CTI_%1FLAG", _side]) do {
 	case 8: {
 		_texture = "\A3\Data_F\Flags\Flag_uno_CO.paa";
 	};
-	/*case 9: {
+	case 9: {
+		_texture = "\a3\Data_F_Enoch\Flags\flag_EAF_CO.paa";
+	};
+	case 10: {
+		_texture = "\a3\Data_F_Enoch\Flags\flag_Enoch_CO.paa";
+	};
+	/*case 11: {
 		_texture = "";
 	};*/
 	default {
 	};
 };
-	
+
 if(_side == "WEST_") then {
 	missionNamespace setVariable ["CTI_WESTFLAG", _texture];
 } else {

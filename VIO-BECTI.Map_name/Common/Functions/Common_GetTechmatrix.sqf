@@ -65,6 +65,11 @@ _tech_matrix =
 		[
 			//VAN
 			[true,true,true,true,true,true,true]
+		],
+		//LDF
+		[
+			//VAN
+			[true,true,true,true,true,true,true]
 		]
 	],
 	//CTI_UPGRADE_LIGHT
@@ -80,6 +85,11 @@ _tech_matrix =
 			[true,true,true,true,true,true,true,true,true]
 		],
 		//AAF
+		[
+			//VAN
+			[true,true,true,true,true,true,true,true,true]
+		],
+		//LDF
 		[
 			//VAN
 			[true,true,true,true,true,true,true,true,true]
@@ -101,6 +111,11 @@ _tech_matrix =
 		[
 			//VAN
 			[true,true,true,true,true,true,true,true,true]
+		],
+		//LDF
+		[
+			//VAN
+			[true,true,true,true,true,true,true,true,true]
 		]
 	],
 	//CTI_UPGRADE_AIR
@@ -116,6 +131,11 @@ _tech_matrix =
 			[true,true,true,true,true,true,true,true,true]
 		],
 		//AAF
+		[
+			//VAN
+			[true,true,true,true,true,true,true,true,true]
+		],
+		//LDF
 		[
 			//VAN
 			[true,true,true,true,true,true,true,true,true]
@@ -137,6 +157,11 @@ _tech_matrix =
 		[
 			//VAN
 			[true,true,true,true,true,true,true,true,true]
+		],
+		//LDF
+		[
+			//VAN
+			[true,true,true,true,true,true,true,true,true]
 		]
 	],
 	[],[],[],[],[],[],[],
@@ -153,6 +178,11 @@ _tech_matrix =
 			[true,true,true,true,true,true,true]
 		],
 		//AAF
+		[
+			//VAN
+			[true,true,true,true,true,true,true]
+		],
+		//LDF
 		[
 			//VAN
 			[true,true,true,true,true,true,true]

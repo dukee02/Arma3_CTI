@@ -31,6 +31,7 @@ CTI_UNKNOWN_COLOR = "ColorBlack";
 CTI_NATO_ID = 0;
 CTI_CSAT_ID = 1;
 CTI_AAF_ID = 2;
+CTI_LDF_ID = 3;
 
 //--- Mod IDs
 CTI_VAN_ID = 0;
