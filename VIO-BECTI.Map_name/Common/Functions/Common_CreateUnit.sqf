@@ -66,6 +66,9 @@ if(_spawn_unit == true) then {
 	};
 	_side = side _team;
 	_dummyGroup = createGroup _side;
+	if(_position select 2 > 1) then {
+		_position set [2, 1];
+	};
 	_unit = _dummyGroup createUnit [_classname, _position, [], 0, _special];
 	if(speaker _unit == "") then {
 		_unit setSpeaker "Male01ENG";
