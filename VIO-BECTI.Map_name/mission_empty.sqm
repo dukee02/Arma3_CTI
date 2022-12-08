@@ -8,38 +8,42 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1244;
+		nextID=3844;
 	};
 	class MarkerIDProvider
 	{
-		nextID=56;
+		nextID=57;
 	};
 	class LayerIndexProvider
 	{
-		nextID=2775;
+		nextID=6923;
 	};
 	class Camera
 	{
-		pos[]={48.030712,120.82623,-41.657528};
-		dir[]={0.28459129,-0.4325904,0.85557604};
-		up[]={0.13654703,0.90156609,0.41050625};
-		aside[]={0.94894528,2.1440246e-007,-0.31564766};
+		pos[]={220788.3,-160.97,6743.7368};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
-sourceName="CW-BECTI";
+sourceName="VIO-BECTI";
 addons[]=
 {
 	"A3_Characters_F",
 	"A3_Ui_F",
 	"A3_Modules_F",
-	"A3_Structures_F_Mil_Fortification"
+	"A3_Structures_F_Mil_Fortification",
+	"A3_Modules_F_Curator_Curator",
+	"A3_Structures_F_Mil_BagBunker",
+	"A3_Static_F_AT_01",
+	"A3_Static_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=6;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -68,15 +72,29 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item4
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item5
+		{
+			className="A3_Static_F";
+			name="Arma 3 Alpha - Turrets";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=7728140;
 class ScenarioData
 {
 	author="Benny,dukee";
-	overviewText="VIO-BECTI Vanilla";
-	overviewTextLocked="VIO-BECTI Vanilla";
-	onLoadMission="VIO-BECTI Vanilla";
+	overviewText="VIO-BECTI V2.0";
+	overviewTextLocked="VIO-BECTI V2.0";
+	onLoadMission="VIO-BECTI V2.0";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -87,9 +105,10 @@ class ScenarioData
 	};
 	wreckManagerMode=1;
 	wreckLimit=20;
-	wreckRemovalMaxTime=3600;
+	wreckRemovalMaxTime=1800;
 	corpseManagerMode=1;
-	corpseLimit=10;
+	corpseLimit=50;
+	corpseRemovalMaxTime=1200;
 };
 class CustomAttributes
 {
@@ -104,13 +123,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
+					singleType="ARRAY";
 				};
 			};
 		};
@@ -127,13 +140,7 @@ class CustomAttributes
 			{
 				class data
 				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
+					singleType="SCALAR";
 					value=0;
 				};
 			};
@@ -146,8 +153,8 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI Vanilla";
-		overviewText="VIO-BECTI Vanilla";
+		briefingName="VIO-BECTI V2.0";
+		overviewText="VIO-BECTI V2.0";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
@@ -160,8 +167,8 @@ class Mission
 		year=1943;
 		month=6;
 		day=7;
-		hour=13;
-		minute=26;
+		hour=6;
+		minute=0;
 		startFogBase=250;
 		forecastFogBase=250;
 		startFogDecay=0.014;
@@ -169,7 +176,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=59;
+		items=68;
 		class Item0
 		{
 			dataType="Group";
@@ -182,7 +189,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.69888,6.0214386,41.269199};
+						position[]={54.975292,292.1362,174.86707};
 					};
 					side="West";
 					flags=2;
@@ -190,13 +197,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Alpha, Team Leader";
-						isPlayer=1;
 						isPlayable=1;
 					};
-					id=1154;
+					id=2038;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.219299;
+					atlOffset=1.0058289;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -207,14 +214,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -226,13 +227,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.05;
 								};
 							};
@@ -245,7 +240,7 @@ class Mission
 			{
 			};
 			id=225;
-			atlOffset=68.219299;
+			atlOffset=1.0058289;
 		};
 		class Item1
 		{
@@ -259,20 +254,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={27.407988,6.0214386,212.89325};
-						angles[]={0,1.0833782,0};
+						position[]={423.65054,250.91586,36.687958};
+						angles[]={5.9207382,1.0833782,6.2304349};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						rank="CAPTAIN";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Alpha, Team Leader";
+						isPlayer=1;
 						isPlayable=1;
 					};
-					id=1170;
+					id=2022;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.732269;
+					atlOffset=-1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -283,14 +280,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -302,13 +293,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.99000001;
 								};
 							};
@@ -321,7 +306,7 @@ class Mission
 			{
 			};
 			id=227;
-			atlOffset=68.732269;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item2
 		{
@@ -335,21 +320,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={27.656034,6.0214386,210.22626};
-						angles[]={0,1.0907086,0};
+						position[]={424.34097,250.15952,34.78952};
+						angles[]={5.9207382,1.0907086,6.2304349};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Bravo, Team Leader";
 						isPlayable=1;
 					};
-					id=1171;
+					id=2021;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.656883;
+					atlOffset=-1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -360,14 +346,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -379,13 +359,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1;
 								};
 							};
@@ -398,7 +372,7 @@ class Mission
 			{
 			};
 			id=229;
-			atlOffset=68.656883;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item3
 		{
@@ -412,21 +386,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={27.786161,6.0214386,208.237};
-						angles[]={0,1.0907086,0};
+						position[]={424.8898,249.70245,33.660614};
+						angles[]={5.9207382,1.0907086,6.2304349};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Charlie, Team Leader";
 						isPlayable=1;
 					};
-					id=1172;
+					id=2020;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.737984;
+					atlOffset=-1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -437,14 +412,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -456,13 +425,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.02;
 								};
 							};
@@ -475,7 +438,7 @@ class Mission
 			{
 			};
 			id=231;
-			atlOffset=68.737984;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item4
 		{
@@ -489,21 +452,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={27.959013,6.0214386,206.04657};
-						angles[]={0,1.0907086,0};
+						position[]={425.46793,249.19418,32.416473};
+						angles[]={5.9207387,1.0907086,6.2176785};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Delta, Team Leader";
 						isPlayable=1;
 					};
-					id=1173;
+					id=2019;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.847061;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -514,14 +477,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -533,13 +490,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.95999998;
 								};
 							};
@@ -552,7 +503,6 @@ class Mission
 			{
 			};
 			id=233;
-			atlOffset=68.847061;
 		};
 		class Item5
 		{
@@ -566,21 +516,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={29.680204,6.0214386,212.95184};
-						angles[]={0,1.0907086,0};
+						position[]={426.87515,249.58104,33.680145};
+						angles[]={5.9207387,1.0907086,6.2176785};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Echo, Team Leader";
 						isPlayable=1;
 					};
-					id=1174;
+					id=2018;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.775932;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -591,14 +541,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -610,13 +554,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.99000001;
 								};
 							};
@@ -629,7 +567,6 @@ class Mission
 			{
 			};
 			id=235;
-			atlOffset=68.775932;
 		};
 		class Item6
 		{
@@ -643,21 +580,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={29.792021,6.0214386,210.65302};
-						angles[]={0,1.0907086,0};
+						position[]={427.39566,249.13957,32.605927};
+						angles[]={5.9207387,1.0907086,6.2176785};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Foxtrot, Team Leader";
 						isPlayable=1;
 					};
-					id=1175;
+					id=2017;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.728981;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -668,14 +605,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -687,13 +618,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -706,7 +631,6 @@ class Mission
 			{
 			};
 			id=237;
-			atlOffset=68.728981;
 		};
 		class Item7
 		{
@@ -720,21 +644,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={29.875029,6.0214386,208.36884};
-						angles[]={0,1.0907086,0};
+						position[]={427.92496,248.70749,31.558075};
+						angles[]={5.9207387,1.0907086,6.2176785};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Golf, Team Leader";
 						isPlayable=1;
 					};
-					id=1176;
+					id=2016;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.792542;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -745,13 +669,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
+									singleType="STRING";
 									value="Male01RUS";
 								};
 							};
@@ -764,13 +682,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.99000001;
 								};
 							};
@@ -783,7 +695,6 @@ class Mission
 			{
 			};
 			id=239;
-			atlOffset=68.792542;
 		};
 		class Item8
 		{
@@ -797,21 +708,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={29.792021,6.0214386,206.43524};
-						angles[]={0,1.0907086,0};
+						position[]={428.46597,248.31621,30.557098};
+						angles[]={5.9490075,1.0907086,6.2176785};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Hotel, Team Leader";
 						isPlayable=1;
 					};
-					id=1177;
+					id=2015;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.87796;
+					atlOffset=1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -822,14 +734,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -841,13 +747,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -860,7 +760,7 @@ class Mission
 			{
 			};
 			id=241;
-			atlOffset=68.87796;
+			atlOffset=1.5258789e-005;
 		};
 		class Item9
 		{
@@ -874,7 +774,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={498.20474,6.0237942,41.301201};
+						position[]={59.641308,291.65289,174.89832};
 					};
 					side="West";
 					flags=2;
@@ -882,12 +782,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Bravo, Team Leader";
 						isPlayable=1;
 					};
-					id=1155;
+					id=2037;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.347328;
+					atlOffset=1.0742798;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -898,14 +799,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -917,13 +812,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.98000002;
 								};
 							};
@@ -936,7 +825,7 @@ class Mission
 			{
 			};
 			id=259;
-			atlOffset=68.347328;
+			atlOffset=1.0742798;
 		};
 		class Item10
 		{
@@ -950,20 +839,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={499.77505,6.0666733,41.237202};
+						position[]={52.883495,291.46735,175.46472};
+						angles[]={6.1043215,0,6.1763906};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Charlie, Team Leader";
 						isPlayable=1;
 					};
-					id=1156;
+					id=2036;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.517799;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -974,14 +864,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -993,13 +877,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -1012,7 +890,6 @@ class Mission
 			{
 			};
 			id=261;
-			atlOffset=68.517799;
 		};
 		class Item11
 		{
@@ -1026,7 +903,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={501.28189,6.14855,41.2052};
+						position[]={57.337597,291.3251,175.49792};
 					};
 					side="West";
 					flags=2;
@@ -1034,12 +911,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Delta, Team Leader";
 						isPlayable=1;
 					};
-					id=1157;
+					id=2035;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.723129;
+					atlOffset=0.34912109;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1050,14 +928,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1069,13 +941,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -1088,7 +954,7 @@ class Mission
 			{
 			};
 			id=263;
-			atlOffset=68.723129;
+			atlOffset=0.34912109;
 		};
 		class Item12
 		{
@@ -1102,7 +968,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.48697,6.0214386,37.192204};
+						position[]={55.376659,291.98776,178.10535};
 					};
 					side="West";
 					flags=2;
@@ -1110,12 +976,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Echo, Team Leader";
 						isPlayable=1;
 					};
-					id=1158;
+					id=2034;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.050514;
+					atlOffset=0.31375122;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1126,14 +993,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1145,13 +1006,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -1164,7 +1019,7 @@ class Mission
 			{
 			};
 			id=265;
-			atlOffset=68.050514;
+			atlOffset=0.31375122;
 		};
 		class Item13
 		{
@@ -1178,7 +1033,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={497.7272,6.0214386,37.099201};
+						position[]={59.4958,291.99835,178.1405};
 					};
 					side="West";
 					flags=2;
@@ -1186,12 +1041,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Foxtrot, Team Leader";
 						isPlayable=1;
 					};
-					id=1159;
+					id=2033;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.149818;
+					atlOffset=0.81881714;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1202,14 +1058,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1221,13 +1071,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -1240,7 +1084,7 @@ class Mission
 			{
 			};
 			id=267;
-			atlOffset=68.149818;
+			atlOffset=0.81881714;
 		};
 		class Item14
 		{
@@ -1254,7 +1098,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={499.01334,6.0214386,37.237202};
+						position[]={57.468456,292.09332,178.453};
 					};
 					side="West";
 					flags=2;
@@ -1262,12 +1106,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Golf, Team Leader";
 						isPlayable=1;
 					};
-					id=1160;
+					id=2032;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.261627;
+					atlOffset=0.60409546;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1278,14 +1123,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1297,13 +1136,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.02;
 								};
 							};
@@ -1316,7 +1149,7 @@ class Mission
 			{
 			};
 			id=269;
-			atlOffset=68.261627;
+			atlOffset=0.60409546;
 		};
 		class Item15
 		{
@@ -1330,7 +1163,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={500.20767,6.0214386,37.237202};
+						position[]={61.052441,292.11044,178.52332};
 					};
 					side="West";
 					flags=2;
@@ -1338,12 +1171,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Hotel, Team Leader";
 						isPlayable=1;
 					};
-					id=1161;
+					id=2031;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.363541;
+					atlOffset=1.072113;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1354,14 +1188,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1373,13 +1201,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -1392,7 +1214,7 @@ class Mission
 			{
 			};
 			id=271;
-			atlOffset=68.363541;
+			atlOffset=1.072113;
 		};
 		class Item16
 		{
@@ -1400,189 +1222,381 @@ class Mission
 			name="SYSTEM & LOGIC";
 			class Entities
 			{
-				items=18;
+				items=39;
 				class Item0
 				{
 					dataType="Marker";
-					position[]={1044.0563,183.91409,1036.0562};
+					position[]={0,11.562,0};
 					name="cti-spawn0";
 					type="Empty";
 					id=290;
-					atlOffset=242.96848;
+					atlOffset=-240.76801;
 				};
 				class Item1
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,25.857,0};
 					name="cti-spawn1";
 					type="Empty";
 					id=291;
-					atlOffset=136.40039;
+					atlOffset=-226.47301;
 				};
 				class Item2
 				{
 					dataType="Marker";
-					position[]={1044.0563,128.95311,1036.0562};
+					position[]={0,21.358999,0};
 					name="cti-spawn10";
 					type="Empty";
 					id=292;
-					atlOffset=188.00749;
+					atlOffset=-230.97101;
 				};
 				class Item3
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,49.344002,0};
 					name="cti-spawn2";
 					type="Empty";
 					id=293;
-					atlOffset=136.40039;
+					atlOffset=-202.98599;
 				};
 				class Item4
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,3.631,0};
 					name="cti-spawn3";
 					type="Empty";
 					id=294;
-					atlOffset=136.40039;
+					atlOffset=-248.69901;
 				};
 				class Item5
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,133.224,0};
 					name="cti-spawn4";
 					type="Empty";
 					id=295;
-					atlOffset=136.40039;
+					atlOffset=-119.106;
 				};
 				class Item6
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,31.219999,0};
 					name="cti-spawn5";
 					type="Empty";
 					id=296;
-					atlOffset=136.40039;
+					atlOffset=-221.11;
 				};
 				class Item7
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,60.277,0};
 					name="cti-spawn6";
 					type="Empty";
 					id=297;
-					atlOffset=136.40039;
+					atlOffset=-192.05301;
 				};
 				class Item8
 				{
 					dataType="Marker";
-					position[]={1044.0563,93.701096,1036.0562};
+					position[]={0,74.561996,0};
 					name="cti-spawn7";
 					type="Empty";
 					id=298;
-					atlOffset=152.75548;
+					atlOffset=-177.76801;
 				};
 				class Item9
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,122.975,0};
 					name="cti-spawn8";
 					type="Empty";
 					id=299;
-					atlOffset=136.40039;
+					atlOffset=-129.35501;
 				};
 				class Item10
 				{
 					dataType="Marker";
-					position[]={1044.0563,77.346008,1036.0562};
+					position[]={0,37.521999,0};
 					name="cti-spawn9";
 					type="Empty";
 					id=300;
-					atlOffset=136.40039;
+					atlOffset=-214.808;
 				};
 				class Item11
 				{
 					dataType="Marker";
-					position[]={27.220009,277.55603,209.59851};
+					position[]={0,150.993,0};
 					name="CTI_EastRespawn";
 					type="Empty";
 					colorName="ColorRed";
 					fillName="Border";
 					drawBorder=1;
 					id=301;
-					atlOffset=340.19269;
+					atlOffset=-101.33701;
 				};
 				class Item12
 				{
 					dataType="Marker";
-					position[]={498.31168,367.31702,38.542786};
+					position[]={0,221.487,0};
 					name="CTI_WestRespawn";
 					type="Empty";
 					colorName="ColorRed";
 					fillName="Border";
 					drawBorder=1;
 					id=302;
-					atlOffset=429.54971;
+					atlOffset=-30.843002;
 				};
 				class Item13
 				{
-					dataType="Marker";
-					position[]={45.074154,142.76865,42.87262};
-					name="Prison";
-					type="Empty";
-					colorName="ColorPink";
-					id=303;
-					atlOffset=206.22841;
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={55.194042,287.05353,155.71667};
+						angles[]={6.0536976,0,6.1811438};
+					};
+					name="CTI_WEST";
+					id=304;
+					type="Logic";
+					atlOffset=-3.0517578e-005;
 				};
 				class Item14
 				{
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={356.52115,6.02,32.829895};
+						position[]={29.452154,254.22116,15.146637};
+						angles[]={6.0981255,0,0.014398213};
 					};
-					name="CTI_WEST";
-					id=304;
+					name="CTI_Logic";
+					init="call{this setVariable [""totalTowns"", 54];   " \n "this setVariable [""Towns_RemovedXSmall"",[""Abdera"",""Aggelochori"",""Agios Dionysios"",""Agios Konstantinos"",""Athira"",""Chalkeia"",""Charkia"",""Dorida"",""Dump"",""Edessa"",""Ekali"",""Factory"",""Faronaki"",""Feres"",""Frini"",""Galati"",""Gravia"",""Ifestonia"",""Ioannina"",""Ioannina"",""Iraklia Hotel"",""Kalithea"",""Kalochori"",""Katalaki"",""Kavala"",""Kore"",""Koroni"",""Livadi"",""Military"",""Military Factory"",""Molos"",""Negades"",""Neri"",""Northern Airstrip"",""Oreokastro"",""Orino"",""Panagia"",""Panochori"",""Paros"",""Poliakko"",""Power Plant"",""Pyrgos"",""Rodopoli"",""Selekano"",""Sofia"",""Syrta"",""Therisa"",""Zaros"",""Airbase""]];   " \n "this setVariable [""Towns_RemovedSmall"",[""Frini"",""Iraklia Hotel"",""Molos"",""Sofia"",""Faronaki"",""Ekali"",""Airfield Military"",""Selekano"",""Feres"",""Livadi"",""Panagia"",""Ioannina"",""Military"",""Military Factory"",""Oreokastro"",""Kalochori"",""Chalkeia"",""Dorida"",""Pyrgos"",""Solar Power Plant"",""Airbase"",""Dump"",""Northern Airstrip"",""Abdera"",""Galati"",""Agios Konstantinos"",""Factory"",""Power Plant"",""Neri"",""Edessa"",""Ifestonia"",""Stavros"",""Koroni"",""Orino"",""Syrta"",""Negades"",""Aggelochori"",""Kavala"",""Panochori"",""Kore""]];   " \n "this setVariable [""Towns_RemovedMedium"",[""Frini"",""Iraklia Hotel"",""Molos"",""Sofia"",""Faronaki"",""Ekali"",""Airfield Military"",""Selekano"",""Feres"",""Livadi"",""Panagia"",""Ioannina"",""Military"",""Military Factory"",""Oreokastro"",""Dump"",""Northern Airstrip"",""Abdera"",""Galati"",""Agios Konstantinos"",""Factory"",""Power Plant"",""Neri"",""Edessa"",""Katalaki"",""Stavros"",""Koroni"",""Ifestonia""]];   " \n "this setVariable [""Towns_RemovedLarge"",[""Airfield Military"",""Military Factory"",""Frini"",""Ekali"",""Livadi"",""Iraklia Hotel"",""Faronaki"",""Kalithea"",""Feres"",""Stavros"",""Katalaki"",""Orino"",""Edessa"",""Aggelochori"",""Factory"",""Oreokastro"",""Dump"",""Northern Airstrip""]];   " \n "nullReturn = [this] ExecVM ""Common\Init\Init_LocationMode.sqf"";}";
+					id=305;
 					type="Logic";
-					atlOffset=64.379967;
+					atlOffset=-1.5583954;
 				};
 				class Item15
 				{
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={126.33641,6.02,20.865173};
-					};
-					name="CTI_Logic";
-					init="call{this setVariable [""totalTowns"",20]; " \n "this setVariable [""Towns_RemovedXSmall"",[""""]]; " \n "this setVariable [""Towns_RemovedSmall"",[""""]]; this setVariable [""Towns_RemovedMedium"",[""""]]; " \n "this setVariable [""Towns_RemovedLarge"",[""""]]; nullReturn = [this] ExecVM ""Common\Init\Init_LocationMode.sqf""}";
-					id=305;
-					type="Logic";
-					atlOffset=67.354729;
-				};
-				class Item16
-				{
-					dataType="Logic";
-					class PositionInfo
-					{
-						position[]={27.097267,6.02,136.1496};
+						position[]={425.70035,242.90903,15.147919};
+						angles[]={6.0325694,0,6.2176785};
 					};
 					name="CTI_EAST";
 					id=306;
 					type="Logic";
-					atlOffset=72.618233;
+					atlOffset=-0.85289001;
+				};
+				class Item16
+				{
+					dataType="Marker";
+					position[]={0,35.441002,0};
+					name="cti-spawn11";
+					type="Empty";
+					id=804;
+					atlOffset=-216.88901;
 				};
 				class Item17
 				{
 					dataType="Marker";
-					position[]={1053.0563,47.117996,1036.0562};
-					name="cti-spawn11";
+					position[]={0,21.732,0};
+					name="Prison";
 					type="Empty";
-					id=804;
-					atlOffset=106.57965;
+					colorName="ColorOrange";
+					id=1972;
+					atlOffset=-230.59801;
+				};
+				class Item18
+				{
+					dataType="Marker";
+					position[]={0,20.157,0};
+					name="cti-spawn12";
+					type="Empty";
+					id=3808;
+					atlOffset=-232.173;
+				};
+				class Item19
+				{
+					dataType="Marker";
+					position[]={0,24.905001,0};
+					name="cti-spawn18";
+					type="Empty";
+					id=3809;
+					atlOffset=-227.425;
+				};
+				class Item20
+				{
+					dataType="Marker";
+					position[]={0,12.275,0};
+					name="cti-spawn30";
+					type="Empty";
+					id=3811;
+					atlOffset=-240.05501;
+				};
+				class Item21
+				{
+					dataType="Marker";
+					position[]={0,55.098999,0};
+					name="cti-spawn16";
+					type="Empty";
+					id=3812;
+					atlOffset=-197.231;
+				};
+				class Item22
+				{
+					dataType="Marker";
+					position[]={0,18.701,0};
+					name="cti-spawn31";
+					type="Empty";
+					id=3813;
+					atlOffset=-233.629;
+				};
+				class Item23
+				{
+					dataType="Marker";
+					position[]={0,36.962002,0};
+					name="cti-spawn20";
+					type="Empty";
+					id=3815;
+					atlOffset=-215.368;
+				};
+				class Item24
+				{
+					dataType="Marker";
+					position[]={0,21.493999,0};
+					name="cti-spawn32";
+					type="Empty";
+					id=3816;
+					atlOffset=-230.836;
+				};
+				class Item25
+				{
+					dataType="Marker";
+					position[]={0,12.862,0};
+					name="cti-spawn29";
+					type="Empty";
+					id=3817;
+					atlOffset=-239.468;
+				};
+				class Item26
+				{
+					dataType="Marker";
+					position[]={0,83.450996,0};
+					name="cti-spawn15";
+					type="Empty";
+					id=3818;
+					atlOffset=-168.879;
+				};
+				class Item27
+				{
+					dataType="Marker";
+					position[]={0,23.851999,0};
+					name="cti-spawn13";
+					type="Empty";
+					id=3819;
+					atlOffset=-228.478;
+				};
+				class Item28
+				{
+					dataType="Marker";
+					position[]={0,10.44,0};
+					name="cti-spawn23";
+					type="Empty";
+					id=3820;
+					atlOffset=-241.89;
+				};
+				class Item29
+				{
+					dataType="Marker";
+					position[]={0,3.6259999,0};
+					name="cti-spawn25";
+					type="Empty";
+					id=3821;
+					atlOffset=-248.70399;
+				};
+				class Item30
+				{
+					dataType="Marker";
+					position[]={0,61.188999,0};
+					name="cti-spawn27";
+					type="Empty";
+					id=3822;
+					atlOffset=-191.14101;
+				};
+				class Item31
+				{
+					dataType="Marker";
+					position[]={0,8.1599998,0};
+					name="cti-spawn21";
+					type="Empty";
+					id=3823;
+					atlOffset=-244.17;
+				};
+				class Item32
+				{
+					dataType="Marker";
+					position[]={0,15.849,0};
+					name="cti-spawn17";
+					type="Empty";
+					id=3824;
+					atlOffset=-236.481;
+				};
+				class Item33
+				{
+					dataType="Marker";
+					position[]={0,16.497,0};
+					name="cti-spawn19";
+					type="Empty";
+					id=3825;
+					atlOffset=-235.83301;
+				};
+				class Item34
+				{
+					dataType="Marker";
+					position[]={0,11.754,0};
+					name="cti-spawn14";
+					type="Empty";
+					id=3826;
+					atlOffset=-240.576;
+				};
+				class Item35
+				{
+					dataType="Marker";
+					position[]={0,106.267,0};
+					name="cti-spawn22";
+					type="Empty";
+					id=3827;
+					atlOffset=-146.063;
+				};
+				class Item36
+				{
+					dataType="Marker";
+					position[]={0,17.743999,0};
+					name="cti-spawn24";
+					type="Empty";
+					id=3828;
+					atlOffset=-234.586;
+				};
+				class Item37
+				{
+					dataType="Marker";
+					position[]={0,25.421,0};
+					name="cti-spawn26";
+					type="Empty";
+					id=3829;
+					atlOffset=-226.909;
+				};
+				class Item38
+				{
+					dataType="Marker";
+					position[]={0,14.736,0};
+					name="cti-spawn28";
+					type="Empty";
+					id=3830;
+					atlOffset=-237.59399;
 				};
 			};
 			id=289;
-			atlOffset=102.5728;
+			atlOffset=-228.81967;
 		};
 		class Item17
 		{
@@ -1594,79 +1608,90 @@ class Mission
 				class Item0
 				{
 					dataType="Layer";
-					name="Main";
+					name="Town";
 					class Entities
 					{
-						items=4;
+						items=5;
 						class Item0
 						{
 							dataType="Logic";
 							class PositionInfo
 							{
-								position[]={750.62451,6.02,39.311829};
+								position[]={249.119,253.67323,32.042999};
+								angles[]={6.0250683,0.2774899,0.08618436};
 							};
-							id=999;
-							type="LocationCamp_F";
-							atlOffset=67.078476;
+							name="Town0";
+							init="call{nullReturn = [this, ""Town"", independent, 20, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							id=2663;
+							type="LocationArea_F";
 						};
 						class Item1
 						{
 							dataType="Logic";
 							class PositionInfo
 							{
-								position[]={686.77722,6.02,40.670471};
-								angles[]={0,4.6436052,0};
+								position[]={248.33551,249.34445,18.727112};
+								angles[]={6.1074181,0.21837559,0.051152892};
 							};
-							name="Town1";
-							init="call{nullReturn = [this, ""Main Defensive Box"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
-							id=997;
-							type="LocationArea_F";
-							atlOffset=67.328903;
+							id=2664;
+							type="LocationCamp_F";
+							atlOffset=-1.0762634;
 						};
 						class Item2
 						{
 							dataType="Logic";
 							class PositionInfo
 							{
-								position[]={708.51251,6.02,89.57489};
-								angles[]={0,5.0037022,0};
+								position[]={262.43512,250.75691,17.551422};
+								angles[]={6.0842524,1.6018981,0.022394964};
 							};
-							init="call{this setVariable ['cti_defense_kind', ['MG']];}";
-							id=1198;
+							init="call{this setVariable ['cti_defense_kind', ['AT']];}";
+							id=2666;
 							type="Logic";
-							atlOffset=68.810524;
 						};
 						class Item3
 						{
 							dataType="Logic";
 							class PositionInfo
 							{
-								position[]={746.54932,6.02,90.933228};
-								angles[]={0,5.8398719,0};
+								position[]={264.00189,255.0822,33.218384};
+								angles[]={5.9691324,4.8079281,0.035185181};
 							};
-							init="call{this setVariable ['cti_defense_kind', ['AT']];}";
-							id=1237;
+							init="call{this setVariable ['cti_defense_kind', ['MG']];}";
+							id=2719;
 							type="Logic";
-							atlOffset=69.433479;
+						};
+						class Item4
+						{
+							dataType="Logic";
+							class PositionInfo
+							{
+								position[]={249.11884,258.49734,48.101044};
+								angles[]={5.974936,0,0.16644377};
+							};
+							id=3174;
+							type="LocationRespawnPoint_F";
 						};
 					};
-					id=895;
-					atlOffset=67.904518;
+					id=627;
+					atlOffset=-0.036026001;
 				};
 			};
 			id=308;
-			atlOffset=67.904518;
+			atlOffset=-252.32994;
 		};
 		class Item18
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={92.375031,6.02,19.506531};
+				position[]={58.116493,256.13965,21.694916};
+				angles[]={6.0643473,0,6.2001753};
 			};
+			name="HC_1";
+			isPlayable=1;
 			id=409;
 			type="HeadlessClient_F";
-			atlOffset=69.399155;
 		};
 		class Item19
 		{
@@ -1680,7 +1705,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.63443,6.0214386,39.121204};
+						position[]={55.477245,290.883,170.71863};
 					};
 					side="West";
 					flags=2;
@@ -1688,12 +1713,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="India, Team Leader";
 						isPlayable=1;
 					};
-					id=1162;
+					id=2030;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.133774;
+					atlOffset=0.66265869;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1704,14 +1730,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1723,13 +1743,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.98000002;
 								};
 							};
@@ -1742,7 +1756,7 @@ class Mission
 			{
 			};
 			id=559;
-			atlOffset=68.133774;
+			atlOffset=0.66265869;
 		};
 		class Item20
 		{
@@ -1756,7 +1770,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={498.20474,6.0214386,39.1852};
+						position[]={60.091503,290.33902,170.50378};
 					};
 					side="West";
 					flags=2;
@@ -1764,12 +1778,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Juilett, Team Leader";
 						isPlayable=1;
 					};
-					id=1163;
+					id=2029;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.265968;
+					atlOffset=0.68228149;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1780,14 +1795,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1799,13 +1808,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.98000002;
 								};
 							};
@@ -1818,7 +1821,7 @@ class Mission
 			{
 			};
 			id=561;
-			atlOffset=68.265968;
+			atlOffset=0.68228149;
 		};
 		class Item21
 		{
@@ -1832,20 +1835,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={499.67935,6.0214386,39.121204};
+						position[]={52.518261,290.66364,171.32019};
+						angles[]={6.0811791,0,6.1748085};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Kilo, Team Leader";
 						isPlayable=1;
 					};
-					id=1164;
+					id=2028;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.387962;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1856,14 +1860,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1875,13 +1873,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -1894,7 +1886,6 @@ class Mission
 			{
 			};
 			id=563;
-			atlOffset=68.387962;
 		};
 		class Item22
 		{
@@ -1908,20 +1899,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={501.11295,6.1035385,39.187199};
+						position[]={56.973339,290.22852,171.35144};
+						angles[]={6.0796423,0,6.1700721};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Lima, Team Leader";
 						isPlayable=1;
 					};
-					id=1165;
+					id=2027;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.594193;
+					atlOffset=0.042602539;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1932,14 +1925,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -1951,13 +1938,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -1970,7 +1951,7 @@ class Mission
 			{
 			};
 			id=565;
-			atlOffset=68.594193;
+			atlOffset=0.042602539;
 		};
 		class Item23
 		{
@@ -1984,20 +1965,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.42447,6.0214386,34.960201};
+						position[]={55.012402,290.93933,173.96082};
+						angles[]={6.0796423,0,6.1763916};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Mike, Team Leader";
 						isPlayable=1;
 					};
-					id=1166;
+					id=2026;
 					type="B_Protagonist_VR_F";
-					atlOffset=67.961761;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2008,14 +1990,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2027,13 +2003,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -2046,7 +2016,6 @@ class Mission
 			{
 			};
 			id=567;
-			atlOffset=67.961761;
 		};
 		class Item24
 		{
@@ -2060,7 +2029,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={497.6647,6.0214386,35.006199};
+						position[]={59.130566,290.91837,173.99792};
 					};
 					side="West";
 					flags=2;
@@ -2068,12 +2037,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="November, Team Leader";
 						isPlayable=1;
 					};
-					id=1167;
+					id=2025;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.072098;
+					atlOffset=0.45175171;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2084,14 +2054,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2103,13 +2067,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.03;
 								};
 							};
@@ -2122,7 +2080,7 @@ class Mission
 			{
 			};
 			id=569;
-			atlOffset=68.072098;
+			atlOffset=0.45175171;
 		};
 		class Item25
 		{
@@ -2136,20 +2094,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={498.95181,6.0214386,35.077198};
+						position[]={57.104198,291.0264,174.30847};
+						angles[]={6.0904093,0,6.1590276};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Oscar, Team Leader";
 						isPlayable=1;
 					};
-					id=1168;
+					id=2024;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.181496;
+					atlOffset=0.24627686;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2160,14 +2120,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2179,18 +2133,25 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.02;
 								};
 							};
 						};
-						nAttributes=2;
+						class Attribute2
+						{
+							property="face";
+							expression="_this setface _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="";
+								};
+							};
+						};
+						nAttributes=3;
 					};
 				};
 			};
@@ -2198,7 +2159,7 @@ class Mission
 			{
 			};
 			id=571;
-			atlOffset=68.181496;
+			atlOffset=0.24627686;
 		};
 		class Item26
 		{
@@ -2212,7 +2173,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={500.28287,6.0214386,35.006199};
+						position[]={60.707714,290.95334,174.17957};
 					};
 					side="West";
 					flags=2;
@@ -2220,12 +2181,13 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Papa, Team Leader";
 						isPlayable=1;
 					};
-					id=1169;
+					id=2023;
 					type="B_Protagonist_VR_F";
-					atlOffset=68.292618;
+					atlOffset=0.64810181;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2236,14 +2198,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01Ger";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2255,13 +2211,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -2274,7 +2224,7 @@ class Mission
 			{
 			};
 			id=573;
-			atlOffset=68.292618;
+			atlOffset=0.64810181;
 		};
 		class Item27
 		{
@@ -2288,21 +2238,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={25.368193,6.0214386,212.29169};
-						angles[]={0,1.0907086,0};
+						position[]={421.0441,250.5295,35.306122};
+						angles[]={5.9207382,1.0907086,6.2304349};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="India, Team Leader";
 						isPlayable=1;
 					};
-					id=1178;
+					id=2014;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.665276;
+					atlOffset=-1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2313,14 +2264,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2332,13 +2277,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1;
 								};
 							};
@@ -2351,7 +2290,7 @@ class Mission
 			{
 			};
 			id=575;
-			atlOffset=68.665276;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item28
 		{
@@ -2365,21 +2304,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={25.611113,6.0214386,209.71747};
-						angles[]={0,1.0907086,0};
+						position[]={421.82632,249.80789,33.516083};
+						angles[]={5.9193387,1.0907086,6.2320313};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Juliett, Team Leader";
 						isPlayable=1;
 					};
-					id=1179;
+					id=2013;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.607216;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2390,14 +2329,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2409,13 +2342,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1;
 								};
 							};
@@ -2428,7 +2355,6 @@ class Mission
 			{
 			};
 			id=577;
-			atlOffset=68.607216;
 		};
 		class Item29
 		{
@@ -2442,21 +2368,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={25.909208,6.0214386,207.57489};
-						angles[]={0,1.0907086,0};
+						position[]={422.37515,249.34877,32.384247};
+						angles[]={5.9193387,1.0907086,6.2320313};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Kilo, Team Leader";
 						isPlayable=1;
 					};
-					id=1180;
+					id=2012;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.718803;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2467,14 +2393,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2486,13 +2406,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=1.02;
 								};
 							};
@@ -2505,7 +2419,6 @@ class Mission
 			{
 			};
 			id=579;
-			atlOffset=68.718803;
 		};
 		class Item30
 		{
@@ -2519,21 +2432,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={26.142118,6.0214386,205.60907};
-						angles[]={0,1.0907086,0};
+						position[]={422.95132,248.85182,31.142059};
+						angles[]={5.9504352,1.0907086,6.2320313};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Lima, Team Leader";
 						isPlayable=1;
 					};
-					id=1181;
+					id=2011;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.817871;
+					atlOffset=1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2544,14 +2458,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2563,13 +2471,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.95999998;
 								};
 							};
@@ -2582,7 +2484,7 @@ class Mission
 			{
 			};
 			id=581;
-			atlOffset=68.817871;
+			atlOffset=1.5258789e-005;
 		};
 		class Item31
 		{
@@ -2596,21 +2498,22 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={23.651152,6.0214386,211.77411};
-						angles[]={0,1.0907086,0};
+						position[]={424.35953,249.25349,32.402802};
+						angles[]={5.9207382,1.0907086,6.2304349};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Mike, Team Leader";
 						isPlayable=1;
 					};
-					id=1182;
+					id=2010;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.60733;
+					atlOffset=-1.5258789e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2621,14 +2524,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2640,13 +2537,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.99000001;
 								};
 							};
@@ -2659,7 +2550,7 @@ class Mission
 			{
 			};
 			id=583;
-			atlOffset=68.60733;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item32
 		{
@@ -2673,21 +2564,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={23.789091,6.0214386,209.45868};
-						angles[]={0,1.0907086,0};
+						position[]={424.88004,248.81929,31.330536};
+						angles[]={5.9193387,1.0907086,6.2320313};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="November, Team Leader";
 						isPlayable=1;
 					};
-					id=1183;
+					id=2009;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.566193;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2698,14 +2589,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2717,13 +2602,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -2736,7 +2615,6 @@ class Mission
 			{
 			};
 			id=585;
-			atlOffset=68.566193;
 		};
 		class Item33
 		{
@@ -2750,21 +2628,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={24.087187,6.0214386,207.46063};
-						angles[]={0,1.0907086,0};
+						position[]={425.40933,248.42342,30.285614};
+						angles[]={5.9504352,1.0907086,6.2160869};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Oscar, Team Leader";
 						isPlayable=1;
 					};
-					id=1184;
+					id=2008;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.668175;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2775,14 +2653,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2794,13 +2666,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.99000001;
 								};
 							};
@@ -2813,7 +2679,6 @@ class Mission
 			{
 			};
 			id=587;
-			atlOffset=68.668175;
 		};
 		class Item34
 		{
@@ -2827,21 +2692,21 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={24.22415,6.0214386,205.65399};
-						angles[]={0,1.0907086,0};
+						position[]={426.25894,248.76717,31.427216};
+						angles[]={5.9207387,1.0907086,6.2176785};
 					};
 					side="East";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
+						init="VIOC_ZEUS addCuratorEditableObjects [[this], false]; " \n "this setUnitTrait [""UAVHacker"",true];";
 						description="Papa, Team Leader";
 						isPlayable=1;
 					};
-					id=1185;
+					id=2007;
 					type="O_Protagonist_VR_F";
-					atlOffset=68.754456;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2852,14 +2717,8 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male01SU";
+									singleType="STRING";
+									value="";
 								};
 							};
 						};
@@ -2871,13 +2730,7 @@ class Mission
 							{
 								class data
 								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
+									singleType="SCALAR";
 									value=0.97000003;
 								};
 							};
@@ -2890,403 +2743,594 @@ class Mission
 			{
 			};
 			id=589;
-			atlOffset=68.754456;
 		};
 		class Item35
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={490.92056,6.7864084,44.116394};
-				angles[]={0,4.7028389,0};
+				position[]={418.17984,252.97191,39.16452};
+				angles[]={5.8944311,4.712389,6.2416081};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1005;
+			id=1948;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.030571;
 		};
 		class Item36
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={504.04263,6.7864084,45.629089};
-				angles[]={0,6.2306671,0};
+				position[]={431.25894,252.63641,40.290497};
+				angles[]={5.9013014,0,6.2097163};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1006;
+			id=1949;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.955849;
 		};
 		class Item37
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={505.46158,6.7864084,33.012878};
-				angles[]={0,1.4976856,0};
+				position[]={432.048,247.69429,27.200653};
+				angles[]={5.9490075,1.5707964,6.2129011};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1007;
+			id=1950;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.675064;
 		};
 		class Item38
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={492.50259,6.7864084,31.500183};
-				angles[]={0,3.1157827,0};
+				position[]={419.00992,248.09294,26.099091};
+				angles[]={5.9504375,3.1415927,6.232029};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1008;
+			id=1951;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=67.480255;
 		};
 		class Item39
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={497.02994,6.7834072,45.02948};
+				position[]={426.00406,247.83221,26.436005};
+				angles[]={5.9504352,3.1415927,6.2160869};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1009;
+			id=1952;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.387291;
 		};
 		class Item40
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={505.01431,6.830862,39.705261};
-				angles[]={0,1.5699037,0};
+				position[]={418.23355,250.26218,32.194794};
+				angles[]={5.9193387,4.712389,6.2464032};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1010;
+			id=1953;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.908455;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item41
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={491.59146,6.7834072,37.427917};
-				angles[]={0,4.6630774,0};
+				position[]={424.2775,252.95161,39.912567};
+				angles[]={5.8985481,0,6.2256494};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1011;
+			id=1954;
 			type="Land_HBarrierWall6_F";
-			atlOffset=67.709877;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item42
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={499.42154,6.7834072,31.989441};
-				angles[]={0,3.0761886,0};
+				position[]={431.65445,250.25505,34.244598};
+				angles[]={5.9221373,1.5707964,6.2113094};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1012;
+			id=1955;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.113365;
 		};
 		class Item43
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={19.876738,6.7864084,215.12665};
-				angles[]={0,4.7028389,0};
+				position[]={49.486034,293.58768,180.86902};
+				angles[]={6.1043215,4.712389,6.2049422};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1013;
+			id=1956;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.695465;
+			atlOffset=0.019866943;
 		};
 		class Item44
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={32.99881,6.7864084,216.63934};
-				angles[]={0,6.2306671,0};
+				position[]={62.565136,293.89075,181.99597};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1014;
+			id=1957;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.580711;
+			atlOffset=1.7402039;
 		};
 		class Item45
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={34.417999,6.7864084,204.02411};
-				angles[]={0,1.4976856,0};
+				position[]={63.354198,290.36908,168.90613};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1015;
+			id=1958;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.634636;
+			atlOffset=0.65969849;
 		};
 		class Item46
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={21.459013,6.7864084,202.51044};
-				angles[]={0,3.1157827,0};
+				position[]={50.317089,290.95175,167.80457};
+				angles[]={6.0735106,3.1415927,6.1779752};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1016;
+			id=1959;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.831741;
 		};
 		class Item47
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={25.986601,6.7834072,216.03973};
+				position[]={57.310253,290.25812,168.1405};
+				angles[]={6.0811791,3.1415927,6.1700721};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1017;
+			id=1960;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.807976;
 		};
 		class Item48
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={33.970245,6.7834072,210.71552};
-				angles[]={0,1.5699037,0};
+				position[]={49.539745,292.27759,173.89832};
+				angles[]={6.0811791,4.712389,6.1970029};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1018;
+			id=1961;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.533699;
+			atlOffset=3.0517578e-005;
 		};
 		class Item49
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={20.38748,6.7834072,208.46649};
-				angles[]={0,4.6630774,0};
+				position[]={55.583691,293.82458,181.61707};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1019;
+			id=1962;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.507553;
+			atlOffset=0.7958374;
 		};
 		class Item50
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={28.37747,6.7834072,202.99969};
-				angles[]={0,3.0761886,0};
+				position[]={62.960644,292.22156,175.9491};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1020;
+			id=1963;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.99408;
+			atlOffset=1.1105347;
 		};
 		class Item51
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={37.619663,6.7864084,48.588684};
-				angles[]={0,4.7028389,0};
+				position[]={175.03825,246.16966,27.748383};
+				angles[]={6.1167397,4.712389,0.039979152};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1021;
+			id=1964;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.40657;
 		};
 		class Item52
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={50.741734,6.7864084,50.101379};
-				angles[]={0,6.2306671,0};
+				position[]={188.11736,247.0195,28.874359};
+				angles[]={6.1260896,0,0.079830162};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1022;
+			id=1965;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=67.342911;
 		};
 		class Item53
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={52.160923,6.7864084,37.485168};
-				angles[]={0,1.4976856,0};
+				position[]={188.90642,245.95277,15.785492};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1023;
+			id=1966;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.868835;
+			atlOffset=0.75683594;
 		};
 		class Item54
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={39.201939,6.7864084,35.972473};
-				angles[]={0,3.1157827,0};
+				position[]={175.86931,244.55608,14.682953};
+				angles[]={6.157454,3.1415927,0.043172773};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1024;
+			id=1967;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=68.923973;
+			atlOffset=0.25619507;
 		};
 		class Item55
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={43.729527,6.7834072,49.50177};
+				position[]={182.86247,245.37029,15.019867};
+				angles[]={0,3.1415927,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=1025;
+			id=1968;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.278908;
+			atlOffset=0.69403076;
 		};
 		class Item56
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={51.713169,6.7834072,44.177551};
-				angles[]={0,1.5699037,0};
+				position[]={175.09196,245.0791,20.778656};
+				angles[]={6.1354685,4.712389,0.041577213};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1026;
+			id=1969;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.161957;
 		};
 		class Item57
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={38.291294,6.7834072,41.900208};
-				angles[]={0,4.6630774,0};
+				position[]={181.13591,246.51459,28.496429};
+				angles[]={6.1229715,0,0.03358667};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1027;
+			id=1970;
 			type="Land_HBarrierWall6_F";
-			atlOffset=68.810562;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item58
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={46.12064,6.7834072,36.462708};
-				angles[]={0,3.0761886,0};
+				position[]={188.51286,246.11829,22.828461};
+				angles[]={6.1386008,1.5707964,0.079830162};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
-			id=1028;
+			id=1971;
 			type="Land_HBarrierWall6_F";
-			atlOffset=69.797173;
+			atlOffset=3.0517578e-005;
+		};
+		class Item59
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={100.26048,252.03221,23.997498};
+				angles[]={5.9807544,0,6.1495867};
+			};
+			name="VIOC_ZEUS";
+			id=2969;
+			type="ModuleCurator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="#adminlogged";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=2;
+						};
+					};
+				};
+				nAttributes=4;
+			};
+		};
+		class Item60
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={58.366493,255.51009,18.957611};
+				angles[]={6.0643473,0,6.2001753};
+			};
+			name="HC_2";
+			isPlayable=1;
+			id=3831;
+			type="HeadlessClient_F";
+		};
+		class Item61
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={57.61454,254.99394,15.950775};
+				angles[]={6.1012216,0,6.1874781};
+			};
+			name="HC_3";
+			isPlayable=1;
+			id=3832;
+			type="HeadlessClient_F";
+		};
+		class Item62
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={300.71539,255.53554,32.96793};
+				angles[]={5.8958015,0,6.2160869};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=3838;
+			type="Land_BagBunker_Large_F";
+			atlOffset=0.073013306;
+		};
+		class Item63
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={301.1275,250.45657,18.479116};
+				angles[]={6.0191026,0,6.2097173};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=3839;
+			type="Land_BagBunker_Small_F";
+			atlOffset=0.03717041;
+		};
+		class Item64
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={313.62183,249.70125,18.342873};
+				angles[]={6.0235786,0,6.232028};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=3840;
+			type="B_static_AT_F";
+		};
+		class Item65
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={315.05533,255.49638,33.061687};
+				angles[]={5.902679,0,6.2208662};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=3841;
+			type="B_HMG_01_high_F";
+			atlOffset=-1.5258789e-005;
+		};
+		class Item66
+		{
+			dataType="Trigger";
+			position[]={329.707,250.25916,25.506001};
+			class Attributes
+			{
+				sizeA=20;
+				sizeB=20;
+			};
+			id=3842;
+			type="EmptyDetector";
+		};
+		class Item67
+		{
+			dataType="Trigger";
+			position[]={300.62466,254.4964,32.292175};
+			class Attributes
+			{
+				sizeA=500;
+				sizeB=500;
+			};
+			id=3843;
+			type="EmptyDetector";
 		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=35;
+			nextID=36;
 		};
 		class Links
 		{
-			items=35;
+			items=36;
 			class Item0
 			{
 				linkID=0;
-				item0=1154;
+				item0=2038;
 				item1=304;
 				class CustomData
 				{
@@ -3296,7 +3340,7 @@ class Mission
 			class Item1
 			{
 				linkID=1;
-				item0=1155;
+				item0=2037;
 				item1=304;
 				class CustomData
 				{
@@ -3306,7 +3350,7 @@ class Mission
 			class Item2
 			{
 				linkID=2;
-				item0=1156;
+				item0=2036;
 				item1=304;
 				class CustomData
 				{
@@ -3316,7 +3360,7 @@ class Mission
 			class Item3
 			{
 				linkID=3;
-				item0=1157;
+				item0=2035;
 				item1=304;
 				class CustomData
 				{
@@ -3326,7 +3370,7 @@ class Mission
 			class Item4
 			{
 				linkID=4;
-				item0=1158;
+				item0=2034;
 				item1=304;
 				class CustomData
 				{
@@ -3336,7 +3380,7 @@ class Mission
 			class Item5
 			{
 				linkID=5;
-				item0=1159;
+				item0=2033;
 				item1=304;
 				class CustomData
 				{
@@ -3346,7 +3390,7 @@ class Mission
 			class Item6
 			{
 				linkID=6;
-				item0=1160;
+				item0=2032;
 				item1=304;
 				class CustomData
 				{
@@ -3356,7 +3400,7 @@ class Mission
 			class Item7
 			{
 				linkID=7;
-				item0=1161;
+				item0=2031;
 				item1=304;
 				class CustomData
 				{
@@ -3366,7 +3410,7 @@ class Mission
 			class Item8
 			{
 				linkID=8;
-				item0=1171;
+				item0=2021;
 				item1=306;
 				class CustomData
 				{
@@ -3376,7 +3420,7 @@ class Mission
 			class Item9
 			{
 				linkID=9;
-				item0=1172;
+				item0=2020;
 				item1=306;
 				class CustomData
 				{
@@ -3386,7 +3430,7 @@ class Mission
 			class Item10
 			{
 				linkID=10;
-				item0=1173;
+				item0=2019;
 				item1=306;
 				class CustomData
 				{
@@ -3396,7 +3440,7 @@ class Mission
 			class Item11
 			{
 				linkID=11;
-				item0=1174;
+				item0=2018;
 				item1=306;
 				class CustomData
 				{
@@ -3406,7 +3450,7 @@ class Mission
 			class Item12
 			{
 				linkID=12;
-				item0=1175;
+				item0=2017;
 				item1=306;
 				class CustomData
 				{
@@ -3416,7 +3460,7 @@ class Mission
 			class Item13
 			{
 				linkID=13;
-				item0=1176;
+				item0=2016;
 				item1=306;
 				class CustomData
 				{
@@ -3426,7 +3470,7 @@ class Mission
 			class Item14
 			{
 				linkID=14;
-				item0=1177;
+				item0=2015;
 				item1=306;
 				class CustomData
 				{
@@ -3436,7 +3480,7 @@ class Mission
 			class Item15
 			{
 				linkID=15;
-				item0=1170;
+				item0=2022;
 				item1=306;
 				class CustomData
 				{
@@ -3446,7 +3490,7 @@ class Mission
 			class Item16
 			{
 				linkID=16;
-				item0=1162;
+				item0=2030;
 				item1=304;
 				class CustomData
 				{
@@ -3456,7 +3500,7 @@ class Mission
 			class Item17
 			{
 				linkID=17;
-				item0=1163;
+				item0=2029;
 				item1=304;
 				class CustomData
 				{
@@ -3466,7 +3510,7 @@ class Mission
 			class Item18
 			{
 				linkID=18;
-				item0=1164;
+				item0=2028;
 				item1=304;
 				class CustomData
 				{
@@ -3476,7 +3520,7 @@ class Mission
 			class Item19
 			{
 				linkID=19;
-				item0=1165;
+				item0=2027;
 				item1=304;
 				class CustomData
 				{
@@ -3486,7 +3530,7 @@ class Mission
 			class Item20
 			{
 				linkID=20;
-				item0=1166;
+				item0=2026;
 				item1=304;
 				class CustomData
 				{
@@ -3496,7 +3540,7 @@ class Mission
 			class Item21
 			{
 				linkID=21;
-				item0=1167;
+				item0=2025;
 				item1=304;
 				class CustomData
 				{
@@ -3506,7 +3550,7 @@ class Mission
 			class Item22
 			{
 				linkID=22;
-				item0=1168;
+				item0=2024;
 				item1=304;
 				class CustomData
 				{
@@ -3516,7 +3560,7 @@ class Mission
 			class Item23
 			{
 				linkID=23;
-				item0=1169;
+				item0=2023;
 				item1=304;
 				class CustomData
 				{
@@ -3526,7 +3570,7 @@ class Mission
 			class Item24
 			{
 				linkID=24;
-				item0=1178;
+				item0=2014;
 				item1=306;
 				class CustomData
 				{
@@ -3536,7 +3580,7 @@ class Mission
 			class Item25
 			{
 				linkID=25;
-				item0=1179;
+				item0=2013;
 				item1=306;
 				class CustomData
 				{
@@ -3546,7 +3590,7 @@ class Mission
 			class Item26
 			{
 				linkID=26;
-				item0=1180;
+				item0=2012;
 				item1=306;
 				class CustomData
 				{
@@ -3556,7 +3600,7 @@ class Mission
 			class Item27
 			{
 				linkID=27;
-				item0=1181;
+				item0=2011;
 				item1=306;
 				class CustomData
 				{
@@ -3566,7 +3610,7 @@ class Mission
 			class Item28
 			{
 				linkID=28;
-				item0=1182;
+				item0=2010;
 				item1=306;
 				class CustomData
 				{
@@ -3576,7 +3620,7 @@ class Mission
 			class Item29
 			{
 				linkID=29;
-				item0=1183;
+				item0=2009;
 				item1=306;
 				class CustomData
 				{
@@ -3586,7 +3630,7 @@ class Mission
 			class Item30
 			{
 				linkID=30;
-				item0=1184;
+				item0=2008;
 				item1=306;
 				class CustomData
 				{
@@ -3596,7 +3640,7 @@ class Mission
 			class Item31
 			{
 				linkID=31;
-				item0=1185;
+				item0=2007;
 				item1=306;
 				class CustomData
 				{
@@ -3606,8 +3650,8 @@ class Mission
 			class Item32
 			{
 				linkID=32;
-				item0=999;
-				item1=997;
+				item0=2666;
+				item1=2663;
 				class CustomData
 				{
 					type="Sync";
@@ -3616,8 +3660,8 @@ class Mission
 			class Item33
 			{
 				linkID=33;
-				item0=1237;
-				item1=997;
+				item0=2664;
+				item1=2663;
 				class CustomData
 				{
 					type="Sync";
@@ -3626,8 +3670,18 @@ class Mission
 			class Item34
 			{
 				linkID=34;
-				item0=1198;
-				item1=997;
+				item0=2719;
+				item1=2663;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item35
+			{
+				linkID=35;
+				item0=3174;
+				item1=2663;
 				class CustomData
 				{
 					type="Sync";
