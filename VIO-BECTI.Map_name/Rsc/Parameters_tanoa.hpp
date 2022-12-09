@@ -243,37 +243,37 @@ class Params {
 		title = "INCOME: Starting Funds (East Commander)";
 		values[] = {10000,15000,20000,25000,30000,35000,40000,45000,50000,60000,80000,100000,200000,300000,400000,500000,600000,700000,800000};
 		texts[] = {"$10000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$80000","$100000","$200000","$300000","$400000","$500000","$600000","$700000","$800000"};
-		default = 10000;
+		default = 50000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST {
 		title = "INCOME: Starting Funds (East Players)";
 		values[] = {4000,5000,6000,8000,10000,12500,15000,20000,30000,35000,40000,45000,50000,60000,70000,80000,90000,100000};
 		texts[] = {"$4000","$5000","$6000","$8000","$10000","$12500","$15000","$20000","$30000","$35000","$40000","$45000","$50000","$60000","$70000","$80000","$90000","$100000"};
-		default = 15000;
+		default = 20000;
 	};
 	class CTI_ECONOMY_STARTUP_SUPPLY_EAST {
 		title = "INCOME: Starting Supply (East)";
 		values[] = {3000,5000,7000,9000,10000,20000,25000,50000,75000,110000,130000,150000,170000,200000,300000};
 		texts[] = {"S3000","S5000","S7000","S9000","S10000","S20000","S25000","S50000","S75000","S110000","S130000","S150000","S170000","S200000","S300000"};
-		default = 10000;
+		default = 25000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER {
 		title = "INCOME: Starting Funds (West Commander)";
 		values[] = {10000,15000,20000,25000,30000,35000,40000,45000,50000,60000,80000,100000,200000,300000,400000,500000,600000,700000,800000};
 		texts[] = {"$10000","$15000","$20000","$25000","$30000","$35000","$40000","$45000","$50000","$60000","$80000","$100000","$200000","$300000","$400000","$500000","$600000","$700000","$800000"};
-		default = 10000;
+		default = 50000;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST {
 		title = "INCOME: Starting Funds (West Players)";
 		values[] = {4000,5000,6000,8000,10000,12500,15000,20000,30000,35000,40000,45000,50000,60000,70000,80000,90000,100000};
 		texts[] = {"$4000","$5000","$6000","$8000","$10000","$12500","$15000","$20000","$30000","$35000","$40000","$45000","$50000","$60000","$70000","$80000","$90000","$100000"};
-		default = 15000;
+		default = 20000;
 	};
 	class CTI_ECONOMY_STARTUP_SUPPLY_WEST {
 		title = "INCOME: Starting Supply (West)";
 		values[] = {3000,5000,7000,9000,10000,20000,25000,50000,75000,110000,130000,150000,170000,200000,300000};
 		texts[] = {"S3000","S5000","S7000","S9000","S10000","S20000","S25000","S50000","S75000","S110000","S130000","S150000","S170000","S200000","S300000"};
-		default = 10000;
+		default = 25000;
 	};
 	class CTI_ECONOMY_TOWNS_OCCUPATION {
 		title = "INCOME: Towns Occupation";
@@ -381,19 +381,19 @@ class Params {
 		title = "UNITS_UPGRADE: Aircraft FFAR Rockets";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"No FFAR Rockets","0","1","2","3","4","5","6","7","8","9","autodetect"};
-		default = 0;
+		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS_UPGRADE: Aircraft AA Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
-		default = 0;
+		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AT {
 		title = "UNITS_UPGRADE: Aircraft AT Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {"No AT Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
-		default = 0;
+		default = 10;
 	};
 	/*class CTI_VEHICLES_AIR_CM {
 		title = "UNITS: Aircraft Countermeasures";
