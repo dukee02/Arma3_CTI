@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=7075;
+		nextID=7111;
 	};
 	class Camera
 	{
@@ -909,7 +909,7 @@ class Mission
 					};
 					id=2035;
 					type="B_Protagonist_VR_F";
-					atlOffset=0.34936523;
+					atlOffset=0.34933472;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -946,7 +946,7 @@ class Mission
 			{
 			};
 			id=263;
-			atlOffset=0.34936523;
+			atlOffset=0.34933472;
 		};
 		class Item12
 		{
@@ -974,7 +974,7 @@ class Mission
 					};
 					id=2034;
 					type="B_Protagonist_VR_F";
-					atlOffset=0.31402588;
+					atlOffset=0.31399536;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1011,7 +1011,7 @@ class Mission
 			{
 			};
 			id=265;
-			atlOffset=0.31402588;
+			atlOffset=0.31399536;
 		};
 		class Item13
 		{
@@ -1104,7 +1104,7 @@ class Mission
 					};
 					id=2032;
 					type="B_Protagonist_VR_F";
-					atlOffset=0.6043396;
+					atlOffset=0.60430908;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1141,7 +1141,7 @@ class Mission
 			{
 			};
 			id=269;
-			atlOffset=0.6043396;
+			atlOffset=0.60430908;
 		};
 		class Item15
 		{
@@ -1358,7 +1358,7 @@ class Mission
 						angles[]={6.0981278,0,0.014398966};
 					};
 					name="CTI_Logic";
-					init="call{this setVariable [""totalTowns"", 34];    " \n "this setVariable [""Towns_RemovedXSmall"",[""Adamow"",""Bielawa"",""Borek"",""Farm"",""Gieraltow"",""Gliniska"",""Grabin"",""Industrial"",""Karlin"",""Kolembrody"",""Lembork"",""Lukow"",""Mil Arty Range"",""Muratyn"",""Polana"",""Powerplant"",""Radacz"",""Radunin"",""Rodzanica"",""Roztoka"",""Shoting Range"",""Sitnik"",""Swarog"",""Tarnow"",""Topolin"",""Zalesie"",""Zapadlisko""]];    " \n "this setVariable [""Towns_RemovedSmall"",[""Adamow"",""Bielawa"",""Borek"",""Farm"",""Gieraltow"",""Gliniska"",""Grabin"",""Industrial"",""Karlin"",""Kolembrody"",""Lembork"",""Lukow"",""Polana"",""Powerplant"",""Rodzanica"",""Shoting Range"",""Sitnik"",""Swarog"",""Tarnow"",""Topolin"",""Zalesie"",""Roztoka"",""Mil Arty Range""]];    " \n "this setVariable [""Towns_RemovedMedium"",[""Bielawa"",""Dolnik"",""Lukow"",""Grabin"",""Powerplant"",""Zalesie"",""Polana"",""Sitnik"",""Adamow"",""Huta"",""Radunin"",""Shoting Range"",""Rodzanica"",""Swarog"",""Sobotka"",""Lukow"",""Industrial""]];    " \n "this setVariable [""Towns_RemovedLarge"",[""Bielawa"",""Dolnik"",""Lukow"",""Grabin"",""Powerplant"",""Zalesie"",""Polana"",""Sitnik""]];    " \n "nullReturn = [this] ExecVM ""Common\Init\Init_LocationMode.sqf"";}";
+					init="call{this setVariable [""totalTowns"", 34];     " \n "this setVariable [""Towns_RemovedXSmall"",[""Adamow"",""Bielawa"",""Borek"",""Farm"",""Gieraltow"",""Gliniska"",""Grabin"",""Industrial"",""Karlin"",""Kolembrody"",""Lembork"",""Lukow"",""Mil Arty Range"",""Muratyn"",""Polana"",""Powerplant"",""Radacz"",""Radunin"",""Rodzanica"",""Roztoka"",""Shoting Range"",""Sitnik"",""Swarog"",""Tarnow"",""Topolin"",""Zalesie"",""Zapadlisko""]];     " \n "this setVariable [""Towns_RemovedSmall"",[""Adamow"",""Bielawa"",""Borek"",""Farm"",""Gieraltow"",""Gliniska"",""Grabin"",""Industrial"",""Karlin"",""Kolembrody"",""Lembork"",""Lukow"",""Polana"",""Powerplant"",""Rodzanica"",""Shoting Range"",""Sitnik"",""Swarog"",""Tarnow"",""Topolin"",""Zalesie"",""Roztoka"",""Mil Arty Range""]];     " \n "this setVariable [""Towns_RemovedMedium"",[""Bielawa"",""Dolnik"",""Lukow"",""Grabin"",""Powerplant"",""Zalesie"",""Polana"",""Sitnik"",""Adamow"",""Huta"",""Radunin"",""Shoting Range"",""Rodzanica"",""Swarog"",""Sobotka"",""Lukow"",""Topolin""]];     " \n "this setVariable [""Towns_RemovedLarge"",[""Bielawa"",""Dolnik"",""Lukow"",""Grabin"",""Topolin"",""Zalesie"",""Polana"",""Sitnik""]];     " \n "nullReturn = [this] ExecVM ""Common\Init\Init_LocationMode.sqf"";}";
 					id=305;
 					type="Logic";
 					atlOffset=-1.5579987;
@@ -2723,7 +2723,7 @@ class Mission
 								angles[]={0.028797932,3.8397768,6.2591867};
 							};
 							name="Town18";
-							init="call{nullReturn = [this, ""Nadbor"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Nadbor"", resistance, 30, 120, 1200] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4627;
 							type="LocationArea_F";
 						};
@@ -3164,7 +3164,7 @@ class Mission
 								angles[]={0,4.1226425,0};
 							};
 							name="Town9";
-							init="call{nullReturn = [this, ""Huta"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Huta"", resistance, 30, 90, 900] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4629;
 							type="LocationArea_F";
 						};
@@ -3480,7 +3480,7 @@ class Mission
 								angles[]={0.0095993113,0,0.036791541};
 							};
 							name="Town13";
-							init="call{nullReturn = [this, ""Lembork"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Lembork"", resistance, 30, 90, 900] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4632;
 							type="LocationArea_F";
 						};
@@ -4183,7 +4183,7 @@ class Mission
 								angles[]={6.2575989,3.0488808,0.025586527};
 							};
 							name="Town27";
-							init="call{nullReturn = [this, ""Sitnik"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Sitnik"", resistance, 30, 120, 1200] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4636;
 							type="LocationArea_F";
 						};
@@ -4633,7 +4633,7 @@ class Mission
 								angles[]={0.078243107,4.0719581,0.0016231562};
 							};
 							name="Town30";
-							init="call{nullReturn = [this, ""Tarnow"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Tarnow"", resistance, 30, 90, 900] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4638;
 							type="LocationArea_F";
 						};
@@ -4964,7 +4964,7 @@ class Mission
 								angles[]={6.252799,4.1199021,6.2719803};
 							};
 							name="Town3";
-							init="call{nullReturn = [this, ""Brena"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Brena"", resistance, 30, 120, 1200] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4640;
 							type="LocationArea_F";
 							atlOffset=1.9073486e-006;
@@ -5155,7 +5155,7 @@ class Mission
 								angles[]={6.2815971,2.9169164,6.2767973};
 							};
 							name="Town28";
-							init="call{nullReturn = [this, ""Sobotka"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Sobotka"", resistance, 30, 90, 900] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4641;
 							type="LocationArea_F";
 						};
@@ -5349,7 +5349,7 @@ class Mission
 								angles[]={0.0015358897,5.3991232,0};
 							};
 							name="Town7";
-							init="call{nullReturn = [this, ""Gliniska"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Gliniska"", resistance, 30, 90, 900] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4652;
 							type="LocationArea_F";
 						};
@@ -6822,7 +6822,7 @@ class Mission
 								angles[]={0.0031939524,0,6.2767973};
 							};
 							name="Town0";
-							init="call{nullReturn = [this, ""Adamow"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Adamow"", resistance, 30, 90, 900] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4648;
 							type="LocationArea_F";
 						};
@@ -7274,7 +7274,7 @@ class Mission
 								angles[]={0,6.0387344,0};
 							};
 							name="Town31";
-							init="call{nullReturn = [this, ""Topolin"", resistance, 30, 60, 600] execVM ""Common\Init\Init_Location.sqf""}";
+							init="call{nullReturn = [this, ""Topolin"", resistance, 30, 120, 1200] execVM ""Common\Init\Init_Location.sqf""}";
 							id=4649;
 							type="LocationArea_F";
 						};
@@ -7774,7 +7774,7 @@ class Mission
 					};
 					id=2028;
 					type="B_Protagonist_VR_F";
-					atlOffset=0.0002746582;
+					atlOffset=0.00024414063;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7811,7 +7811,7 @@ class Mission
 			{
 			};
 			id=563;
-			atlOffset=0.0002746582;
+			atlOffset=0.00024414063;
 		};
 		class Item22
 		{
@@ -7971,7 +7971,7 @@ class Mission
 					};
 					id=2025;
 					type="B_Protagonist_VR_F";
-					atlOffset=0.45199585;
+					atlOffset=0.45196533;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -8008,7 +8008,7 @@ class Mission
 			{
 			};
 			id=569;
-			atlOffset=0.45199585;
+			atlOffset=0.45196533;
 		};
 		class Item25
 		{
@@ -8701,7 +8701,7 @@ class Mission
 			};
 			id=1949;
 			type="Land_HBarrierWall_corner_F";
-			atlOffset=-3.8146973e-006;
+			atlOffset=-0.00022888184;
 		};
 		class Item37
 		{
