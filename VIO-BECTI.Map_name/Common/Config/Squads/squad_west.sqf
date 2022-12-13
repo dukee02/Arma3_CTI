@@ -25,7 +25,7 @@ _s = [];//special
 //--- Commander will assign those orders based on the force and the probability [type, strenght, {probability}, {Max per side}]
 missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_INFANTRY", _side], [["Infantry", 2, 40]]];
 missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_LIGHT", _side], [["Motorized", 2, 60]]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_HEAVY", _side], [["AntiAir", 1, 20], ["ArmoredMBT", 2, 80]]];
+missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_HEAVY", _side], [["AntiAir", 1, 20], ["Armored", 2, 80]]];
 missionNamespace setVariable [format["CTI_SQUADS_%1_CATEGORY_AIR", _side], [["Air", 1, 40]]];
 
 missionNamespace setVariable [format["CTI_SQUADS_%1_TOWN_DEFENSE", _side], ["Infantry", "Motorized"]];
@@ -33,8 +33,8 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_TOWN_DEFENSE", _side], ["Inf
 //--- Those are used by the commander to determine the kind of unit an AI team has
 missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], ["Infantry","InfantryT0","InfantryT1","InfantryT2","InfantryT3","InfantryT4","InfantryT5"]];
 missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], ["Motorized","MotorizedT0","MotorizedT1","MotorizedT2","MotorizedT3","MotorizedT4","MotorizedT5"]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], ["AntiAir","ArmoredMBT","ArmoredT0","ArmoredT1","ArmoredT2","ArmoredT3","ArmoredT4"]];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air","AirT1","AirT3f","AirT3h","AirT4","AirT5f","AirT5h"]]; 
+missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], ["AntiAir","Armored","ArmoredT0","ArmoredT1","ArmoredT2","ArmoredT3","ArmoredT4"]];
+missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["Air","AirT0","AirT1","AirT2","AirT3f","AirT3h","AirT4","AirT5f","AirT5h"]]; 
 
 //Infantry setup for the AI groups
 units_infantry = [];
@@ -69,6 +69,16 @@ _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 0) then {
+	_v pushBack "Infantry";
+	_t pushBack "Infantry (Auto)";
+	_p pushBack units_infantry;
+	_f pushBack CTI_BARRACKS;
+	_m pushBack 100;
+	_c pushBack "Infantry";
+	_s pushBack [];
+};
+
 // Tech Level 1
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -97,6 +107,16 @@ _f pushBack CTI_BARRACKS;
 _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 1) then {
+	_v pushBack "Infantry";
+	_t pushBack "Infantry (Auto)";
+	_p pushBack units_infantry;
+	_f pushBack CTI_BARRACKS;
+	_m pushBack 100;
+	_c pushBack "Infantry";
+	_s pushBack [];
+};
 
 // Tech Level 2
 // ------------
@@ -135,6 +155,16 @@ _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 2) then {
+	_v pushBack "Infantry";
+	_t pushBack "Infantry (Auto)";
+	_p pushBack units_infantry;
+	_f pushBack CTI_BARRACKS;
+	_m pushBack 100;
+	_c pushBack "Infantry";
+	_s pushBack [];
+};
+
 // Tech Level 3
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -172,6 +202,16 @@ _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 3) then {
+	_v pushBack "Infantry";
+	_t pushBack "Infantry (Auto)";
+	_p pushBack units_infantry;
+	_f pushBack CTI_BARRACKS;
+	_m pushBack 100;
+	_c pushBack "Infantry";
+	_s pushBack [];
+};
+
 // Tech Level 4
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -206,6 +246,16 @@ _f pushBack CTI_BARRACKS;
 _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 4) then {
+	_v pushBack "Infantry";
+	_t pushBack "Infantry (Auto)";
+	_p pushBack units_infantry;
+	_f pushBack CTI_BARRACKS;
+	_m pushBack 100;
+	_c pushBack "Infantry";
+	_s pushBack [];
+};
 
 // Tech Level 5
 // ------------
@@ -244,8 +294,18 @@ _m pushBack 100;
 _c pushBack "Infantry";
 _s pushBack [];
 
-_v pushBack "Infantry";
-_t pushBack "Infantry";
+if(CTI_FACTORY_LEVEL_PRESET >= 5) then {
+	_v pushBack "Infantry";
+	_t pushBack "Infantry (Auto)";
+	_p pushBack units_infantry;
+	_f pushBack CTI_BARRACKS;
+	_m pushBack 100;
+	_c pushBack "Infantry";
+	_s pushBack [];
+};
+
+_v pushBack "InfantryAll";
+_t pushBack "Infantry T0-T5";
 _p pushBack units_infantry;
 _f pushBack CTI_BARRACKS;
 _m pushBack 100;
@@ -289,6 +349,16 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 0) then {
+	_v pushBack "Motorized";
+	_t pushBack "Motorized (Auto)";
+	_p pushBack units_wheeled;
+	_f pushBack CTI_LIGHT;
+	_m pushBack 200;
+	_c pushBack "Motorized";
+	_s pushBack [];
+};
+
 // Tech Level 1
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -312,6 +382,16 @@ _f pushBack CTI_LIGHT;
 _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 1) then {
+	_v pushBack "Motorized";
+	_t pushBack "Motorized (Auto)";
+	_p pushBack units_wheeled;
+	_f pushBack CTI_LIGHT;
+	_m pushBack 200;
+	_c pushBack "Motorized";
+	_s pushBack [];
+};
 
 // Tech Level 2
 // ------------
@@ -337,6 +417,16 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 2) then {
+	_v pushBack "Motorized";
+	_t pushBack "Motorized (Auto)";
+	_p pushBack units_wheeled;
+	_f pushBack CTI_LIGHT;
+	_m pushBack 200;
+	_c pushBack "Motorized";
+	_s pushBack [];
+};
+
 // Tech Level 3
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -358,6 +448,16 @@ _f pushBack CTI_LIGHT;
 _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 3) then {
+	_v pushBack "Motorized";
+	_t pushBack "Motorized (Auto)";
+	_p pushBack units_wheeled;
+	_f pushBack CTI_LIGHT;
+	_m pushBack 200;
+	_c pushBack "Motorized";
+	_s pushBack [];
+};
 
 // Tech Level 4
 // ------------
@@ -381,6 +481,16 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 4) then {
+	_v pushBack "Motorized";
+	_t pushBack "Motorized (Auto)";
+	_p pushBack units_wheeled;
+	_f pushBack CTI_LIGHT;
+	_m pushBack 200;
+	_c pushBack "Motorized";
+	_s pushBack [];
+};
+
 // Tech Level 5
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -403,8 +513,18 @@ _m pushBack 200;
 _c pushBack "Motorized";
 _s pushBack [];
 
-_v pushBack "Motorized";
-_t pushBack "Motorized";
+if(CTI_FACTORY_LEVEL_PRESET >= 5) then {
+	_v pushBack "Motorized";
+	_t pushBack "Motorized (Auto)";
+	_p pushBack units_wheeled;
+	_f pushBack CTI_LIGHT;
+	_m pushBack 200;
+	_c pushBack "Motorized";
+	_s pushBack [];
+};
+
+_v pushBack "MotorizedAll";
+_t pushBack "Motorized T0-T5";
 _p pushBack units_wheeled;
 _f pushBack CTI_LIGHT;
 _m pushBack 200;
@@ -444,6 +564,16 @@ _m pushBack 500;
 _c pushBack "Armored";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 0) then {
+	_v pushBack "Armored";
+	_t pushBack "Tanks (Auto)";
+	_p pushBack units_tracked;
+	_f pushBack CTI_HEAVY;
+	_m pushBack 500;
+	_c pushBack "Armored";
+	_s pushBack [];
+};
+
 // Tech Level 1
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -465,6 +595,16 @@ _f pushBack CTI_HEAVY;
 _m pushBack 500;
 _c pushBack "Armored";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 1) then {
+	_v pushBack "Armored";
+	_t pushBack "Tanks (Auto)";
+	_p pushBack units_tracked;
+	_f pushBack CTI_HEAVY;
+	_m pushBack 500;
+	_c pushBack "Armored";
+	_s pushBack [];
+};
 
 // Tech Level 2
 // ------------
@@ -488,6 +628,16 @@ _m pushBack 500;
 _c pushBack "Armored";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 2) then {
+	_v pushBack "Armored";
+	_t pushBack "Tanks (Auto)";
+	_p pushBack units_tracked;
+	_f pushBack CTI_HEAVY;
+	_m pushBack 500;
+	_c pushBack "Armored";
+	_s pushBack [];
+};
+
 // Tech Level 3
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -509,6 +659,16 @@ _f pushBack CTI_HEAVY;
 _m pushBack 500;
 _c pushBack "Armored";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 3) then {
+	_v pushBack "Armored";
+	_t pushBack "Tanks (Auto)";
+	_p pushBack units_tracked;
+	_f pushBack CTI_HEAVY;
+	_m pushBack 500;
+	_c pushBack "Armored";
+	_s pushBack [];
+};
 
 // Tech Level 4
 // ------------
@@ -532,8 +692,18 @@ _m pushBack 500;
 _c pushBack "Armored";
 _s pushBack [];
 
-_v pushBack "ArmoredMBT";
-_t pushBack "Tanks";
+if(CTI_FACTORY_LEVEL_PRESET >= 4) then {
+	_v pushBack "Armored";
+	_t pushBack "Tanks (Auto)";
+	_p pushBack units_tracked;
+	_f pushBack CTI_HEAVY;
+	_m pushBack 500;
+	_c pushBack "Armored";
+	_s pushBack [];
+};
+
+_v pushBack "ArmoredAll";
+_t pushBack "Tanks T0-T5";
 _p pushBack units_tracked;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;
@@ -588,6 +758,24 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air append air_to_add;
 };
 
+_v pushBack "AirT0";
+_t pushBack "Heli unarmed";
+_p pushBack air_to_add;
+_f pushBack CTI_AIR;
+_m pushBack 1000;
+_c pushBack "Air";
+_s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 0) then {
+	_v pushBack "Air";
+	_t pushBack "Air (Auto)";
+	_p pushBack units_air;
+	_f pushBack CTI_AIR;
+	_m pushBack 1000;
+	_c pushBack "Air";
+	_s pushBack [];
+};
+
 // Tech Level 1
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -597,7 +785,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	// List of units
 	air_to_add = [[format["%1B_Heli_Light_01_dynamicLoadout_F", _sid], 1, 50]];
 	
-	units_air append air_to_add;
+	units_air = air_to_add;
 };
 
 _v pushBack "AirT1";
@@ -608,10 +796,38 @@ _m pushBack 1000;
 _c pushBack "Air";
 _s pushBack [];
 
+if(CTI_FACTORY_LEVEL_PRESET == 1) then {
+	_v pushBack "Air";
+	_t pushBack "Air (Auto)";
+	_p pushBack units_air;
+	_f pushBack CTI_AIR;
+	_m pushBack 1000;
+	_c pushBack "Air";
+	_s pushBack [];
+};
+
 // Tech Level 2
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+
+_v pushBack "AirT2";
+_t pushBack "Heli light";
+_p pushBack air_to_add;
+_f pushBack CTI_AIR;
+_m pushBack 1000;
+_c pushBack "Air";
+_s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 2) then {
+	_v pushBack "Air";
+	_t pushBack "Air (Auto)";
+	_p pushBack units_air;
+	_f pushBack CTI_AIR;
+	_m pushBack 1000;
+	_c pushBack "Air";
+	_s pushBack [];
+};
 
 // Tech Level 3
 // ------------
@@ -644,6 +860,24 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air append air_to_add;
 };
 
+_v pushBack "AirT3";
+_t pushBack "Air T3";
+_p pushBack units_air;
+_f pushBack CTI_AIR;
+_m pushBack 1000;
+_c pushBack "Air";
+_s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 3) then {
+	_v pushBack "Air";
+	_t pushBack "Air (Auto)";
+	_p pushBack units_air;
+	_f pushBack CTI_AIR;
+	_m pushBack 1000;
+	_c pushBack "Air";
+	_s pushBack [];
+};
+
 // Tech Level 4
 // ------------
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
@@ -663,6 +897,16 @@ _f pushBack CTI_AIR;
 _m pushBack 1000;
 _c pushBack "Air";
 _s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET == 4) then {
+	_v pushBack "Air";
+	_t pushBack "Air (Auto)";
+	_p pushBack units_air;
+	_f pushBack CTI_AIR;
+	_m pushBack 1000;
+	_c pushBack "Air";
+	_s pushBack [];
+};
 
 // Tech Level 5
 // ------------
@@ -694,8 +938,26 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	units_air append air_to_add;
 };
 
-_v pushBack "Air";
-_t pushBack "Air";
+_v pushBack "AirT5";
+_t pushBack "Air T5";
+_p pushBack units_air;
+_f pushBack CTI_AIR;
+_m pushBack 1000;
+_c pushBack "Air";
+_s pushBack [];
+
+if(CTI_FACTORY_LEVEL_PRESET >= 5) then {
+	_v pushBack "Air";
+	_t pushBack "Air (Auto)";
+	_p pushBack units_air;
+	_f pushBack CTI_AIR;
+	_m pushBack 1000;
+	_c pushBack "Air";
+	_s pushBack [];
+};
+
+_v pushBack "AirAll";
+_t pushBack "Air  T0-T5";
 _p pushBack units_air;
 _f pushBack CTI_AIR;
 _m pushBack 1000;
