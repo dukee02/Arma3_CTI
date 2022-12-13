@@ -72,10 +72,29 @@ _phylon_cnt = 1;
 {
 	_var_data = missionNamespace getVariable _x;
 	if !(isNil "_var_data") then {
-		if ((_upgrades select CTI_UPGRADE_AIR_FFAR) < (_var_data select 2)) then {
+		_canUse = true;
+		switch(_var_data select 0) do {
+			//depends on the type check the upgrade state and the current amout of loaded ammo
+			case "air-to-surface": {			//CTI_UPGRADE_AIR_AT
+				if(((_upgrades select CTI_UPGRADE_AIR_AT) < (_var_data select 2))) then {_canUse = false};
+			};
+			case "air-to-air": {			//CTI_UPGRADE_AIR_AA
+				if(((_upgrades select CTI_UPGRADE_AIR_AA) < (_var_data select 2))) then {_canUse = false};
+			};
+			case "bomb";			//CTI_UPGRADE_AIR_FFAR
+			case "weapon pod": {			//CTI_UPGRADE_AIR_FFAR	("bomb","weapon pod")
+				if(((_upgrades select CTI_UPGRADE_AIR_FFAR) < (_var_data select 2))) then {_canUse = false};
+			};
+			default {
+				_canUse = false;
+			};
+		};
+		if !(_canUse) then {
 			//_vehicle setAmmoOnPylon [_phylon_cnt, 0];
 			_vehicle setPylonLoadout [_phylon_cnt, ""];
-			if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Phylon <%1> cleared", _phylon_cnt]] call CTI_CO_FNC_Log};
+			if (CTI_Log_Level >= CTI_Log_Debug) then {
+				["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Phylon <%1> cleared %2 data <%3>", _phylon_cnt, _x, _var_data]] call CTI_CO_FNC_Log;
+			};
 		};
 	} else {
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get magazine <%1> with no data", _x]] call CTI_CO_FNC_Log};

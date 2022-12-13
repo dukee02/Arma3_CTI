@@ -55,9 +55,9 @@ switch (_action) do {
 		};
 		uiNamespace setVariable ["cti_dialog_ui_unflip_unit", serverTime];
 	};
-	case "onPhylonPressed": { //--- Open Phylon Management window
+	case "onPylonPressed": { //--- Open Phylon Management window
 		closeDialog 0;
-		createDialog "CTI_RscPhylonMenu";
+		createDialog "CTI_RscPylonMenu";
 	};
 	case "onServicePressed": {
 		closeDialog 0;

@@ -19,18 +19,14 @@ Fixed: can't build FOB with active AI commander
 
 
 [ToDo]
-check respawn function and range (done)
-check Client/Events/Events_UI_OptionsMenue (unflip vehicle) if we can make it saver (done)
-add time to fire misson of artys (done)
-add time to reseach window (done)
-add buildtime of units in list (done)
+Back to previous menu button from Phylon manager(done)
+Pilot in AI team?(done/nothing found)
+placing defenses in HQ buildmenue blocked sometimes(truck i.O.)(done)
+Heli presets wrong(done)
+SpawnLoadout didn't get checked well if ammo is researched(done)
+AI didn'T use all reseaches(needs test)
+MAcer gets deletet after reloading(done)
+Move BG-Picture 10% down(done)
 
-apply upgrade check to the phylons (needs test)
-apply max ammo check to phylons (needs test)
-save load loadout (needs test)
-add filter functionality (needs test)
-add phylon control functionality (needs test)
-take a look to the upgrade preset in init_server(needs test)
 
-send  loadout to the server (skipped)
-load server loadouts (skipped)
+Phylons of attackheli out of range on the right side

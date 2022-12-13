@@ -73,6 +73,7 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled && alive player} d
 		_local disableCollisionWith _x;
 	} forEach (player nearObjects 150);
 	
+	CTI_P_PreBuilding_SafePlace = true;
 	if ((_var select 3) in ["All","Buildings"]) then {
 		//CTI_P_PreBuilding_SafePlace = if (!surfaceIsWater _pos && !(count((position _local) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0)) then {true} else {false};
 		CTI_P_PreBuilding_SafePlace = if (!(count(((position _local) nearObjects ["Building", 15]) - [_local]) > 0) && !(count((position _local) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0)) then {true} else {false};

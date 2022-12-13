@@ -1685,13 +1685,13 @@ class CTI_RscOptionsMenu {
 			text = "Video Settings";
 			action = "['onVideoSettingsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
-		class CTI_Menu_Options_PhylonLoadout : CTI_Menu_Options_OnlineHelp {
+		class CTI_Menu_Options_PylonLoadout : CTI_Menu_Options_OnlineHelp {
 			idc = 130008;
 			
 			y = "SafeZoneY + (SafezoneH * 0.545)";
 			
-			text = "Phylon Manager";
-			action = "['onPhylonPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
+			text = "Pylon Manager";
+			action = "['onPylonPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OptionsMenu.sqf'";
 		};
 		class CTI_Menu_Options_TransferFunds : CTI_Menu_Options_OnlineHelp {
 			idc = 130009;
@@ -4905,12 +4905,12 @@ class CTI_RscVoteMenu {
 		};
 	};
 };
-//--- Phylon Management (by dukee).
-class CTI_RscPhylonMenu {
+//--- Pylon Management (by dukee).
+class CTI_RscPylonMenu {
 	movingEnable = 1;
 	idd = 400000;
-	onLoad = "uiNamespace setVariable ['cti_dialog_ui_phylonmenu', _this select 0]; ['onLoad'] execVM 'Client\Events\Events_UI_PhylonMenu.sqf'";
-	onUnload = "uiNamespace setVariable ['cti_dialog_ui_phylonmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_pylonmenu', _this select 0]; ['onLoad'] execVM 'Client\Events\Events_UI_PylonMenu.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_pylonmenu', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 
 	class controlsBackground {
 		class CTI_Background : RscText {
@@ -4935,7 +4935,7 @@ class CTI_RscPhylonMenu {
 			w = "SafeZoneW * 0.595";
 			h = "SafeZoneH * 0.037";
 			
-			text = "Phylon Management Menu";
+			text = "Pylon Management Menu";
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 			
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -4954,7 +4954,7 @@ class CTI_RscPhylonMenu {
 			w = "SafeZoneW * 0.385";
 		};
 
-		class CTI_Menu_PhylonFrame : CTI_Menu_ConfigInfoFrame {
+		class CTI_Menu_PylonFrame : CTI_Menu_ConfigInfoFrame {
 			x = "SafeZoneX + (SafeZoneW * 0.430)";
 			y = "SafeZoneY + (SafezoneH * 0.355)";
 			h = "SafeZoneH * 0.460";
@@ -4980,7 +4980,7 @@ class CTI_RscPhylonMenu {
 			itemBackground[] = {1,1,1,0.1};
 			columns[] = {0.001, 0.35};
 			
-			onLBDblClick = "['onLoadPreset', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBDblClick = "['onLoadPreset', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_Control_LoadSetup : RscButton {
 			idc = 450021;
@@ -4991,7 +4991,7 @@ class CTI_RscPhylonMenu {
 			h = "SafeZoneH * 0.04";
 			
 			text = "Load Setup";
-			action = "['onLoadPreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			action = "['onLoadPreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_Control_DeleteSetup : RscButton {
 			idc = 450029;
@@ -5002,7 +5002,7 @@ class CTI_RscPhylonMenu {
 			h = "SafeZoneH * 0.04";
 			
 			text = "Delete Preset";
-			action = "['onDeletePreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			action = "['onDeletePreset', lnbCurSelRow 450018] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_Control_ApplySetup : CTI_Menu_Control_LoadSetup {
 			idc = 450022;
@@ -5012,7 +5012,7 @@ class CTI_RscPhylonMenu {
 			w = "SafeZoneW * 0.080";
 			
 			text = "Apply Setup";
-			action = "['onApplyLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			action = "['onApplyLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		/*class CTI_Menu_Control_SendSetup : CTI_Menu_Control_LoadSetup {
 			idc = 450023;
@@ -5022,7 +5022,7 @@ class CTI_RscPhylonMenu {
 			w = "SafeZoneW * 0.080";
 			
 			text = "Send to Server";
-			action = "['onSendLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			action = "['onSendLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};*/
 		class CTI_Control_Exit : RscButton {
 			idc = 450027;
@@ -5034,6 +5034,14 @@ class CTI_RscPhylonMenu {
 			
 			text = "X";
 			action = "closeDialog 0";
+		};
+		class CTI_Control_Back : CTI_Control_Exit {
+			idc = 450032;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.725)";
+			
+			text = "<<";
+			action = "closeDialog 0; createDialog 'CTI_RscOptionsMenu';";
 		};
 		//-------------------------------------------
 		class CTI_Menu_TeamComboLabel : RscText {
@@ -5047,7 +5055,7 @@ class CTI_RscPhylonMenu {
 			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 		//Edit field for rename the stored loadout
-		class CTI_Menu_PhylonStoreName : RscEdit {
+		class CTI_Menu_PylonStoreName : RscEdit {
 			idc = 450101;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.495)";
@@ -5067,10 +5075,10 @@ class CTI_RscPhylonMenu {
 			h = "SafeZoneH * 0.035";
 			
 			text = "Save Setup";
-			action = "['onSaveLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			action = "['onSaveLoadout'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		//Filter for Phylons
-		class CTI_Menu_ComboPhylonFilter : RscCombo {
+		//Filter for Pylons
+		class CTI_Menu_ComboPylonFilter : RscCombo {
 			idc = 450100;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.680)";
@@ -5079,26 +5087,22 @@ class CTI_RscPhylonMenu {
 			h = "SafeZoneH * 0.020";
 			
 			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			onLBSelChanged = "['onLBSelChangedFilter', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedFilter', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		//-------------------------------------------
-		//Phylon frame
-		//class CTI_Menu_PhylonBackground : RscPictureKeepAspect {
-		class CTI_Menu_PhylonBackground : RscPicture {
-		//class CTI_Menu_PhylonBackground : RscText {
+		//Pylon frame
+		class CTI_Menu_PylonBackground : RscPicture {
 			idc = 450030;
 			
-			x = "SafeZoneX + (SafeZoneW * 0.440)";
-			y = "SafeZoneY + (SafezoneH * 0.355)";
+			x = "SafeZoneX + (SafeZoneW * 0.445)";
+			y = "SafeZoneY + (SafezoneH * 0.400)";
 			w = "SafeZoneW * 0.300";
 			h = "SafeZoneH * 0.300";
 			
 			text = "\A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter_01_3DEN_CA.paa";
-			//text = "\A3\Air_F_EPC\Plane_CAS_01\Data\UI\Plane_CAS_01_3DEN_CA.paa";
-			//action = "['onIconSet', 0, CTI_BARRACKS] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
-		//Phylons
-		class CTI_Menu_ComboPhylonLeft : RscCombo {
+		//Pylons
+		class CTI_Menu_ComboPylonLeft : RscCombo {
 			idc = 420010;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.470)";
@@ -5107,7 +5111,7 @@ class CTI_RscPhylonMenu {
 			h = "SafeZoneH * 0.020";
 			
 			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlLeft: RscCheckbox
 		{
@@ -5119,14 +5123,14 @@ class CTI_RscPhylonMenu {
 			h = "SafeZoneH * 0.020";
 			
 			tooltip = "Pilot Conrol?"; //--- ToDo: Localize;
-			onCheckedChanged = "['onChangedControl', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonLeft1 : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonLeft1 : CTI_Menu_ComboPylonLeft {
 			idc = 420020;
 			
 			y = "SafeZoneY + (SafezoneH * 0.480)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlLeft1: CTI_Menu_CheckControlLeft
 		{
@@ -5134,14 +5138,14 @@ class CTI_RscPhylonMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.480)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonLeft2 : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonLeft2 : CTI_Menu_ComboPylonLeft {
 			idc = 420030;
 			
 			y = "SafeZoneY + (SafezoneH * 0.540)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlLeft2: CTI_Menu_CheckControlLeft
 		{
@@ -5149,14 +5153,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.540)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 2] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonLeft3 : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonLeft3 : CTI_Menu_ComboPylonLeft {
 			idc = 420040;
 			
 			y = "SafeZoneY + (SafezoneH * 0.600)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlLeft3: CTI_Menu_CheckControlLeft
 		{
@@ -5164,14 +5168,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.600)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 3] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonLeft4 : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonLeft4 : CTI_Menu_ComboPylonLeft {
 			idc = 420050;
 			
 			y = "SafeZoneY + (SafezoneH * 0.660)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlLeft4: CTI_Menu_CheckControlLeft
 		{
@@ -5179,14 +5183,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.660)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 4] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonLeft5 : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonLeft5 : CTI_Menu_ComboPylonLeft {
 			idc = 420060;
 			
 			y = "SafeZoneY + (SafezoneH * 0.720)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlLeft5: CTI_Menu_CheckControlLeft
 		{
@@ -5194,16 +5198,16 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.720)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 5] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		//--------------middle----------------------------------------------------------
-		class CTI_Menu_ComboPhylonMid : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonMid : CTI_Menu_ComboPylonLeft {
 			idc = 420070;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.570)";
 			y = "SafeZoneY + (SafezoneH * 0.450)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlMid: CTI_Menu_CheckControlLeft
 		{
@@ -5212,14 +5216,14 @@ class CTI_RscPhylonMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.680)";
 			y = "SafeZoneY + (SafezoneH * 0.450)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 6] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonMid1 : CTI_Menu_ComboPhylonMid {
+		class CTI_Menu_ComboPylonMid1 : CTI_Menu_ComboPylonMid {
 			idc = 420080;
 			
 			y = "SafeZoneY + (SafezoneH * 0.510)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlMid1: CTI_Menu_CheckControlMid
 		{
@@ -5227,14 +5231,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.510)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 7] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonMid2 : CTI_Menu_ComboPhylonMid {
+		class CTI_Menu_ComboPylonMid2 : CTI_Menu_ComboPylonMid {
 			idc = 420090;
 			
 			y = "SafeZoneY + (SafezoneH * 0.570)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlMid2: CTI_Menu_CheckControlMid
 		{
@@ -5242,14 +5246,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.570)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 8] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonMid3 : CTI_Menu_ComboPhylonMid {
+		class CTI_Menu_ComboPylonMid3 : CTI_Menu_ComboPylonMid {
 			idc = 420100;
 			
 			y = "SafeZoneY + (SafezoneH * 0.630)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlMid3: CTI_Menu_CheckControlMid
 		{
@@ -5257,14 +5261,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.630)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 9] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonMid4 : CTI_Menu_ComboPhylonMid {
+		class CTI_Menu_ComboPylonMid4 : CTI_Menu_ComboPylonMid {
 			idc = 420110;
 
 			y = "SafeZoneY + (SafezoneH * 0.800)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlMid4: CTI_Menu_CheckControlMid
 		{
@@ -5272,16 +5276,16 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.800)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 10] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		//------------------------------------right side----------------------------------------------------------------
-		class CTI_Menu_ComboPhylonRight : CTI_Menu_ComboPhylonLeft {
+		class CTI_Menu_ComboPylonRight : CTI_Menu_ComboPylonLeft {
 			idc = 420120;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.670)";
 			y = "SafeZoneY + (SafezoneH * 0.420)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlRight: CTI_Menu_CheckControlLeft
 		{
@@ -5290,14 +5294,14 @@ class CTI_RscPhylonMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.780)";
 			y = "SafeZoneY + (SafezoneH * 0.420)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 11] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonRight1 : CTI_Menu_ComboPhylonRight {
+		class CTI_Menu_ComboPylonRight1 : CTI_Menu_ComboPylonRight {
 			idc = 420130;
 			
 			y = "SafeZoneY + (SafezoneH * 0.480)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlRight1: CTI_Menu_CheckControlRight
 		{
@@ -5305,14 +5309,14 @@ class CTI_RscPhylonMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.480)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 12] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonRight2 : CTI_Menu_ComboPhylonRight {
+		class CTI_Menu_ComboPylonRight2 : CTI_Menu_ComboPylonRight {
 			idc = 420140;
 			
 			y = "SafeZoneY + (SafezoneH * 0.540)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlRight2: CTI_Menu_CheckControlRight
 		{
@@ -5320,14 +5324,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.540)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 13] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonRight3 : CTI_Menu_ComboPhylonRight {
+		class CTI_Menu_ComboPylonRight3 : CTI_Menu_ComboPylonRight {
 			idc = 420150;
 			
 			y = "SafeZoneY + (SafezoneH * 0.600)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlRight3: CTI_Menu_CheckControlRight
 		{
@@ -5335,14 +5339,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.600)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 14] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonRight4 : CTI_Menu_ComboPhylonRight {
+		class CTI_Menu_ComboPylonRight4 : CTI_Menu_ComboPylonRight {
 			idc = 420160;
 			
 			y = "SafeZoneY + (SafezoneH * 0.660)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlRight4: CTI_Menu_CheckControlRight
 		{
@@ -5350,14 +5354,14 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.660)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 15] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
-		class CTI_Menu_ComboPhylonRight5 : CTI_Menu_ComboPhylonRight {
+		class CTI_Menu_ComboPylonRight5 : CTI_Menu_ComboPylonRight {
 			idc = 420170;
 			
 			y = "SafeZoneY + (SafezoneH * 0.720)";
 			
-			onLBSelChanged = "['onLBSelChangedPhylon', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onLBSelChanged = "['onLBSelChangedPylon', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 		class CTI_Menu_CheckControlRight5: CTI_Menu_CheckControlRight
 		{
@@ -5365,7 +5369,7 @@ class CTI_RscPhylonMenu {
 			
 			y = "SafeZoneY + (SafezoneH * 0.720)";
 
-			onCheckedChanged = "['onChangedControl', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PhylonMenu.sqf'";
+			onCheckedChanged = "['onChangedControl', _this select 1, 16] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PylonMenu.sqf'";
 		};
 	};
 };

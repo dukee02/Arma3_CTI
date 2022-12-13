@@ -70,8 +70,11 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled && (call CTI_CL_FN
 		if (_helperModel != "") then {_helper disableCollisionWith _x};
 	} forEach (_center nearObjects CTI_BASE_CONSTRUCTION_RANGE);
 
-	CTI_P_PreBuilding_SafePlace = if (!surfaceIsWater _pos && !(count(((position _local) nearObjects ["Building", 15]) - [_local]) > 0) && !(count((position _local) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0)) then {true} else {false};
-
+	CTI_P_PreBuilding_SafePlace = true;
+	if ((_var select 3) in ["All","Buildings"]) then {
+		CTI_P_PreBuilding_SafePlace = if (!surfaceIsWater _pos && !(count(((position _local) nearObjects ["Building", 15]) - [_local]) > 0) && !(count((position _local) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0)) then {true} else {false};
+	};
+	
 	if (_center distance _local > _center_distance || !CTI_P_PreBuilding_SafePlace) then {
 		_local hideObject true;
 		CTI_VAR_StructureProhibit = true;

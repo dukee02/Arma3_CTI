@@ -48,6 +48,7 @@ CTI_SE_FNC_SAVE = compileFinal preprocessFileLineNumbers "Server\Functions\Serve
 CTI_SE_FNC_LOAD = compileFinal preprocessFileLineNumbers "Server\Functions\Server_LoadFromProfile.sqf";
 CTI_SE_FNC_HandleSalvagerSpecial = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleSalvagerSpecial.sqf";
 CTI_SE_FNC_PresetUpgrades = compileFinal preprocessFileLineNumbers "Server\Functions\Server_PresetUpgrades.sqf";
+CTI_SE_FNC_UpgradeSquads = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpgradeSquads.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
@@ -59,7 +60,7 @@ execVM "Server\Init\Init_Prison.sqf";
 
 //--- Get the starting locations.
 _startup_locations_west = [];
-for '_i' from 0 to 30 step +2 do {
+for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-west%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	_startup_locations_west pushBack _location;
@@ -72,7 +73,7 @@ if(count _startup_locations_west < 1) then {
 	};	
 };
 _startup_locations_east = [];
-for '_i' from 0 to 30 step +2 do {
+for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-east%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	_startup_locations_east pushBack _location;
@@ -158,43 +159,6 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 	
 	_upgrades = [];
 	for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { _upgrades pushBack 0 };
-	
-	//To setup the pre researched levels, we must cheat ab bit ... because params only accept integers
-	/*if(CTI_ECONOMY_LEVEL_PRESET > 0) then {
-		_upgrade_levels = [];
-		_upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
-		switch(true) do {
-			case (CTI_ECONOMY_LEVEL_PRESET <= 9): {
-				_upgrades set [CTI_UPGRADE_BARRACKS, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_BARRACKS)) then {(_upgrade_levels select CTI_UPGRADE_BARRACKS)} else {CTI_ECONOMY_LEVEL_PRESET})];
-				_upgrades set [CTI_UPGRADE_LIGHT, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_LIGHT)) then {(_upgrade_levels select CTI_UPGRADE_LIGHT)} else {CTI_ECONOMY_LEVEL_PRESET})];
-				_upgrades set [CTI_UPGRADE_HEAVY, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_HEAVY)) then {(_upgrade_levels select CTI_UPGRADE_HEAVY)} else {CTI_ECONOMY_LEVEL_PRESET})];
-				_upgrades set [CTI_UPGRADE_AIR, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_AIR)) then {(_upgrade_levels select CTI_UPGRADE_AIR)} else {CTI_ECONOMY_LEVEL_PRESET})];
-				_upgrades set [CTI_UPGRADE_NAVAL, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_NAVAL)) then {(_upgrade_levels select CTI_UPGRADE_NAVAL)} else {CTI_ECONOMY_LEVEL_PRESET})];
-				_upgrades set [CTI_UPGRADE_GEAR, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_GEAR)) then {(_upgrade_levels select CTI_UPGRADE_GEAR)} else {CTI_ECONOMY_LEVEL_PRESET})];
-				_upgrades set [CTI_UPGRADE_DEFENSE, (if(CTI_ECONOMY_LEVEL_PRESET > (_upgrade_levels select CTI_UPGRADE_DEFENSE)) then {(_upgrade_levels select CTI_UPGRADE_DEFENSE)} else {CTI_ECONOMY_LEVEL_PRESET})];
-			};
-			case (CTI_ECONOMY_LEVEL_PRESET >= 1000000 && CTI_ECONOMY_LEVEL_PRESET <= 9999999): {
-				_upgrades_preset = [];
-				_preset = CTI_ECONOMY_LEVEL_PRESET;
-				_step = 1000000;
-				for [{ _i = 0 }, { _i < 7 }, { _i = _i + 1 }] do {
-					_tmp = floor(_preset/_step);
-					_preset = _preset-_tmp*_step;
-					_step = _step/10;
-					_upgrades_preset pushBack _tmp;
-				};
-				_upgrades set [CTI_UPGRADE_BARRACKS, (if((_upgrades_preset select 0) > (_upgrade_levels select CTI_UPGRADE_BARRACKS)) then {(_upgrade_levels select CTI_UPGRADE_BARRACKS)} else {(_upgrades_preset select 0)})];
-				_upgrades set [CTI_UPGRADE_LIGHT, (if((_upgrades_preset select 1) > (_upgrade_levels select CTI_UPGRADE_LIGHT)) then {(_upgrade_levels select CTI_UPGRADE_LIGHT)} else {(_upgrades_preset select 1)})];
-				_upgrades set [CTI_UPGRADE_HEAVY, (if((_upgrades_preset select 2) > (_upgrade_levels select CTI_UPGRADE_HEAVY)) then {(_upgrade_levels select CTI_UPGRADE_HEAVY)} else {(_upgrades_preset select 2)})];
-				_upgrades set [CTI_UPGRADE_AIR, (if((_upgrades_preset select 3) > (_upgrade_levels select CTI_UPGRADE_AIR)) then {(_upgrade_levels select CTI_UPGRADE_AIR)} else {(_upgrades_preset select 3)})];
-				_upgrades set [CTI_UPGRADE_NAVAL, (if((_upgrades_preset select 4) > (_upgrade_levels select CTI_UPGRADE_NAVAL)) then {(_upgrade_levels select CTI_UPGRADE_NAVAL)} else {(_upgrades_preset select 4)})];
-				_upgrades set [CTI_UPGRADE_GEAR, (if((_upgrades_preset select 5) > (_upgrade_levels select CTI_UPGRADE_GEAR)) then {(_upgrade_levels select CTI_UPGRADE_GEAR)} else {(_upgrades_preset select 5)})];
-				_upgrades set [CTI_UPGRADE_DEFENSE, (if((_upgrades_preset select 6) > (_upgrade_levels select CTI_UPGRADE_DEFENSE)) then {(_upgrade_levels select CTI_UPGRADE_DEFENSE)} else {(_upgrades_preset select 6)})];
-			};
-			default {
-			};
-		};
-	};*/
 	_logic setVariable ["cti_upgrades", _upgrades, true];
 	_logic setVariable ["cti_upgrade", -1, true];
 	
@@ -348,10 +312,8 @@ if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") >= 0 || (missionNam
 };
 
 //To setup the pre researched levels, we must cheat ab bit ... because params only accept integers
-//if(CTI_FACTORY_LEVEL_PRESET > 0) then {[CTI_FACTORY_LEVEL_PRESET,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;};
-//if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[CTI_ECONOMY_LEVEL_PRESET,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
-if(CTI_FACTORY_LEVEL_PRESET > 0) then {[444444,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;};
-if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[222222,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
+if(CTI_FACTORY_LEVEL_PRESET > 0) then {[CTI_FACTORY_LEVEL_PRESET,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;};
+if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[CTI_ECONOMY_LEVEL_PRESET,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
 
 //Check if Persistence is active
 if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {

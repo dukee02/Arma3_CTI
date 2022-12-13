@@ -275,14 +275,77 @@ missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], _upgrade_t
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade times for %1: <%2>", _upgrade_time]] call CTI_CO_FNC_Log;};
 
 //todo, on commander missing link checkup, skip disabled upgrades.
+//its done below, what is this?
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_AI_ORDER", _side], [
 	/*[CTI_UPGRADE_BARRACKS, 1],
 	[CTI_UPGRADE_BARRACKS, 2]*/
-	
 //15:05:47 "[CTI (INFORMATION)] [frameno:47284 | ticktime:1195.69 | fps:131.148] [FILE: Common\Config\Upgrades\Check_Upgrades.sqf] [WEST] AI Commander upgrade order has been completed with [[[0,1],[0,2],[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4],[5,1],[5,2],[5,3],[6,1],[6,2],[6,3],[6,4],[7,1],[7,2]]]"
 //15:05:47 "[CTI (INFORMATION)] [frameno:47285 | ticktime:1195.7 | fps:123.077] [FILE: Common\Config\Upgrades\Check_Upgrades.sqf] [EAST] AI Commander upgrade order has been completed with [[[0,1],[0,2],[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4],[5,1],[5,2],[5,3],[6,1],[6,2],[6,3],[6,4],[7,1],[7,2]]]"	
-
 ]];
+
+//--- New Commander course of action ["Action", Parameter(s), Condition]
+_path = missionNamespace getVariable [format["CTI_%1_Commander_Path", _side], []];
+if (count _path < 1) then {
+	private["_creation","_cur_structures","_cur_levels","_cur_line_order"];
+	_creation = true;
+	_tries = 0;
+
+	_cur_structures = 0;
+
+	_cur_levels = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
+	_cur_line_order = [CTI_UPGRADE_BARRACKS,CTI_UPGRADE_GEAR,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_DEFENSE,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_TOWNS,CTI_UPGRADE_AIR,CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_NAVAL]; 
+
+	while {_creation == true && _tries < 100} do {
+		switch (_cur_structures) do {
+			case 0: {_path append [["build-structures", CTI_CONTROLCENTER, {true}]]; _cur_structures = _cur_structures + 1;};
+			case 1: {
+				_path append [["build-structures", CTI_BARRACKS, {true}]]; 
+				_cur_structures = _cur_structures + 1;
+				_cur_levels set [CTI_UPGRADE_TOWNS, (_cur_levels select CTI_UPGRADE_TOWNS)+1];
+				_path append [["upgrade", [CTI_UPGRADE_TOWNS, (_cur_levels select CTI_UPGRADE_TOWNS)], {true}]];
+			};
+			case 2: {_path append [["build-structures", CTI_LIGHT, {true}]]; _cur_structures = _cur_structures + 1;};
+			case 3: {_path append [["build-structures", CTI_REPAIR, {true}]]; _cur_structures = _cur_structures + 1;};
+			case 4: {_path append [["build-structures", CTI_AMMO, {true}]]; _cur_structures = _cur_structures + 1;};
+			case 5: {_path append [["build-structures", CTI_HEAVY, {true}]]; _cur_structures = _cur_structures + 1;};
+			case 6: {_path append [["build-structures", CTI_AIR, {true}]]; _cur_structures = _cur_structures + 1;};
+			default {};
+		};
+		
+		_creation = false;
+		for [{private _i = 0}, {_i < count _cur_line_order}, {_i = _i + 1}] do {
+			_activeFactory = _cur_line_order select _i;
+			_factoryBuild = false;
+			//check if the corresponding factory has build
+			switch true do
+			{
+				case (_activeFactory in [CTI_UPGRADE_BARRACKS,CTI_UPGRADE_GEAR] && _cur_structures > 1):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_LIGHT] && _cur_structures > 2):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_DEFENSE] && _cur_structures > 3):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_SUPPLY,CTI_UPGRADE_TOWNS] && _cur_structures > 4):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_HEAVY,CTI_UPGRADE_NAVAL] && _cur_structures > 5):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_AIR,CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_AIR_AT] && _cur_structures > 6):	{_factoryBuild = true;};
+				default {_factoryBuild = false;};
+			};
+
+			//_cur_line_order select _i
+			if((_upgrade_levels select _activeFactory) > (_cur_levels select _activeFactory) && _factoryBuild == true) then {
+				_add_upgrade = true;
+				if(count ((_upgrade_links select _activeFactory) select (_cur_levels select _activeFactory)) > 0) then {
+					if(_cur_levels select (((_upgrade_links select _activeFactory) select (_cur_levels select _activeFactory)) select 0) < ((_upgrade_links select _activeFactory) select (_cur_levels select _activeFactory)) select 1) then {_add_upgrade = false};
+				};
+				if(_add_upgrade) then {
+					_cur_levels set [_activeFactory, (_cur_levels select _activeFactory)+1];
+					_path append [["upgrade", [_activeFactory, (_cur_levels select _activeFactory)], {true}]];
+				};
+			};
+			//check if all upgrades are done.
+			if(_upgrade_levels select _activeFactory > (_cur_levels select _activeFactory)) then {_creation = true};
+		};
+		_tries = _tries + 1;
+	};	
+};
+missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], _path];
 
 if (CTI_IsClient) then {
 	_upgrade_labels = [];

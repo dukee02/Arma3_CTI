@@ -136,7 +136,7 @@ if(CTI_GUER_TOWNS == 0) then {
 (west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_east.sqf";
 
-call compile preprocessFileLineNumbers "Common\Config\Phylons\phylons.sqf";
+call compile preprocessFileLineNumbers "Common\Config\Pylons\pylons.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
