@@ -117,7 +117,7 @@ class Params {
 		title = "UPGRADE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
 		values[] = {1,2,3,4,5,6,8,10};
 		texts[] = {"1","2","3","4","5","6","8","10"};
-		default = 2;
+		default = 4;
 	};
 	class SEPERATOR_AI {
 		title = "============ AI ============";

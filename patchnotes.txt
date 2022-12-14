@@ -27,6 +27,4 @@ SpawnLoadout didn't get checked well if ammo is researched(done)
 AI didn'T use all reseaches(needs test)
 MAcer gets deletet after reloading(done)
 Move BG-Picture 10% down(done)
-
-
-Phylons of attackheli out of range on the right side
+Phylons of attackheli out of range on the right side(done)
