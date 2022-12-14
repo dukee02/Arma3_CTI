@@ -38,10 +38,8 @@ _squads = missionNamespace getVariable format ["CTI_SQUAD_%1_%2", _side, _troop]
 _newSquad = [];
 if((_upgrades select _upgrade) >= (_upgrade_levels select _upgrade)) then {
 	_newSquad = missionNamespace getVariable format ["CTI_SQUAD_%1_%2All", _side, _troop];
-	["DEBUG", "FILE: Server\Functions\Server_UpgradeSquads.sqf", format ["_side %1 _troop %2 newSquad <%3>", _side, _troop, _newSquad]] call CTI_CO_FNC_Log;
 	_squads set [2,(_newSquad select 2)];
 } else {
 	_newSquad = missionNamespace getVariable format ["CTI_SQUAD_%1_%2T%3", _side, _troop, (_upgrades select _upgrade)];
-	["DEBUG", "FILE: Server\Functions\Server_UpgradeSquads.sqf", format ["_side %1 _troop %2T%3 newSquad <%4>", _side, _troop, (_upgrades select _upgrade), _newSquad]] call CTI_CO_FNC_Log;
 	_squads set [2,((_squads select 2) + (_newSquad select 2))];
 };

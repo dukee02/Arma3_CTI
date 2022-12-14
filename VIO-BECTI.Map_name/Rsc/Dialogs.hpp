@@ -4955,6 +4955,8 @@ class CTI_RscPylonMenu {
 		};
 
 		class CTI_Menu_PylonFrame : CTI_Menu_ConfigInfoFrame {
+			idc = 410001;
+
 			x = "SafeZoneX + (SafeZoneW * 0.430)";
 			y = "SafeZoneY + (SafezoneH * 0.355)";
 			h = "SafeZoneH * 0.460";
@@ -5107,7 +5109,7 @@ class CTI_RscPylonMenu {
 			
 			x = "SafeZoneX + (SafeZoneW * 0.470)";
 			y = "SafeZoneY + (SafezoneH * 0.420)";
-			w = "SafeZoneW * 0.090";
+			w = "SafeZoneW * 0.072";
 			h = "SafeZoneH * 0.020";
 			
 			sizeEx = "0.7 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";

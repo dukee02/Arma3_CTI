@@ -72,21 +72,24 @@ CTI_UI_Fill_PylonsSelection = {
 		//_mirrorPos;
 
 		_uiVehPos = getArray (configfile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent" >> "pylons" >> _pylonName >> "UIposition");
+		_uiSpace = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 410001);
+		_uiPosPhylon = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx);
+		_uiPosControl = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl (_UIIdx+1));
+		_uiSpace set [2, 1];
 		//ComboBox (pylon loadout selection)
-		_uiPos = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx);
-		_newPosX = 0.275 + ((_uiVehPos select 0) * 1.2);
-		_uiPos set [0, _newPosX];
+		_newPosX = 0.290 + ((_uiVehPos select 0)*(_uiSpace select 2));
+		diag_log format["newPosX <%1>", _newPosX];
+		_uiPosPhylon set [0, _newPosX];
 		_newPosY = 0.354545 + (((_uiVehPos select 1) * 10) * 0.109091);
-		_uiPos set [1, _newPosY];
-		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx) ctrlSetPosition _uiPos;
+		_uiPosPhylon set [1, _newPosY];
+		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx) ctrlSetPosition _uiPosPhylon;
 		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx) ctrlCommit 0;
 		//CheckBox (pilot control)
-		_uiPos = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl (_UIIdx+1));
-		_newPosX = _newPosX + 0.22;
-		_uiPos set [0, _newPosX];
+		_newPosX = _newPosX + 0.17;
+		_uiPosControl set [0, _newPosX];
 		_newPosY = 0.354545 + (((_uiVehPos select 1) * 10) * 0.109091);
-		_uiPos set [1, _newPosY];
-		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl (_UIIdx+1)) ctrlSetPosition _uiPos;
+		_uiPosControl set [1, _newPosY];
+		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl (_UIIdx+1)) ctrlSetPosition _uiPosControl;
 		
 		if(((_activeLoadout select 1) select _m) == -1) then {
 			((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl (_UIIdx+1)) cbSetChecked true;
