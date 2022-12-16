@@ -96,7 +96,7 @@ class Params {
 		default = 10;
 	};
 	class CTI_FACTORY_LEVEL_PRESET {
-		title = "UPGRADE: Pre researched Factory level (Barracks,Light,Heavy,Air,Naval,Gear)";
+		title = "UPGRADE: Pre researched Factory level (Barracks,Wheeled,Tracked,Air,Naval,Gear)";
 		values[] = {0,1,2,3,4,5,6,7,8,9};
 		texts[] = {"start with 0","start with level 1 (or max)","start with level 2 (or max)","start with level 3 (or max)","start with level 4 (or max)","start with level 5 (or max)","start with level 6 (or max)","start with level 7 (or max)","start with level 8 (or max)","start with level 9 (or max)"};
 		default = "0";
@@ -114,7 +114,7 @@ class Params {
 		default = 600;
 	};
 	class CTI_ECONOMY_TIME_MULTI {
-		title = "UPGRADE: Buildtime multiplier (times capped[min,max]: Inf:[5s,50s]|Light,Ship:[10s,300s]|Heavy,Air:[20s,600s])";
+		title = "UPGRADE: Buildtime multiplier min = base/2 | max = base*20 (times base = Inf:[2s]|Wheeled,Ship:[5s]|Tracked,Air:[10s])";
 		values[] = {1,2,3,4,5,6,8,10};
 		texts[] = {"1","2","3","4","5","6","8","10"};
 		default = 4;

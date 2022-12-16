@@ -11,9 +11,9 @@ CTI_BASE_HQ_DEPLOYED = 8;
 
 CTI_HQ_DEPLOYED = "HQdeployed";
 CTI_BARRACKS = "Barracks";
-CTI_LIGHT = "Light";
+CTI_LIGHT = "Wheeled (Light)";
 CTI_CONTROLCENTER = "ControlCenter";
-CTI_HEAVY = "Heavy";
+CTI_HEAVY = "Tracked (Heavy)";
 CTI_AIR = "Air";
 CTI_REPAIR = "Repair";
 CTI_AMMO = "Ammo";
