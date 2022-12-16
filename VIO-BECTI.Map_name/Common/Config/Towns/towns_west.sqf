@@ -121,7 +121,7 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	switch (CTI_CAMO_ACTIVATION) do {
 		case 1: {
-			INFANTRY = [[format["%1B_T_Soldier_SL_F", _sid],1],[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_spotter_F", _sid],1],[format["%1B_Sharpshooter_F", _sid],1]];
+			INFANTRY = [[format["%1B_T_Soldier_SL_F", _sid],1],[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_F", _sid],1],[format["%1B_T_spotter_F", _sid],1],[format["%1B_Sharpshooter_F", _sid],1]];
 			INFANTRY_MG = [[format["%1B_T_Soldier_SL_F", _sid],1],[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_AR_F", _sid],1],[format["%1B_T_Support_MG_F", _sid],1],[format["%1B_T_Support_MG_F", _sid],1]];
 			INFANTRY_AT = [[format["%1B_T_Soldier_SL_F", _sid],1],[format["%1B_T_Medic_F", _sid],1],[format["%1B_T_Soldier_GL_F", _sid],1],[format["%1B_T_Soldier_AT_F", _sid],1],[format["%1B_T_Soldier_LAT_F", _sid],1],[format["%1B_T_Soldier_LAT2_F", _sid],1]];
 		};

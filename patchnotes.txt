@@ -1,30 +1,27 @@
-V2.0_220831
-Changed: Whole Techtree!
-Added: Complete Persistence Update!
+V2.0_221216
+Added: Integrated Phylon Management
 
-Added: Param for Structure resell ratio
-Added: better HQ mobilisation logic
-Added: Field repair param
-Added: funny beacon and siren usage of salvager now possible
-Added: Zeus implementation
-Changed: HCs now visible in lobby but fixed to 3
-Changed: AI Base placement a bit
-Changed: Spawn logic for town units
-Changed: Heavy weaponry for all (balancing)
-Fixed: Error when building salvagers
-Fixed: Attachmentslots not highlightet on drag item
-Fixed: can't build FOB with active AI commander
+Added: new additional preset param
+Added: buildtime of units in purchaselist
+Added: time to reseach window
+Added: time to fire artillery misson
+Added: LDF units
+Added: Map Livonia
+Added: Infantry spawn prevention to spawn under the map
+Fixed: Automatic max upgrade calculations
+Fixed: Infantry spawn to high an gets injured
+Fixed: AI squads waiting to long for units in base
+Fixed: AI Commander don't reseach all tech
+Changed: respawn params (now one mobile / one static)
+Changed: unflip vehicle function to make it safer
+Changed: Reactivated reammo costs (Phylan Man. workaround)
+Changed: default start Funds/Supply
+Changed: buildtime calculation, now wider scalable
+Droped: Phylon Manager support (now integrated)
 
 
+OPFOR AI braune statt grüne tarnung, bei spieler i.O.
 
 
-[ToDo]
-Back to previous menu button from Phylon manager(done)
-Pilot in AI team?(done/nothing found)
-placing defenses in HQ buildmenue blocked sometimes(truck i.O.)(done)
-Heli presets wrong(done)
-SpawnLoadout didn't get checked well if ammo is researched(done)
-AI didn'T use all reseaches(needs test)
-MAcer gets deletet after reloading(done)
-Move BG-Picture 10% down(done)
-Phylons of attackheli out of range on the right side(done)
+Namen anpassen:
+Kartenansicht

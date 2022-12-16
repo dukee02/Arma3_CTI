@@ -274,7 +274,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_officer_F", _sid], 1, 20];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		inf_to_add = [[format["%1B_spotter_F", _sid], 1, 20]];	
+		inf_to_add = [[format["%1B_T_spotter_F", _sid], 1, 20]];	
 		inf_to_add pushBack [format["%1B_Sharpshooter_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Soldier_UAV_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_soldier_UAV_06_F", _sid], 1, 20];

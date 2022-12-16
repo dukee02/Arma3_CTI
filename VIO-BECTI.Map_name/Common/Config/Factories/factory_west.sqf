@@ -250,7 +250,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1B_Officer_Parade_Veteran_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1B_spotter_F", _sid];
+		_c pushBack format["%1B_T_spotter_F", _sid];
 		_c pushBack format["%1B_Sharpshooter_F", _sid];
 		_c pushBack format["%1B_T_Soldier_UAV_F", _sid];
 		_c pushBack format["%1B_T_soldier_UAV_06_F", _sid];

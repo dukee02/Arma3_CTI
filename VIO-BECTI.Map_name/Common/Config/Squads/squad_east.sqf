@@ -140,7 +140,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1O_T_Soldier_Repair_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1O_T_Engineer_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1O_T_Soldier_AAR_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1O_V_Soldier_Viper_ghex_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1O_V_Soldier_Medic_ghex_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1O_V_Soldier_LAT_ghex_F", _sid], 1, 20];
 	};
@@ -346,7 +345,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		mot_to_add pushBack [format["%1O_LSV_02_unarmed_viper_F", _sid], 1, 50];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		mot_to_add = [[format["%1O_T_Quadbike_01_F", _sid], 1, 50]];
+		mot_to_add = [[format["%O_T_Quadbike_01_ghex_F", _sid], 1, 50]];
 		mot_to_add pushBack [format["%1O_T_LSV_02_unarmed_F", _sid], 1, 50];
 		mot_to_add pushBack [format["%1O_T_LSV_02_unarmed_viper_F", _sid], 1, 50];
 	};
