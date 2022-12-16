@@ -18,19 +18,19 @@ _u = []; //--- Upgrade level needed.    0 1 2 3...
 //*********************************************************************************************************************************************
 //														air-to-air missile																	  *
 //*********************************************************************************************************************************************
-//*****************************************************LEVEL*0****************************************************************************
-_tech_level = 0;
+//*****************************************************LEVEL*1****************************************************************************
+_tech_level = 1;
 
-_c pushBack "PylonMissile_1Rnd_Missile_AA_04_F";		//Falchion-22 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
-_c pushBack "PylonRack_1Rnd_Missile_AA_04_F";			//Falchion-22 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonMissile_1Rnd_AAA_missiles";			//ASRAAM 			<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonRack_1Rnd_AAA_missiles";				//ASRAAM 			<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
-_c pushBack "PylonMissile_1Rnd_Missile_AA_03_F";		//Sahr-3 			<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
-_c pushBack "PylonRack_1Rnd_Missile_AA_03_F";			//Sahr-3 			<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonMissile_Missile_BIM9X_x1";			//BIM 9X AA x1 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonRack_Missile_BIM9X_x1";				//BIM 9X AA x1 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonRack_Missile_BIM9X_x2";				//BIM 9X AA x2 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonMissile_Missile_AA_R73_x1";			//R73 SR AA x1 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
+_c pushBack "PylonMissile_1Rnd_Missile_AA_04_F";		//Falchion-22 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
+_c pushBack "PylonRack_1Rnd_Missile_AA_04_F";			//Falchion-22 		<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
+_c pushBack "PylonMissile_1Rnd_Missile_AA_03_F";		//Sahr-3 			<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
+_c pushBack "PylonRack_1Rnd_Missile_AA_03_F";			//Sahr-3 			<Short-range, infrared-guided, air-to-air missile with high-explosive warhead>
 
 // set all other vars in a slope
 _cntstart = count _c;
@@ -41,8 +41,8 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 };
 
-//*****************************************************LEVEL*1****************************************************************************
-_tech_level = 1;
+//*****************************************************LEVEL*2****************************************************************************
+_tech_level = 2;
 
 _c pushBack "PylonMissile_1Rnd_GAA_missiles";			//Zephyr 			<Medium-range, radar-guided, air-to-air missile with high-explosive warhead>
 _c pushBack "PylonRack_1Rnd_GAA_missiles";				//Zephyr 			<Medium-range, radar-guided, air-to-air missile with high-explosive warhead>
@@ -76,8 +76,8 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_AA) then {
 //*********************************************************************************************************************************************
 //														air-to-surface missile																  *
 //*********************************************************************************************************************************************
-//*****************************************************LEVEL*0****************************************************************************
-_tech_level = 0;
+//*****************************************************LEVEL*1****************************************************************************
+_tech_level = 1;
 
 _c pushBack "PylonRack_12Rnd_PG_missiles";				//DAGR 				<Short-range, laser/infrared-guided, air-to-surface missile with high-explosive anti-tank warhead>
 _c pushBack "PylonMissile_1Rnd_LG_scalpel";				//Scalpel 			<Short-range, laser/infrared-guided, air-to-surface missile with tandem high-explosive anti-tank warhead>
@@ -94,8 +94,8 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 };
 
-//*****************************************************LEVEL*1****************************************************************************
-_tech_level = 1;
+//*****************************************************LEVEL*2****************************************************************************
+_tech_level = 2;
 
 _c pushBack "PylonRack_1Rnd_Missile_AGM_02_F";			//Macer 			<Short-range, infrared-guided, air-to-surface missile with high-explosive anti-tank warhead>
 _c pushBack "PylonRack_3Rnd_Missile_AGM_02_F";			//Macer 3x 			<Short-range, infrared-guided, air-to-surface missile with high-explosive anti-tank warhead>
@@ -116,8 +116,8 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 };
 
-//*****************************************************LEVEL*2****************************************************************************
-_tech_level = 2;
+//*****************************************************LEVEL*3****************************************************************************
+_tech_level = 3;
 
 _c pushBack "PylonMissile_Missile_KH58_x1";				//KH58 ARM x1 		<Medium-range, anti-radiation, air-to-surface missile with high-explosive warhead>
 _c pushBack "PylonMissile_Missile_KH58_INT_x1";			//KH58 ARM x1 		<Medium-range, anti-radiation, air-to-surface missile with high-explosive warhead>
@@ -145,8 +145,8 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_AT) then {
 //*********************************************************************************************************************************************
 //														Unguided rockets																	  *
 //*********************************************************************************************************************************************
-//*****************************************************LEVEL*0****************************************************************************
-_tech_level = 0;
+//*****************************************************LEVEL*1****************************************************************************
+_tech_level = 1;
 
 _c pushBack "PylonRack_7Rnd_Rocket_04_HE_F";			//Shrieker 7x HE 	<Unguided rockets with high-explosive warhead>
 _c pushBack "PylonRack_7Rnd_Rocket_04_AP_F";			//Shrieker 7x AP 	<Unguided rockets with high-explosive anti-tank warhead>
@@ -175,8 +175,8 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
 //*********************************************************************************************************************************************
 //														bomb																				  *
 //*********************************************************************************************************************************************
-//*****************************************************LEVEL*0****************************************************************************
-_tech_level = 0;
+//*****************************************************LEVEL*1****************************************************************************
+_tech_level = 1;
 
 _c pushBack "PylonMissile_1Rnd_Mk82_F";					//Mk82 					<500lb, high-explosive, unguided bomb>
 _c pushBack "PylonMissile_1Rnd_Bomb_04_F";				//GBU-12 				<500lb, high-explosive, laser-guided bomb>
@@ -194,8 +194,8 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 };
 
-//*****************************************************LEVEL*1****************************************************************************
-_tech_level = 1;
+//*****************************************************LEVEL*2****************************************************************************
+_tech_level = 2;
 
 _c pushBack "PylonMissile_1Rnd_Bomb_03_F";				//LOM-250G 				<565lb, high-explosive, laser-guided bomb>
 _c pushBack "PylonMissile_Bomb_KAB250_x1";				//KAB 250 LGB x1 		<565lb, high-explosive, laser-guided bomb>
@@ -215,8 +215,8 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 };
 
-//*****************************************************LEVEL*2****************************************************************************
-_tech_level = 2;
+//*****************************************************LEVEL*3****************************************************************************
+_tech_level = 3;
 
 _c pushBack "PylonRack_Bomb_SDB_x4";					//GBU SDB x4 			<250lb, high-explosive, infrared/laser-guided bomb>
 
