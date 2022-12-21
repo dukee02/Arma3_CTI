@@ -577,16 +577,10 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_Truck_02_covered_F", _sid];
 		_c pushBack format["%1O_Truck_02_transport_F", _sid];
-		_c pushBack format["%1O_Truck_03_covered_F", _sid];
-		_c pushBack format["%1O_Truck_03_transport_F", _sid];
-		_c pushBack format["%1O_Truck_03_device_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_Truck_02_F", _sid];
 		_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
-		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
-		_c pushBack format["%1O_T_Truck_03_transport_ghex_F", _sid];
-		_c pushBack format["%1O_T_Truck_03_device_ghex_F", _sid];
 	};
 
 	//set all other vars in a slope
@@ -694,6 +688,33 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 
 	// base unit value of an researched/upgraded armed unit in this tech level
 	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
+
+	// List of units
+	// unarmed units
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_Truck_03_covered_F", _sid];
+		_c pushBack format["%1O_Truck_03_transport_F", _sid];
+		_c pushBack format["%1O_Truck_03_device_F", _sid];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
+		_c pushBack format["%1O_T_Truck_03_transport_ghex_F", _sid];
+		_c pushBack format["%1O_T_Truck_03_device_ghex_F", _sid];
+	};
+
+	//set all other vars in a slope
+	_cntstart = count _c;
+	_cntend = count _p;
+	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
+		_p pushBack '';
+		_n pushBack '';
+		_o pushBack _baseUnitValue;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "";
+		_d pushBack 0;
+	};
 
 	// List of units
 	// armed units

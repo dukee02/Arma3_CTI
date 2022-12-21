@@ -21,7 +21,8 @@ Droped: Phylon Manager support (now integrated)
 
 
 OPFOR AI braune statt grüne tarnung, bei spieler i.O.
-
+persistent gear auf tanoa geht nicht (opfor)
+Tempest at T0?
 
 Namen anpassen:
 Kartenansicht

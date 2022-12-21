@@ -78,7 +78,7 @@ _helper pushBack		[""];
 _specials pushBack 		[["DMG_Reduce", CTI_BASE_BUILDING_DMG_REDUCE]];
 
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	_headers pushBack		[CTI_LIGHT, "Light Vehicle Factory", "Light"];
+	_headers pushBack		[CTI_LIGHT, "Wheeled Vehicle Factory", "Wheeled"];
 	//_classes pushBack		["CDF_WarfareBLightFactory", "Land_Scaffolding_New_F"];
 	//_classes pushBack		["Land_Medevac_HQ_V1_F", "Land_Medevac_HQ_V1_ruins_F"];
 	_classes pushBack 		["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"];
@@ -90,7 +90,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 };
 
 if(CTI_ECONOMY_LEVEL_TRACKED >= 0) then {
-	_headers pushBack 		[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"];
+	_headers pushBack 		[CTI_HEAVY, "Tracked Vehicle Factory", "Tracked"];
 	//_classes pushBack 		["RU_WarfareBHeavyFactory", "Land_Scaffolding_New_F"];
 	_classes pushBack 		["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"];
 	_prices pushBack 		6000;

@@ -350,16 +350,10 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_Truck_02_covered_F", _sid];
 		_c pushBack format["%1O_Truck_02_transport_F", _sid];
-		_c pushBack format["%1O_Truck_03_covered_F", _sid];
-		_c pushBack format["%1O_Truck_03_transport_F", _sid];
-		_c pushBack format["%1O_Truck_03_device_F", _sid];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_Truck_02_F", _sid];
 		_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
-		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
-		_c pushBack format["%1O_T_Truck_03_transport_ghex_F", _sid];
-		_c pushBack format["%1O_T_Truck_03_device_ghex_F", _sid];
 	};
 
 	// armed units
@@ -394,6 +388,19 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
+
+	// List of units
+	// unarmed units
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_Truck_03_covered_F", _sid];
+		_c pushBack format["%1O_Truck_03_transport_F", _sid];
+		_c pushBack format["%1O_Truck_03_device_F", _sid];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
+		_c pushBack format["%1O_T_Truck_03_transport_ghex_F", _sid];
+		_c pushBack format["%1O_T_Truck_03_device_ghex_F", _sid];
+	};
 
 	// List of units
 	// armed units

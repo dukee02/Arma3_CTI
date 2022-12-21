@@ -355,8 +355,8 @@ if (CTI_IsClient) then {
 	_upgrade_labels pushBack ["Aircraft Factory", "<t>Unlock better aircraft units</t>"]; 							//--- Air
 	_upgrade_labels pushBack ["Naval Factory", "<t>Unlock better naval units</t>"]; 								//--- Naval
 	_upgrade_labels pushBack ["Satellite Uplink", "<t>Allows the use of the satellite camera</t>"]; 				//--- Satellite
-	_upgrade_labels pushBack ["Aircraft FFAR", "<t>Unlocks more FFAR Rockets for Aircrafts</t>"]; 					//--- Air FFAR
-	_upgrade_labels pushBack ["Aircraft AT", "<t>Unlocks more Anti Tank Missiles for Aircrafts</t>"]; 				//--- Air AT
+	_upgrade_labels pushBack ["Aircraft Basic", "<t>Unlocks unguided Rockets and Bobs for Aircrafts</t>"]; 			//--- Air FFAR
+	_upgrade_labels pushBack ["Aircraft advanced AT", "<t>Unlocks advanced Anti Tank Missiles for Aircrafts</t>"]; 	//--- Air AT
 	_upgrade_labels pushBack ["Aircraft AA", "<t>Unlocks more Anti Air Missiles for Aircrafts</t>"]; 				//--- Air AA
 	_upgrade_labels pushBack ["Aircraft Countermeasures", "<t>Allows Aircraft to deploy countermeasures</t>"]; 		//--- Air CM
 	_upgrade_labels pushBack ["Towns Occupation", "Allows the spawning of occupation forces which will defend friendly towns against any attackers.<br />It will also improve the income generation in non-occupied towns"]; //--- Towns Occupation

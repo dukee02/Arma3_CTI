@@ -379,9 +379,9 @@ class Params {
 		default = 1;
 	};
 	class CTI_VEHICLES_AIR_FFAR {
-		title = "UNITS_UPGRADE: Aircraft FFAR Rockets";
+		title = "UNITS_UPGRADE: Aircraft Basic equipment";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No FFAR Rockets","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AA {
@@ -391,9 +391,9 @@ class Params {
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AT {
-		title = "UNITS_UPGRADE: Aircraft AT Missiles";
+		title = "UNITS_UPGRADE: Aircraft advanced AT Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No AT Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
 		default = 10;
 	};
 	/*class CTI_VEHICLES_AIR_CM {
