@@ -26,3 +26,6 @@ Tempest at T0?
 
 Namen anpassen:
 Kartenansicht
+
+profileNamespace setVariable ["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_WEST", nil];
+profileNamespace setVariable ["CTI_VIOWW2_PERSISTENT_GEAR_TEMPLATE_WEST", nil];
