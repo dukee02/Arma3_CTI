@@ -585,9 +585,9 @@ CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE = 5000; //--- An independent Sa
 CTI_VEHICLES_SALVAGE_RATE = 0.3; //--- This coefficient determine the value of a salvaged wreck (wreck value * x)
 CTI_VEHICLES_SALVAGE_RANGE = 25; //--- This is the distance required between a Wreck and Salvage Truck
 //CTI_VEHICLES_SALVAGER_PRICE = 550; //--- Determine the cost of the salvage trucks ---- new calc see below
-CTI_SALVAGE_SPECIALUNITS = ["C_IDAP_Van_02_medevac_F","C_Van_02_medevac_F"];		//unitswith lights and sirens
-CTI_SALVAGE_SPECIAL_ACTIONOFF = [[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]],[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]]];		//handle for turning lights and sirens off
-CTI_SALVAGE_SPECIAL_ACTIONON = [[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]],[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]]];		//handle for turning lights and sirens on
+CTI_SALVAGE_SPECIALUNITS = ["C_IDAP_Van_02_medevac_F","C_Van_02_medevac_F","B_GEN_Van_02_transport_F","I_E_Van_02_transport_MP_F"];		//unitswith lights and sirens
+CTI_SALVAGE_SPECIAL_ACTIONOFF = [[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]],[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]],[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]],[['lights_em_hide',0],[objNull,'CustomSoundController1',0,0.4]]];		//handle for turning lights and sirens off
+CTI_SALVAGE_SPECIAL_ACTIONON = [[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]],[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]],[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]],[['lights_em_hide',1],[objNull,'CustomSoundController1',1,0.2]]];		//handle for turning lights and sirens on
 CTI_ADDON_CHARLIECO = 0;
 
 //--- Vehicles: Parameter

@@ -9,7 +9,7 @@ _s = _this select 7;		//special
 
 _squads = [];
 for '_i' from 0 to (count _v)-1 do {
-	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIO_DEBUG", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["Setup Squad: <%1> | <%2>", _p select _i, _p]] call CTI_CO_FNC_Log };
+	if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIO_DEBUG", "FILE: Common\Config\Squads\Squads_Set.sqf", format ["Setup Squad: <%1>", _p select _i]] call CTI_CO_FNC_Log };
 	_pool = [];
 	{ 
 		//--- Make sure that the pool contain valid units
