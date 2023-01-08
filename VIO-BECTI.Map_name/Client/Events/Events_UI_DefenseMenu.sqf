@@ -12,13 +12,22 @@ switch (_action) do {
 		
 		{
 			_var = missionNamespace getVariable _x;
+
+			//check the upgrade level
+			_load = true;
+			if (count _var > 5) then {
+				if (_upgrades select CTI_UPGRADE_DEFENSE < _var select 6) then {_load = false};
+				if (_category != "all" && _var select 3 != _category) then {_load = false};
+			};
 			
 			_condition = {true};
 			{if (_x select 0 == "Condition") exitWith {_condition = _x select 1}} forEach (_var select 5);
 			
-			if (call _condition) then {
-				_row = ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbAddRow [format ["$%1", _var select 2], _var select 0];
-				((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbSetData [[_row, 0], _x];
+			if(_load) then {
+				if (call _condition) then {
+					_row = ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbAddRow [format ["$%1", _var select 2], _var select 0];
+					((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbSetData [[_row, 0], _x];
+				};
 			};
 		} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);
 		

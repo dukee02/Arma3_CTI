@@ -317,7 +317,15 @@ if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 };
 
 if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
-if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") >= 1) then {			
+	player enableFatigue false;													//--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") >= 2) then {		
+		player enableStamina false;												//--- Disable the unit's stamina system and weapons sway
+	};
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") >= 3) then {		
+		player enableAimPrecision false;										//--- Disable the animation's aim precision affects weapon sway 
+	};
+}; 
 
 if (CTI_DEBUG) then {
 	hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";

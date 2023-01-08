@@ -8,7 +8,7 @@ if (isClass(configFile >> "CfgVehicles" >> "Fortress2")) then {
 	missionNamespace setVariable ["CTI_CO_CAMP_FLAG_POS", [-5,5]];//--- Camp flag relative position.
 	missionNamespace setVariable ["CTI_CO_CAMP_RDIR", 0];//--- Camp placement direction.
 
-	missionNamespace setVariable ["CTI_CO_DEPOT", "Fort_CAmp"];//--- Town classname to be used.
+	missionNamespace setVariable ["CTI_CO_DEPOT", "Land_BagBunker_Large_F"];//--- Town classname to be used.
 	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG", "FlagPole_F"];//--- Camp flag.
 	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS0", [4.2,4.8]];//--- Camp flag relative position. (Entry left front)
 	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS1", [4.2,-4.7]];//--- Camp flag relative position. (Entry left back)

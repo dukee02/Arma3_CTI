@@ -131,7 +131,14 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _
 	_cost pushBack [_cost_level*(_i+1),(_cost_level*(_i+1))/2];
 }; 
 _upgrade_cost pushBack _cost;															//--- Gear
-_upgrade_cost pushBack [[round((500*CTI_ECONOMY_RESEARCH_MULTI)/100),round((200*CTI_ECONOMY_RESEARCH_MULTI)/100)],[round((1000*CTI_ECONOMY_RESEARCH_MULTI)/100),round((500*CTI_ECONOMY_RESEARCH_MULTI)/100)],[round((3000*CTI_ECONOMY_RESEARCH_MULTI)/100),round((1500*CTI_ECONOMY_RESEARCH_MULTI)/100)]]; 			//--- Defenses
+
+_cost = [];
+_cost_level = round((150*CTI_ECONOMY_RESEARCH_MULTI)/100);
+for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_DEFENSE)}, {_i = _i + 1}] do {
+	//_cost_level = _cost_level*(_i+1);
+	_cost pushBack [_cost_level*(_i+1),(_cost_level*(_i+1))/2];
+}; 
+_upgrade_cost pushBack _cost;															//--- Defenses
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_COSTS", _side], _upgrade_cost];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade costs for %1: <%2>", _upgrade_cost]] call CTI_CO_FNC_Log;};
 

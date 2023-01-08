@@ -598,9 +598,9 @@ class Params {
 		default = 0;
 	};
 	class CTI_UNITS_FATIGUE {
-		title = "UNITS: Fatigue";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
+		title = "UNITS: Stamina Systems";
+		values[] = {0,1,2,3};
+		texts[] = {"Enabled","Disabled Fatigue","+ disable stamina (weapon sway)","+ disabled -AimPrecision- coefficient"};
 		default = 0;
 	};
 	class CTI_VEHICLES_SALVAGE_INDEPENDENT_MAX {

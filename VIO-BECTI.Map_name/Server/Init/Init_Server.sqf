@@ -312,7 +312,15 @@ if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") >= 0 || (missionNam
 };
 
 //To setup the pre researched levels, we must cheat ab bit ... because params only accept integers
-if(CTI_FACTORY_LEVEL_PRESET > 0) then {[CTI_FACTORY_LEVEL_PRESET,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;};
+if(CTI_FACTORY_LEVEL_PRESET > 0) then {
+	[CTI_FACTORY_LEVEL_PRESET,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;
+	{
+		[_x, CTI_UPGRADE_BARRACKS, "Infantry"] spawn CTI_SE_FNC_UpgradeSquads;
+		[_x, CTI_UPGRADE_LIGHT, "Motorized"] spawn CTI_SE_FNC_UpgradeSquads;
+		[_x, CTI_UPGRADE_HEAVY, "Armored"] spawn CTI_SE_FNC_UpgradeSquads;
+		[_x, CTI_UPGRADE_AIR, "Air"] spawn CTI_SE_FNC_UpgradeSquads;
+	} forEach [west,east];
+};
 if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[CTI_ECONOMY_LEVEL_PRESET,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
 
 //Check if Persistence is active
