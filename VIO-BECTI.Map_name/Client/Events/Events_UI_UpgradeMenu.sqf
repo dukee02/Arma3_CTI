@@ -64,8 +64,6 @@ switch (_action) do {
 									CTI_P_SideLogic setVariable ["cti_upgrade", _selected,true];
 								
 									_label = ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _selected) select 0;
-									_upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", CTI_P_SideJoined]) select _selected) select _upgrade_current;
-									CTI_P_SideLogic setVariable ["cti_upgrade_time", (serverTime + _upgrade_time)];
 									hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='#F5D363'>%1</t> upgrade has started.", _label];
 								} else {
 									hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Not all dependencies are met to start this upgrade.";

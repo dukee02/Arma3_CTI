@@ -38,9 +38,11 @@ _level = _this select 2;
 
 if (CTI_DEBUG) then {_upgrade_time = 1} else {_upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", _side]) select _upgrade) select _level};
 
+_logic = (_side) call CTI_CO_FNC_GetSideLogic;
+_logic setVariable ["cti_upgrade_time", round (serverTime + _upgrade_time), true];
+
 sleep _upgrade_time;
 
-_logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 _upgrades set [_upgrade, (_upgrades select _upgrade) + 1];
 
