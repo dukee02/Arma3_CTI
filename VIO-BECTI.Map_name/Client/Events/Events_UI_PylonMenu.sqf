@@ -61,9 +61,10 @@ switch (_action) do {
 
 		_selected = _this select 1;
 		_presets = uiNamespace getVariable ["cti_dialog_ui_pylonmenu_presets", []];
+		_veh = call CTI_UI_GetPhylonVehicle;
 		
 		if(_selected >= 0 && _selected < count _presets) then {
-			_presetLoadout = (getArray (configfile >> "CfgVehicles" >> typeOf (vehicle player) >> "Components" >> "TransportPylonsComponent" >> "Presets" >> (_presets select _selected) >> "Attachment"));
+			_presetLoadout = (getArray (configfile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent" >> "Presets" >> (_presets select _selected) >> "Attachment"));
 			_activeLoadout = uiNamespace getVariable ["cti_dialog_ui_pylonmenu_active_loadout", []];
 			_activeLoadout set [0, _presetLoadout];
 			uiNamespace setVariable ["cti_dialog_ui_pylonmenu_active_loadout", _activeLoadout];
@@ -71,7 +72,7 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 420101) ctrlSetText (_presets select _selected);
 		};
 		
-		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], []];
+		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], []];
 		if(_selected >= 0 && _selected >= count _presets && _selected < (count _presets + count _storedLoadouts)) then {
 			_loadIndex = _selected - count _presets;
 			_stored = (_storedLoadouts select _loadIndex)select 1;
@@ -84,26 +85,27 @@ switch (_action) do {
 	};
 	case "onDeletePreset": {
 		_selected = _this select 1;
+		_veh = call CTI_UI_GetPhylonVehicle;
 		_presets = uiNamespace getVariable ["cti_dialog_ui_pylonmenu_presets", []];
-		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], []];
+		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], []];
 		if(_selected >= 0 && _selected >= count _presets && _selected < (count _presets + count _storedLoadouts)) then {
 			_storedLoadouts deleteAt 0;
-			profileNamespace setVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], _storedLoadouts];
+			profileNamespace setVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], _storedLoadouts];
 			call CTI_UI_Fill_PresetList;
 		};
 	};
 	case "onApplyLoadout": {
 		private ["_activeLoadout", "_i", "_UIIdx"];
 
+		_veh = call CTI_UI_GetPhylonVehicle;
 		_activeLoadout = uiNamespace getVariable ["cti_dialog_ui_pylonmenu_active_loadout", []];
 		if(count _activeLoadout > 0) then {
 			_activeControl = _activeLoadout select 1;
 			_activeLoadout = _activeLoadout select 0;
 			for [{ _i = 1 }, { _i <= count _activeLoadout }, { _i = _i + 1 }] do {
-				vehicle player setPylonLoadout [_i, (_activeLoadout select (_i-1)), true, [(_activeControl select (_i-1))]];
+				_veh setPylonLoadout [_i, (_activeLoadout select (_i-1)), true, [(_activeControl select (_i-1))]];
 			};
 			//refresh the weaponTurret states of each turret an for Pilot and Gunner
-			_veh = vehicle player;
 			_weaponsTurretPilot = _veh weaponsTurret [-1];
 			{
 				private _weaponState = weaponState [_veh, [-1], _X];
@@ -120,7 +122,7 @@ switch (_action) do {
 			} forEach _weaponsTurretGunner;
 			//After the weaponState is refreshed, we can set the ammo to 0;
 			for [{ _i = 1 }, { _i <= count _activeLoadout }, { _i = _i + 1 }] do { 
-				vehicle player setAmmoOnPylon [_i, 0];
+				_veh setAmmoOnPylon [_i, 0];
 			};
 		};
 	};
@@ -129,8 +131,9 @@ switch (_action) do {
 		_LoadoutTitle = ctrlText ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 450101);
 		_loadoutName = "";
 		call CTI_UI_StorePylonControl;
+		_veh = call CTI_UI_GetPhylonVehicle;
 
-		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], []];
+		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], []];
 		if(count _storedLoadouts > 0) then {
 			for [{ _i = 1 }, { _i <= count _storedLoadouts }, { _i = _i + 1 }] do { 
 				_loadoutName = (_storedLoadouts select _i)select 0;
@@ -145,9 +148,9 @@ switch (_action) do {
 		} else {
 			_storedLoadouts append [[_LoadoutTitle,_activeLoadout]];
 		};
-		profileNamespace setVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], _storedLoadouts];
+		profileNamespace setVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], _storedLoadouts];
 		
-		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], []];
+		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], []];
 		call CTI_UI_Fill_PresetList;
 	};
 	case "onChangedControl": {

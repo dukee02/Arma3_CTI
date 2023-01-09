@@ -5,7 +5,8 @@ CTI_UI_Fill_CompatiblePylons = {
 	_pylonName = _this select 1;
 	_loadedItem = _this select 2;
 
-	_copatiblePylonItems = vehicle player getCompatiblePylonMagazines _pylonName;
+	_veh = call CTI_UI_GetPhylonVehicle;
+	_copatiblePylonItems = _veh getCompatiblePylonMagazines _pylonName;
 
 	//add the items and set the preselected
 	lnbClear ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx);
@@ -47,7 +48,7 @@ CTI_UI_Fill_CompatiblePylons = {
 CTI_UI_Fill_PylonsSelection = {
 	//private ["_veh","_activeLoadout","_uiPicture","_UIIdx","_pylonName","_uiVehPos","_uiPos","_newPosX","_newPosY","_m"];
 
-	_veh = vehicle player;
+	_veh = call CTI_UI_GetPhylonVehicle;
 	_activeLoadout = uiNamespace getVariable ["cti_dialog_ui_pylonmenu_active_loadout", []];
 
 	if(count _activeLoadout == 0) then {
@@ -105,15 +106,16 @@ CTI_UI_Fill_PresetList = {
 	//private ["_presets", "_storedLoadouts"];
 	
 	lbClear ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 450018);
+	_veh = call CTI_UI_GetPhylonVehicle;
 	_presets = [];
 	{
 		_presets append [(configName _x)];
 		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 450018) lbAdd format ["%1", configName _x];
 		((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 450018) lbAdd "(preset)";
-	} forEach ("true" configClasses (configfile >> "CfgVehicles" >> typeOf (vehicle player) >> "Components" >> "TransportPylonsComponent" >> "Presets"));
+	} forEach ("true" configClasses (configfile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent" >> "Presets"));
 	uiNamespace setVariable ["cti_dialog_ui_pylonmenu_presets", _presets];
 
-	_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf(vehicle player)], []];
+	_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], []];
 	if(count _storedLoadouts > 0) then {
 		for [{ _i = 0 }, { _i < count _storedLoadouts }, { _i = _i + 1 }] do { 
 			((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 450018) lbAdd format ["%1", (_storedLoadouts select _i)select 0];
@@ -135,7 +137,8 @@ CTI_UI_HideAllPylons = {
 CTI_UI_StorePylonsInfo = {
 	//private ["_pylonInfo", "_loadout","_control","_pylon"];
 
-	_pylonInfo = getAllPylonsInfo vehicle player;
+	_veh = call CTI_UI_GetPhylonVehicle;
+	_pylonInfo = getAllPylonsInfo _veh;
 	_loadout = [];
 	_control = [];
 	_pylon = [];
@@ -218,3 +221,16 @@ CTI_UI_CheckIfLoadoutUnlocked = {
 
 	_canUse;
 };
+CTI_UI_GetPhylonVehicle = {
+	_veh = objNull;
+	if (vehicle player == player) then {
+		_veh = nearestObject [player, "Air"];
+	} else {
+		_veh = vehicle player;
+	};
+	//if(isNull _veh) then {};
+	_veh;
+	//typeOf _veh;
+};
+
+
