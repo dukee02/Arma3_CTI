@@ -553,7 +553,6 @@ CTI_GC_TOWN_OBJECTS = ["TREE", "SMALL TREE", "BUSH"];		//Garbaged these objects 
 CTI_GC_RANGE_TOWN = 600;									//Range around the main bunker, where objects gets garbaged
 
 //--- Vehicles: Misc
-CTI_VEHICLES_BOUNTY = 0.45; //--- Bounty upon entity killed.
 CTI_VEHICLES_EMPTY_SCAN_PERIOD = 15; //--- Scan for a crew member in a vehicle each x seconds
 CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled by the engine (0: Typical delay, 1: delay AND the unit cannot move/fire) 
 
@@ -598,7 +597,11 @@ with missionNamespace do {
 		CTI_SALVAGE_SPECIAL = 1;
 		CTI_ADDON_CHARLIECO = 1;
 	};
-	
+	if (isNil 'CTI_VEHICLES_BOUNTY') then { //--- Bounty upon entity killed.	
+		CTI_VEHICLES_BOUNTY = 0.40
+	} else {
+		CTI_VEHICLES_BOUNTY = CTI_VEHICLES_BOUNTY/100;
+	};
 	if (isNil 'CTI_VEHICLES_AIR_FFAR') then {CTI_VEHICLES_AIR_FFAR = 2}; //--- FFAR Rockets availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
 	if (isNil 'CTI_VEHICLES_AIR_AA') then {CTI_VEHICLES_AIR_AA = 2}; //--- AA Missiles availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)
 	if (isNil 'CTI_VEHICLES_AIR_AT') then {CTI_VEHICLES_AIR_AT = 2}; //--- AT Missiles availability (0: Disabled, 1: Enabled on Upgrade, 2: Enabled)

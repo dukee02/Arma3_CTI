@@ -453,8 +453,8 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
-// -- Tech Level 1
-_tech_level = 1;
+// -- Tech Level 2
+_tech_level = 2;
 _i pushBack "V_PlateCarrierIAGL_oli";
 
 // set all other vars in a slope

@@ -239,6 +239,12 @@ class Params {
 		texts[] = {"Money and Supply","only Money"};
 		default = 0;
 	};
+	class CTI_VEHICLES_BOUNTY {
+		title = "INCOME: Bounty upon entity killed";
+		values[] = {0,10,20,30,40,50,60};
+		texts[] = {"0% disabled","10%","20%","30%","40%","50%","60%"};
+		default = 40;
+	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = "INCOME: Starting Funds (East Commander)";
 		values[] = {10000,15000,20000,25000,30000,35000,40000,45000,50000,60000,80000,100000,200000,300000,400000,500000,600000,700000,800000};
