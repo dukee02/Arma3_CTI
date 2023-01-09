@@ -71,12 +71,13 @@ More infos:
 
 
 -------------------MAPS----------------------------
-Altis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0_220831
-Malden			https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0_220831
-MSKE			https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0_220831
-Rosche			https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0_220831
-Stratis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0_220831	
-Tanoa			https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0_220831	
+Altis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0_230109
+Malden			https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0_230109
+MSKE			https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0_230109
+Rosche			https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0_230109
+Stratis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0_230109	
+Tanoa			https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0_230109	
+Livonia			https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0_230109
 
 
 --------------------------------------------------

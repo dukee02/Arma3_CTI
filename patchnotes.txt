@@ -1,4 +1,4 @@
-V2.0_221216
+V2.0_230109
 Added: Integrated Phylon Management
 
 Added: new additional preset param
@@ -8,6 +8,8 @@ Added: time to fire artillery misson
 Added: LDF units
 Added: Map Livonia
 Added: Infantry spawn prevention to spawn under the map
+Added: More options for Stamina System
+Added: param for bounty upon entity killed
 Fixed: Automatic max upgrade calculations
 Fixed: Infantry spawn to high an gets injured
 Fixed: AI squads waiting to long for units in base
@@ -18,14 +20,3 @@ Changed: Reactivated reammo costs (Phylan Man. workaround)
 Changed: default start Funds/Supply
 Changed: buildtime calculation, now wider scalable
 Droped: Phylon Manager support (now integrated)
-
-
-OPFOR AI braune statt grüne tarnung, bei spieler i.O.
-persistent gear auf tanoa geht nicht (opfor)
-Tempest at T0?
-
-Namen anpassen:
-Kartenansicht
-
-profileNamespace setVariable ["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_WEST", nil];
-profileNamespace setVariable ["CTI_VIOWW2_PERSISTENT_GEAR_TEMPLATE_WEST", nil];
