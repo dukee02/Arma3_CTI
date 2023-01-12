@@ -79,7 +79,6 @@ CTI_UI_Fill_PylonsSelection = {
 		_uiSpace set [2, 1];
 		//ComboBox (pylon loadout selection)
 		_newPosX = 0.290 + ((_uiVehPos select 0)*(_uiSpace select 2));
-		diag_log format["newPosX <%1>", _newPosX];
 		_uiPosPhylon set [0, _newPosX];
 		_newPosY = 0.354545 + (((_uiVehPos select 1) * 10) * 0.109091);
 		_uiPosPhylon set [1, _newPosY];

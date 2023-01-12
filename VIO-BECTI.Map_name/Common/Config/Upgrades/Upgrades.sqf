@@ -196,7 +196,17 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _
 	_links pushBack [];
 };
 _upgrade_links pushBack _links;				//--- Gear
-_upgrade_links pushBack [[],[CTI_UPGRADE_SUPPLY,1],[CTI_UPGRADE_AIR, (_upgrade_levels select CTI_UPGRADE_AIR)]]; 		//--- Defenses
+_links = [];
+for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_DEFENSE)}, {_i = _i + 1}] do {
+	switch (_i) do {
+		case 1: {_links pushBack [CTI_UPGRADE_SUPPLY,1];};
+		case 2: {_links pushBack [CTI_UPGRADE_AIR, (_upgrade_levels select CTI_UPGRADE_AIR)];};
+		default {_links pushBack [];};
+	};
+}; 
+_upgrade_links pushBack _links;				//--- Defenses
+
+
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_LINKS", _side], _upgrade_links];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade links for %1: <%2>", _upgrade_links]] call CTI_CO_FNC_Log;};
 
@@ -277,7 +287,13 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _
 	_time pushBack _time_level;
 }; 
 _upgrade_time pushBack _time;													//--- Gear
-_upgrade_time pushBack [60,180]; 										//--- Defenses
+_time = [];
+_time_level_base = 60;
+for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_DEFENSE)}, {_i = _i + 1}] do {
+	_time_level = _time_level_base*(_i+1)*(_i+1);
+	_time pushBack _time_level;
+}; 
+_upgrade_time pushBack _time;													//--- Defenses
 missionNamespace setVariable [Format["CTI_%1_UPGRADES_TIMES", _side], _upgrade_time];
 if (CTI_Log_Level >= CTI_Log_Debug) then { ["VIOC_DEBUG", "FILE: common\config\upgrades\upgrades.sqf", format["Upgrade times for %1: <%2>", _upgrade_time]] call CTI_CO_FNC_Log;};
 

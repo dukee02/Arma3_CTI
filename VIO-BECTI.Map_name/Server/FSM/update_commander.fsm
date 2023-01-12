@@ -11,13 +11,13 @@ item6[] = {"Phase_IV_Action",2,250,-100.000000,400.000000,0.000000,450.000000,0.
 item7[] = {"Roles",4,218,-250.000000,600.000000,-150.000000,650.000000,1.000000,"Roles"};
 item8[] = {"Set_Roles__One_Time",2,250,-250.000000,700.000000,-150.000000,750.000000,0.000000,"Set" \n "Roles" \n "(One Time)"};
 item9[] = {"Structure",4,218,50.000000,600.000000,150.000000,650.000000,4.000000,"Structure"};
-item10[] = {"Update_Structure",2,4346,50.000000,700.000000,150.000000,750.000000,0.000000,"Update" \n "Structures"};
+item10[] = {"Update_Structure",2,250,50.000000,700.000000,150.000000,750.000000,0.000000,"Update" \n "Structures"};
 item11[] = {"Defenses",4,218,175.000000,600.000000,275.000000,650.000000,3.000000,"Defenses"};
 item12[] = {"Update_Defenses",2,250,175.000000,700.000000,275.000000,750.000000,0.000000,"Update" \n "Defenses"};
 item13[] = {"Upgrade",4,218,550.000000,600.000000,650.000000,650.000000,0.000000,"Upgrade"};
 item14[] = {"Update_Upgrades",2,250,550.000000,700.000000,650.000000,750.000000,0.000000,"Update" \n "Upgrades"};
 item15[] = {"Teams",4,218,-500.000000,600.000000,-400.000000,650.000000,3.000000,"Teams"};
-item16[] = {"Update_Teams",2,250,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
+item16[] = {"Update_Teams",2,4346,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
 item17[] = {"Orders",4,218,-375.000000,600.000000,-275.000000,650.000000,2.000000,"Orders"};
 item18[] = {"Update_Orders",2,250,-375.000000,700.000000,-275.000000,750.000000,0.000000,"Update" \n "Orders"};
 item19[] = {"",7,210,-54.000008,896.000000,-45.999996,904.000000,0.000000,""};
@@ -113,7 +113,7 @@ link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
 globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-465.992188,756.489746,1135.424683,51.498741,997,884,1};
-window[] = {2,-1,-1,-1,-1,948,399,1778,118,3,1015};
+window[] = {2,-1,-1,-32000,-32000,856,26,1405,26,3,1015};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -602,13 +602,19 @@ class FSM
                          "				" \n
                          "					//--- The factory is alive and we're lucky enough!" \n
                          "					if (alive _factory && random 100 <= (([CTI_AI_COMMANDER_BUYTO_INFANTRY, CTI_AI_COMMANDER_BUYTO_LIGHT, CTI_AI_COMMANDER_BUYTO_HEAVY, CTI_AI_COMMANDER_BUYTO_AIR] select _id) * _modifier)) then {" \n
-                         "						_var = missionNamespace getVariable format [""CTI_SQUAD_%1_%2"", _side, _role];" \n
-                         "						_cost = _var select 1;" \n
+                         "						if !(isNil {missionNamespace getVariable format [""CTI_SQUAD_%1_%2"", _side, _role]}) then {" \n
+                         "							_var = missionNamespace getVariable format [""CTI_SQUAD_%1_%2"", _side, _role];" \n
+                         "							_cost = _var select 1;" \n
                          "					" \n
-                         "						//--- We have enough cash to purchase the template" \n
-                         "						if (_funds >= _cost) then {" \n
-                         "							_has_purchased = true;" \n
-                         "							[_x, _side, _var select 2, _factory] call CTI_SE_FNC_AI_PurchaseSquad;" \n
+                         "							//--- We have enough cash to purchase the template" \n
+                         "							if (_funds >= _cost) then {" \n
+                         "								_has_purchased = true;" \n
+                         "								[_x, _side, _var select 2, _factory] call CTI_SE_FNC_AI_PurchaseSquad;" \n
+                         "							};" \n
+                         "						} else {" \n
+                         "							if (CTI_Log_Level >= CTI_Log_Error) then {" \n
+                         "								[""VIOC_DEBUG"", ""FILE: server\FSM\Update_Commanter@UpdateTeams.sqf"", format[""CTI_SQUAD_%1_%2 not found"", _side, _role]] call CTI_CO_FNC_Log;" \n
+                         "							};" \n
                          "						};" \n
                          "					};" \n
                          "				" \n

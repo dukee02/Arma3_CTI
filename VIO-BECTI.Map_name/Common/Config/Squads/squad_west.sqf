@@ -838,9 +838,45 @@ kind_air pushBack "AirAll";
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\squads\squad_west.sqf", format["generated squads: [%1] ", count _v]] call CTI_CO_FNC_Log};
 
 //--- Those are used by the commander to determine the kind of unit an AI team has
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], kind_infantry];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], kind_wheeled];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], kind_tracked];
-missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], kind_air]; 
+if(count kind_infantry > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_INFANTRY", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], kind_infantry];
+	} else {
+		{
+			kind_infantry pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_INFANTRY", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_INFANTRY", _side], kind_infantry];
+	};
+};
+if(count kind_wheeled > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_LIGHT", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], kind_wheeled];
+	} else {
+		{
+			kind_wheeled pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_LIGHT", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_LIGHT", _side], kind_wheeled];
+	};
+};
+if(count kind_tracked > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_HEAVY", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], kind_tracked];
+	} else {
+		{
+			kind_tracked pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_HEAVY", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_HEAVY", _side], kind_tracked];
+	};
+};
+if(count kind_air > 0) then {
+	if (isNil {missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_AIR", _side]}) then {
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], kind_air];
+	} else {
+		{
+			kind_air pushBackUnique _x;
+		} forEach (missionNamespace getVariable format ["CTI_SQUADS_%1_KIND_AIR", _side]);
+		missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], kind_air];
+	};
+};
 
 [_side, _v, _t, _p, _f, _m, _c, _s] call compile preprocessFileLineNumbers "Common\Config\Squads\Squads_Set.sqf";
