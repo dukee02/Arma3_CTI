@@ -1606,8 +1606,6 @@ if(_tech_level > _upgrade_levels select CTI_UPGRADE_NAVAL) then {
 	_upgrade_levels set [CTI_UPGRADE_NAVAL, _tech_level];
 };
 
-if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\units\units_east.sqf", format["units declared: [%1] ", count _c]] call CTI_CO_FNC_Log};
-
 // REPAIR FACTORY UNITS (Repair Units)
 // ===================================
 

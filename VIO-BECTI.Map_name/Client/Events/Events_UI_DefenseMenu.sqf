@@ -10,6 +10,7 @@ switch (_action) do {
 		
 		if (isNil 'CTI_ConstructionCamera') then {[(uiNamespace getVariable "cti_dialog_ui_defensemenu_target"), CTI_SERVICE_REPAIR_TRUCK_RANGE, 20] call CTI_CL_FNC_CreateCamera};
 		
+		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
 		{
 			_var = missionNamespace getVariable _x;
 

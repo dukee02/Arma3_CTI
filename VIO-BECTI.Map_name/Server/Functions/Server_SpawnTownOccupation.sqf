@@ -57,86 +57,44 @@ if (_upgrade > 0) then {
 
 //--- Switch value...
 _pool_units = [];
-_pool_group_size = 6;
+_pool_group_size = if(_totalGroups > 6) then {_totalGroups} else {6};
 
 //--- Pool data: [<UNIT TYPE>, <PRESENCE>, {<PROBABILITY>}]
 switch (true) do {
-	case ( _maxSV <= 30) : { 			
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 40], ["INFANTRY_SQ_MG", 4, 40], ["INFANTRY_SQ_AT", 6, 60], 
-					["WHEELED_SQ_LIGHT", 2, 10], ["WHEELED_SQ_HEAVY", 2, 10], 
-					//["TRACKED_SQ_LIGHT", 2, 40], ["TRACKED_SQ_MEDIUM", 1, 50], ["TRACKED_SQ_HEAVY", 1, 50], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
+	case ( _maxSV < 30) : {
+		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 80], ["INFANTRY_SQ_MG", 1, 60], ["INFANTRY_SQ_AT", 1, 40], 
+					["WHEELED_SQ_LIGHT", 1, 40], ["WHEELED_SQ_HEAVY", 1, 20], 
+					//["TRACKED_SQ_LIGHT", 1, 10], ["TRACKED_SQ_MEDIUM", 1, 10], ["TRACKED_SQ_HEAVY", 1, 10], 
+					//["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 10], 
 					["SQ_ANTI_AIR", 1, 10]];
 	};
-	case (_maxSV > 30 && _maxSV <= 40) : { 				
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 40], ["INFANTRY_SQ_MG", 4, 40], ["INFANTRY_SQ_AT", 6, 60], 
-					["WHEELED_SQ_LIGHT", 2, 20], ["WHEELED_SQ_HEAVY", 2, 10], 
-					//["TRACKED_SQ_LIGHT", 2, 40], ["TRACKED_SQ_MEDIUM", 1, 50], ["TRACKED_SQ_HEAVY", 1, 50], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
+	case (_maxSV >= 30 && _maxSV < 60) : {
+		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 40], ["INFANTRY_SQ_MG", 1, 80], ["INFANTRY_SQ_AT", 1, 60], 
+					["WHEELED_SQ_LIGHT", 2, 60], ["WHEELED_SQ_HEAVY", 2, 40], 
+					["TRACKED_SQ_LIGHT", 2, 60], ["TRACKED_SQ_MEDIUM", 1, 10], ["TRACKED_SQ_HEAVY", 1, 10], 
+					//["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 10], 
 					["SQ_ANTI_AIR", 1, 10]];
 	};
-	case (_maxSV > 40 && _maxSV <= 50) : { 				
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 40], ["INFANTRY_SQ_MG", 4, 40], ["INFANTRY_SQ_AT", 6, 60], 
-					["WHEELED_SQ_LIGHT", 2, 20], ["WHEELED_SQ_HEAVY", 2, 10], 
-					//["TRACKED_SQ_LIGHT", 2, 40], ["TRACKED_SQ_MEDIUM", 1, 50], ["TRACKED_SQ_HEAVY", 1, 50], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 10]];
-	};
-	case (_maxSV > 50 && _maxSV <= 60) : { 			
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 40], ["INFANTRY_SQ_MG", 4, 40], ["INFANTRY_SQ_AT", 6, 60], 
-					["WHEELED_SQ_LIGHT", 2, 30], ["GUER_WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 1, 40], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 10], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
+	case (_maxSV >= 60 && _maxSV < 90) : {
+		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 40], ["INFANTRY_SQ_MG", 1, 60], ["INFANTRY_SQ_AT", 1, 80], 
+					["WHEELED_SQ_LIGHT", 1, 40], ["WHEELED_SQ_HEAVY", 2, 60], 
+					["TRACKED_SQ_LIGHT", 2, 80], ["TRACKED_SQ_MEDIUM", 2, 60], ["TRACKED_SQ_HEAVY", 1, 40], 
+					//["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 10], 
 					["SQ_ANTI_AIR", 1, 20]];
 	};
-	case (_maxSV > 60 && _maxSV <= 70) : { 		
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 40], ["INFANTRY_SQ_MG", 4, 40], ["INFANTRY_SQ_AT", 6, 60], 
-					["WHEELED_SQ_LIGHT", 2, 30], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 1, 40], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 10], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
+	case (_maxSV >= 90 && _maxSV < 120) : {
+		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 40], ["INFANTRY_SQ_MG", 1, 60], ["INFANTRY_SQ_AT", 1, 80], 
+					["WHEELED_SQ_LIGHT", 1, 40], ["WHEELED_SQ_HEAVY", 2, 60], 
+					["TRACKED_SQ_LIGHT", 1, 40], ["TRACKED_SQ_MEDIUM", 2, 60], ["TRACKED_SQ_HEAVY", 2, 80], 
+					//["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 10], 
+					["SQ_ANTI_AIR", 1, 40]];
 	};
-	case (_maxSV > 70 && _maxSV <= 80) : { 			
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 40], ["INFANTRY_SQ_MG", 6, 40], ["INFANTRY_SQ_AT", 6, 60], 
-					["WHEELED_SQ_LIGHT", 2, 30], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 1, 40], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 10], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
-	};
-	case (_maxSV > 80 && _maxSV <= 90) : { 			
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 20], ["INFANTRY_SQ_MG", 6, 20], ["INFANTRY_SQ_AT", 6, 40], 
-					["WHEELED_SQ_LIGHT", 2, 30], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 1, 40], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 10], 
-					//["AIR_SQ_FIGHTER", 1, 75], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
-	};
-	case (_maxSV > 90 && _maxSV <= 100) : { 		
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 20], ["INFANTRY_SQ_MG", 6, 20], ["INFANTRY_SQ_AT", 6, 40], 
-					["WHEELED_SQ_LIGHT", 2, 10], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 1, 20], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 40], 
-					["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
-	};
-	case (_maxSV > 100 && _maxSV <= 110) : { 		
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 20], ["INFANTRY_SQ_MG", 6, 20], ["INFANTRY_SQ_AT", 6, 40], 
-					["WHEELED_SQ_LIGHT", 2, 10], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 1, 20], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 40], 
-					["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
-	};
-	case (_maxSV > 110 && _maxSV <= 120) : { 		
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 20], ["INFANTRY_SQ_MG", 6, 20], ["INFANTRY_SQ_AT", 6, 40], 
-					["WHEELED_SQ_LIGHT", 2, 10], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 2, 20], ["TRACKED_SQ_MEDIUM", 1, 30], ["TRACKED_SQ_HEAVY", 1, 40], 
-					["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
-	};
-	case (_maxSV > 120) : { 			
-		_pool_units = [["INFANTRY_SQ_LIGHT", 4, 20], ["INFANTRY_SQ_MG", 6, 20], ["INFANTRY_SQ_AT", 6, 40], 
-					["WHEELED_SQ_LIGHT", 2, 10], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 2, 10], ["TRACKED_SQ_MEDIUM", 1, 20], ["TRACKED_SQ_HEAVY", 1, 60], 
-					["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 20], 
-					["SQ_ANTI_AIR", 1, 20]];
+	case (_maxSV >= 120) : {
+		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 40], ["INFANTRY_SQ_MG", 1, 60], ["INFANTRY_SQ_AT", 1, 80], 
+					["WHEELED_SQ_LIGHT", 1, 40], ["WHEELED_SQ_HEAVY", 2, 60], 
+					["TRACKED_SQ_LIGHT", 1, 40], ["TRACKED_SQ_MEDIUM", 2, 60], ["TRACKED_SQ_HEAVY", 2, 80], 
+					["AIR_SQ_FIGHTER", 2, 40], ["AIR_SQ_BOMBER", 2, 20], 
+					["SQ_ANTI_AIR", 1, 40]];
 	};
 };
 
@@ -210,32 +168,42 @@ _teams = [];
 for '_i' from 1 to _totalGroups do {
 	//_units = [(missionNamespace getVariable format["%1_SOLDIER_SQUADLEADER", _side]) select 0];
 	_units = [missionNamespace getVariable format["CTI_%1_Commander", _side]];
-		
-	// _pool_group_size_current = _pool_group_size;
+	
 	_pool_group_size_current = _pool_group_size-1;
+	_pool_vehicle_count = 0;
 	while {_pool_group_size_current > 0} do {
 		_picked = _pool select floor(random count _pool);
-		
 		_unit = _picked select 0;
 		_probability = _picked select 1;
+		if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
 		
 		_can_use = true;
 		if (_probability != 100) then {
 			if (random 100 > _probability) then { _can_use = false };
 		};
-		
-		if (CTI_Log_Level >= CTI_Log_Debug) then { 
-			["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;
+		if !(_unit isKindOf "Man") then {
+			if(_pool_vehicle_count >= 2) then { 
+				_can_use = false;
+				if (CTI_Log_Level >= CTI_Log_Debug) then { 
+					["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation team max vehicle count: <%1>", _pool_vehicle_count]] call CTI_CO_FNC_Log;
+				};
+			} else {
+				_pool_vehicle_count = _pool_vehicle_count + 1;
+			};
 		};
+		
+		//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;};
 		
 		if (_can_use) then {
 			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
 			_units pushBack _unit;
-			
 			_pool_group_size_current = _pool_group_size_current - 1;
 		};
 	};
 	
+	if (CTI_Log_Level >= CTI_Log_Debug) then { 
+		["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation team units: <%1>", _units]] call CTI_CO_FNC_Log;
+	};
 	_teams pushBack _units;
 };
 
