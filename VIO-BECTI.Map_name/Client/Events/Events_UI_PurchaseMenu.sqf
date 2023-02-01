@@ -55,8 +55,9 @@ switch (_action) do {
 	};
 	case "onGroupLBSelChanged": {
 		_changedTo = _this select 1;
-		
-		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_team", (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select _changedTo];
+		if((count (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams")) >= _changedTo) then {
+			uiNamespace setVariable ["cti_dialog_ui_purchasemenu_team", (uiNamespace getVariable "cti_dialog_ui_purchasemenu_teams") select _changedTo];
+		};
 	};
 	case "onFactoryLBSelChanged": {
 		_changedTo = _this select 1;

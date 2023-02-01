@@ -378,10 +378,10 @@ if (CTI_IsClient) then {
 	_upgrade_labels pushBack ["Aircraft Factory", "<t>Unlock better aircraft units</t>"]; 							//--- Air
 	_upgrade_labels pushBack ["Naval Factory", "<t>Unlock better naval units</t>"]; 								//--- Naval
 	_upgrade_labels pushBack ["Satellite Uplink", "<t>Allows the use of the satellite camera</t>"]; 				//--- Satellite
-	_upgrade_labels pushBack ["Aircraft Basic", "<t>Unlocks unguided Rockets and Bobs for Aircrafts</t>"]; 			//--- Air FFAR
-	_upgrade_labels pushBack ["Aircraft advanced AT", "<t>Unlocks advanced Anti Tank Missiles for Aircrafts</t>"]; 	//--- Air AT
-	_upgrade_labels pushBack ["Aircraft AA", "<t>Unlocks more Anti Air Missiles for Aircrafts</t>"]; 				//--- Air AA
-	_upgrade_labels pushBack ["Aircraft Countermeasures", "<t>Allows Aircraft to deploy countermeasures</t>"]; 		//--- Air CM
+	_upgrade_labels pushBack ["Aircraft Basic", "<t>Unlocks unguided rockets and bombs for aircrafts</t>"]; 		//--- Air FFAR
+	_upgrade_labels pushBack ["Aircraft advanced AT", "<t>Unlocks advanced Anti-Tank missiles for aircrafts</t>"]; 	//--- Air AT
+	_upgrade_labels pushBack ["Aircraft AA", "<t>Unlocks more Anti-Air missiles for aircrafts</t>"]; 				//--- Air AA
+	_upgrade_labels pushBack ["Aircraft Countermeasures", "<t>Allows aircraft to deploy countermeasures</t>"]; 		//--- Air CM
 	_upgrade_labels pushBack ["Towns Occupation", "Allows the spawning of occupation forces which will defend friendly towns against any attackers.<br />It will also improve the income generation in non-occupied towns"]; //--- Towns Occupation
 	_upgrade_labels pushBack ["Supply", "Increases the rate at which towns increase their SV"]; 					//---Supply
 	_upgrade_labels pushBack ["Gear", "<t>Unlock better gear</t>"];													//--- Gear
