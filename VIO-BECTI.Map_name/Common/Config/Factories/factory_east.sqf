@@ -90,28 +90,17 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 
-	// List of units
-	// unarmed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Soldier_unarmed_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Soldier_unarmed_F", _sid];
-	};
-	
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Soldier_lite_F", _sid];
-		_c pushBack format["%1O_Soldier_F", _sid];
-		_c pushBack format["%1O_medic_F", _sid];
-		_c pushBack format["%1O_Survivor_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Soldier_lite_F", _sid];
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Soldier_F", _sid];
 		_c pushBack format["%1O_T_Medic_F", _sid];
-		_c pushBack format["%1O_Survivor_F", _sid];
+		_c pushBack format["%1O_T_Soldier_unarmed_F", _sid];
+	} else {
+		_c pushBack format["%1O_Soldier_F", _sid];
+		_c pushBack format["%1O_medic_F", _sid];
+		_c pushBack format["%1O_Soldier_unarmed_F", _sid];
 	};
+	_c pushBack format["%1O_Soldier_lite_F", _sid];
+	_c pushBack format["%1O_Survivor_F", _sid];
 };
 
 // Tech Level 1
@@ -122,17 +111,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 
 	// List of units
 	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_crew_F", _sid];
-		_c pushBack format["%1O_Soldier_GL_F", _sid];
-		_c pushBack format["%1O_Soldier_AR_F", _sid];
-		_c pushBack format["%1O_Soldier_SL_F", _sid];
-		_c pushBack format["%1O_Soldier_LAT_F", _sid];
-		_c pushBack format["%1O_helicrew_F", _sid];
-		_c pushBack format["%1O_helipilot_F", _sid];
-		_c pushBack format["%1O_Pilot_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Crew_F", _sid];
 		_c pushBack format["%1O_T_Soldier_GL_F", _sid];
 		_c pushBack format["%1O_T_Soldier_AR_F", _sid];
@@ -141,6 +120,15 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1O_T_Helicrew_F", _sid];
 		_c pushBack format["%1O_T_Helipilot_F", _sid];
 		_c pushBack format["%1O_T_Pilot_F", _sid];
+	} else {
+		_c pushBack format["%1O_crew_F", _sid];
+		_c pushBack format["%1O_Soldier_GL_F", _sid];
+		_c pushBack format["%1O_Soldier_AR_F", _sid];
+		_c pushBack format["%1O_Soldier_SL_F", _sid];
+		_c pushBack format["%1O_Soldier_LAT_F", _sid];
+		_c pushBack format["%1O_helicrew_F", _sid];
+		_c pushBack format["%1O_helipilot_F", _sid];
+		_c pushBack format["%1O_Pilot_F", _sid];
 	};
 };
 
@@ -152,19 +140,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 
 	// List of units
 	// armed units
-	_c pushBack format["%1O_Fighter_Pilot_F", _sid];
-
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Soldier_A_F", _sid];
-		_c pushBack format["%1O_soldier_M_F", _sid];
-		_c pushBack format["%1O_soldier_repair_F", _sid];
-		_c pushBack format["%1O_engineer_F", _sid];
-		_c pushBack format["%1O_Soldier_AAR_F", _sid];
-		_c pushBack format["%1O_V_Soldier_Viper_hex_F", _sid];
-		_c pushBack format["%1O_V_Soldier_Medic_hex_F", _sid];
-		_c pushBack format["%1O_V_Soldier_LAT_hex_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Soldier_A_F", _sid];
 		_c pushBack format["%1O_T_Soldier_M_F", _sid];
 		_c pushBack format["%1O_T_Soldier_Repair_F", _sid];
@@ -172,6 +148,20 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		_c pushBack format["%1O_T_Soldier_AAR_F", _sid];
 		_c pushBack format["%1O_V_Soldier_Medic_ghex_F", _sid];
 		_c pushBack format["%1O_V_Soldier_LAT_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_Soldier_A_F", _sid];
+		_c pushBack format["%1O_soldier_M_F", _sid];
+		_c pushBack format["%1O_soldier_repair_F", _sid];
+		_c pushBack format["%1O_engineer_F", _sid];
+		_c pushBack format["%1O_Soldier_AAR_F", _sid];
+		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
+			_c pushBack format["%1O_V_Soldier_Viper_hex_F", _sid];
+			_c pushBack format["%1O_V_Soldier_Medic_hex_F", _sid];
+			_c pushBack format["%1O_V_Soldier_LAT_hex_F", _sid];
+		};
+	};
+	if(([601670] call CTI_CO_FNC_HasDLC)) then {		//Jets
+		_c pushBack format["%1O_Fighter_Pilot_F", _sid];
 	};
 };
 
@@ -183,35 +173,44 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 
 	// List of units
 	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Soldier_HAT_F", _sid];
-		_c pushBack format["%1O_Soldier_AHAT_F", _sid];
-		_c pushBack format["%1O_Soldier_TL_F", _sid];
-		_c pushBack format["%1O_support_MG_F", _sid];
-		_c pushBack format["%1O_support_Mort_F", _sid];
-		_c pushBack format["%1O_support_AMort_F", _sid];
-		_c pushBack format["%1O_support_AMG_F", _sid];
-		_c pushBack format["%1O_support_GMG_F", _sid];
-		_c pushBack format["%1O_soldier_mine_F", _sid];
-		_c pushBack format["%1O_V_Soldier_hex_F", _sid];
-		_c pushBack format["%1O_V_Soldier_TL_hex_F", _sid];
-		_c pushBack format["%1O_V_Soldier_M_hex_F", _sid];
-		_c pushBack format["%1O_V_Soldier_JTAC_hex_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Soldier_HAT_F", _sid];
-		_c pushBack format["%1O_T_Soldier_AHAT_F", _sid];
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Soldier_TL_F", _sid];
 		_c pushBack format["%1O_T_Support_MG_F", _sid];
 		_c pushBack format["%1O_T_Support_Mort_F", _sid];
 		_c pushBack format["%1O_T_Support_AMort_F", _sid];
 		_c pushBack format["%1O_T_Support_AMG_F", _sid];
 		_c pushBack format["%1O_T_Support_GMG_F", _sid];
-		_c pushBack format["%1O_T_soldier_mine_F", _sid];
+		if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
+			_c pushBack format["%1O_T_Soldier_HAT_F", _sid];
+			_c pushBack format["%1O_T_Soldier_AHAT_F", _sid];
+		};
+		if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
+			_c pushBack format["%1O_T_soldier_mine_F", _sid];
+		};
 		_c pushBack format["%1O_V_Soldier_ghex_F", _sid];
 		_c pushBack format["%1O_V_Soldier_TL_ghex_F", _sid];
 		_c pushBack format["%1O_V_Soldier_M_ghex_F", _sid];
 		_c pushBack format["%1O_V_Soldier_JTAC_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_Soldier_TL_F", _sid];
+		_c pushBack format["%1O_support_MG_F", _sid];
+		_c pushBack format["%1O_support_Mort_F", _sid];
+		_c pushBack format["%1O_support_AMort_F", _sid];
+		_c pushBack format["%1O_support_AMG_F", _sid];
+		_c pushBack format["%1O_support_GMG_F", _sid];
+		if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
+			_c pushBack format["%1O_Soldier_HAT_F", _sid];
+			_c pushBack format["%1O_Soldier_AHAT_F", _sid];
+		};
+		if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
+			_c pushBack format["%1O_soldier_mine_F", _sid];
+		};
+		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
+			_c pushBack format["%1O_V_Soldier_hex_F", _sid];
+			_c pushBack format["%1O_V_Soldier_TL_hex_F", _sid];
+			_c pushBack format["%1O_V_Soldier_M_hex_F", _sid];
+			_c pushBack format["%1O_V_Soldier_JTAC_hex_F", _sid];
+		};
 	};
 };
 
@@ -223,29 +222,31 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 
 	// List of units
 	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_soldier_exp_F", _sid];
-		_c pushBack format["%1O_Soldier_AA_F", _sid];
-		_c pushBack format["%1O_Soldier_AAA_F", _sid];
-		_c pushBack format["%1O_Soldier_AT_F", _sid];
-		_c pushBack format["%1O_Soldier_AAT_F", _sid];
-		_c pushBack format["%1O_soldier_PG_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Soldier_Exp_F", _sid];
 		_c pushBack format["%1O_T_Soldier_AA_F", _sid];
 		_c pushBack format["%1O_T_Soldier_AAA_F", _sid];
 		_c pushBack format["%1O_T_Soldier_AT_F", _sid];
 		_c pushBack format["%1O_T_Soldier_AAT_F", _sid];
 		_c pushBack format["%1O_T_Soldier_PG_F", _sid];
+	} else {
+		_c pushBack format["%1O_soldier_exp_F", _sid];
+		_c pushBack format["%1O_Soldier_AA_F", _sid];
+		_c pushBack format["%1O_Soldier_AAA_F", _sid];
+		_c pushBack format["%1O_Soldier_AT_F", _sid];
+		_c pushBack format["%1O_Soldier_AAT_F", _sid];
+		_c pushBack format["%1O_soldier_PG_F", _sid];
+		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
+			_c pushBack format["%1O_V_Soldier_Exp_hex_F", _sid];
+		};
 	};
-	_c pushBack format["%1O_V_Soldier_Exp_hex_F", _sid];
-
+	if(([332350] call CTI_CO_FNC_HasDLC)) then {		//Marksmen
+		_c pushBack format["%1O_HeavyGunner_F", _sid];
+		_c pushBack format["%1O_Urban_HeavyGunner_F", _sid];
+	};
 	_c pushBack format["%1O_Pathfinder_F", _sid];
 	_c pushBack format["%1O_Sharpshooter_F", _sid];
 	_c pushBack format["%1O_Urban_Sharpshooter_F", _sid];
-	_c pushBack format["%1B_HeavyGunner_F", _sid];
-	_c pushBack format["%1O_Urban_HeavyGunner_F", _sid];
 };
 
 // Tech Level 5
@@ -256,35 +257,38 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 
 	// List of units
 	// unarmed units
-	_c pushBack format["%1O_Officer_Parade_F", _sid];
-	_c pushBack format["%1O_Officer_Parade_Veteran_F", _sid];
-
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+		_c pushBack format["%1O_T_Sniper_F", _sid];
+		_c pushBack format["%1O_T_ghillie_tna_F", _sid];
+		_c pushBack format["%1O_T_spotter_F", _sid];
+		_c pushBack format["%1O_T_Soldier_UAV_F", _sid];
+		_c pushBack format["%1O_T_Officer_F", _sid];
+		_c pushBack format["%1O_T_diver_F", _sid];
+		_c pushBack format["%1O_T_diver_TL_F", _sid];
+		_c pushBack format["%1O_T_diver_exp_F", _sid];
+		if(([1325500] call CTI_CO_FNC_HasDLC)) then {		//Art of War
+			_c pushBack format["%1O_T_soldier_UAV_06_F", _sid];
+			_c pushBack format["%1O_T_soldier_UAV_06_medical_F", _sid];
+		};
+	} else {
 		_c pushBack format["%1O_sniper_F", _sid];
 		_c pushBack format["%1O_ghillie_lsh_F", _sid];
 		_c pushBack format["%1O_ghillie_sard_F", _sid];
 		_c pushBack format["%1O_ghillie_ard_F", _sid];
 		_c pushBack format["%1O_spotter_F", _sid];
 		_c pushBack format["%1O_soldier_UAV_F", _sid];
-		_c pushBack format["%1O_soldier_UAV_06_F", _sid];
-		_c pushBack format["%1O_soldier_UAV_06_medical_F", _sid];
 		_c pushBack format["%1O_diver_F", _sid];
 		_c pushBack format["%1O_diver_TL_F", _sid];
 		_c pushBack format["%1O_diver_exp_F", _sid];
 		_c pushBack format["%1O_officer_F", _sid];
+		if(([1325500] call CTI_CO_FNC_HasDLC)) then {		//Art of War
+			_c pushBack format["%1O_soldier_UAV_06_F", _sid];
+			_c pushBack format["%1O_soldier_UAV_06_medical_F", _sid];
+		};
 	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Sniper_F", _sid];
-		_c pushBack format["%1O_T_ghillie_tna_F", _sid];
-		_c pushBack format["%1O_T_spotter_F", _sid];
-		_c pushBack format["%1O_T_Soldier_UAV_F", _sid];
-		_c pushBack format["%1O_T_soldier_UAV_06_F", _sid];
-		_c pushBack format["%1O_T_soldier_UAV_06_medical_F", _sid];
-		_c pushBack format["%1O_T_Officer_F", _sid];
-		_c pushBack format["%1O_T_diver_F", _sid];
-		_c pushBack format["%1O_T_diver_TL_F", _sid];
-		_c pushBack format["%1O_T_diver_exp_F", _sid];
+	if(([1325500] call CTI_CO_FNC_HasDLC)) then {		//Art of War
+		_c pushBack format["%1O_Officer_Parade_F", _sid];
+		_c pushBack format["%1O_Officer_Parade_Veteran_F", _sid];
 	};
 };
 
@@ -312,29 +316,17 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
-	// List of units
-	// light units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Quadbike_01_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%O_T_Quadbike_01_ghex_F", _sid];
-	};
-
-	// unarmed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_LSV_02_unarmed_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_LSV_02_unarmed_F", _sid];
-	};
-
-	// upgraded units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_LSV_02_unarmed_viper_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_LSV_02_unarmed_viper_F", _sid];
+	} else {
+		_c pushBack format["%1O_Quadbike_01_F", _sid];
+		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
+			_c pushBack format["%1O_LSV_02_unarmed_F", _sid];
+			_c pushBack format["%1O_LSV_02_unarmed_viper_F", _sid];
+		};
 	};
 	_c pushBack format["%1C_Van_02_medevac_F", _sid];
 };
@@ -345,41 +337,24 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
-	// List of units
-	// unarmed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_02_covered_F", _sid];
-		_c pushBack format["%1O_Truck_02_transport_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Truck_02_F", _sid];
-		_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
-	};
-
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_LSV_02_armed_viper_F", _sid];
-		_c pushBack format["%1O_LSV_02_armed_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+		_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
 		_c pushBack format["%1O_T_LSV_02_armed_viper_F", _sid];
 		_c pushBack format["%1O_T_LSV_02_armed_F", _sid];
-	};
+		_c pushBack format["%1O_T_Truck_02_F", _sid];
+		_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
 
-	// upgraded armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_LSV_02_AT_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_LSV_02_AT_F", _sid];
-	};
-
-	// SPECIAL CASES - Vehicles that need scripting
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_02_medical_F", _sid];		//medic
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_Truck_02_Medical_F", _sid];	//medic
+	} else {
+		_c pushBack format["%1O_MRAP_02_F", _sid];
+		_c pushBack format["%1O_Truck_02_covered_F", _sid];
+		_c pushBack format["%1O_Truck_02_transport_F", _sid];
+
+		_c pushBack format["%1O_Truck_02_medical_F", _sid];		//medic
+		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
+			_c pushBack format["%1O_LSV_02_armed_viper_F", _sid];
+			_c pushBack format["%1O_LSV_02_armed_F", _sid];
+		};
 	};
 };
 
@@ -389,38 +364,26 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
-	// List of units
-	// unarmed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_03_covered_F", _sid];
-		_c pushBack format["%1O_Truck_03_transport_F", _sid];
-		_c pushBack format["%1O_Truck_03_device_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+		_c pushBack format["%1O_T_MRAP_02_gmg_ghex_F", _sid];
+		_c pushBack format["%1O_T_MRAP_02_hmg_ghex_F", _sid];
+		_c pushBack format["%1O_T_LSV_02_AT_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_transport_ghex_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_device_ghex_F", _sid];
-	};
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_MRAP_02_F", _sid];
+		_c pushBack format["%1O_T_Truck_03_medical_ghex_F", _sid];	//medic
+	} else {
 		_c pushBack format["%1O_MRAP_02_gmg_F", _sid];
 		_c pushBack format["%1O_MRAP_02_hmg_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
-		_c pushBack format["%1O_T_MRAP_02_gmg_ghex_F", _sid];
-		_c pushBack format["%1O_T_MRAP_02_hmg_ghex_F", _sid];
-	};
+		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
+			_c pushBack format["%1O_LSV_02_AT_F", _sid];
+		};
+		_c pushBack format["%1O_Truck_03_covered_F", _sid];
+		_c pushBack format["%1O_Truck_03_transport_F", _sid];
+		_c pushBack format["%1O_Truck_03_device_F", _sid];
 
-	// SPECIAL CASES - Vehicles that need scripting
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_Truck_03_medical_F", _sid];		//medic
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Truck_03_medical_ghex_F", _sid];	//medic
 	};
 };
 
@@ -430,13 +393,10 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_APC_Wheeled_02_rcws_v2_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_APC_Wheeled_02_rcws_v2_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_APC_Wheeled_02_rcws_v2_F", _sid];
 	};
 };
 
@@ -446,13 +406,10 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_UGV_01_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_UGV_01_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_UGV_01_F", _sid];
 	};
 };
 
@@ -462,13 +419,10 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_UGV_01_rcws_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_UGV_01_rcws_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_UGV_01_rcws_F", _sid];
 	};
 };
 
@@ -496,13 +450,10 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_APC_Tracked_02_cannon_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_APC_Tracked_02_cannon_F", _sid];
 	};
 };
 
@@ -512,15 +463,12 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_APC_Tracked_02_AA_F", _sid];
-		_c pushBack format["%1O_MBT_02_arty_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_APC_Tracked_02_AA_ghex_F", _sid];
 		_c pushBack format["%1O_T_MBT_02_arty_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_APC_Tracked_02_AA_F", _sid];
+		_c pushBack format["%1O_MBT_02_arty_F", _sid];
 	};
 };
 
@@ -530,13 +478,10 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
-	// List of units
-	// upgraded armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_MBT_02_cannon_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_MBT_02_cannon_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_MBT_02_cannon_F", _sid];
 	};
 };
 
@@ -546,21 +491,12 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
-	// List of units
-	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_MBT_04_cannon_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_MBT_04_cannon_F", _sid];
-	};
-
-	// upgraded armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_MBT_04_command_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		_c pushBack format["%1O_T_MBT_04_command_F", _sid];
+	} else {
+		_c pushBack format["%1O_MBT_04_cannon_F", _sid];
+		_c pushBack format["%1O_MBT_04_command_F", _sid];
 	};
 };
 
@@ -588,8 +524,6 @@ _matrix_cnt = [0, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 
-	// List of units
-	// unarmed units
 	_c pushBack format["%1O_Heli_Light_02_unarmed_F", _sid];
 };
 
@@ -599,7 +533,6 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 
-	// List of units
 	// armed units
 	_c pushBack format["%1O_Heli_Light_02_dynamicLoadout_F", _sid];
 
@@ -614,13 +547,14 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 
-	// List of units
 	// unarmed units
-	_c pushBack format["%1O_Heli_Transport_04_ammo_F", _sid];
-	_c pushBack format["%1O_Heli_Transport_04_bench_F", _sid];
-	_c pushBack format["%1O_Heli_Transport_04_box_F", _sid];
-	_c pushBack format["%1O_Heli_Transport_04_fuel_F", _sid];
-	_c pushBack format["%1O_Heli_Transport_04_repair_F", _sid];
+	if(([304380] call CTI_CO_FNC_HasDLC)) then {			//Helicopters
+		_c pushBack format["%1O_Heli_Transport_04_ammo_F", _sid];
+		_c pushBack format["%1O_Heli_Transport_04_bench_F", _sid];
+		_c pushBack format["%1O_Heli_Transport_04_box_F", _sid];
+		_c pushBack format["%1O_Heli_Transport_04_fuel_F", _sid];
+		_c pushBack format["%1O_Heli_Transport_04_repair_F", _sid];
+	};
 };
 
 // Tech Level 3
@@ -632,10 +566,14 @@ if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 	// List of units
 	// armed units
 	_c pushBack format["%1O_Plane_CAS_02_dynamicLoadout_F", _sid];
-	_c pushBack format["%1O_T_UAV_04_CAS_F", _sid];
 
+	if(([395180] call CTI_CO_FNC_HasDLC)) then {			//Apex
+		_c pushBack format["%1O_T_UAV_04_CAS_F", _sid];
+	};
 	// Special Unit: Requires Scripting
-	_c pushBack format["%1O_Heli_Transport_04_medevac_F", _sid];	//medic
+	if(([304380] call CTI_CO_FNC_HasDLC)) then {			//Helicopters
+		_c pushBack format["%1O_Heli_Transport_04_medevac_F", _sid];	//medic
+	};
 };
 
 // Tech Level 4
@@ -644,13 +582,14 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 
-	// List of units
 	// armed units
 	_c pushBack format["%1O_UAV_02_dynamicLoadout_F", _sid];
 
 	// upgraded armed units
 	_c pushBack format["%1O_Heli_Attack_02_dynamicLoadout_F", _sid];
-	_c pushBack format["%1O_Plane_Fighter_02_F", _sid];
+	if(([601670] call CTI_CO_FNC_HasDLC)) then {			//Jets
+		_c pushBack format["%1O_Plane_Fighter_02_F", _sid];
+	};
 };
 
 // Tech Level 5
@@ -659,13 +598,15 @@ _matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckC
 if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
 if(CTI_ECONOMY_LEVEL_AIR >= _level) then {
 
-	// List of units
 	// armed units
-	_c pushBack format["%1O_Plane_Fighter_02_Stealth_F", _sid];
-
+	if(([601670] call CTI_CO_FNC_HasDLC)) then {			//Jets
+		_c pushBack format["%1O_Plane_Fighter_02_Stealth_F", _sid];
+	};
 	// upgraded armed units
-	_c pushBack format["%1O_T_VTOL_02_infantry_dynamicLoadout_F", _sid];
-	_c pushBack format["%1O_T_VTOL_02_vehicle_dynamicLoadout_F", _sid];
+	if(([395180] call CTI_CO_FNC_HasDLC)) then {			//Apex
+		_c pushBack format["%1O_T_VTOL_02_infantry_dynamicLoadout_F", _sid];
+		_c pushBack format["%1O_T_VTOL_02_vehicle_dynamicLoadout_F", _sid];
+	};
 };
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AIR];
@@ -695,13 +636,12 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 
 	// List of units
 	// unarmed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Lifeboat", _sid];
-		_c pushBack format["%1O_Boat_Transport_01_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Lifeboat", _sid];
 		_c pushBack format["%1O_T_Boat_Transport_01_F", _sid];
+	} else {
+		_c pushBack format["%1O_Lifeboat", _sid];
+		_c pushBack format["%1O_Boat_Transport_01_F", _sid];
 	};
 };
 
@@ -713,11 +653,10 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= 0) then {
 
 	// List of units
 	// armed units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Boat_Armed_01_hmg_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Boat_Armed_01_hmg_F", _sid];
+	} else {
+		_c pushBack format["%1O_Boat_Armed_01_hmg_F", _sid];
 	};
 };
 
@@ -747,22 +686,21 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _c];
 //*********************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Reapir Factory.
 _c = [];
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+	_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
+} else {
 	_c pushBack format["%1O_Truck_02_box_F", _sid];
 };
-if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-	_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
-};
 _c pushBack format["CTI_Salvager_%1", _side];
-_c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];
-_c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];
-
+if(([395180] call CTI_CO_FNC_HasDLC)) then {				//Apex
+	_c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];
+	_c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];
+};
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_03_repair_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Truck_03_repair_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_Truck_03_repair_F", _sid];
 	};
 };
 
@@ -780,25 +718,25 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _c];
 //*********************************************************************************************************************************************
 //--- Below is classnames for Units and AI avaiable to puchase from Ammo Factory.
 _c = [];
-if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
+	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
+} else {
 	_c pushBack format["%1O_Truck_02_fuel_F", _sid];
 	_c pushBack format["%1O_Truck_02_Ammo_F", _sid];
 };
-if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
-	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
+if(([395180] call CTI_CO_FNC_HasDLC)) then {				//Apex
+	_c pushBack format["%1Land_Pod_Heli_Transport_04_ammo_F", _sid];
+	_c pushBack format["%1Land_Pod_Heli_Transport_04_fuel_F", _sid];
 };
-_c pushBack format["%1Land_Pod_Heli_Transport_04_ammo_F", _sid];
-_c pushBack format["%1Land_Pod_Heli_Transport_04_fuel_F", _sid];
 
 if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_Truck_03_fuel_F", _sid];
-		_c pushBack format["%1O_Truck_03_ammo_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_Truck_03_fuel_ghex_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_ammo_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_Truck_03_fuel_F", _sid];
+		_c pushBack format["%1O_Truck_03_ammo_F", _sid];
 	};
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_AMMO];
@@ -820,15 +758,14 @@ _c = [];
 // --------------
 if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
-		if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-			_c pushBack format["%1O_medic_F", _sid];
-			_c pushBack format["%1O_crew_F", _sid];
-			_c pushBack format["%1O_Soldier_F", _sid];
-		};
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 			_c pushBack format["%1O_T_Medic_F", _sid];
 			_c pushBack format["%1O_T_Crew_F", _sid];
 			_c pushBack format["%1O_T_Soldier_F", _sid];
+		} else {
+			_c pushBack format["%1O_medic_F", _sid];
+			_c pushBack format["%1O_crew_F", _sid];
+			_c pushBack format["%1O_Soldier_F", _sid];
 		};
 	};
 };
@@ -836,40 +773,32 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 // Wheeled Units
 // -------------
 if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+		_c pushBack format["%1O_T_Quadbike_01_ghex_F", _sid];
+		_c pushBack format["%1O_T_LSV_02_unarmed_F", _sid];
+	} else {
 		_c pushBack format["%1O_Quadbike_01_F", _sid];
 		_c pushBack format["%1O_LSV_02_unarmed_F", _sid];
 	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_T_Quadbike_01_ghex_F", _sid];
-		_c pushBack format["%1O_T_LSV_02_unarmed_F", _sid];
-	};
 };
 if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_c pushBack format["%1O_MRAP_02_F", _sid];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
+	} else {
+		_c pushBack format["%1O_MRAP_02_F", _sid];
 	};
 };
 
 if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-		if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+			_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
+			_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
+		} else {
 			_c pushBack format["%1O_Truck_02_fuel_F", _sid];
 			_c pushBack format["%1O_Truck_02_Ammo_F", _sid];
 		};
-		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-			_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
-			_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
-		};
 	};
-	/*if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-		_c pushBack format["%1O_Truck_03_repair_F", _sid];
-		_c pushBack format["%1O_Truck_03_fuel_F", _sid];
-		_c pushBack format["%1O_Truck_03_ammo_F", _sid];
-	};*/
 };
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 

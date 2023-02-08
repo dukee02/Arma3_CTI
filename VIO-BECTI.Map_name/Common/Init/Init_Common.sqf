@@ -94,6 +94,7 @@ CTI_CO_FNC_GetSideDefenses = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetCalculatedUnitsPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedUnitsPrize.sqf";
 CTI_CO_FNC_GetCalculatedBuildtime = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedBuildtime.sqf";
 CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedItemPrize.sqf";
+CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasDLC.sqf";
 
 CTI_CO_CustomIterator = 0;
 
@@ -177,7 +178,7 @@ if ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 1) then {
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
 if(CTI_CAMO_ACTIVATION == 0) then {
-	if(395180 in (getDLCs 1)) then {		//APEX
+	if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 			[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
 			["",["","","",""],[""]]],
@@ -211,7 +212,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 			["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 	};
 } else {
-	if(395180 in (getDLCs 1)) then {		//APEX
+	if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 			[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[""]],
 			["",["","","",""],[""]]],

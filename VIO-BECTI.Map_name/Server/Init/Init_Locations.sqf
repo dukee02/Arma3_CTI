@@ -101,47 +101,6 @@ if !(_loadingOK) then {
 				} forEach _camps;
 			} forEach _nearTownsE;
 		};
-		/*
-		
-		//--- Nearby Towns range.
-		case x: {
-			{
-				_currentTown = _x;
-				_townOwned = false;
-				
-				//check if town next to east
-				_eastDistance = _eastLocation distance2D _currentTown;
-				if (_eastDistance < CTI_TOWNS_CAPTURED_DISTANCE) then {
-					_currentTown setVariable ['cti_town_sideID',CTI_EAST_ID,true];
-					_camps = _currentTown getVariable "cti_town_camps";
-					{
-						_x setVariable ['cti_camp_sideID',CTI_EAST_ID,true];
-					} forEach _camps;
-					_townOwned = true;
-				};
-				//check if town next to west
-				_westDistance = _westLocation distance2D _currentTown;
-				if (_westDistance < CTI_TOWNS_CAPTURED_DISTANCE) then {
-					_currentTown setVariable ['cti_town_sideID',CTI_WEST_ID,true];
-					_camps = _currentTown getVariable "cti_town_camps";
-					{
-						_x setVariable ['cti_camp_sideID',CTI_WEST_ID,true];
-					} forEach _camps;
-					_townOwned = true;
-				};
-				//if the town hasn't a owner yet, we set it to RES
-				if !(_townOwned) then {
-					_currentTown setVariable ['cti_town_sideID',CTI_RESISTANCE_ID,true];
-					_camps = _currentTown getVariable "cti_town_camps";
-					{
-						_x setVariable ['cti_camp_sideID',CTI_RESISTANCE_ID,true];
-						_x setVariable ["cti_camp_lastSideID", CTI_RESISTANCE_ID, true];
-					} forEach _camps;
-				};
-			} forEach CTI_Towns;
-		};
-		*/
-		
 		//--- Random Towns (25% East, 25% West, 50% Res).
 		case 3: {
 			{
