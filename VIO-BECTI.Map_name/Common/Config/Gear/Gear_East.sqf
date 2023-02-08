@@ -696,29 +696,16 @@ _tech_level = 3;
 _i pushBack "U_O_FullGhillie_ard";
 _i pushBack "U_O_FullGhillie_lsh";
 _i pushBack "U_O_FullGhillie_sard";
-
+if(395180 in _ownedDLCs) then {		//APEX
+	_i pushBack "U_O_V_Soldier_Viper_F";
+	_i pushBack "U_O_V_Soldier_Viper_hex_F";
+};
 // set all other vars in a slope
 _cntstart = count _i;
 _cntend = count _p;
 for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-};
-
-if(395180 in _ownedDLCs) then {		//APEX
-	// -- Tech Level 4
-	_tech_level = 4;
-
-	_i pushBack "U_O_V_Soldier_Viper_F";
-	_i pushBack "U_O_V_Soldier_Viper_hex_F";
-	
-	// set all other vars in a slope
-	_cntstart = count _i;
-	_cntend = count _p;
-	for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
-		_u pushBack _tech_level;
-		_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
-	};
 };
 
 // Update the calculated max upgrade level
