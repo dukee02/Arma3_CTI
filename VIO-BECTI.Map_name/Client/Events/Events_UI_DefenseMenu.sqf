@@ -18,7 +18,7 @@ switch (_action) do {
 			_load = true;
 			if (count _var > 5) then {
 				if (_upgrades select CTI_UPGRADE_DEFENSE < _var select 6) then {_load = false};
-				if (_category != "all" && _var select 3 != _category) then {_load = false};
+				//if (_category != "all" && _var select 3 != _category) then {_load = false};
 			};
 			
 			_condition = {true};
