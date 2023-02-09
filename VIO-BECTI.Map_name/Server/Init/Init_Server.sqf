@@ -151,6 +151,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 	//Set the loaded HQ positions if loading is active
 	if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
 		["hq", _side] call CTI_SE_FNC_LOAD;
+		["funds", _side] call CTI_SE_FNC_LOAD;
 		_startPos = (getposATL ((_side) call CTI_CO_FNC_GetSideHQ));
 	};
 	

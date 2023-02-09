@@ -29,7 +29,7 @@
   # EXAMPLE #
     ["towns"] call CTI_SE_FNC_SAVE
 	["hq",east] call CTI_SE_FNC_SAVE
-	["funds_group",east,group player] call CTI_SE_FNC_SAVE
+	["funds_player",east,group player] call CTI_SE_FNC_SAVE
 */
 private ["_part", "_savemode", "_savename"];
 
@@ -150,6 +150,25 @@ if(_savemode > 0) then {
 			} forEach [east,west];
 		};
 		case "funds_group": {
+			if (isPlayer leader group _group) then {
+				_uID = getPlayerUID leader group _group;
+				//if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Playergroup %1 with id <%2> funds <%3>", _group, _uID, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;
+				//};
+			};
+			_groupnamefull = format ["%1", _group];
+			_groupnamecut = _groupnamefull splitString " ";
+			_groupname = _groupnamecut select 1;
+			profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _groupname], (_group) call CTI_CO_FNC_GetFundsTeam];
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _groupname, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
+		};
+		case "funds_player": {
+			if (isPlayer leader group _group) then {
+				_uID = getPlayerUID leader group _group;
+				//if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Playergroup %1 with id <%2> funds <%3>", _group, _uID, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;
+				//};
+			};
 			_groupnamefull = format ["%1", _group];
 			_groupnamecut = _groupnamefull splitString " ";
 			_groupname = _groupnamecut select 1;
