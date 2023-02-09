@@ -49,6 +49,7 @@ CTI_SE_FNC_LOAD = compileFinal preprocessFileLineNumbers "Server\Functions\Serve
 CTI_SE_FNC_HandleSalvagerSpecial = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleSalvagerSpecial.sqf";
 CTI_SE_FNC_PresetUpgrades = compileFinal preprocessFileLineNumbers "Server\Functions\Server_PresetUpgrades.sqf";
 CTI_SE_FNC_UpgradeSquads = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpgradeSquads.sqf";
+CTI_SE_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Server\Functions\Server_DisbandTeam.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
@@ -341,6 +342,12 @@ if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 	0 spawn {
 		while {!CTi_GameOver} do {
 			_nextLoopIn = CTI_SAVE_PERIODE;
+			//Check if the server runs smooth, if FPS drops we disband all AI automatically
+			if(diag_fps < 15) then {
+				if(CTI_Log_Level >= CTI_Log_Error) then {["Error", "FILE: Server\Init\Init_Server.sqf", Format ["Server fps low after [%1] - AI teams disbanded", time]] Call CTI_CO_FNC_Log};
+				[grpNull, 2] call CTI_SE_FNC_DisbandTeam;
+				if(CTI_LOG_INFO == 0) then {CTI_LOG_INFO = 1};
+			};
 		
 			if(CTI_LOG_INFO > 0) then {
 				//count units
