@@ -35,7 +35,6 @@
 private ["_autoalign", "_defense", "_direction", "_direction_structure", "_fob", "_limit", "_logic", "_manned", "_position", "_ruins", "_side", "_stronger", "_var", "_varname"];
 
 _varname = _this select 0;
-_var = missionNamespace getVariable _varname;
 _side = _this select 1;
 _position = _this select 2;
 _direction = _this select 3;
@@ -43,10 +42,12 @@ _origin = _this select 4;
 _autoalign = _this select 5;
 _manned = if (count _this > 6) then {_this select 6} else {false};
 
-_logic = (_side) call CTI_CO_FNC_GetSideLogic;
+if (isNull _varname) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Can't build defense! (skipped) side: %1 - classname: <%2> ", _side, (_this select 0)]] call CTI_CO_FNC_Log}};
 
+_var = missionNamespace getVariable _varname;
+_logic = (_side) call CTI_CO_FNC_GetSideLogic;
 if(isNIL "_var") then {
-	if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Can't build defense! side: %1 - classname: <%2> ", _side, _varname]] call CTI_CO_FNC_Log;};
+	if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Can't build defense! side: %1 - classname: <%2> ", _side, _varname]] call CTI_CO_FNC_Log;};
 } else {
 	//--- Is it a fob?
 	_fob = false;
