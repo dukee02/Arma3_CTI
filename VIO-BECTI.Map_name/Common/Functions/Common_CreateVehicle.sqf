@@ -102,4 +102,7 @@ if (_handle) then {
 	_vehicle setVariable ["cti_occupant", _side call CTI_CO_FNC_GetSideFromID];
 };
 
+//https://community.bistudio.com/wiki/addToRemainsCollector
+//maybe add the GC manualy?
+
 _vehicle

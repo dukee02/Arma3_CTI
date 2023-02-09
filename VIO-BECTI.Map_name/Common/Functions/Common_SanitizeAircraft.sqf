@@ -97,7 +97,7 @@ _phylon_cnt = 1;
 			};
 		};
 	} else {
-		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get magazine <%1> with no data", _x]] call CTI_CO_FNC_Log};
+		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_SanitizeAircraft.sqf", format ["Get magazine of <%1> with no data <%2>", _vehicle, _x]] call CTI_CO_FNC_Log};
 	};
 	_phylon_cnt = _phylon_cnt + 1;
 } forEach getPylonMagazines _vehicle;

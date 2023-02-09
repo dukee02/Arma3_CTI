@@ -87,6 +87,9 @@ if(_spawn_unit == true) then {
 
 	//--- Add a Killed EH.
 	_unit addEventHandler ["killed", Format["[_this select 0, _this select 1, %1, 'vehicle'] Spawn CTI_CO_FNC_OnUnitKilled;", _sideID]];
+
+	//https://community.bistudio.com/wiki/addToRemainsCollector
+	//maybe add the GC manualy?
 	
 	_unit
 } else {

@@ -9,7 +9,7 @@ Gear saves like:
 [""b_assaultpack_mcamo"",[]]],
 [""h_helmetb_light"",""g_goggles_vr""],
 [["""",""binocular""],
-[""itemmap"","""",""itemradio"",""itemcompass"",""itemwatch""]]],0,151707]]
+[""itemmap"","""",""itemradio"",""itemcompass"",""itemwatch""]]]
 */
 private ["_faction", "_templates"];
 

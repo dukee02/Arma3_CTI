@@ -27,22 +27,14 @@
 	  -> Will search for manable statics around _structure
 */
 
-private ["_ai", "_defense_team", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var"];
+private ["_ai", "_defense_team", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var", "_objects", "_object_cnt", "_defense", "_defense_data"];
 
 _structure = _this select 0;
 _side = _this select 1;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
-//_defense_team = _logic getVariable "cti_defensive_team";
 _defense_team = _logic getVariable ["cti_defensive_team", grpNull];
-//check if team exists, if not create a new one
-if (typeName _defense_team == "grpNull") then {
-	_defense_team = createGroup _side;
-	_defense_team setGroupID ["Defense Team"];
-	_defense_team setVariable ["cti_gc_noremove", true];
-	_logic setVariable ["cti_defensive_team", _defense_team];
-};
 _var = missionNamespace getVariable format ["CTI_%1_%2", _side, _structure getVariable "cti_structure_type"];
 _direction = 360 - ((_var select 4) select 0);
 _distance = (_var select 4) select 1;
@@ -72,6 +64,13 @@ while {alive _structure} do {
 			if (alive gunner _x || alive assignedGunner _x) then {
 				_x setVariable ["cti_aman_time_occupied", time];
 			} else {
+				//check if team exists, if not create a new one
+				if (typeName _defense_team == "grpNull") then {
+					_defense_team = createGroup _side;
+					_defense_team setGroupID ["Defense Team"];
+					_defense_team setVariable ["cti_gc_noremove", true];
+					_logic setVariable ["cti_defensive_team", _defense_team];
+				};
 				//--- The static is empty
 				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
 					_manned = true;
