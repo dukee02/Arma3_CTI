@@ -311,7 +311,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 			_c pushBack format["%1B_Truck_01_mover_F", _sid];
 		};
 	};
-	_c pushBack format["%1C_IDAP_Van_02_medevac_F", _sid];
+	if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
+		_c pushBack format["%1C_IDAP_Van_02_medevac_F", _sid];
+	};
 };
 
 // Tech Level 1
