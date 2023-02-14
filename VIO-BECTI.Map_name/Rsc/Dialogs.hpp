@@ -3045,7 +3045,7 @@ class CTI_RscDefenseMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.21)";
 			y = "SafeZoneY + (SafezoneH * 0.175)";
 			w = "SafeZoneW * 0.305";
-			h = "SafeZoneH * 0.65";
+			h = "SafeZoneH * 0.66";
 			colorBackground[] = {0, 0, 0, 0.7};
 			moving = 1;
 		};
@@ -3071,7 +3071,7 @@ class CTI_RscDefenseMenu {
 		
 		class CTI_Menu_DefenseListFrame : RscFrame {
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
-			y = "SafeZoneY + (SafezoneH * 0.4675)";
+			y = "SafeZoneY + (SafezoneH * 0.49)";
 			w = "SafeZoneW * 0.275";
 			h = "SafeZoneH * 0.2875";
 		};
@@ -3093,7 +3093,7 @@ class CTI_RscDefenseMenu {
 			idc = 200001;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
-			y = "SafeZoneY + (SafeZoneH * 0.77)";
+			y = "SafeZoneY + (SafeZoneH * 0.785)";
 			w = "SafeZoneW * 0.275";
 			h = "SafeZoneH * 0.04";
 			
@@ -3130,7 +3130,7 @@ class CTI_RscDefenseMenu {
 			idc = 200007;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.225)";
-			y = "SafeZoneY + (SafezoneH * 0.4675)";
+			y = "SafeZoneY + (SafezoneH * 0.49)";
 			w = "SafeZoneW * 0.275";
 			h = "SafeZoneH * 0.2875";
 			
@@ -3145,6 +3145,17 @@ class CTI_RscDefenseMenu {
 			
 			onLBDblClick = "['onBuildDefense', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_DefenseMenu.sqf'";
 		};
+		
+		class CTI_Menu_Control_Combo_Cat : RscCombo { //Defense category drop box
+			idc = 200011;
+			
+			x = "SafeZoneX + (SafeZoneW * 0.225)";
+			w = "SafeZoneW * 0.275";
+			y = "SafeZoneY + (SafeZoneH * 0.4625)";
+			
+			onLBSelChanged = "['onDefenseLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_DefenseMenu.sqf'";
+		};
+
 		class CTI_Menu_Control_Info : RscStructuredText {
 			idc = 200008;
 			
