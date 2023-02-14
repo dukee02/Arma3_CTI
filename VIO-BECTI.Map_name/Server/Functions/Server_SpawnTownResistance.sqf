@@ -38,7 +38,7 @@ private ["_groups", "_maxSV", "_pool", "_pool_group_size", "_pool_units", "_posi
 
 _town = _this;
 
-_maxSV = _town getVariable "cti_town_maxSV";
+_maxSV = if(_town getVariable "cti_town_maxSV" > 150) then {150} else {_town getVariable "cti_town_maxSV"};
 _resistanceSize = round(_maxSV * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
 _totalGroups = round(_resistanceSize / 2);
 if (_totalGroups < 1) then {_totalGroups = 1};
