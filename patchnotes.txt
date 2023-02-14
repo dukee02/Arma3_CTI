@@ -20,3 +20,15 @@ Changed: Reactivated reammo costs (Phylan Man. workaround)
 Changed: default start Funds/Supply
 Changed: buildtime calculation, now wider scalable
 Droped: Phylon Manager support (now integrated)
+
+V2.0_230209
+Changed: viper suit tier lowered
+Added: prevention for massive vehicle spawn at same point
+Added: DLC check
+Added: crew max amount for vehicles (7)
+Added: automatic server restart with info
+Added: automatic AI team disband if fps less than 15
+Added: max amount of vehicles spawn on same location
+Fixed: commander SV and money not loaded
+Fixed: some minor things
+Fixed: error in defensemenu

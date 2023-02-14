@@ -42,7 +42,7 @@ _origin = _this select 4;
 _autoalign = _this select 5;
 _manned = if (count _this > 6) then {_this select 6} else {false};
 
-if (isNull _varname) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Can't build defense! (skipped) side: %1 - classname: <%2> ", _side, (_this select 0)]] call CTI_CO_FNC_Log}};
+if (isNil _varname) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_BuildDefense.sqf", format["Can't build defense! (skipped) side: %1 - classname: <%2> ", _side, (_this select 0)]] call CTI_CO_FNC_Log}};
 
 _var = missionNamespace getVariable _varname;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
@@ -137,7 +137,7 @@ if(isNIL "_var") then {
 	//--- Make the defense stronger?
 	_stronger = -1;
 	{if (_x select 0 == "DMG_Reduce") exitWith {_stronger = _x select 1}} forEach (_var select 5);
-	if (_stronger != -1) then {_defense addEventHandler ["handleDamage", format["getDammage (_this select 0)+(_this select 2)/%1",_stronger]]};
+	if (_stronger != -1) then {_defense addEventHandler ["handleDamage", format["getDamage (_this select 0)+(_this select 2)/%1",_stronger]]};
 
 	//--- Check if the defense has a ruin model attached (we don't wana have a cemetery of wrecks)
 	_ruins = "";
