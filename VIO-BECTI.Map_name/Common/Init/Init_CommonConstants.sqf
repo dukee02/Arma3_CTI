@@ -730,7 +730,7 @@ CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
 CTI_SCORE_CAMP_VALUE = 2; //--- Camp value
 
 with missionNamespace do {
-	if (isNil 'CTI_LOG_INFO') then {CTI_LOG_INFO = 0};
+	if (isNil 'CTI_PERFORMANCE_CHECK') then {CTI_PERFORMANCE_CHECK = 0};
 	if (isNil 'CTI_PERSISTANT') then {CTI_PERSISTANT = 0};
 	if (isNil 'CTI_SAVE_PERIODE') then {CTI_SAVE_PERIODE = 900};		//900
 	

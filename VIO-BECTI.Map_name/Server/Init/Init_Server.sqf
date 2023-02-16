@@ -342,14 +342,8 @@ if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 	0 spawn {
 		while {!CTi_GameOver} do {
 			_nextLoopIn = CTI_SAVE_PERIODE;
-			//Check if the server runs smooth, if FPS drops we disband all AI automatically
-			if(diag_fps < 15) then {
-				if(CTI_Log_Level >= CTI_Log_Error) then {["Error", "FILE: Server\Init\Init_Server.sqf", Format ["Server fps low after [%1] - AI teams disbanded", time]] Call CTI_CO_FNC_Log};
-				[grpNull, 2] call CTI_SE_FNC_DisbandTeam;
-				if(CTI_LOG_INFO == 0) then {CTI_LOG_INFO = 1};
-			};
-		
-			if(CTI_LOG_INFO > 0) then {
+					
+			if(CTI_PERFORMANCE_CHECK > 0) then {
 				//count units
 				_blue = west countSide allUnits;
 				_red = east countSide allUnits;
@@ -357,13 +351,17 @@ if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 				_blue_g = -1;
 				_red_g = -1;
 				_green_g = -1;
-				if(CTI_LOG_INFO > 1) then {
+				if(CTI_PERFORMANCE_CHECK > 1) then {
 					//count groups
 					_blue_g = west countSide allGroups;
 					_red_g = east countSide allGroups;
 					_green_g = independent countSide allGroups;
+					//Check if the server runs smooth, if FPS drops we disband all AI automatically
+					if(diag_fps < 15) then {
+						["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server fps low after [%1] - AI teams disbanded", time]] Call CTI_CO_FNC_Log;
+						[grpNull, 2] call CTI_SE_FNC_DisbandTeam;
+					};
 				};
-				
 				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server statistic <blue: %1(%2) | red: %3(%4) | green: %5(%6)>", _blue, _blue_g, _red, _red_g, _green, _green_g]] Call CTI_CO_FNC_Log;
 			};
 			

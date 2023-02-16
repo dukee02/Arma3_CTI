@@ -8,7 +8,7 @@ class Params {
 	class CTI_PERSISTANT {
 		title = "PERSIST: Mode";
 		values[] = {-3,-2,-1,0,1,2,3};
-		texts[] = {"Reset (1 Save for each mission)","Reset (1 Save for each era VIO-BECTI-WW2)","Reset (1 Save for all VIO-BECTIs)","Disabled","Enabled (1 Save for all VIO-BECTIs)","Enabled (1 Save for each era VIO-BECTI-WW2)","Enabled (1 Save for each mission)"};
+		texts[] = {"Reset (1 Save for each mission)","Reset (1 Save for each era VIO-BECTI-Vanilla)","Reset (1 Save for all VIO-BECTIs)","Disabled","Enabled (1 Save for all VIO-BECTIs)","Enabled (1 Save for each era VIO-BECTI-Vanilla)","Enabled (1 Save for each mission)"};
 		default = 0;
 	};
 	class CTI_SAVE_PERIODE {
@@ -16,6 +16,12 @@ class Params {
 		values[] = {300,600,900,1200,1500,1800,2700,3600};
 		texts[] = {"5min","10 min","15 min","20 min","25 min","30 min","45 min","60 min"};
 		default = 900;
+	};
+	class CTI_PERFORMANCE_CHECK {
+		title = "PERFORMANCE: On active Persistence, log unit infos to .rpt and maybe disband stuck AI teams";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","only Information","Enabled AI disbanding"};
+		default = 1;
 	};
 	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
@@ -56,55 +62,55 @@ class Params {
 	class CTI_ECONOMY_LEVEL_GEAR {
 		title = "UPGRADE: Max Level Gear";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {
 		title = "UPGRADE: Max Level Infantry";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_WHEELED {
 		title = "UPGRADE: Max Level Wheeled";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all wheeled units","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all wheeled units","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
 		title = "UPGRADE: Max Level Tracked";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all tracked units","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all tracked units","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
 		title = "UPGRADE: Max Level Naval";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all naval units","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all naval units","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
 		title = "UPGRADE: Max Level Air";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all air units","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"Disable all air units","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_FFAR {
 		title = "UNITS_UPGRADE: Aircraft Basic equipment";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AA {
 		title = "UNITS_UPGRADE: Aircraft AA Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AT {
 		title = "UNITS_UPGRADE: Aircraft advanced AT Missiles";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	/*class CTI_VEHICLES_AIR_CM {
@@ -116,7 +122,7 @@ class Params {
 	class CTI_ECONOMY_LEVEL_DEFENSE {
 		title = "UPGRADE: Max Level Defense";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"0","1","2","3","4","5","6","7","8","9","autodetect"};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","full"};
 		default = 10;
 	};
 	class CTI_FACTORY_LEVEL_PRESET {
@@ -165,7 +171,7 @@ class Params {
 		title = "AI: Team Size (Player)";
 		values[] = {2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,35,40,45,50,60,70,80,90,100};
 		texts[] = {"2","4","6","8","10","12","14","16","18","20","22","24","26","28","30","35","40","45","50","60","70","80","90","100"};
-		default = 20;
+		default = 10;
 	};
 	class CTI_AI_SKILL_BASE {
 		title = "AI: Skill (all AI units)";
@@ -213,7 +219,7 @@ class Params {
 		title = "BASE: Structure resell ratio";
 		values[] = {0,10,20,30,40,50,60,70,80,90,100};
 		texts[] = {"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
-		default = 0;
+		default = 50;
 	};
 	class CTI_BASE_BUILDING_DAMAGE_SYSTEM {
 		title = "BASE: Handle Building destruction";
@@ -255,7 +261,7 @@ class Params {
 		title = "INCOME: Delay";
 		values[] = {30,45,60,90,120,150,180,300};
 		texts[] = {"30 Seconds","45 Seconds","01:00 Minutes","01:30 Minutes","02:00 Minutes","02:30 Minutes","03:00 Minutes","05:00 Minutes"};
-		default = 90;
+		default = 120;
 	};
 	class CTI_ECONOMY_CURRENCY_SYSTEM {
 		title = "INCOME: Currency";
@@ -411,7 +417,7 @@ class Params {
 		title = "ARTILLERY: Setup";
 		values[] = {-2,-1,0,1,2,3};
 		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = -1;
+		default = 1;
 	};
 	class CTI_ARTILLERY_TIMEOUT {
 		title = "ARTILLERY: Delay between each fire mission";
@@ -619,13 +625,13 @@ class Params {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,50};
 		texts[] = {"Far","Medium","Short","Free"};
-		default = 50;
+		default = 20;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000,4500,5000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","4.5 KM","5 KM"};
-		default = 5000;
+		default = 2500;
 	};
 	/*class SEPARATOR_ADDONS {
 		title = "=========================== ADDONS ============================";
@@ -646,9 +652,9 @@ class Params {
 		default = 1;
 	};
 	class CTI_AI_TEAMS_ENABLED {
-		title = "AI: Teams";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled", "1/4 Slots", "1/2 Slots", "3/4 Slots", "All Slots"};
+		title = "AI: Teams (Coop disables AI on player side)";
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Disabled", "1 Slot", "2 Slots", "3 Slots", "4 Slots", "5 Slots", "6 Slots", "7 Slots", "8 Slots"};
 		default = 0;
 	};
 	class CTI_AI_TEAMS_GROUPSIZE {

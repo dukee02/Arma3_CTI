@@ -17,6 +17,12 @@ class Params {
 		texts[] = {"5min","10 min","15 min","20 min","25 min","30 min","45 min","60 min"};
 		default = 900;
 	};
+	class CTI_PERFORMANCE_CHECK {
+		title = "PERFORMANCE: On active Persistence, log unit infos to .rpt and maybe disband stuck AI teams";
+		values[] = {0,1,2};
+		texts[] = {"Disabled","only Information","Enabled AI disbanding"};
+		default = 1;
+	};
 	class SEPARATOR_STARTUP {
 		title = "========================== STARTUP ============================";
 		values[] = {1};
