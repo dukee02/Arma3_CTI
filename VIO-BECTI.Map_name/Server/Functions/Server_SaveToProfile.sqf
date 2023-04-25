@@ -29,6 +29,7 @@
   # EXAMPLE #
     ["towns"] call CTI_SE_FNC_SAVE
 	["hq",east] call CTI_SE_FNC_SAVE
+	["funds_group",east,group] call CTI_SE_FNC_SAVE
 	["funds_player",east,group player] call CTI_SE_FNC_SAVE
 */
 private ["_part", "_savemode", "_savename"];
@@ -149,31 +150,42 @@ if(_savemode > 0) then {
 				} forEach (_groups);
 			} forEach [east,west];
 		};
-		case "funds_group": {
-			if (isPlayer leader group _group) then {
-				_uID = getPlayerUID leader group _group;
-				//if (CTI_Log_Level >= CTI_Log_Debug) then {
-					["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Playergroup %1 with id <%2> funds <%3>", _group, _uID, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;
-				//};
+		case "funds_player": {
+			if(leader _group == player) then {
+				_storedUIDs = profileNamespace getVariable [Format ["SAVE_%1_%2_UIDs", _savename, _side], []];
+				_playerUID = getPlayerUID leader _group;
+				_storedUIDs pushBackUnique _playerUID;
+				profileNamespace setVariable [Format ["SAVE_%1_%2_UIDs", _savename, _side], _storedUIDs];
+				profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _playerUID], (_group) call CTI_CO_FNC_GetFundsTeam];
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _playerUID, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
 			};
+		};
+		case "funds_group": {
 			_groupnamefull = format ["%1", _group];
 			_groupnamecut = _groupnamefull splitString " ";
 			_groupname = _groupnamecut select 1;
 			profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _groupname], (_group) call CTI_CO_FNC_GetFundsTeam];
 			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _groupname, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
 		};
-		case "funds_player": {
-			if (isPlayer leader group _group) then {
-				_uID = getPlayerUID leader group _group;
-				//if (CTI_Log_Level >= CTI_Log_Debug) then {
-					["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Playergroup %1 with id <%2> funds <%3>", _group, _uID, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;
-				//};
-			};
-			_groupnamefull = format ["%1", _group];
-			_groupnamecut = _groupnamefull splitString " ";
-			_groupname = _groupnamecut select 1;
-			profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _groupname], (_group) call CTI_CO_FNC_GetFundsTeam];
-			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _groupname, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
+		case "empty_vehicles": {
+			_saveObjects = [];
+			{
+				{ 
+					if (count crew vehicle _x == 0) then {
+						_startup = _x getVariable "isStartup";
+						if (isNil '_startup') then { _saveObjects pushBack _x };
+					}; 
+				} forEach (allMissionObjects _x);
+			} forEach ["Car","Motorcycle","Tank","Air","Ship"];
+
+			_vehicles_prepaired = [];
+			{
+				_vehicleSide = _x getVariable ["cti_occupant", 3];
+				_vehicles_prepaired pushback [typeOf _x, getPosATL _x, getDir _x, _vehicleSide];
+			} forEach _saveObjects;
+			
+			profileNamespace setVariable [Format ["SAVE_%1_EMPTYVEHICLES", _savename], _vehicles_prepaired];
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Empty %1 vehicles saved!", count _saveObjects]] call CTI_CO_FNC_Log;};
 		};
 		case "delete": {
 			profileNamespace setVariable [Format ["SAVE_%1_TOWNS", _savename], nil];
@@ -196,10 +208,20 @@ if(_savemode > 0) then {
 				profileNamespace setVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _x], nil];
 				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["SUPPLY DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _x],0])]] call CTI_CO_FNC_Log;};
 				profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x], nil];
-				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["SUPPLY DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x],0])]] call CTI_CO_FNC_Log;};
-		
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["FUNDSCOM DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x],0])]] call CTI_CO_FNC_Log;};
+				profileNamespace setVariable [Format ["SAVE_%1_EMPTYVEHICLES", _savename], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["VEHICLES DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_EMPTYVEHICLES", _savename],[]])]] call CTI_CO_FNC_Log;};
+				
 				_logic= (_x) call CTI_CO_FNC_GetSideLogic;
 				_side_group = _x;
+
+				_storedUIDs = profileNamespace getVariable [Format ["SAVE_%1_%2_UIDs", _savename, _x], []];
+				{
+					profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side_group, _x], nil];
+				} forEach _storedUIDs;
+				profileNamespace setVariable [Format ["SAVE_%1_%2_UIDs", _savename, _x], nil];
+				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["PLAYER FUNDS DELETED: <%1>", (profileNamespace getVariable [Format ["SAVE_%1_%2_UIDs", _savename, _x],[]])]] call CTI_CO_FNC_Log;};
+				
 				_groups = _logic getVariable "cti_teams";
 				{
 					profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side_group, _x], nil];
@@ -208,5 +230,6 @@ if(_savemode > 0) then {
 			} forEach [east,west];
 		};
 		default {};
-	};	
+	};
+	saveProfileNamespace;
 };
