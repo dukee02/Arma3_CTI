@@ -59,9 +59,10 @@ switch (_action) do {
 			
 			lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290009);
 			lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290011);
+			lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018);
 			
 			_get = missionNamespace getVariable format ["CTI_ARTILLERY_%1", _selected];
-			
+
 			//--- Stop tracking thread and remove current tracking markers
 			{
 				if !(scriptDone (_x select 2)) then {terminate (_x select 2)};
@@ -69,9 +70,48 @@ switch (_action) do {
 			} forEach (uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery");
 			
 			if !(isNil '_get') then {
+				//--- Available units.
+				_artillery = (_selected) call CTI_UI_Artillery_GetGivenTeamArtillery;
+				_artillery_array = [];
+
+				//--- Modes
+				//_weapon = getArray (configfile >> "CfgVehicles" >> _selected >> "Turrets" >> "MainTurret" >> "weapons");
+				_weapon = (_artillery select 0) weaponsTurret [0];
+				_modes = getArray (configfile >> "CfgWeapons" >> (_weapon select 0) >> "modes");
+				
+				_usable_modes = [];
+				{
+					_modeName = getText (configfile >> "CfgWeapons" >> (_weapon select 0) >> _x >> "displayName");
+					_rangemaxcheck = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> _x >> "maxRange"));
+					if(_rangemaxcheck <= CTI_ARTILLERY_SETUP) then {
+						((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbAdd str _modeName;
+						((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbSetValue [_forEachIndex, _forEachIndex];
+						_usable_modes pushBack _x;
+					};
+				} forEach _modes;
+				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_modes", _usable_modes];
+				if (count _modes > 0) then {
+					((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbSetCurSel 0;
+					uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_mode", _modes select 0];
+				};
+				
+				//--- Range
+				_rangemin = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_usable_modes select 0) >> "minRange"));
+				_rangemax = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_usable_modes select 0) >> "maxRange"));
+				_range = [_rangemin, _rangemax];
+				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", _range];
+
+				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_unit", _selected];
+
 				//--- Magazines
 				_magazines_labels = _get select 1;
 				_magazines = _get select 2;
+				/*_magazines = getArray (configfile >> "CfgWeapons" >> (_weapon select 0) >> "magazines");
+				_magazines_labels = [];
+				{_magazines_labels pushBack (getText(configFile >> "CfgMagazines" >> _x >> "displayName"))} forEach _magazines;
+				["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_magazines <%1>", _magazines]] call CTI_CO_FNC_Log;
+				["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_magazines_labels <%1>", _magazines_labels]] call CTI_CO_FNC_Log;*/
+
 				for '_i' from 0 to count(_magazines)-1 do {
 					((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290009) lbAdd (_magazines_labels select _i);
 					((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290009) lbSetData [_i, _magazines select _i];
@@ -86,16 +126,7 @@ switch (_action) do {
 				} forEach (_get select 3);
 				
 				if (count (_get select 3) > 0) then {((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290011) lbSetCurSel 0};
-				
-				//--- Range
-				_range = (_get select 4) call CTI_UI_Artillery_GetArtilleryRange;
-				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", _range];
-				
-				//--- Available units.
-				_artillery = (_selected) call CTI_UI_Artillery_GetGivenTeamArtillery;
-				_artillery_array = [];
-				//todo: stop tracking.
-				
+												
 				lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014);
 				{
 					_row = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014) lbAdd format ["[%1] - %2", _x call CTI_CL_FNC_GetAIDigit, _get select 0];
@@ -106,6 +137,41 @@ switch (_action) do {
 				
 				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery", _artillery_array];
 			};
+		};
+	};
+	case "onArtilleryModeChanged": {
+		_selected = _this select 1;
+		
+		if (_selected > -1) then {
+			//--- Stop tracking thread and remove current tracking markers
+			{
+				if !(scriptDone (_x select 2)) then {terminate (_x select 2)};
+				{deleteMarkerLocal _x} forEach (_x select 1);
+			} forEach (uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery");
+
+			_artilleryUnit = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_unit";
+			_artillery = (_artilleryUnit) call CTI_UI_Artillery_GetGivenTeamArtillery;
+			_artillery_array = [];
+			_get = missionNamespace getVariable format ["CTI_ARTILLERY_%1", _artilleryUnit];
+
+			_modes = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_modes";
+			uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_mode", _modes select _selected];
+
+			//_weapon = getArray (configfile >> "CfgVehicles" >> _artilleryUnit >> "Turrets" >> "MainTurret" >> "weapons");
+			_weapon = (_artillery select 0) weaponsTurret [0];
+			_rangemin = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_modes select _selected) >> "minRange"));
+			_rangemax = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_modes select _selected) >> "maxRange"));
+			uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", [_rangemin,_rangemax]];
+
+			lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014);
+			{
+				_row = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014) lbAdd format ["[%1] - %2", _x call CTI_CL_FNC_GetAIDigit, _get select 0];
+				_markers = [_x, _rangemin, _rangemax] call CTI_UI_Artillery_CreateArtilleryMarker;
+				_thread = [_x, _markers] spawn CTI_UI_Artillery_UpdateArtilleryMarker;
+				_artillery_array pushBack [_x, _markers, _thread];
+			} forEach _artillery;
+				
+			uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery", _artillery_array];
 		};
 	};
 	case "onArtilleryMagazineChanged": {
@@ -120,62 +186,64 @@ switch (_action) do {
 	case "onFireMissionCall": {
 		_artillery = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery";
 		_artillery_marker = uiNamespace getVariable "cti_dialog_ui_artillerymenu_marker";
+		_artillery_mode = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_mode";
 		_artillery_magazine = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_magazine";
-		_artillery_range = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_range";
 		
 		//todo timeout!
 		if (_artillery_magazine != "" && _artillery_marker != "" && time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {
 			//--- We only grab the selected artillery pieces
 			_artillery = (_artillery) call CTI_UI_Artillery_GetSelectedArtilleryArray;
-			
 			//--- Don't bother if we have nothing
 			if (count _artillery > 0) then { 
+				_artillery_range = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery_range";
 				_artillery_burst = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290011) lbValue (lbCurSel 290011);
 				_target = getMarkerPos _artillery_marker;
+				_artyShoots = false;
+				_isInRange = false;
+				_isETA = 0;
 				{
 					_artillery_piece = _x select 0;
+					//ETA = Estimated Time of Arrival
+					if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
+					_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
+
+					//Set firemode before we make any other setup of the arty unit
+					_artillery_piece forceWeaponFire [_artillery_magazine, _artillery_mode];
+
 					if (alive _artillery_piece) then { //--- The artillery piece is alive and kicking
 						if ([_artillery_piece, _artillery_magazine, _target, _artillery_range select 0, _artillery_range select 1] call CTI_UI_Artillery_CanFire) then { //--- Ultimate check about ranges
-							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artillerie shoots: <%1|%2|%3|%4>",_artillery_piece, _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;
-							//lets reveal the target by the gunner ... maybe it fixed some cant shoot issues
-							gunner _artillery_piece reveal [_target,2];
+							if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["Artillerie shoots: <%1|%2|%3|%4>",_artillery_piece, _target, _artillery_magazine, _artillery_burst]] call CTI_CO_FNC_Log;};
 							_artillery_piece doArtilleryFire [_target, _artillery_magazine, _artillery_burst];
 							//_artillery_piece commandArtilleryFire [_target, _artillery_magazine, _artillery_burst];
-							_isInRange = false;
-							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
-							//ETA = Estimated Time of Arrival
-							_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
-							hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie shot, target in range %1 | ETA = %2s</t>", _isInRange, _isETA];
-							//arty fired, we inform the enemy to make Arty not so IMBA
-							_artyside = side _artillery_piece;
-							_enemy = "civil";
-							if(_artyside == west) then {
-								_enemy = east;
-							} else {
-								_enemy = west;
-							};
-							_sideHQ = (_enemy) call CTI_CO_FNC_GetSideHQ;
-							_detected_dir = _sideHQ getRelDir _artillery_piece;
-							//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
-							[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
-							CTI_P_LastFireMission = time;
+							_artyShoots = true;
 						} else {
-							_isInRange = false;
-							if(_target inRangeOfArtillery [[_artillery_piece], _artillery_magazine]) then {_isInRange = true};
-							//ETA = Estimated Time of Arrival
-							_isETA = _artillery_piece getArtilleryETA [_target, _artillery_magazine];
-							["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;
-							if(_isInRange) then {
-								hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[inRange=%1|ETA=%2]</t>", _isInRange, _isETA];
-							} else {
-								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, Unit not in range!</t>";
-							};
+							if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["can shoot? <%1|%2>", _isInRange, _isETA]] call CTI_CO_FNC_Log;};
 						};
 					} else {
-						["TEST", "FILE: Events_UI_ArtilleryMenu.sqf", "can not shoot artillerie not responding, is it still alive?>"] call CTI_CO_FNC_Log;
+						if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", "can not shoot artillerie not responding, is it still alive?>"] call CTI_CO_FNC_Log;};
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, artillerie not responding, is it still alive?.</t>";
 					};
 				} forEach _artillery;
+
+				if(_artyShoots) then {
+					hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie shot, target in range %1 | ETA = %2s</t>", _isInRange, _isETA];
+
+					//arty fired, we inform the enemy to make Arty not so IMBA
+					_enemy = civilian;
+					if(playerSide == west) then {_enemy = east;} else {_enemy = west;};
+					_sideHQ = (_enemy) call CTI_CO_FNC_GetSideHQ;
+					_detected_dir = _sideHQ getRelDir (_artillery select 0 select 0);
+					//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
+					[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
+
+					CTI_P_LastFireMission = time;
+				} else {
+					if(_isInRange && alive (_artillery select 0 select 0)) then {
+						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[inRange=%1|ETA=%2]</t>", _isInRange, _isETA];
+					} else {
+						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, Unit not in range!</t>";
+					};
+				};
 			};
 		};
 	};
