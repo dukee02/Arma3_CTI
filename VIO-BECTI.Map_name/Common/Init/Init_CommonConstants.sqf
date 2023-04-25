@@ -596,6 +596,8 @@ with missionNamespace do {
 		//Charlieco'smod pack is active (civil vehicles only) so we have firetrucks
 		CTI_SALVAGE_SPECIAL = 1;
 		CTI_ADDON_CHARLIECO = 1;
+	} else {
+		CTI_ADDON_CHARLIECO = 0;
 	};
 	if (isNil 'CTI_VEHICLES_BOUNTY') then { //--- Bounty upon entity killed.	
 		CTI_VEHICLES_BOUNTY = 0.40
@@ -740,7 +742,7 @@ with missionNamespace do {
 	if (isNil 'CTI_EAST_AI') then {CTI_EAST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_CAMO_ACTIVATION') then {CTI_CAMO_ACTIVATION = 0};	//--- "Standard", "Winter", "Desert", "All active (Main = Standard)"
 	
-	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 0}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
+	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = 15000}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, max. 5000m (can make units unusable),max. 10000m, max. 15000m, max. 20000m, max. 30000m, max. 40000m")
 	if (isNil 'CTI_ARTILLERY_TIMEOUT') then {CTI_ARTILLERY_TIMEOUT = 300}; //--- Delay between each fire mission
 	
 	CTI_ECONOMY_INCOME_COEF = 10; //--- Town Multiplicator Coefficient (SV * x)

@@ -4664,7 +4664,8 @@ class CTI_RscArtilleryMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.78)";
 			y = "SafeZoneY + (SafezoneH * 0.06)";
 			w = "SafeZoneW * 0.21";
-			h = "SafeZoneH * 0.68";
+			//h = "SafeZoneH * 0.68";
+			h = "SafeZoneH * 0.77";
 			colorBackground[] = {0, 0, 0, 0.7};
 		};
 		class CTI_Menu_FireMission_Frame : RscFrame {
@@ -4672,14 +4673,16 @@ class CTI_RscArtilleryMenu {
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
 			y = "SafeZoneY + (SafezoneH * 0.095)";
 			w = "SafeZoneW * 0.2";
-			h = "SafeZoneH * 0.215";
+			//h = "SafeZoneH * 0.215";
+			h = "SafeZoneH * 0.265";
 		};
 		class CTI_Menu_FireMission_Background : RscText {
 			idc = 290004;
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
 			y = "SafeZoneY + (SafezoneH * 0.095)";
 			w = "SafeZoneW * 0.2";
-			h = "SafeZoneH * 0.215";
+			//h = "SafeZoneH * 0.215";
+			h = "SafeZoneH * 0.265";
 			colorBackground[] = {0.5, 0.5, 0.5, 0.25};
 		};
 		class CTI_Menu_FireMission_Label : RscText {
@@ -4717,37 +4720,52 @@ class CTI_RscArtilleryMenu {
 			sizeEx = "0.8 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 			onLBSelChanged = "['onArtilleryTypeChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ArtilleryMenu.sqf'";
 		};
+		class CTI_Menu_FireMission_Mode_Label : CTI_Menu_FireMission_Type_Label {
+			idc = 290017;
+			
+			y = "SafeZoneY + (SafezoneH * 0.16)";
+			
+			text = "Artillery Mode :";
+		};
+		class CTI_Menu_FireMission_Mode_Combo : CTI_Menu_FireMission_Type_Combo {
+			idc = 290018;
+			
+			y = "SafeZoneY + (SafezoneH * 0.19)";
+			onLBSelChanged = "['onArtilleryModeChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ArtilleryMenu.sqf'";
+		};
 		class CTI_Menu_FireMission_Magazine_Label : CTI_Menu_FireMission_Type_Label {
 			idc = 290008;
 			
-			y = "SafeZoneY + (SafezoneH * 0.165)";
+			y = "SafeZoneY + (SafezoneH * 0.225)";
+			//y = "SafeZoneY + (SafezoneH * 0.165)";
 			
 			text = "Artillery Magazine :";
 		};
 		class CTI_Menu_FireMission_Magazine_Combo : CTI_Menu_FireMission_Type_Combo {
 			idc = 290009;
 			
-			y = "SafeZoneY + (SafezoneH * 0.195)";
+			y = "SafeZoneY + (SafezoneH * 0.255)";
+			//y = "SafeZoneY + (SafezoneH * 0.195)";
 			onLBSelChanged = "['onArtilleryMagazineChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ArtilleryMenu.sqf'";
 		};
 		class CTI_Menu_FireMission_Burst_Label : CTI_Menu_FireMission_Type_Label {
 			idc = 290010;
 			
-			y = "SafeZoneY + (SafezoneH * 0.235)";
+			y = "SafeZoneY + (SafezoneH * 0.285)";
 			
 			text = "Artillery Burst :";
 		};
 		class CTI_Menu_FireMission_Burst_Combo : CTI_Menu_FireMission_Type_Combo {
 			idc = 290011;
 			
-			y = "SafeZoneY + (SafezoneH * 0.265)";
+			y = "SafeZoneY + (SafezoneH * 0.315)";
 			onLBSelChanged = "";
 		};
 		class CTI_Menu_Units_Frame : RscFrame {
 			idc = 290012;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
-			y = "SafeZoneY + (SafezoneH * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.37)";
 			w = "SafeZoneW * 0.2";
 			h = "SafeZoneH * 0.3";
 		};
@@ -4755,7 +4773,7 @@ class CTI_RscArtilleryMenu {
 			idc = 290013;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
-			y = "SafeZoneY + (SafezoneH * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.37)";
 			w = "SafeZoneW * 0.2";
 			h = "SafeZoneH * 0.3";
 			colorBackground[] = {0.5, 0.5, 0.5, 0.25};
@@ -4765,7 +4783,7 @@ class CTI_RscArtilleryMenu {
 			style = LB_MULTI;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
-			y = "SafeZoneY + (SafezoneH * 0.325)";
+			y = "SafeZoneY + (SafezoneH * 0.37)";
 			w = "SafeZoneW * 0.2";
 			h = "SafeZoneH * 0.3";
 			
@@ -4779,7 +4797,8 @@ class CTI_RscArtilleryMenu {
 			idc = 290015;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.785)";
-			y = "SafeZoneY + (SafeZoneH * 3.69)"; //--- Render out
+			y = "SafeZoneY + (SafeZoneH * 4.15)"; //--- Render out
+			//y = "SafeZoneY + (SafeZoneH * 1.30)"; //--- Render out
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.2";
 			
@@ -4791,7 +4810,7 @@ class CTI_RscArtilleryMenu {
 		class CTI_Menu_FireMission_SelectAll : CTI_Menu_FireMission_Call {
 			idc = 290016;
 			
-			y = "SafeZoneY + (SafeZoneH * 0.64)";
+			y = "SafeZoneY + (SafeZoneH * 0.75)";
 			
 			text = "Select All";
 			action = "['onSelectAll'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ArtilleryMenu.sqf'";

@@ -415,9 +415,9 @@ class Params {
 	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
-		values[] = {-2,-1,0,1,2,3};
-		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = -1;
+		values[] = {-2,-1,5000,10000,15000,20000,30000,40000,120000};
+		texts[] = {"Disabled","Ballistic Computer","max. 5000m (can make units unusable)","max. 10000m","max. 15000m","max. 20000m","max. 30000m","max. 40000m","near unlimited 120000m"};
+		default = 15000;
 	};
 	class CTI_ARTILLERY_TIMEOUT {
 		title = "ARTILLERY: Delay between each fire mission";
