@@ -551,9 +551,9 @@ class Params {
 		default = 2;
 	};
 	class CTI_TOWNS_BUILD_PROTECTION_RANGE {
-		title = "TOWNS: Protection Range";
-		values[] = {0,50,100,150,200,250,300,350,400,450,500};
-		texts[] = {"0m","50m","100m","150m","200m","250m","300m","350m","400m","450m","500m"};
+		title = "TOWNS: Protection Range for Base building";
+		values[] = {0,100,250,500,750,1000,1250,1500};
+		texts[] = {"0m","100m","250m","500m","750m","1000m","1250m","1500m"};
 		default = 0;
 	};
 	class CTI_TOWNS_ACTIVE_TIME {
