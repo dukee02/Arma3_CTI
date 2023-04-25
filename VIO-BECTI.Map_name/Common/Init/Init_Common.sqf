@@ -98,6 +98,7 @@ CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Com
 
 CTI_CO_CustomIterator = 0;
 
+call compile preprocessFileLineNumbers "Common\Config\Units\Techmatrix.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
