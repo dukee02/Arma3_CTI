@@ -677,9 +677,9 @@ class Params {
 	};
 	class CTI_SALVAGE_SPECIAL {
 		title = "SPECIAL: Enable Rescue Vehicle as Salvager";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		values[] = {0,1,2};
+		texts[] = {"Disabled","Enabled","Enabled with siren"};
+		default = 0;
 	};
 	class CTI_Log_Level {
 		title = "LOG: Set level of Logging";
