@@ -20,8 +20,8 @@ link6[] = {5,3};
 link7[] = {6,5};
 link8[] = {7,8};
 link9[] = {8,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,25,6316128,1,-150.392914,281.903748,39.667664,-355.389984,514,488,1};
-window[] = {0,-1,-1,-1,-1,712,78,1252,78,1,532};
+globals[] = {0.000000,0,0,0,0,640,480,1,25,6316128,1,-250.707367,382.218109,123.338257,-445.555908,871,884,1};
+window[] = {2,-1,-1,-1,-1,712,78,1252,78,3,889};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -139,6 +139,12 @@ class FSM
                          "" \n
                          "_camp = [vehicle player, 12, true] Call CTI_CL_FNC_GetClosestCamp;" \n
                          "" \n
+                         "//We will now count the enemys remain" \n
+                         "_objects = (_nearest nearEntities[[""Man"",""Car"",""Motorcycle"",""Tank"",""Air"",""Ship""], (_nearest getVariable ""cti_town_range"")]) unitsBelowHeight 40;" \n
+                         "_west = west countSide _objects;" \n
+                         "_east = east countSide _objects;" \n
+                         "_resistance = resistance countSide _objects;" \n
+                         "" \n
                          "if (_town_capture_mode != 0 && !isNull _camp) then {" \n
                          "	if (alive (_camp getVariable ""CTI_CO_CAMP_BUNKER"")) then {" \n
                          "		_sideID = _camp getVariable ""cti_camp_sideID"";" \n
@@ -148,7 +154,14 @@ class FSM
                          "		_lastCheck = ""Camp"";" \n
                          "	};" \n
                          "} else {" \n
-                         "	_txt = Format [""%1: %2/%3"", _name, _curSV,_maxSV];" \n
+                         "	_defUnits = 0;" \n
+                         "	switch (_sideID) do {" \n
+                         "		case CTI_WEST_ID: {if(west == playerSide) then {_defUnits = _east + _resistance} else {_defUnits = _west};};" \n
+                         "		case CTI_EAST_ID: {if(east == playerSide) then {_defUnits = _west + _resistance} else {_defUnits = _east};};" \n
+                         "		case CTI_RESISTANCE_ID: {_defUnits = _resistance};" \n
+                         "		default {0};" \n
+                         "	};" \n
+                         "	_txt = Format [""%1: %2/%3 (Enemys %4)"", _name, _curSV,_maxSV, _defUnits];" \n
                          "	_lastCheck = ""Town"";" \n
                          "};" \n
                          "" \n
