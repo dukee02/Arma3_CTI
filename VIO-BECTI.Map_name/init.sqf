@@ -119,3 +119,9 @@ if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then
 }; 
 
 //_igiload = execVM "IgiLoad\IgiLoadInit.sqf";
+
+if(!CTI_IsServer && !CTI_IsHeadless) then {
+	if(CTI_VAM_MODULE > 0) then {
+		[] execVM "VAM_GUI\VAM_GUI_init.sqf";
+	};
+};

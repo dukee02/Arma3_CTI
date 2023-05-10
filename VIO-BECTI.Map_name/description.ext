@@ -11,6 +11,10 @@
 #include "Rsc\Debriefing.hpp"
 #include "Rsc\Parameters.hpp"
 #include "Rsc\titles.hpp"
+//https://forums.bohemia.net/forums/topic/224041-release-vehicle-appearance-manager-gui/
+#include "VAM_GUI\defines.hpp"
+#include "VAM_GUI\VAM_GUI_controls.hpp"
+#include "VAM_GUI\VAM_GUI_classes.hpp"
 
 //--- Global Garbage Collection Settings
 MinPlayerDistance = 0;					//The minimum distance from any player. Set the value to 0 to remove the min. distance. 
