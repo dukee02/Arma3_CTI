@@ -126,7 +126,11 @@ hintSilent "";
 (findDisplay 46) displayRemoveEventHandler ["MouseButtonDown", _dehMouse];
 
 //--- First check if the surface is water based
-if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure may not be placed here."};
+//if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure may not be placed here."};
+if (surfaceIsWater _pos) then {
+	CTI_VAR_StructureCanceled = true;
+	hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure may not be placed here.";
+};
 
 //--- Check the distance 2D between our position and the potential areas
 _in_area = false;
