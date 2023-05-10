@@ -37,6 +37,7 @@ private ["_part", "_savemode", "_savename"];
 _part = _this select 0;
 _side = if (count _this > 1) then {_this select 1} else {sideEmpty};
 _group = if (count _this > 2) then {_this select 2} else {grpNull};
+_uid = if (count _this > 3) then {_this select 3} else {""};
 _savemode = CTI_PERSISTANT;
 _savename = "";
 
@@ -151,14 +152,14 @@ if(_savemode > 0) then {
 			} forEach [east,west];
 		};
 		case "funds_player": {
-			if(leader _group == player) then {
+			//if(leader _group == player) then {
 				_storedUIDs = profileNamespace getVariable [Format ["SAVE_%1_%2_UIDs", _savename, _side], []];
 				_playerUID = getPlayerUID leader _group;
 				_storedUIDs pushBackUnique _playerUID;
 				profileNamespace setVariable [Format ["SAVE_%1_%2_UIDs", _savename, _side], _storedUIDs];
 				profileNamespace setVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _playerUID], (_group) call CTI_CO_FNC_GetFundsTeam];
-				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _playerUID, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
-			};
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2><%3> Funds: <%4>", _savename, _playerUID, _group, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
+			//};
 		};
 		case "funds_group": {
 			_groupnamefull = format ["%1", _group];

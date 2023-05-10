@@ -99,7 +99,7 @@ if (isNil '_get') then { //--- The player has joined for the first time.
 	//load the stored funds
 	if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
 		//["funds_group",_side,_team] call CTI_SE_FNC_LOAD;
-		["funds_player",_side,_uid] call CTI_SE_FNC_LOAD;
+		["funds_player",_side,_team,_uid] call CTI_SE_FNC_LOAD;
 		_stored_funds = (_team) call CTI_CO_FNC_GetFundsTeam;
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] fund information are [%3|%4|%5]", _name, _uid, _team, _stored_funds, _funds]] call CTI_CO_FNC_Log};
 		//only change the funds if there are more stored

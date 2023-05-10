@@ -101,7 +101,7 @@ _get set [1, _funds];
 //save the funds to the file
 if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
 	//["funds_group",_side,_team] call CTI_SE_FNC_SAVE;
-	["funds_player",_side,_uid] call CTI_SE_FNC_SAVE;
+	["funds_player",_side,_team,_uid] call CTI_SE_FNC_SAVE;
 };
 
 if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") > 0 && !isNil {_group getVariable "cti_ai_active"}) then { //--- Place the leader back at base
