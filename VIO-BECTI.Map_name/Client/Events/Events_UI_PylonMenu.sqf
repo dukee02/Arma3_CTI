@@ -135,7 +135,7 @@ switch (_action) do {
 
 		_storedLoadouts = profileNamespace getVariable [format["CTI_PYLON_LOADOUT_%1", typeOf _veh], []];
 		if(count _storedLoadouts > 0) then {
-			for [{ _i = 1 }, { _i <= count _storedLoadouts }, { _i = _i + 1 }] do { 
+			for [{ _i = 0 }, { _i <= count _storedLoadouts }, { _i = _i + 1 }] do { 
 				_loadoutName = (_storedLoadouts select _i)select 0;
 				if(_loadoutName == _LoadoutTitle) then {
 					//overwrite
