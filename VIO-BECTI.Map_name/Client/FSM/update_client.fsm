@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\Poseidon\Data\Packages\Bin\fsmEditor\scriptedFSM.cfg, update_client">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, update_client">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Init",0,250,66.278671,-152.869141,156.278748,-102.869209,0.000000,"Init"};
@@ -16,145 +16,156 @@ link4[] = {3,1};
 link5[] = {4,2};
 link6[] = {5,3};
 link7[] = {6,5};
-globals[] = {0.000000,0,0,0,0,640,480,1,22,6316128,1,-421.638580,421.637207,84.053474,-532.139343,687,502,1};
-window[] = {0,-1,-1,-1,-1,700,52,1504,52,1,705};
+globals[] = {0.000000,0,0,0,0,640,480,1,22,6316128,1,-248.973633,248.972198,210.556976,-134.453537,381,476,1};
+window[] = {0,-1,-1,-1,-1,674,26,1773,26,1,399};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "update_client";
-  class States
-  {
-    /*%FSM<STATE "Init">*/
-    class Init
-    {
-      name = "Init";
-      init = /*%FSM<STATEINIT""">*/"CTI_P_Commander = (CTI_P_SideJoined) Call CTI_CO_FNC_GetSideCommander;" \n
-       "" \n
-       "//_hc_enabled = if ((missionNamespace getVariable ""WFBE_C_MODULE_BIS_HC"") > 0) then {true} else {false};" \n
-       "" \n
-       "_lastCommander = CTI_P_Commander;" \n
-       "_changeCommander = false;" \n
-       "_timer = 0;" \n
-       "_lastUpdate = time;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Loop">*/
-        class Loop
+        fsmName = "update_client";
+        class States
         {
-          priority = 0.000000;
-          to="Update_Client";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time - _lastUpdate > 1 && !CTI_GameOver"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"CTI_P_Commander = (CTI_P_SideJoined) Call CTI_CO_FNC_GetSideCommander;" \n
+                         "" \n
+                         "//_hc_enabled = if ((missionNamespace getVariable ""WFBE_C_MODULE_BIS_HC"") > 0) then {true} else {false};" \n
+                         "" \n
+                         "_lastCommander = CTI_P_Commander;" \n
+                         "_changeCommander = false;" \n
+                         "_timer = 0;" \n
+                         "_lastUpdate = time;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Loop">*/
+                                class Loop
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="Update_Client";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time - _lastUpdate > 1 && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Update_Client">*/
+                class Update_Client
+                {
+                        name = "Update_Client";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"CTI_P_Commander = (CTI_P_SideJoined) Call CTI_CO_FNC_GetSideCommander;" \n
+                         "if (IsNull CTI_P_Commander && !IsNull _lastCommander) then {_changeCommander = true};" \n
+                         "if (!IsNull CTI_P_Commander && IsNull _lastCommander) then {_changeCommander = true};" \n
+                         "if (!isNull CTI_P_Commander && !isNull _lastCommander) then {" \n
+                         "	if (CTI_P_Commander != _lastCommander) then {_changeCommander = true};" \n
+                         "};" \n
+                         "" \n
+                         "_lastUpdate = time;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Gameover">*/
+                                class Gameover
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="End";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Change_Commander">*/
+                                class Change_Commander
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="Update_Commander";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_changeCommander && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Loop">*/
+                                class Loop
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="Update_Client";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time - _lastUpdate > 1 && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End">*/
+                class End
+                {
+                        name = "End";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Update_Commander">*/
+                class Update_Commander
+                {
+                        name = "Update_Commander";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"_changeCommander = false;" \n
+                         "_lastCommander = CTI_P_Commander;	" \n
+                         "_HQ = (CTI_P_SideJoined) Call CTI_CO_FNC_GetSideHQ;" \n
+                         "		" \n
+                         "if (!isNull(CTI_P_Commander)) then {" \n
+                         "	if (CTI_P_Commander == Group player) then {" \n
+                         "		if (!IsNull _HQ && alive _HQ) then {call CTI_CL_FNC_AddHQActions};" \n
+                         "		//HQaction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
+                         "		if(CTI_Base_RestrictedArea) then {" \n
+                         "				HQaction = player addAction [""<t color='#ff0000'>MENU: Construction (HQ) [restricted]</t>"", """", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];		" \n
+                         "			} else {" \n
+                         "				HQaction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
+                         "		};" \n
+                         "		//if (_hc_enabled) then {player setVariable [""BIS_HC_scope"",BIS_HC_mainscope];{if !(isNil '_x') then {player HCSetGroup [_x]; [_x,false] Call SetTeamAutonomous}} forEach clientTeams};" \n
+                         "	} else {" \n
+                         "		if (!IsNull _HQ) then {	removeAllActions _HQ}; //---Lock/Unlock" \n
+                         "		if (!isNil ""HQAction"") then {player removeAction HQAction}; //---buildmenu" \n
+                         "		//if (count (hcAllGroups player) > 0 && _hc_enabled) then {HCRemoveAllGroups player};" \n
+                         "		//{[_x,false] Call SetTeamAutonomous} forEach clientTeams;" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Loop">*/
+                                class Loop
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="Update_Client";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time - _lastUpdate > 1 && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
         };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Update_Client">*/
-    class Update_Client
-    {
-      name = "Update_Client";
-      init = /*%FSM<STATEINIT""">*/"CTI_P_Commander = (CTI_P_SideJoined) Call CTI_CO_FNC_GetSideCommander;" \n
-       "if (IsNull CTI_P_Commander && !IsNull _lastCommander) then {_changeCommander = true};" \n
-       "if (!IsNull CTI_P_Commander && IsNull _lastCommander) then {_changeCommander = true};" \n
-       "if (!isNull CTI_P_Commander && !isNull _lastCommander) then {" \n
-       "	if (CTI_P_Commander != _lastCommander) then {_changeCommander = true};" \n
-       "};" \n
-       "" \n
-       "_lastUpdate = time;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Gameover">*/
-        class Gameover
+        initState="Init";
+        finalStates[] =
         {
-          priority = 0.000000;
-          to="End";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                "End",
         };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Change_Commander">*/
-        class Change_Commander
-        {
-          priority = 0.000000;
-          to="Update_Commander";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_changeCommander && !CTI_GameOver"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Loop">*/
-        class Loop
-        {
-          priority = 0.000000;
-          to="Update_Client";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time - _lastUpdate > 1 && !CTI_GameOver"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "End">*/
-    class End
-    {
-      name = "End";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Update_Commander">*/
-    class Update_Commander
-    {
-      name = "Update_Commander";
-      init = /*%FSM<STATEINIT""">*/"_changeCommander = false;" \n
-       "_lastCommander = CTI_P_Commander;	" \n
-       "_HQ = (CTI_P_SideJoined) Call CTI_CO_FNC_GetSideHQ;" \n
-       "		" \n
-       "if (!isNull(CTI_P_Commander)) then {" \n
-       "	if (CTI_P_Commander == Group player) then {" \n
-       "		if (!IsNull _HQ && alive _HQ) then {call CTI_CL_FNC_AddHQActions};" \n
-       "" \n
-       "		HQaction = player addAction [""<t color='#a5c4ff'>MENU: Construction (HQ)</t>"", ""Client\Actions\Action_BuildMenu.sqf"", """", 93, false, true, """", ""_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange""];" \n
-       "		//if (_hc_enabled) then {player setVariable [""BIS_HC_scope"",BIS_HC_mainscope];{if !(isNil '_x') then {player HCSetGroup [_x]; [_x,false] Call SetTeamAutonomous}} forEach clientTeams};" \n
-       "" \n
-       "	} else {" \n
-       "		" \n
-       "		if (!IsNull _HQ) then {	removeAllActions _HQ}; //---Lock/Unlock" \n
-       "		if (!isNil ""HQAction"") then {player removeAction HQAction}; //---buildmenu" \n
-       "		//if (count (hcAllGroups player) > 0 && _hc_enabled) then {HCRemoveAllGroups player};" \n
-       "		//{[_x,false] Call SetTeamAutonomous} forEach clientTeams;" \n
-       "	};" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Loop">*/
-        class Loop
-        {
-          priority = 0.000000;
-          to="Update_Client";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time - _lastUpdate > 1 && !CTI_GameOver"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-  };
-  initState="Init";
-  finalStates[] =
-  {
-    "End"
-  };
 };
 /*%FSM</COMPILE>*/
