@@ -37,7 +37,7 @@ _side = _this select 1;
 
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 if(count _upgrades == 0) then {_upgrades = [10,10,10,10,10,10,10,10,10,10,10,10,10,10]};
-
+/* //deactivated because we use pylons now for all other units we set them in techtree to match!
 //--- We check the FFAR loadout 
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_FFAR") do {
 	//case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftFFAR};//--- Remove
@@ -66,7 +66,7 @@ switch (missionNamespace getVariable "CTI_VEHICLES_AIR_AA") do {
 switch (missionNamespace getVariable "CTI_VEHICLES_AIR_CM") do {
 	case 0: {_vehicle call CTI_CO_FNC_SanitizeAircraftCM};//--- Remove
 	case 1: {if (_upgrades select CTI_UPGRADE_AIR_CM < 1) then {_vehicle call CTI_CO_FNC_SanitizeAircraftCM}};//--- Remove if not yet ugpraded
-};
+};*/
 
 _phylon_cnt = 1;
 {

@@ -1,3 +1,27 @@
+Added: Artillery can change mode + max range in params
+Added: Save empty vehicles and player funds by ID
+Added: units count in towns		(see minor fixes mar 1)
+Added: mission build .bat
+Added: VAM (Vehicle Appearance Module)
+Fixed: load and save user funds
+Fixed: only one pylon setting can be saved
+Fixed: Stuck in building cam if build on water
+Fixed: vanilla rearm works in CTI
+Fixed: Town capture gets broadcasted
+Fixed: exception at townspawn
+Changed: Option to enable only special salvager units
+Changed: code cleanup - tech matrix changed
+Changed: only 1 infoline on artyshots
+Changed: Desc and values "TOWNS: Protection Range"
+Changed: Town vehicles spawn heading north now
+changed: info if you in restricted area for basse
+Changed: Upgrade descrioption
+
+not needed
+[-]Changed: basic base units coding
+[-]Changed: standardize Base Units config
+
+
 V2.0_230109
 Added: Integrated Phylon Management
 

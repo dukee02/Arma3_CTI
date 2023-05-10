@@ -103,7 +103,7 @@ _pool = [];
 {
 	//check if there units in, if not set infantry as default
 	if(count _x == 0) then {
-		_x = ["GUER_INFANTRY_SQ_LIGHT", 4, 20];
+		_x = ["INFANTRY_SQ_LIGHT", 4, 20];
 		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Pool is empty, replaced with: <%1>",  _x]] call CTI_CO_FNC_Log;};
 	};
 	
@@ -166,7 +166,6 @@ _pool = _pool call CTI_CO_FNC_ArrayShuffle;
 //--- Compose the pools.
 _teams = [];
 for '_i' from 1 to _totalGroups do {
-	//_units = [(missionNamespace getVariable format["%1_SOLDIER_SQUADLEADER", _side]) select 0];
 	_units = [missionNamespace getVariable format["CTI_%1_Commander", _side]];
 	
 	_pool_group_size_current = _pool_group_size-1;
@@ -183,15 +182,14 @@ for '_i' from 1 to _totalGroups do {
 				if !(_unit isKindOf "Man") then {
 					if(_pool_vehicle_count >= 2) then { 
 						_can_use = false;
-						if (CTI_Log_Level >= CTI_Log_Debug) then { 
-							["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation team max vehicle count: <%1>", _pool_vehicle_count]] call CTI_CO_FNC_Log;
-						};
+						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["cant use unit <%1> vehicle count: <%2>", _unit, _pool_vehicle_count]] call CTI_CO_FNC_Log};
 					} else {
 						_pool_vehicle_count = _pool_vehicle_count + 1;
 					};
 				};
 			};
 		};
+		if(isNil _unit) then { _can_use = false };
 		
 		//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;};
 		
@@ -217,22 +215,6 @@ _groups = [];
 _positions = [];
 
 {
-	/*//Create teams around the camps first. If there are no more camps then pick a random positon.
-	if (count _camps > 0 && random 100 > 50) then {
-		_camp = _camps select floor (random count _camps);
-		_camps = _camps - [_camp];
-		_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
-		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
-		_positions pushBack _position;
-	} else {
-		_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
-		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
-		_positions pushBack _position;
-	};	
-	//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition; // for some reason putting these here instead of inside the argument causes massive error spam and no ai
-	//_positions pushBack _position; // yet this is how its layed out in wfbe and it works just fine there.
-	*/
-	
 	//check if spawnpoints are set and use them until we haven't anymore
 	if (count _spawns > 0) then {
 		_spawn = _spawns select floor (random count _spawns);
@@ -240,6 +222,7 @@ _positions = [];
 		_position = [getPos _spawn, 20] call CTI_CO_FNC_GetEmptyPosition;
 		_positions pushBack _position;
 	} else {
+		//If all preset spawns blocked create teams around the camps first. If there are no more camps then pick a random positon.
 		if (count _camps > 0 && random 100 > 50) then {
 			_camp = _camps select floor (random count _camps);
 			_camps = _camps - [_camp];
@@ -253,28 +236,9 @@ _positions = [];
 		};	
 	};
 	
-	_group = createGroup _side;
+	_group = createGroup [_side, true];
 	_groups pushBack _group;
 	
-	/*
-	{
-		if (_x isKindOf "Man") then {
-			[_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
-		} else {
-			_crew = switch (true) do {
-				case (_x isKindOf "Tank"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
-				case (_x isKindOf "Air"): { missionNamespace getVariable format["%1_SOLDIER_PILOT", _side] };
-				default { missionNamespace getVariable format["%1_SOLDIER", _side] };
-			};
-			if (typeName _crew == "ARRAY") then {_crew = _crew select 0};
-			_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, false, false, true] call CTI_CO_FNC_CreateVehicle;
-			[_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
-			_vehicles pushBack _vehicle;
-			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
-		};
-	} forEach _x;
-	
-	[_town, _group, _sideID] execFSM "Server\FSM\town_patrol.fsm";*/
 } forEach _teams;
 
 [_teams, _groups, _positions]

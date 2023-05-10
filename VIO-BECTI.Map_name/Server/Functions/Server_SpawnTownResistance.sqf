@@ -129,8 +129,7 @@ _pool = _pool call CTI_CO_FNC_ArrayShuffle;
 //--- Compose the pools.
 _teams = [];
 for '_i' from 1 to _totalGroups do {
-	//_units = [GUER_SOLDIER_SQUADLEADER];
-	_units = [CTI_GUER_SOLDIER];
+	_units = [missionNamespace getVariable "CTI_GUER_Commander"];
 	_pool_group_size_current = _pool_group_size-1;
 	_pool_vehicle_count = 0;
 	while {_pool_group_size_current > 0} do {
@@ -145,16 +144,16 @@ for '_i' from 1 to _totalGroups do {
 				if !(_unit isKindOf "Man") then {
 					if(_pool_vehicle_count >= 2) then { 
 						_can_use = false;
-						if (CTI_Log_Level >= CTI_Log_Debug) then { 
-							["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation team max vehicle count: <%1>", _pool_vehicle_count]] call CTI_CO_FNC_Log;
-						};
+						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["cant use unit <%1> vehicle count: <%2>", _unit, _pool_vehicle_count]] call CTI_CO_FNC_Log};
 					} else {
 						_pool_vehicle_count = _pool_vehicle_count + 1;
 					};
 				};
 			};
 		};
-		//if(isNil _unit) then { _can_use = false };
+		if(isNil _unit) then { _can_use = false };
+		
+		//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;};
 		
 		if (_can_use) then {
 			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
@@ -179,22 +178,6 @@ _groups = [];
 _positions = [];
 
 {
-	/*//Create teams around the camps first. If there are no more camps then pick a random positon.
-	if (count _camps > 0 && random 100 > 50) then {
-		_camp = _camps select floor (random count _camps);
-		_camps = _camps - [_camp];
-		_position = [getPos _camp, 10, 50] call CTI_CO_FNC_GetRandomPosition;
-		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
-		_positions pushBack _position;
-	} else {
-		_position = [getPos _town, 25, CTI_TOWNS_RESISTANCE_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
-		_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
-		_positions pushback _position;
-	};	
-	//_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition; // for some reason putting these here instead of inside the argument causes massive error spam and no ai
-	//_positions pushBack _position; // yet this is how its layed out in wfbe and it works just fine there.
-	*/
-	
 	//check if spawnpoints are set
 	if (count _spawns > 0) then {
 		_spawn = _spawns select floor (random count _spawns);
@@ -202,6 +185,7 @@ _positions = [];
 		_position = [getPos _spawn, 20] call CTI_CO_FNC_GetEmptyPosition;
 		_positions pushBack _position;
 	} else {
+		//If all preset spawns blocked create teams around the camps first. If there are no more camps then pick a random positon.
 		if (count _camps > 0 && random 100 > 50) then {
 			_camp = _camps select floor (random count _camps);
 			_camps = _camps - [_camp];
@@ -215,27 +199,9 @@ _positions = [];
 		};	
 	};
 	
-	_group = createGroup resistance;
+	_group = createGroup [resistance, true];
 	_groups pushback _group;
 	
-	/*
-	{
-		if (_x isKindOf "Man") then {
-			[_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, CTI_RESISTANCE_ID] call CTI_CO_FNC_CreateUnit;
-		} else {
-			_crew = switch (true) do {
-				case (_x isKindOf "Tank"): { missionNamespace getVariable "GUER_SOLDIER_CREW" };
-				case (_x isKindOf "Air"): { missionNamespace getVariable "GUER_SOLDIER_PILOT" };
-				default { missionNamespace getVariable "GUER_SOLDIER" };
-			};
-			_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, CTI_RESISTANCE_ID, false, false, true] call CTI_CO_FNC_CreateVehicle;
-			[_vehicle, _crew, _group, CTI_RESISTANCE_ID] call CTI_CO_FNC_ManVehicle;
-			_vehicles pushback _vehicle;
-			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
-		};
-	} forEach _x;
-	
-	[_town, _group, CTI_RESISTANCE_ID] execFSM "Server\FSM\town_patrol.fsm";*/
 } forEach _teams;
 
 [_teams, _groups, _positions]
