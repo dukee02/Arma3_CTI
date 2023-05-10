@@ -29,6 +29,12 @@ class Params {
 		texts[] = {""};
 		default = 1;
 	};
+	class CTI_VAM_MODULE {
+		title = "Module: VAM (Vehicle Appearance Manager)";
+		values[] = {0,1};
+		texts[] = {"Disabled","Enabled"};
+		default = 0;
+	};
 	class CTI_CAMO_ACTIVATION {
 		title = "Main Camo";
 		values[] = {0,1,4};
@@ -60,57 +66,63 @@ class Params {
 		default = 0; //0
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {
-		title = "UPGRADE: Max Level Gear";
+		title = "UPGRADE: Max Level Gear (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {
-		title = "UPGRADE: Max Level Infantry";
+		title = "UPGRADE: Max Level Infantry (depends on activated stuff, gets adjust to lower)";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_WHEELED {
-		title = "UPGRADE: Max Level Wheeled";
+		title = "UPGRADE: Max Level Wheeled (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all wheeled units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable all wheeled units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_TRACKED {
-		title = "UPGRADE: Max Level Tracked";
+		title = "UPGRADE: Max Level Tracked (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all tracked units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable all tracked units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_NAVAL {
-		title = "UPGRADE: Max Level Naval";
+		title = "UPGRADE: Max Level Naval (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all naval units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable all naval units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_AIR {
-		title = "UPGRADE: Max Level Air";
+		title = "UPGRADE: Max Level Air (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all air units","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"Disable all air units","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_FFAR {
-		title = "UNITS_UPGRADE: Aircraft Basic equipment";
+		title = "UNITS_UPGRADE: Aircraft Basic equipment (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"No basic Rockets/Bombs","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AA {
-		title = "UNITS_UPGRADE: Aircraft AA Missiles";
+		title = "UNITS_UPGRADE: Aircraft AA Missiles (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"No AA Missiles","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_VEHICLES_AIR_AT {
-		title = "UNITS_UPGRADE: Aircraft advanced AT Missiles";
+		title = "UNITS_UPGRADE: Aircraft advanced AT Missiles (depends on activated stuff, gets adjust to lower)";
 		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","full"};
+		texts[] = {"No advanced AT Missiles","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
+		default = 10;
+	};
+	class CTI_ECONOMY_LEVEL_DEFENSE {
+		title = "UPGRADE: Max Level Defense (depends on activated stuff, gets adjust to lower)";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	/*class CTI_VEHICLES_AIR_CM {
@@ -119,12 +131,6 @@ class Params {
 		texts[] = {"Disabled","Enabled with Upgrade","Enabled"};
 		default = 2;
 	};*/
-	class CTI_ECONOMY_LEVEL_DEFENSE {
-		title = "UPGRADE: Max Level Defense";
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"0","1","2","3","4","5","6","7","8","9","full"};
-		default = 10;
-	};
 	class CTI_FACTORY_LEVEL_PRESET {
 		title = "UPGRADE: Pre researched Factory level (Barracks,Wheeled,Tracked,Air,Naval,Gear)";
 		values[] = {0,1,2,3,4,5,6,7,8,9};
