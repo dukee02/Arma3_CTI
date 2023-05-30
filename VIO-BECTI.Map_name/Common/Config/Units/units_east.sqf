@@ -1479,7 +1479,7 @@ _d pushBack 0;
 
 
 if(CTI_ADDON_CHARLIECO == 1 ) then {
-	_c pushBack format["CTI_Salvager_%1", _side];
+	_c pushBack format["CTI_Salvager_%1", _faction];
 	_p pushBack '';
 	_n pushBack 'Salvager Truck';
 	_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
@@ -1499,8 +1499,8 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 	_s pushBack [format["%1FPT_MAN", _sid],"salvager-independent"];
 	_d pushBack 0;
 } else {
-	if(CTI_SALVAGE_SPECIAL == 1 ) then {
-		_c pushBack format["CTI_Salvager_%1", _side];
+	if(CTI_SALVAGE_SPECIAL >= 1 ) then {
+		_c pushBack format["CTI_Salvager_%1", _faction];
 		_p pushBack '';
 		_n pushBack 'Salvager Truck';
 		_o pushBack CTI_VEHICLES_SALVAGER_PRICE;
@@ -1520,10 +1520,15 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 		_s pushBack [format["%1I_E_Van_02_transport_MP_F", _sid],"salvager-independent"];
 		_d pushBack 0;
 	} else {
+		_c pushBack format["CTI_Salvager_%1", _faction];
+		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
+
 		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-			_c pushBack format["%1O_T_Truck_02_transport_F", _sid];
+			_s pushBack [format["%1O_T_Truck_02_transport_F", _sid],"salvager"];
+			_s pushBack [format["%1O_T_Truck_02_transport_F", _sid],"salvager-independent"];
 		} else {
-			_c pushBack format["%1O_Truck_02_transport_F", _sid];
+			_s pushBack [format["%1O_Truck_02_transport_F", _sid],"salvager"];
+			_s pushBack [format["%1O_Truck_02_transport_F", _sid],"salvager-independent"];
 		};
 		//set all other vars in a slope
 		_cntstart = count _c;
@@ -1535,7 +1540,6 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 			_t pushBack _building_time;
 			_u pushBack _tech_level;
 			_f pushBack CTI_FACTORY_REPAIR;
-			_s pushBack [format["%1O_T_Truck_02_transport_F", _sid],"salvager-independent"];
 			_d pushBack 0;
 		};
 	};	
