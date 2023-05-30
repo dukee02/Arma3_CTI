@@ -91,7 +91,7 @@ switch (_message_var) do {
 	};
 	case "structure-hit": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		CTI_P_ChatID commandChat format ["%1 damaged at grid %2, Damage: %3!", (_req_var select 0) select 1, mapGridPosition (_parameters select 1), _parameters select 2];
+		CTI_P_ChatID commandChat format ["%1 damaged at grid %2, Damage: %3!", (_var select 0) select 1, mapGridPosition (_parameters select 1), _parameters select 2];
 	};
 	case "structure-teamkill-attempt": {
 		CTI_P_ChatID commandChat format ["Player %1 from group %2 tried to place an explosive near a friendly %3! (the explosive was removed)", _parameters select 0, _parameters select 1, _parameters select 2];
