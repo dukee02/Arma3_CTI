@@ -9,6 +9,10 @@ if (!hasInterface) exitWith {};
 //3 : Activate when player is near KP Liberation FOB
 VAM_condition_check_options = [1];
 VAM_repair_vehicle_list = [
+	//CTI Structures
+	"TK_GUE_WarfareBContructionSite_Base_EP1",
+	"Land_Cargo_House_V3_F",
+	//Units
 	"B_APC_Tracked_01_CRV_F",
 	"B_T_APC_Tracked_01_CRV_F",
 	"B_Slingload_01_Repair_F",

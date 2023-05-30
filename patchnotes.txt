@@ -1,3 +1,6 @@
+[] Start with less towns can result in a long early moave with the HQ
+
+
 Added: Artillery can change mode + max range in params
 Added: Save empty vehicles and player funds by ID
 Added: units count in towns		(see minor fixes mar 1)

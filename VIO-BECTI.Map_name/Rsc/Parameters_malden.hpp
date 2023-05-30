@@ -410,8 +410,8 @@ class Params {
 	};
   	class CTI_WEATHER_FAST_NIGHT {
 		title = "WEATHER: Night Duration";
-		values[] = {0.25,0.5,0.75,1,2,3,4,5,6,7,8,9,10,11,12};
-		texts[] = {"15 min","30 min","45 min","1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
+		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
 		default = 1;
 	};
   	class CTI_WEATHER_CHANGES {
@@ -442,7 +442,7 @@ class Params {
 		title = "GAMEPLAY: Kick Team Stackers";
 		values[] = {0,1,2,3,4,5};
 		texts[] = {"Disabled","+1 Player Advantage","+2 Player Advantage","+3 Player Advantage","+4 Player Advantage","+5 Player Advantage"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_GAMEPLAY_TEAMSWAP_DISABLE {
 		title = "GAMEPLAY: Kick Team Swappers";
@@ -638,26 +638,14 @@ class Params {
 		title = "VISUAL: Terrain Grid";
 		values[] = {10,20,30,50};
 		texts[] = {"Far","Medium","Short","Free"};
-		default = 50;
+		default = 20;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000,4500,5000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","4.5 KM","5 KM"};
-		default = 5000;
+		default = 4000;
 	};
-	/*class SEPARATOR_ADDONS {
-		title = "=========================== ADDONS ============================";
-		values[] = {1};
-		texts[] = {""};
-		default = 1;
-	};
-	class CTI_APEX_ADDON {
-		title = "ADDON: Apex";
-		values[] = {0,1};
-		texts[] = {"deactivate","activate"};
-		default = 0;
-	};*/
 	class SEPARATOR_LOG {
 		title = "=========================== DEBUG ============================";
 		values[] = {1};
@@ -665,9 +653,9 @@ class Params {
 		default = 1;
 	};
 	class CTI_AI_TEAMS_ENABLED {
-		title = "AI: Teams";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled", "1/4 Slots", "1/2 Slots", "3/4 Slots", "All Slots"};
+		title = "AI: Teams (Coop disables AI on player side)";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+		texts[] = {"Disabled", "1 Slot", "2 Slots", "3 Slots", "4 Slots", "5 Slots", "6 Slots", "7 Slots", "8 Slots", "9 Slot", "10 Slots", "11 Slots", "12 Slots", "13 Slots", "14 Slots", "15 Slots"};
 		default = 0;
 	};
 	class CTI_AI_TEAMS_GROUPSIZE {
