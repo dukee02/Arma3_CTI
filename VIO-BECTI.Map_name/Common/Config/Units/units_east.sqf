@@ -535,15 +535,39 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	};
 	
 	// SPECIAL CASES - Vehicles that need scripting
-	_c pushBack format["%1C_Van_02_medevac_F", _sid];		//medic
-	_p pushBack '';
-	_n pushBack (format ["Civil Ambulance Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
-	_o pushBack _armedUnitValue;
-	_t pushBack _building_time;
-	_u pushBack _tech_level;
-	_f pushBack CTI_FACTORY_LIGHT;
-	_s pushBack "service-medic";
-	_d pushBack 0;
+	//if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
+		_c pushBack format["%1C_Van_02_medevac_F", _sid];		//medic
+		_p pushBack '';
+		_n pushBack (format ["Civil Ambulance Respawn - Range %1 m",CTI_RESPAWN_MOBILE_RANGE]);
+		_o pushBack _armedUnitValue;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "service-medic";
+		_d pushBack 0;
+	//};
+	
+	if(CTI_ADDON_CHARLIECO > 0) then {
+		_c pushBack format["%1chdefender_vsavhr", _sid];				//medic
+		_p pushBack '';
+		_n pushBack 'Red Mobile Respawn';
+		_o pushBack _armedUnitValue;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "service-medic";
+		_d pushBack 0;	
+
+		_c pushBack format["%1chmerc_amb", _sid];				//medic
+		_p pushBack '';
+		_n pushBack 'Civil White Medic';
+		_o pushBack _armedUnitValue;
+		_t pushBack _building_time;
+		_u pushBack _tech_level;
+		_f pushBack CTI_FACTORY_LIGHT;
+		_s pushBack "service-medic";
+		_d pushBack 0;
+	};
 };
 
 // Light Factory Upgrade Level 1

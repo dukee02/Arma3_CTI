@@ -301,18 +301,20 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1B_T_Quadbike_01_F", _sid];
 		_c pushBack format["%1B_T_LSV_01_unarmed_F", _sid];
-		_c pushBack format["%1B_T_LSV_01_unarmed_CTRG_F", _sid];
 		_c pushBack format["%1B_T_Truck_01_mover_F", _sid];
 	} else {
 		_c pushBack format["%1B_Quadbike_01_F", _sid];
 		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
 			_c pushBack format["%1B_LSV_01_unarmed_F", _sid];
-			_c pushBack format["%1B_CTRG_LSV_01_light_F", _sid];
 			_c pushBack format["%1B_Truck_01_mover_F", _sid];
 		};
 	};
 	if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
-		_c pushBack format["%1C_IDAP_Van_02_medevac_F", _sid];
+		_c pushBack format["%1C_IDAP_Van_02_medevac_F", _sid];		//medic
+	};
+	if(CTI_ADDON_CHARLIECO > 0) then {
+		_c pushBack format["%1chvsavar_ivecoar", _sid];				//medic
+		_c pushBack format["%1chmaster2_ap", _sid];					//medic
 	};
 };
 
@@ -753,11 +755,9 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1B_T_Quadbike_01_F", _sid];
 		_c pushBack format["%1B_T_LSV_01_unarmed_F", _sid];
-		_c pushBack format["%1B_T_LSV_01_unarmed_CTRG_F", _sid];
 	} else {
 		_c pushBack format["%1B_Quadbike_01_F", _sid];
 		_c pushBack format["%1B_LSV_01_unarmed_F", _sid];
-		_c pushBack format["%1B_CTRG_LSV_01_light_F", _sid];
 	};
 };
 

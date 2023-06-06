@@ -329,7 +329,11 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _level) then {
 		};
 	};
 	if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
-		_c pushBack format["%1C_Van_02_medevac_F", _sid];
+		_c pushBack format["%1C_Van_02_medevac_F", _sid];		//medic
+	};
+	if(CTI_ADDON_CHARLIECO > 0) then {
+		_c pushBack format["%1chdefender_vsavhr", _sid];		//medic
+		_c pushBack format["%1chmerc_amb", _sid];				//medic
 	};
 };
 
