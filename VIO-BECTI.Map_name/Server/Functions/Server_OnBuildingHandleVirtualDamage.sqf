@@ -74,5 +74,3 @@ if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02
 	_logic setVariable ["cti_structures_lasthit", time];
 	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position, _damage]]] call CTI_CO_FNC_NetSend;
 };
-
-0

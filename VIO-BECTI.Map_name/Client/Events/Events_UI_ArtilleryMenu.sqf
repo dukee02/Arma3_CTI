@@ -99,7 +99,6 @@ switch (_action) do {
 				_rangemin = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_usable_modes select 0) >> "minRange"));
 				_rangemax = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_usable_modes select 0) >> "maxRange"));
 				_range = [_rangemin, _rangemax];
-				["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["ranges <%1><%2>", _rangemin, _rangemax]] call CTI_CO_FNC_Log;
 				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", _range];
 
 				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_unit", _selected];
