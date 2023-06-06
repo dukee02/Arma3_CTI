@@ -626,17 +626,17 @@ if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "MRAWS_HEAT_F";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
-
 	_i pushBack "MRAWS_HE_F";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 	_i pushBack "MRAWS_HEAT55_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+	_i pushBack "MRAWS_HEAT_F";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // -- Tech Level 3
 _tech_level = 3;
@@ -689,7 +689,7 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_Get
 
 _i pushBack "Titan_AP";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,400] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
@@ -1150,9 +1150,6 @@ _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,0.5] call CTI_CO_FNC_GetCa
 _i pushBack "NVGoggles";
 if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "NVGoggles_tna_F";
-	_i pushBack "NVGogglesB_blk_F";
-	_i pushBack "NVGogglesB_grn_F";
-	_i pushBack "NVGogglesB_gry_F";
 	
 	_i pushBack "G_Balaclava_TI_tna_F";
 	_i pushBack "G_Balaclava_TI_G_tna_F";
@@ -1164,6 +1161,22 @@ _cntend = count _p;
 for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+};
+
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
+	_tech_level = 3;
+
+	_i pushBack "NVGogglesB_blk_F";
+	_i pushBack "NVGogglesB_grn_F";
+	_i pushBack "NVGogglesB_gry_F";
+	
+	// set all other vars in a slope
+	_cntstart = count _i;
+	_cntend = count _p;
+	for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+		_u pushBack _tech_level;
+		_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+	};
 };
 
 // -------------- Attachments --------------

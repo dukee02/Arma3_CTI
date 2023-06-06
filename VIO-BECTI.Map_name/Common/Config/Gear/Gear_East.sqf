@@ -537,7 +537,7 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_Get
 
 _i pushBack "RPG32_HE_F";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // -- Tech Level 2
 _tech_level=2;
@@ -557,7 +557,7 @@ if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
 
 	_i pushBack "Vorona_HE";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
 // -- Tech Level 3
@@ -594,7 +594,7 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_Get
 
 _i pushBack "Titan_AP";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,400] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
@@ -964,6 +964,22 @@ _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "NVGoggles_OPFOR";
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
+	_i pushBack "G_AirPurifyingRespirator_02_black_F";
+	_i pushBack "G_AirPurifyingRespirator_02_olive_F";
+	_i pushBack "G_AirPurifyingRespirator_02_sand_F";
+};
+
+// set all other vars in a slope
+_cntstart = count _i;
+_cntend = count _p;
+_cost = [CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize;
+for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+	_u pushBack _tech_level;
+	_p pushBack _cost;
+};
+
+_tech_level = 1;
 if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "O_NVGoggles_ghex_F";
 	_i pushBack "O_NVGoggles_hex_F";
@@ -971,10 +987,6 @@ if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 };
 if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "O_NVGoggles_grn_F";
-
-	_i pushBack "G_AirPurifyingRespirator_02_black_F";
-	_i pushBack "G_AirPurifyingRespirator_02_olive_F";
-	_i pushBack "G_AirPurifyingRespirator_02_sand_F";
 };
 
 // set all other vars in a slope
