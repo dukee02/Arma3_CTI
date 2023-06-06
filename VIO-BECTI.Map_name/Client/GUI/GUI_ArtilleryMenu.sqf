@@ -35,7 +35,7 @@ while { true } do {
 		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlSetText "Call Fire Mission";
 	} else {
 		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlEnable (false);
-		_nextMission = rount (CTI_ARTILLERY_TIMEOUT - (time - CTI_P_LastFireMission));
+		_nextMission = round (CTI_ARTILLERY_TIMEOUT - (time - CTI_P_LastFireMission));
 		((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlSetText format ["Next Mission in %1s", _nextMission];
 	};
 	
