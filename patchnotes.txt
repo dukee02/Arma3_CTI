@@ -3,8 +3,7 @@
 
 Added: Artillery can change mode + max range in params
 Added: Save empty vehicles and player funds by ID
-Added: units count in towns		(see minor fixes mar 1)
-Added: mission build .bat
+Added: units count in towns
 Added: VAM (Vehicle Appearance Module)
 Fixed: load and save user funds
 Fixed: only one pylon setting can be saved
