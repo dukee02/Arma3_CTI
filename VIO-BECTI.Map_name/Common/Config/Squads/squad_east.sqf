@@ -45,14 +45,14 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		inf_to_add = [[format["%1O_Soldier_lite_F", _sid], 1, 60]];	
-		inf_to_add pushBack [format["%1O_Soldier_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1O_medic_F", _sid], 1, 20];
+		inf_to_add = [[format["%1O_Soldier_F", _sid], 1, 60]];
+		inf_to_add pushBack [format["%1O_Soldier_lite_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1O_medic_F", _sid], 1, 40];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		inf_to_add = [[format["%1O_Soldier_lite_F", _sid], 1, 60]];	
-		inf_to_add pushBack [format["%1O_T_Soldier_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1O_T_Medic_F", _sid], 1, 20];
+		inf_to_add = [[format["%1O_T_Soldier_F", _sid], 1, 60]];
+		inf_to_add pushBack [format["%1O_Soldier_lite_F", _sid], 1, 20];
+		inf_to_add pushBack [format["%1O_T_Medic_F", _sid], 1, 40];
 	};
 	units_infantry append inf_to_add;
 	infantry_auto append inf_to_add;

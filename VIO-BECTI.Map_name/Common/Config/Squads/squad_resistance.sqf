@@ -55,7 +55,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	inf_to_add pushBack [format["%1I_Soldier_GL_F", _sid], 1, 20];
 	inf_to_add pushBack [format["%1I_soldier_mine_F", _sid], 1, 20];
 	inf_to_add pushBack [format["%1I_Soldier_repair_F", _sid], 1, 20];
-	inf_to_add pushBack [format["%1I_medic_F", _sid], 1, 20];
+	inf_to_add pushBack [format["%1I_medic_F", _sid], 1, 40];
 
 	units_infantry append inf_to_add;
 	infantry_auto append inf_to_add;
