@@ -378,6 +378,8 @@ if(_loadingFine) then {
 						[_vehicle, _sideVeh, _script, ""] spawn CTI_CO_FNC_InitializeCustomVehicle;
 						//if (_customid > -1) then {_vehicle setVariable ["cti_customid", _customid, true]};
 					};
+					//Set the cti_net to track the vehicles on map
+					_vehicle setVariable ["cti_net", _sideVeh, true];
 
 					sleep 0.1;
 				} forEach _vehicles_stored;
