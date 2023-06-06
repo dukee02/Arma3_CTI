@@ -90,7 +90,7 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_AIR)}, {_i = _i
 }; 
 _upgrade_cost pushBack _cost;															//--- Air
 _cost = [];
-_cost_level = round((2000*CTI_ECONOMY_RESEARCH_MULTI)/100);
+_cost_level = round((200*CTI_ECONOMY_RESEARCH_MULTI)/100);
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_NAVAL)}, {_i = _i + 1}] do {
 	//_cost_level = _cost_level*(_i+1);
 	_cost pushBack [_cost_level*(_i+1),(_cost_level*(_i+1))/2];
