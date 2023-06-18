@@ -4,18 +4,34 @@ _sid = "";
 if(_side == west) then {
 	//_sid = "VIOC_B_";
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_T_APC_Wheeled_01_cannon_F"];
+		if((toLower worldName) in ["mske","tanoa"]) then {
+			missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_T_Truck_01_covered_F"];
+		} else {
+			missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_T_APC_Wheeled_01_cannon_F"];
+		};
 	} else {
-		missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_APC_Wheeled_01_cannon_F"];
+		if((toLower worldName) in ["mske","tanoa"]) then {
+			missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_Truck_01_transport_F"];
+		} else {
+			missionNamespace setVariable [format["CTI_%1_HQ", _side], "B_APC_Wheeled_01_cannon_F"];
+		};
 	};
 } 
 else {
 	if(_side == east) then {
 		//_sid = "VIOC_O_";
 		if(CTI_CAMO_ACTIVATION == 1) then {
-			missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_T_APC_Wheeled_02_rcws_v2_ghex_F"];
+			if((toLower worldName) in ["mske","tanoa"]) then {
+				missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_T_Truck_02_F"];
+			} else {
+				missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_T_APC_Wheeled_02_rcws_v2_ghex_F"];
+			};
 		} else {
-			missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_v2_F"];
+			if((toLower worldName) in ["mske","tanoa"]) then {
+				missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_Truck_02_covered_F"];
+			} else {
+				missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_v2_F"];
+			};
 		};
 	} 
 	else {
