@@ -51,7 +51,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		inf_to_add = [[format["%1O_T_Soldier_F", _sid], 1, 60]];
-		inf_to_add pushBack [format["%1O_Soldier_lite_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1O_T_Medic_F", _sid], 1, 40];
 	};
 	units_infantry append inf_to_add;
@@ -441,10 +440,10 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_APC_Tracked_02_cannon_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1O_APC_Tracked_02_cannon_F", _sid], 1, 60]];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid], 1, 60]];
 	};
 	units_tracked append arm_to_add;
 	tracked_auto append arm_to_add;
@@ -466,10 +465,10 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_MBT_02_arty_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1O_MBT_02_arty_F", _sid], 1, 20]];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_T_MBT_02_arty_ghex_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1O_T_MBT_02_arty_ghex_F", _sid], 1, 20]];
 	};
 	units_tracked = [];
 	tracked_auto = [];
@@ -493,10 +492,10 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_MBT_02_cannon_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1O_MBT_02_cannon_F", _sid], 1, 60]];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid], 1, 60]];
 	};
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};

@@ -47,13 +47,12 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		inf_to_add = [[format["%1B_Soldier_lite_F", _sid], 1, 60]];
-		inf_to_add pushBack [format["%1B_Soldier_F", _sid], 1, 20];
+		inf_to_add = [[format["%1B_Soldier_F", _sid], 1, 60]];
+		inf_to_add pushBack [format["%1B_Soldier_lite_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_medic_F", _sid], 1, 20];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		inf_to_add = [[format["%1B_Soldier_lite_F", _sid], 1, 60]];
-		inf_to_add pushBack [format["%1B_T_Soldier_F", _sid], 1, 20];
+		inf_to_add = [[format["%1B_T_Soldier_F", _sid], 1, 60]];
 		inf_to_add pushBack [format["%1B_T_Medic_F", _sid], 1, 20];
 	};
 	units_infantry append inf_to_add;
@@ -112,7 +111,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_soldier_repair_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_engineer_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_soldier_LAT2_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1B_CTRG_Soldier_LAT2_tna_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_Soldier_AAR_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_Fighter_Pilot_F", _sid], 1, 20];
 	};
@@ -122,7 +120,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_T_Soldier_Repair_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Engineer_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Soldier_LAT2_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1B_CTRG_Soldier_LAT2_tna_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Soldier_AAR_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_Fighter_Pilot_F", _sid], 1, 20];
 	};
@@ -153,7 +150,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_support_AMG_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_support_GMG_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_soldier_mine_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1B_CTRG_Soldier_TL_tna_F", _sid], 1, 20];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		inf_to_add = [[format["%1B_T_Support_MG_F", _sid], 1, 20]];	
@@ -163,7 +159,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_T_Support_AMG_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Support_GMG_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_soldier_mine_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1B_CTRG_Soldier_TL_tna_F", _sid], 1, 20];
 	};
 	units_infantry append inf_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {infantry_auto append inf_to_add;};
@@ -476,11 +471,11 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		arm_to_add = [[format["%1B_T_APC_Tracked_01_rcws_F", _sid], 1, 50]];
-		arm_to_add pushBack [format["%1B_T_APC_Tracked_01_CRV_F", _sid], 1, 50];
+		arm_to_add = [[format["%1B_T_APC_Tracked_01_rcws_F", _sid], 1, 40]];
+		arm_to_add pushBack [format["%1B_T_APC_Tracked_01_CRV_F", _sid], 1, 40];
 	} else {
-		arm_to_add = [[format["%1B_APC_Tracked_01_rcws_F", _sid], 1, 50]];
-		arm_to_add pushBack [format["%1B_APC_Tracked_01_CRV_F", _sid], 1, 50];
+		arm_to_add = [[format["%1B_APC_Tracked_01_rcws_F", _sid], 1, 40]];
+		arm_to_add pushBack [format["%1B_APC_Tracked_01_CRV_F", _sid], 1, 40];
 	};
 	units_tracked append arm_to_add;
 	tracked_auto append arm_to_add;
@@ -502,9 +497,9 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		arm_to_add = [[format["%1B_T_MBT_01_arty_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1B_T_MBT_01_arty_F", _sid], 1, 20]];
 	} else {
-		arm_to_add = [[format["%1B_MBT_01_arty_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1B_MBT_01_arty_F", _sid], 1, 20]];
 	};
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
@@ -526,9 +521,9 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		arm_to_add = [[format["%1B_T_MBT_01_cannon_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1B_T_MBT_01_cannon_F", _sid], 1, 60]];
 	} else {
-		arm_to_add = [[format["%1B_MBT_01_cannon_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1B_MBT_01_cannon_F", _sid], 1, 60]];
 	};
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
@@ -550,9 +545,9 @@ if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;}
 if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 1) then {
-		arm_to_add = [[format["%1B_T_MBT_01_mlrs_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1B_T_MBT_01_mlrs_F", _sid], 1, 20]];
 	} else {
-		arm_to_add = [[format["%1B_MBT_01_mlrs_F", _sid], 1, 50]];
+		arm_to_add = [[format["%1B_MBT_01_mlrs_F", _sid], 1, 20]];
 	};
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {tracked_auto append arm_to_add;};
