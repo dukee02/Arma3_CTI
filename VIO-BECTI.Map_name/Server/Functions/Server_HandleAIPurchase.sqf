@@ -126,7 +126,7 @@ if (_model isKindOf "Man") then {
 	_vehicle = [_model, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 } else {
 	private ["_crew", "_unit"];
-		
+
 	//lets start a AI purchased planes, planes of AI-Squads starts in the air
 	_form_air = "FORM";
 	if (_model isKindOf "Air") then {_form_air ="FLY"};
@@ -138,15 +138,17 @@ if (_model isKindOf "Man") then {
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
 	_unit = [_crew, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 	_unit moveInDriver _vehicle;
-	
-	//Then we setup the other units (normal soldiers if its an air unit)
-	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; default {"Soldier"}};
-	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
-	{
-		_unit = [_crew, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
-		_unit moveInTurret [_vehicle, _x select 0];
-	} forEach (_model call CTI_CO_FNC_GetVehicleTurrets);
 
+	//if !("Autonomous" == getText (configfile >> "CfgVehicles" >> _model >> "vehicleClass")) then {
+		//Then we setup the other units (normal soldiers if its an air unit)
+		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; default {"Soldier"}};
+		_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
+		{
+			_unit = [_crew, _req_target, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+			_unit moveInTurret [_vehicle, _x select 0];
+		} forEach (_model call CTI_CO_FNC_GetVehicleTurrets);
+	//};
+	
 	[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 	
 	//--- Authorize the air loadout depending on the parameters set

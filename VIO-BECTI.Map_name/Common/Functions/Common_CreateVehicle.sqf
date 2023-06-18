@@ -84,6 +84,9 @@ if (_special == "FLY") then {
 };
 //if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_CreateVehicle.sqf", format ["type: <%1> special: <%2>",  _type, _special]] call CTI_CO_FNC_Log;};
 
+//--- Authorize the air loadout depending on the parameters set
+if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
+
 {//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 	player reveal [_vehicle, 4];
 } forEach allUnits;
@@ -98,5 +101,8 @@ if (_handle) then {
 	_vehicle addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; 
 	_vehicle setVariable ["cti_occupant", _side call CTI_CO_FNC_GetSideFromID];
 };
+
+//https://community.bistudio.com/wiki/addToRemainsCollector
+//maybe add the GC manualy?
 
 _vehicle

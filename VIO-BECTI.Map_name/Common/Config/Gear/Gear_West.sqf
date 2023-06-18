@@ -1,4 +1,4 @@
-private ["_faction", "_i", "_p", "_side", "_u", "_tech_level", "_upgrade_levels", "_ownedDLCs"];
+private ["_faction", "_i", "_p", "_side", "_u", "_tech_level", "_upgrade_levels"];
 
 _side = _this;
 _upgrade_levels = [];
@@ -18,59 +18,12 @@ else {
 
 _upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 if (isNil "_upgrade_levels") then { 
-	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,1,1,1,1,3,4,CTI_ECONOMY_LEVEL_GEAR]; 
+	_upgrade_levels = [CTI_ECONOMY_LEVEL_INFANTRY,CTI_ECONOMY_LEVEL_WHEELED,CTI_ECONOMY_LEVEL_TRACKED,CTI_ECONOMY_LEVEL_AIR,CTI_ECONOMY_LEVEL_NAVAL,1,-1,-1,-1,1,3,4,CTI_ECONOMY_LEVEL_GEAR,-1]; 
 };
 
 _i = [];
 _u = [];
 _p = [];
-
-/*
- 9:20:14 Detected number of DLCs: 21
- 9:20:14 ---------------------------------------------------------- Game ----------------------------------------------------------
- 9:20:14                                                                name      appId   owned  installed  available   isDlc
- 9:20:14                                                              Arma 3     107410     yes        yes        yes      no
- 9:20:14                                                             Unknown         -1      no         no         no     yes
- 9:20:14 ---------------------------------------------------------- Dlcs ----------------------------------------------------------
- 9:20:14  index                                                         name      appId   owned  installed  available   isDlc
- 9:20:14      0                                                  Arma 3 Maps     249861      no         no         no     yes
- 9:20:14      1                                        Arma 3 Tactical Guide     249862      no         no         no     yes
- 9:20:14      2                                                  Arma 3 Zeus     275700     yes        yes        yes     yes
- 9:20:14      3                                                 Arma 3 Karts     288520     yes        yes        yes     yes
- 9:20:14      4                                           Arma 3 Helicopters     304380     yes        yes        yes     yes
- 9:20:14      5                                          Arma 3 DLC Bundle 1     304400     yes        yes         no     yes
- 9:20:14      6                                              Arma 3 Marksmen     332350     yes        yes        yes     yes
- 9:20:14      7                                                  Arma 3 Apex     395180     yes        yes        yes     yes
- 9:20:14      8                                           Arma 3 Laws of War     571710     yes        yes        yes     yes
- 9:20:14      9                                                  Arma 3 Jets     601670     yes        yes        yes     yes
- 9:20:14     10                                          Arma 3 DLC Bundle 2     612480     yes        yes         no     yes
- 9:20:14     11                                                Arma 3 Malden     639600     yes        yes        yes     yes
- 9:20:14     12                                  Arma 3 Tac-Ops Mission Pack     744950     yes        yes        yes     yes
- 9:20:14     13                                                 Arma 3 Tanks     798390     yes        yes        yes     yes
- 9:20:14     14                                               Arma 3 Contact    1021790      no         no        yes     yes
- 9:20:14     15   Arma 3 Creator DLC: Global Mobilization - Cold War Germany    1042220     yes        yes        yes     yes
- 9:20:14     16                      Arma 3 Creator DLC: S.O.G. Prairie Fire    1227700      no         no        yes     yes
- 9:20:14     17                        Arma 3 Creator DLC: CSLA Iron Curtain    1294440      no         no        yes     yes
- 9:20:14     18                                            Arma 3 Art of War    1325500     yes        yes        yes     yes
- 9:20:14     19                           Arma 3 Creator DLC: Western Sahara    1681170      no         no        yes     yes
- 9:20:14     20                                    Arma 3 - Prague Content 2    1175380     yes        yes         no     yes
- 9:20:14 --------------------------------------------------------------------------------------------------------------------------
- */
- _ownedDLCs = getDLCs 1;
-
-//(CTI_ECONOMY_PRIZE_WEAPONS*_level_start)
-//100*1 -> $100 weapon
-//((rnds*caliber)/1000)*((CTI_ECONOMY_PRIZE_WEAPONS*_level_start)/100)
-//((30*545)/1000)*(100*1/100) = $16,35 -> ammo
-/*
-_i pushBack "";
-_u pushBack _tech_level;
-_p pushBack round (CTI_ECONOMY_PRIZE_WEAPONS*(((_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/100));
-
-_i pushBack "";
-_u pushBack _tech_level;
-_p pushBack round ((rnds*caliber)/100000)*((CTI_ECONOMY_PRIZE_WEAPONS*(_tech_level+1)*CTI_ECONOMY_LEVEL_MULTI)/10000);
-*/
 
 // -------------- Weapons and Ammo --------------
 
@@ -95,7 +48,7 @@ _i pushBack "hgun_P07_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "hgun_P07_khk_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -148,7 +101,7 @@ _i pushBack "11Rnd_45ACP_Mag";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,11,(1200*32)] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "hgun_Pistol_heavy_01_green_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -214,7 +167,7 @@ _i pushBack "arifle_Mk20_GL_plain_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "arifle_SPAR_01_blk_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -315,7 +268,7 @@ _i pushBack "arifle_MX_GL_Black_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "arifle_MXC_khk_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -371,7 +324,7 @@ _i pushBack "20Rnd_556x45_UW_mag";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,20,(556*45)] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 // -- Tech Level 2
 _tech_level = 2;
 
@@ -410,7 +363,7 @@ _i pushBack "arifle_MXM_Black_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "arifle_MXM_khk_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -423,7 +376,7 @@ if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
 
 
 // -------------- Machine Gun (MG) --------------
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_tech_level = 1;
 
 	_i pushBack "arifle_SPAR_02_blk_F";
@@ -467,7 +420,7 @@ _i pushBack "arifle_MX_SW_Black_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "arifle_MX_SW_khk_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -530,7 +483,7 @@ _i pushBack "200Rnd_65x39_cased_Box_Tracer_Red";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200,(650*39)] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(332350 in _ownedDLCs) then {		//Marksman
+if(([332350] call CTI_CO_FNC_HasDLC)) then {		//Marksman
 	// -- Tech Level 4
 	_tech_level = 4;
 
@@ -569,7 +522,7 @@ _i pushBack "20Rnd_762x51_Mag";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,20,(762*51)] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(332350 in _ownedDLCs) then {		//Marksman
+if(([332350] call CTI_CO_FNC_HasDLC)) then {		//Marksman
 	_i pushBack "srifle_DMR_03_khaki_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -629,7 +582,7 @@ _i pushBack "srifle_LRR_camo_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "srifle_LRR_tna_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -657,7 +610,7 @@ _i pushBack "NLAW_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(798390 in _ownedDLCs) then {		//Tanks
+if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
 	// -- Tech Level 2
 	_tech_level = 2;
 
@@ -673,17 +626,17 @@ if(798390 in _ownedDLCs) then {		//Tanks
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-	_i pushBack "MRAWS_HEAT_F";
-	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
-
 	_i pushBack "MRAWS_HE_F";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 	_i pushBack "MRAWS_HEAT55_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+
+	_i pushBack "MRAWS_HEAT_F";
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // -- Tech Level 3
 _tech_level = 3;
@@ -705,7 +658,7 @@ _i pushBack "launch_B_Titan_short_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "launch_B_Titan_short_tna_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -724,7 +677,7 @@ _i pushBack "launch_B_Titan_olive_F";
 _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "launch_B_Titan_tna_F";
 	_u pushBack _tech_level;
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
@@ -736,7 +689,7 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_Get
 
 _i pushBack "Titan_AP";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,400] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
@@ -767,7 +720,7 @@ _i pushBack "U_B_CombatUniform_sgg_tshirt";
 _i pushBack "U_B_CombatUniform_sgg_vest";*/
 //_i pushBack "U_B_SpecopsUniform_sgg";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "U_B_T_Soldier_F";
 	_i pushBack "U_B_T_Soldier_AR_F";
 	_i pushBack "U_B_T_Soldier_SL_F";
@@ -782,7 +735,7 @@ if(395180 in _ownedDLCs) then {		//APEX
 	_i pushBack "U_B_CTRG_Soldier_urb_3_F";
 	_i pushBack "U_B_CTRG_Soldier_urb_2_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "U_B_CBRN_Suit_01_MTP_F";
 	_i pushBack "U_B_CBRN_Suit_01_Tropic_F";
 	_i pushBack "U_B_CBRN_Suit_01_Wdl_F";
@@ -790,7 +743,7 @@ if(1021790 in _ownedDLCs) then {		//Contact
 	_i pushBack "U_B_CombatUniform_tshirt_mcam_wdL_f";
 	_i pushBack "U_B_CombatUniform_vest_mcam_wdl_f";
 };
-if(1325500 in _ownedDLCs) then {		//Art of War
+if(([1325500] call CTI_CO_FNC_HasDLC)) then {		//Art of War
 	_i pushBack "U_B_ParadeUniform_01_US_decorated_F";
 	_i pushBack "U_B_ParadeUniform_01_US_F";
 };
@@ -823,7 +776,7 @@ _tech_level = 2;
 
 _i pushBack "U_B_GhillieSuit";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "U_B_T_Sniper_F";
 };
 
@@ -842,7 +795,7 @@ _i pushBack "U_B_FullGhillie_ard";
 _i pushBack "U_B_FullGhillie_lsh";
 _i pushBack "U_B_FullGhillie_sard";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "U_B_T_FullGhillie_tna_F";
 };
 
@@ -879,11 +832,11 @@ _i pushBack "V_PlateCarrier1_blk";
 _i pushBack "V_PlateCarrier2_blk";
 _i pushBack "V_PlateCarrier_Kerry";
 _i pushBack "V_RebreatherB";
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "V_PlateCarrier1_tna_F";
 	_i pushBack "V_PlateCarrier2_tna_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "V_PlateCarrier1_wdl";
 	_i pushBack "V_PlateCarrier2_wdl";
 };
@@ -904,10 +857,10 @@ _i pushBack "V_PlateCarrierGL_rgr";
 _i pushBack "V_PlateCarrierGL_mtp";
 _i pushBack "V_PlateCarrierL_CTRG";
 _i pushBack "V_PlateCarrierH_CTRG";
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "V_PlateCarrierGL_tna_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "V_PlateCarrierGL_wdl";
 };
 
@@ -925,10 +878,10 @@ _tech_level = 3;
 _i pushBack "V_PlateCarrierSpec_blk";
 _i pushBack "V_PlateCarrierSpec_rgr";
 _i pushBack "V_PlateCarrierSpec_mtp";
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "V_PlateCarrierSpec_tna_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "V_PlateCarrierSpec_wdl";
 };
 
@@ -954,7 +907,7 @@ _i pushBack "B_AssaultPack_mcamo";
 _i pushBack "B_AssaultPack_mcamo_Ammo";//looks like a Carryall ???
 _i pushBack "B_TacticalPack_mcamo";
 
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "B_AssaultPack_wdl_F";
 	_i pushBack "B_RadioBag_01_mtp_F";
 	_i pushBack "B_RadioBag_01_tropic_F";
@@ -975,11 +928,11 @@ _tech_level = 1;
 _i pushBack "B_Carryall_mcamo";
 _i pushBack "B_Kitbag_mcamo";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "B_Bergen_mcamo_F";
 	_i pushBack "B_Bergen_tna_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "B_Carryall_wdl_F";
 };
 
@@ -1011,10 +964,10 @@ _i pushBack "B_GMG_01_weapon_F";
 _i pushBack "B_Mortar_01_support_F";
 _i pushBack "B_Mortar_01_weapon_F";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "B_W_Static_Designator_01_weapon_F";
 };
-if(332350 in _ownedDLCs) then {		//Marksman
+if(([332350] call CTI_CO_FNC_HasDLC)) then {		//Marksman
 	_i pushBack "B_Static_Designator_01_weapon_F";
 };
 
@@ -1042,11 +995,11 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 _tech_level = 2;
 
 _i pushBack "B_UAV_01_backpack_F";
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "B_UGV_02_Demining_backpack_F";
 	_i pushBack "B_UGV_02_Science_backpack_F";
 };
-if(571710 in _ownedDLCs) then {		//Laws of War
+if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
 	_i pushBack "B_UAV_06_backpack_F";
 	_i pushBack "B_UAV_06_medical_backpack_F";
 };
@@ -1085,17 +1038,17 @@ _i pushBack "H_HelmetB_light_grass";
 _i pushBack "H_HelmetB_light_sand";
 _i pushBack "H_HelmetB_light_snakeskin";
 _i pushBack "H_HelmetCrew_B";
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "H_MilCap_tna_F";
 	_i pushBack "H_Booniehat_tna_F";
 	_i pushBack "H_HelmetB_Light_tna_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "H_MilCap_wdl";
 	_i pushBack "H_Booniehat_wdl";
 	_i pushBack "H_HelmetB_light_wdl";
 };
-if(1325500 in _ownedDLCs) then {		//Art of War
+if(([1325500] call CTI_CO_FNC_HasDLC)) then {		//Art of War
 	_i pushBack "H_ParadeDressCap_01_US_F";
 };
 // set all other vars in a slope
@@ -1120,10 +1073,10 @@ _i pushBack "H_CrewHelmetHeli_B";
 _i pushBack "H_PilotHelmetHeli_B";
 _i pushBack "H_PilotHelmetFighter_B";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "H_HelmetB_tna_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "H_HelmetB_plain_wdl";
 };
 // set all other vars in a slope
@@ -1144,11 +1097,11 @@ _i pushBack "H_HelmetSpecB_paint1";
 _i pushBack "H_HelmetSpecB_sand";
 _i pushBack "H_HelmetSpecB_snakeskin";
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "H_HelmetB_Enh_tna_F";
 };
 
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "H_HelmetSpecB_wdl";
 };
 // set all other vars in a slope
@@ -1162,11 +1115,11 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 // -- Tech Level 3
 _tech_level = 3;
 
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "H_HelmetB_TI_tna_F";
 	_i pushBack "H_HelmetB_TI_arid_F";
 };
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "H_HelmetHBK_headset_F";
 	_i pushBack "H_HelmetHBK_chops_F";
 	_i pushBack "H_HelmetHBK_ear_F";
@@ -1195,11 +1148,8 @@ _u pushBack _tech_level;
 _p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "NVGoggles";
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "NVGoggles_tna_F";
-	_i pushBack "NVGogglesB_blk_F";
-	_i pushBack "NVGogglesB_grn_F";
-	_i pushBack "NVGogglesB_gry_F";
 	
 	_i pushBack "G_Balaclava_TI_tna_F";
 	_i pushBack "G_Balaclava_TI_G_tna_F";
@@ -1213,15 +1163,31 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
+	_tech_level = 3;
+
+	_i pushBack "NVGogglesB_blk_F";
+	_i pushBack "NVGogglesB_grn_F";
+	_i pushBack "NVGogglesB_gry_F";
+	
+	// set all other vars in a slope
+	_cntstart = count _i;
+	_cntend = count _p;
+	for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+		_u pushBack _tech_level;
+		_p pushBack ([CTI_ECONOMY_PRIZE_EQUIPMENT,_tech_level] call CTI_CO_FNC_GetCalculatedItemPrize);
+	};
+};
+
 // -------------- Attachments --------------
 _tech_level = 0;
 
-if(332350 in _ownedDLCs) then {		//Marksman
+if(([332350] call CTI_CO_FNC_HasDLC)) then {		//Marksman
 	_i pushBack "bipod_01_F_blk";
 	_i pushBack "bipod_01_F_snd";
 	_i pushBack "bipod_01_F_mtp";
 };
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "bipod_01_F_khk";
 };
 // set all other vars in a slope
@@ -1242,15 +1208,15 @@ if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
 _tech_level = 1;
 
 //Marksman
-if(332350 in _ownedDLCs) then {		//Marksman
+if(([332350] call CTI_CO_FNC_HasDLC)) then {		//Marksman
 	_i pushBack "Laserdesignator_03";
 };
 //APEX
-if(395180 in _ownedDLCs) then {		//APEX
+if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 	_i pushBack "Laserdesignator_01_khk_F";
 };
 //Contact
-if(1021790 in _ownedDLCs) then {		//Contact
+if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 	_i pushBack "G_AirPurifyingRespirator_01_F";
 };
 

@@ -720,7 +720,7 @@ CTI_UI_Gear_GetTotalMass = {
 	_generic_mass = _generic_mass + (((_gear select 3) select 0) call CTI_UI_Gear_GetItemsMass) + (((_gear select 3) select 1) call CTI_UI_Gear_GetItemsMass);
 	
 	//--- Weapons
-	for '_i' from 0 to 2 do {
+	for '_i' from 0 to (count (_gear select 0))-1 do {
 		_item = ((_gear select 0) select _i) select 0;
 		if (_item != "") then {
 			_generic_mass = _generic_mass + getNumber(configFile >> "CfgWeapons" >> _item >> "WeaponSlotsInfo" >> "mass");

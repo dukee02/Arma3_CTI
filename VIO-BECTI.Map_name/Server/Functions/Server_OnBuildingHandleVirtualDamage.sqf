@@ -65,14 +65,12 @@ _damaged setVariable ["cti_altdmg", _virtual_damages];
 
 if (_virtual_damages >= 1 || !alive _damaged) then {
 	_damaged removeAllEventHandlers "handleDamage";
-	_damaged setDammage 1;
+	_damaged setDamage 1;
 	[_damaged, _shooter, _variable, _sideID, _position, _direction, _completion_ratio] spawn CTI_SE_FNC_OnBuildingDestroyed
 };
 
 //--- Display a message to the team
 if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02 && alive _damaged) then {
 	_logic setVariable ["cti_structures_lasthit", time];
-	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position]]] call CTI_CO_FNC_NetSend;
+	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position, _damage]]] call CTI_CO_FNC_NetSend;
 };
-
-0

@@ -66,6 +66,7 @@ if(_spawn_unit == true) then {
 	};
 	_side = side _team;
 	_dummyGroup = createGroup _side;
+	if(_position select 2 < 0 || _position select 2 > 1) then {_position set [2, 1];};
 	_unit = _dummyGroup createUnit [_classname, _position, [], 0, _special];
 	if(speaker _unit == "") then {
 		_unit setSpeaker "Male01ENG";
@@ -86,6 +87,9 @@ if(_spawn_unit == true) then {
 
 	//--- Add a Killed EH.
 	_unit addEventHandler ["killed", Format["[_this select 0, _this select 1, %1, 'vehicle'] Spawn CTI_CO_FNC_OnUnitKilled;", _sideID]];
+
+	//https://community.bistudio.com/wiki/addToRemainsCollector
+	//maybe add the GC manualy?
 	
 	_unit
 } else {

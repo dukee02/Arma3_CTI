@@ -66,13 +66,13 @@ if (CTI_SPECIAL_MEDICALVEHICLE in _special) then { //--- Medical vehicle.
 	_marker_type = CTI_P_MarkerPrefix+"med";
 };
 
-if (_classname in CTI_VEHICLES_HOOKERS) then { //--- Revamped A2  Airlift
+/*if (_classname in CTI_VEHICLES_HOOKERS) then { //--- Revamped A2  Airlift
 	[_vehicle] ExecVM 'Client\Module\ZetaCargo\Zeta_AddAction.sqf';
 };
 
 if (_classname in (CTI_VEHICLES_HOOKERS_EX)) then {
 	_vehicle addAction ["<t color='#86F078'>Hook (Main)</t>", "Client\Actions\Action_HookMenu.sqf", "", 99, false, true, "", "alive _target && local _target && _this == driver _target"]
-};
+};*/
 
 //--- Bypass DLC restrictions
 _ownsKarts = if (288520 in getDLCs 1) then {true} else {false};

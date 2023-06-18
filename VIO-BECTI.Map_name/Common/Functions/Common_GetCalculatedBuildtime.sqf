@@ -22,36 +22,38 @@
 	
 */
 
-private["_building","_techLevel","_calcTime","_buildingTime"];
+private["_building","_techLevel","_calcTime","_buildingTime","_base"];
 
 _building = _this select 0;
 _techLevel = _this select 1;
 _techLevel = _techLevel + 1;		//add one level to prevent multiplying with zero
 _calcTime = 0;
 _cappedTime = 0;
+_base = 5;
 
 switch(_building) do {
 	case CTI_FACTORY_BARRACKS: {
-		_calcTime = (1*CTI_ECONOMY_TIME_MULTI*(_techLevel+1));
-		_cappedTime = switch(true) do {case (_calcTime<3): {3}; case (_calcTime>50): {50}; default {_calcTime}};
+		_base = 2;
+		_calcTime = round((_base/2)*(CTI_ECONOMY_TIME_MULTI/2)*_techLevel);
 	};
 	case CTI_FACTORY_LIGHT;
 	case CTI_FACTORY_REPAIR;
 	case CTI_FACTORY_AMMO;
 	case CTI_FACTORY_NAVAL;
 	case CTI_TOWN_DEPOT: {
-		_calcTime = (10*CTI_ECONOMY_TIME_MULTI*(_techLevel+1));
-		_cappedTime = switch(true) do {case (_calcTime<10): {10}; case (_calcTime>300): {300}; default {_calcTime};};
+		_base = 5;
+		_calcTime = round((_base/2)*CTI_ECONOMY_TIME_MULTI*_techLevel);
 	};
 	case CTI_FACTORY_HEAVY;
 	case CTI_FACTORY_AIR: {
-		_calcTime = (20*CTI_ECONOMY_TIME_MULTI*(_techLevel+1));
-		_cappedTime = switch(true) do {case (_calcTime<20): {20}; case (_calcTime>600): {600}; default {_calcTime}};
+		_base = 10;
+		_calcTime = round((_base/2)*CTI_ECONOMY_TIME_MULTI*_techLevel);
 	};
 	default {
-		_calcTime = (10*CTI_ECONOMY_TIME_MULTI*(_techLevel+1));
-		_cappedTime = switch(true) do {case (_calcTime<10): {10}; case (_calcTime>300): {300}; default {_calcTime};};
+		_base = 5;
+		_calcTime = round((_base/2)*CTI_ECONOMY_TIME_MULTI*_techLevel);
 	};
 };
+_cappedTime = switch(true) do {case (_calcTime<(_base*2)): {(_base*2)}; case (_calcTime>(_base*20)): {(_base*20)}; default {_calcTime}};
 
 round (_cappedTime);

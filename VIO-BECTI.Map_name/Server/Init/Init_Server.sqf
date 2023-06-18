@@ -47,6 +47,8 @@ CTI_SE_FNC_VoteForCommander = compileFinal preprocessFileLineNumbers "Server\Fun
 CTI_SE_FNC_SAVE = compileFinal preprocessFileLineNumbers "Server\Functions\Server_SaveToProfile.sqf";
 CTI_SE_FNC_LOAD = compileFinal preprocessFileLineNumbers "Server\Functions\Server_LoadFromProfile.sqf";
 CTI_SE_FNC_HandleSalvagerSpecial = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleSalvagerSpecial.sqf";
+CTI_SE_FNC_PresetUpgrades = compileFinal preprocessFileLineNumbers "Server\Functions\Server_PresetUpgrades.sqf";
+CTI_SE_FNC_UpgradeSquads = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpgradeSquads.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
@@ -58,7 +60,7 @@ execVM "Server\Init\Init_Prison.sqf";
 
 //--- Get the starting locations.
 _startup_locations_west = [];
-for '_i' from 0 to 30 step +2 do {
+for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-west%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	_startup_locations_west pushBack _location;
@@ -71,7 +73,7 @@ if(count _startup_locations_west < 1) then {
 	};	
 };
 _startup_locations_east = [];
-for '_i' from 0 to 30 step +2 do {
+for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-east%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	_startup_locations_east pushBack _location;
@@ -149,6 +151,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 	//Set the loaded HQ positions if loading is active
 	if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
 		["hq", _side] call CTI_SE_FNC_LOAD;
+		["funds_com", _side] call CTI_SE_FNC_LOAD;
 		_startPos = (getposATL ((_side) call CTI_CO_FNC_GetSideHQ));
 	};
 	
@@ -189,6 +192,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
 		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
 		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
+		_vehicle setVariable ["isStartup", true];
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
 		if (_script != "" && alive _vehicle) then {
 			[_vehicle, _side, _script, ""] spawn CTI_CO_FNC_InitializeCustomVehicle;
@@ -197,15 +201,16 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 	
 	//--- Handle the Team
 	_teams = [];
-	_totalTeams = count synchronizedObjects _logic;
+	//_totalTeams = count synchronizedObjects _logic;
+	_totalTeams = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 	_processed = 0;
 		
-	switch (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") do {
+	/*switch (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") do {
 		case 1: {_totalTeams = round(_totalTeams * 0.25)};
 		case 2: {_totalTeams = round(_totalTeams * 0.5)};
 		case 3: {_totalTeams = round(_totalTeams * 0.75)};
 		default {};
-	};
+	};*/
 
 	{
 		if !(isNil '_x') then {
@@ -218,18 +223,19 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 				
 				[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
 				
-				//if coop is enabled, th AI only for enemy side!
-				_ai_teams_enabled = true;
-				if((CTI_TOWNS_STARTING_MODE >= 4 && CTI_TOWNS_STARTING_MODE <= 6) && _side == east) then {
-					_ai_teams_enabled = false;
-				};
-				if((CTI_TOWNS_STARTING_MODE >= 7 && CTI_TOWNS_STARTING_MODE <= 9) && _side == west) then {
-					_ai_teams_enabled = false;
-				};
-				
-				if (!isPlayer leader _group && _processed < _totalTeams && _ai_teams_enabled == true) then {
-					_processed = _processed + 1;
-					if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"
+				if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"
+					//if coop is enabled, the AI only for enemy side!
+					_ai_teams_enabled = true;
+					if((CTI_TOWNS_STARTING_MODE >= 4 && CTI_TOWNS_STARTING_MODE <= 6) && _side == east) then {
+						_ai_teams_enabled = false;
+					};
+					if((CTI_TOWNS_STARTING_MODE >= 7 && CTI_TOWNS_STARTING_MODE <= 9) && _side == west) then {
+						_ai_teams_enabled = false;
+					};
+					
+					if (!isPlayer leader _group && _processed < _totalTeams && _ai_teams_enabled == true) then {
+						_processed = _processed + 1;
+						//if (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED" > 0) then { //--- Wait for the player to be "ready"
 						_group setVariable ["cti_ai_active", true, true];
 						(leader _group) setPos ([_startPos, 8, 30] call CTI_CO_FNC_GetRandomPosition);
 						leader _group addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]]; //--- Called on destruction
@@ -248,6 +254,7 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 								[_group, _side] execFSM "Server\FSM\update_ai.fsm";
 							};
 						};
+						//};
 					};
 				};
 			};
@@ -309,6 +316,18 @@ if ((missionNamespace getVariable "CTI_TOWNS_STARTING_MODE") >= 0 || (missionNam
 
 };
 
+//To setup the pre researched levels, we must cheat ab bit ... because params only accept integers
+if(CTI_FACTORY_LEVEL_PRESET > 0) then {
+	[CTI_FACTORY_LEVEL_PRESET,[CTI_UPGRADE_BARRACKS,CTI_UPGRADE_LIGHT,CTI_UPGRADE_HEAVY,CTI_UPGRADE_AIR,CTI_UPGRADE_NAVAL,CTI_UPGRADE_GEAR]] call CTI_SE_FNC_PresetUpgrades;
+	{
+		[_x, CTI_UPGRADE_BARRACKS, "Infantry"] spawn CTI_SE_FNC_UpgradeSquads;
+		[_x, CTI_UPGRADE_LIGHT, "Motorized"] spawn CTI_SE_FNC_UpgradeSquads;
+		[_x, CTI_UPGRADE_HEAVY, "Armored"] spawn CTI_SE_FNC_UpgradeSquads;
+		[_x, CTI_UPGRADE_AIR, "Air"] spawn CTI_SE_FNC_UpgradeSquads;
+	} forEach [west,east];
+};
+if(CTI_ECONOMY_LEVEL_PRESET > 0) then {[CTI_ECONOMY_LEVEL_PRESET,[CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AT,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_TOWNS,CTI_UPGRADE_SUPPLY,CTI_UPGRADE_DEFENSE]] call CTI_SE_FNC_PresetUpgrades;};
+
 //Check if Persistence is active
 if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 	if (missionNamespace getvariable "CTI_PERSISTANT" > 0) then {
@@ -317,6 +336,7 @@ if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 		sleep 10; // prenvent loading without all town FSM stable
 		["upgrades"] call CTI_SE_FNC_LOAD;
 		["buildings"] call CTI_SE_FNC_LOAD;
+		["empty_vehicles"] call CTI_SE_FNC_LOAD;
 		0 spawn {
 			waitUntil {!isNil 'CTI_Teams_Loaded'};
 			["funds"] call CTI_SE_FNC_LOAD;
@@ -325,36 +345,85 @@ if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 	missionNamespace setVariable ["CTI_Server_Loaded", true, true];
 	0 spawn {
 		while {!CTi_GameOver} do {
-			sleep (CTI_SAVE_PERIODE-60);
-			["towns"] call CTI_SE_FNC_SAVE;
-			["hq"] call CTI_SE_FNC_SAVE;
-			["upgrades"] call CTI_SE_FNC_SAVE;
-			["buildings"] call CTI_SE_FNC_SAVE;
-			["funds"] call CTI_SE_FNC_SAVE;
-			
-			if(CTI_LOG_INFO > 0) then {
+			_nextLoopIn = CTI_SAVE_PERIODE;
+				
+			if(CTI_PERFORMANCE_CHECK > 0) then {
 				//count units
 				_blue = west countSide allUnits;
-				sleep 10;
 				_red = east countSide allUnits;
-				sleep 10;
 				_green = independent countSide allUnits;
-				sleep 10;
 				_blue_g = -1;
 				_red_g = -1;
 				_green_g = -1;
-				if(CTI_LOG_INFO > 1) then {
+				if(CTI_PERFORMANCE_CHECK > 1) then {
 					//count groups
 					_blue_g = west countSide allGroups;
-					sleep 10;
 					_red_g = east countSide allGroups;
-					sleep 10;
 					_green_g = independent countSide allGroups;
-					sleep 10;
+					//Check if the server runs smooth, if FPS drops we disband all AI automatically
+					if(diag_fps < 15) then {
+						["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server fps low after [%1] - AI teams disbanded", time]] Call CTI_CO_FNC_Log;
+						[grpNull, 2] call CTI_CO_FNC_DisbandTeam;
+					};
 				};
-				
-				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server statistic test <blue: %1(%2) | red: %3(%4) | green: %5(%6)>", _blue, _blue_g, _red, _red_g, _green, _green_g]] Call CTI_CO_FNC_Log;
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server statistic <blue: %1(%2) | red: %3(%4) | green: %5(%6)>", _blue, _blue_g, _red, _red_g, _green, _green_g]] Call CTI_CO_FNC_Log;
 			};
+			
+			//Save the mission
+			if(_nextLoopIn >= 60 && time >= CTI_SAVE_PERIODE) then {
+				["towns"] call CTI_SE_FNC_SAVE;
+				["hq"] call CTI_SE_FNC_SAVE;
+				["upgrades"] call CTI_SE_FNC_SAVE;
+				["buildings"] call CTI_SE_FNC_SAVE;
+				["funds"] call CTI_SE_FNC_SAVE;
+				["empty_vehicles"] call CTI_SE_FNC_SAVE;
+			};
+			
+			_missionPath = "\CTI\AutoRestartConfig.hpp";
+			if (fileExists _missionPath) then {
+				_myPass = call compile preprocessFileLineNumbers _missionPath;
+				if((_myPass select 0) != "" || (_myPass select 0) != "CHANGEME") then {
+					_restart_in = round(((_myPass select 2)*60) - time);
+					switch true do {
+						case (_restart_in > 900 && _restart_in <= (900+CTI_SAVE_PERIODE)): {
+							if(_nextLoopIn > _restart_in) then {_nextLoopIn = CTI_SAVE_PERIODE-900;};
+							_restart_in = round(_restart_in/60);
+							["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server restart in: %1 minutes (900+CTI_SAVE_PERIODE)", _restart_in]] Call CTI_CO_FNC_Log;
+							(parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t>Restart is near!<br />It restarts in: %1 minutes</t>", _restart_in]) remoteExec ["hint", 0];
+						};
+						case (_restart_in > 300 &&_restart_in <= 900): {
+							if(_nextLoopIn > _restart_in) then {_nextLoopIn = _restart_in;};
+							_restart_in = round(_restart_in/60);
+							["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server restart in: %1 minutes (900)", _restart_in]] Call CTI_CO_FNC_Log;
+							(parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t>Server will restart soon!<br />It restarts in: %1 minutes</t>", _restart_in]) remoteExec ["hint", 0];
+						};
+						case (_restart_in > 60 && _restart_in <= 300): {
+							if(_nextLoopIn > _restart_in) then {_nextLoopIn = _restart_in;};
+							_restart_in = round(_restart_in/60);
+							["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server restart in: %1 minutes (300)", _restart_in]] Call CTI_CO_FNC_Log;
+							(parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t>Server will restart very soon!<br />It restarts in: %1 minutes</t>", _restart_in]) remoteExec ["hint", 0];
+						};
+						case (_restart_in > 0 && _restart_in <= 60): {
+							if(_nextLoopIn > _restart_in) then {_nextLoopIn = _restart_in;};
+							["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server restart in: %1 seconds (60)", _restart_in]] Call CTI_CO_FNC_Log;
+							(parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t>Restart is close!<br />It restarts in: %1 seconds</t>", _restart_in]) remoteExec ["hint", 0];
+						};
+						case (_restart_in <= 0): {
+							_nextLoopIn = CTI_SAVE_PERIODE;
+							_passwordOK = (_myPass select 0) serverCommand (_myPass select 1);
+							["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Command: %1 serverCommand %2, password ok? %3", (_myPass select 0),(_myPass select 1), _passwordOK]] Call CTI_CO_FNC_Log;
+						};
+						default {
+							_restart_in = round(_restart_in/60);
+							["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server restart in: %1 minutes", _restart_in]] Call CTI_CO_FNC_Log;
+							(parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t>Server restart activatet!<br />It restarts in: %1 minutes</t>", _restart_in]) remoteExec ["hint", 0];
+						};
+					};
+				};
+			};
+
+			["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Next save in: %1 seconds", _nextLoopIn]] Call CTI_CO_FNC_Log;
+			sleep _nextLoopIn;
 		};
 	};
 } else {

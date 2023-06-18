@@ -14,12 +14,13 @@ player createDiaryRecord ["VIO-BECTI",["Rules","
 5. No giving information to enemy teams, unless agreed by both teams. <br/>
 6. No shooting in base, unless shooting at an enemy. <br/>
 7. Balance the teams on joining. We allow for a 2 person imbalance before we start kicking stackers. <br/> 
-8. Base walls: It is allowed to place walls around a base building. <br/>
+8. It is not allowed to place any structure to stuck players or vehicles. <br/> 
+9. Base walls: It is allowed to place walls around a base building. <br/>
 - It is not allowed to place walls in overlapping fashion. Exceptions to this are cases that can be proven to be placement errors and small overlaps to conceal the base structure to direct lines of fire. <br/>
 - If you build walls around a base structure it must allow for access to the building on foot. <br/>
 - It is not allowed to build walls adjacent to each other to create a double wall. <br/>
 - It is not allowed to place walls/buildings to block other units/players. <br/>
-9. Covering base structures: You may place roofs over base structures. <br/>
+10. Covering base structures: You may place roofs over base structures. <br/>
 - It is not allowed to place roofs that overlap each other. The exception to this is for cases that can be proven to be placement errors. <br/><br/>
 
 Breaking the rules will result in a kick. Repeated breaking of the rules will result in a 48 hour ban, followed by a permanent ban. Any offense followed by a disconnect will result in a 2 day ban or more. Admins reserve the right to instantly perma-ban at their discretion.<br/><br/>
@@ -30,11 +31,9 @@ player createDiaryRecord ["VIO-BECTI",["Changelog","
 Changes made to the 'VIO-BECTI' mission: <br/><br/>
 
 [V2.0] Changelog:<br/>
-Changed: Setup our CTI back to Vanilla units <br/>
 Fixed: <br/>
 Added: <br/>
 
-- Known Issue: AI don't take command if commander disconnects. <br/>
 - Known Issue: AI teams occasionally respawn at the default respawn area. <br/><br/>
 "]];
 

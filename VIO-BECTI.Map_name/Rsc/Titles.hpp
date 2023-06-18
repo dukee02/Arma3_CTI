@@ -14,18 +14,18 @@ class RscTitles {
 			class CA_Progress_Bar_Background : RscText {
 				style = ST_TEXT_BG;
 				idc = 601000;
-				x = 0.3;
+				x = 0.28;	//0.3;
 				y = "((SafeZoneH + SafeZoneY) - (1 + 0.165))*-1";
-				w = 0.4;
+				w = 0.44;	//0.4;
 				h = 0.06;
 				colorBackground[] = {0,0,0,0.001};
 			};
 				
 			class CA_Progress_Bar : CA_Progress_Bar_Background {
 				idc = 601001;
-				x = 0.31;
+				x = 0.29;		//0.31;
 				y = "((SafeZoneH + SafeZoneY) - (1 + 0.175))*-1";
-				w = 0.38;
+				w = 0.42;		//0.38;
 				h = 0.04;
 			};
 			
@@ -34,8 +34,8 @@ class RscTitles {
 				style = ST_CENTER;
 				colorText[] = {1,1,1,0.8};
 				shadow = 2;
-				x = 0.31;
-				w = 0.38;
+				x = 0.29;		//0.31;
+				w = 0.42;		//0.38;
 				y = "((SafeZoneH + SafeZoneY) - (1 + 0.177))*-1";
 			};
 		};

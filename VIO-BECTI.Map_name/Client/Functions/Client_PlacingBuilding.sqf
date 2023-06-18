@@ -70,7 +70,10 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled && (call CTI_CL_FN
 		if (_helperModel != "") then {_helper disableCollisionWith _x};
 	} forEach (_center nearObjects CTI_BASE_CONSTRUCTION_RANGE);
 
-	CTI_P_PreBuilding_SafePlace = if (!surfaceIsWater _pos && !(count(((position _local) nearObjects ["Building", 15]) - [_local]) > 0) && !(count((position _local) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0)) then {true} else {false};
+	CTI_P_PreBuilding_SafePlace = true;
+	if ((_var select 3) in ["All","Buildings"]) then {
+		CTI_P_PreBuilding_SafePlace = if (!surfaceIsWater _pos && !(count(((position _local) nearObjects ["Building", 15]) - [_local]) > 0) && !(count((position _local) nearEntities [['Man','Car','Motorcycle','Tank','Air','Ship'], 10]) > 0)) then {true} else {false};
+	};
 
 	if (_center distance _local > _center_distance || !CTI_P_PreBuilding_SafePlace) then {
 		_local hideObject true;
@@ -123,7 +126,11 @@ hintSilent "";
 (findDisplay 46) displayRemoveEventHandler ["MouseButtonDown", _dehMouse];
 
 //--- First check if the surface is water based
-if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure may not be placed here."};
+//if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure may not be placed here."};
+if (surfaceIsWater _pos) then {
+	CTI_VAR_StructureCanceled = true;
+	hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The structure may not be placed here.";
+};
 
 //--- Check the distance 2D between our position and the potential areas
 _in_area = false;

@@ -45,15 +45,15 @@ _position = _this select 6;
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 
 if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_side, sideEnemy]) exitWith {0};
-if (_reduce_damages > 0) then {_currentdmg = getDammage _damaged; _damage = _currentdmg + ((_damage - _currentdmg) / _reduce_damages)};
+if (_reduce_damages > 0) then {_currentdmg = damage _damaged; _damage = _currentdmg + ((_damage - _currentdmg) / _reduce_damages)};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 
 if (time - (_logic getVariable "cti_structures_lasthit") > 30 && _damage >= 0.02 && alive _damaged) then {
 	_logic setVariable ["cti_structures_lasthit", time];
-	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position]]] call CTI_CO_FNC_NetSend;
+	[["CLIENT", _side], "Client_OnMessageReceived", ["structure-attacked", [_variable, _position, _damage]]] call CTI_CO_FNC_NetSend;
 	if (CTI_Log_Level >= CTI_Log_Debug || CTI_DEBUG) then {
-		["VIOC-DEBUG", "File: Server\Functions\Server_OnBuildingHandleDamage.sqf", format["Building %1 gets damage: <%2><%3><%4>", _damaged, _damage, getDammage _damaged, _reduce_damages]] call CTI_CO_FNC_Log;
+		["VIOC-DEBUG", "File: Server\Functions\Server_OnBuildingHandleDamage.sqf", format["Building %1 gets damage: <%2><%3><%4>", _damaged, _damage, damage _damaged, _reduce_damages]] call CTI_CO_FNC_Log;
 	};
 };
 

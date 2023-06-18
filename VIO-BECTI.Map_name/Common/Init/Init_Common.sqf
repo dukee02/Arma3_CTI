@@ -94,26 +94,41 @@ CTI_CO_FNC_GetSideDefenses = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetCalculatedUnitsPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedUnitsPrize.sqf";
 CTI_CO_FNC_GetCalculatedBuildtime = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedBuildtime.sqf";
 CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedItemPrize.sqf";
+CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasDLC.sqf";
+CTI_CO_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DisbandTeam.sqf";
 
 CTI_CO_CustomIterator = 0;
 
+call compile preprocessFileLineNumbers "Common\Config\Units\Techmatrix.sqf";
 call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 
-(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Resistance.sqf";
+if(CTI_GUER_TOWNS == 0) then {
+	(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Resistance.sqf";
+} else {
+	(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_LDF.sqf";
+};
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
 
-(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_Resistance.sqf";
+if(CTI_GUER_TOWNS == 0) then {
+	(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_Resistance.sqf";
+} else {
+	(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_LDF.sqf";
+};
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf";
 
-(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_resistance.sqf";
+if(CTI_GUER_TOWNS == 0) then {
+	(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_resistance.sqf";
+} else {
+	(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_LDF.sqf";
+};
 (west) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_east.sqf";
 
@@ -123,6 +138,8 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 //(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Civilian.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_east.sqf";
+
+call compile preprocessFileLineNumbers "Common\Config\Pylons\pylons.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Upgrades\Upgrades.sqf";
@@ -163,7 +180,7 @@ if ((missionNamespace getVariable "CTI_ECONOMY_CURRENCY_SYSTEM") == 1) then {
 
 //--- AI/Players Loadouts, to prevent any bisteries, DO NOT give them a pistol.
 if(CTI_CAMO_ACTIVATION == 0) then {
-	if(395180 in (getDLCs 1)) then {		//APEX
+	if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 			[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag"]],["",["","","",""],[""]],
 			["",["","","",""],[""]]],
@@ -197,7 +214,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 			["H_HelmetO_ocamo",""],[["","Binocular"],["itemmap","","itemradio","ItemCompass","itemwatch"]]]];
 	};
 } else {
-	if(395180 in (getDLCs 1)) then {		//APEX
+	if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 		missionNamespace setVariable ["CTI_AI_WEST_DEFAULT_GEAR", [
 			[["arifle_SPAR_01_blk_F",["","","",""],["30Rnd_556x45_Stanag_Tracer_Green"]],["",["","","",""],[""]],
 			["",["","","",""],[""]]],

@@ -66,7 +66,7 @@ for '_i' from 0 to (count _config)-1 do {
 };
 
 //--- Authorize the air loadout depending on the parameters set
-//if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
+if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
 
 //--- Sanitize the artillery loadout, mines may lag the server for instance
 if (CTI_ARTILLERY_FILTER == 1) then {if (typeOf _vehicle in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};

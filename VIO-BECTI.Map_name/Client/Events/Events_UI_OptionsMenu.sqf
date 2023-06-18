@@ -32,20 +32,32 @@ switch (_action) do {
 		_vehicle = vehicle player;
 		if (player != _vehicle) then {
 			if (speed _vehicle < 5 && getPos _vehicle select 2 < 5) then {
-				_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];
+				_veh_pos = getPos _vehicle;
+				_unflipStuck = uiNamespace getVariable ["cti_dialog_ui_unflip_unit", 0];
+				if(serverTime < (_unflipStuck + 120)) then {
+					_veh_pos = [_veh_pos, 0, 20, 1, 0, 0.7, 0, [], [_veh_pos, _veh_pos]] call BIS_fnc_findSafePos;
+				};
+				_vehicle setPos [_veh_pos select 0, _veh_pos select 1, 1];
 				_vehicle setVelocity [0,0,1];
 			};
 		} else {
 			{
 				if (speed _x < 5 && getPos _x select 2 < 5) then {
-					_x setPos [getPos _x select 0, getPos _x select 1, 1];
+					_veh_pos = getPos _x;
+					_unflipStuck = uiNamespace getVariable ["cti_dialog_ui_unflip_unit", 0];
+					if(serverTime < (_unflipStuck + 120)) then {
+						_veh_pos = [_veh_pos, 0, 20, 1, 0, 0.7, 0, [], [_veh_pos, _veh_pos]] call BIS_fnc_findSafePos;
+					};
+					_x setPos [_veh_pos select 0, _veh_pos select 1, 1];
 					_x setVelocity [0,0,1];
 				};
 			} forEach (player nearEntities[["Car","Motorcycle","Ship","Tank"],10]);
 		};
+		uiNamespace setVariable ["cti_dialog_ui_unflip_unit", serverTime];
 	};
-	case "onMusicPressed": { //--- Play some music
-		player sidechat "lalalalaaaaaaaaaa lalalalaaaaaaaa laaaa";
+	case "onPylonPressed": { //--- Open Phylon Management window
+		closeDialog 0;
+		createDialog "CTI_RscPylonMenu";
 	};
 	case "onServicePressed": {
 		closeDialog 0;

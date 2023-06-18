@@ -141,6 +141,7 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_ServiceMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_BuildMenu.sqf";
+call compile preprocessFile "Client\Functions\UI\Functions_UI_PylonMenu.sqf";
 
 (CTI_P_SideJoined) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Basic.sqf";
 if (CTI_P_SideJoined isEqualTo west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
@@ -303,7 +304,7 @@ if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMP
 
 // onMapSingleClick "{(vehicle leader _x) setPos ([_pos, 8, 30] call CTI_CO_FNC_GetRandomPosition)} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)";
 // onMapSingleClick "vehicle player setPos _pos";
-// player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDammage 1}; false}]; //--- God-Slayer mode.
+// player addEventHandler ["HandleDamage", {if (player != (_this select 3)) then {(_this select 3) setDamage 1}; false}]; //--- God-Slayer mode.
 // player addAction ["<t color='#a5c4ff'>MENU: Construction (HQ)</t>", "Client\Actions\Action_BuildMenu.sqf"];//debug
 // player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 
@@ -316,13 +317,21 @@ if (profileNamespace getVariable "CTI_PERSISTENT_HINTS") then {
 };
 
 if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
-if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
+if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") >= 1) then {			
+	player enableFatigue false;													//--- Disable the unit's fatigue
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") >= 2) then {		
+		player enableStamina false;												//--- Disable the unit's stamina system and weapons sway
+	};
+	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") >= 3) then {		
+		player enableAimPrecision false;										//--- Disable the animation's aim precision affects weapon sway 
+	};
+}; 
 
 if (CTI_DEBUG) then {
 	hint "DEBUG MODE IS ENABLED! DON'T FORGET TO TURN IT OFF!";
 	onMapSingleClick "vehicle player setpos _pos;(vehicle player) setVelocity [0,0,-0.1];"; //--- Teleport
 	player addEventHandler ["HandleDamage", {false}];
-	player addEventHandler ["HandleDamage", {false;if (player != (_this select 3)) then {(_this select 3) setDammage 1}}]; //--- God-Slayer mode.
+	player addEventHandler ["HandleDamage", {false;if (player != (_this select 3)) then {(_this select 3) setDamage 1}}]; //--- God-Slayer mode.
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 

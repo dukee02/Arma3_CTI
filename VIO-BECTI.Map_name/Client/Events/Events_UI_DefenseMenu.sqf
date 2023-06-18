@@ -10,15 +10,36 @@ switch (_action) do {
 		
 		if (isNil 'CTI_ConstructionCamera') then {[(uiNamespace getVariable "cti_dialog_ui_defensemenu_target"), CTI_SERVICE_REPAIR_TRUCK_RANGE, 20] call CTI_CL_FNC_CreateCamera};
 		
+		//Cathegories
+		lnbClear ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200011);
+		_list = [];
+		_uniqe_categories = (missionNamespace getVariable format ["CTI_%1_DEFENSECATEGORIES", CTI_P_SideJoined]);
+		{
+			_list pushBack _x;
+			((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200011) lbAdd Format[" %1 ", _x];
+		} forEach (_uniqe_categories);
+		uiNamespace setVariable ["cti_dialog_ui_defense_categories", _list];
+		((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200011) lbSetCurSel 0;
+
+		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
 		{
 			_var = missionNamespace getVariable _x;
+
+			//check the upgrade level
+			_load = true;
+			if (count _var > 5) then {
+				if (_upgrades select CTI_UPGRADE_DEFENSE < _var select 6) then {_load = false};
+				//if (_category != "all" && _var select 3 != _category) then {_load = false};
+			};
 			
 			_condition = {true};
 			{if (_x select 0 == "Condition") exitWith {_condition = _x select 1}} forEach (_var select 5);
 			
-			if (call _condition) then {
-				_row = ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbAddRow [format ["$%1", _var select 2], _var select 0];
-				((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbSetData [[_row, 0], _x];
+			if(_load) then {
+				if (call _condition) then {
+					_row = ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbAddRow [format ["$%1", _var select 2], _var select 0];
+					((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbSetData [[_row, 0], _x];
+				};
 			};
 		} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);
 		
@@ -67,6 +88,34 @@ switch (_action) do {
 			default {_mode = "Normal"; camUseNVG false};
 		};
 		((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlSetText _mode;
+	};
+	case "onDefenseLBSelChanged": { //--- The defens category combo was changed
+		_changedto = _this select 1;
+
+		//[_changedto] call CTI_UI_Build_FillDefenseList;
+		lnbClear ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007);
+		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+		_category = ((missionNamespace getVariable format ["CTI_%1_DEFENSECATEGORIES", CTI_P_SideJoined]) select _changedto);
+		{
+			_var = missionNamespace getVariable _x;
+
+			//check the upgrade level
+			_load = true;
+			if (count _var > 5) then {
+				if (_upgrades select CTI_UPGRADE_DEFENSE < _var select 6) then {_load = false};
+				if (_category != "all" && _var select 3 != _category) then {_load = false};
+			};
+			
+			_condition = {true};
+			{if (_x select 0 == "Condition") exitWith {_condition = _x select 1}} forEach (_var select 5);
+			
+			if(_load) then {
+				if (call _condition) then {
+					_row = ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbAddRow [format ["$%1", _var select 2], _var select 0];
+					((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200007) lnbSetData [[_row, 0], _x];
+				};
+			};
+		} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", CTI_P_SideJoined]);
 	};
 	case "onUndoDefense": {
 		CTI_VAR_DestroyCam = false;

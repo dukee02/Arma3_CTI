@@ -8,12 +8,12 @@ if (isClass(configFile >> "CfgVehicles" >> "Fortress2")) then {
 	missionNamespace setVariable ["CTI_CO_CAMP_FLAG_POS", [-5,5]];//--- Camp flag relative position.
 	missionNamespace setVariable ["CTI_CO_CAMP_RDIR", 0];//--- Camp placement direction.
 
-	missionNamespace setVariable ["CTI_CO_DEPOT", "Fort_CAmp"];//--- Town classname to be used.
+	missionNamespace setVariable ["CTI_CO_DEPOT", "Land_BagBunker_Large_F"];//--- Town classname to be used.
 	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG", "FlagPole_F"];//--- Camp flag.
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS0", [4.6,6.0]];//--- Camp flag relative position. (Entry left front)
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS1", [4.6,-2.4]];//--- Camp flag relative position. (Entry left back)
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS2", [-4.0,6.0]];//--- Camp flag relative position. (Entry right front)
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS3", [-4.0,-2.4]];//--- Camp flag relative position. (Entry right back)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS0", [4.2,4.8]];//--- Camp flag relative position. (Entry left front)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS1", [4.2,-4.7]];//--- Camp flag relative position. (Entry left back)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS2", [-4.2,4.8]];//--- Camp flag relative position. (Entry right front)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS3", [-4.2,-4.7]];//--- Camp flag relative position. (Entry right back)
 	missionNamespace setVariable ["CTI_CO_DEPOT_BUY_DIR", 0];//--- Town depot buy direction.
 	missionNamespace setVariable ["CTI_CO_DEPOT_BUY_DISTANCE", 21];//--- Town depot buy distance.
 	missionNamespace setVariable ["CTI_CO_DEPOT_RDIR", 0];//--- Town depot placement direction.
@@ -25,10 +25,10 @@ if (isClass(configFile >> "CfgVehicles" >> "Fortress2")) then {
 
 	missionNamespace setVariable ["CTI_CO_DEPOT", "Land_BagBunker_Large_F"];//--- Town classname to be used.
 	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG", "FlagPole_F"];//--- Camp flag.
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS0", [4.6,6.0]];//--- Camp flag relative position. (Entry left front)
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS1", [4.6,-2.4]];//--- Camp flag relative position. (Entry left back)
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS2", [-4.0,6.0]];//--- Camp flag relative position. (Entry right front)
-	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS3", [-4.0,-2.4]];//--- Camp flag relative position. (Entry right back)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS0", [4.2,4.8]];//--- Camp flag relative position. (Entry left front)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS1", [4.2,-4.7]];//--- Camp flag relative position. (Entry left back)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS2", [-4.2,4.8]];//--- Camp flag relative position. (Entry right front)
+	missionNamespace setVariable ["CTI_CO_DEPOT_FLAG_POS3", [-4.2,-4.7]];//--- Camp flag relative position. (Entry right back)
 	missionNamespace setVariable ["CTI_CO_DEPOT_BUY_DIR", 0];//--- Town depot buy direction.
 	missionNamespace setVariable ["CTI_CO_DEPOT_BUY_DISTANCE", 21];//--- Town depot buy distance.
 	missionNamespace setVariable ["CTI_CO_DEPOT_RDIR", 0];//--- Town depot placement direction.

@@ -164,12 +164,13 @@ switch (_action) do {
 		
 		if (_selected > -1 && call CTI_CL_FNC_IsPlayerCommander) then {
 			_selected = (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups") select _selected;
-			if !(isPlayer leader _selected) then {
+			[_selected, 0] call CTI_CO_FNC_DisbandTeam;
+			/*if !(isPlayer leader _selected) then {
 				_vehicles = [_selected, false] call CTI_CO_FNC_GetTeamVehicles;
 				_units = (units _selected) call CTI_CO_FNC_GetLiveUnits;
 				
-				{_x setDammage 1} forEach (_vehicles + _units);
-			};
+				{_x setDamage 1} forEach (_vehicles + _units);
+			};*/
 		};
 	};
 };

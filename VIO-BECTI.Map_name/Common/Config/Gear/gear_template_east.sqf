@@ -18,7 +18,7 @@ _t = [];
 // Vanilla templates
 //default loadout
 _weapon = ["arifle_TRG20_F"];
-_weapon_ammo = ["30Rnd_556x45_Stanag"];
+_weapon_ammo = ["30rnd_556x45_stanag"];
 _uniform = ["U_O_CombatUniform_ocamo"];
 _vest = ["V_BandollierB_cbr"];
 _helmet = ["H_HelmetO_ocamo"];
@@ -44,7 +44,7 @@ if(CTI_CAMO_ACTIVATION == 0) then {
 };
 
 for [{ _i = 0 }, { _i < count _weapon }, { _i = _i + 1 }] do {
-	_t = _t 	+ [[[[(_weapon select _i),[],[(_weapon_ammo select _i)]],["",[],[""]],["",[],[""]]],
+	_t = _t 	+ [[[[(_weapon select _i),["","","",""],[(_weapon_ammo select _i)]],["",[],[""]],["",[],[""]]],
 					[[(_uniform select _i),["HandGrenade","HandGrenade","firstaidkit","firstaidkit"]],
 					[(_vest select _i), [(_weapon_ammo select _i),(_weapon_ammo select _i),(_weapon_ammo select _i),(_weapon_ammo select _i)]],
 					["", []]],[(_helmet select _i),""],
