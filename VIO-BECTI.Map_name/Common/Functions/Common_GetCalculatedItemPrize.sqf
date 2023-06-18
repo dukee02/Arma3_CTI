@@ -43,10 +43,10 @@ _calcPrize = 0;
 
 switch (count _this) do {
 	case 4: {
-		_calcPrize = round (_rnds)*((_basePrize*_techLevel*CTI_ECONOMY_LEVEL_MULTI)/10000);
+		_calcPrize = round (((_rnds)*((_basePrize*_techLevel*CTI_ECONOMY_LEVEL_MULTI)/10000)*_multiplier));
 	};
 	case 5: {
-		_calcPrize = round (((_rnds*_caliber)/100000)*((_basePrize*_techLevel*CTI_ECONOMY_LEVEL_MULTI)/10000));
+		_calcPrize = round (((_rnds*_caliber)/100000)*((_basePrize*_techLevel*CTI_ECONOMY_LEVEL_MULTI)/10000)*_multiplier);
 	};
 	default {
 		_calcPrize = [_basePrize,_techLevel-1,false,_multiplier] call CTI_CO_FNC_GetCalculatedUnitsPrize;
