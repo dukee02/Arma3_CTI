@@ -1613,10 +1613,8 @@ _baseUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level] call CTI_CO_FNC_GetCalcu
 _armedUnitValue=([CTI_ECONOMY_PRIZE_WHEELED,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
 if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
 	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
 } else {
-	_c pushBack format["%1O_Truck_02_fuel_F", _sid];
 	_c pushBack format["%1O_Truck_02_Ammo_F", _sid];
 };
 //set all other vars in a slope
@@ -1635,10 +1633,8 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 
 if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 	_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
-	_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
 } else {
 	_c pushBack format["%1O_Truck_02_fuel_F", _sid];
-	_c pushBack format["%1O_Truck_02_Ammo_F", _sid];
 };
 //set all other vars in a slope
 _cntstart = count _c;

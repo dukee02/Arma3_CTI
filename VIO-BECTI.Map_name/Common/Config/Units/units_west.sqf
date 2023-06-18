@@ -1310,12 +1310,6 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	// base unit value of an armed unit in this tech level
 	_armedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true] call CTI_CO_FNC_GetCalculatedUnitsPrize);
 
-	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-
-	// base unit value of an researched/upgraded armed unit in this tech level
-	_researchedArmedUnitValue=([CTI_ECONOMY_PRIZE_AIR,_tech_level,true,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-
 	// List of units
 	if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
 		_c pushBack format["%1B_T_VTOL_01_infantry_F", _sid];
