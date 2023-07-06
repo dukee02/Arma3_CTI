@@ -851,6 +851,7 @@ if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 if(([571710] call CTI_CO_FNC_HasDLC)) then {		//Laws of War
 	_i pushBack "O_UAV_06_backpack_F";
 	_i pushBack "O_UAV_06_medical_backpack_F";
+	_i pushBack "C_IDAP_UAV_06_antimine_backpack_F";
 };
 
 // set all other vars in a slope
