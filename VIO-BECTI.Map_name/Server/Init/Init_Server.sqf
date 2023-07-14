@@ -59,32 +59,59 @@ call compile preprocessFileLineNumbers "Server\Functions\Server_TownMortars.sqf"
 execVM "Server\Init\Init_Prison.sqf";
 
 //--- Get the starting locations.
+_startup_locations = [];
 _startup_locations_west = [];
+
 for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-west%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
-	_startup_locations_west pushBack _location;
-};
-if(count _startup_locations_west < 1) then {
-	for '_i' from 0 to 30 step +2 do {
-		_location = getMarkerPos format ["cti-spawn%1", _i];
-		if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
+	//Check if location matches near towns setup if active
+	if (CTI_BASE_START_TOWN > 0) then {
+		_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
+		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
+			_startup_locations_west pushBack _location;
+		};
+	} else {
 		_startup_locations_west pushBack _location;
-	};	
+	};
 };
+for '_i' from 0 to 50 step +1 do {
+	_location = getMarkerPos format ["cti-spawn%1", _i];
+	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
+	//Check if location matches near towns setup if active
+	if (CTI_BASE_START_TOWN > 0) then {
+		//_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
+		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
+			_startup_locations pushBack _location;
+		};
+	} else {
+		_startup_locations pushBack _location;
+	};
+};
+_startup_locations_west append _startup_locations;
+
 _startup_locations_east = [];
 for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-east%1", _i];
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
-	_startup_locations_east pushBack _location;
+	//Check if location matches near towns setup if active
+	if (CTI_BASE_START_TOWN > 0) then {
+		//_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
+		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
+			_startup_locations_east pushBack _location;
+		};
+	} else {
+		_startup_locations_east pushBack _location;
+	};
 };
-if(count _startup_locations_east < 1) then {
+_startup_locations_east append _startup_locations;
+/*if(count _startup_locations_east < 1) then {
 	for '_i' from 1 to 30 step +2 do {
 		_location = getMarkerPos format ["cti-spawn%1", _i];
 		if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 		_startup_locations_east pushBack _location;
 	};
-};
+};*/
 
 //--- Place both sides.
 _range = missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
@@ -180,24 +207,25 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\In
 	//--- Add FOB if needed
 	if (CTI_BASE_FOB_MAX > 0) then {_logic setVariable ["cti_fobs", [], true]};
 	
-	//--- Startup vehicles
-	{
-		//if((_x select 0) isEqualType []) then {_x = _x select 0;};
-		if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Init\Init_Server.sqf", format["starting vehicles: side: [%1] | unit: [%2]", _side, _x]] call CTI_CO_FNC_Log};
-		_model = _x select 0;
-		_equipment = _x select 1;
-		_var = missionNameSpace getVariable _model;
-		_script = _var select CTI_UNIT_SCRIPTS;
-		
-		_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
-		[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
-		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
-		_vehicle setVariable ["isStartup", true];
-		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
-		if (_script != "" && alive _vehicle) then {
-			[_vehicle, _side, _script, ""] spawn CTI_CO_FNC_InitializeCustomVehicle;
-		};
-	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
+	//--- Startup vehicles if we have a fresh start
+	if !(["exists"] call CTI_SE_FNC_LOAD) then {
+		{
+			//if((_x select 0) isEqualType []) then {_x = _x select 0;};
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Init\Init_Server.sqf", format["starting vehicles: side: [%1] | unit: [%2]", _side, _x]] call CTI_CO_FNC_Log};
+			_model = _x select 0;
+			_equipment = _x select 1;
+			_var = missionNameSpace getVariable _model;
+			_script = _var select CTI_UNIT_SCRIPTS;
+			
+			_vehicle = [_model, _startPos, 0, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
+			[_vehicle, getPos _hq, 45, 60, true, false, true] call CTI_CO_FNC_PlaceNear;
+			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
+			if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
+			if (_script != "" && alive _vehicle) then {
+				[_vehicle, _side, _script, ""] spawn CTI_CO_FNC_InitializeCustomVehicle;
+			};
+		} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
+	};
 	
 	//--- Handle the Team
 	_teams = [];

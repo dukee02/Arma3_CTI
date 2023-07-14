@@ -171,10 +171,12 @@ if(_savemode > 0) then {
 		case "empty_vehicles": {
 			_saveObjects = [];
 			{
+				//ignore both HQ if they are mobilized, they get stored above
+				_x = _x - ((West) call CTI_CO_FNC_GetSideHQ);
+				_x = _x - ((East) call CTI_CO_FNC_GetSideHQ);
 				{ 
 					if (count crew vehicle _x == 0) then {
-						_startup = _x getVariable "isStartup";
-						if (isNil '_startup') then { _saveObjects pushBack _x };
+						_saveObjects pushBack _x;
 					}; 
 				} forEach (allMissionObjects _x);
 			} forEach ["Car","Motorcycle","Tank","Air","Ship"];

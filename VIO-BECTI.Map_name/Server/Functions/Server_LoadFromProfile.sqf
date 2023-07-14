@@ -68,6 +68,7 @@ if(_loadingFine) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["World and Towns found, loading seems OK, load data %1", _part]] call CTI_CO_FNC_Log;};
 	
 	switch(_part) do {
+		case "exists": {};
 		case "towns": {
 			if (count _towns != count CTI_TOWNS) exitWith {
 				if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_ERROR", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["ERROR on loading the towns, town count: <%1>", count _towns]] call CTI_CO_FNC_Log;};
@@ -247,7 +248,7 @@ if(_loadingFine) then {
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Side supply loaded from profile:<SAVE_%1_FUNDSCOM> Funds Com: <%2>", _savename, _supply_stored]] call CTI_CO_FNC_Log;};
 					_supply_now = call CTI_CO_FNC_GetSideSupply;
-					[_x, (_supply_now - _supply_stored)] call CTI_CO_FNC_ChangeSideSupply; 
+					_logic setVariable ["cti_supply", _supply_stored, true];
 				};
 				
 				//Load the funds of the commander
