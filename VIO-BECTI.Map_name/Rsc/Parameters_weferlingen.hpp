@@ -239,16 +239,16 @@ class Params {
 		texts[] = {"Disabled","1","2","3","4","5","6","7","8","9","10"};
 		default = 6;
 	};
-	/*class CTI_BASE_START_TOWN {
+	class CTI_BASE_START_TOWN {
 		title = "BASE: Start Near towns";
-		values[] = {0,1};
-		texts[] = {"No","Yes"};//{"Disabled","Enabled"};
-		default = 0;
-	};*/
+		values[] = {0,1000,2000,3000,4000};
+		texts[] = {"Disabled","1 KM","2 KM","3 KM","4 KM"};
+		default = 2000;
+	};
 	class CTI_BASE_STARTUP_PLACEMENT {
 		title = "BASE: Start-up Placement";
-		values[] = {1000,2000,4000,6000,8000,10000};
-		texts[] = {"1KM","2 KM","4 KM","6 KM","8 KM","10 KM"};
+		values[] = {100000,1000,2000,4000,6000,8000,10000};
+		texts[] = {"Use Default","1 KM","2 KM","4 KM","6 KM","8 KM","10 KM"};
 		default = 6000;
 	};
 	class CTI_BASE_WORKERS_LIMIT {
