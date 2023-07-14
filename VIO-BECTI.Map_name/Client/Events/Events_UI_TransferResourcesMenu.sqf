@@ -65,9 +65,21 @@ switch (_action) do {
 	};
 	case "onGivePlayerPressed": {
 		_amount = floor parseNumber(ctrlText ((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009));
-		
-		if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {
-			_recievingGroup = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
+		_recievingGroup = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
+		_valid = false;
+		if (call CTI_CL_FNC_IsPlayerCommander) then {
+			_recieversFunds = _recievingGroup call CTI_CO_FNC_GetFundsTeam;
+			switch (true) do {
+				case (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds): {_valid = true};
+				case (_amount < 0 && _amount <= _recieversFunds): {_valid = true};
+				//case (_amount < 0 && _amount <= _recieversFunds && !(isPlayer leader _recievingGroup)): {_valid = true};
+				default {};
+			};
+		} else {
+			if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {_valid = true};
+		};
+		//if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {
+		if(_valid) then {
 			_sendingGroup = group player;
 			if (_recievingGroup != group player) then {
 				[_recievingGroup, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds;

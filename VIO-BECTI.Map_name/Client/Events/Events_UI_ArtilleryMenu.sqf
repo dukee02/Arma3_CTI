@@ -13,7 +13,7 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_artillerymenu_marker", ""];
 		uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery", []];
 		uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_magazine", ""];
-		uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", -1];
+		uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", []];
 		
 		_marker_last = uiNamespace getVariable "cti_dialog_ui_artillerymenu_marker_lastcoord";
 		if !(isNil '_marker_last') then {(_marker_last) call CTI_UI_Artillery_CreateArtilleryTargetMarker};
@@ -83,7 +83,9 @@ switch (_action) do {
 				{
 					_modeName = getText (configfile >> "CfgWeapons" >> (_weapon select 0) >> _x >> "displayName");
 					_rangemaxcheck = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> _x >> "maxRange"));
-					if(!(["Single", _x] call BIS_fnc_inString) && _rangemaxcheck <= CTI_ARTILLERY_SETUP) then {
+					//if(!(["Single", _x] call BIS_fnc_inString) && _rangemaxcheck <= CTI_ARTILLERY_SETUP) then {
+					//["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_modes <%1,%2>", _modeName, _rangemaxcheck]] call CTI_CO_FNC_Log;
+					if(_rangemaxcheck >= 100 && _rangemaxcheck <= CTI_ARTILLERY_SETUP) then {
 						((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbAdd str _modeName;
 						((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290018) lbSetValue [_forEachIndex, _forEachIndex];
 						_usable_modes pushBack _x;
@@ -104,13 +106,13 @@ switch (_action) do {
 				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_unit", _selected];
 
 				//--- Magazines
-				_magazines_labels = _get select 1;
-				_magazines = _get select 2;
-				/*_magazines = getArray (configfile >> "CfgWeapons" >> (_weapon select 0) >> "magazines");
+				//_magazines_labels = _get select 1;
+				//_magazines = _get select 2;
+				_magazines = getArray (configfile >> "CfgWeapons" >> (_weapon select 0) >> "magazines");
 				_magazines_labels = [];
 				{_magazines_labels pushBack (getText(configFile >> "CfgMagazines" >> _x >> "displayName"))} forEach _magazines;
-				["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_magazines <%1>", _magazines]] call CTI_CO_FNC_Log;
-				["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_magazines_labels <%1>", _magazines_labels]] call CTI_CO_FNC_Log;*/
+				//["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_magazines <%1>", _magazines]] call CTI_CO_FNC_Log;
+				//["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_magazines_labels <%1>", _magazines_labels]] call CTI_CO_FNC_Log;
 
 				for '_i' from 0 to count(_magazines)-1 do {
 					((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290009) lbAdd (_magazines_labels select _i);
@@ -118,6 +120,7 @@ switch (_action) do {
 				};
 				
 				if (count _magazines > 0) then {((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290009) lbSetCurSel 0};
+				uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_magazine", (_magazines select 0)];
 				
 				//--- Burst
 				{
@@ -126,7 +129,8 @@ switch (_action) do {
 				} forEach (_get select 3);
 				
 				if (count (_get select 3) > 0) then {((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290011) lbSetCurSel 0};
-												
+								
+				//["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_range <%1>", _range]] call CTI_CO_FNC_Log;				
 				lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014);
 				{
 					_row = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014) lbAdd format ["[%1] - %2", _x call CTI_CL_FNC_GetAIDigit, _get select 0];
@@ -163,6 +167,7 @@ switch (_action) do {
 			_rangemax = (getNumber (configfile >> "CfgWeapons" >> (_weapon select 0) >> (_modes select _selected) >> "maxRange"));
 			uiNamespace setVariable ["cti_dialog_ui_artillerymenu_artillery_range", [_rangemin,_rangemax]];
 
+			//["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["_range2 <%1,%2>", _rangemin, _rangemax]] call CTI_CO_FNC_Log;	
 			lbClear ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014);
 			{
 				_row = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290014) lbAdd format ["[%1] - %2", _x call CTI_CL_FNC_GetAIDigit, _get select 0];
