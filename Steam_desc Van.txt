@@ -72,16 +72,28 @@ More infos:
 
 
 -------------------MAPS----------------------------
-Altis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0_230618
-Malden			https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0_230618
-MSKE			https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0_230618
-Rosche			https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0_230618
-Stratis			https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0_230618	
-Tanoa			https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0_230618	
-Livonia			https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0_230618
+Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.2_230721
+Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.2_230721
+Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.2_230721
+Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.2_230721
+Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.2_230721
 
+Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.2_230721
+
+MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.2_230721
+
+Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.2_230721
+Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.2_230721
+Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.2_230721
+Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.2_230721
 
 --------------------------------------------------
 
-
+[h1]VIO-BECTI V2.0.2[h1]
+[b]Added:[/b] UAV 06 antimine backpack
+[b]Changed:[/b] Some Arty UI improvements
+[b]Fixed:[/b] HQ spawns twice
+[b]Added:[/b] Param to start near Town is back
+[b]Changed:[/b] larger capture bar
+[b]Added:[/b] Chernarus and Takistan
 

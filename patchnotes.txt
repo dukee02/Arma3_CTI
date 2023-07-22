@@ -1,4 +1,11 @@
-[] Start with less towns can result in a long early moave with the HQ
+
+V2.0.2_230721
+Added: Param to start near Town is back
+Added: UAV 06 antimine backpack
+Added: Chernarus and Takistan
+Fixed: HQ spawns twice
+Changed: Some Arty UI improvements
+Changed: larger capture bar
 
 V2.0_230618 (final 2.0)
 Added: Artillery can change mode + max range in params
@@ -36,10 +43,6 @@ Changed: HQ to truck on tanoa, mske for transport
 Changed: lowerd tank amount in 60SV towns
 Changed: spawn chance of some units
 Changed: some param default values
-
-not needed
-[-]Changed: basic base units coding
-[-]Changed: standardize Base Units config
 
 
 V2.0_230109
