@@ -40,7 +40,6 @@ ReviveBleedOutDelay = 120;              //unconscious state duration (in secs)
 
 enableDebugConsole = 1;
 
-loadScreen = "VIO_BECTI.jpg";
 /*
 //Config for Pylon Manager
 class CfgPylonManager

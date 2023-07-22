@@ -67,7 +67,7 @@ for '_i' from 0 to 30 step +1 do {
 	if (_location select 0 == 0 && _location select 1 == 0) exitWith {};
 	//Check if location matches near towns setup if active
 	if (CTI_BASE_START_TOWN > 0) then {
-		_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
+		//_near = [_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance;
 		if(_location distance (([_location,CTI_Towns] Call CTI_CO_FNC_SortByDistance) select 0) < CTI_BASE_START_TOWN) then {
 			_startup_locations_west pushBack _location;
 		};

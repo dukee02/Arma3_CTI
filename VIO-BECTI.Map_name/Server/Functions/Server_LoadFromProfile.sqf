@@ -32,7 +32,7 @@
 	["hq",east] call CTI_SE_FNC_LOAD
 	["funds_group",east,group player] call CTI_SE_FNC_LOAD
 */
-private ["_part", "_savemode", "_savename", "_loadingFine"];
+private ["_part", "_side", "_sideID", "_group", "_savemode", "_savename", "_loadingFine", "_world", "_hq_stored", "_hq", "_logic", "_upgrades_stored", "_side_building", "_fabrics_stored", "_areas_stored", "_fobs_stored", "_defences_stored", "_supply_stored", "_comfunds_stored", "_groups", "_sideGroup", "_teamfunds_stored", "_playerUID", "_default_funds"];
 
 _part = _this select 0;
 _side = if (count _this > 1) then {_this select 1} else {sideEmpty};
@@ -54,14 +54,15 @@ if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Fu
 _towns = profileNamespace getVariable [Format ["SAVE_%1_TOWNS", _savename],[]];
 if(count _towns <= 0) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", "No save found"] call CTI_CO_FNC_Log;};
-	_part = "";
 	_loadingFine = false;
 };
 
-_world = profileNamespace getVariable [Format ["SAVE_%1_WORLD", _savename],""];
-if !(_world == worldName) then {
-	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", "World didn't match - loading skipped"] call CTI_CO_FNC_Log;};
-	_loadingFine = false;
+if(_loadingFine) then {
+	_world = profileNamespace getVariable [Format ["SAVE_%1_WORLD", _savename],""];
+	if !(_world == worldName) then {
+		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", "World didn't match - loading skipped"] call CTI_CO_FNC_Log;};
+		_loadingFine = false;
+	};
 };
 
 if(_loadingFine) then {
@@ -136,7 +137,6 @@ if(_loadingFine) then {
 				_logic= (_side) call CTI_CO_FNC_GetSideLogic;
 				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Load the Side <%1> from the profile", _side]] call CTI_CO_FNC_Log;};
 				
-				
 				//Load the Upgrades for the side
 				_upgrades_stored = profileNamespace getVariable [Format ["SAVE_%1_%2_UPGRADES", _savename, _side],[]];
 				if!(count _upgrades_stored > 0) then {
@@ -156,7 +156,6 @@ if(_loadingFine) then {
 				_side_building = _x;			//only for a better readability
 				_logic= (_side_building) call CTI_CO_FNC_GetSideLogic;
 				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Load the Side <%1> from the profile", _side]] call CTI_CO_FNC_Log;};
-				
 				
 				//Load the fabrics and other main base buildings
 				_fabrics_stored = profileNamespace getVariable [Format ["SAVE_%1_%2_FABRICS", _savename, _side_building],[]];
@@ -305,7 +304,7 @@ if(_loadingFine) then {
 				if !(_group isEqualTo grpNull) then {
 					_playerUID = getPlayerUID leader _group;
 					_teamfunds_stored = profileNamespace getVariable [Format ["SAVE_%1_%2_FUNDS_%3", _savename, _side, _playerUID],0];
-
+					
 					if(_teamfunds_stored <= 0) then {
 						_default_funds = missionNamespace getVariable [Format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side],0];
 						if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["No Team funds found, set to default: <%1>", _default_funds]] call CTI_CO_FNC_Log;};
