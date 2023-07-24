@@ -169,17 +169,13 @@ if(_savemode > 0) then {
 			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Team funds saved to profile:<SAVE_%1_FUNDS_%2> Funds: <%3>", _savename, _groupname, (_group) call CTI_CO_FNC_GetFundsTeam]] call CTI_CO_FNC_Log;};
 		};
 		case "empty_vehicles": {
-			_saveObjects = [];
-			{
-				//ignore both HQ if they are mobilized, they get stored above
-				_x = _x - ((West) call CTI_CO_FNC_GetSideHQ);
-				_x = _x - ((East) call CTI_CO_FNC_GetSideHQ);
-				{ 
-					if (count crew vehicle _x == 0) then {
-						_saveObjects pushBack _x;
-					}; 
-				} forEach (allMissionObjects _x);
-			} forEach ["Car","Motorcycle","Tank","Air","Ship"];
+			_saveObjects = []; { 
+				{  
+					if (count crew vehicle _x == 0 && _x != (West) call CTI_CO_FNC_GetSideHQ && _x != (East) call CTI_CO_FNC_GetSideHQ) then { 
+						_saveObjects pushBack _x; 
+					};  
+				} forEach (allMissionObjects _x); 
+			} forEach ["Car","Motorcycle","Tank","Air","Ship"]; _saveObjects;
 
 			_vehicles_prepaired = [];
 			{

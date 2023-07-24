@@ -18,14 +18,14 @@
 
 //--- Global Garbage Collection Settings
 MinPlayerDistance = 0;					//The minimum distance from any player. Set the value to 0 to remove the min. distance. 
-CorpseManagerMode = 1;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
+CorpseManagerMode = 0;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
 CorpseLimit = 200;						//Maximum allowed number of dead bodies in the scenario. 
-CorpseRemovalMinTime = 60;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
-CorpseRemovalMaxTime = 600;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
+CorpseRemovalMinTime = 600;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
+CorpseRemovalMaxTime = 1800;			//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
 WreckManagerMode = 0;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
-WreckLimit = 50;						//Maximum allowed number of destroyed vehicles in the scenario. 
-WreckRemovalMinTime = 300;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
-WreckRemovalMaxTime	= 3000;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
+WreckLimit = 40;						//Maximum allowed number of destroyed vehicles in the scenario. 
+WreckRemovalMinTime = 1200;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
+WreckRemovalMaxTime	= 3600;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
 
 //--- Global Revive Settings
 //ReviveMode = 0;                         //0: disabled, 1: enabled, 2: controlled by player attributes
