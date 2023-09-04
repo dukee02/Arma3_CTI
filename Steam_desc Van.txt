@@ -72,20 +72,20 @@ More infos:
 
 
 -------------------MAPS----------------------------
-Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.2_230721
-Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.2_230721
-Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.2_230721
-Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.2_230721
-Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.2_230721
+Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.2_c230817
+Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.2_c230817
+Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.2_c230817
+Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.2_c230817
+Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.2_c230817
 
-Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.2_230721
+Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.2_c230817
 
-MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.2_230721
+MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.2_c230817
 
-Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.2_230721
-Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.2_230721
-Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.2_230721
-Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.2_230721
+Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.2_c230817
+Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.2_c230817
+Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.2_c230817
+Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.2_c230817
 
 --------------------------------------------------
 

@@ -1,4 +1,7 @@
 
+V2.0.2_c230817
+Fixed: disband team not working
+
 V2.0.2_230721
 Added: Param to start near Town is back
 Added: UAV 06 antimine backpack
