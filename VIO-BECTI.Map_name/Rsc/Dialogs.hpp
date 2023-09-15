@@ -829,7 +829,7 @@ class CTI_RscGearMenu {
 			idc = 77020;
 			
 			x = "SafeZoneX + (SafeZoneW * 0.8223)";
-		}
+		};
 		class CTI_Gear_Container_Secondary_Optics : CTI_Gear_Container_Secondary_Muzzle {
 			idc = 77021;
 			
@@ -3925,7 +3925,7 @@ class CTI_RscUpgradeMenu {
 			y = "SafeZoneY + (SafezoneH * 0.78)";
 			h = "SafeZoneH * 0.03";
 		};
-	}
+	};
 	
 	class controls {
 		class CTI_Control_Upgrade : RscButton {
