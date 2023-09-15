@@ -1,8 +1,8 @@
 @echo off
 title VIO-BECTI.Altis Mission gets created
 
-set gitpath="F:\GitReps\Arma3_CTI"
-set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI"
+set "gitpath=C:\YourPathHere"
+set "buildpath=C:\YourBuildPathHere"
 ::set buildpath="C:\Users\loewi\Documents\Arma 3 - Other Profiles\dukee\mpmissions\VIO-BECTI"
 
 ::echo Datum wird erstellt
@@ -14,25 +14,25 @@ set buildpath="D:\Tausch\Programmierung\VIO-BECTI\VIO-BECTI"
 ::set min=%time:~3,2%
 ::set sek=%time:~6,2%
 
-set mapname="Altis"
-set missionfloder="VIO-BECTI.%mapname%"
-echo aktuelle Mission wird erstellt unter: "buildpath\%missionfloder%"
+set "mapname=Altis"
+set "missionfloder=VIO-BECTI.%mapname%"
+echo aktuelle Mission wird erstellt unter: "%buildpath%\%missionfloder%"
 echo copy Client folder
 xcopy "%gitpath%\VIO-BECTI.Map_name\Client" "%buildpath%\%missionfloder%\Client" /E /Y /I
 echo copy Common folder
 xcopy "%gitpath%\VIO-BECTI.Map_name\Common" "%buildpath%\%missionfloder%\Common" /E /Y /I
-echo copy RSC files
-xcopy "%gitpath%\VIO-BECTI.Map_name\RSC\Pictures" "%buildpath%\%missionfloder%\RSC\Pictures" /E /Y /I
-xcopy "%gitpath%\VIO-BECTI.Map_name\RSC\Sounds" "%buildpath%\%missionfloder%\RSC\Sounds" /E /Y /I
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Debriefing.hpp" "%buildpath%\%missionfloder%\RSC\Debriefing.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Dialogs.hpp" "%buildpath%\%missionfloder%\RSC\Dialogs.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Game.hpp" "%buildpath%\%missionfloder%\RSC\Game.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Notifications.hpp" "%buildpath%\%missionfloder%\RSC\Notifications.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Parameters_%mapname%.hpp" "%buildpath%\%missionfloder%\RSC\Parameters.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Resources.hpp" "%buildpath%\%missionfloder%\RSC\Resources.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Sounds.hpp" "%buildpath%\%missionfloder%\RSC\Sounds.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Styles.hpp" "%buildpath%\%missionfloder%\RSC\Styles.hpp"
-copy "%gitpath%\VIO-BECTI.Map_name\RSC\Titles.hpp" "%buildpath%\%missionfloder%\RSC\Titles.hpp"
+echo copy Rsc files
+xcopy "%gitpath%\VIO-BECTI.Map_name\Rsc\Pictures" "%buildpath%\%missionfloder%\Rsc\Pictures" /E /Y /I
+xcopy "%gitpath%\VIO-BECTI.Map_name\Rsc\Sounds" "%buildpath%\%missionfloder%\Rsc\Sounds" /E /Y /I
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Debriefing.hpp" "%buildpath%\%missionfloder%\Rsc\Debriefing.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Dialogs.hpp" "%buildpath%\%missionfloder%\Rsc\Dialogs.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Game.hpp" "%buildpath%\%missionfloder%\Rsc\Game.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Notifications.hpp" "%buildpath%\%missionfloder%\Rsc\Notifications.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Parameters_%mapname%.hpp" "%buildpath%\%missionfloder%\Rsc\Parameters.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Resources.hpp" "%buildpath%\%missionfloder%\Rsc\Resources.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Sounds.hpp" "%buildpath%\%missionfloder%\Rsc\Sounds.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Styles.hpp" "%buildpath%\%missionfloder%\Rsc\Styles.hpp"
+copy "%gitpath%\VIO-BECTI.Map_name\Rsc\Titles.hpp" "%buildpath%\%missionfloder%\Rsc\Titles.hpp"
 echo copy Script files
 copy "%gitpath%\VIO-BECTI.Map_name\\Scripts\nre_earplugs.sqf" "%buildpath%\%missionfloder%\\Scripts\nre_earplugs.sqf"
 echo copy Server folder
@@ -48,3 +48,5 @@ copy "%gitpath%\VIO-BECTI.Map_name\mission_%mapname%.sqm" "%buildpath%\%missionf
 copy "%gitpath%\Vanilla-BECTI-Thumpnails\VanillaCTI_%mapname%_small.jpg" "%buildpath%\%missionfloder%\VIO_BECTI.jpg"
 copy "%gitpath%\VIO-BECTI.Map_name\WFpostprocess.sqf" "%buildpath%\%missionfloder%\WFpostprocess.sqf"
 copy "%gitpath%\VIO-BECTI.Map_name\stringtable.xml" "%buildpath%\%missionfloder%\stringtable.xml"
+
+start MakePbo "%buildpath%\%missionfloder%"
