@@ -106,7 +106,8 @@ switch (_action) do {
 				_veh setPylonLoadout [_i, (_activeLoadout select (_i-1)), true, [(_activeControl select (_i-1))]];
 			};
 			//refresh the weaponTurret states of each turret an for Pilot and Gunner
-			_weaponsTurretPilot = _veh weaponsTurret [-1];
+			// --- ! Heli gun gets disabled ! ---  ??? needs a check.
+			/*_weaponsTurretPilot = _veh weaponsTurret [-1];
 			{
 				private _weaponState = weaponState [_veh, [-1], _X];
 				if (_weaponState SELECT 4 == 0) then {
@@ -119,7 +120,7 @@ switch (_action) do {
 				if (_weaponState SELECT 4 == 0) then {
 					_veh removeWeaponTurret [_X, [0]];
 				};
-			} forEach _weaponsTurretGunner;
+			} forEach _weaponsTurretGunner;*/
 			//After the weaponState is refreshed, we can set the ammo to 0;
 			for [{ _i = 1 }, { _i <= count _activeLoadout }, { _i = _i + 1 }] do { 
 				_veh setAmmoOnPylon [_i, 0];

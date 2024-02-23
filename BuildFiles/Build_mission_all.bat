@@ -1,5 +1,5 @@
 @echo off
-title All VIO-BECTI-CW Mission gets created
+title All VIO-BECTI Mission gets created
 
 start Build_mission_Altis.bat
 start Build_mission_Malden.bat

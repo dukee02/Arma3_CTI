@@ -67,8 +67,8 @@ class Params {
 	};
 	class CTI_ECONOMY_LEVEL_GEAR {
 		title = "UPGRADE: Max Level Gear (depends on activated stuff, gets adjust to lower)";
-		values[] = {-1,0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {"Disable all gear","0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"0","1","2","3","4","5","6","7","8","9","Automatic Maximum"};
 		default = 10;
 	};
 	class CTI_ECONOMY_LEVEL_INFANTRY {

@@ -537,6 +537,31 @@ _c pushBack "Armored";
 _s pushBack [];
 kind_tracked pushBack "ArmoredT3";
 
+// Tech Level 4
+// ------------
+_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
+	// List of units
+	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		arm_to_add = [[format["%1O_T_MBT_02_railgun_ghex_F", _sid], 1, 50]];
+	};
+	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+		arm_to_add = [[format["%1O_MBT_02_railgun_F", _sid], 1, 50]];
+	};
+	units_tracked append arm_to_add;
+	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {tracked_auto append arm_to_add;};
+};
+
+_v pushBack "ArmoredT4";
+_t pushBack "Railgun";
+_p pushBack arm_to_add;
+_f pushBack CTI_HEAVY;
+_m pushBack 500;
+_c pushBack "Armored";
+_s pushBack [];
+kind_tracked pushBack "ArmoredT3";
+
 _v pushBack "Armored";
 _t pushBack "Tanks (Auto)";
 _p pushBack tracked_auto;

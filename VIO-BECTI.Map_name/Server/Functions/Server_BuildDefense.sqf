@@ -56,7 +56,7 @@ if(isNIL "_var") then {
 	if (_fob) then {if (count(_logic getVariable "cti_fobs") >= CTI_BASE_FOB_MAX) then {_limit = true}};
 	if (_limit) exitWith {};
 
-	_position set [2, 0];
+	//_position set [2, 0];
 
 	_defense = (_var select 1) createVehicle _position;
 
