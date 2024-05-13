@@ -66,6 +66,9 @@ if(_savemode > 0) then {
 				_hq=(_x) call CTI_CO_FNC_GetSideHQ;
 				profileNamespace setVariable [Format ["SAVE_%1_%2_HQ", _savename, _x], [getposATL _hq,getDir _hq,alive _hq]];
 				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["HQ saved to profile:<SAVE_%1_HQ> HQ pos: <%2,%3,%4>", _savename, getposATL _hq, getDir _hq, alive _hq]] call CTI_CO_FNC_Log;};
+				//save the HQ deaths
+				_logic = (_x) call CTI_CO_FNC_GetSideLogic;
+				profileNamespace setVariable [Format ["SAVE_%1_%2_HQ_deaths", _savename, _x], (_logic getVariable "cti_hq_repair_count")];
 			} forEach [east,west];
 		};
 		case "upgrades": {
