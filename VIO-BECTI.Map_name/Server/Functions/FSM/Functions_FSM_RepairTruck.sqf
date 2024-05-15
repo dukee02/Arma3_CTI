@@ -27,7 +27,7 @@ CTI_FSM_RepairTruck_Repair = {
 	if (_virtual_damages < 0) then {
 		_addin = damage _target - CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR;
 		if (_addin < 0) then {_addin = 0};
-		_target damage _addin;
+		_target setDamage _addin;
 	} else {
 		_addin = _virtual_damages - CTI_VEHICLES_REPAIRTRUCK_BASE_REPAIR;
 		if (_addin < 0) then {_addin = 0};
