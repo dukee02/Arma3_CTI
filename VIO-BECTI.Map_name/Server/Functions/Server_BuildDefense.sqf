@@ -55,10 +55,16 @@ if(isNIL "_var") then {
 	{if (_x select 0 == "FOB") exitWith {_fob = true}} forEach (_var select 5);
 	if (_fob) then {if (count(_logic getVariable "cti_fobs") >= CTI_BASE_FOB_MAX) then {_limit = true}};
 	if (_limit) exitWith {};
-
+	//position on ground not needed, because we have a function to raise the elevation.
 	//_position set [2, 0];
-
-	_defense = (_var select 1) createVehicle _position;
+	
+	_defense = objNull; 
+	if (_var select 3 == "SAM" || _var select 3 == "RADAR") then {
+		_newObj = [_position, _direction, _var select 1, _side] call BIS_fnc_spawnVehicle;
+		_defense = _newObj select 0;
+	} else {
+		_defense = (_var select 1) createVehicle _position;
+	};
 
 	if (_defense isKindOf "Building") then {
 		if (_autoalign) then {
@@ -74,23 +80,12 @@ if(isNIL "_var") then {
 			};
 		};
 	};
-	/*
-	for the mine placing part we need to check:
-	https://community.bistudio.com/wiki/createMine
-	*/
+	VIOC_ZEUS addCuratorEditableObjects [[_defense], true];
+
 	if (_fob) then {
 		[["CLIENT", _side], "Client_OnSpecialConstructed", [_defense, "FOB"]] call CTI_CO_FNC_NetSend;
 		_defense setVariable ["savename", _varname];
-		//["VIOC_DEBUG", "FILE: Server\Functions\Server_BuildDefense.sqf", format["build defense - fobs: <%1> ", _logic getVariable "cti_fobs"]] call CTI_CO_FNC_Log;
-		_logic setVariable ["cti_fobs", (_logic getVariable "cti_fobs") + [_defense], true];				//don't know why this don't works anymore
-		//["VIOC_DEBUG", "FILE: Server\Functions\Server_BuildDefense.sqf", format["build defense - fobs: <%1> ", _logic getVariable "cti_fobs"]] call CTI_CO_FNC_Log;
-		/*_sideFOBs = _logic getVariable "cti_fobs";
-		if (isNil "cti_fobs") then { 
-			_sideFOBs = [_defense];
-		} else {
-			_sideFOBs pushBack _defense;
-		};
-		_logic setVariable ["cti_fobs", _sideFOBs];*/
+		_logic setVariable ["cti_fobs", (_logic getVariable "cti_fobs") + [_defense], true];
 	} else {
 		//Save the defense an the classname for easy save/load
 		_defense setVariable ["savename", _varname];
@@ -112,6 +107,10 @@ if(isNIL "_var") then {
 		//if !(isNull _origin) then {[["CLIENT", _origin], "Client_ReceiveDefense", _defense] call CTI_CO_FNC_NetSend};
 	};
 	
+	/*
+	for the mine placing part we need to check:
+	https://community.bistudio.com/wiki/createMine
+	*/
 	if (_var select 3 == "Mine") exitwith {
 		//_mine = createMine ["APERSMine", position player, [], 0];
 		createMine [(_var select 1), _position, [], 0];
