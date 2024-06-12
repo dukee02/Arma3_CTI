@@ -148,3 +148,111 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 	_return = [_position, _direction];
 	_return;
 };
+
+CTI_FSM_UpdateCommander_GetDefenseEmplacement = {
+	private ["_side", "_factory", "_template", "_category", "_names", "_build", "_structures", "_commander", "_statics", "_selected"];
+	_side = _this select 0;
+	_template = _this select 1;
+
+	//get all possible classnames for this type of defense
+	_factory = _template select 0;
+	_category = _template select 1;
+	_names = [_side, _category] call CTI_FSM_UpdateCommander_GetDefenseNames;
+
+	//get the next factory of the given type to check the given surroundings
+	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
+	//maybe we didn't calculate only the active base - we'll make it optional or not?
+	_commander = leader (_side call CTI_CO_FNC_GetSideCommander);
+	_structures = [_factory, _structures, _commander, 1000] call CTI_CO_FNC_GetSideStructuresByType;
+	_build = true;
+
+	for [{ private _s = 0 }, { _s < count _structures }, { _s = _s + 1 }] do {
+		//search for all statics in the area
+		_statics = [];
+		//_statics = _x nearEntities [["StaticWeapon"], (_template select 3)*1.5];
+		_statics = (_structures select _s) nearEntities [["StaticWeapon"], (_template select 3)*1.5];
+
+		//check if the static matches
+		for [{ private _p = 0 }, { _p < count _statics }, { _p = _p + 1 }] do {
+			_placed = typeOf vehicle (_statics select _p);
+			if(_placed in _names) then {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["defense found: <%1>", _placed]] call CTI_CO_FNC_Log;};
+				_build = false;
+			} else {
+				//_build = true;
+			};
+		};
+
+		//check if we have the supply/funds to build a static
+		_selected = "";
+		if(_build) then {
+			private ["_selected_info", "_bill", "_attemps"];
+			_attemps = 0;
+			while {_attemps < ((count _names)*2)} do {
+				_selected = selectRandom _names;
+				_selected_info = missionNamespace getVariable format["CTI_%1_%2",_side,_selected];
+				_bill = _selected_info select 2;
+				
+				if (_supplyActive) then {
+					//_supply = (West) call CTI_CO_FNC_GetSideSupply
+					if(_bill <= (_side) call CTI_CO_FNC_GetSideSupply) then {
+						[_side, -_bill] call CTI_CO_FNC_ChangeSideSupply;
+						_attemps = ((count _names)*3);
+						_build = true;
+					} else {
+						_build = false;
+						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["not enough supply: <%1> <%2S>", _selected, _bill]] call CTI_CO_FNC_Log;};
+					};
+					
+				} else {
+					//_funds = (West) call CTI_CO_FNC_GetFundsCommander;
+					if(_bill <= (_side) call CTI_CO_FNC_GetFundsCommander) then {
+						[_side, -_bill] call CTI_CO_FNC_ChangeFundsCommander;
+						_attemps = ((count _names)*3);
+						_build = true;
+					} else {
+						_build = false;
+						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["not enough funds: <%1> <%2$>", _selected, _bill]] call CTI_CO_FNC_Log;};
+					};
+				};
+				_attemps = _attemps + 1;
+			};
+		};
+
+		//if all goes well we start building it
+		if(_build) then {
+			private ["_distance_structure", "_position", "_dir_to", "_new_pos", "_empty_pos"];
+			_distance_structure = _template select 3;
+			//_position = getPos _x;
+			_position = getPos (_structures select _s);
+			_dir_to = _template select 2;
+			_new_pos = [(_position select 0) - ((sin _dir_to) * _distance_structure), (_position select 1) - ((cos _dir_to) * _distance_structure),0];
+			_dir_to = direction (_structures select _s);			//get the factory direction to set the satic faceing
+			_empty_pos = _new_pos findEmptyPosition [0,10,_selected];
+			if(count _empty_pos > 0) then {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["place defense: <%1> <%2>", _selected, _empty_pos]] call CTI_CO_FNC_Log;};
+				[format["CTI_%1_%2",_side,_selected], _side, [_new_pos select 0, _new_pos select 1], _dir_to, _commander, false, true] call CTI_SE_FNC_BuildDefense;
+			} else {
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["no place found: <%1> <%2>", _selected, _new_pos]] call CTI_CO_FNC_Log;};
+				_build = false;
+			};
+			_s = count _structures;
+		};
+	};
+	_build;
+};
+
+CTI_FSM_UpdateCommander_GetDefenseNames = {
+	//gather the classnames of the given type of statics
+	private ["_side", "_var", "_category"];
+	_side = _this select 0;
+	_category = _this select 1;
+
+	_names = [];
+	{
+		_var = missionNamespace getVariable _x;
+		if (_category == _var select 3) then {_names pushBack (_var select 1)};
+	} forEach (missionNamespace getVariable format ["CTI_%1_DEFENSES", _side]);
+
+	_names;
+};

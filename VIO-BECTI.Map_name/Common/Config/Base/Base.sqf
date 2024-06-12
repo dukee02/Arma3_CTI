@@ -53,6 +53,16 @@ missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
 	[CTI_AMMO, 0, [80,37]]
 ]];
 
+missionNamespace setVariable [format["CTI_%1_Defense_Template", _side], [
+	[CTI_HEAVY, "AA", 270, 20],
+	[CTI_AMMO, "SAM", 90, 30],
+	[CTI_AIR, "RADAR", 90, 30],
+	[CTI_LIGHT, "AT", 90, 20],
+	[CTI_BARRACKS, "Defense", 90, 20],
+	[CTI_CONTROLCENTER, "Defense", 270, 20],
+	[CTI_REPAIR, "Defense", 90, 20]
+]];
+
 //--- Structures
 _headers = [];
 _classes = [];
@@ -245,7 +255,7 @@ if(_side == west) then {
 		_classes pushBack 		"B_Mortar_01_F";
 		_prices pushBack 		5000;
 		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
+		_categories pushBack 	"Mortar";
 		_tiers pushBack 		_tech_level;
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
@@ -268,7 +278,7 @@ if(_side == west) then {
 		_classes pushBack 		"B_T_Mortar_01_F";
 		_prices pushBack 		5000;
 		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
+		_categories pushBack 	"Mortar";
 		_tiers pushBack 		_tech_level;
 	};
 	//Update the calculated max upgrade level
@@ -283,7 +293,7 @@ if(_side == west) then {
 		_classes pushBack 		"B_static_AT_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
+		_categories pushBack 	"AT";
 		_tiers pushBack 		_tech_level;
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
@@ -291,7 +301,7 @@ if(_side == west) then {
 		_classes pushBack 		"B_T_Static_AT_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
+		_categories pushBack 	"AT";
 		_tiers pushBack 		_tech_level;
 	};
 	//Update the calculated max upgrade level
@@ -306,7 +316,7 @@ if(_side == west) then {
 		_classes pushBack 		"B_static_AA_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
+		_categories pushBack 	"AA";
 		_tiers pushBack 		_tech_level;
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
@@ -314,7 +324,7 @@ if(_side == west) then {
 		_classes pushBack 		"B_T_Static_AA_F";
 		_prices pushBack 		8000;
 		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
+		_categories pushBack 	"AA";
 		_tiers pushBack 		_tech_level;
 	};
 	//Update the calculated max upgrade level
@@ -329,14 +339,14 @@ if(_side == west) then {
 	_classes pushBack 		"B_Radar_System_01_F";
 	_prices pushBack 		1000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"RADAR";
 	_tiers pushBack 		_tech_level;
 		
 	_headers pushBack 		"MIM-145 Defender SAM";
 	_classes pushBack 		"B_SAM_System_03_F";
 	_prices pushBack 		25000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"SAM";
 	_tiers pushBack 		_tech_level;
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
@@ -403,7 +413,7 @@ if(_side == east) then {
 	_classes pushBack 		"O_Mortar_01_F";
 	_prices pushBack 		5000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"Mortar";
 	_tiers pushBack 		_tech_level;
 	
 	//Update the calculated max upgrade level
@@ -418,7 +428,7 @@ if(_side == east) then {
 	_classes pushBack 		"O_static_AT_F";
 	_prices pushBack 		8000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"AT";
 	_tiers pushBack 		_tech_level;
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
@@ -432,7 +442,7 @@ if(_side == east) then {
 	_classes pushBack 		"O_static_AA_F";
 	_prices pushBack 		8000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"AA";
 	_tiers pushBack 		_tech_level;
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
@@ -446,14 +456,14 @@ if(_side == east) then {
 	_classes pushBack 		"O_Radar_System_02_F";
 	_prices pushBack 		1000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"RADAR";
 	_tiers pushBack 		_tech_level;
 	
 	_headers pushBack 		"SAM System";
 	_classes pushBack 		"O_SAM_System_04_F";
 	_prices pushBack 		25000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"SAM";
 	_tiers pushBack 		_tech_level;
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
@@ -489,13 +499,13 @@ if(CTI_CAMO_ACTIVATION == 4) then {
 	_classes pushBack 		"B_SAM_System_01_F";
 	_prices pushBack 		50000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"AA";
 
 	_headers pushBack 		"Mk21 Centurion SAM";
 	_classes pushBack 		"B_SAM_System_02_F";
 	_prices pushBack 		75000;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
+	_categories pushBack 	"SAM";
 	_headers pushBack 		"Mk45 Hammer 120mm";
 	_classes pushBack 		"B_Ship_Gun_01_F";
 	_prices pushBack 		35000;

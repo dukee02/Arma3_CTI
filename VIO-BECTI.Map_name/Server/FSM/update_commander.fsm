@@ -17,7 +17,7 @@ item12[] = {"Update_Defenses",2,250,175.000000,700.000000,275.000000,750.000000,
 item13[] = {"Upgrade",4,218,550.000000,600.000000,650.000000,650.000000,0.000000,"Upgrade"};
 item14[] = {"Update_Upgrades",2,250,550.000000,700.000000,650.000000,750.000000,0.000000,"Update" \n "Upgrades"};
 item15[] = {"Teams",4,218,-500.000000,600.000000,-400.000000,650.000000,3.000000,"Teams"};
-item16[] = {"Update_Teams",2,4346,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
+item16[] = {"Update_Teams",2,250,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
 item17[] = {"Orders",4,218,-375.000000,600.000000,-275.000000,650.000000,2.000000,"Orders"};
 item18[] = {"Update_Orders",2,250,-375.000000,700.000000,-275.000000,750.000000,0.000000,"Update" \n "Orders"};
 item19[] = {"",7,210,-54.000008,896.000000,-45.999996,904.000000,0.000000,""};
@@ -25,7 +25,7 @@ item20[] = {"",7,210,696.000000,896.000000,704.000000,904.000000,0.000000,""};
 item21[] = {"",7,210,696.000000,-279.000000,704.000000,-271.000000,0.000000,""};
 item22[] = {"Construction",4,218,50.000000,400.000000,150.000000,450.000000,2.000000,"Construction"};
 item23[] = {"Management",4,218,-250.000000,400.000000,-150.000000,450.000000,1.000000,"Management"};
-item24[] = {"Determine",2,250,50.000000,500.000000,150.000000,550.000000,0.000000,"Determine"};
+item24[] = {"Determine",2,4346,50.000000,500.000000,150.000000,550.000000,0.000000,"Determine"};
 item25[] = {"Determine_1",2,250,-250.000000,500.000000,-150.000000,550.000000,0.000000,"Determine"};
 item26[] = {"Nil",8,218,-100.000000,600.000000,0.000000,650.000000,0.000000,"Nil"};
 item27[] = {"Skip",2,250,-100.000000,700.000000,0.000000,750.000000,0.000000,"Skip"};
@@ -112,8 +112,8 @@ link59[] = {44,45};
 link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
-globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-465.992188,756.489746,1135.424683,51.498741,997,884,1};
-window[] = {2,-1,-1,-32000,-32000,856,26,1405,26,3,1015};
+globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-594.352783,884.850159,1249.236694,-62.313473,997,884,1};
+window[] = {2,-1,-1,-1,-1,960,-1634,-255,130,3,1015};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -468,7 +468,14 @@ class FSM
                 {
                         name = "Update_Defenses";
                         itemno = 12;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"_templates = missionNamespace getVariable format[""CTI_%1_Defense_Template"", _side];" \n
+                         "_position_commander = getPos leader(_side call CTI_CO_FNC_GetSideCommander);" \n
+                         "for [{ private _i = 0 }, { _i < count _templates }, { _i = _i + 1 }] do {" \n
+                         "	if ([_side, (_templates select _i select 0), _position_commander, 1250] call CTI_CO_FNC_HasStructure) then {" \n
+                         "		_placed = [_side, _templates select _i] call CTI_FSM_UpdateCommander_GetDefenseEmplacement;" \n
+                         "		if(_placed) then {_i = count _templates};" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -730,13 +737,17 @@ class FSM
                          "" \n
                          "if (alive _hq) then {" \n
                          "	//--- The commander could not build in time" \n
-                         "	if (count _build > 0) then {if (time - _commander_buildorderstart > 240) then {_build = []}};" \n
+                         "	if ((count _build) > 0) then {if (time - _commander_buildorderstart > 240) then {_build = []}};" \n
                          "" \n
                          "	//--- The commander is still building something" \n
-                         "	if (count _build > 0) then {_action = ""build-structures""};" \n
+                         "	if ((count _build) > 0) then {" \n
+                         "		_action = ""build-structures"";" \n
+                         "	} else {	" \n
+                         "		//--- We want to check the statics and build if needed" \n
+                         "		_action = ""build-defenses"";" \n
+                         "	};" \n
                          "};" \n
-                         "" \n
-                         "//--- We check the workers last" \n
+                         "//- We check the workers last" \n
                          "if (count (_sideLogic getVariable ""cti_workers"") < 4 && _funds >= CTI_BASE_WORKERS_PRICE) then {_action = ""hire-workers""};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
