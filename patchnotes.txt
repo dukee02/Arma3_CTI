@@ -1,3 +1,18 @@
+[V2.0.3.3] o. [V2.0.4] Changelog:
+Added: commander ability to setup statics
+Added: default "MANW" Insignia
+Added: toggle mode for earplugs
+Added: Option to disable tokeover distance for units on respawn
+Added: Option to respawn with last gear
+Changed: positioning of vehicles after loading
+Changed: rearming behavior for statics
+Changed: Max Queue amount in factorys
+Changed: discount for AI only in harderAI skills
+Fixed: must allways hack UAVs+UGVs
+Fixed: some old Arma2 damage stuff
+Fixed: error on loading the supply
+Fixed: building blocked in not in restricted area
+
 V2.0.2_d230908
 Added: new T100X on OPFOR
 
