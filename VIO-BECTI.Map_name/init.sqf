@@ -105,21 +105,6 @@ if (CTI_IsHeadless) then {
 //--- Set the group ID
 execVM "Common\Init\Init_GroupsID.sqf";
 
-//--- Optional Mod Stuff
-if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then 
-{  
-//Start other 'plugins' if ACE is not running
-	if(CTI_FIELDREPAIR_ENABLED > 0) then {
-		[] execVM "Client\Module\zlt\zlt_fieldrepair.sqf"; 
-		//[] execVM "Client\Module\zlt\zlt_fastrope.sqf";
-	};
-	//--- Earplug script to reduce sound level when required
-	//execVM "Scripts\nre_earplugs.sqf";
-	[player] execVM "Client\Module\earplugs\simpleEP.sqf";
-}; 
-
-//_igiload = execVM "IgiLoad\IgiLoadInit.sqf";
-
 if(!CTI_IsServer && !CTI_IsHeadless) then {
 	if(CTI_VAM_MODULE > 0) then {
 		[] execVM "VAM_GUI\VAM_GUI_init.sqf";

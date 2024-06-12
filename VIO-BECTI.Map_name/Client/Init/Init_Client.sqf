@@ -48,8 +48,8 @@ CTI_CL_FNC_PurchaseQueueRelease = compileFinal preprocessFile "Client\Functions\
 CTI_CL_FNC_PurchaseUnit = compileFinal preprocessFile "Client\Functions\Client_PurchaseUnit.sqf";
 CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_RemoveRuins.sqf";
 CTI_CL_FNC_RemoveDefenses = compileFinal preprocessFile "Client\Functions\Client_RemoveDefenses.sqf";
-CTI_CL_FNC_EarPlugsSpawn = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_spawn.sqf";
-CTI_CL_FNC_EarPlugsDeath = compileFinal preprocessFile "Client\Functions\Externals\cmEarplugs\earplugs_death.sqf";
+CTI_CL_FNC_EarPlugsSpawn = compileFinal preprocessFile "Client\Module\earplugs\cmEarplugs\earplugs_spawn.sqf";
+CTI_CL_FNC_EarPlugsDeath = compileFinal preprocessFile "Client\Module\earplugs\cmEarplugs\earplugs_death.sqf";
 
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
@@ -335,10 +335,22 @@ if (CTI_DEBUG) then {
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 
-//--- cmEARPLUGS
-call compile preProcessFileLineNumbers "Client\Functions\Externals\cmEarplugs\config.sqf";
-//--- Earplugs
-0 spawn { call CTI_CL_FNC_EarPlugsSpawn; };
+//--- Optional Mod Stuff
+if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then 
+{  
+//Start other 'plugins' if ACE is not running
+	if(CTI_FIELDREPAIR_ENABLED > 0) then {
+		[] execVM "Client\Module\zlt\zlt_fieldrepair.sqf"; 
+		//[] execVM "Client\Module\zlt\zlt_fastrope.sqf";
+	};
+	//--- Earplug script to reduce sound level when required
+	//execVM "Client\Module\earplugs\nre_earplugs.sqf";
+	//[player] execVM "Client\Module\earplugs\simpleEP.sqf";
+	//--- cmEARPLUGS
+	call compile preProcessFileLineNumbers "Client\Module\earplugs\cmEarplugs\config.sqf";
+	//--- Earplugs
+	0 spawn { call CTI_CL_FNC_EarPlugsSpawn; };
+};
 
 CTI_Init_Client = true;
 

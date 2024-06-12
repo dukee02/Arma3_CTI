@@ -2,7 +2,8 @@
 // cmEarplugs Script
 // written by computermancer
 // superfunserver.com
-//switch technique inspired by mgm
+// switch technique inspired by mgm
+// toggle auto Earplugs by dukee
 //============================================
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,6 +27,7 @@ cmEarplugsKeyPressEnabled = true;
 //	To use	F4							as your hotkey, please choose:		4		in the variable below
 //	To use	F5							as your hotkey, please choose:		5		in the variable below
 cmEarplugs_myHotkeyChoice = 1;
+cmEarplugs_myHotkeyTapTime = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,6 +94,20 @@ hint "Earplugs have been auto-removed.";
 //systemchat "Earplugs have been auto-removed.";
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CHOOSE YOUR AUTO-ACTIVATE MESSAGE
+cmActivateMessage = {
+hint "Earplugs auto-insert activated";
+//systemchat "Earplugs auto-insert activated";
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CHOOSE YOUR AUTO-DEACTIVATE MESSAGE
+cmDeactivateMessage = {
+hint "Earplugs auto-insert DEACTIVATED";
+//systemchat "Earplugs auto-insert DEACTIVATED";
+};
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //					END CONFIGURABLES
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -151,7 +167,7 @@ cm_EP_LOOP = {
 			
 			_checkington = (_cm_whatImInATM getVariable "HasEarplugMenu");
 			if (_checkington == "hasNoMenu") then {
-				_null = _cm_whatImInATM addaction ["<img image='Client\Functions\Externals\cmEarplugs\earplugs.paa' /><t color=""#38eeff""> Earplugs</t>","[] call cm_Earplugs_FUNc","",0,false,false,"","[] call EP_req_1"];							
+				_null = _cm_whatImInATM addaction ["<img image='Client\Module\earplugs\cmEarplugs\earplugs.paa' /><t color=""#38eeff""> Earplugs</t>","[] call cm_Earplugs_FUNc","",0,false,false,"","[] call EP_req_1"];							
 				_cm_whatImInATM setVariable ["HasEarplugMenu","hasMenu"];
 				//systemChat "Earplugs menu has been added.";
 			};
@@ -177,44 +193,63 @@ cm_EP_LOOP = {
 
 
 cm_Earplugs_FUNc = {
-
-	if (earplugsout) then {
-		[] call cmManMuteMessage;
-		[] call cmManMuteSound;
-		earplugsout=false;
+	if((cmEarplugs_myHotkeyTapTime+5) >= time) then {
+		if(InsertAutoEarplugs) then {
+			InsertAutoEarplugs = false;
+			RemoveAutoEarplugs = false;
+			[] call cmDeactivateMessage;
+		} else {
+			InsertAutoEarplugs = true;
+			RemoveAutoEarplugs = true;
+			[] call cmActivateMessage;
+		};
 	} else {
-		[] call cmManReturnSoundMsg;
-		[] call cmManReturnSound;	
-		earplugsout=true;
+		cmEarplugs_myHotkeyTapTime = time;
+		if (earplugsout) then {
+			[] call cmManMuteMessage;
+			[] call cmManMuteSound;
+			earplugsout=false;
+		} else {
+			[] call cmManReturnSoundMsg;
+			[] call cmManReturnSound;	
+			earplugsout=true;
+		};
 	};
-	
-
-	
 };
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // DO NOT CHANGE THE VALUES BELOW
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-cmEarplugs_hotkeyDIKCodeNumberINSERT 						= 210;
-cmEarplugs_hotkeyDIKCodeNumberNUMPADMULTIPLY 	= 55;
-cmEarplugs_hotkeyDIKCodeNumberNUMPADDIVIDE 			= 181;
-cmEarplugs_hotkeyDIKCodeNumberF4									= 62;
-cmEarplugs_hotkeyDIKCodeNumberF5									= 63;
+//https://community.bistudio.com/wiki/DIK_KeyCodes
+cmEarplugs_hotkeyDIKCodeNumberINSERT = 210;
+cmEarplugs_hotkeyDIKCodeNumberNUMPADMULTIPLY = 55;
+cmEarplugs_hotkeyDIKCodeNumberNUMPADDIVIDE = 181;
+cmEarplugs_hotkeyDIKCodeNumberSCROLLLOCK = 70;
+cmEarplugs_hotkeyDIKCodeNumberTAB = 15;
+cmEarplugs_hotkeyDIKCodeNumberPRINT = 183;
+cmEarplugs_hotkeyDIKCodeNumberALTGR = 184;
+cmEarplugs_hotkeyDIKCodeNumberPAUSE = 197;
+//cmEarplugs_hotkeyDIKCodeNumberF4 = 62;
+//cmEarplugs_hotkeyDIKCodeNumberF5 = 63;
 
 switch cmEarplugs_myHotkeyChoice do {
 	case 1:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberINSERT};
 	case 2:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberNUMPADMULTIPLY};
 	case 3:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberNUMPADDIVIDE};
-	case 4:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberF4};
-	case 5:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberF5};
+	case 4:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberSCROLLLOCK};
+	case 5:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberTAB};
+	case 6:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberPRINT};
+	case 7:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberALTGR};
+	case 8:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberPAUSE};
+	//case 4:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberF4};
+	//case 5:		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberF5};
 	case 0;
 	default		{ cmEarplugs_hotkeyDIKCodeNumber = cmEarplugs_hotkeyDIKCodeNumberINSERT};
 };
 //// Key Handlers are added using CBA
 //-- Check if CBA Loaded
-if (missionNamespace getVariable "CBA_Loaded") then {
+/*if (missionNamespace getVariable "CBA_Loaded") then {
 	["OFPS", "toggle_earplugs", ["Toggle earplugs", "Remove or Insert your earplugs."], "", "", [0xD2, [false, true, false]]] call cba_fnc_addKeybind;
 	_keybindear = ["OFPS", "toggle_earplugs"] call cba_fnc_getKeybind;
 	if (!isNil "_keybindear") then {
@@ -226,7 +261,7 @@ if (missionNamespace getVariable "CBA_Loaded") then {
 		};
 	};
 	publicVariable	"cmEarplugs_hotkeyDIKCodeNumber";
-};
+};*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //END ALL
