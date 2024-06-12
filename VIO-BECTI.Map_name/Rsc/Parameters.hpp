@@ -497,8 +497,8 @@ class Params {
 	};
 	class CTI_RESPAWN_PENALTY {
 		title = "RESPAWN: Penalty";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled","Default Gear","Full Gear Price","1/2 Gear Price","1/4 Gear Price"};
+		values[] = {-1,0,1,2,3,4};
+		texts[] = {"Don't loose your gear","Disabled","Default Gear","Full Gear Price","1/2 Gear Price","1/4 Gear Price"};
 		default = 2;
 	};
 	class CTI_RESPAWN_FOB_RANGE {

@@ -34,6 +34,10 @@ _killer = _this select 1;
 
 CTI_DeathPosition = getPos _killed;
 
+if(CTI_RESPAWN_PENALTY == -1) then {
+	missionNamespace setVariable ["cti_gear_ondeath", (_killed) call CTI_UI_Gear_GetUnitEquipment];	//get the current gear for respawning if set
+};
+
 if !(isNil "CTI_DeathCamera") then {
 	CTI_DeathCamera cameraEffect ["TERMINATE", "BACK"];
 	camDestroy CTI_DeathCamera;
