@@ -35,7 +35,7 @@
 	[player, _gear] call CTI_CO_FNC_EquipUnit; 
 */
 
-private ["_gear", "_item" "_magazine", "_accessories", "_muzzles", "_unit"];
+private ["_gear", "_item", "_magazine", "_accessories", "_muzzles", "_unit"];
 
 _unit = _this select 0;
 _gear = _this select 1;

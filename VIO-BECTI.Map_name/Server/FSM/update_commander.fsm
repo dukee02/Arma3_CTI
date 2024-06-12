@@ -113,7 +113,7 @@ link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
 globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-594.352783,884.850159,1249.236694,-62.313473,997,884,1};
-window[] = {2,-1,-1,-1,-1,960,-1634,-255,130,3,1015};
+window[] = {2,-1,-1,-1,-1,986,-1764,-385,156,3,1015};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -740,15 +740,18 @@ class FSM
                          "	if ((count _build) > 0) then {if (time - _commander_buildorderstart > 240) then {_build = []}};" \n
                          "" \n
                          "	//--- The commander is still building something" \n
-                         "	if ((count _build) > 0) then {" \n
-                         "		_action = ""build-structures"";" \n
-                         "	} else {	" \n
+                         "	if ((count _build) > 0) then {_action = ""build-structures"";};" \n
+                         "	" \n
+                         "	if(_action == """") then {	" \n
                          "		//--- We want to check the statics and build if needed" \n
                          "		_action = ""build-defenses"";" \n
                          "	};" \n
                          "};" \n
+                         "" \n
                          "//- We check the workers last" \n
-                         "if (count (_sideLogic getVariable ""cti_workers"") < 4 && _funds >= CTI_BASE_WORKERS_PRICE) then {_action = ""hire-workers""};"/*%FSM</STATEINIT""">*/;
+                         "if (count (_sideLogic getVariable ""cti_workers"") < 4 && _funds >= CTI_BASE_WORKERS_PRICE) then {_action = ""hire-workers""};" \n
+                         "" \n
+                         "[""VIOC_DEBUG"", ""FILE: Commander determine"", format[""_action: [%1] "", _action]] call CTI_CO_FNC_Log;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {

@@ -243,8 +243,8 @@ if((_tech_level) > _upgrade_levels_west select CTI_UPGRADE_AIR_FFAR) then {
 
 _c pushBack "PylonWeapon_2000Rnd_65x39_belt";		//Minigun 6.5 mm <6.5mm gatling gun>
 _c pushBack "PylonWeapon_300Rnd_20mm_shells";		//Twin Cannon 20mm <20mm twin-cannon weapon pod>
-_c pushBack "gatling_20mm";							//
-_c pushBack "Laserdesignator_mounted";				//
+//_c pushBack "gatling_20mm";							//
+//_c pushBack "Laserdesignator_mounted";				//
 
 // set all other vars in a slope
 _cntstart = count _c;
