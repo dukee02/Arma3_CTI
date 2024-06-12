@@ -27,7 +27,9 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	//--- Add the nearest player's AI (impersonation) minus the mobile's crew
 	if ((missionNamespace getVariable "CTI_RESPAWN_AI") > 0) then {
 		{
-			if (_x distance CTI_DeathPosition <= CTI_RESPAWN_AI_RANGE && !(_x in _ignore_mobile_crew) && !isPlayer _x) then {_list pushBack _x};
+			if ((missionNamespace getVariable "CTI_RESPAWN_AI") < 2) then {
+				if (_x distance CTI_DeathPosition <= CTI_RESPAWN_AI_RANGE && !(_x in _ignore_mobile_crew) && !isPlayer _x) then {_list pushBack _x};
+			};
 		} forEach ((units player - [player]) call CTI_CO_FNC_GetLiveUnits);
 	};
 	
@@ -271,7 +273,11 @@ CTI_UI_Respawn_OnRespawnReady = {
 				[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Insufficient funds - Equip the default equipment
 			};
 		} else {
-			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- No previous purchase found or parameter set to default gear - Equip the default equipment
+			if(CTI_RESPAWN_PENALTY == -1) then {
+				[player, missionNamespace getVariable "cti_gear_ondeath"] call CTI_CO_FNC_EquipUnit;
+			} else {
+				[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- No previous purchase found or parameter set to default gear - Equip the default equipment
+			};
 		};
 	} else { //--- Respawn in own AI
 		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
