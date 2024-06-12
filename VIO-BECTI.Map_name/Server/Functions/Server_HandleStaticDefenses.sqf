@@ -98,15 +98,14 @@ while {alive _structure} do {
 					};
 				};
 			};
-			
-			//--- But.. our defense may run out of ammo?
-			if !(someAmmo _x) then {
-				//--- Check if we have a nearby ammo source
-				_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
+		};
+		//--- But.. our defense may run out of ammo?
+		if !(someAmmo _x) then {
+			//--- Check if we have a nearby ammo source
+			_ammo_trucks = [_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
+			_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 				
-				if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1};	//player sidechat "rearmed!"
-			};
+			if (count _ammo_trucks > 0 || !isNull _nearest) then {_x setVehicleAmmoDef 1};	//player sidechat "rearmed!"
 		};
 	} forEach _statics;
 	
