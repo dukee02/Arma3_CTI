@@ -3,8 +3,9 @@ _action = _this select 0;
 
 switch (_action) do {
 	case "onLoad": {
-		_units = (units player - [player]) call CTI_CO_FNC_GetLiveUnits;
-		uiNamespace setVariable ["cti_dialog_ui_aimicromenu_units", _units];
+		private ["_teamUnits"];
+		_teamUnits = (units player - [player]) call CTI_CO_FNC_GetLiveUnits;
+		uiNamespace setVariable ["cti_dialog_ui_aimicromenu_units", _teamUnits];
 		
 		uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick", false];
 		uiNamespace setVariable ["cti_dialog_ui_aimicromenu_mapclick_queued", []];
@@ -12,7 +13,7 @@ switch (_action) do {
 		{
 			((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbAdd format ["[%1] %2 - %3",(_x) call CTI_CL_FNC_GetAIDigit, getText(configFile >> "CfgVehicles" >> typeOf vehicle _x >> "displayName"), (_x getVariable "cti_ai_order") call CTI_CL_FNC_GetAIOrderLabel];
 			((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbSetValue [_forEachIndex, _forEachIndex];
-		} forEach _units;
+		} forEach _teamUnits;
 		
 		{
 			((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270009) lbAdd (_x select 0);
@@ -195,8 +196,8 @@ switch (_action) do {
 			{
 				_value = ((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbValue _x;
 				_who = (uiNamespace getVariable "cti_dialog_ui_aimicromenu_units") select _value;
-				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {vehicle _who damage 1};
-				_who damage 1;
+				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {vehicle _who setDamage 1};
+				_who setDamage 1;
 			} forEach _selection;
 			{((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbDelete _x} forEach _selection;
 			
