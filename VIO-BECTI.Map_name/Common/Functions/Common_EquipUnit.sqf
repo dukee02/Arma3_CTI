@@ -35,7 +35,7 @@
 	[player, _gear] call CTI_CO_FNC_EquipUnit; 
 */
 
-private ["_gear", "_item", "_magazine", "_unit"];
+private ["_gear", "_item" "_magazine", "_accessories", "_muzzles", "_unit"];
 
 _unit = _this select 0;
 _gear = _this select 1;
@@ -146,3 +146,9 @@ if (handgunWeapon _unit != _item) then { //--- Replace
 		if !("this" in _muzzles) then {_unit selectWeapon (_muzzles select 0)} else {_unit selectWeapon _x}; 
 	};
 } forEach [primaryWeapon _unit, handgunWeapon _unit, secondaryWeapon _unit];
+
+if([_unit] call BIS_fnc_getUnitInsignia != "") then {
+	[_unit, "MANW"] call BIS_fnc_setUnitInsignia;
+};
+
+if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_EquipUnit.sqf", format ["Units Voice = <%1>", _voice]] call CTI_CO_FNC_Log };
