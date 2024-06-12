@@ -249,7 +249,7 @@ if(_loadingFine) then {
 					_loadingFine = false;
 				} else {
 					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Side supply loaded from profile:<SAVE_%1_FUNDSCOM> Funds Com: <%2>", _savename, _supply_stored]] call CTI_CO_FNC_Log;};
-					_supply_now = call CTI_CO_FNC_GetSideSupply;
+					//_supply_now = call CTI_CO_FNC_GetSideSupply;
 					_logic setVariable ["cti_supply", _supply_stored, true];
 				};
 				
@@ -270,6 +270,7 @@ if(_loadingFine) then {
 				if!(count _groups > 0) then {
 					if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["No Team funds found: ", _groups]] call CTI_CO_FNC_Log;};
 				} else {
+					//["INFORMATION", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Groups found: <%1> group: <%2>", count _groups, _x]] call CTI_CO_FNC_Log;
 					_sideGroup = _x;
 					{
 						_groupnamefull = format ["%1", _x];
@@ -362,8 +363,8 @@ if(_loadingFine) then {
 						_script = (_var_classname select CTI_UNIT_SCRIPTS) select 1; 
 						//_customid = (_var_classname select CTI_UNIT_SCRIPTS) select 2;
 					};
-					_vehicle = [_model, (_x select 1), (_x select 2), (_x select 3), false, true, true] call CTI_CO_FNC_CreateVehicle;
-
+					_vehicle = [_model, (_x select 1), (_x select 2), (_x select 3), false, true, true, "NONE", 0] call CTI_CO_FNC_CreateVehicle;
+					
 					_sideVeh = independent;
 					{
 						// Current result is saved in variable _x
