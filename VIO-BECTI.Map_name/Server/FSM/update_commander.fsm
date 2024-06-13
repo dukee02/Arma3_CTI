@@ -112,8 +112,8 @@ link59[] = {44,45};
 link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
-globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-594.352783,884.850159,1249.236694,-62.313473,997,884,1};
-window[] = {2,-1,-1,-1,-1,986,-1764,-385,156,3,1015};
+globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-837.680847,686.286926,747.983643,-603.257690,997,884,1};
+window[] = {2,-1,-1,-1,-1,986,156,1535,156,3,1015};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -157,6 +157,7 @@ class FSM
                          "_logical_path = missionNamespace getVariable format[""CTI_%1_Commander_Path"", _side];" \n
                          "_logical_path_reached = 0;" \n
                          "_logical_path_index = 0;" \n
+                         "_logical_static_placing_index = 0;" \n
                          "" \n
                          "(leader _sideCommander) addEventHandler [""killed"", format[""[_this select 0, %1] spawn CTI_FSM_UpdateCommander_Respawn"", _sideID]];"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -742,16 +743,16 @@ class FSM
                          "	//--- The commander is still building something" \n
                          "	if ((count _build) > 0) then {_action = ""build-structures"";};" \n
                          "	" \n
-                         "	if(_action == """") then {	" \n
+                         "	if(_action == """" || _logical_static_placing_index >= 3) then {	" \n
                          "		//--- We want to check the statics and build if needed" \n
                          "		_action = ""build-defenses"";" \n
+                         "		_logical_static_placing_index = 0;" \n
                          "	};" \n
+                         "	_logical_static_placing_index = _logical_static_placing_index + 1;" \n
                          "};" \n
                          "" \n
                          "//- We check the workers last" \n
-                         "if (count (_sideLogic getVariable ""cti_workers"") < 4 && _funds >= CTI_BASE_WORKERS_PRICE) then {_action = ""hire-workers""};" \n
-                         "" \n
-                         "[""VIOC_DEBUG"", ""FILE: Commander determine"", format[""_action: [%1] "", _action]] call CTI_CO_FNC_Log;"/*%FSM</STATEINIT""">*/;
+                         "if (count (_sideLogic getVariable ""cti_workers"") < 4 && _funds >= CTI_BASE_WORKERS_PRICE) then {_action = ""hire-workers""};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
