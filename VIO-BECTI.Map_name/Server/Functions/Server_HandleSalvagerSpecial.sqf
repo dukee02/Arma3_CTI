@@ -35,7 +35,18 @@ _salvager = _this select 0;
 _handleOn = _this select 1;
 
 if(CTI_SALVAGE_SPECIAL > 1) then {
-	if(CTI_ADDON_CHARLIECO <= 0) then {
+	if(CTI_ADDON_CHARLIECO == 1) then {
+		_lightsOn = 0;
+		if(_handleOn) then {_lightsOn = 1};
+		_salvager setVariable ['chsiren',_lightsOn,true];
+		_salvager animate ["btsiren",_lightsOn];
+		_salvager animate ["lamp1",_lightsOn];
+		_salvager animate ["btgyr",_lightsOn];
+		_salvager animate ["lamp2",_lightsOn];
+		if (CTI_Log_Level >= CTI_Log_Debug) then {
+			["VIOC_DEBUG", "FILE: Server\Functions\Server_HandleSalvagerSpecial.sqf", format["CHARLIECO Fire units: <%1> <%2>", _salvager, _lightsOn]] call CTI_CO_FNC_Log;
+		};
+	} else {
 		{
 			if(typeOf _salvager == _x) then {
 				_action_handlings = [];
@@ -61,12 +72,5 @@ if(CTI_SALVAGE_SPECIAL > 1) then {
 				};
 			};
 		} forEach CTI_SALVAGE_SPECIALUNITS;
-	} else {
-		_lightsOn = 0;
-		if(_handleOn) then {_lightsOn = 1};
-		_salvager setVariable ['chsiren',_lightsOn,true] && _salvager animate ["btsiren",_lightsOn];
-		_salvager animate ["lamp1",_lightsOn];
-		_salvager animate ["btgyr",_lightsOn];
-		_salvager animate ["lamp2",_lightsOn];
 	};
 };

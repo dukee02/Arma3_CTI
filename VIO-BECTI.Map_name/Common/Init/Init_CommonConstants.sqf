@@ -594,7 +594,7 @@ with missionNamespace do {
 	if (isNil 'CTI_SALVAGE_SPECIAL') then {CTI_SALVAGE_SPECIAL = 1}; //--- Use special salvagers, then the normal one (0: Disabled, 1: Enabled)
 	if (isClass(configFile >> "CfgVehicles" >> "chps5g") && isClass(configFile >> "CfgVehicles" >> "FPT_MAN")) then {
 		//Charlieco'smod pack is active (civil vehicles only) so we have firetrucks
-		CTI_SALVAGE_SPECIAL = 1;
+		if (CTI_SALVAGE_SPECIAL <= 0) then {CTI_SALVAGE_SPECIAL = 1};
 		CTI_ADDON_CHARLIECO = 1;
 	} else {
 		CTI_ADDON_CHARLIECO = 0;
