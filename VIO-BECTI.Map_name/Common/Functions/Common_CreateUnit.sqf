@@ -91,6 +91,9 @@ if(_spawn_unit == true) then {
 	//https://community.bistudio.com/wiki/addToRemainsCollector
 	//maybe add the GC manualy?
 	
+	//send the unit to the statistic managing for counting
+	[_side, _classname, "buyed"] call CTI_SE_FNC_ManageStatistics;
+	
 	_unit
 } else {
 	["ERROR", "FILE: Common\Functions\Common_CreateUnit.sqf", format["Can't create unit because [%1] at [%2] on side [%3], net? [%4] special? [%5]", _error, _position, _sideID, _net, _special]] call CTI_CO_FNC_Log;

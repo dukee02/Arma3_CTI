@@ -49,6 +49,7 @@ CTI_SE_FNC_LOAD = compileFinal preprocessFileLineNumbers "Server\Functions\Serve
 CTI_SE_FNC_HandleSalvagerSpecial = compileFinal preprocessFileLineNumbers "Server\Functions\Server_HandleSalvagerSpecial.sqf";
 CTI_SE_FNC_PresetUpgrades = compileFinal preprocessFileLineNumbers "Server\Functions\Server_PresetUpgrades.sqf";
 CTI_SE_FNC_UpgradeSquads = compileFinal preprocessFileLineNumbers "Server\Functions\Server_UpgradeSquads.sqf";
+CTI_SE_FNC_ManageStatistics = compileFinal preprocessFileLineNumbers "Server\Functions\Server_ManageStatistics.sqf";
 
 call compile preprocessFileLineNumbers "Server\Init\Init_PublicVariables.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_RepairTruck.sqf";
@@ -395,6 +396,61 @@ if !(missionNamespace getvariable "CTI_PERSISTANT" == 0) then {
 					};
 				};
 				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Server statistic <blue: %1(%2) | red: %3(%4) | green: %5(%6)>", _blue, _blue_g, _red, _red_g, _green, _green_g]] Call CTI_CO_FNC_Log;
+				
+				//Info about the statistics of each side
+				_statisticWest = [];
+				_statisticEast = [];
+				_statisticWest = [west, "B_Soldier_lite_F"] call CTI_SE_FNC_ManageStatistics;
+				_statisticEast = [east, "O_Soldier_lite_F"] call CTI_SE_FNC_ManageStatistics;
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Infantry <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+
+				if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+					_statisticWest = [west, "B_T_LSV_01_unarmed_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_T_LSV_02_unarmed_F"] call CTI_SE_FNC_ManageStatistics;
+				} else {
+					_statisticWest = [west, "B_LSV_01_unarmed_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_LSV_02_unarmed_F"] call CTI_SE_FNC_ManageStatistics;
+				};
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Light <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+
+				if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+					_statisticWest = [west, "B_T_APC_Tracked_01_CRV_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_T_APC_Tracked_02_cannon_ghex_F"] call CTI_SE_FNC_ManageStatistics;
+				} else {
+					_statisticWest = [west, "B_APC_Tracked_01_CRV_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_APC_Tracked_02_cannon_F"] call CTI_SE_FNC_ManageStatistics;
+				};
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Heavy <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+
+				_statisticWest = [west, "B_Heli_Light_01_F"] call CTI_SE_FNC_ManageStatistics;
+				_statisticEast = [east, "O_Heli_Light_02_unarmed_F"] call CTI_SE_FNC_ManageStatistics;
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Air <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+
+				if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+					_statisticWest = [west, "B_Truck_01_Repair_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_T_Truck_02_Box_F"] call CTI_SE_FNC_ManageStatistics;
+				} else {
+					_statisticWest = [west, "B_T_Truck_01_Repair_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_Truck_02_box_F"] call CTI_SE_FNC_ManageStatistics;
+				};
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Support <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+				
+				if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+					_statisticWest = [west, "B_T_Boat_Armed_01_minigun_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_T_Boat_Armed_01_hmg_F"] call CTI_SE_FNC_ManageStatistics;
+				} else {
+					_statisticWest = [west, "B_Boat_Armed_01_minigun_F"] call CTI_SE_FNC_ManageStatistics;
+					_statisticEast = [east, "O_Boat_Armed_01_hmg_F"] call CTI_SE_FNC_ManageStatistics;
+				};
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Naval <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+
+				_statisticWest = [west, "Other"] call CTI_SE_FNC_ManageStatistics;
+				_statisticEast = [east, "Other"] call CTI_SE_FNC_ManageStatistics;
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Other <blue: %1(%2) | red: %3(%4)>", _statisticWest select 0, _statisticWest select 1, _statisticEast select 0, _statisticEast select 1]] Call CTI_CO_FNC_Log;
+
+				_statisticWest = [west, "B_Protagonist_VR_F"] call CTI_SE_FNC_ManageStatistics;
+				_statisticEast = [east, "O_Protagonist_VR_F"] call CTI_SE_FNC_ManageStatistics;
+				["INFORMATION", "FILE: Server\Init\Init_Server.sqf", Format ["Units statistic Players killed <blue: %1 | red: %2>", _statisticWest select 1, _statisticEast select 1]] Call CTI_CO_FNC_Log;
 			};
 			
 			//Save the mission

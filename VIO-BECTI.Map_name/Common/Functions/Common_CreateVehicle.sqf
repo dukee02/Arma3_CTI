@@ -107,6 +107,9 @@ if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAir
 	player reveal [_vehicle, 4];
 } forEach allUnits;
 
+//send the unit to the statistic managing for counting
+[_side, _type, "buyed"] call CTI_SE_FNC_ManageStatistics;			
+
 if (_locked) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
 if (_handle) then {

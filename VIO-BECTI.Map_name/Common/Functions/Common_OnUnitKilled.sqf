@@ -85,6 +85,9 @@ if (_renegade_killer) then { //--- Make sure the killer is not renegade, if so, 
 _var_name = if (isNil {_killed getVariable "cti_customid"}) then {_type_killed} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _killed getVariable "cti_customid"]};
 _var = missionNamespace getVariable _var_name;
 
+//send the unit to the statistic managing for counting
+[_side_killed, _var_name, "killed"] call CTI_SE_FNC_ManageStatistics;
+
 //todo check what happens when crew bails out. side become civ?!
 // this addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", 0]];this addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}];
 // this addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}]; this setVariable ["cti_occupant", west call CTI_CO_FNC_GetSideFromID];
