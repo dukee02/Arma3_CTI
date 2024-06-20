@@ -86,7 +86,7 @@ _var_name = if (isNil {_killed getVariable "cti_customid"}) then {_type_killed} 
 _var = missionNamespace getVariable _var_name;
 
 //send the unit to the statistic managing for counting
-[_side_killed, _var_name, "killed"] call CTI_SE_FNC_ManageStatistics;
+[_side_killed, _var_name, "killed"] call CTI_CO_FNC_ManageStatistics;
 
 //todo check what happens when crew bails out. side become civ?!
 // this addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", 0]];this addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}];

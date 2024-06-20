@@ -1,7 +1,7 @@
 /*
   # HEADER #
-	Script: 		Server\Functions\Server_ManageStatistics.sqf
-	Alias:			CTI_SE_FNC_ManageStatistics
+	Script: 		Common\Functions\Common_ManageStatistics.sqf
+	Alias:			CTI_CO_FNC_ManageStatistics
 	Description:	increase the units counter for the side and 
 					type of given unit. Without the last param
 					get the couters for buyed and killed as array.
@@ -18,10 +18,10 @@
 	[Array] builded and killed units counter for the type of given unit
 	
   # SYNTAX #
-	[SIDE, UNIT CLASSNAME, ACTION] call CTI_SE_FNC_ManageStatistics
+	[SIDE, UNIT CLASSNAME, ACTION] call CTI_CO_FNC_ManageStatistics
 	
   # EXAMPLE #
-    [west, "B_RangeMaster_F", "buyed"] call CTI_SE_FNC_ManageStatistics;
+    [west, "B_RangeMaster_F", "buyed"] call CTI_CO_FNC_ManageStatistics;
 	  -> increased the infantry units counter + 1
 */
 
@@ -58,7 +58,7 @@ if (isNil "_statisticInf") then {
 };
 
 if !(_action == "") then {
-	["DEBUG", "FILE: Server\Functions\Server_ManageStatistics.sqf", Format ["Unit to count %1 --- %2 --- %3", _side, _classname, _action]] Call CTI_CO_FNC_Log;
+	["DEBUG", "FILE: Common\Functions\Common_ManageStatistics.sqf", Format ["Unit to count %1 --- %2 --- %3", _side, _classname, _action]] Call CTI_CO_FNC_Log;
 };
 
 _return = [-1,-1];

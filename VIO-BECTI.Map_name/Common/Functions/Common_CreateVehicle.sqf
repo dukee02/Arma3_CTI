@@ -95,6 +95,9 @@ clearWeaponCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 VIOC_ZEUS addCuratorEditableObjects [[_vehicle], true];
 
+//send the unit to the statistic managing for counting
+[((_side) call CTI_CO_FNC_GetSideFromID), _type, "buyed"] call CTI_CO_FNC_ManageStatistics;
+
 if (_special == "FLY") then {
 	//makes the air unit starts to fly
 	_vehicle setVelocity [50 * (sin _direction), 50 * (cos _direction), 0];
@@ -105,10 +108,7 @@ if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAir
 
 {//unit sometimes a long time unrecognised -> force revealing units with reveal command usually solves the problem
 	player reveal [_vehicle, 4];
-} forEach allUnits;
-
-//send the unit to the statistic managing for counting
-[_side, _type, "buyed"] call CTI_SE_FNC_ManageStatistics;			
+} forEach allUnits;	
 
 if (_locked) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};

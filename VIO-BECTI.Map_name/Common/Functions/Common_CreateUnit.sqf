@@ -92,7 +92,7 @@ if(_spawn_unit == true) then {
 	//maybe add the GC manualy?
 	
 	//send the unit to the statistic managing for counting
-	[_side, _classname, "buyed"] call CTI_SE_FNC_ManageStatistics;
+	[_side, _classname, "buyed"] call CTI_CO_FNC_ManageStatistics;
 	
 	_unit
 } else {
