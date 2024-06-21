@@ -187,333 +187,349 @@ _placements pushBack 		[0, 15];
 _categories pushBack 		"All";
 _tiers pushBack 			1;
 
-
-// ****************************** BASE GUN DEFENSE 1 ******************************
-
 //We get the upgrade setup at this point, if this is null, something went wrong and we set it to the default.
 _upgrade_levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 if (isNil "_upgrade_levels_east") then { 
 	_upgrade_levels = [0,0,0,0,0,1,-1,-1,-1,1,3,4,0,-1]; 
 };
 
-if(_side == west) then {
-	// ****************************** BASE GUN DEFENSE 0 ******************************
-	_tech_level = 0;
+/********************************************************************************************************************************
+ *														TECH 0																	*
+ ********************************************************************************************************************************/
+_tech_level = 0;
+if(CTI_ECONOMY_LEVEL_DEFENSE >= _tech_level)  then {
 
-	_headers pushBack 		"Static Designator";
-	_classes pushBack 		"B_Static_Designator_01_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
+	_priceBase = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+	_priceMG = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,2.5] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+	_priceGMG = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,4] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+	_priceArty = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,10] call CTI_CO_FNC_GetCalculatedUnitsPrize;
 
-	_headers pushBack 		"Mk30 HMG .50 (Raised)";
-	_classes pushBack 		"B_HMG_01_high_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
+	if(_side == west) then {
 
-	_headers pushBack 		"Mk30A HMG .50";
-	_classes pushBack 		"B_HMG_01_A_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"Mk32 GMG 20 mm (Raised)";
-	_classes pushBack 		"B_GMG_01_high_F";
-	_prices pushBack 		3000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"Mk32A GMG 20 mm";
-	_classes pushBack 		"B_GMG_01_A_F";
-	_prices pushBack 		3000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+		_headers pushBack 		"Static Designator";
+		_classes pushBack 		"B_Static_Designator_01_F";
+		_prices pushBack 		_priceBase;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Other";
+		_tiers pushBack 		_tech_level;
 
-		_headers pushBack 		"Mk30 HMG .50";
-		_classes pushBack 		"B_HMG_01_F";
-		_prices pushBack 		1500;
+		_headers pushBack 		"Mk30 HMG .50 (Raised)";
+		_classes pushBack 		"B_HMG_01_high_F";
+		_prices pushBack 		_priceMG;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
 		_tiers pushBack 		_tech_level;
 
-		_headers pushBack 		"Mk32 GMG 20mm";
-		_classes pushBack 		"B_GMG_01_F";
-		_prices pushBack 		3000;
+		_headers pushBack 		"Mk30A HMG .50";
+		_classes pushBack 		"B_HMG_01_A_F";
+		_prices pushBack 		_priceMG;
 		_placements pushBack 	[180, 5];
 		_categories pushBack 	"Defense";
 		_tiers pushBack 		_tech_level;
-
-		_headers pushBack 		"Mortar";
-		_classes pushBack 		"B_Mortar_01_F";
-		_prices pushBack 		5000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Mortar";
-		_tiers pushBack 		_tech_level;
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-
-		_headers pushBack 		"Mk30 HMG .50";
-		_classes pushBack 		"B_T_HMG_01_F";
-		_prices pushBack 		1500;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-		_tiers pushBack 		_tech_level;
-
-		_headers pushBack 		"Mk32 GMG 20 mm";
-		_classes pushBack 		"B_T_GMG_01_F";
-		_prices pushBack 		3000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Defense";
-		_tiers pushBack 		_tech_level;
-
-		_headers pushBack 		"Mortar";
-		_classes pushBack 		"B_T_Mortar_01_F";
-		_prices pushBack 		5000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"Mortar";
-		_tiers pushBack 		_tech_level;
-	};
-	//Update the calculated max upgrade level
-	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
-		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
-	};
-
-	// ****************************** BASE GUN DEFENSE 1 ******************************
-	_tech_level = 1;
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_headers pushBack 		"Static Titan Launcher (AT)";
-		_classes pushBack 		"B_static_AT_F";
-		_prices pushBack 		8000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"AT";
-		_tiers pushBack 		_tech_level;
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_headers pushBack 		"Static Titan Launcher (AT)";
-		_classes pushBack 		"B_T_Static_AT_F";
-		_prices pushBack 		8000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"AT";
-		_tiers pushBack 		_tech_level;
-	};
-	//Update the calculated max upgrade level
-	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
-		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
-	};
-
-	// ****************************** BASE GUN DEFENSE 2 ******************************
-	_tech_level = 2;
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		_headers pushBack 		"Static Titan Launcher (AA)";
-		_classes pushBack 		"B_static_AA_F";
-		_prices pushBack 		8000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"AA";
-		_tiers pushBack 		_tech_level;
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		_headers pushBack 		"Static Titan Launcher (AA)";
-		_classes pushBack 		"B_T_Static_AA_F";
-		_prices pushBack 		8000;
-		_placements pushBack 	[180, 5];
-		_categories pushBack 	"AA";
-		_tiers pushBack 		_tech_level;
-	};
-	//Update the calculated max upgrade level
-	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
-		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
-	};
-
-	// ****************************** BASE GUN DEFENSE 3 ******************************
-	_tech_level = 3;
-
-	_headers pushBack 		"AN/MPQ-105 Radar";
-	_classes pushBack 		"B_Radar_System_01_F";
-	_prices pushBack 		1000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"RADAR";
-	_tiers pushBack 		_tech_level;
 		
-	_headers pushBack 		"MIM-145 Defender SAM";
-	_classes pushBack 		"B_SAM_System_03_F";
-	_prices pushBack 		25000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"SAM";
-	_tiers pushBack 		_tech_level;
+		_headers pushBack 		"Mk32 GMG 20 mm (Raised)";
+		_classes pushBack 		"B_GMG_01_high_F";
+		_prices pushBack 		_priceGMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		_headers pushBack 		"Mk32A GMG 20 mm";
+		_classes pushBack 		"B_GMG_01_A_F";
+		_prices pushBack 		_priceGMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+
+			_headers pushBack 		"Mk30 HMG .50";
+			_classes pushBack 		"B_HMG_01_F";
+			_prices pushBack 		_priceMG;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"Defense";
+			_tiers pushBack 		_tech_level;
+
+			_headers pushBack 		"Mk32 GMG 20mm";
+			_classes pushBack 		"B_GMG_01_F";
+			_prices pushBack 		_priceGMG;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"Defense";
+			_tiers pushBack 		_tech_level;
+
+			_headers pushBack 		"Mortar";
+			_classes pushBack 		"B_Mortar_01_F";
+			_prices pushBack 		_priceArty;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"Mortar";
+			_tiers pushBack 		_tech_level;
+		};
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+
+			_headers pushBack 		"Mk30 HMG .50";
+			_classes pushBack 		"B_T_HMG_01_F";
+			_prices pushBack 		_priceMG;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"Defense";
+			_tiers pushBack 		_tech_level;
+
+			_headers pushBack 		"Mk32 GMG 20 mm";
+			_classes pushBack 		"B_T_GMG_01_F";
+			_prices pushBack 		_priceGMG;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"Defense";
+			_tiers pushBack 		_tech_level;
+
+			_headers pushBack 		"Mortar";
+			_classes pushBack 		"B_T_Mortar_01_F";
+			_prices pushBack 		5000;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"Arty";
+			_tiers pushBack 		_tech_level;
+		};
+	};
+	if(_side == east) then {
+
+		_headers pushBack 		"Static Designator";
+		_classes pushBack 		"O_Static_Designator_02_F";
+		_prices pushBack 		_priceBase;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Other";
+		_tiers pushBack 		_tech_level;
+
+		_headers pushBack 		"HMG";
+		_classes pushBack 		"O_HMG_01_F";
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
+		_headers pushBack 		"HMG high";
+		_classes pushBack 		"O_HMG_01_high_F";
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+
+		_headers pushBack 		"HMG";
+		_classes pushBack 		"O_HMG_01_A_F";
+		_prices pushBack 		_priceMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		
+		_headers pushBack 		"GMG";
+		_classes pushBack 		"O_GMG_01_F";
+		_prices pushBack 		_priceGMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		_headers pushBack 		"GMG high";
+		_classes pushBack 		"O_GMG_01_high_F";
+		_prices pushBack 		_priceGMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		_headers pushBack 		"GMG";
+		_classes pushBack 		"O_GMG_01_A_F";
+		_prices pushBack 		_priceGMG;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Defense";
+		_tiers pushBack 		_tech_level;
+		
+		
+		_headers pushBack 		"Mortar";
+		_classes pushBack 		"O_Mortar_01_F";
+		_prices pushBack 		_priceArty;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"Arty";
+		_tiers pushBack 		_tech_level;
+		
+	};	
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
 		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
 	};
 };
 
-if(_side == east) then {
-	// ****************************** BASE GUN DEFENSE 0 ******************************
-	_tech_level = 0;
+/********************************************************************************************************************************
+ *														TECH 1																	*
+ ********************************************************************************************************************************/
+ _tech_level = 1;
 
-	_headers pushBack 		"Static Designator";
-	_classes pushBack 		"O_Static_Designator_02_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
+if(CTI_ECONOMY_LEVEL_DEFENSE >= _tech_level)  then {
+	_priceAT = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,6] call CTI_CO_FNC_GetCalculatedUnitsPrize;
 
-	_headers pushBack 		"HMG";
-	_classes pushBack 		"O_HMG_01_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
+	if(_side == west) then {
+		if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+			_headers pushBack 		"Static Titan Launcher (AT)";
+			_classes pushBack 		"B_static_AT_F";
+			_prices pushBack 		_priceAT;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"AT";
+			_tiers pushBack 		_tech_level;
+		};
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+			_headers pushBack 		"Static Titan Launcher (AT)";
+			_classes pushBack 		"B_T_Static_AT_F";
+			_prices pushBack 		_priceAT;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"AT";
+			_tiers pushBack 		_tech_level;
+		};
+	};
+	if(_side == east) then {
 
-	_headers pushBack 		"HMG high";
-	_classes pushBack 		"O_HMG_01_high_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
+		_headers pushBack 		"AT";
+		_classes pushBack 		"O_static_AT_F";
+		_prices pushBack 		_priceAT;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"AT";
+		_tiers pushBack 		_tech_level;
+	};
 
-	_headers pushBack 		"HMG";
-	_classes pushBack 		"O_HMG_01_A_F";
-	_prices pushBack 		1500;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	
-	_headers pushBack 		"GMG";
-	_classes pushBack 		"O_GMG_01_F";
-	_prices pushBack 		3000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"GMG high";
-	_classes pushBack 		"O_GMG_01_high_F";
-	_prices pushBack 		3000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"GMG";
-	_classes pushBack 		"O_GMG_01_A_F";
-	_prices pushBack 		3000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Defense";
-	_tiers pushBack 		_tech_level;
-	
-	
-	_headers pushBack 		"Mortar";
-	_classes pushBack 		"O_Mortar_01_F";
-	_prices pushBack 		5000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"Mortar";
-	_tiers pushBack 		_tech_level;
-	
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
 		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
 	};
-	
-	// ****************************** BASE GUN DEFENSE 1 ******************************
-	_tech_level = 1;
+};
 
-	_headers pushBack 		"AT";
-	_classes pushBack 		"O_static_AT_F";
-	_prices pushBack 		8000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"AT";
-	_tiers pushBack 		_tech_level;
+/********************************************************************************************************************************
+ *														TECH 2																	*
+ ********************************************************************************************************************************/
+_tech_level = 2;
+
+if(CTI_ECONOMY_LEVEL_DEFENSE >= _tech_level)  then {
+	_priceAA = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,6] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+
+	if(_side == west) then {
+		if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
+			_headers pushBack 		"Static Titan Launcher (AA)";
+			_classes pushBack 		"B_static_AA_F";
+			_prices pushBack 		_priceAA;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"AA";
+			_tiers pushBack 		_tech_level;
+		};
+		if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
+			_headers pushBack 		"Static Titan Launcher (AA)";
+			_classes pushBack 		"B_T_Static_AA_F";
+			_prices pushBack 		_priceAA;
+			_placements pushBack 	[180, 5];
+			_categories pushBack 	"AA";
+			_tiers pushBack 		_tech_level;
+		};
+	};
+	if(_side == east) then {
+		_headers pushBack 		"AA";
+		_classes pushBack 		"O_static_AA_F";
+		_prices pushBack 		_priceAA;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"AA";
+		_tiers pushBack 		_tech_level;
+	};
 	//Update the calculated max upgrade level
 	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
 		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
 	};
-	
-	// ****************************** BASE GUN DEFENSE 2 ******************************
-	_tech_level = 2;
+};
 
-	_headers pushBack 		"AA";
-	_classes pushBack 		"O_static_AA_F";
-	_prices pushBack 		8000;
+/********************************************************************************************************************************
+ *														TECH 3																	*
+ ********************************************************************************************************************************/
+_tech_level = 3;
+
+if(CTI_ECONOMY_LEVEL_DEFENSE >= _tech_level)  then {
+	_priceBase = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,true,8] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+	_priceAA = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,true,16] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+
+	if(_side == west) then {
+		_headers pushBack 		"AN/MPQ-105 Radar";
+		_classes pushBack 		"B_Radar_System_01_F";
+		_prices pushBack 		_priceBase;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"RADAR";
+		_tiers pushBack 		_tech_level;
+			
+		_headers pushBack 		"MIM-145 Defender SAM";
+		_classes pushBack 		"B_SAM_System_03_F";
+		_prices pushBack 		_priceAA;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"SAM";
+		_tiers pushBack 		_tech_level;
+	};
+	if(_side == east) then {
+		_headers pushBack 		"Radar System";
+		_classes pushBack 		"O_Radar_System_02_F";
+		_prices pushBack 		_priceBase;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"RADAR";
+		_tiers pushBack 		_tech_level;
+		
+		_headers pushBack 		"SAM System";
+		_classes pushBack 		"O_SAM_System_04_F";
+		_prices pushBack 		_priceAA;
+		_placements pushBack 	[180, 5];
+		_categories pushBack 	"SAM";
+		_tiers pushBack 		_tech_level;
+	};
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
+};
+
+/********************************************************************************************************************************
+ *														TECH 4																	*
+ ********************************************************************************************************************************/
+_tech_level = 4;
+
+if(CTI_ECONOMY_LEVEL_DEFENSE >= _tech_level)  then {
+	_priceArty = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,10] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+	_priceAA = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,true,8] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+	_priceGun = [CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,false,5] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+
+	//Heavy weaponry for all if active (balancing)
+	_headers pushBack 		"Praetorian 1C (AAA)";
+	_classes pushBack 		"B_AAA_System_01_F";
+	_prices pushBack 		_priceAA;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"AA";
 	_tiers pushBack 		_tech_level;
-	//Update the calculated max upgrade level
-	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
-		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
-	};
-	
-	// ****************************** BASE GUN DEFENSE 3 ******************************
-	_tech_level = 3;
 
-	_headers pushBack 		"Radar System";
-	_classes pushBack 		"O_Radar_System_02_F";
-	_prices pushBack 		1000;
+	_headers pushBack 		"Mk41 VLS (Vertical Launch System)";
+	_classes pushBack 		"B_Ship_MRLS_01_F";
+	_prices pushBack 		_priceArty;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"RADAR";
+	_categories pushBack 	"Other";
 	_tiers pushBack 		_tech_level;
-	
-	_headers pushBack 		"SAM System";
-	_classes pushBack 		"O_SAM_System_04_F";
-	_prices pushBack 		25000;
-	_placements pushBack 	[180, 5];
-	_categories pushBack 	"SAM";
-	_tiers pushBack 		_tech_level;
-	//Update the calculated max upgrade level
-	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
-		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
-	};
-};
 
-// ****************************** BASE GUN DEFENSE 3 ******************************
-_tech_level = 3;
-//Heavy weaponry for all (balancing)
-_headers pushBack 		"Praetorian 1C (AAA)";
-_classes pushBack 		"B_AAA_System_01_F";
-_prices pushBack 		35000;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_tiers pushBack 		_tech_level;
-
-_headers pushBack 		"Mk41 VLS (Vertical Launch System)";
-_classes pushBack 		"B_Ship_MRLS_01_F";
-_prices pushBack 		200000;
-_placements pushBack 	[180, 5];
-_categories pushBack 	"Defense";
-_tiers pushBack 		_tech_level;
-
-//Update the calculated max upgrade level
-if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
-	_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
-};
-	
-/*
-if(CTI_CAMO_ACTIVATION == 4) then {		
 	_headers pushBack 		"Mk49 Spartan AAA";
 	_classes pushBack 		"B_SAM_System_01_F";
-	_prices pushBack 		50000;
+	_prices pushBack 		_priceAA;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"AA";
 
 	_headers pushBack 		"Mk21 Centurion SAM";
 	_classes pushBack 		"B_SAM_System_02_F";
-	_prices pushBack 		75000;
+	_prices pushBack 		_priceAA;
 	_placements pushBack 	[180, 5];
-	_categories pushBack 	"SAM";
+	_categories pushBack 	"AA";
+
 	_headers pushBack 		"Mk45 Hammer 120mm";
 	_classes pushBack 		"B_Ship_Gun_01_F";
-	_prices pushBack 		35000;
+	_prices pushBack 		_priceGun;
 	_placements pushBack 	[180, 5];
 	_categories pushBack 	"Defense";
-};
-*/
 
+	//Update the calculated max upgrade level
+	if((_tech_level) > _upgrade_levels select CTI_UPGRADE_DEFENSE) then {
+		_upgrade_levels set [CTI_UPGRADE_DEFENSE, (_tech_level)];
+	};
+};
 
 // ***************************** Ammoboxes *****************************
 /*if(CTI_GER_SIDE == (_side) call CTI_CO_FNC_GetSideID) then {
