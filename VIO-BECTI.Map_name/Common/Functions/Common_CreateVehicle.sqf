@@ -95,8 +95,10 @@ clearWeaponCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 VIOC_ZEUS addCuratorEditableObjects [[_vehicle], true];
 
-//send the unit to the statistic managing for counting
-[((_side) call CTI_CO_FNC_GetSideFromID), _type, "buyed"] call CTI_CO_FNC_ManageStatistics;
+//send the unit to the statistic managing for counting, but only if placement > 0 what means vehile not loaded from save
+if (_placement == 0) then {
+	[((_side) call CTI_CO_FNC_GetSideFromID), _type, "buyed"] call CTI_CO_FNC_ManageStatistics;
+};
 
 if (_special == "FLY") then {
 	//makes the air unit starts to fly

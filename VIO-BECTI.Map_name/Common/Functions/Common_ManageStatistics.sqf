@@ -58,7 +58,7 @@ if (isNil "_statisticInf") then {
 };
 
 if !(_action == "") then {
-	["DEBUG", "FILE: Common\Functions\Common_ManageStatistics.sqf", Format ["Unit to count %1 --- %2 --- %3", _side, _classname, _action]] Call CTI_CO_FNC_Log;
+	if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_ManageStatistics.sqf", Format ["Unit to count %1 --- %2 --- %3", _side, _classname, _action]] Call CTI_CO_FNC_Log};
 };
 
 _return = [-1,-1];
