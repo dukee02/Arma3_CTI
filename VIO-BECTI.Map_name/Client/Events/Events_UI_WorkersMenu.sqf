@@ -58,7 +58,7 @@ switch (_action) do {
 		if (_selected > -1) then { //--- Disband and delete the entry
 			_selected = lnbValue [260002, [_selected, 0]];
 			_salvager = (uiNamespace getVariable "cti_dialog_ui_workersmenu_salvagers") select _selected;
-			_salvager setDammage 1;
+			_salvager setDamage 1;
 			((uiNamespace getVariable "cti_dialog_ui_workersmenu") displayCtrl 260002) lnbDeleteRow _selected;
 		};
 	};
@@ -68,7 +68,7 @@ switch (_action) do {
 		if (_selected > -1) then { //--- Disband and delete the entry
 			_selected = lnbValue [260003, [_selected, 0]];
 			_worker = (uiNamespace getVariable "cti_dialog_ui_workersmenu_workers") select _selected;
-			_worker setDammage 1;
+			_worker setDamage 1;
 			((uiNamespace getVariable "cti_dialog_ui_workersmenu") displayCtrl 260003) lnbDeleteRow _selected;
 		};
 	};
@@ -96,7 +96,7 @@ switch (_action) do {
 					_nearest setVariable ["cti_sell", true, true];
 					//todo bcast
 					if (_nearest in _structures) then {
-						_nearest setDammage 1;
+						_nearest setDamage 1;
 					} else {
 						//_var = _nearest getVariable "cti_structure_type"; //--- Ruin != structure, so no factory details (name) stored. Need to find another way of getting name info
 						//if (isNil '_var') exitWith {deleteVehicle _nearest}; 

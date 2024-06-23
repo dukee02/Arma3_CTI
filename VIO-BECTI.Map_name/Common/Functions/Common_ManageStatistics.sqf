@@ -32,7 +32,7 @@ _classname = _this select 1;
 _action = if (count _this > 2) then {_this select 2} else {""};
 _broadcast = true;
 
-if !(_side in [east,west]) exitWith {};
+//if !(_side in [east,west]) exitWith {};
 if (CTI_IsServer) then {_broadcast = false};
 
 //Initialisation
@@ -107,7 +107,7 @@ switch (true) do {
 			default {_return = [missionNamespace getVariable format ["CTI_%1_NavalBuild", _side],missionNamespace getVariable format ["CTI_%1_NavalKilled", _side]]};
 		};
 	};
-	case (_classname in ["B_Protagonist_VR_F","O_Protagonist_VR_F"]): {
+	case (_classname in ["B_Protagonist_VR_F","O_Protagonist_VR_F","I_Protagonist_VR_F"]): {
 		switch (_action) do {
 			case "buyed": {missionNamespace setVariable [format ["CTI_%1_PlayersBuild", _side, _broadcast], (missionNamespace getVariable format ["CTI_%1_PlayersBuild", _side]) + 1]};
 			case "killed": {missionNamespace setVariable [format ["CTI_%1_PlayersKilled", _side, _broadcast], (missionNamespace getVariable format ["CTI_%1_PlayersKilled", _side]) + 1]};
