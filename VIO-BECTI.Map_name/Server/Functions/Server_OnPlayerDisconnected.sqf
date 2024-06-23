@@ -73,14 +73,17 @@ if (_is_commander && !isNull _team) then {
 	
 	//--- Sanitize the commander informations.
 	_logic = (_side) Call CTI_CO_FNC_GetSideLogic;
-	_logic setVariable ["cti_commander", grpNull, true];
+	_logic setVariable ["cti_commander", (_logic getVariable "cti_commander_team"), true];
 	
 	//--- Send a message!
 	[["CLIENT", _side], "Client_OnMessageReceived", ["commander-disconnected"]] call CTI_CO_FNC_NetSend;
 	//let this or maybe we change it to an automatic vote, but the popup may not wanted?
 	if ((missionNamespace getVariable "CTI_AI_COMMANDER_ENABLED") == 1) then {
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Team [%1] Commander disconnected, AI take command.", _side]] call CTI_CO_FNC_Log;};
-		(_side) execFSM "Server\FSM\update_commander.fsm";
+		if !(_logic getVariable "cti_ai_commander") then {
+			_logic setVariable ["cti_ai_commander", true];
+			_side ExecFSM "Server\FSM\Update_Commander.fsm";
+		};
 	}; //--- AI commander takeover
 };
 
