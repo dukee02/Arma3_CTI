@@ -83,7 +83,8 @@ if (_placement == 0) then {
 
 //handle UAVs/UGVs
 if((_type call BIS_fnc_objectType) select 0 == "VehicleAutonomous") then {
-	_result = [_save_pos, _direction, _type, _side] call BIS_fnc_spawnVehicle;
+	//[position, direction, type, sideOrGroup] call BIS_fnc_spawnVehicle
+	_result = [_save_pos, _direction, _type, ((_side) call CTI_CO_FNC_GetSideFromID)] call BIS_fnc_spawnVehicle;
 	_vehicle = _result select 0;
 } else {
 	_vehicle = createVehicle [_type, _save_pos, [], _placement, _special];
