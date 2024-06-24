@@ -344,15 +344,16 @@ if (count _path < 1) then {
 		for [{private _i = 0}, {_i < count _cur_line_order}, {_i = _i + 1}] do {
 			_activeFactory = _cur_line_order select _i;
 			_factoryBuild = false;
+			_condition = {true};
 			//check if the corresponding factory has build
 			switch true do
 			{
-				case (_activeFactory in [CTI_UPGRADE_BARRACKS,CTI_UPGRADE_GEAR] && _cur_structures > 1):	{_factoryBuild = true;};
-				case (_activeFactory in [CTI_UPGRADE_LIGHT] && _cur_structures > 2):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_BARRACKS,CTI_UPGRADE_GEAR] && _cur_structures > 1):	{_factoryBuild = true;_condition = {[_side, CTI_BARRACKS] call CTI_CO_FNC_HasStructure;}};
+				case (_activeFactory in [CTI_UPGRADE_LIGHT] && _cur_structures > 2):	{_factoryBuild = true;_condition = {[_side, CTI_LIGHT] call CTI_CO_FNC_HasStructure;}};
 				case (_activeFactory in [CTI_UPGRADE_DEFENSE] && _cur_structures > 3):	{_factoryBuild = true;};
 				case (_activeFactory in [CTI_UPGRADE_SUPPLY,CTI_UPGRADE_TOWNS] && _cur_structures > 4):	{_factoryBuild = true;};
-				case (_activeFactory in [CTI_UPGRADE_HEAVY,CTI_UPGRADE_NAVAL] && _cur_structures > 5):	{_factoryBuild = true;};
-				case (_activeFactory in [CTI_UPGRADE_AIR,CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_AIR_AT] && _cur_structures > 6):	{_factoryBuild = true;};
+				case (_activeFactory in [CTI_UPGRADE_HEAVY,CTI_UPGRADE_NAVAL] && _cur_structures > 5):	{_factoryBuild = true;_condition = {[_side, CTI_HEAVY] call CTI_CO_FNC_HasStructure;}};
+				case (_activeFactory in [CTI_UPGRADE_AIR,CTI_UPGRADE_AIR_FFAR,CTI_UPGRADE_AIR_AA,CTI_UPGRADE_AIR_AT] && _cur_structures > 6):	{_factoryBuild = true;_condition = {[_side, CTI_AIR] call CTI_CO_FNC_HasStructure;}};
 				default {_factoryBuild = false;};
 			};
 
@@ -364,7 +365,8 @@ if (count _path < 1) then {
 				};
 				if(_add_upgrade) then {
 					_cur_levels set [_activeFactory, (_cur_levels select _activeFactory)+1];
-					_path append [["upgrade", [_activeFactory, (_cur_levels select _activeFactory)], {true}]];
+					//_path append [["upgrade", [_activeFactory, (_cur_levels select _activeFactory)], {true}]];
+					_path append [["upgrade", [_activeFactory, (_cur_levels select _activeFactory)], _condition]];
 				};
 			};
 			//check if all upgrades are done.
