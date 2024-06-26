@@ -83,7 +83,7 @@ CTI_UI_Service_ProcessRepair = {
 	};
 	
 	if (_repair) then {
-		_unit setDammage 0;
+		_unit setDamage 0;
 		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />A <t color='#ccffaf'>%1</t> has been repaired!", _label];
 	} else {
 		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Couldn't finish the repairs on a <t color='#ccffaf'>%1</t>...", _label];
@@ -197,7 +197,7 @@ CTI_UI_Service_ProcessHeal = {
 	};
 	
 	if (_repair) then {
-		if (_unit isKindOf "Man") then {_unit setDammage 0} else {{if (!isNil '_x') then {if (alive _x && _x in crew _unit) then {_x setDammage 0}}} forEach _crew};
+		if (_unit isKindOf "Man") then {_unit setDamage 0} else {{if (!isNil '_x') then {if (alive _x && _x in crew _unit) then {_x setDamage 0}}} forEach _crew};
 		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />A <t color='#ccffaf'>%1</t> has been healed!", _label];
 	} else {
 		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Couldn't finish the healing of a <t color='#ccffaf'>%1</t>...", _label];
