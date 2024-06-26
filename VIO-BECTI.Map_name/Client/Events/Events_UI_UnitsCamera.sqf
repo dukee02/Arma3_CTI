@@ -38,13 +38,18 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180001) ctrlAddEventHandler ["MouseHolding", "nullReturn = _this call CTI_UI_KeyHandler_UnitsCam_MouseMoving"];
 		
 		ctrlSetFocus ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180001);
+
+		//Add the salvager group
+		_logic = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
+		_salvager_team = _logic getVariable ["cti_salvager_team", grpNull];
 		
 		_groups = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups;
+		_groups pushBack _salvager_team;
 		uiNamespace setVariable ["cti_dialog_ui_unitscam_groups", _groups];
 		_origin = uiNamespace getVariable "cti_dialog_ui_unitscam_origin";
 		if (isNil '_origin') then { _origin = objNull };
 		{
-			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbAdd format ["%1 (%2)",_x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}];
+			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbAdd format ["%1 (%2)",if(_forEachIndex == ((count _groups) -1)) then {"Salvager"} else {_x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]}, if (isPlayer leader _x) then {name leader _x} else {"AI"}];
 			if (isNull _origin) then {
 				if (group _track == _x) then {((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180100) lbSetCurSel _forEachIndex};
 			} else {
