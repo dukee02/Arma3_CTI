@@ -246,8 +246,6 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1O_T_ghillie_tna_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1O_T_Officer_F", _sid], 1, 20];
 	};
-	inf_to_add pushBack [format["%1O_Officer_Parade_F", _sid], 1, 20];
-	inf_to_add pushBack [format["%1O_Officer_Parade_Veteran_F", _sid], 1, 20];
 
 	units_infantry append inf_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {infantry_auto append inf_to_add;};
