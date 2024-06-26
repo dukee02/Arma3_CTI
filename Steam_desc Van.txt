@@ -72,28 +72,47 @@ More infos:
 
 
 -------------------MAPS----------------------------
-Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.2_c230817
-Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.2_c230817
-Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.2_c230817
-Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.2_c230817
-Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.2_c230817
+Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.4_240626
+Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.4_240626
+Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.4_240626
+Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.4_240626
+Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.4_240626
 
-Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.2_c230817
+Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.4_240626
 
-MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.2_c230817
+MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.4_240626
 
-Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.2_c230817
-Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.2_c230817
-Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.2_c230817
-Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.2_c230817
+Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.4_240626
+Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.4_240626
+Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.4_240626
+Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.4_240626
 
 --------------------------------------------------
 
-[h1]VIO-BECTI V2.0.2[h1]
-[b]Added:[/b] UAV 06 antimine backpack
-[b]Changed:[/b] Some Arty UI improvements
-[b]Fixed:[/b] HQ spawns twice
-[b]Added:[/b] Param to start near Town is back
-[b]Changed:[/b] larger capture bar
-[b]Added:[/b] Chernarus and Takistan
+[h1][V2.0.4] Changelog:[/h1]
+
+[b]Added:[/b] commander ability to setup statics
+[b]Added:[/b] default "MANW" Insignia
+[b]Added:[/b] toggle mode for earplugs
+[b]Added:[/b] Option to disable tokeover distance for units on respawn
+[b]Added:[/b] Option to respawn with last gear
+[b]Added:[/b] internal statistic, maybe we'll show it on endscreen later
+[b]Added:[/b] Salavgers to Units camera - unflip for all if stuck
+[b]Changed:[/b] positioning of vehicles after loading
+[b]Changed:[/b] rearming behavior for statics
+[b]Changed:[/b] Max Queue amount in factorys
+[b]Changed:[/b] discount for AI only in harderAI skills
+[b]Changed:[/b] AI skill calculation
+[b]Changed:[/b] price calculation of all statics
+[b]Changed:[/b] salvagers now in one single group
+[b]Changed:[/b] better vehicle lock behavior - locked by player
+[b]Fixed:[/b] must allways hack UAVs+UGVs
+[b]Fixed:[/b] some old Arma2 damage stuff
+[b]Fixed:[/b] error on loading the supply
+[b]Fixed:[/b] building blocked in not in restricted area
+[b]Fixed:[/b] firefighter siren not working
+[b]Fixed:[/b] AI commander didn't take command
+[b]Fixed:[/b] more old Arma2 dammage stuff found
+[b]Fixed:[/b] Opfor AI squads hire parade units
+[b]Fixed:[/b] Error picture not found
 

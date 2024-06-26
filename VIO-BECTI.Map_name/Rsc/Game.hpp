@@ -15,10 +15,6 @@ briefingName = "VIO-BECTI V2.0.4";
 dev = "dukee";
 author = "dukee, basics by Benny";
 
-overViewPicture = "VIO_BECTI.jpg";
-overViewPictureLocked = "VIO_BECTI.jpg";
-loadScreen = "VIO_BECTI.jpg";
-
 //--- Properties.
 class Header {
 	gameType = CTI;
