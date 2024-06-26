@@ -81,10 +81,6 @@ class AddonsMetaData
 randomSeed=7728140;
 class ScenarioData
 {
-	author="Benny,dukee";
-	overviewText="VIO-BECTI V2.0.4";
-	overviewTextLocked="VIO-BECTI V2.0.4";
-	onLoadMission="VIO-BECTI V2.0.4";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -155,8 +151,6 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI V2.0.4";
-		overviewText="VIO-BECTI V2.0.4";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;

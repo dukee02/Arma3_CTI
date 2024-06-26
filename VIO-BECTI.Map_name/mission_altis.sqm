@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=5995;
+		nextID=6111;
 	};
 	class Camera
 	{
@@ -27,7 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="VIO-BECTI";
+sourceName="VIO-BECTI V2.0.4";
 addons[]=
 {
 	"A3_Characters_F",
@@ -81,10 +81,6 @@ class AddonsMetaData
 randomSeed=7728140;
 class ScenarioData
 {
-	author="Benny,dukee";
-	overviewText="VIO-BECTI V2.0.4";
-	overviewTextLocked="VIO-BECTI V2.0.4";
-	onLoadMission="VIO-BECTI V2.0.4";
 	respawnDialog=0;
 	respawn=3;
 	class Header
@@ -143,8 +139,6 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI V2.0.4";
-		overviewText="VIO-BECTI V2.0.4";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
