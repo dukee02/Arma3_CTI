@@ -113,7 +113,7 @@ link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
 globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-756.375305,1078.072510,898.349121,-1050.751709,832,884,1};
-window[] = {2,-1,-1,-32000,-32000,934,-1816,-437,104,3,850};
+window[] = {2,-1,-1,-1,-1,960,130,1509,130,3,850};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1003,7 +1003,7 @@ class FSM
                          "		_salvager_team = createGroup _side;" \n
                          "		_salvager_team setGroupID [""Salvager Team""];" \n
                          "		_salvager_team setVariable [""cti_gc_noremove"", true];" \n
-                         "		_sideLogic setVariable [""cti_salvager_team"", _salvager_team];" \n
+                         "		_sideLogic setVariable [""cti_salvager_team"", _salvager_team, true];" \n
                          "	};" \n
                          "	[_salvager_team, _sideCommander, _side, format[""CTI_Salvager_Independent_%1"", _side], _factory_repair, [true, false, false, false, """", true], (time + random 10000 - random 500 + diag_frameno),1] call CTI_SE_FNC_OnClientPurchase;" \n
                          "} else {" \n

@@ -197,7 +197,8 @@ if (_model isKindOf "Man") then {
 	
 	//set the initial vehicle owner and the locking actions
 	_vehicle setVariable ["Owner", getPlayerUID (leader _req_buyer), true];
-	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', "alive _target && locked _target == 2 && (((_target getVariable ['Owner', '0']) == getPlayerUID _this) || ((_target getVariable ['Owner', '0']) == '0') || ((CTI_WEST getVariable 'cti_commander') == group _this) || ((CTI_EAST getVariable 'cti_commander') == group _this))"];
+	//_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', "alive _target && locked _target == 2 && (((_target getVariable ['Owner', '0']) == getPlayerUID _this) || ((_target getVariable ['Owner', '0']) == '0') || ((CTI_WEST getVariable 'cti_commander') == group _this) || ((CTI_EAST getVariable 'cti_commander') == group _this))"];
+	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 2'];
 	_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', 'alive _target && locked _target == 0'];
 
 	player reveal _vehicle;

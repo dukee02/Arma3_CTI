@@ -216,7 +216,7 @@ switch (_action) do {
 							_salvager_team = createGroup CTI_P_SideJoined;
 							_salvager_team setGroupID ["Salvager Team"];
 							_salvager_team setVariable ["cti_gc_noremove", true];
-							_logic setVariable ["cti_salvager_team", _salvager_team];
+							_logic setVariable ["cti_salvager_team", _salvager_team, true];
 						};
 						["SERVER", "Request_Purchase", [_salvager_team, group player, CTI_P_SideJoined, format["CTI_Salvager_Independent_%1", CTI_P_SideJoined], uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", [true, false, false, false, "", true], (time + random 10000 - random 500 + diag_frameno), 1]] call CTI_CO_FNC_NetSend;
 					} else {
