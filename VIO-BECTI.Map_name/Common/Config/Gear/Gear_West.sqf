@@ -608,7 +608,7 @@ _p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalc
 
 _i pushBack "NLAW_F";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
 	// -- Tech Level 2
@@ -628,15 +628,15 @@ if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
 
 	_i pushBack "MRAWS_HE_F";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,50] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 	_i pushBack "MRAWS_HEAT55_F";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 	_i pushBack "MRAWS_HEAT_F";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.5,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // -- Tech Level 3
 _tech_level = 3;
@@ -666,7 +666,7 @@ if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 
 _i pushBack "Titan_AA";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 
 _i pushBack "launch_B_Titan_F";
@@ -685,11 +685,11 @@ if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 
 _i pushBack "Titan_AT";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "Titan_AP";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {

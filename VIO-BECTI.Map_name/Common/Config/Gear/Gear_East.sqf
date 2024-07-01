@@ -533,11 +533,11 @@ if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 
 _i pushBack "RPG32_F";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "RPG32_HE_F";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,50] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // -- Tech Level 2
 _tech_level=2;
@@ -553,11 +553,11 @@ if(([798390] call CTI_CO_FNC_HasDLC)) then {		//Tanks
 
 	_i pushBack "Vorona_HEAT";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 	_i pushBack "Vorona_HE";
 	_u pushBack _tech_level;
-	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,200] call CTI_CO_FNC_GetCalculatedItemPrize);
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,50] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
 // -- Tech Level 3
@@ -575,7 +575,7 @@ if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 
 _i pushBack "Titan_AA";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 
 _i pushBack "launch_O_Titan_F";
@@ -590,11 +590,11 @@ if(([395180] call CTI_CO_FNC_HasDLC)) then {		//APEX
 
 _i pushBack "Titan_AT";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,1.0,200] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 _i pushBack "Titan_AP";
 _u pushBack _tech_level;
-_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,400] call CTI_CO_FNC_GetCalculatedItemPrize);
+_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5,100] call CTI_CO_FNC_GetCalculatedItemPrize);
 
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
