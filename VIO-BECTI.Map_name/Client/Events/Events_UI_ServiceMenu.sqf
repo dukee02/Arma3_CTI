@@ -127,7 +127,7 @@ switch (_action) do {
 					_var_name = if (isNil {_x getVariable "cti_customid"}) then {typeOf _x} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _x getVariable "cti_customid"]};
 					_var_classname = missionNamespace getVariable _var_name;
 					_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName")};
-					((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl 230005) lnbAddRow [_digit+_label, "N/A", "N/A", format["%1%2",round((1 - getDammage _x) * 100), "%"]];
+					((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl 230005) lnbAddRow [_digit+_label, "N/A", "N/A", format["%1%2",round((1 - damage _x) * 100), "%"]];
 				} else {
 					_vehicle = vehicle _x;
 					_var_name = if (isNil {_vehicle getVariable "cti_customid"}) then {typeOf _vehicle} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _vehicle getVariable "cti_customid"]};
@@ -135,7 +135,7 @@ switch (_action) do {
 					_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName")};
 					_crew = crew _vehicle;
 					_health = 0;
-					{_health = _health + round((1 - getDammage _x) * 100)} forEach _crew;
+					{_health = _health + round((1 - damage _x) * 100)} forEach _crew;
 					_health = if (count _crew > 0) then {format["%1%2", round(_health / count _crew), "%"]} else {"N/A"};
 					_digits = "";
 					if (count _crew > 0 && group _vehicle == group player) then {
@@ -148,7 +148,7 @@ switch (_action) do {
 						} forEach _digit_parsed;
 						if (_digits != "") then {_digits = format["[%1] ",_digits]};
 					};
-					((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl 230005) lnbAddRow [_digits+_label, format["%1%2",round((1 - getDammage _vehicle) * 100), "%"], format["%1%2", round((fuel _vehicle) * 100), "%"], _health];
+					((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl 230005) lnbAddRow [_digits+_label, format["%1%2",round((1 - damage _vehicle) * 100), "%"], format["%1%2", round((fuel _vehicle) * 100), "%"], _health];
 				};
 			};
 		} forEach _list;
@@ -178,7 +178,7 @@ switch (_action) do {
 						_price = _x select 1;
 						switch (_x select 0) do {
 							case 230001: {
-								_damage = getDammage _selected;
+								_damage = damage _selected;
 								_maxPrice = [_selected, CTI_SERVICE_PRICE_REPAIR, CTI_SERVICE_PRICE_REPAIR_COEF] call CTI_UI_Service_GetPrice;
 								_price = round (_maxPrice * _damage);
 							};
@@ -196,7 +196,7 @@ switch (_action) do {
 									_totalDamages = []; //--- Array to contain individual damages of each crew
 									_totalDamage = 0; //--- Average damage of total crew
 									{
-										_damage = getDammage _x;
+										_damage = damage _x;
 										_totalDamages pushback _damage;
 									} forEach crew _selected;
 									
@@ -228,7 +228,7 @@ switch (_action) do {
 				if (alive _selected) then {
 					if (count ([_selected, _selected_content, [CTI_SERVICE_REPAIR_DEPOT_RANGE, CTI_SERVICE_REPAIR_TRUCK_RANGE, CTI_TOWNS_CAPTURE_RANGE, CTI_SPECIAL_ALLPURPOSE_RANGE], 0] call CTI_UI_Service_RangeStill) > 0) then {
 						_funds = call CTI_CL_FNC_GetPlayerFunds;
-						_damage = getDammage _selected;
+						_damage = damage _selected;
 						_maxPrice = [_selected, CTI_SERVICE_PRICE_REPAIR, CTI_SERVICE_PRICE_REPAIR_COEF] call CTI_UI_Service_GetPrice;
 						_price = round (_maxPrice * _damage);
 						if (_funds >= _price) then {
@@ -327,9 +327,9 @@ switch (_action) do {
 						
 						if (count crew _selected > 0) then {
 							_totalDamages = []; //--- Array to contain individual damages of each crew
-							_totalDamage = 0; //--- Average getDammage of total crew
+							_totalDamage = 0; //--- Average damage of total crew
 							{
-								_damage = getDammage _x;
+								_damage = damage _x;
 								_totalDamages pushback _damage;
 							} forEach crew _selected;
 						

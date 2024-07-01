@@ -71,14 +71,14 @@ switch (true) do {
 	case (_maxSV >= 30 && _maxSV < 60) : {
 		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 40], ["INFANTRY_SQ_MG", 1, 80], ["INFANTRY_SQ_AT", 1, 60], 
 					["WHEELED_SQ_LIGHT", 2, 60], ["WHEELED_SQ_HEAVY", 2, 40], 
-					["TRACKED_SQ_LIGHT", 2, 60], ["TRACKED_SQ_MEDIUM", 1, 10], ["TRACKED_SQ_HEAVY", 0, 10], 
+					["TRACKED_SQ_LIGHT", 2, 60], ["TRACKED_SQ_MEDIUM", 1, 10], ["TRACKED_SQ_HEAVY", 1, 10], 
 					//["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 10], 
 					["SQ_ANTI_AIR", 1, 10]];
 	};
 	case (_maxSV >= 60 && _maxSV < 90) : {
 		_pool_units = [["INFANTRY_SQ_LIGHT", 1, 40], ["INFANTRY_SQ_MG", 1, 60], ["INFANTRY_SQ_AT", 1, 80], 
 					["WHEELED_SQ_LIGHT", 1, 40], ["WHEELED_SQ_HEAVY", 2, 60], 
-					["TRACKED_SQ_LIGHT", 2, 80], ["TRACKED_SQ_MEDIUM", 2, 60], ["TRACKED_SQ_HEAVY", 0, 40], 
+					["TRACKED_SQ_LIGHT", 2, 80], ["TRACKED_SQ_MEDIUM", 2, 60], ["TRACKED_SQ_HEAVY", 1, 40], 
 					//["AIR_SQ_FIGHTER", 1, 10], ["AIR_SQ_BOMBER", 1, 10], 
 					["SQ_ANTI_AIR", 1, 20]];
 	};

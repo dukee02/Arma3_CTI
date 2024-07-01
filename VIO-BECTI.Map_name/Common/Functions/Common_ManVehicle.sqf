@@ -60,12 +60,10 @@ if (_vehicle emptyPositions "driver" > 0) then {
 	_units = _units + [_unit];
 };
 
-//if ("Autonomous" == getText (configfile >> "CfgVehicles" >> typeOf _vehicle >> "vehicleClass")) then {
-	{
-		_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
-		_unit moveInTurret [_vehicle, _x];
-		_units = _units + [_unit];
-	} forEach _turrets;
-//};
+{
+	_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+	_unit moveInTurret [_vehicle, _x];
+	_units = _units + [_unit];
+} forEach _turrets;
 
 _units

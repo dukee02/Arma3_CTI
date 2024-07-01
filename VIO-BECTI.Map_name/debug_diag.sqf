@@ -35,7 +35,7 @@
 // _structures = (side player) call CTI_CO_FNC_GetSideStructures;
 // _structure = [player, _structures] call CTI_CO_FNC_GetClosestEntity;
 
-// _structure setDammage 1;
+// _structure setDamage 1;
 
 // _q = (side player) call CTI_CO_FNC_GetSideHQ;
-// _q setDammage 1;
+// _q setDamage 1;

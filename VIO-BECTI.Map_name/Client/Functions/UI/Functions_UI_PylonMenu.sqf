@@ -73,6 +73,34 @@ CTI_UI_Fill_PylonsSelection = {
 		//_mirrorPos;
 
 		_uiVehPos = getArray (configfile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent" >> "pylons" >> _pylonName >> "UIposition");
+		//check and fix formulas in the position array -.- CUP things
+		for[{ _v = 0 }, { _v < count _uiVehPos}, { _v = _v + 1 }] do {
+			if (typeName (_uiVehPos select _v) != "SCALAR") then {
+				_tmpPos = [(_uiVehPos select _v), " "] call BIS_fnc_splitString;
+				_result1 = 0;
+				_result2 = 0;
+				switch (count _tmpPos) do
+				{
+					case 1: {
+						_tmpPos2 = [(_tmpPos select 0), "+"] call BIS_fnc_splitString;
+						_result1 = (_tmpPos2 select 0) call BIS_fnc_parseNumber;
+						_result2 = (_tmpPos2 select 1) call BIS_fnc_parseNumber;
+					};
+					case 2: {
+						_result1 = (_tmpPos select 0) call BIS_fnc_parseNumber;
+						_tmpPos2 = [(_tmpPos select 1), "+", true] call BIS_fnc_splitString;
+						_result2 = (_tmpPos2 select 1) call BIS_fnc_parseNumber;
+					};
+					default {
+						_result1 = (_tmpPos select 0) call BIS_fnc_parseNumber;
+						_result2 = (_tmpPos select 2) call BIS_fnc_parseNumber;
+					};
+				};
+				_result = _result1 + _result2;
+				_uiVehPos set [_v, _result];
+			};
+		};
+
 		_uiSpace = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl 410001);
 		_uiPosPhylon = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl _UIIdx);
 		_uiPosControl = ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_pylonmenu") displayCtrl (_UIIdx+1));
@@ -232,4 +260,28 @@ CTI_UI_GetPhylonVehicle = {
 	//typeOf _veh;
 };
 
+/*RHS artys has pylons too, maybe we can handle them here
 
+configfile >> "CfgVehicles" >> "RHS_BM21_VDV_01" >> "Components" >> "TransportPylonsComponent" >> "pylons" >> "pylon40" >> "attachment"
+hardpoints[] = {"RHS_HP_BM21"};
+attachment = "rhs_mag_m21of_1";
+
+"RHS_BM21_VDV_01" getCompatiblePylonMagazines "pylon40";
+["rhs_mag_m21of_1","rhs_mag_9m28f_1","rhs_mag_9m28k_1","rhs_mag_9m218_1","rhs_mag_9m521_1","rhs_mag_9m522_1"]
+
+configfile >> "CfgMagazines" >> "rhs_mag_m21of_1" >> "ammo"
+ammo = "rhs_ammo_m21OF_HE";
+descriptionShort = "High explosive 18,4kg warhead. 20km range";
+pylonWeapon = "rhs_weap_bm21";
+
+configfile >> "CfgWeapons" >> "rhs_weap_bm21"
+configfile >> "CfgWeapons" >> "rhs_weap_bm21" >> "modes"
+modes[] = {"Mode_1","Mode_2","Mode_3","Mode_4","Mode_5","Mode_6"};
+
+configfile >> "CfgWeapons" >> "rhs_weap_bm21" >> "Mode_1"
+configfile >> "CfgWeapons" >> "rhs_weap_bm21" >> "Mode_1" >> "maxRange"
+maxRange = 6500;
+minRange = 5000;
+displayName = "5000m-6500m";
+
+*/

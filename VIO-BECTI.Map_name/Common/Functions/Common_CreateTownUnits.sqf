@@ -25,7 +25,7 @@ for '_i' from 0 to count(_groups)-1 do {
 	
 	//--- Create the given team
 	if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_CreateTownUnits.sqf", format ["Create team: <%1>",  _team]] call CTI_CO_FNC_Log;};
-	_return = [_team, _position, _side, _group, _locked, false, true] call CTI_CO_FNC_CreateTeam;
+	_return = [_team, _position, _side, _group, _locked, false, true, true] call CTI_CO_FNC_CreateTeam;
 	_vehicles = _return select 1;
 	
 	//--- Patrol the town
