@@ -13,6 +13,8 @@ _defenses = [];
 for '_i' from 0 to (count _headers) -1 do {
 	_header = _headers select _i;
 	_classname = _classes select _i;
+	//maybe we can rename the class for internal use?
+	//["RaBbiT", "I ate a rabbit today"] call BIS_fnc_inString
 	
 	if (isNil {missionNamespace getVariable format["CTI_%1_%2",_side,_classname]}) then {
 		_label = "";

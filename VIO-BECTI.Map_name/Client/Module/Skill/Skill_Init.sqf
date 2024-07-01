@@ -10,7 +10,6 @@
 	https://community.bistudio.com/wiki/setUnitTrait
 	https://community.bistudio.com/wiki/getAllUnitTraits
 	
-	
 	https://community.bistudio.com/wiki/addRating
 */
 
@@ -53,3 +52,25 @@ if (typeOf player in CTI_SK_SPOTTERS) then {CTI_SK_TYPE = CTI_SK_TYPE + ["Spotte
 
 //--- Special one time init - the soldier can hire more units than the others leader
 if ('Soldier' in CTI_SK_TYPE) then {missionNamespace setVariable ['CTI_AI_PLAYER_TEAMS_GROUPSIZE',(missionNamespace getVariable "CTI_AI_PLAYER_TEAMS_GROUPSIZE") + (missionNamespace getVariable "CTI_AI_PLAYERS_TEAMS_SOLDIER_GROUPSIZE")]};
+
+/*
+player setUnitTrait ["explosiveSpecialist",true];
+player setUnitTrait ["UAVHacker",true];
+player setUnitTrait ["Medic",true];
+player setUnitTrait ["loadCoef",0.2]; 		// erholung Ausdauer
+player setUnitTrait ["setCustomAimCoef",0.15];	// Waffe schwanken
+player setUnitRecoilCoefficient 0.2; 		// Rückstoß
+player setUnitTrait ["camouflageCoef",0.2];	// Sichtbarkeit
+player setUnitTrait ["audibleCoef",0.2];	// Hörbarkeit (bewegung)
+player setAnimSpeedCoef 1.5;			// Bewegungs Geschwindigkeit
+player setFatigue 2.75; 				// Menge an Ausdauer
+[player, A1, L2] call BIS_fnc_addSupportLink;	// Transport
+[player, A1, L5] call BIS_fnc_addSupportLink;	// Versorgung
+[player, A1, L1] call BIS_fnc_addSupportLink;	// Arty
+[player, A1, L3] call BIS_fnc_addSupportLink;	// Airstrike
+[player, A1, L4] call BIS_fnc_addSupportLink;	// Helistrike
+
+VIOC_ZEUS addCuratorEditableObjects [[this], false]; 
+this setUnitTrait ["UAVHacker",true];
+this setUnitTrait ["explosiveSpecialist",true];
+*/
