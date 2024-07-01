@@ -500,21 +500,10 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_MBT_04_cannon_F", _sid];
 		_c pushBack format["%1O_T_MBT_04_command_F", _sid];
+		_c pushBack format["%1O_T_MBT_02_railgun_ghex_F", _sid];
 	} else {
 		_c pushBack format["%1O_MBT_04_cannon_F", _sid];
 		_c pushBack format["%1O_MBT_04_command_F", _sid];
-	};
-};
-
-// Tech Level 4
-// ------------
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-
-	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1O_T_MBT_02_railgun_ghex_F", _sid];
-	} else {
 		_c pushBack format["%1O_MBT_02_railgun_F", _sid];
 	};
 };

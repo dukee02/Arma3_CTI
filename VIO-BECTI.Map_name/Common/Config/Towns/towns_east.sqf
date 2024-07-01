@@ -294,23 +294,6 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	switch(CTI_CAMO_ACTIVATION) do {
 		case 1: {
 			TRACKED_LIGHT = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_02_arty_ghex_F", _sid],1]];
-			TRACKED_HEAVY = [[format["%1O_T_MBT_04_cannon_F", _sid],1],[format["%1O_T_MBT_04_command_F", _sid],1]];
-		};
-		default {
-			TRACKED_LIGHT = [[format["%1O_APC_Tracked_02_cannon_F", _sid],1],[format["%1O_APC_Tracked_02_cannon_F", _sid],1]];
-			TRACKED_MEDIUM = [[format["%1O_MBT_02_cannon_F", _sid],1],[format["%1O_MBT_02_arty_F", _sid],1]];
-			TRACKED_HEAVY = [[format["%1O_MBT_04_cannon_F", _sid],1],[format["%1O_MBT_04_command_F", _sid],1]];
-		};
-	};
-};
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	switch(CTI_CAMO_ACTIVATION) do {
-		case 1: {
-			TRACKED_LIGHT = [[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1],[format["%1O_T_APC_Tracked_02_cannon_ghex_F", _sid],1]];
 			TRACKED_MEDIUM = [[format["%1O_T_MBT_02_cannon_ghex_F", _sid],1],[format["%1O_T_MBT_04_cannon_F", _sid],1]];
 			TRACKED_HEAVY = [[format["%1O_T_MBT_04_command_F", _sid],1],[format["%1O_T_MBT_02_railgun_ghex_F", _sid],1]];
 		};

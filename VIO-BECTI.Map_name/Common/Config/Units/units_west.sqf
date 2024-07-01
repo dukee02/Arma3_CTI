@@ -581,16 +581,20 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 			_c pushBack format["%1B_T_Truck_01_box_F", _sid];
 			_c pushBack format["%1B_T_Truck_01_covered_F", _sid];
 			_c pushBack format["%1B_T_Truck_01_transport_F", _sid];
+			_c pushBack format["%1B_T_MRAP_01_F", _sid];
+			_c pushBack format["%1B_T_LSV_01_armed_F", _sid];
 		};
 		if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 			_c pushBack format["%1B_T_Truck_01_cargo_F", _sid];
 			_c pushBack format["%1B_T_Truck_01_flatbed_F", _sid];
 		};
 	} else {
+		_c pushBack format["%1B_MRAP_01_F", _sid];
 		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
 			_c pushBack format["%1B_Truck_01_box_F", _sid];
 			_c pushBack format["%1B_Truck_01_covered_F", _sid];
 			_c pushBack format["%1B_Truck_01_transport_F", _sid];
+			_c pushBack format["%1B_LSV_01_armed_F", _sid];
 		};
 		if(([1021790] call CTI_CO_FNC_HasDLC)) then {		//Contact
 			_c pushBack format["%1B_Truck_01_cargo_F", _sid];
@@ -614,14 +618,10 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
-			_c pushBack format["%1B_T_MRAP_01_F", _sid];
-			_c pushBack format["%1B_T_LSV_01_armed_F", _sid];
 			_c pushBack format["%1B_T_LSV_01_AT_F", _sid];
 		};
 	} else {
-		_c pushBack format["%1B_MRAP_01_F", _sid];
 		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
-			_c pushBack format["%1B_LSV_01_armed_F", _sid];
 			_c pushBack format["%1B_LSV_01_AT_F", _sid];
 		};
 	};

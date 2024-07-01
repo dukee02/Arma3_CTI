@@ -685,10 +685,14 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_c pushBack format["%1O_T_Truck_03_covered_ghex_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_transport_ghex_F", _sid];
 		_c pushBack format["%1O_T_Truck_03_device_ghex_F", _sid];
+		_c pushBack format["%1O_T_MRAP_02_gmg_ghex_F", _sid];
+		_c pushBack format["%1O_T_MRAP_02_hmg_ghex_F", _sid];
 	} else {
 		_c pushBack format["%1O_Truck_03_covered_F", _sid];
 		_c pushBack format["%1O_Truck_03_transport_F", _sid];
 		_c pushBack format["%1O_Truck_03_device_F", _sid];
+		_c pushBack format["%1O_MRAP_02_gmg_F", _sid];
+		_c pushBack format["%1O_MRAP_02_hmg_F", _sid];
 	};
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -707,12 +711,8 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 
 	
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1O_T_MRAP_02_gmg_ghex_F", _sid];
-		_c pushBack format["%1O_T_MRAP_02_hmg_ghex_F", _sid];
 		_c pushBack format["%1O_T_LSV_02_AT_F", _sid];
 	} else {
-		_c pushBack format["%1O_MRAP_02_gmg_F", _sid];
-		_c pushBack format["%1O_MRAP_02_hmg_F", _sid];
 		if(([395180] call CTI_CO_FNC_HasDLC)) then {		//Apex
 			_c pushBack format["%1O_LSV_02_AT_F", _sid];
 		};
@@ -723,7 +723,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
 		_p pushBack '';
 		_n pushBack '';
-		_o pushBack _baseUnitValue;
+		_o pushBack _armedUnitValue;
 		_t pushBack _building_time;
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
@@ -1007,8 +1007,10 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 	// armed units
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 		_c pushBack format["%1O_T_MBT_04_cannon_F", _sid];
+		_c pushBack format["%1O_T_MBT_02_railgun_ghex_F", _sid];
 	} else {
 		_c pushBack format["%1O_MBT_04_cannon_F", _sid];
+		_c pushBack format["%1O_MBT_02_railgun_F", _sid];
 	};
 	//set all other vars in a slope
 	_cntstart = count _c;
@@ -1029,44 +1031,6 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_c pushBack format["%1O_T_MBT_04_command_F", _sid];
 	} else {
 		_c pushBack format["%1O_MBT_04_command_F", _sid];
-	};
-	//set all other vars in a slope
-	_cntstart = count _c;
-	_cntend = count _p;
-	for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do { 
-		_p pushBack '';
-		_n pushBack '';
-		_o pushBack _researchedUnitValue;
-		_t pushBack _building_time;
-		_u pushBack _tech_level;
-		_f pushBack CTI_FACTORY_HEAVY;
-		_s pushBack "";
-		_d pushBack 0;
-	};
-};
-
-
-// Heavy Factory Upgrade Level 4
-// -----------------------------
-
-//--- Below is classnames for Units and AI avaiable to puchase from Heavy Factory.
-_matrix_full = [_side, CTI_UPGRADE_HEAVY] call CTI_CO_FNC_GetTechmatrix;
-_matrix_nation = [_side, CTI_UPGRADE_HEAVY, CTI_NATO_ID, CTI_VAN_ID] call CTI_CO_FNC_GetTechmatrix;
-
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
-	_building_time = [CTI_FACTORY_HEAVY,_tech_level] call CTI_CO_FNC_GetCalculatedBuildtime;
-
-	// Calculate Unit Values
-	// base unit value researched/upgraded unit in this tech level
-	_researchedUnitValue=([CTI_ECONOMY_PRIZE_TRACKED,_tech_level,false,1.5] call CTI_CO_FNC_GetCalculatedUnitsPrize);
-
-	// upgraded armed units
-	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1O_T_MBT_02_railgun_ghex_F", _sid];
-	} else {
-		_c pushBack format["%1O_MBT_02_railgun_F", _sid];
 	};
 	//set all other vars in a slope
 	_cntstart = count _c;

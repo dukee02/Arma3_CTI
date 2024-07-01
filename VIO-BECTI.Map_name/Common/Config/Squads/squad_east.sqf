@@ -210,7 +210,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 	inf_to_add pushBack [format["%1O_Pathfinder_F", _sid], 1, 20];
 	inf_to_add pushBack [format["%1O_Sharpshooter_F", _sid], 1, 20];
 	inf_to_add pushBack [format["%1O_Urban_Sharpshooter_F", _sid], 1, 20];
-	inf_to_add pushBack [format["%1B_HeavyGunner_F", _sid], 1, 20];
+	//inf_to_add pushBack [format["%1B_HeavyGunner_F", _sid], 1, 20];
 	inf_to_add pushBack [format["%1O_Urban_HeavyGunner_F", _sid], 1, 20];
 
 	units_infantry append inf_to_add;
@@ -516,11 +516,13 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 	// List of units
 	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
 		arm_to_add = [[format["%1O_MBT_04_cannon_F", _sid], 1, 50]];
-		mot_to_add pushBack [format["%1O_MBT_04_command_F", _sid], 1, 50];
+		arm_to_add pushBack [format["%1O_MBT_04_command_F", _sid], 1, 50];
+		arm_to_add pushBack [format["%1O_T_MBT_02_railgun_ghex_F", _sid], 1, 50];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		arm_to_add = [[format["%1O_T_MBT_04_cannon_F", _sid], 1, 50]];
-		mot_to_add pushBack [format["%1O_T_MBT_04_command_F", _sid], 1, 50];
+		arm_to_add pushBack [format["%1O_T_MBT_04_command_F", _sid], 1, 50];
+		arm_to_add pushBack [format["%1O_MBT_02_railgun_F", _sid], 1, 50];
 	};
 	units_tracked append arm_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {tracked_auto append arm_to_add;};
@@ -528,31 +530,6 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
 
 _v pushBack "ArmoredT3";
 _t pushBack "MBT 2";
-_p pushBack arm_to_add;
-_f pushBack CTI_HEAVY;
-_m pushBack 500;
-_c pushBack "Armored";
-_s pushBack [];
-kind_tracked pushBack "ArmoredT3";
-
-// Tech Level 4
-// ------------
-_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
-if(_matrix_cnt >= 0) then {_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
-if(CTI_ECONOMY_LEVEL_TRACKED >= _level) then {
-	// List of units
-	if(CTI_CAMO_ACTIVATION == 0 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_T_MBT_02_railgun_ghex_F", _sid], 1, 50]];
-	};
-	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
-		arm_to_add = [[format["%1O_MBT_02_railgun_F", _sid], 1, 50]];
-	};
-	units_tracked append arm_to_add;
-	if(CTI_FACTORY_LEVEL_PRESET >= _level) then {tracked_auto append arm_to_add;};
-};
-
-_v pushBack "ArmoredT4";
-_t pushBack "Railgun";
 _p pushBack arm_to_add;
 _f pushBack CTI_HEAVY;
 _m pushBack 500;
