@@ -27,7 +27,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="VIO-BECTI V2.0.4";
+sourceName="VIO-BECTI V2.0.5";
 addons[]=
 {
 	"A3_Characters_F",
@@ -82,11 +82,11 @@ randomSeed=7728140;
 class ScenarioData
 {
 	author="dukee, basics by Benny";
-	overviewText="VIO-BECTI V2.0.4";
-	overviewTextLocked="VIO-BECTI V2.0.4";
+	overviewText="VIO-BECTI V2.0.5";
+	overviewTextLocked="VIO-BECTI V2.0.5";
 	overViewPicture="VIO_BECTI.jpg";
 	overViewPictureLocked="VIO_BECTI.jpg";
-	onLoadMission="VIO-BECTI V2.0.4";
+	onLoadMission="VIO-BECTI V2.0.5";
 	loadScreen="VIO_BECTI.jpg";
 	respawnDialog=0;
 	respawn=3;
@@ -157,8 +157,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="VIO-BECTI V2.0.4";
-		overviewText="VIO-BECTI V2.0.4";
+		briefingName="VIO-BECTI V2.0.5";
+		overviewText="VIO-BECTI V2.0.5";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;

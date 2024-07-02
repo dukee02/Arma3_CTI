@@ -61,6 +61,8 @@ execVM "Server\Init\Init_Prison.sqf";
 //--- Get the starting locations.
 _startup_locations = [];
 _startup_locations_west = [];
+//Wait until all tows set, we maybe need it to place the spawnlocations
+waitUntil {missionNamespace getVariable ["CTI_InitTowns", false]};
 
 for '_i' from 0 to 30 step +1 do {
 	_location = getMarkerPos format ["cti-spawn-west%1", _i];

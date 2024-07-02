@@ -76,7 +76,7 @@ while {alive _structure} do {
 					_manned = true;
 					
 					//--- Create the unit
-					_ai = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _defense_team, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+					_ai = [missionNamespace getVariable format["CTI_%1_Static", _side], _defense_team, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 					
 					//--- Assign him to the defense
 					[_ai] allowGetIn true;

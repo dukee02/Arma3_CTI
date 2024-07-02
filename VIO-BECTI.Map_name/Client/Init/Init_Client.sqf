@@ -335,6 +335,17 @@ if (CTI_DEBUG) then {
 	player addAction ["<t color='#ff0000'>DEBUGGER 2000</t>", "debug_diag.sqf"];//debug
 };
 
+
+if(!CTI_IsServer && !CTI_IsHeadless) then {
+	//if(CTI_ADD_MODULE >= 2) then {
+	if(CTI_VAM_MODULE > 0) then {
+		[] execVM "VAM_GUI\VAM_GUI_init.sqf";
+	};
+};
+//if(CTI_ADD_MODULE == 1 || CTI_ADD_MODULE == 3) then {
+//	_igiload = execVM "IgiLoad\IgiLoadInit.sqf";
+//};
+
 //--- Optional Mod Stuff
 if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then 
 {  
@@ -344,11 +355,7 @@ if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then
 		//[] execVM "Client\Module\zlt\zlt_fastrope.sqf";
 	};
 	//--- Earplug script to reduce sound level when required
-	//execVM "Client\Module\earplugs\nre_earplugs.sqf";
-	//[player] execVM "Client\Module\earplugs\simpleEP.sqf";
-	//--- cmEARPLUGS
 	call compile preProcessFileLineNumbers "Client\Module\earplugs\cmEarplugs\config.sqf";
-	//--- Earplugs
 	0 spawn { call CTI_CL_FNC_EarPlugsSpawn; };
 };
 

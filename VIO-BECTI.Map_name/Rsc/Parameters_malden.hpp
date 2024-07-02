@@ -29,7 +29,7 @@ class Params {
 		texts[] = {""};
 		default = 1;
 	};
-	class CTI_VAM_MODULE {
+	class CTI_ADD_MODULE {
 		title = "Module: VAM (Vehicle Appearance Manager)";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
@@ -570,15 +570,15 @@ class Params {
 	};
 	class CTI_TOWNS_OCCUPATION {
 		title = "TOWNS: Occupation";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
-		default = 3;
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Disabled","Easiest","Easy","Easier","Normal","Harder","Hard","Very hard","Impossible"};
+		default = 4;
 	};
 	class CTI_TOWNS_RESISTANCE {
 		title = "TOWNS: Independent";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
-		default = 2;
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Disabled","Easiest","Easy","Easier","Normal","Harder","Hard","Very hard","Impossible"};
+		default = 3;
 	};
 	class CTI_UNITS_TOWN_PURCHASE {
 		title = "TOWNS: Purchase Infantry";

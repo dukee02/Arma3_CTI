@@ -39,9 +39,31 @@ private ["_groups", "_maxSV", "_pool", "_pool_group_size", "_pool_units", "_posi
 _town = _this;
 
 _maxSV = if(_town getVariable "cti_town_maxSV" > 150) then {150} else {_town getVariable "cti_town_maxSV"};
-_resistanceSize = round(_maxSV * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
-_totalGroups = round(_resistanceSize / 2);
-if (_totalGroups < 1) then {_totalGroups = 1};
+//_resistanceSize = round(_maxSV * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
+//_totalGroups = round(_resistanceSize / 2);
+//if (_totalGroups < 1) then {_totalGroups = 1};
+//calculate the max amount of groups
+_totalGroups = round(_maxSV * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
+//cap the group amount if to high or low
+_totalGroups = switch (true) do {case (_totalGroups < 1): {1}; case (_totalGroups > 8): {8}; default {_totalGroups}};
+//calculate the size of the groups, base are 6 units + 4 because IND has no upgrades
+_pool_group_size = 6 + 8;
+
+["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Groups | Size: <%1 | %2>",  _totalGroups, _pool_group_size]] call CTI_CO_FNC_Log;
+/*
+CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
+texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
+_resistanceSize = round(120 * 0.125);
+_totalGroups = round(15 / 2);
+7,5
+_resistanceSize = round(120 * 0.2);
+_totalGroups = round(24 / 2);
+12
+-------------------------------
+CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.005}; case 2: {0.01}; case 3: {0.02}; case 4: {0.03}; case 5: {0.04};  case 6: {0.05};  case 7: {0.06};  case 8: {0.07}; default {0.03}}; //--- Determine how many groups may spawn (scales with town value)
+texts[] = {"Disabled","Easiest","Easy","Easier","Normal","Harder","Hard","Very hard","Impossible"};
+
+*/
 
 //--- Man the defenses.
 [_town, "spawn"] Call CTI_SE_FNC_OperateTownDefensesUnits;
@@ -53,23 +75,25 @@ _pool_group_size = if(_totalGroups > 6) then {_totalGroups} else {6};
 //--- Pool data: [<UNIT TYPE>, <PRESENCE>, {<PROBABILITY>}]
 switch (true) do {
 	case ( _maxSV < 30) : {
-		_pool_units = [["GUER_INFANTRY_SQ_LIGHT", 1, 80], ["GUER_INFANTRY_SQ_MG", 1, 60], ["GUER_INFANTRY_SQ_AT", 1, 40], 
-					["GUER_WHEELED_SQ_LIGHT", 1, 40], ["GUER_WHEELED_SQ_HEAVY", 1, 20], 
+		_pool_units = [["GUER_INFANTRY_SQ_LIGHT", 1, 80], ["GUER_INFANTRY_SQ_MG", 1, 60], ["GUER_INFANTRY_SQ_AT", 1, 40]//, 
+					//["GUER_WHEELED_SQ_LIGHT", 1, 40], ["GUER_WHEELED_SQ_HEAVY", 1, 20], 
 					//["GUER_TRACKED_SQ_LIGHT", 1, 10], ["GUER_TRACKED_SQ_MEDIUM", 1, 10], ["GUER_TRACKED_SQ_HEAVY", 1, 10], 
 					//["GUER_AIR_SQ_FIGHTER", 1, 10], ["GUER_AIR_SQ_BOMBER", 1, 10], 
-					["GUER_SQ_ANTI_AIR", 1, 10]];
+					//["GUER_SQ_ANTI_AIR", 1, 10]
+					];
 	};
 	case (_maxSV >= 30 && _maxSV < 60) : {
 		_pool_units = [["GUER_INFANTRY_SQ_LIGHT", 1, 40], ["GUER_INFANTRY_SQ_MG", 1, 80], ["GUER_INFANTRY_SQ_AT", 1, 60], 
-					["GUER_WHEELED_SQ_LIGHT", 2, 60], ["GUER_WHEELED_SQ_HEAVY", 2, 40], 
-					["GUER_TRACKED_SQ_LIGHT", 2, 60], ["GUER_TRACKED_SQ_MEDIUM", 1, 10], ["GUER_TRACKED_SQ_HEAVY", 1, 10], 
+					["GUER_WHEELED_SQ_LIGHT", 2, 60]//, ["GUER_WHEELED_SQ_HEAVY", 2, 40], 
+					//["GUER_TRACKED_SQ_LIGHT", 2, 60], ["GUER_TRACKED_SQ_MEDIUM", 1, 10], ["GUER_TRACKED_SQ_HEAVY", 1, 10], 
 					//["GUER_AIR_SQ_FIGHTER", 1, 10], ["GUER_AIR_SQ_BOMBER", 1, 10], 
-					["GUER_SQ_ANTI_AIR", 1, 10]];
+					//["GUER_SQ_ANTI_AIR", 1, 10]
+					];
 	};
 	case (_maxSV >= 60 && _maxSV < 90) : {
 		_pool_units = [["GUER_INFANTRY_SQ_LIGHT", 1, 40], ["GUER_INFANTRY_SQ_MG", 1, 60], ["GUER_INFANTRY_SQ_AT", 1, 80], 
 					["GUER_WHEELED_SQ_LIGHT", 1, 40], ["GUER_WHEELED_SQ_HEAVY", 2, 60], 
-					["GUER_TRACKED_SQ_LIGHT", 2, 80], ["GUER_TRACKED_SQ_MEDIUM", 2, 60], ["GUER_TRACKED_SQ_HEAVY", 1, 40], 
+					//["GUER_TRACKED_SQ_LIGHT", 2, 80], ["GUER_TRACKED_SQ_MEDIUM", 2, 60], ["GUER_TRACKED_SQ_HEAVY", 1, 40], 
 					//["GUER_AIR_SQ_FIGHTER", 1, 10], ["GUER_AIR_SQ_BOMBER", 1, 10], 
 					["GUER_SQ_ANTI_AIR", 1, 20]];
 	};
@@ -152,8 +176,6 @@ for '_i' from 1 to _totalGroups do {
 			};
 		};
 		if(isNil _unit) then { _can_use = false };
-		
-		//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;};
 		
 		if (_can_use) then {
 			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };

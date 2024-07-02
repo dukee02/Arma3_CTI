@@ -1,26 +1,19 @@
-/*
-format["%1<vanilla_cnitname>", _sid] gets used later 4 the upcomming sidepatch
-format["%1", _sid] - 4 copy paste
-
-CTI_CAMO_ACTIVATION = 0 only normal camo | 1 adds winter camo | 2 adds desert camo | 3 adds winter and desert camo
-*/
-private ["_side", "_c", "_sid", "_priorUnits", "_ai"];
+private ["_side", "_c", "_sid", "_priorUnits", "_level", "_matrix_cnt", "_matrix_full", "_matrix_nation"];
 _side = _this;
-_ai = -1;
 _sid = "";
+_tag = "GUER_";
 
-if(_side == west) then {
-	//_sid = "VIOC_B_";
-	_ai = CTI_WEST_AI;
-} 
-else {
-	if(_side == east) then {
-		//_sid = "VIOC_O_";
-		_ai = CTI_EAST_AI;
-	} 
-	else {
-		//_sid = "VIOC_I_";
+switch (_side) do {
+	case west: {
+		/*_sid = "VIOC_B_";*/_tag = "WEST_";
 	};
+	case east: {
+		/*_sid = "VIOC_O_";*/_tag = "EAST_";
+	};
+	case resistance: {
+		_sid = "";_tag = "GUER_";
+	};
+	default {_sid = "";};
 };
 
 //*********************************************************************************************************************************************
@@ -29,17 +22,22 @@ else {
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["setting up factory units for side %1", _side]] call CTI_CO_FNC_Log;};
 
 //check if the CTI SIDE base units are set. If not or this side is set as AI, setup the variable.
-_priorUnits = missionNamespace getVariable format ["CTI_%1_Commander", _side];
-if (isNil "_priorUnits" || _ai == 1) then { 
+_priorUnits = missionNamespace getVariable format ["CTI_%1Commander", _tag];
+if (isNil "_priorUnits") then { 
 	
-	missionNamespace setVariable [format["CTI_%1_Commander", _side], format["%1I_E_Soldier_TL_F", _sid]];
-	missionNamespace setVariable [format["CTI_%1_Worker", _side], format["%1I_E_Soldier_unarmed_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Commander", _tag], format["%1I_E_Soldier_TL_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Worker", _tag], format["%1I_E_Soldier_unarmed_F", _sid]];
 	
-	missionNamespace setVariable [format["CTI_%1_Diver", _side], format["%1I_E_Soldier_F", _sid]];
-	missionNamespace setVariable [format["CTI_%1_Soldier", _side], format["%1I_E_Soldier_F", _sid]];
-	missionNamespace setVariable [format["CTI_%1_Crew", _side], format["%1I_E_Crew_F", _sid]];
-	missionNamespace setVariable [format["CTI_%1_Pilot", _side], format["%1I_E_Helipilot_F", _sid]];
-	missionNamespace setVariable [format["CTI_%1_Static", _side], format["%1I_E_Soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Diver", _tag], format["%1I_E_Soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Soldier", _tag], format["%1I_E_Soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Crew", _tag], format["%1I_E_Crew_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Pilot", _tag], format["%1I_E_Helipilot_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Static", _tag], format["%1I_E_Soldier_F", _sid]];
+
+	//In some Mods we have special Town camo we can use
+	missionNamespace setVariable [format["CTI_%1TownLeader", _tag], format["%1I_E_Soldier_TL_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1TownSoldier", _tag], format["%1I_E_Soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1TownCrew", _tag], format["%1I_E_Crew_F", _sid]];
 	
 	//Set starting vehicles
 	missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [ 
@@ -47,13 +45,13 @@ if (isNil "_priorUnits" || _ai == 1) then {
 		[format["%1I_E_Offroad_01_F", _sid], []]
 	]];
 	if (CTI_Log_Level >= CTI_Log_Debug) then {
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Commander: <%1>", missionNamespace getVariable format["CTI_%1_Commander", _side]]] call CTI_CO_FNC_Log;
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Worker: <%1>", missionNamespace getVariable format["CTI_%1_Worker", _side]]] call CTI_CO_FNC_Log;
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Diver: <%1>", missionNamespace getVariable format["CTI_%1_Diver", _side]]] call CTI_CO_FNC_Log;
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Soldier: <%1>", missionNamespace getVariable format["CTI_%1_Soldier", _side]]] call CTI_CO_FNC_Log;
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Crew: <%1>", missionNamespace getVariable format["CTI_%1_Crew", _side]]] call CTI_CO_FNC_Log;
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Pilot: <%1>", missionNamespace getVariable format["CTI_%1_Pilot", _side]]] call CTI_CO_FNC_Log;
-		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Static: <%1>", missionNamespace getVariable format["CTI_%1_Static", _side]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Commander: <%1>", missionNamespace getVariable format["CTI_%1Commander", _tag]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Worker: <%1>", missionNamespace getVariable format["CTI_%1Worker", _tag]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Diver: <%1>", missionNamespace getVariable format["CTI_%1Diver", _tag]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Soldier: <%1>", missionNamespace getVariable format["CTI_%1Soldier", _tag]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Crew: <%1>", missionNamespace getVariable format["CTI_%1Crew", _tag]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Pilot: <%1>", missionNamespace getVariable format["CTI_%1Pilot", _tag]]] call CTI_CO_FNC_Log;
+		["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["Static: <%1>", missionNamespace getVariable format["CTI_%1Static", _tag]]] call CTI_CO_FNC_Log;
 	};
 };
 if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: common\config\factories\factory_resistance.sqf", format["starting vehicles for side %1 declared", _side]] call CTI_CO_FNC_Log;};

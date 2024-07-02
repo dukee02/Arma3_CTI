@@ -438,8 +438,8 @@ with missionNamespace do {
 
 //--- Towns: Misc.
 CTI_TOWNS_MARKER_RANGE = 1.0; //--- A town marker is updated (SV) on map if a unit is within the range (town range * coef).
-CTI_TOWNS_OCCUPATION_GROUPS_RATIO = switch (CTI_TOWNS_OCCUPATION) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
-CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_OCCUPATION_GROUPS_RATIO = switch (CTI_TOWNS_OCCUPATION) do {case 1: {0.005}; case 2: {0.01}; case 3: {0.02}; case 4: {0.03}; case 5: {0.04};  case 6: {0.05};  case 7: {0.06};  case 8: {0.07}; default {0.03}}; //--- Determine how many groups may spawn (scales with town value)
+CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.005}; case 2: {0.01}; case 3: {0.02}; case 4: {0.03}; case 5: {0.04};  case 6: {0.05};  case 7: {0.06};  case 8: {0.07}; default {0.03}}; //--- Determine how many groups may spawn (scales with town value)
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -742,6 +742,7 @@ with missionNamespace do {
 	if (isNil 'CTI_SAVE_PERIODE') then {CTI_SAVE_PERIODE = 900};		//900
 	
 	if (isNil 'CTI_APEX_ADDON') then {CTI_APEX_ADDON = 0};
+	if (isNil 'CTI_ADD_MODULE') then {CTI_ADD_MODULE = 0};
 			
 	if (isNil 'CTI_WEST_AI') then {CTI_WEST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
 	if (isNil 'CTI_EAST_AI') then {CTI_EAST_AI = -1};	//--- "no changes","Germany","Soviet Red Army","US Army","UK Army"
