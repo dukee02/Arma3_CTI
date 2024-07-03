@@ -29,7 +29,12 @@ switch (_action) do {
 		uiNamespace setVariable ["cti_dialog_ui_gear_target", _target];
 		
 		//--- Get the target's equipment
-		_gear = (_target) call CTI_UI_Gear_GetUnitEquipment;
+		_gear = [];
+		if(_target isKindOf "Man") then {
+			_gear = (_target) call CTI_UI_Gear_GetUnitEquipment;
+		} else {
+			_gear = call CTI_UI_Gear_GetVehicleEquipment;
+		};
 		
 		//--- Calculate the initial mass
 		_mass = (_gear) call CTI_UI_Gear_GetTotalMass;
@@ -236,13 +241,20 @@ switch (_action) do {
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
 		_cost = uiNamespace getVariable "cti_dialog_ui_gear_tradein";
 		if (_funds >= _cost) then {
-			[uiNamespace getVariable "cti_dialog_ui_gear_target", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"] call CTI_CO_FNC_EquipUnit; 
-			uiNamespace setVariable ["cti_dialog_ui_gear_target_staticgear", +(uiNamespace getVariable "cti_dialog_ui_gear_target_gear")];
-			call CTI_UI_Gear_UpdatePrice;
+			
+			if((uiNamespace getVariable "cti_dialog_ui_gear_target") isKindOf "Man") then {
+				[uiNamespace getVariable "cti_dialog_ui_gear_target", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"] call CTI_CO_FNC_EquipUnit; 
+				uiNamespace setVariable ["cti_dialog_ui_gear_target_staticgear", +(uiNamespace getVariable "cti_dialog_ui_gear_target_gear")];
+				if (uiNamespace getVariable "cti_dialog_ui_gear_target" == player) then {
+					missionNamespace setVariable ["cti_gear_lastpurchased", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"];
+				};	
+			} else {
+				_vehicleGear = (uiNamespace getVariable "cti_dialog_ui_gear_target_gear") select 1 select 2 select 1;
+				[_vehicleGear] call CTI_CO_FNC_EquipVehicle;
+			};
+
 			-(_cost) call CTI_CL_FNC_ChangePlayerFunds;
-			if (uiNamespace getVariable "cti_dialog_ui_gear_target" == player) then {
-				missionNamespace setVariable ["cti_gear_lastpurchased", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"];
-			};	
+			call CTI_UI_Gear_UpdatePrice;
 		} else {
 			hint "not enough funds";
 		};
@@ -340,11 +352,9 @@ switch (_action) do {
 		_seed = round(time + random 10000 - random 500 + diag_frameno);
 		missionNamespace getVariable "cti_gear_list_templates" pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
 		
-		//_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-		_templates = if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
+		_templates = if !(isNil {profileNamespace getVariable format["CTI_%1_GEAR_TEMPLATE_%2", CTI_P_GearPersist, CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_%1_GEAR_TEMPLATE_%2", CTI_P_GearPersist, CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
 		_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed]; 
-		//profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
-		profileNamespace setVariable [format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
+		profileNamespace setVariable [format["CTI_%1_GEAR_TEMPLATE_%2", CTI_P_GearPersist, CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 		if (CTI_Log_Level >= CTI_Log_Debug) then {
 			["VIOC-DEBUG", "File: Client\Events\Events_UI_GearMenu.sqf", format["Client saves template: <%1>", _templates]] call CTI_CO_FNC_Log;
@@ -368,15 +378,8 @@ switch (_action) do {
 				_templates = _templates - ["!nil!"];
 				missionNamespace setVariable ["cti_gear_list_templates", _templates];
 				
-				//--- Persistent!
-				//todo: finds the ID that matches
-				// if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-				// _templates = profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
+				//--- Persistent
 				(_seed) call CTI_UI_Gear_RemoveProfileTemplate;
-				// _templates set [_index, "!nil!"];
-				// _templates = _templates - ["!nil!"];
-				// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
-				// saveProfileNamespace;
 				
 				if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then { //--- Reload the template tab if needed
 					(CTI_GEAR_TAB_TEMPLATES) call CTI_UI_Gear_DisplayShoppingItems;
