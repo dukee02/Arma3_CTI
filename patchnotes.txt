@@ -1,3 +1,12 @@
+[V2.0.5] Changelog:
+Added: gear purchasing for vehicle player sit in
+Changed: AP-AT-AA launcher missiles price (~-50%
+Changed: lowered T100X Tier -1
+Changed: town spawn changes, see Issue#34
+Changed: better persist gear handling
+Changed: AI skill param
+Fixed: Salvager view as client not working
+
 [V2.0.4] Changelog:
 Added: commander ability to setup statics
 Added: default "MANW" Insignia

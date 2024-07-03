@@ -181,8 +181,8 @@ class Params {
 	};
 	class CTI_AI_SKILL_BASE {
 		title = "AI: Skill (all AI units)";
-		values[] = {0,1,2,3,4};
-		texts[] = {"Novice","Rookie","Recruit","Veteran","Expert"};
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"10% Bread","20% Cannonfood","30% Novice","40% Rookie","50% Recruit","60% Private","70% Veteran","80% Commander","90% Expert"};
 		default = 2;
 	};
 	class SEPERATOR_BASE {

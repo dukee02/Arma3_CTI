@@ -128,17 +128,12 @@ with missionNamespace do {
 	if (isNil 'CTI_AI_COMMANDER_ENABLED') then {CTI_AI_COMMANDER_ENABLED = 1}; //--- Determine whether AI Commander is enabled or not
 	if (isNil 'CTI_AI_VEHICLE_LOCK') then {CTI_AI_VEHICLE_LOCKED = true;} else {if(CTI_AI_VEHICLE_LOCK == 1) then {CTI_AI_VEHICLE_LOCKED = true}else{CTI_AI_VEHICLE_LOCKED = false};}; //--- AI Teams lock the vehicles
 	if (isNil 'CTI_AI_SKILL_BASE') then {
-		/*Novice < 0.25
-		Rookie >= 0.25 and <= 0.45
-		Recruit > 0.45 and <= 0.65
-		Veteran > 0.65 and <= 0.85
-		Expert > 0.85*/
-		CTI_AI_SKILL_BASE = 0.45;
+		CTI_AI_SKILL_BASE = 0.4;
 	} else {
-		CTI_AI_SKILL_BASE = switch (CTI_AI_SKILL_BASE) do {case 0: {0.05}; case 1: {0.25}; case 3: {0.65}; case 4: {0.80}; default {0.45}};
+		CTI_AI_SKILL_BASE = switch (CTI_AI_SKILL_BASE) do {case 0: {0.1}; case 1: {0.2}; case 2: {0.3}; case 3: {0.4}; case 4: {0.5}; case 5: {0.6}; case 6: {0.7}; case 7: {0.8}; case 8: {0.9}; default {0.4}};
 	};
 	{
-		[_x,(CTI_AI_SKILL_BASE*0.8),((CTI_AI_SKILL_BASE-0.3)*0.8),CTI_AI_SKILL_BASE,(CTI_AI_SKILL_BASE-0.3)] call BIS_fnc_EXP_camp_setSkill;
+		[_x,(CTI_AI_SKILL_BASE*0.8),((CTI_AI_SKILL_BASE*0.85)*0.8),CTI_AI_SKILL_BASE,(CTI_AI_SKILL_BASE*0.85)] call BIS_fnc_EXP_camp_setSkill;
 	} forEach [east,west,resistance];
 };
 //-----------------------------------------------------------------------------------------------------------------------//
