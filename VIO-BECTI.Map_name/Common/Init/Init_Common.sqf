@@ -97,6 +97,8 @@ CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Comm
 CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasDLC.sqf";
 CTI_CO_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DisbandTeam.sqf";
 CTI_CO_FNC_ManageStatistics = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ManageStatistics.sqf";
+CTI_CO_FNC_SetUnitIdentity = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetUnitIdentity.sqf";
+CTI_CO_FNC_EquipVehicle = compileFinal preprocessFileLineNumbers "Common\Functions\Common_EquipVehicle.sqf";
 
 CTI_CO_CustomIterator = 0;
 

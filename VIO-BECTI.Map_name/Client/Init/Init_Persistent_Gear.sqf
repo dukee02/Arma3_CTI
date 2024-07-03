@@ -1,4 +1,4 @@
-_templates = profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined];
+_templates = profileNamespace getVariable format["CTI_%1_GEAR_TEMPLATE_%2", CTI_P_GearPersist, CTI_P_SideJoined];
 
 _side_gear = missionNamespace getVariable "cti_gear_all";
 

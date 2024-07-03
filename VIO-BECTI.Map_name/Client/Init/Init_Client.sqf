@@ -86,6 +86,7 @@ CTI_P_WallsAutoAlign = true;
 CTI_P_DefensesAutoManning = true;
 CTI_P_Voted = false;
 CTI_P_VotePopUp = true;
+CTI_P_GearPersist = "VIOVAN_PERSISTENT";
 
 CTI_P_Coloration_Money = "#BAFF81";
 
@@ -246,14 +247,8 @@ if ((CTI_P_SideLogic getVariable "cti_votetime") > 0) then {createDialog "CTI_Rs
 {uiNamespace setVariable [_x, displayNull]} forEach ["CTI_Title_Capture"];
 
 //--- Gear templates (persitent)
-//if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-if (isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], nil];
-// saveProfileNamespace;
-//if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
-if !(isNil {profileNamespace getVariable format["CTI_VIOVAN_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
-
-
+if (isNil {profileNamespace getVariable format["CTI_%1_GEAR_TEMPLATE_%2", CTI_P_GearPersist, CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
+if !(isNil {profileNamespace getVariable format["CTI_%1_GEAR_TEMPLATE_%2", CTI_P_GearPersist, CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};
 
 //--- Graphics/video thread (persistent)
 0 spawn {
