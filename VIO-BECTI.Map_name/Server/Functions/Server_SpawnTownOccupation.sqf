@@ -37,7 +37,7 @@
 	  -> Will spawn West defense forces for Town0
 */
 
-private ["_groups", "_maxSV", "_pool", "_pool_group_size", "_pool_units", "_positions", "_side", "_sideID", "_teams", "_totalGroups", "_town", "_upgrade", "_SV", "_vehicles"];
+private ["_groups", "_maxSV", "_pool", "_pool_group_size", "_pool_units", "_positions", "_side", "_sideID", "_teams", "_totalGroups", "_town", "_upgrade", "_SV", "_vehicles", "_pool_vehicle_count", "_maxVehicles"];
 
 _town = _this select 0;
 _side = _this select 1;
@@ -46,17 +46,13 @@ _upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
 
 _SV = _town getVariable "cti_town_SV";
 _maxSV = if(_town getVariable "cti_town_maxSV" > 120) then {120} else {_town getVariable "cti_town_maxSV"};
-//_occupation_size = round(_maxSV * CTI_TOWNS_OCCUPATION_GROUPS_RATIO * _upgrade);
-//_totalGroups = round(_occupation_size / 6);
-//if (_totalGroups < 1) then {_totalGroups = 1};
 //calculate the max amount of groups
 _totalGroups = round(_maxSV * CTI_TOWNS_OCCUPATION_GROUPS_RATIO);
 //cap the group amount if to high or low
 _totalGroups = switch (true) do {case (_totalGroups < 1): {1}; case (_totalGroups > 8): {8}; default {_totalGroups}};
 //calculate the size of the groups, base are 6 units
-_pool_group_size = 6 + (_upgrade * 4);
-
-["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Groups | Size: <%1 | %2>",  _totalGroups, _pool_group_size]] call CTI_CO_FNC_Log;
+_pool_group_size = _totalGroups + (_upgrade * (_maxSV/30));
+_maxVehicles = if(_pool_group_size > 10) then {2} else {1};
 
 //--- Man the defenses if town occupation has been upgraded
 if (_upgrade > 0) then {
@@ -189,7 +185,7 @@ for '_i' from 1 to _totalGroups do {
 		if (_probability != 100) then {
 			if (random 100 > _probability) then { _can_use = false } else {
 				if !(_unit isKindOf "Man") then {
-					if(_pool_vehicle_count >= 2) then { 
+					if(_pool_vehicle_count >= _maxVehicles) then { 
 						_can_use = false;
 						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["cant use unit <%1> vehicle count: <%2>", _unit, _pool_vehicle_count]] call CTI_CO_FNC_Log};
 					} else {

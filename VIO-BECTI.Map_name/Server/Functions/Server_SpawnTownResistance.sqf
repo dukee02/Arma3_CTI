@@ -34,36 +34,18 @@
 	  -> Will spawn Resistance defense forces for Town0
 */
 
-private ["_groups", "_maxSV", "_pool", "_pool_group_size", "_pool_units", "_positions", "_resistanceSize", "_teams", "_totalGroups", "_town", "_maxSV", "_vehicles"];
+private ["_groups", "_maxSV", "_pool", "_pool_group_size", "_pool_units", "_positions", "_resistanceSize", "_teams", "_totalGroups", "_town", "_maxSV", "_vehicles", "_pool_vehicle_count", "_maxVehicles"];
 
 _town = _this;
 
 _maxSV = if(_town getVariable "cti_town_maxSV" > 150) then {150} else {_town getVariable "cti_town_maxSV"};
-//_resistanceSize = round(_maxSV * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
-//_totalGroups = round(_resistanceSize / 2);
-//if (_totalGroups < 1) then {_totalGroups = 1};
 //calculate the max amount of groups
 _totalGroups = round(_maxSV * CTI_TOWNS_RESISTANCE_GROUPS_RATIO);
 //cap the group amount if to high or low
 _totalGroups = switch (true) do {case (_totalGroups < 1): {1}; case (_totalGroups > 8): {8}; default {_totalGroups}};
 //calculate the size of the groups, base are 6 units + 4 because IND has no upgrades
-_pool_group_size = 6 + 8;
-
-["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["Groups | Size: <%1 | %2>",  _totalGroups, _pool_group_size]] call CTI_CO_FNC_Log;
-/*
-CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.1}; case 2: {0.125}; case 3: {0.15}; case 4: {0.2}; default {1}}; //--- Determine how many groups may spawn (scales with town value)
-texts[] = {"Disabled","Light","Medium","Hard","Impossible"};
-_resistanceSize = round(120 * 0.125);
-_totalGroups = round(15 / 2);
-7,5
-_resistanceSize = round(120 * 0.2);
-_totalGroups = round(24 / 2);
-12
--------------------------------
-CTI_TOWNS_RESISTANCE_GROUPS_RATIO = switch (CTI_TOWNS_RESISTANCE) do {case 1: {0.005}; case 2: {0.01}; case 3: {0.02}; case 4: {0.03}; case 5: {0.04};  case 6: {0.05};  case 7: {0.06};  case 8: {0.07}; default {0.03}}; //--- Determine how many groups may spawn (scales with town value)
-texts[] = {"Disabled","Easiest","Easy","Easier","Normal","Harder","Hard","Very hard","Impossible"};
-
-*/
+_pool_group_size = _totalGroups + (2 * (_maxSV/30));
+_maxVehicles = if(_pool_group_size >= 10) then {2} else {1};
 
 //--- Man the defenses.
 [_town, "spawn"] Call CTI_SE_FNC_OperateTownDefensesUnits;
@@ -166,7 +148,7 @@ for '_i' from 1 to _totalGroups do {
 		if (_probability != 100) then {
 			if (random 100 > _probability) then { _can_use = false } else {
 				if !(_unit isKindOf "Man") then {
-					if(_pool_vehicle_count >= 2) then { 
+					if(_pool_vehicle_count >= _maxVehicles) then { 
 						_can_use = false;
 						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownResistance.sqf", format ["cant use unit <%1> vehicle count: <%2>", _unit, _pool_vehicle_count]] call CTI_CO_FNC_Log};
 					} else {

@@ -27,10 +27,16 @@
 	  -> Will search for manable statics around _structure
 */
 
-private ["_ai", "_defense_team", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var", "_objects", "_object_cnt", "_defense", "_defense_data"];
+private ["_ai", "_defense_team", "_direction", "_distance", "_last_scan", "_logic", "_manned", "_net", "_position", "_side", "_sideID", "_statics", "_structure", "_var", "_objects", "_object_cnt", "_defense", "_defense_data", "_tag"];
 
 _structure = _this select 0;
 _side = _this select 1;
+_tag = "GUER_";
+switch (_side) do {
+	case west: {_tag = "WEST_"};
+	case east: {_tag = "EAST_"};
+	default {_tag = "GUER_"};
+};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
@@ -76,7 +82,7 @@ while {alive _structure} do {
 					_manned = true;
 					
 					//--- Create the unit
-					_ai = [missionNamespace getVariable format["CTI_%1_Static", _side], _defense_team, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+					_ai = [missionNamespace getVariable format["CTI_%1Static", _tag], _defense_team, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 					
 					//--- Assign him to the defense
 					[_ai] allowGetIn true;
