@@ -325,7 +325,10 @@ CTI_UI_Gear_ReplaceContainer = {
 	
 	_updated
 };
+/* 
 
+
+*/
 CTI_UI_Gear_TryContainerAddItem = {
 	private ["_container", "_item", "_updated"];
 	
@@ -461,7 +464,10 @@ CTI_UI_Gear_AddItem = {
 
 	_updated
 };
+/* 
 
+
+*/
 //--- Add an item within a container.
 CTI_UI_Gear_AddContainerItem = {
 	private["_config", "_exists", "_gear", "_index", "_item", "_items", "_row"];
@@ -716,6 +722,13 @@ CTI_UI_Gear_GetPackVehicleEquipment = {
 			_vehicleItems pushback _x;
 		};
 	} forEach (_magazines select 0);
+
+	_backpacks = getBackpackCargo vehicle player;
+	{
+		for [{ private _i = 0 }, { _i < (_backpacks select 1 select _forEachIndex)}, { _i = _i + 1 }] do {
+			_vehicleItems pushback _x;
+		};
+	} forEach (_backpacks select 0);
 
 	_vehicleItems;	
 };
