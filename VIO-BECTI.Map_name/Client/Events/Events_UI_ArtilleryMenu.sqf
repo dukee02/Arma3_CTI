@@ -245,7 +245,8 @@ switch (_action) do {
 				} else {
 					if(_isInRange && alive (_artillery select 0 select 0)) then {
 						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[inRange=%1|ETA=%2]</t>", _isInRange, _isETA];
-					} else {
+					}
+					if!(_isInRange) then {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, Unit not in range!</t>";
 					};
 				};
