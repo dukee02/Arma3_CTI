@@ -80,12 +80,8 @@ CTI_Init_Common = true;
 //--- Server execution
 if (CTI_IsServer) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running server initialization"] call CTI_CO_FNC_Log	};
-	CTI_Server_Loaded = false;
-	publicVariable "CTI_Server_Loaded";
 	execVM "Server\Init\Init_Server.sqf";
 };
-
-waitUntil {CTI_Server_Loaded};
 
 //--- Pure client execution
 if (CTI_IsClient && !CTI_IsHeadless) then {	
@@ -108,3 +104,31 @@ if (CTI_IsHeadless) then {
 
 //--- Set the group ID
 execVM "Common\Init\Init_GroupsID.sqf";
+
+//--- Optional Mod Stuff
+if (!isClass(configFile >> "CfgPatches" >> "ace_main")) then 
+{  
+//Start other 'plugins' if ACE is not running
+	if(CTI_FIELDREPAIR_ENABLED > 0) then {
+		[] execVM "Client\Module\zlt\zlt_fieldrepair.sqf"; 
+		//[] execVM "Client\Module\zlt\zlt_fastrope.sqf";
+	};
+	//--- Earplug script to reduce sound level when required
+	//execVM "Scripts\nre_earplugs.sqf";
+	[player] execVM "Client\Module\earplugs\simpleEP.sqf";
+}; 
+
+//_igiload = execVM "IgiLoad\IgiLoadInit.sqf";
+
+if(!CTI_IsServer && !CTI_IsHeadless) then {
+	if(CTI_VAM_MODULE > 0) then {
+		[] execVM "VAM_GUI\VAM_GUI_init.sqf";
+	};
+};
+
+//---Gamerfoo Gameplay---
+
+// Appel du fichier gfoo-init.sqf
+execVM "gfoo\gfoo-init.sqf";
+
+//---Gamerfoo Gameplay---
