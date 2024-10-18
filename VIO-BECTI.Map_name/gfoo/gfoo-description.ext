@@ -1,0 +1,62 @@
+// Ecrit par Coolboard
+
+//--- Global Garbage Collection Settings
+	MinPlayerDistance = 0;					//The minimum distance from any player. Set the value to 0 to remove the min. distance. 
+	CorpseManagerMode = 2; //0;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
+	CorpseLimit = 200;						//Maximum allowed number of dead bodies in the scenario. 
+	CorpseRemovalMinTime = 14400; //600;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
+	CorpseRemovalMaxTime = 14400; //1800;			//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
+	WreckManagerMode = 2; //0;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
+	WreckLimit = 100; //40;						//Maximum allowed number of destroyed vehicles in the scenario. 
+	WreckRemovalMinTime = 14400; //1200;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
+	WreckRemovalMaxTime	= 14400; //3600;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
+
+
+	//--- Global Revive Settings
+	//ReviveMode = 0;                         //0: disabled, 1: enabled, 2: controlled by player attributes
+	//ReviveUnconsciousStateMode = 0;         //0: basic, 1: advanced, 2: realistic
+	ReviveRequiredTrait = 0;                //0: none, 1: medic trait is required
+	ReviveRequiredItems = 2;                //0: none, 1: medkit, 2: medkit or first aid kit
+	ReviveRequiredItemsFakConsumed = 1;     //0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+	ReviveDelay = 18;                       //time needed to revive someone (in secs)
+	ReviveMedicSpeedMultiplier = 3;         //speed multiplier for revive performed by medic
+	ReviveForceRespawnDelay = 5;			//time needed to perform force respawn (in secs)
+	ReviveBleedOutDelay = 120;              //unconscious state duration (in secs)
+
+
+// Gestion des cannaux de communication
+//#include "gfoo\channels.hpp"
+#include "channels.hpp"
+
+
+//Interfaces des addons
+//
+
+//
+//
+// CLASS FUNCTION - INCLUDE
+
+//--- AIS INJURY ---
+
+class CfgFunctions
+{
+	//--------------------------------------------------------------
+	//AIS INJURY
+	//#include "gfoo\AIS\cfgFunctions.hpp"
+	#include "AIS\cfgFunctions.hpp"
+	//--------------------------------------------------------------
+};
+
+
+//---INCLUDES---
+
+// # appliqué au niveau du chargement du serveur 
+//--- AIS INJURY ---
+	#include "AIS\Effects\BarDlg.hpp"
+
+//--------------------------------------------------------------
+//OutLaw MagRepack
+//#include "gfoo\outlw_magrepack\config.hpp"
+#include "outlw_magrepack\config.hpp"
+
+//--------------------------------------------------------------
