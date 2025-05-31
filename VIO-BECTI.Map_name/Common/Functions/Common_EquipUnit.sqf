@@ -152,5 +152,3 @@ if (handgunWeapon _unit != _item) then { //--- Replace
 if([_unit] call BIS_fnc_getUnitInsignia != "") then {
 	[_unit, "MANW"] call BIS_fnc_setUnitInsignia;
 };
-
-if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Common\Functions\Common_EquipUnit.sqf", format ["Units Voice = <%1>", _voice]] call CTI_CO_FNC_Log };

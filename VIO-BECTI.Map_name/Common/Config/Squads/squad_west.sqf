@@ -112,7 +112,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_engineer_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_soldier_LAT2_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_Soldier_AAR_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1B_Fighter_Pilot_F", _sid], 1, 20];
+		//inf_to_add pushBack [format["%1B_Fighter_Pilot_F", _sid], 1, 20];
 	};
 	if(CTI_CAMO_ACTIVATION == 1 || CTI_CAMO_ACTIVATION == 4) then {
 		inf_to_add = [[format["%1B_T_Soldier_A_F", _sid], 1, 20]];	
@@ -121,7 +121,7 @@ if(CTI_ECONOMY_LEVEL_INFANTRY >= _level) then {
 		inf_to_add pushBack [format["%1B_T_Engineer_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Soldier_LAT2_F", _sid], 1, 20];
 		inf_to_add pushBack [format["%1B_T_Soldier_AAR_F", _sid], 1, 20];
-		inf_to_add pushBack [format["%1B_Fighter_Pilot_F", _sid], 1, 20];
+		//inf_to_add pushBack [format["%1B_Fighter_Pilot_F", _sid], 1, 20];
 	};
 	units_infantry append inf_to_add;
 	if(CTI_FACTORY_LEVEL_PRESET == _level) then {infantry_auto append inf_to_add;};

@@ -15,10 +15,11 @@ while {true} do {
 	for '_i' from 0 to _teams_count do {_voteArray set [_i , 0]};
 	
 	//--- Update the votes.
+	//--- We need a check i _x getVariable "cti_vote" gets null!!!
 	_playerCount = 0;
 	{
 		if (isPlayer leader _x) then {
-			_vote = (_x getVariable "cti_vote") + 1;
+			_vote = (_x getVariable ["cti_vote",-1]) + 1;
 			_voteArray set [_vote, (_voteArray select _vote) + 1];
 			_playerCount = _playerCount + 1;
 		};

@@ -1,7 +1,7 @@
 /*%FSM<COMPILE "scriptedFSM.cfg, update_commander.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,4346,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Cycle"};
 item2[] = {"Phase_I_Commande",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "Commander"};
 item3[] = {"End_FSM",1,250,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"End FSM"};
@@ -15,7 +15,7 @@ item10[] = {"Update_Structure",2,250,50.000000,700.000000,150.000000,750.000000,
 item11[] = {"Defenses",4,218,175.000000,600.000000,275.000000,650.000000,3.000000,"Defenses"};
 item12[] = {"Update_Defenses",2,250,175.000000,700.000000,275.000000,750.000000,0.000000,"Update" \n "Defenses"};
 item13[] = {"Upgrade",4,218,550.000000,600.000000,650.000000,650.000000,0.000000,"Upgrade"};
-item14[] = {"Update_Upgrades",2,250,550.000000,700.000000,650.000000,750.000000,0.000000,"Update" \n "Upgrades"};
+item14[] = {"Update_Upgrades",2,4346,550.000000,700.000000,650.000000,750.000000,0.000000,"Update" \n "Upgrades"};
 item15[] = {"Teams",4,218,-500.000000,600.000000,-400.000000,650.000000,3.000000,"Teams"};
 item16[] = {"Update_Teams",2,250,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
 item17[] = {"Orders",4,218,-375.000000,600.000000,-275.000000,650.000000,2.000000,"Orders"};
@@ -112,8 +112,8 @@ link59[] = {44,45};
 link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
-globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-724.752502,478.828552,563.201050,-715.603821,832,884,1};
-window[] = {2,-1,-1,-1,-1,960,130,1509,130,3,850};
+globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-645.765381,399.839294,962.789001,-148.165848,832,884,1};
+window[] = {2,-1,-1,-1,-1,1064,234,1613,234,3,850};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -517,20 +517,22 @@ class FSM
                          "			_upgrade_prices = ((missionNamespace getVariable Format[""CTI_%1_UPGRADES_COSTS"", _side]) select _upgrade) select _upgrade_current;" \n
                          "			" \n
                          "			//--- The max upgrade hasn't been reached yet" \n
-                         "			if (_upgrade_current < _upgrade_level) then {" \n
-                         "				//--- We have the funds" \n
-                         "				if (_funds >= (_upgrade_prices select 1)) then {" \n
-                         "					if (!_supplyActive || (_supply >= (_upgrade_prices select 0))) then {" \n
+                         "			//if (_upgrade_current < _upgrade_level) then {" \n
+                         "			//--- We have the funds" \n
+                         "			if (_funds >= (_upgrade_prices select 1)) then {" \n
+                         "				if (!_supplyActive || (_supply >= (_upgrade_prices select 0))) then {" \n
+                         "					if (_upgrade_current < _upgrade_level) then {" \n
                          "						[_side, -(_upgrade_prices select 1)] call CTI_CO_FNC_ChangeFundsCommander;" \n
-                         "						if (_supplyActive) then {[_side, -(_upgrade_prices select 0)] call CTI_CO_FNC_ChangeSideSupply;};" \n
+                         "						if (_supplyActive) then { [_side, -(_upgrade_prices select 0)] call CTI_CO_FNC_ChangeSideSupply;};" \n
                          "						_sideLogic setVariable [""cti_upgrade"", _upgrade,true];" \n
                          "						[_side, _upgrade, _upgrade_current] spawn CTI_SE_FNC_StartUpgrade;" \n
                          "					" \n
-                         "						//--- Next!" \n
-                         "						if (_logical_path_reached < (count _logical_path)-1) then {_logical_path_reached = _logical_path_reached + 1};" \n
-                         "						_logical_path_index = if (_logical_path_index + 1 > _logical_path_reached) then {0} else {_logical_path_index + 1};" \n
-                         "					} else {" \n
-                         "						_increment = true;" \n
+                         "							//--- Next!" \n
+                         "							if (_logical_path_reached < (count _logical_path)-1) then {" \n
+                         "								_logical_path_reached = _logical_path_reached + 1};" \n
+                         "							_logical_path_index = if (_logical_path_index + 1 > _logical_path_reached) then {0} else {_logical_path_index + 1};" \n
+                         "							} else {" \n
+                         "							_increment = true;" \n
                          "					};" \n
                          "				} else {" \n
                          "					_increment = true;" \n

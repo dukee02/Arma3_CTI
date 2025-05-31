@@ -22,6 +22,24 @@ if (CTI_Log_Level >= CTI_Log_Debug) then {
 };
 (_tag) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_SetTownFlag.sqf";
 
+_priorUnits = missionNamespace getVariable format ["CTI_%1Commander", _tag];
+if (isNil "_priorUnits") then { 
+	
+	missionNamespace setVariable [format["CTI_%1Commander", _tag], format["%1I_Soldier_TL_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Worker", _tag], format["%1I_Soldier_unarmed_F", _sid]];
+	
+	missionNamespace setVariable [format["CTI_%1Diver", _tag], format["%1I_soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Soldier", _tag], format["%1I_soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Crew", _tag], format["%1I_crew_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Pilot", _tag], format["%1I_pilot_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1Static", _tag], format["%1I_soldier_F", _sid]];
+
+	//In some Mods we have special Town camo we can use
+	missionNamespace setVariable [format["CTI_%1TownLeader", _tag], format["%1I_Soldier_TL_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1TownSoldier", _tag], format["%1I_soldier_F", _sid]];
+	missionNamespace setVariable [format["CTI_%1TownCrew", _tag], format["%1I_crew_F", _sid]];
+};
+
 //***************************************************************************************************************************************
 //														Town infantry setup																*
 //***************************************************************************************************************************************

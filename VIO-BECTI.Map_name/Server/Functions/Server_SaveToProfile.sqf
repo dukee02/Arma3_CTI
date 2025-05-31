@@ -128,6 +128,11 @@ if(_savemode > 0) then {
 				profileNamespace setVariable [Format ["SAVE_%1_%2_DEFENSES", _savename, _side_building], _defences_prepaired];
 			} forEach [east,west];
 		};
+		case "supply": {
+			//save the supply value of the side
+			profileNamespace setVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _side], (_side) call CTI_CO_FNC_GetSideSupply];
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SaveToProfile.sqf", format["Side supply saved to profile:<SAVE_%1_SUPPLY> Supply: <%2>", _savename, (_side_funds) call CTI_CO_FNC_GetSideSupply]] call CTI_CO_FNC_Log;};	
+		};
 		case "funds": {
 			{
 				//profileNamespace setVariable [Format ["SAVE_%1_%2_", _savename, _side_funds],_towns];

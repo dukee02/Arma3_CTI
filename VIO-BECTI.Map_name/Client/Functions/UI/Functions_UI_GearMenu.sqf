@@ -831,9 +831,7 @@ CTI_UI_Gear_GetContainerMassCapacity = {
 	if!((uiNamespace getVariable "cti_dialog_ui_gear_target") isKindOf "Man") then {
 		_item = typeOf (uiNamespace getVariable "cti_dialog_ui_gear_target");
 	};
-
-	["VIOC-DEBUG", "File: Client\UI\GearMenu.sqf@onPurchase", format["_item: <%1>", _item]] call CTI_CO_FNC_Log;
-	
+	//["VIOC-DEBUG", "File: Client\UI\GearMenu.sqf@onPurchase", format["_item: <%1>", _item]] call CTI_CO_FNC_Log;
 	if (_item == "") exitWith {0};
 	
 	_base = (_item) call CTI_UI_Gear_GetItemBaseConfig;

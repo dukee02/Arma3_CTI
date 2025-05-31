@@ -1,6 +1,6 @@
 private ["_town"];
 
-waitUntil {!isNil 'CTI_Init_JIP' &&!isNil "CTI_TownModeSet"};
+waitUntil {!isNil 'CTI_Init_JIP' && !isNil "CTI_TownModeSet"};
 
 CTI_Towns = [];
 	

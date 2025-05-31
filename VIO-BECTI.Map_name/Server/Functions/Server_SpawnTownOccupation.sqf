@@ -168,47 +168,70 @@ if (CTI_Log_Level >= CTI_Log_Information) then {
 //--- Shuffle!
 _pool = _pool call CTI_CO_FNC_ArrayShuffle;
 
+//--- Create infantry filter
+_infantry_filter = [];
+{
+	_units = missionNamespace getVariable format["%1_%2", _side, _x];
+	for '_a' from 0 to (count _units) -1 do {
+		_unit = _units select _a;
+		if (typeName _unit == "ARRAY") then {
+			_infantry_filter pushBackUnique (_unit select 0);
+		};
+	};
+} forEach ["INFANTRY_SQ_LIGHT", "INFANTRY_SQ_MG", "INFANTRY_SQ_AT"];
+_infantry_filter;
+
 //--- Compose the pools.
 _teams = [];
 for '_i' from 1 to _totalGroups do {
 	_units = [missionNamespace getVariable format["CTI_%1_Commander", _side]];
-	
 	_pool_group_size_current = _pool_group_size-1;
 	_pool_vehicle_count = 0;
+
 	while {_pool_group_size_current > 0} do {
 		_picked = _pool select floor(random count _pool);
 		_unit = _picked select 0;
 		_probability = _picked select 1;
-		if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
-		
+		_arraycnt = 1;
+		if (typeName _unit == "ARRAY") then {
+			_arraycnt = count _unit;
+			_unit = _unit select floor(random count _unit);
+		};
+
 		_can_use = true;
-		if (_probability != 100) then {
-			if (random 100 > _probability) then { _can_use = false } else {
-				if !(_unit isKindOf "Man") then {
-					if(_pool_vehicle_count >= _maxVehicles) then { 
-						_can_use = false;
-						if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["cant use unit <%1> vehicle count: <%2>", _unit, _pool_vehicle_count]] call CTI_CO_FNC_Log};
-					} else {
-						_pool_vehicle_count = _pool_vehicle_count + 1;
-					};
+		//for '_g' from 1 to _arraycnt do {
+			if(_unit in _infantry_filter) then {
+
+			} else {
+				if(_pool_vehicle_count >= _maxVehicles) then {
+					_can_use = false;
+					if (CTI_Log_Level >= CTI_Log_Debug) then {
+						["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["cant use unit <%1> vehicle count: <%2>", _unit, _pool_vehicle_count]] call CTI_CO_FNC_Log;
+					};			
+				} else {
+					_pool_vehicle_count = _pool_vehicle_count + 1;
 				};
 			};
-		};
-		if(isNil _unit) then { _can_use = false };
-		
-		//if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation unit: <%1> probability: <%2> can_use: <%3>", _unit, _probability, _can_use]] call CTI_CO_FNC_Log;};
-		
-		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
-			_units pushBack _unit;
-			_pool_group_size_current = _pool_group_size_current - 1;
-		};
+
+			if (_probability != 100 && random 100 > _probability) then { _can_use = false };
+				
+			if(isNil _unit) then { _can_use = false };
+			if (_can_use) then {
+				if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
+				_units pushBack _unit;
+				_pool_group_size_current = _pool_group_size_current - 1;
+				
+				if (CTI_Log_Level >= CTI_Log_Debug) then {
+					["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["unit <%1> vehicle count: <%2>/<%3> unit count: <%4>/<%5>", _unit, _pool_vehicle_count, _maxVehicles, _pool_group_size_current, _pool_group_size]] call CTI_CO_FNC_Log;
+				};	
+			};	
+		//};
 	};
-	
+
+	_teams pushBack _units;
 	if (CTI_Log_Level >= CTI_Log_Debug) then { 
 		["VIOC_DEBUG", "FILE: Server\Functions\Server_SpawnTownOccupation.sqf", format ["Occupation team units: <%1>", _units]] call CTI_CO_FNC_Log;
 	};
-	_teams pushBack _units;
 };
 
 diag_log format ["OCCUPATION POOL Composer for %1 (value %2)", _town getVariable "cti_town_name", _SV];

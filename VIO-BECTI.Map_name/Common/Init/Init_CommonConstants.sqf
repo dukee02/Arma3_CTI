@@ -513,7 +513,7 @@ with missionNamespace do {
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 2}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_DEPLOY_COST') then {CTI_BASE_HQ_DEPLOY_COST = 100}; //--- The cost needed to deploy the HQ
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
-	//if (isNil 'CTI_BASE_START_TOWN') then {CTI_BASE_START_TOWN = 1}; //--- Remove the spawn locations which are too far away from the towns.
+	if (isNil 'CTI_BASE_START_TOWN') then {CTI_BASE_START_TOWN = 0}; //--- Remove the spawn locations which are too far away from the towns.
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 4000}; //--- Each side need to be further than x meters
 	if (isNil 'CTI_BASE_WORKERS_LIMIT') then {CTI_BASE_WORKERS_LIMIT = 10}; //--- Maximum amount of workers which may be purchased by a side
 	if (isNil 'CTI_BASE_STRUCTURE_RESELL_RATIO') then {CTI_BASE_STRUCTURE_RESELL_RATIO = 0};	//--- Ratio of building cost to be refunded when sold

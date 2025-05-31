@@ -95,6 +95,7 @@ CTI_CO_FNC_GetCalculatedUnitsPrize = compileFinal preprocessFileLineNumbers "Com
 CTI_CO_FNC_GetCalculatedBuildtime = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedBuildtime.sqf";
 CTI_CO_FNC_GetCalculatedItemPrize = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetCalculatedItemPrize.sqf";
 CTI_CO_FNC_HasDLC = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasDLC.sqf";
+//CTI_CO_FNC_IsSidePatchLoaded = compileFinal preprocessFileLineNumbers "Common\Functions\Common_IsSidePatchLoaded.sqf";
 CTI_CO_FNC_DisbandTeam = compileFinal preprocessFileLineNumbers "Common\Functions\Common_DisbandTeam.sqf";
 CTI_CO_FNC_ManageStatistics = compileFinal preprocessFileLineNumbers "Common\Functions\Common_ManageStatistics.sqf";
 CTI_CO_FNC_SetUnitIdentity = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SetUnitIdentity.sqf";
@@ -108,30 +109,41 @@ call compile preprocessFileLineNumbers "Common\Config\Artillery\Artillery.sqf";
 (west) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Base\Base.sqf";
 
-if(CTI_GUER_TOWNS == 0) then {
-	(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Resistance.sqf";
-} else {
-	(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_LDF.sqf";
-};
 (west) call compile preprocessFileLineNumbers "Common\Config\Units\Units_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Units\Units_East.sqf";
 
-if(CTI_GUER_TOWNS == 0) then {
-	(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_Resistance.sqf";
-} else {
-	(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_LDF.sqf";
-};
 (west) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_East.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf";
 
-if(CTI_GUER_TOWNS == 0) then {
-	(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_resistance.sqf";
-} else {
-	(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_LDF.sqf";
+switch(CTI_GUER_TOWNS) do {
+	case 0: {
+		(resistance) call compile preprocessFileLineNumbers "Common\Config\Units\Units_Resistance.sqf";
+		(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_resistance.sqf";
+	};
+	case 1: {
+		(resistance) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_WBK_IFA_Zombies.sqf";
+		(resistance) call compile preprocessFileLineNumbers "Common\Config\Factories\Factory_LDF.sqf";
+	};
+	case 2: {
+		if (isClass(configFile >> "CfgVehicles" >> "Zombie_Special_GREENFOR_Boomer")) then {
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_WBK_Zombies.sqf";
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_WBK_Zombies.sqf";
+		};
+		if (isClass(configFile >> "CfgVehicles" >> "RyanZombieC_man_1slow")) then {
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_Ryan_Zombies.sqf";
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_Ryan_Zombies.sqf";
+		};
+		if (isClass(configFile >> "CfgVehicles" >> "Max_zombie")) then {
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Units\units_Max_Zombies.sqf";
+			((resistance) call CTI_CO_FNC_GetSideFromID) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_Max_Zombies.sqf";
+		};
+	};
+	default {};
 };
+
 (west) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_west.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Towns\towns_east.sqf";
 

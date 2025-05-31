@@ -45,10 +45,11 @@ _teams = _logic getVariable "cti_teams";
 _AI_Commander = _logic getVariable "cti_commander_team";
 
 //--- Get the votes from everyone.
+//--- We need a check i _x getVariable "cti_vote" gets null!!!
 for '_i' from 0 to (count _teams)-1 do {_votes pushBack 0};
 {
 	if (isPlayer leader _x) then {
-		_vote = _x getVariable "cti_vote";
+		_vote = _x getVariable ["cti_vote",-1];
 		if (_vote == -1) then {_aiVotes = _aiVotes + 1} else {_votes set [_vote, (_votes select _vote) + 1]};
 	};
 } forEach _teams;

@@ -233,6 +233,16 @@ if(_loadingFine) then {
 				};
 			} forEach [east,west];
 		};
+		case "supply": {
+			//profileNamespace setVariable [Format ["SAVE_%1_%2_", _savename, _side],_towns];
+			_logic= (_side) call CTI_CO_FNC_GetSideLogic;
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Load the Side <%1> from the profile", _side]] call CTI_CO_FNC_Log;};
+				
+			//Load the supply value of the side
+			_supply_stored = profileNamespace getVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _side],0];
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Side supply loaded from profile:<SAVE_%1_FUNDSCOM> Funds Com: <%2>", _savename, _supply_stored]] call CTI_CO_FNC_Log;};
+			_logic setVariable ["cti_supply", _supply_stored, true];
+		};
 		case "funds": {
 			_sides = if(_side == sideEmpty) then {[east,west]} else {[_side]};
 			{
@@ -244,14 +254,8 @@ if(_loadingFine) then {
 				
 				//Load the supply value of the side
 				_supply_stored = profileNamespace getVariable [Format ["SAVE_%1_%2_SUPPLY", _savename, _x],0];
-				if(_supply_stored <= 0) then {
-					if (CTI_Log_Level >= CTI_Log_Error) then {["VIOC_ERROR", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["ERROR on loading the Side supply, value: <%1>", _supply_stored]] call CTI_CO_FNC_Log;};
-					_loadingFine = false;
-				} else {
-					if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Side supply loaded from profile:<SAVE_%1_FUNDSCOM> Funds Com: <%2>", _savename, _supply_stored]] call CTI_CO_FNC_Log;};
-					//_supply_now = call CTI_CO_FNC_GetSideSupply;
-					_logic setVariable ["cti_supply", _supply_stored, true];
-				};
+				if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOC_DEBUG", "FILE: Server\Functions\Server_LoadFromProfile.sqf", format["Side supply loaded from profile:<SAVE_%1_FUNDSCOM> Funds Com: <%2>", _savename, _supply_stored]] call CTI_CO_FNC_Log;};
+				_logic setVariable ["cti_supply", _supply_stored, true];
 				
 				//Load the funds of the commander
 				_comfunds_stored = profileNamespace getVariable [Format ["SAVE_%1_%2_FUNDSCOM", _savename, _x],0];

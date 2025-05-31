@@ -189,7 +189,16 @@ for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_AIR_AA)}, {_i =
 }; 
 _upgrade_links pushBack _links;				//--- Air AA
 _upgrade_links pushBack [[CTI_UPGRADE_AIR, 1]]; //--- Air CM
-_upgrade_links pushBack [[],[CTI_UPGRADE_BARRACKS,2],[CTI_UPGRADE_LIGHT,2]]; //--- Towns Occupation
+//_upgrade_links pushBack [[],[CTI_UPGRADE_BARRACKS,2],[CTI_UPGRADE_LIGHT,2]]; //--- Towns Occupation
+_links = [];
+for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_TOWNS)}, {_i = _i + 1}] do {
+	switch (_i) do {
+		case 1: {_links pushBack [CTI_UPGRADE_BARRACKS,(_upgrade_levels select CTI_UPGRADE_BARRACKS)];};
+		case 2: {_links pushBack [CTI_UPGRADE_LIGHT,(_upgrade_levels select CTI_UPGRADE_LIGHT)];};
+		default {_links pushBack [];};
+	};
+}; 
+_upgrade_links pushBack _links;				//--- Towns Occupation
 _upgrade_links pushBack [[],[],[],[]]; //--- Supply
 _links = [];
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_GEAR)}, {_i = _i + 1}] do {
@@ -199,8 +208,9 @@ _upgrade_links pushBack _links;				//--- Gear
 _links = [];
 for [{private _i = 0}, {_i < (_upgrade_levels select CTI_UPGRADE_DEFENSE)}, {_i = _i + 1}] do {
 	switch (_i) do {
-		case 1: {_links pushBack [CTI_UPGRADE_SUPPLY,1];};
-		case 2: {_links pushBack [CTI_UPGRADE_AIR, (_upgrade_levels select CTI_UPGRADE_AIR)];};
+		case 1: {_links pushBack [CTI_UPGRADE_BARRACKS,round((_upgrade_levels select CTI_UPGRADE_BARRACKS)/2)];};
+		case 2: {_links pushBack [CTI_UPGRADE_LIGHT,round((_upgrade_levels select CTI_UPGRADE_LIGHT)/2)];};
+		case 3: {_links pushBack [CTI_UPGRADE_AIR,round((_upgrade_levels select CTI_UPGRADE_AIR)/2)];};
 		default {_links pushBack [];};
 	};
 }; 

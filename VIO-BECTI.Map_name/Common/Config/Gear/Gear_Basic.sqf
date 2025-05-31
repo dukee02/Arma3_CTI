@@ -870,9 +870,30 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 _tech_level = 1;
 
 _c pushBack "Rangefinder";
-_c pushBack "Laserdesignator";
 _c pushBack "Laserbatteries";
 _c pushBack "ItemGPS";
+if(_side == west) then {
+	_c pushBack "NVGoggles";
+	_c pushBack "Laserdesignator";
+} else {
+	_c pushBack "NVGoggles_OPFOR";
+	_c pushBack "Laserdesignator_02";
+};
+// set all other vars in a slope
+_cntstart = count _c;
+_cntend = count _p;
+for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+	_u pushBack _tech_level;
+	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
+};
+
+//adding the UAV Terminal to the last Tech, for that this file have to be loaded at the end
+_tech_level = (_upgrade_levels select CTI_UPGRADE_GEAR);
+if(_side == west) then {
+	_c pushBack "B_UavTerminal";
+} else {
+	_c pushBack "O_UavTerminal";
+};
 // set all other vars in a slope
 _cntstart = count _c;
 _cntend = count _p;

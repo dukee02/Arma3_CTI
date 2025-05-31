@@ -98,7 +98,8 @@ switch (_message_var) do {
 	};
 	case "structure-available": {CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", _parameters select 0, _parameters select 1]};
 	case "structure-destroyed": {CTI_P_ChatID commandChat format ["A %1 has been destroyed at grid %2!", _parameters select 0, _parameters select 1]};
-	case "structure-destroyed-enemy": {CTI_P_ChatID commandChat format ["An enemy %1 has been destroyed at grid %2 HORRAY!", _parameters select 0, _parameters select 1]};
+	//case "structure-destroyed-enemy": {CTI_P_ChatID commandChat format ["An enemy %1 has been destroyed at grid %2 HORRAY!", _parameters select 0, _parameters select 1]};
+	case "structure-destroyed-enemy": {CTI_P_ChatID commandChat format ["An enemy %1 has been destroyed HORRAY!", _parameters select 0]};
 	case "structure-sold": {CTI_P_ChatID commandChat format ["A %1 was sold by the commander at grid %2!", _parameters select 0, _parameters select 1]};
 	//case "structure-ruin-removed": {CTI_P_ChatID commandChat format ["A %1 ruin was removed by the commander at grid %2!", _parameters select 0, _parameters select 1]};
 	case "structure-ruin-removed": {CTI_P_ChatID commandChat format ["A structure ruin was removed by the commander at grid %1!", _parameters]};

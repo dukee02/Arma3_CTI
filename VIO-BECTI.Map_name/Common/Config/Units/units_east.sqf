@@ -508,7 +508,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
@@ -531,7 +531,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 	
 	// SPECIAL CASES - Vehicles that need scripting
@@ -544,7 +544,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "service-medic";
-		_d pushBack 5;
+		_d pushBack 10;
 	//};
 	
 	if(CTI_ADDON_CHARLIECO > 0) then {
@@ -556,7 +556,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "service-medic";
-		_d pushBack 5;	
+		_d pushBack 10;	
 
 		_c pushBack format["%1chmerc_amb", _sid];				//medic
 		_p pushBack '';
@@ -566,7 +566,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "service-medic";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -609,7 +609,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 
 	
@@ -637,7 +637,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 	
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
@@ -656,7 +656,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "service-medic";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -705,7 +705,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 
 
@@ -728,7 +728,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 
 	
@@ -748,7 +748,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "service-medic";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -783,7 +783,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -817,7 +817,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -851,7 +851,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_LIGHT;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -901,7 +901,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -941,7 +941,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -980,7 +980,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1023,7 +1023,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 
 	// upgraded armed units
@@ -1043,7 +1043,7 @@ if(CTI_ECONOMY_LEVEL_TRACKED >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_HEAVY;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1094,7 +1094,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1129,7 +1129,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_AIR;
 	_s pushBack "";
-	_d pushBack 5;
+	_d pushBack 10;
 
 	// unarmed units
 	_c pushBack format["%1O_Heli_Transport_04_F", _sid];
@@ -1146,7 +1146,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1193,7 +1193,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1230,7 +1230,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 
 	// Special Unit: Requires Scripting
@@ -1243,7 +1243,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "service-medic";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1271,7 +1271,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_AIR;
 	_s pushBack "";
-	_d pushBack 5;
+	_d pushBack 10;
 
 	// upgraded armed units
 	_c pushBack format["%1O_Heli_Attack_02_dynamicLoadout_F", _sid];
@@ -1289,7 +1289,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1318,7 +1318,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 	// upgraded armed units
 	if(([395180] call CTI_CO_FNC_HasDLC)) then {			//Apex
@@ -1336,7 +1336,7 @@ if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AIR;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1384,7 +1384,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= _matrix_cnt) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_NAVAL;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1419,7 +1419,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= _matrix_cnt) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_NAVAL;
 		_s pushBack "";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1445,7 +1445,7 @@ if(CTI_ECONOMY_LEVEL_NAVAL >= _matrix_cnt) then {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_NAVAL;
 	_s pushBack "";
-	_d pushBack 5;
+	_d pushBack 10;
 };
 
 //Update the calculated max upgrade level
@@ -1480,7 +1480,7 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_REPAIR;
 	_s pushBack "service-repairtruck";
-	_d pushBack 5;
+	_d pushBack 10;
 };
 	
 _c pushBack format["%1Land_Pod_Heli_Transport_04_box_F", _sid];		//medic
@@ -1491,7 +1491,7 @@ _t pushBack _building_time;
 _u pushBack _tech_level;
 _f pushBack CTI_FACTORY_LIGHT;
 _s pushBack "service-medic";
-_d pushBack 5;
+_d pushBack 10;
 
 _c pushBack format["%1Land_Pod_Heli_Transport_04_repair_F", _sid];	//Repairtruck
 _p pushBack '';
@@ -1501,7 +1501,7 @@ _t pushBack _building_time;
 _u pushBack _tech_level;
 _f pushBack CTI_FACTORY_REPAIR;
 _s pushBack "service-repairtruck";
-_d pushBack 5;
+_d pushBack 10;
 
 
 if(CTI_ADDON_CHARLIECO == 1 ) then {
@@ -1513,7 +1513,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_REPAIR;
 	_s pushBack [format["%1EPA", _sid],"salvager"];
-	_d pushBack 5;
+	_d pushBack 10;
 		
 	_c pushBack format["CTI_Salvager_Independent_%1", _faction];
 	_p pushBack '';
@@ -1523,7 +1523,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_REPAIR;
 	_s pushBack [format["%1FPT_MAN", _sid],"salvager-independent"];
-	_d pushBack 5;
+	_d pushBack 10;
 } else {
 	if(CTI_SALVAGE_SPECIAL >= 1 ) then {
 		_c pushBack format["CTI_Salvager_%1", _faction];
@@ -1534,7 +1534,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_REPAIR;
 		_s pushBack [format["%1I_E_Van_02_transport_MP_F", _sid],"salvager"];
-		_d pushBack 5;
+		_d pushBack 10;
 			
 		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
 		_p pushBack '';
@@ -1544,7 +1544,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_REPAIR;
 		_s pushBack [format["%1I_E_Van_02_transport_MP_F", _sid],"salvager-independent"];
-		_d pushBack 5;
+		_d pushBack 10;
 	} else {
 		_c pushBack format["CTI_Salvager_%1", _faction];
 		_c pushBack format["CTI_Salvager_Independent_%1", _faction];
@@ -1566,7 +1566,7 @@ if(CTI_ADDON_CHARLIECO == 1 ) then {
 			_t pushBack _building_time;
 			_u pushBack _tech_level;
 			_f pushBack CTI_FACTORY_REPAIR;
-			_d pushBack 5;
+			_d pushBack 10;
 		};
 	};	
 };
@@ -1596,7 +1596,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_REPAIR;
 		_s pushBack "service-repairtruck";
-		_d pushBack 5;
+		_d pushBack 10;
 	};
 };
 
@@ -1630,7 +1630,7 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_AMMO;
 	_s pushBack "service-ammotruck";
-	_d pushBack 5;
+	_d pushBack 10;
 };
 
 if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
@@ -1649,7 +1649,7 @@ for [{ _i = 0 }, { _i < _cntstart-_cntend }, { _i = _i + 1 }] do {
 	_u pushBack _tech_level;
 	_f pushBack CTI_FACTORY_AMMO;
 	_s pushBack "service-fueltruck";
-	_d pushBack 5;	
+	_d pushBack 10;	
 };
 
 _c pushBack format["%1Land_Pod_Heli_Transport_04_ammo_F", _sid];					//Ammotruck
@@ -1660,7 +1660,7 @@ _t pushBack _building_time;
 _u pushBack _tech_level;
 _f pushBack CTI_FACTORY_AMMO;
 _s pushBack "service-ammotruck";
-_d pushBack 5;
+_d pushBack 10;
 
 _c pushBack format["%1Land_Pod_Heli_Transport_04_fuel_F", _sid];					//Fueltruck
 _p pushBack '';
@@ -1670,7 +1670,7 @@ _t pushBack _building_time;
 _u pushBack _tech_level;
 _f pushBack CTI_FACTORY_AMMO;
 _s pushBack "service-fueltruck";
-_d pushBack 5;
+_d pushBack 10;
 
 // Ammo Factory Upgrade Level 2
 // ----------------------------
@@ -1703,7 +1703,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AMMO;
 		_s pushBack "service-fueltruck";
-		_d pushBack 5;	
+		_d pushBack 10;	
 	};
 
 	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
@@ -1722,7 +1722,7 @@ if(CTI_ECONOMY_LEVEL_WHEELED >= 2) then {
 		_u pushBack _tech_level;
 		_f pushBack CTI_FACTORY_AMMO;
 		_s pushBack "service-ammotruck";
-		_d pushBack 5;	
+		_d pushBack 10;	
 	};
 };
 

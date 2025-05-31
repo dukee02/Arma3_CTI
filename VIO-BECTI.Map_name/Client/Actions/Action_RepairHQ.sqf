@@ -12,7 +12,7 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 	_currency = if (_supplyActive) then {_supply} else {_funds};
 	_logic = CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic;
 	_repair_count = _logic getVariable "cti_hq_repair_count";
-	_price = round((CTI_BASE_HQ_REPAIR_PRICE / 100) * (((100 / (count CTI_Towns)) * ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideTownCount)) /10) * _repair_count);
+	_price = round((CTI_BASE_HQ_REPAIR_PRICE / 10) * (((100 / (count CTI_Towns)) * ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideTownCount)) /10) * _repair_count);
 
 	if !(_supplyActive) then {_price = _price * 10};
 	
