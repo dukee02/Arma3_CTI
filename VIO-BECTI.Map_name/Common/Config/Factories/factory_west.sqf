@@ -736,43 +736,29 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _c];
 //--- Below is classnames for Units and AI avaiable to puchase from Town Depot.
 _c = [];
 
-// Infantry Units
-// --------------
+// Wheeled Units
+// -------------
 if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
-	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-			_c pushBack format["%1B_T_Medic_F", _sid];
-			_c pushBack format["%1B_T_Crew_F", _sid];
-			_c pushBack format["%1B_T_Soldier_F", _sid];
+			_c pushBack format["%1B_T_Quadbike_01_F", _sid];
+			_c pushBack format["%1B_T_LSV_01_unarmed_F", _sid];
 		} else {
-			_c pushBack format["%1B_medic_F", _sid];
-			_c pushBack format["%1B_crew_F", _sid];
-			_c pushBack format["%1B_Soldier_F", _sid];
+			_c pushBack format["%1B_Quadbike_01_F", _sid];
+			_c pushBack format["%1B_LSV_01_unarmed_F", _sid];
+		};
+	};
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+			_c pushBack format["%1B_T_MRAP_01_F", _sid];
+		} else {
+			_c pushBack format["%1B_MRAP_01_F", _sid];
 		};
 	};
 };
-
-// Wheeled Units
+// Supply Units
 // -------------
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1B_T_Quadbike_01_F", _sid];
-		_c pushBack format["%1B_T_LSV_01_unarmed_F", _sid];
-	} else {
-		_c pushBack format["%1B_Quadbike_01_F", _sid];
-		_c pushBack format["%1B_LSV_01_unarmed_F", _sid];
-	};
-};
-
-if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1B_T_MRAP_01_F", _sid];
-	} else {
-		_c pushBack format["%1B_MRAP_01_F", _sid];
-	};
-};
-
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 1) then {
 	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
 		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
 			_c pushBack format["%1B_T_Truck_01_Repair_F", _sid];
@@ -785,6 +771,21 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 		};
 	};
 };	
+// Infantry Units
+// --------------
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 2) then {
+	if(CTI_ECONOMY_LEVEL_INFANTRY >= 0) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+			_c pushBack format["%1B_T_Medic_F", _sid];
+			_c pushBack format["%1B_T_Crew_F", _sid];
+			_c pushBack format["%1B_T_Soldier_F", _sid];
+		} else {
+			_c pushBack format["%1B_medic_F", _sid];
+			_c pushBack format["%1B_crew_F", _sid];
+			_c pushBack format["%1B_Soldier_F", _sid];
+		};
+	};
+};
 
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 

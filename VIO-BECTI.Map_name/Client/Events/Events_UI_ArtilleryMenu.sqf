@@ -1,6 +1,22 @@
 private ["_action"];
 _action = _this select 0;
 
+/*
+Ref to nonnetwork object 1816605: shell.p3d AT_Mine_155mm_AMOS_range
+this error occurs when a local item has a networked, global, command issued on it. CreateVehicleLocal -> setPos, SetDir, etc. since the object is local to a single player, and as such is non-networked, you receive this message in your rpt.
+
+weapons[] = {"mortar_155mm_AMOS"};
+configfile >> "CfgWeapons" >> "mortar_155mm_AMOS" >> "magazines"
+magazines[] = {"32Rnd_155mm_Mo_shells","32Rnd_155mm_Mo_shells_O","6Rnd_155mm_Mo_smoke","6Rnd_155mm_Mo_smoke_O","2Rnd_155mm_Mo_guided","4Rnd_155mm_Mo_guided","4Rnd_155mm_Mo_guided_O","2Rnd_155mm_Mo_LG","4Rnd_155mm_Mo_LG","4Rnd_155mm_Mo_LG_O","6Rnd_155mm_Mo_mine","6Rnd_155mm_Mo_mine_O","2Rnd_155mm_Mo_Cluster","2Rnd_155mm_Mo_Cluster_O","6Rnd_155mm_Mo_AT_mine","6Rnd_155mm_Mo_AT_mine_O"};
+
+configfile >> "CfgVehicles" >> "B_MBT_01_arty_F" >> "Turrets" >> "MainTurret" >> "magazines"
+magazines[] = {"32Rnd_155mm_Mo_shells","4Rnd_155mm_Mo_guided","6Rnd_155mm_Mo_mine","2Rnd_155mm_Mo_Cluster","6Rnd_155mm_Mo_smoke","2Rnd_155mm_Mo_LG","6Rnd_155mm_Mo_AT_mine"};
+
+configfile >> "CfgMagazines" >> "6Rnd_155mm_Mo_AT_mine_O"
+ammo = "AT_Mine_155mm_AMOS_range";
+
+configfile >> "CfgAmmo" >> "AT_Mine_155mm_AMOS_range"
+*/
 switch (_action) do {
 	case "onLoad": {
 		if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") < 0) exitWith {closeDialog 0};

@@ -765,6 +765,41 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _c];
 //--- Below is classnames for Units and AI avaiable to puchase from Town Depot.
 _c = [];
 
+// Wheeled Units
+// -------------
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+			_c pushBack format["%1O_T_Quadbike_01_ghex_F", _sid];
+			_c pushBack format["%1O_T_LSV_02_unarmed_F", _sid];
+		} else {
+			_c pushBack format["%1O_Quadbike_01_F", _sid];
+			_c pushBack format["%1O_LSV_02_unarmed_F", _sid];
+		};
+	};
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+			_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
+		} else {
+			_c pushBack format["%1O_MRAP_02_F", _sid];
+		};
+	};
+};
+// Supply Units
+// -------------
+if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
+	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
+		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
+			_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
+			_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
+			_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
+		} else {
+			_c pushBack format["%1O_Truck_02_box_F", _sid];
+			_c pushBack format["%1O_Truck_02_fuel_F", _sid];
+			_c pushBack format["%1O_Truck_02_Ammo_F", _sid];
+		};
+	};
+};
 // Infantry Units
 // --------------
 if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
@@ -781,38 +816,6 @@ if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
 	};
 };
 
-// Wheeled Units
-// -------------
-if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1O_T_Quadbike_01_ghex_F", _sid];
-		_c pushBack format["%1O_T_LSV_02_unarmed_F", _sid];
-	} else {
-		_c pushBack format["%1O_Quadbike_01_F", _sid];
-		_c pushBack format["%1O_LSV_02_unarmed_F", _sid];
-	};
-};
-if(CTI_ECONOMY_LEVEL_WHEELED >= 1) then {
-	if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-		_c pushBack format["%1O_T_MRAP_02_ghex_F", _sid];
-	} else {
-		_c pushBack format["%1O_MRAP_02_F", _sid];
-	};
-};
-
-if ((missionNamespace getVariable "CTI_UNITS_TOWN_PURCHASE") > 0) then {
-	if(CTI_ECONOMY_LEVEL_WHEELED >= 0) then {
-		if(([395180] call CTI_CO_FNC_HasDLC) && CTI_CAMO_ACTIVATION == 1) then {
-			_c pushBack format["%1O_T_Truck_02_Box_F", _sid];
-			_c pushBack format["%1O_T_Truck_02_fuel_F", _sid];
-			_c pushBack format["%1O_T_Truck_02_Ammo_F", _sid];
-		} else {
-			_c pushBack format["%1O_Truck_02_box_F", _sid];
-			_c pushBack format["%1O_Truck_02_fuel_F", _sid];
-			_c pushBack format["%1O_Truck_02_Ammo_F", _sid];
-		};
-	};
-};
 _priorUnits = missionNamespace getVariable format ["CTI_%1_%2Units", _side, CTI_DEPOT];
 if (isNil "_priorUnits") then { 
 	_priorUnits = []; 
