@@ -247,17 +247,19 @@ switch (_action) do {
 				} forEach _artillery;
 
 				if(_artyShoots) then {
-					hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie shot, target in range %1 | ETA = %2s</t>", _isInRange, _isETA];
-
-					//arty fired, we inform the enemy to make Arty not so IMBA
-					_enemy = civilian;
-					if(playerSide == west) then {_enemy = east;} else {_enemy = west;};
-					_sideHQ = (_enemy) call CTI_CO_FNC_GetSideHQ;
-					_detected_dir = _sideHQ getRelDir (_artillery select 0 select 0);
-					//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
-					[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
-
-					CTI_P_LastFireMission = time;
+					if(_isETA > 0) then {
+						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie shot, target in range %1 | ETA = %2s</t>", _isInRange, _isETA];
+						//arty fired, we inform the enemy to make Arty not so IMBA
+						_enemy = civilian;
+						if(playerSide == west) then {_enemy = east;} else {_enemy = west;};
+						_sideHQ = (_enemy) call CTI_CO_FNC_GetSideHQ;
+						_detected_dir = _sideHQ getRelDir (_artillery select 0 select 0);
+						//[["CLIENT", _artyside], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
+						[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
+						CTI_P_LastFireMission = time;
+					} else {
+						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie mayba can not shot, try to change ammo</t>", _isInRange, _isETA];
+					};
 				} else {
 					if(_isInRange && alive (_artillery select 0 select 0)) then {
 						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie can not shoot, ... because something went wrong.[inRange=%1|ETA=%2]</t>", _isInRange, _isETA];
