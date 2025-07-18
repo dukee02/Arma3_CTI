@@ -60,8 +60,8 @@ _placement = if (count _this > 8) then {_this select 8} else {7};
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
-if(isNil _type) exitWith {
-	if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: common\functions\Common_CheckCountUp.sqf", format["Unit is null: <%1> ", _type]] call CTI_CO_FNC_Log;};
+if(isNil "_type") exitWith {
+	if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: common\functions\Common_CreateVehicle.sqf", format["Unit is null: <%1> ", _type]] call CTI_CO_FNC_Log;};
 };
 
 if (_placement == 0) then {
