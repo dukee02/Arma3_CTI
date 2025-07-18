@@ -194,7 +194,7 @@ CTI_FSM_UpdateCommander_GetDefenseEmplacement = {
 				_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 				if((_upgrades select CTI_UPGRADE_DEFENSE) >= (_selected_info select 6)) then {
 					_bill = _selected_info select 2;
-					
+					/*
 					if (_supplyActive) then {
 						//_supply = (West) call CTI_CO_FNC_GetSideSupply
 						if(_bill <= (_side) call CTI_CO_FNC_GetSideSupply) then {
@@ -203,10 +203,10 @@ CTI_FSM_UpdateCommander_GetDefenseEmplacement = {
 							_build = true;
 						} else {
 							_build = false;
-							if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["not enough supply: <%1> <%2S>", _selected, _bill]] call CTI_CO_FNC_Log;};
+							if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["not enough supply: <%1> <%2 S>", _selected, _bill]] call CTI_CO_FNC_Log;};
 						};
 						
-					} else {
+					} else {*/
 						//_funds = (West) call CTI_CO_FNC_GetFundsCommander;
 						if(_bill <= (_side) call CTI_CO_FNC_GetFundsCommander) then {
 							[_side, -_bill] call CTI_CO_FNC_ChangeFundsCommander;
@@ -214,9 +214,9 @@ CTI_FSM_UpdateCommander_GetDefenseEmplacement = {
 							_build = true;
 						} else {
 							_build = false;
-							if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["not enough funds: <%1> <%2$>", _selected, _bill]] call CTI_CO_FNC_Log;};
+							if (CTI_Log_Level >= CTI_Log_Debug) then {["VIOCDEBUG", "FILE: Functions_FSM_UpdateCommander_@GetDefenseEmplacement.sqf", format["not enough funds: <%1> <%2 $>", _selected, _bill]] call CTI_CO_FNC_Log;};
 						};
-					};
+					//};
 					_attemps = _attemps + 1;
 				};
 			};
