@@ -15,9 +15,9 @@ item10[] = {"Update_Structure",2,250,50.000000,700.000000,150.000000,750.000000,
 item11[] = {"Defenses",4,218,175.000000,600.000000,275.000000,650.000000,3.000000,"Defenses"};
 item12[] = {"Update_Defenses",2,250,175.000000,700.000000,275.000000,750.000000,0.000000,"Update" \n "Defenses"};
 item13[] = {"Upgrade",4,218,550.000000,600.000000,650.000000,650.000000,0.000000,"Upgrade"};
-item14[] = {"Update_Upgrades",2,4346,550.000000,700.000000,650.000000,750.000000,0.000000,"Update" \n "Upgrades"};
+item14[] = {"Update_Upgrades",2,250,550.000000,700.000000,650.000000,750.000000,0.000000,"Update" \n "Upgrades"};
 item15[] = {"Teams",4,218,-500.000000,600.000000,-400.000000,650.000000,3.000000,"Teams"};
-item16[] = {"Update_Teams",2,250,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
+item16[] = {"Update_Teams",2,4346,-500.000000,700.000000,-400.000000,750.000000,0.000000,"Update" \n "Teams"};
 item17[] = {"Orders",4,218,-375.000000,600.000000,-275.000000,650.000000,2.000000,"Orders"};
 item18[] = {"Update_Orders",2,250,-375.000000,700.000000,-275.000000,750.000000,0.000000,"Update" \n "Orders"};
 item19[] = {"",7,210,-54.000008,896.000000,-45.999996,904.000000,0.000000,""};
@@ -113,7 +113,7 @@ link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
 globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-645.765381,399.839294,962.789001,-148.165848,832,884,1};
-window[] = {2,-1,-1,-1,-1,1064,234,1613,234,3,850};
+window[] = {2,-1,-1,-32000,-32000,986,-1660,-281,156,3,850};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -575,7 +575,7 @@ class FSM
                         name = "Update_Teams";
                         itemno = 16;
                         init = /*%FSM<STATEINIT""">*/"_commander_lastteamupdate = time;" \n
-                         "_modifier = switch (true) do {case (_funds >= 5000): {1.25}; case (_funds >= 10000): {1.5}; case (_funds >= 20000): {1.75}; case (_funds >= 50000): {2}; default {1}};" \n
+                         "_modifier = switch (true) do {case (_funds >= 50000): {1.25}; case (_funds >= 100000): {1.5}; case (_funds >= 500000): {1.75}; case (_funds >= 100000): {2}; default {1}};" \n
                          "" \n
                          "_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
                          "" \n
@@ -630,15 +630,29 @@ class FSM
                          "					};" \n
                          "				" \n
                          "					//--- We couldn't purchase a unit set, maybe we can transfer some money if we're lucky enough?" \n
-                         "					if (!_has_purchased && random 100 <= CTI_AI_COMMANDER_TRANSFER_FUNDS_CHANCE && _funds > 2000) then {" \n
+                         "					/*if (!_has_purchased && random 100 <= CTI_AI_COMMANDER_TRANSFER_FUNDS_CHANCE && _funds > 2000) then {" \n
                          "						_amount = round(([CTI_AI_COMMANDER_FUNDS_INFANTRY, CTI_AI_COMMANDER_FUNDS_LIGHT, CTI_AI_COMMANDER_FUNDS_HEAVY, CTI_AI_COMMANDER_FUNDS_AIR] select _id) * _modifier);" \n
-                         "					" \n
+                         "						" \n
+                         "						if (CTI_Log_Level >= CTI_Log_Error) then {" \n
+                         "							[""VIOC_DEBUG"", ""FILE: server\FSM\Update_Commanter@UpdateTeams.sqf"", format[""Send funds to team, side: %1 - Team: %2 - Funds have %3 send %4"", _side, _x, _funds, _amount]] call CTI_CO_FNC_Log;" \n
+                         "						};" \n
                          "						if (_funds >= _amount) then {" \n
                          "							[_side, -_amount] call CTI_CO_FNC_ChangeFundsCommander; //--- Minus for the com" \n
                          "							[_x, _amount] call CTI_CO_FNC_ChangeFundsTeam; //--- Plus for the group" \n
                          "						};" \n
-                         "					};" \n
+                         "					};*/" \n
                          "				};" \n
+                         "			};" \n
+                         "		};" \n
+                         "		if (random 100 <= CTI_AI_COMMANDER_TRANSFER_FUNDS_CHANCE && _funds > 500000) then {" \n
+                         "			_amount = round(([CTI_AI_COMMANDER_FUNDS_INFANTRY, CTI_AI_COMMANDER_FUNDS_LIGHT, CTI_AI_COMMANDER_FUNDS_HEAVY, CTI_AI_COMMANDER_FUNDS_AIR] select _id) * _modifier);" \n
+                         "						" \n
+                         "			if (CTI_Log_Level >= CTI_Log_Error) then {" \n
+                         "				[""VIOC_DEBUG"", ""FILE: server\FSM\Update_Commanter@UpdateTeams.sqf"", format[""Send funds to team, side: %1 - Team: %2 - Funds have %3 send %4"", _side, _x, _funds, _amount]] call CTI_CO_FNC_Log;" \n
+                         "			};" \n
+                         "			if (_funds >= _amount) then {" \n
+                         "				[_side, -_amount] call CTI_CO_FNC_ChangeFundsCommander; //--- Minus for the com" \n
+                         "				[_x, _amount] call CTI_CO_FNC_ChangeFundsTeam; //--- Plus for the group" \n
                          "			};" \n
                          "		};" \n
                          "	} forEach ((_side call CTI_CO_FNC_GetSideGroups) - [_sideCommander]);" \n
