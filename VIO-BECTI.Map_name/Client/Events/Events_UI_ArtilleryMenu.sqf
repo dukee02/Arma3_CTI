@@ -258,7 +258,8 @@ switch (_action) do {
 						[["CLIENT", _enemy], "Client_OnArtilleryShotDetected", [_detected_dir]] call CTI_CO_FNC_NetSend;
 						CTI_P_LastFireMission = time;
 					} else {
-						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie mayba can not shot, try to change ammo</t>", _isInRange, _isETA];
+						hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Artillerie maybe can not shot, try to change ammo</t>", _isInRange, _isETA];
+						if (CTI_Log_Level >= CTI_Log_Warning) then {["DEBUG", "FILE: Events_UI_ArtilleryMenu.sqf", format["Wrong Ammo? <%1|%2>", (typeOf _artillery_piece), _artillery_magazine]] call CTI_CO_FNC_Log;};
 					};
 				} else {
 					if(_isInRange && alive (_artillery select 0 select 0)) then {
