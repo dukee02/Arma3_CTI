@@ -902,6 +902,24 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
+//Community wish, vanilla drones for both sides for ballance in CW
+if (!isNil 'CTI_CUP_ADDON') then {
+	if((CTI_CUP_ADDON >= 1 || CTI_RHS_ADDON >= 1) && CTI_AIR_ADDON >= 0 ) then {
+		if(_side == west) then {
+			_c pushBack "B_UAV_01_backpack_F";
+		} else {
+			_c pushBack "O_UAV_01_backpack_F";
+		};
+		// set all other vars in a slope
+		_cntstart = count _c;
+		_cntend = count _p;
+		for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+			_u pushBack _tech_level;
+			_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
+		};
+	};
+};
+
 // Update the calculated max upgrade level
 if(_tech_level > _upgrade_levels select CTI_UPGRADE_GEAR) then {
 	_upgrade_levels set [CTI_UPGRADE_GEAR, _tech_level];
