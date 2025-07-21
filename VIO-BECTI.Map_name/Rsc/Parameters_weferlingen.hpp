@@ -606,8 +606,8 @@ class Params {
 	class CTI_MARKERS_INFANTRY {
 		title = "UNITS: Show Map Infantry";
 		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		texts[] = {"Disabled","Enabled own units","Enabled all infantry"};
+		default = 1;
 	};
 	class CTI_UNITS_FATIGUE {
 		title = "UNITS: Stamina Systems";
