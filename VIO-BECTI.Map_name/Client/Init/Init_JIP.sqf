@@ -20,7 +20,9 @@
 		if !(alive _hq) then {
 			if (markerColor _marker != "ColorBlack") then {_marker setMarkerColorLocal "ColorBlack"; _marker setMarkerTextLocal "HQ Wreck"};
 		} else {
-			if (markerColor _marker != CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor; _marker setMarkerTextLocal "HQ"};
+			_markerDMG = round(100 - ((damage _hq)*100));
+			_marker setMarkerTextLocal format["HQ (HP: %1/100)", _markerDMG];	
+			if (markerColor _marker != CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor;};
 		};
 		
 		sleep 0.5;
