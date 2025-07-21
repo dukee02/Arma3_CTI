@@ -26,6 +26,7 @@ private ["_marker", "_structure", "_var"];
 
 _structure = _this select 0;
 _var = _this select 1;
+_mtext = ((_var select 0) select 2);
 
 //--- Quick action (I know you want it brit!)
 if (((_var select 0) select 0) in CTI_FACTORIES) then {
@@ -37,17 +38,18 @@ _marker = createMarkerLocal [Format ["cti_structure_%1", CTI_P_MarkerIterator], 
 _marker setMarkerTypeLocal format["%1installation", CTI_P_MarkerPrefix];
 _marker setMarkerColorLocal CTI_P_SideColor;
 _marker setMarkerSizeLocal [0.75, 0.75]; 
-_marker setMarkerTextLocal ((_var select 0) select 2);
+_marker setMarkerTextLocal _mtext;
 
 //--- Set the type if needed
 if (isNil {_structure getVariable "cti_structure_type"}) then {_structure setVariable ["cti_structure_type", (_var select 0) select 0]};
-
+				
 //--- Track till destruction
-[_structure, _marker] spawn {
+[_structure, _marker, _mtext] spawn {
 	_structure = _this select 0;
 	_marker = _this select 1;
 	_position = getPos _structure;
 	_logic = (CTI_P_sidejoined) call CTI_CO_FNC_GetSideLogic;
+	_mtext = _this select 2;
 	_active = true;
 
 	 //--- Change marker colour whilst alive/dead but still active (ie structure or ruins still on map), delete marker when ruins despawned.
@@ -58,7 +60,11 @@ if (isNil {_structure getVariable "cti_structure_type"}) then {_structure setVar
 			_ruin = [_position, _ruins] call CTI_CO_FNC_GetClosestEntity;
 			if (isNull _ruin) then {_active = false};
 		} else {
-			if (markerColor _marker != CTI_P_SideColor) then {_marker setMarkerColorLocal CTI_P_SideColor;};
+			_markerDMG = round(100 - ((damage _structure)*100));
+			_marker setMarkerTextLocal format["%1 (HP: %2/100)",_mtext, _markerDMG];	
+			if (markerColor _marker != CTI_P_SideColor) then {
+				_marker setMarkerColorLocal CTI_P_SideColor;
+			};
 		};
 		sleep 1;
 	};
