@@ -2612,6 +2612,15 @@ class CTI_RscUnitsCamera {
 			text = "";
 			action = "['onViewModeChanged'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
+		class CTI_Menu_Control_Remote : CTI_Menu_Control_Exit {
+			idc = 1800131;
+
+			x = "SafeZoneX + (SafeZoneW * 0.16)";
+			y = "SafeZoneY + (SafeZoneH * 0.90)";
+
+			text = "Remote Control";
+			action = "['onRemoteControl'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
+		};
 		class CTI_Menu_UnitCamJump : CTI_Menu_Control_Exit { //--- Render out
 			idc = 180014;
 			

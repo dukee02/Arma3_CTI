@@ -81,6 +81,14 @@ switch (_action) do {
 			{((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl _x) ctrlShow false} forEach [180016, 180018];
 		};
 		
+		if(CTI_RESPAWN_AI >= 3) then {
+			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 1800131) ctrlEnable (true);
+			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 1800131) ctrlSetText "Remote Control";
+		} else {
+			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 1800131) ctrlEnable (false);
+			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 1800131) ctrlSetText "RC disabled";
+		};
+		
 		//--- Render in. Where the bloody hell is the dialog option to render thing invisible at first? visible = 0 ?!?!
 		{((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl _x) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.01), SafeZoneY + (SafezoneH * 0.06), SafeZoneW * 0.31, SafeZoneH * 0.6]; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl _x) ctrlCommit 0} forEach [180016, 180018];
 		((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180009) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.8), SafeZoneY + (SafezoneH * 0.62), SafeZoneW * 0.19, SafeZoneH * 0.32]; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180009) ctrlCommit 0;
@@ -211,6 +219,40 @@ switch (_action) do {
 				createDialog "CTI_RscSatelitteCamera";
 			};
 		};
+	};
+	case "onRemoteControl": {
+		_who = uiNamespace getVariable "cti_dialog_ui_unitscam_focus";
+		if(not(isplayer _who) and _who in (units group player))then{
+			closeDialog 0;
+			 _who spawn {
+			 	bis_fnc_moduleRemoteControl_unit = _this;
+			 	sleep .05;
+			 	_vehicle = vehicle _this;
+				_vehicleRole = str assignedvehiclerole _this;
+			 	player remoteControl _this;
+			 	if (cameraon != _vehicle) then {
+					_vehicle switchcamera cameraview;
+				};
+				[["Curator","RemoteControl"],nil,nil,nil,nil,nil,nil,true] call bis_fnc_advHint;
+				waituntil {
+					//--- Refresh when vehicle or vehicle role changes
+					if ((vehicle _this != _vehicle || str assignedvehiclerole _this != _vehicleRole) && {alive _this}) then {
+						player remotecontrol _this;
+						_vehicle = vehicle _this;
+						_vehicleRole = str assignedvehiclerole _this;
+					};
+					sleep 0.01;
+					(cameraon == vehicle player)
+					||
+					{!alive _this}
+				};
+				//removes the remoteControlling
+				objNull remoteControl _this;
+				player switchCamera "internal";
+			 	bis_fnc_moduleRemoteControl_unit = NIL;
+			};
+		}else{};
+
 	};
 	case "onCamChange": {
 		_changeto = _this select 1;
