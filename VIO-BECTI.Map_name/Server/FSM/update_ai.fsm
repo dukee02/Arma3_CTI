@@ -65,8 +65,8 @@ link30[] = {26,27};
 link31[] = {27,28};
 link32[] = {28,29};
 link33[] = {29,6};
-globals[] = {25.000000,1,0,0,0,640,480,1,272,6316128,1,-614.565796,615.042114,1192.424805,-117.720001,615,910,1};
-window[] = {2,-1,-1,-1,-1,937,156,1411,156,3,633};
+globals[] = {0.000000,0,0,0,0,640,480,1,272,6316128,1,-614.565796,615.042114,1265.596436,-501.839966,615,884,1};
+window[] = {2,-1,-1,-1,-1,932,-1748,-493,151,3,633};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -292,6 +292,10 @@ class FSM
                          "		};" \n
                          "	};" \n
                          "};" \n
+                         "{" \n
+                         "	// Current result is saved in variable _x"" \n" \n
+                         "	if(rating _x < 10000) then {_x addRating 10000;};" \n
+                         "} forEach units _group;" \n
                          "//todo remote purchase for some kinds (air / mbt)"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
