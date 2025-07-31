@@ -44,7 +44,12 @@ if !(isNil '_candidates') then {
 				_sub_positions pushBack (_x select 2);
 			} forEach _x;
 			
-			[["CLIENT", leader _group_hc], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
+			//Old version, didn't work well if HC went in later in the game
+			//[["CLIENT", leader _group_hc], "Client_OnTownDelegationReceived", [_town, _side, _sub_teams, _sub_groups, _sub_positions]] call CTI_CO_FNC_NetSend;
+			//new implementation, we crate a list for all jobs, every HC can grab a job if the have space.
+			_hc_job_list = missionNamespace getVariable ["cti_hc_queue", []];
+			_hc_job_list pushBack [["FREE", leader _group_hc],[_town, _side, _sub_teams, _sub_groups, _sub_positions]];
+			missionNamespace setVariable ["cti_hc_queue", _hc_job_list, true];
 			
 			if (CTI_Log_Level >= CTI_Log_Debug) then {
 				["DEBUG", "FILE: Server\Functions\Server_AttemptDelegation.sqf", format["Delegating unit creation to Headless Client [%1] with owner ID [%2] in [%3] for [%4] team(s) on [%5]", _uid, _owner_id, _town getVariable "cti_town_name", count _sub_teams, _side]] call CTI_CO_FNC_Log;

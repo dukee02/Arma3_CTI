@@ -38,7 +38,7 @@ waitUntil {!isNil 'CTI_Init_Common'};
 _max = 10;
 _team = grpNull;
 
-while {_max > 0 && isNull _team} do { { if ((getPlayerUID _x) == _uid) exitWith {_team = group _x};	} forEach playableUnits; if (isNull _team) then {sleep 0.5}; _max = _max - 1 };
+while {_max > 0 && isNull _team} do {{ if ((getPlayerUID _x) == _uid) exitWith {_team = group _x};	} forEach playableUnits; if (isNull _team) then {sleep 0.5}; _max = _max - 1};
 
 //--- Make sure that we've found a team, otherwise we simply exit.
 if (isNull _team) exitWith {if (CTI_Log_Level >= CTI_Log_Error) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] couldn't be found among the current playable units", _name, _uid]] call CTI_CO_FNC_Log}};

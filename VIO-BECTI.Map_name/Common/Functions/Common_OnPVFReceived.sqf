@@ -38,6 +38,7 @@ _pv_can_exec = false;
 switch (_pv_destination) do {
 	case "CLIENT": {
 		if (CTI_IsClient || CTI_IsHeadless) then {
+			["DEBUG", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format ["PVF destination [%1] - filter [%2] - filter [%3]", _pv_destination, _pv_filter_exec, typeName _pv_filter_exec]] call CTI_CO_FNC_Log;
 			switch (typeName _pv_filter_exec) do {
 				case "OBJECT": { if (_pv_filter_exec == player) then { _pv_can_exec = true } }; //--- An object (SP oriented).
 				case "STRING": { _pv_can_exec = true }; //--- Everyone
@@ -54,7 +55,8 @@ if (_pv_can_exec) then {
 		_pv_parameters = if (count _this > 2) then { _this select 2 } else { [] };
 		_pv_parameters spawn (missionNamespace getVariable format ["CTI_PVF_%1", _this select 1]);
 	} else {
-		if (CTI_Log_Level >= CTI_Log_Error && !CTI_IsHeadless) then { //--- Error (Skip for HC)
+		//if (CTI_Log_Level >= CTI_Log_Error && !CTI_IsHeadless) then { //--- Error (Skip for HC)
+		if (CTI_Log_Level >= CTI_Log_Error) then {
 			["ERROR", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format ["[%1] PVF [%2] was received but could not be called since it isn't defined as a function.", _pv_destination, _this select 1]] call CTI_CO_FNC_Log
 		};
 	};
