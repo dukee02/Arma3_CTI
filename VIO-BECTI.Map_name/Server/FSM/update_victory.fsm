@@ -1,9 +1,9 @@
 /*%FSM<COMPILE "scriptedFSM.cfg, update_victory.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,250,-250.000000,-300.000000,-150.000000,-250.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,4346,-250.000000,-300.000000,-150.000000,-250.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,1.000000,"Cycle"};
-item2[] = {"Update_Victory",2,4346,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Update" \n "Victory"};
+item2[] = {"Update_Victory",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Update" \n "Victory"};
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Gameover",4,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
 link0[] = {0,1};
@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {0.000000,0,0,0,0,640,480,1,162,6316128,1,-283.496857,91.606110,114.748718,-497.565857,389,609,1};
-window[] = {0,-1,-1,-1,-1,915,314,1569,134,1,407};
+window[] = {0,-1,-1,-1,-1,952,227,1482,171,1,407};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -26,7 +26,14 @@ class FSM
                         itemno = 0;
                         init = /*%FSM<STATEINIT""">*/"_ncycle = time + 15;" \n
                          "" \n
-                         "_total = count CTI_Towns;"/*%FSM</STATEINIT""">*/;
+                         "_total = count CTI_Towns;" \n
+                         "" \n
+                         "if([resistance, east] call BIS_fnc_sideIsFriendly || [east, resistance] call BIS_fnc_sideIsFriendly || [resistance, west] call BIS_fnc_sideIsFriendly || [west, resistance] call BIS_fnc_sideIsFriendly) then {" \n
+                         "	east setFriend [resistance, 0];" \n
+                         "	resistance setFriend [east, 0];" \n
+                         "	west setFriend [resistance, 0];" \n
+                         "	resistance setFriend [west, 0];" \n
+                         "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
