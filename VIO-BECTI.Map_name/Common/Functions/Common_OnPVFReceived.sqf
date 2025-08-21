@@ -38,7 +38,7 @@ _pv_can_exec = false;
 switch (_pv_destination) do {
 	case "CLIENT": {
 		if (CTI_IsClient || CTI_IsHeadless) then {
-			["DEBUG", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format ["PVF destination [%1] - filter [%2] - filter [%3]", _pv_destination, _pv_filter_exec, typeName _pv_filter_exec]] call CTI_CO_FNC_Log;
+			if (CTI_Log_Level >= CTI_Log_Debug) then {["DEBUG", "FILE: Common\Functions\Common_OnPVFReceived.sqf", format ["PVF destination [%1] - filter [%2] - filter [%3]", _pv_destination, _pv_filter_exec, typeName _pv_filter_exec]] call CTI_CO_FNC_Log;};
 			switch (typeName _pv_filter_exec) do {
 				case "OBJECT": { if (_pv_filter_exec == player) then { _pv_can_exec = true } }; //--- An object (SP oriented).
 				case "STRING": { _pv_can_exec = true }; //--- Everyone

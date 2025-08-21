@@ -16,7 +16,7 @@ Each side are led by a <t color='#e8bd12'>Commander</t> which may construct a ba
 As soon as the base is available, you may decide to reinforce your team by purchasing additional units and vehicles.<br /><br />
 Keep in mind that the <t color='#e8bd12'>Commander</t> may assign assign different tasks to your team.<br /><br />
 The mission may be won by destroying the opposite side's base assets (<t color='#eaff96'>Barracks</t>, <t color='#eaff96'>Light Vehicle Factory</t>, <t color='#eaff96'>Heavy Vehicle Factory</t>, <t color='#eaff96'>Aircraft Factory</t> and the <t color='#eaff96'>MHQ</t>).<br /><br />
-<a href='https://discord.gg/sJw2Nynh7s'>More Infos you can find on our Discord.</a> <br /><br />
+<a href='https://discord.gg/sJw2Nynh7s'>More Infos you can find on our Discord -> discord.gg/sJw2Nynh7s</a> <br /><br />
 ",
 "<t size='1.4' color='#2394ef'>The Basics</t><br /><br />
 Each side's teams are led by a <t color='#e8bd12'>Team Leader</t> which will respawn after it's death (you are a Team Leader). Your character's location can be seen on the map as it will always be tracked by a marker like those below.<br /><br />
