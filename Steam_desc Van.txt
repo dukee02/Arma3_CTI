@@ -72,47 +72,57 @@ More infos:
 
 
 -------------------MAPS----------------------------
-Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.4_240626
-Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.4_240626
-Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.4_240626
-Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.4_240626
-Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.4_240626
+Altis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484715680				V2.0.6_250820
+Malden					https://steamcommunity.com/sharedfiles/filedetails/?id=2484718479				V2.0.6_250820
+Stratis					https://steamcommunity.com/sharedfiles/filedetails/?id=2484712760				V2.0.6_250820
+Tanoa					https://steamcommunity.com/sharedfiles/filedetails/?id=2484717289				V2.0.6_250820
+Livonia					https://steamcommunity.com/sharedfiles/filedetails/?id=2915443848				V2.0.6_250820
 
-Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.4_240626
+Rosche					https://steamcommunity.com/sharedfiles/filedetails/?id=2857099783				V2.0.6_250820
 
-MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.4_240626
+MSKE					https://steamcommunity.com/sharedfiles/filedetails/?id=2857098559				V2.0.6_250820
 
-Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.4_240626
-Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.4_240626
-Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.4_240626
-Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.4_240626
+Chernarus				https://steamcommunity.com/sharedfiles/filedetails/?id=3008055700				V2.0.6_250820
+Chernarus Summer		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056422				V2.0.6_250820
+Chernarus Winter		https://steamcommunity.com/sharedfiles/filedetails/?id=3008056918				V2.0.6_250820
+Takistan				https://steamcommunity.com/sharedfiles/filedetails/?id=3008057358				V2.0.6_250820
 
 --------------------------------------------------
 
-[h1][V2.0.4] Changelog:[/h1]
+[h1][V2.0.6] Changelog:[/h1]
 
-[b]Added:[/b] commander ability to setup statics
-[b]Added:[/b] default "MANW" Insignia
-[b]Added:[/b] toggle mode for earplugs
-[b]Added:[/b] Option to disable tokeover distance for units on respawn
-[b]Added:[/b] Option to respawn with last gear
-[b]Added:[/b] internal statistic, maybe we'll show it on endscreen later
-[b]Added:[/b] Salavgers to Units camera - unflip for all if stuck
-[b]Changed:[/b] positioning of vehicles after loading
-[b]Changed:[/b] rearming behavior for statics
-[b]Changed:[/b] Max Queue amount in factorys
-[b]Changed:[/b] discount for AI only in harderAI skills
-[b]Changed:[/b] AI skill calculation
-[b]Changed:[/b] price calculation of all statics
-[b]Changed:[/b] salvagers now in one single group
-[b]Changed:[/b] better vehicle lock behavior - locked by player
-[b]Fixed:[/b] must allways hack UAVs+UGVs
-[b]Fixed:[/b] some old Arma2 damage stuff
-[b]Fixed:[/b] error on loading the supply
-[b]Fixed:[/b] building blocked in not in restricted area
-[b]Fixed:[/b] firefighter siren not working
-[b]Fixed:[/b] AI commander didn't take command
-[b]Fixed:[/b] more old Arma2 dammage stuff found
-[b]Fixed:[/b] Opfor AI squads hire parade units
-[b]Fixed:[/b] Error picture not found
+[b]Added:[/b] Zombiemode
+[b]Added:[/b] gear purchasing for vehicle player sit in
+[b]Added:[/b] backpacks to purchasing stuff for vehicles
+[b]Added:[/b] remote controll if set CTI_RESPAWN_AI >= 3
+[b]Added:[/b] dmg indicator for buildings and HQ
+[b]Changed:[/b] time to capture camps now same for all SV
+[b]Changed:[/b] set LOG to warning to got infos about arty ammo bug
+[b]Changed:[/b] commander now gives squads more money
+[b]Changed:[/b] default - Inf Marker now show icon for own units
+[b]Changed:[/b] deleting units/defenses behavior
+[b]Changed:[/b] default value for town purchase to 1
+[b]Changed:[/b] no arty cooldown if EAT <= 0
+[b]Changed:[/b] range check for Artys
+[b]Changed:[/b] price for crews
+[b]Changed:[/b] spawn distance from factory +5m
+[b]Changed:[/b] AI skill param
+[b]Changed:[/b] better persist gear handling
+[b]Changed:[/b] calucation of the town forces
+[b]Fixed:[/b] HC didn't work if added after mission start
+[b]Fixed:[/b] OPFOR didn't shoot GUER
+[b]Fixed:[/b] AI shoots player if nation didn't have original side
+[b]Fixed:[/b] some minor typos
+[b]Fixed:[/b] Ai Com didn't place Radar
+[b]Fixed:[/b] some positions in Altis and cherna
+[b]Fixed:[/b] Town purchase param not same in all mods
 
+[h1][V2.0.5] Changelog:[/h1]
+
+[b]Added:[/b] gear purchasing for vehicle player sit in
+[b]Changed:[/b] AP-AT-AA launcher missiles price (~-50%
+[b]Changed:[/b] lowered T100X Tier -1
+[b]Changed:[/b] town spawn changes, see Issue#34
+[b]Changed:[/b] better persist gear handling
+[b]Changed:[/b] AI skill param
+[b]Fixed:[/b] Salvager view as client not working

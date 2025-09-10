@@ -1,3 +1,30 @@
+[V2.0.6] Changelog:
+Added: Zombiemode
+Added: gear purchasing for vehicle player sit in
+Added: backpacks to purchasing stuff for vehicles
+Added: remote controll if set CTI_RESPAWN_AI >= 3
+Added: dmg indicator for buildings and HQ
+Changed: time to capture camps now same for all SV
+Changed: set LOG to warning to got infos about arty ammo bug
+Changed: commander now gives squads more money
+Changed: default - Inf Marker now show icon for own units
+Changed: deleting units/defenses behavior
+Changed: default value for town purchase to 1
+Changed: no arty cooldown if EAT <= 0
+Changed: range check for Artys
+Changed: price for crews
+Changed: spawn distance from factory +5m
+Changed: AI skill param
+Changed: better persist gear handling
+Changed: calucation of the town forces
+Fixed: HC didn't work if added after mission start
+Fixed: OPFOR didn't shoot GUER
+Fixed: AI shoots player if nation didn't have original side
+Fixed: some minor typos
+Fixed: Ai Com didn't place Radar
+Fixed: some positions in Altis and cherna
+Fixed: Town purchase param not same in all mods
+
 [V2.0.5] Changelog:
 Added: gear purchasing for vehicle player sit in
 Changed: AP-AT-AA launcher missiles price (~-50%
