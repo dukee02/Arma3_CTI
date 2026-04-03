@@ -79,7 +79,8 @@ switch (_action) do {
 					_x setVariable ["CTI_defense_operator", _unit]; //--- Track the original gunner.
 				};
 			};
-		} forEach (_town getVariable "CTI_town_defenses");
+		//} forEach (_town getVariable "CTI_town_defenses");
+		} forEach (_town nearObjects ["StaticWeapon", 500]);
 		
 		//--- Reveal the town area to the statics.
 		if (count (_town getVariable "CTI_town_defenses") > 0) then {
@@ -131,7 +132,21 @@ switch (_action) do {
 				if (alive(_x getVariable "CTI_defense_operator")) then {deleteVehicle (_x getVariable "CTI_defense_operator")};
 				_x setVariable ["CTI_defense_operator", nil];
 			};
-		} forEach (_town getVariable "CTI_town_defenses");
+		//} forEach (_town getVariable "CTI_town_defenses");
+		} forEach (_town nearObjects ["StaticWeapon", 500]);
+
+		/*
+		private _trees = [];
+		{
+			if (str _x find ": t_" > -1) then {
+				_trees pushBack _x;
+			};
+		} forEach nearestObjects [player, [], 100];
+		
+		nearestObjects [center01, ["Static"], 500];
+		center01 nearObjects ["StaticWeapon", 500];
+
+		*/
 		
 		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OperateTownDefensesUnits.sqf", Format ["(Server) Town [%1] defenses units were removed for [%2] defenses.", _town getVariable "name", count (_town getVariable "CTI_town_defenses")]] Call CTI_CO_FNC_Log}; //+ count _mortars
 	};

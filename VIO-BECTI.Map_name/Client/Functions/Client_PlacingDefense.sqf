@@ -124,7 +124,7 @@ if !(CTI_VAR_StructureCanceled) then {
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
 		if (_funds >= (_var select 2)) then {
 			-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
-			["SERVER", "Request_Defense", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning]] call CTI_CO_FNC_NetSend;
+			["SERVER", "Request_Defense", [_variable, CTI_P_SideJoined, (getPos _local), (getDir _local), player, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning]] call CTI_CO_FNC_NetSend;
 		} else {
 			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
 		};
