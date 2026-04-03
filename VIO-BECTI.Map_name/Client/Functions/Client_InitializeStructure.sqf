@@ -60,7 +60,8 @@ if (isNil {_structure getVariable "cti_structure_type"}) then {_structure setVar
 			_ruin = [_position, _ruins] call CTI_CO_FNC_GetClosestEntity;
 			if (isNull _ruin) then {_active = false};
 		} else {
-			_markerDMG = round(100 - ((damage _structure)*100));
+			_markerDMG = (1 - damage _structure) * 100;
+			//_markerDMG = round(100 - ((damage _structure)*100));
 			_marker setMarkerTextLocal format["%1 (HP: %2/100)",_mtext, _markerDMG];	
 			if (markerColor _marker != CTI_P_SideColor) then {
 				_marker setMarkerColorLocal CTI_P_SideColor;
