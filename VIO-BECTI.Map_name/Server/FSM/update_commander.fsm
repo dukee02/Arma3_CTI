@@ -112,8 +112,8 @@ link59[] = {44,45};
 link60[] = {45,46};
 link61[] = {46,41};
 link62[] = {47,33};
-globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-645.765381,399.839294,962.789001,-148.165848,832,884,1};
-window[] = {2,-1,-1,-32000,-32000,986,-1660,-281,156,3,850};
+globals[] = {0.000000,0,0,0,0,640,480,1,240,6316128,1,-645.765381,399.839294,962.789001,-148.165848,832,876,1};
+window[] = {2,-1,-1,-1,-1,856,26,1405,26,3,850};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -576,7 +576,7 @@ class FSM
                         itemno = 16;
                         init = /*%FSM<STATEINIT""">*/"_commander_lastteamupdate = time;" \n
                          "_modifier = switch (true) do {case (_funds >= 50000): {1.25}; case (_funds >= 100000): {1.5}; case (_funds >= 500000): {1.75}; case (_funds >= 100000): {2}; default {1}};" \n
-                         "" \n
+                         "_id = 0;" \n
                          "_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
                          "" \n
                          "if ((missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"") > 0) then {" \n
