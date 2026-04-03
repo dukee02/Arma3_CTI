@@ -365,8 +365,20 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 		if (_seed != (_group getVariable "cti_order_seed")) exitWith {};
 		
 		if ((_town getVariable "cti_town_sideID") == _sideID) exitWith {_side_owned = true};
-		if (_order in [CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN_AUTO]) then {if (([leader _group, _side] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {_process = false}};
+
+		if (_order in [CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN_AUTO]) then {
+			if !(((vehicle leader _group) isKindOf "Air")) then {
+				if (([leader _group, _side] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {
+					_process = false
+				};
+			};
+		};
 		
+		//if the AI sit in a plane it moves only once to the town and move to default pos, we need to told them again until job is done
+		if (((vehicle leader _group) isKindOf "Air") && ((leader _group) distance2D _town) > 2000 && _side_owned == false && _process == true) then {
+			_group doMove ([getPos _town, 5, 40] call CTI_CO_FNC_GetRandomPosition);
+		};
+
 		sleep 5;
 	};
 	

@@ -196,6 +196,12 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 	};
 	
 	//--- Let's go to the town!
+	/* --- https://community.bistudio.com/wiki/doMove
+	Order the given unit(s) to move to the given position (without radio messages). Upon reaching its destination, if it is the group leader it 
+	will order the group to form around it's new position. If it is not the leader, it will immediately be ordered to return to formation by the 
+	group leader and begin moving back to the group. Use doStop to stop units returning to formation. moveToCompleted will return true when a unit 
+	issued this command reaches its destination.
+	*/
 	vehicle _ai doMove ([getPos _town, 5, 40] call CTI_CO_FNC_GetRandomPosition);
 	(_members - [_ai]) doFollow _ai;
 	
@@ -207,8 +213,18 @@ CTI_FSM_UpdateClientAI_Order_TakeTown = {
 		if (_seed != (_ai getVariable "cti_ai_order_seed")) exitWith {};
 		
 		if ((_town getVariable "cti_town_sideID") == CTI_P_SideID) exitWith {_side_owned = true};
-		if (_order in [CTI_ORDER_CLIENT_TAKETOWN_AUTO, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]) then {if (([_ai, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {_process = false}};
-		
+		if (_order in [CTI_ORDER_CLIENT_TAKETOWN_AUTO, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]) then {
+			if !(((vehicle _ai) isKindOf "Air")) then {
+				if (([_ai, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown) != _town) then {
+					_process = false;
+				};
+			};
+		};
+		//if the AI sit in a plane it moves only once to the town and move to default pos, we need to told them again until job is done
+		if (((vehicle _ai) isKindOf "Air") && (_ai distance2D _town) > 2000 && _side_owned == false && _process == true) then {
+			vehicle _ai doMove ([getPos _town, 5, 40] call CTI_CO_FNC_GetRandomPosition);
+		};
+
 		sleep 5;
 	};
 	
