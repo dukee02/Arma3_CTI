@@ -902,20 +902,81 @@ for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do {
 	_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,0.5] call CTI_CO_FNC_GetCalculatedItemPrize);
 };
 
-//Community wish, vanilla drones for both sides for ballance in CW
-if (!isNil 'CTI_CUP_ADDON') then {
-	if((CTI_CUP_ADDON >= 1 || CTI_RHS_ADDON >= 1) && CTI_AIR_ADDON >= 0 ) then {
-		if(_side == west) then {
-			_c pushBack "B_UAV_01_backpack_F";
-		} else {
-			_c pushBack "O_UAV_01_backpack_F";
+//Community wish, drones for both sides
+if((CTI_CUP_ADDON >= 1 || CTI_RHS_ADDON >= 1) && CTI_AIR_ADDON >= 0 ) then {
+	_matrix_full = [_side, CTI_UPGRADE_AIR] call CTI_CO_FNC_GetTechmatrix;
+	//_matrix_nation = [_side, CTI_UPGRADE_AIR, CTI_US_ID, CTI_DRONE_ID] call CTI_CO_FNC_GetTechmatrix;
+	_matrix_nation = [false,false,false,false,false,false,true,true,true];
+		
+	_matrix_cnt = [1, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+	if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+	if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
+
+		if (isClass(configFile >> "CfgVehicles" >> "B_KVN_AP_Bag")) then {
+			if(_side == west) then {
+				_c pushBack "B_KVN_AP_Bag";
+				_c pushBack "B_KVN_AP_TI_Bag";
+				_c pushBack "B_KVN_AT_Bag";
+				_c pushBack "B_KVN_AT_TI_Bag";
+			} else {
+				_c pushBack "O_KVN_AP_Bag";
+				_c pushBack "O_KVN_AP_TI_Bag";
+				_c pushBack "O_KVN_AT_Bag";
+				_c pushBack "O_KVN_AT_TI_Bag";
+			};
+		};
+
+		if (isClass(configFile >> "CfgVehicles" >> "GX_O_DRONE40_UAV_SMOKE_BLUE")) then {
+			_c pushBack "GX_DEPLOYABLE_MAGAZINE_RQ11B_UAV";
+			_c pushBack "GX_DEPLOYABLE_MAGAZINE_HONEYBADGER_UGV_AT_BLACK";
+			_c pushBack "GX_DEPLOYABLE_MAGAZINE_HONEYBADGER_UGV_AT_DESERT";
+			_c pushBack "GX_DEPLOYABLE_MAGAZINE_HONEYBADGER_UGV_AT_GREEN";
+			_c pushBack "GX_DEPLOYABLE_MAGAZINE_HONEYBADGER_UGV_AT_HEX";
 		};
 		// set all other vars in a slope
 		_cntstart = count _c;
 		_cntend = count _p;
+		_unitsprise = [CTI_ECONOMY_PRIZE_AIR,_tech_level,false,0.05] call CTI_CO_FNC_GetCalculatedUnitsPrize;
 		for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
 			_u pushBack _tech_level;
-			_p pushBack ([CTI_ECONOMY_PRIZE_WEAPONS,_tech_level,2.0] call CTI_CO_FNC_GetCalculatedItemPrize);
+			_p pushBack _unitsprise;
+		};
+	};
+	
+	if (isClass(configFile >> "CfgVehicles" >> "GX_O_DRONE40_UAV_SMOKE_BLUE")) then {
+		_matrix_cnt = [_matrix_cnt, _matrix_full, _matrix_nation] call CTI_CO_FNC_CheckCountUp;
+		if(_matrix_cnt >= 0) then {_tech_level = _matrix_cnt; _matrix_cnt = _matrix_cnt + 1;};
+		if(CTI_ECONOMY_LEVEL_AIR >= _tech_level) then {
+
+			_c pushBack "GX_1RND_DRONE40_SMOKE_BLUE_M203";
+			_c pushBack "GX_1RND_DRONE40_SMOKE_GREEN_M203";
+			_c pushBack "GX_1RND_DRONE40_SMOKE_ORANGE_M203";
+			_c pushBack "GX_1RND_DRONE40_SMOKE_PURPLE_M203";
+			_c pushBack "GX_1RND_DRONE40_SMOKE_RED_M203";
+			_c pushBack "GX_1RND_DRONE40_SMOKE_WHITE_M203";
+			_c pushBack "GX_1RND_DRONE40_SMOKE_YELLOW_M203";
+
+			// set all other vars in a slope
+			_cntstart = count _c;
+			_cntend = count _p;
+			_unitsprise = [CTI_ECONOMY_PRIZE_AIR,_tech_level,false,0.01] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+			for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+				_u pushBack _tech_level;
+				_p pushBack _unitsprise;
+			};
+
+			_c pushBack "GX_DEPLOYABLE_MAGAZINE_BLACKHORNET_UAV";
+			_c pushBack "GX_1RND_DRONE40_HE_M203";
+			_c pushBack "GX_1RND_DRONE40_RECON_M203";
+			
+			// set all other vars in a slope
+			_cntstart = count _c;
+			_cntend = count _p;
+			_unitsprise = [CTI_ECONOMY_PRIZE_AIR,_tech_level,false,0.02] call CTI_CO_FNC_GetCalculatedUnitsPrize;
+			for [{ _j = 0 }, { _j < _cntstart-_cntend }, { _j = _j + 1 }] do { 
+				_u pushBack _tech_level;
+				_p pushBack _unitsprise;
+			};
 		};
 	};
 };

@@ -145,8 +145,8 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="VIO-BECTI-CW V2.0.6";
-		overviewText="VIO-BECTI-CW V2.0.6";
+		briefingName="VIO-BECTI V2.0.6";
+		overviewText="VIO-BECTI V2.0.6";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.30000001;
