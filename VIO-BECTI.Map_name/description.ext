@@ -16,24 +16,37 @@
 #include "VAM_GUI\VAM_GUI_controls.hpp"
 #include "VAM_GUI\VAM_GUI_classes.hpp"
 
-//--- Global Garbage Collection Settings
-MinPlayerDistance = 0;					//The minimum distance from any player. Set the value to 0 to remove the min. distance. 
-CorpseManagerMode = 0;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
-CorpseLimit = 200;						//Maximum allowed number of dead bodies in the scenario. 
-CorpseRemovalMinTime = 600;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
-CorpseRemovalMaxTime = 1800;			//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
-WreckManagerMode = 0;					//Garbage collecting mode 0: None, 1: All scenario objects, 2: Only objects that can respawn, 3: Only objects that cannot respawn
-WreckLimit = 40;						//Maximum allowed number of destroyed vehicles in the scenario. 
-WreckRemovalMinTime = 1200;				//Time in seconds before a dead body is removed when the number of dead bodies exceeds the 'Limit'. 
-WreckRemovalMaxTime	= 3600;				//Time in seconds before a dead body is removed when the number of dead bodies is below or equals the 'Limit'. 
-
-//--- Global Revive Settings
-ReviveRequiredTrait = 0;                //0: none, 1: medic trait is required
-ReviveRequiredItems = 2;                //0: none, 1: medkit, 2: medkit or first aid kit
-ReviveRequiredItemsFakConsumed = 1;     //0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
-ReviveDelay = 18;                       //time needed to revive someone (in secs)
-ReviveMedicSpeedMultiplier = 3;         //speed multiplier for revive performed by medic
-ReviveForceRespawnDelay = 5;			//time needed to perform force respawn (in secs)
-ReviveBleedOutDelay = 120;              //unconscious state duration (in secs)
+//---Gamerfoo Gameplay---START---
+//
+	#include "gfoo\gfoo-description.ext"
+//
+//---Gamerfoo Gameplay---STOP---
 
 enableDebugConsole = 1;
+
+/*
+//Config for Pylon Manager
+class CfgPylonManager
+{
+//Blacklisted Magazines
+//blacklistedMagazines[] = {"PylonMissile_Missile_AMRAAM_D_INT_x1","PylonRack_Bomb_SDB_x4"};
+
+//Nothing is rearm everywhere
+rearmObjects[] = {
+	"RU_WarfareBVehicleServicePoint",		//Ammo building
+	"Land_Cargo_House_V1_F",				//Ammo building
+	"Land_Pod_Heli_Transport_04_ammo_F",
+	"B_Slingload_01_Ammo_F",
+	
+	"B_Truck_01_ammo_F",
+	"B_T_Truck_01_ammo_F",
+	"O_Truck_02_Ammo_F",
+	"O_T_Truck_02_Ammo_F",
+	"O_Truck_03_ammo_F",
+	"I_Truck_02_ammo_F"
+	};
+
+//Distance needed from rearmObjects[]
+rearmRange = 50;
+};
+*/
